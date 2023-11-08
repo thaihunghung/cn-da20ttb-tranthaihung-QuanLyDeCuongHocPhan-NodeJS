@@ -1,0 +1,220 @@
+.body-body {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.app{
+    font-family: 'Times New Roman', Times, serif; line-height: 1.4; font-size: 13pt;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    width: 21cm;
+    height: 29.7cm;
+    margin-bottom: 10px; 
+    padding: 2cm 2cm 2cm 3cm;
+    background-color: var(--color-white);
+}
+.app-A4 {
+    display: flex;
+    flex-direction: column;
+    width: 16cm;
+    height: 25.7cm;
+    background-color:#f5f5f5;
+}
+.header-row {
+    height: 70.6pt;
+}
+
+.subheader-row {
+    height: 6.6pt;
+}
+
+.header-cell {
+
+    padding: 0 5.75pt;
+}
+
+.header-text {
+    color: #000;
+}
+
+
+
+
+
+
+
+.Course_content-title {
+    width: 255.55pt;
+    border: solid 1pt #000;
+    border-top: none;
+    padding: 0 5.75pt;
+}
+
+.Course_content-cell {
+    width: 71.8pt;
+    border: none;
+    border-bottom: solid 1pt #000;
+    border-right: solid 1pt #000;
+    padding: 0 5.75pt;
+}
+
+.Course_content-number {
+    width: 44.85pt;
+    border: none;
+    border-bottom: solid 1pt #000;
+    border-right: solid 1pt #000;
+    padding: 0 5.75pt;
+}
+
+.Course_content-text {
+    width: 40.4pt;
+    border: none;
+    border-bottom: solid 1pt #000;
+    border-right: solid 1pt #000;
+    padding: 0 5.75pt;
+}
+
+.Course_content-last {
+    width: 55.85pt;
+    border: none;
+    border-bottom: solid 1pt #000;
+    border-right: solid 1pt #000;
+    padding: 0 5.75pt;
+}
+
+
+
+
+
+
+
+
+.subheader-row {
+    height: 6.6pt;
+}
+
+
+.content-content {
+    height: 14.95pt;
+    border: solid 1pt #000 !important;
+}
+
+.title {
+    width: 255.55pt;
+    border: solid 1pt black !important;
+    border-top: none;
+    padding: 0 5.75pt;
+    color: #000;
+}
+
+.number, .cell {
+    border: none;
+    border-bottom: solid 1pt black !important;
+    border-right: solid 1pt black !important;
+    padding: 0 5.75pt;
+    color: #000;
+}
+
+.number {
+    width: 71.8pt;
+}
+
+.cell {
+    width: 40.4pt;
+}
+.my-table {
+    border-collapse: collapse;
+    width: 625px;
+}
+
+.my-table th, .my-table td {
+    border: 1px solid #000;
+    padding: 0 5.75pt;
+}
+
+.my-table th {
+    color: #000;
+}
+
+.my-table td.width-342 {
+    width: 342px;
+    rowspan: 2;
+}
+
+.my-table td.width-96 {
+    width: 96px;
+    border-left: none;
+    rowspan: 2;
+}
+
+.my-table td.width-114 {
+    width: 114px;
+    border-left: none;
+    colspan: 2;
+}
+
+.my-table td.width-74 {
+    width: 74px;
+    border-left: none;
+}
+
+.my-table td.width-60 {
+    width: 60px;
+    border: none;
+    border-bottom: 1px solid #000;
+    border-right: 1px solid #000;
+}
+
+.my-table td.width-54 {
+    width: 54px;
+    border: none;
+    border-bottom: 1px solid #000;
+    border-right: 1px solid #000;
+}
+
+.my-table td.width-74-gth {
+    width: 74px;
+    border: none;
+    border-bottom: 1px solid #000;
+    border-right: 1px solid #000;
+}
+
+.my-table th.color-000 {
+    color: #000;
+}
+
+.my-table td.width-341 {
+    width: 341px;
+    border-top: none;
+}
+
+.my-table td.width-96-gth {
+    width: 96px;
+    border: none;
+    border-bottom: 1px solid #000;
+    border-right: 1px solid #000;
+}
+
+.my-table td.width-60-gth {
+    width: 60px;
+    border: none;
+    border-bottom: 1px solid #000;
+    border-right: 1px solid #000;
+}
+
+.my-table td.width-54-gth {
+    width: 54px;
+    border: none;
+    border-bottom: 1px solid #000;
+    border-right: 1px solid #000;
+}
+
+.my-table td.width-74-gth {
+    width: 74px;
+    border: none;
+    border-bottom: 1px solid #000;
+    border-right: 1px solid #000;
+}

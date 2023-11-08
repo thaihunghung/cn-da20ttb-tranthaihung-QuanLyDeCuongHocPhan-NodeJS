@@ -8,7 +8,8 @@ const handlebars = require('handlebars');
 const dotenv = require('dotenv')
 //khoi tao dotenv
 dotenv.config();
-
+//khoi tao public folder
+app.use(express.static(__dirname + '/public'));
 
 //su dung templates hbs
 app.use(express.urlencoded({ extended: true }));
@@ -28,8 +29,12 @@ app.set('views', path.join(__dirname, './views'));
 
 
 app.get('/', (req, res) => {
-  res.render('home')
+  res.render('test/test')
 })
+
+
+
+
 
 const port = process.env.PORT || 8080;
 
