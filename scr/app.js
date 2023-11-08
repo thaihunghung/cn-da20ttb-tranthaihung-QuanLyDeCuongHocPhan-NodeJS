@@ -6,6 +6,7 @@ const exphbs = require('express-handlebars');
 const app = express();
 const handlebars = require('handlebars');
 const dotenv = require('dotenv')
+const monHocRoutes = require('./routes/monHoc');
 //khoi tao dotenv
 dotenv.config();
 //khoi tao public folder
@@ -33,8 +34,7 @@ app.get('/', (req, res) => {
 })
 
 
-
-
+app.use('/monhoc', monHocRoutes);
 
 const port = process.env.PORT || 8080;
 
