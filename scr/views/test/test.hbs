@@ -4,38 +4,11 @@
     </div>
     <div class="app" id="app">
     <div class="app-A4" id="app-A4">
-        <div class="content-header" id="content-header">
+        {{!-- <div class="content-header" id="content-header">
         </div>
         <div class="content-table-course">
-        </div>
-            {{!-- <table width="625" >
-                <tr style="header-row">
-                    <td width="342" rowspan="2" style="border:solid 1pt #000; padding:0 5.75pt">
-                        <b><span style="color:#000">Nội dung</span></b>
-                    </td>
-                    <td width="96" rowspan="2" style="border:solid 1pt #000; border-left:none; padding:0 5.75pt">
-                        <b><span style="color:#000">CĐR học phần</span></b>
-                    </td>
-                    <td width="114" colspan="2" style="border:solid 1pt #000; border-left:none; padding:0 5.75pt">
-                        <b><span style="color:#000">Số giờ</span></b>
-                    </td>
-                    <td width="74" style="border:solid 1pt #000; border-left:none; padding:0 5.75pt">
-                        <b><span style="color:#000">Giờ tự học và giờ học khác</span></b>
-                    </td>
-                </tr>
-                <tr style="subheader-row ">
-                    <td width="60" style="width:44.85pt; border: none; border-bottom: solid 1pt #000; border-right: solid 1pt #000; padding: 0 5.75pt">
-                        <b><span style="color:#000">LT</span></b>
-                    </td>
-                    <td width="54" style="width:40.4pt; border: none; border-bottom: solid 1pt #000; border-right: solid 1pt #000; padding: 0 5.75pt">
-                        <b><span style="color:#000">TH</span></b>
-                    </td>
-                    <td width="74" style="width:55.85pt; border: none; border-bottom: solid 1pt #000; border-right: solid 1pt #000; padding: .75pt">
-                        <span style="color:#000">&nbsp;</span>
-                    </td>
-                </tr>
-    
-            </table> --}}
+        </div> --}}
+            
             <table class="my-table" width="625" id="myTable">
                 <tr style="height:70.6pt">
                     <td class="width-342" rowspan="2">
@@ -80,118 +53,100 @@
             </table>
     </div>
     
-    {{!-- <table width="625">
-        <tr style="height:14.35pt">
-            <td width="341" style="width:255.55pt; border:solid 1pt #000; border-top:none; padding:0 5.75pt">
-                <b><span style="color:#000">Chương 1. Các khái niệm cơ bản về xác suất</span></b>
-            </td>
-            <td width="96" style="width:71.8pt; border: none; border-bottom: solid 1pt #000; border-right: solid 1pt #000; padding: 0 5.75pt">
-                <b><span style="color:#000">1</span></b>
-            </td>
-            <td width="60" style="width:44.85pt; border: none; border-bottom: solid 1pt #000; border-right: solid 1pt #000; padding: 0 5.75pt">
-                <b><span style="color:#000">5</span></b>
-            </td>
-            <td width="54" style="width:40.4pt; border: none; border-bottom: solid 1pt #000; border-right: solid 1pt #000; padding: 0 5.75pt">
-                <b><span style="color:#000">5</span></b>
-            </td>
-            <td width="74" style="width:55.85pt; border: none; border-bottom: solid 1pt #000; border-right: solid 1pt #000; padding: 0 5.75pt">
-                <b><span style="color:#000">5</span></b>
-            </td>
-        </tr>
-        <tr style="height:14.35pt">
-            <td width="341" style="width:255.55pt; border:solid 1pt #000; border-top:none; padding:0 5.75pt">
-                <b><span style="color:#000">Chương 1. Các khái niệm cơ bản về xác suất</span></b>
-            </td>
-            <td width="96" style="width:71.8pt; border: none; border-bottom: solid 1pt #000; border-right: solid 1pt #000; padding: 0 5.75pt">
-                <b><span style="color:#000">1</span></b>
-            </td>
-            <td width="60" style="width:44.85pt; border: none; border-bottom: solid 1pt #000; border-right: solid 1pt #000; padding: 0 5.75pt">
-                <b><span style="color:#000">5</span></b>
-            </td>
-            <td width="54" style="width:40.4pt; border: none; border-bottom: solid 1pt #000; border-right: solid 1pt #000; padding: 0 5.75pt">
-                <b><span style="color:#000">5</span></b>
-            </td>
-            <td width="74" style="width:55.85pt; border: none; border-bottom: solid 1pt #000; border-right: solid 1pt #000; padding: 0 5.75pt">
-                <b><span style="color:#000">5</span></b>
-            </td>
-        </tr>
-    </table> --}}
 </div>
 </div>
 <script>// Mảng KiemTra để theo dõi trạng thái
 var KiemTra = [0];
 // Mảng để theo dõi các hàng đã được tạo
 var createdRows = [];
-
+var contentOverflowed = false;
   document.getElementById('taocautruc').addEventListener('click', function() {
     
-    // Tạo một hàng <tr>
-        var newRow = document.createElement('tr');
+   var table = document.getElementById('myTable');
+    var newRow = document.createElement('tr');
+    newRow.innerHTML = `
+        <td class="width-341"><b class="color-000">Chương 1. Các khái niệm cơ bản về xác suất</b></td>
+        <td class="width-96-gth"><b class="color-000">1</b></td>
+        <td class="width-60-gth"><b class="color-000">5</b></td>
+        <td class="width-54-gth"><b class="color-000">5</b></td>
+        <td class="width-74-gth"><b class="color-000">5</b></td>`;
+    table.appendChild(newRow);
+
+    var appA4 = document.querySelector('.app-A4');
+    var appA4Height = appA4.clientHeight;
+    var totalContentHeight = appA4.scrollHeight;
+    if (totalContentHeight > appA4Height && !contentOverflowed) {
+        // Create a new .app-A4 container for new content
+        var newAppA4 = document.createElement('div');
+        newAppA4.className = 'app-A4';
+        // Optionally, clone the header row from the original table to the new table
+        var newTable = document.createElement('table');
+        newTable.className = 'my-table';
+        newTable.setAttribute('width', '625');
+        newTable.appendChild(table.rows[0].cloneNode(true)); // Clone the header row
+        newAppA4.appendChild(newTable); // Append the new table to the new .app-A4
+
+        // Get the .app container
+        var appContainer = document.getElementById('app');
+        appContainer.appendChild(newAppA4); // Append the new .app-A4 to the .app container
         
-        // Tạo các ô trong hàng
-        var cell1 = document.createElement('td');
-        cell1.className = 'width-341';
-        cell1.innerHTML = '<b class="color-000">Chương 1. Các khái niệm cơ bản về xác suất</b>';
-        
-        var cell2 = document.createElement('td');
-        cell2.className = 'width-96-gth';
-        cell2.innerHTML = '<b class="color-000">1</b>';
-        
-        var cell3 = document.createElement('td');
-        cell3.className = 'width-60-gth';
-        cell3.innerHTML = '<b class="color-000">5</b>';
-        
-        var cell4 = document.createElement('td');
-        cell4.className = 'width-54-gth';
-        cell4.innerHTML = '<b class="color-000">5</b>';
-        
-        var cell5 = document.createElement('td');
-        cell5.className = 'width-74-gth';
-        cell5.innerHTML = '<b class="color-000">5</b>';
+        contentOverflowed = true; // Set the flag to true to avoid creating multiple new pages unnecessarily
+    }
+  </script>
+  <script>
+function calculateHeight(element) {
+    var totalHeight = 0;
+    for (var i = 0; i < element.children.length; i++) {
+        totalHeight += element.children[i].offsetHeight;
+    }
+    return totalHeight;
+}
 
-        // Thêm các ô vào hàng
-        newRow.appendChild(cell1);
-        newRow.appendChild(cell2);
-        newRow.appendChild(cell3);
-        newRow.appendChild(cell4);
-        newRow.appendChild(cell5);
+function addNewPage() {
+    var newPage = document.createElement('div');
+    newPage.className = 'app-A4';
+    document.getElementById('app').appendChild(newPage);
+    return newPage;
+}
 
-        // Thêm hàng mới vào bảng
-        var table = document.getElementById('myTable');
-        table.appendChild(newRow);
-        var appA4 = document.querySelector('.app-A4');
-        var appA4Height = appA4.clientHeight;
+function addRowToPage(page, row) {
+    var table = page.getElementsByTagName('table')[0];
+    if (!table) {
+        table = document.createElement('table');
+        table.className = 'my-table';
+        table.setAttribute('width', '625');
+        page.appendChild(table);
+    }
+    table.appendChild(row);
+}
 
-        // Lấy tất cả các phần tử con bên trong .app-A4, bao gồm các thẻ <div> khác
-        var divElements = appA4.querySelectorAll('.app-A4 > *');
-        
-        // Tính tổng chiều cao của tất cả các phần tử con
-        var totalContentHeight = 0;
-        for (var i = 0; i < divElements.length; i++) {
-        totalContentHeight += divElements[i].clientHeight;
-        }
+function addNewRow() {
+    // Create the new row
+    var newRow = document.createElement('tr');
+    newRow.innerHTML = `<td class="width-341"><b class="color-000">New Content</b></td>
+                        <td class="width-96-gth"><b class="color-000">1</b></td>
+                        <td class="width-60-gth"><b class="color-000">5</b></td>
+                        <td class="width-54-gth"><b class="color-000">5</b></td>
+                        <td class="width-74-gth"><b class="color-000">5</b></td>`;
 
-        // Kiểm tra xem tổng chiều cao có vượt quá chiều cao của .app-A4 không
-        if (totalContentHeight > appA4Height && KiemTra[0] === 0) {
-            
-            alert('Nội dung đã vượt quá chiều cao của .app-A4 và các phần tử <div> đã được xóa.');
-            var newApp = document.createElement('div');
+    // Get the last page
+    var pages = document.getElementsByClassName('app-A4');
+    var lastPage = pages[pages.length - 1];
+    var contentHeightBeforeAdding = calculateHeight(lastPage);
+    var pageHeight = 1123; // A4 page height in pixels
 
-            newApp.className = 'app';
+    // Check if adding the new row would exceed the height of the last page
+    if (contentHeightBeforeAdding + newRow.offsetHeight > pageHeight) {
+        // Create a new page and add the row there
+        var newPage = addNewPage();
+        addRowToPage(newPage, newRow);
+    } else {
+        // Add the new row to the last page
+        addRowToPage(lastPage, newRow);
+    }
+}
 
-            // Tạo một .app-A4 mới
-            var newAppA4 = document.createElement('div');
-            newAppA4.className = 'app-A4';
-            newAppA4.textContent = 'Nội dung cấu trúc mới';
+document.getElementById('taocautruc').addEventListener('click', addNewRow);
 
-            // Thêm .app-A4 vào .app
-            newApp.appendChild(newAppA4);
 
-            // Lấy .app hiện tại
-            var existingApp = document.getElementById('app');
-
-            // Thêm .app mới phía dưới .app hiện tại
-            existingApp.insertAdjacentElement('afterend', newApp);
-            KiemTra[0] = 1;
-        }
-  });</script>
+</script>

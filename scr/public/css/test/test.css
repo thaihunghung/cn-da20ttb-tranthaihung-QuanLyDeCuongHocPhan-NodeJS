@@ -1,18 +1,25 @@
-#editor {
-    width: 8.5in;
-    min-height: 11in;
-    margin: auto;
-    border: 1px solid black;
-    padding: 20px;
-    background: white;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    overflow-y: scroll;
+.editor {
+    position: relative;
 }
 
 .page {
-    min-height: 11in;
-    margin-bottom: 20px;
-    outline: none;
+    box-sizing: border-box;
+    height: 297mm;
+    width: 210mm;
+    padding: 20mm 20mm 20mm 30mm;
+    margin: 0 auto 5mm;
+    border: 1px solid #d3d3d3;
+    background: white;
+    page-break-after: always;
+    overflow: hidden;
 }
 
-/* Add styles for the buttons and any other elements here */
+.editor-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.editor-table td {
+    border: 1px solid #d3d3d3;
+    min-height: 20mm; /* Minimum height for a table row */
+}

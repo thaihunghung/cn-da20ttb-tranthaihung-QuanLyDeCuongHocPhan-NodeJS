@@ -1,15 +1,83 @@
-<div id="editor">
-    <div class="page" contenteditable="true"></div>
+<div class="editor">
+    <button class="create-page-btn" id="createPageButton">Tạo Cấu Trúc</button>
+    <div class="page" id="page1">
+        <table class="my-table" width="625" id="myTable">
+                <tr style="height:70.6pt">
+                    <td class="width-342" rowspan="2">
+                        <b class="color-000">Nội dung</b>
+                    </td>
+                    <td class="width-96" rowspan="2">
+                        <b class="color-000">CĐR học phần</b>
+                    </td>
+                    <td class="width-114" colspan="2">
+                        <b class="color-000">Số giờ</b>
+                    </td>
+                    <td class="width-74">
+                        <b class="color-000">Giờ tự học và giờ học khác</b>
+                    </td>
+                </tr>
+                <tr style="height:6.6pt">
+                    <td class="width-60">
+                        <b class="color-000">LT</b>
+                    </td>
+                    <td class="width-54">
+                        <b class="color-000">TH</b>
+                    </td>
+                    <td class="width-74-gth"></td>
+                </tr>
+                <tr style="height:14.35pt">
+                    <td class="width-341">
+                        <b class="color-000">Chương 1. Các khái niệm cơ bản về xác suất</b>
+                    </td>
+                    <td class="width-96-gth">
+                        <b class="color-000"><div contentEditable="true"></div></b>
+                    </td>
+                    <td class="width-60-gth">
+                        <b class="color-000">5</b>
+                    </td>
+                    <td class="width-54-gth">
+                        <b class="color-000">5</b>
+                    </td>
+                    <td class="width-74-gth">
+                        <b class="color-000">5</b>
+                    </td>
+                </tr>
+            </table>
+
+    </div>
 </div>
+<script>document.getElementById('createPageButton').addEventListener('click', function() {
+    // Get the last page in the editor
+    var pages = document.querySelectorAll('.page');
+    var lastPage = pages[pages.length - 1];
 
-<button id="newPageButton">Add New Page</button>
+    // Check if we need to create a new page
+    var shouldCreateNewPage = lastPage.scrollHeight > lastPage.clientHeight;
 
-<script>
-    document.getElementById('newPageButton').addEventListener('click', function() {
-    var newPage = document.createElement('div');
-    newPage.classList.add('page');
-    newPage.setAttribute('contenteditable', 'true');
-    document.getElementById('editor').appendChild(newPage);
-    newPage.focus(); // Focus on the new page
+    // Get or create the table where the new row will be added
+    var table = lastPage.querySelector('.editor-table');
+    if (!table) {
+        table = document.createElement('table');
+        table.className = 'editor-table';
+        lastPage.appendChild(table);
+    }
+
+    // Create the new row
+    var newRow = table.insertRow();
+    var newCell = newRow.insertCell();
+    newCell.contentEditable = 'true';
+    newCell.textContent = 'New text here...';
+
+    // Create a new page if needed
+    if (shouldCreateNewPage) {
+        var newPage = document.createElement('div');
+        newPage.className = 'page';
+        document.querySelector('.editor').appendChild(newPage);
+        // Move the new row to the new page's table
+        var newTable = document.createElement('table');
+        newTable.className = 'editor-table';
+        newPage.appendChild(newTable);
+        newTable.appendChild(newRow);
+    }
 });
 </script>
