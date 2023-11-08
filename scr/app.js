@@ -3,10 +3,13 @@ const fs = require('fs');
 const pdf = require('html-pdf');
 const express = require('express');
 const exphbs = require('express-handlebars');
+const bodyParser = require('body-parser');
 const app = express();
-const handlebars = require('handlebars');
 const dotenv = require('dotenv')
 const monHocRoutes = require('./routes/monHoc');
+const db = require('./database/config.js');
+
+db.connect();
 //khoi tao dotenv
 dotenv.config();
 //khoi tao public folder
@@ -23,14 +26,14 @@ app.engine('hbs', hbs.engine);
 app.set('view engine', 'hbs');
 app.set('views', path.join(__dirname, './views'));
 
-
-
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
 
 
 
 
 app.get('/', (req, res) => {
-  res.render('test/test')
+  res.render('test/test2')
 })
 
 

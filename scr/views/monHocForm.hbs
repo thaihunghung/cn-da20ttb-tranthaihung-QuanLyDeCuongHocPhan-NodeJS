@@ -1,4 +1,4 @@
-<h1>Add New MonHoc</h1>
+<h1>{{title}}</h1>
 
 <form action="/monhoc/create" method="post">
   <div>
@@ -13,4 +13,7 @@
   <div>
     <button type="submit">Submit</button>
   </div>
+  {{#if errorMessage}}
+    <div>{{errorMessage}}</div>
+  {{/if}}
 </form>

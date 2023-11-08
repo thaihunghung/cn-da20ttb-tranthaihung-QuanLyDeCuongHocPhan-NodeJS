@@ -1,0 +1,18 @@
+#editor {
+    width: 8.5in;
+    min-height: 11in;
+    margin: auto;
+    border: 1px solid black;
+    padding: 20px;
+    background: white;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    overflow-y: scroll;
+}
+
+.page {
+    min-height: 11in;
+    margin-bottom: 20px;
+    outline: none;
+}
+
+/* Add styles for the buttons and any other elements here */

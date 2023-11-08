@@ -1,0 +1,15 @@
+<div id="editor">
+    <div class="page" contenteditable="true"></div>
+</div>
+
+<button id="newPageButton">Add New Page</button>
+
+<script>
+    document.getElementById('newPageButton').addEventListener('click', function() {
+    var newPage = document.createElement('div');
+    newPage.classList.add('page');
+    newPage.setAttribute('contenteditable', 'true');
+    document.getElementById('editor').appendChild(newPage);
+    newPage.focus(); // Focus on the new page
+});
+</script>

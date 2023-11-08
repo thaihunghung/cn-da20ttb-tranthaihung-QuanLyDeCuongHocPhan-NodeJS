@@ -52,23 +52,24 @@ const chuongSchema = new Schema({
   noiDung: String
 });
 
-// Models
-const ChuongTrinh = mongoose.model('ChuongTrinh', chuongTrinhSchema);
-const DapUng_CT = mongoose.model('DapUng_CT', dapUng_CTSchema);
-const CDR_CT = mongoose.model('CDR_CT', cdr_CTSchema);
-const DapUng_CDR = mongoose.model('DapUng_CDR', dapUng_CDRSchema);
-const MonHoc = mongoose.model('MonHoc', monHocSchema);
-const CDR_MonHoc = mongoose.model('CDR_MonHoc', cdr_MonHocSchema);
-const DapUng_MH = mongoose.model('DapUng_MH', dapUng_MHSchema);
-const Chuong = mongoose.model('Chuong', chuongSchema);
+// // Models
+// const ChuongTrinh = mongoose.model('ChuongTrinh', chuongTrinhSchema);
+// const DapUng_CT = mongoose.model('DapUng_CT', dapUng_CTSchema);
+// const CDR_CT = mongoose.model('CDR_CT', cdr_CTSchema);
+// const DapUng_CDR = mongoose.model('DapUng_CDR', dapUng_CDRSchema);
+// const MonHoc = mongoose.model('MonHoc', monHocSchema);
+// const CDR_MonHoc = mongoose.model('CDR_MonHoc', cdr_MonHocSchema);
+// const DapUng_MH = mongoose.model('DapUng_MH', dapUng_MHSchema);
+// const Chuong = mongoose.model('Chuong', chuongSchema);
 
-module.exports = {
-  ChuongTrinh,
-  DapUng_CT,
-  CDR_CT,
-  DapUng_CDR,
-  MonHoc,
-  CDR_MonHoc,
-  DapUng_MH,
-  Chuong
-};
+// module.exports = {
+//   ChuongTrinh,
+//   DapUng_CT,
+//   CDR_CT,
+//   DapUng_CDR,
+//   MonHoc,
+//   CDR_MonHoc,
+//   DapUng_MH,
+//   Chuong
+// };
+module.exports = mongoose.model('MonHoc', monHocSchema);

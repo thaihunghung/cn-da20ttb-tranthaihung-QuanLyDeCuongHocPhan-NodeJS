@@ -1,11 +1,9 @@
 const express = require('express');
 const router = express.Router();
-const monHoc_controller = require('../controllers/monHocController');
+const monHocController = require('../controllers/monHocController'); // Adjust the path as needed
 
-// GET request to show the form
-router.get('/create', monHoc_controller.monHoc_create_get);
-
-// POST request to submit the form
-router.post('/create', monHoc_controller.monHoc_create_post);
-
+router.get('/create', monHocController.monHoc_create_get);
+router.post('/create', monHocController.monHoc_create_post);
+// In your monHoc routes file
+router.get('/list', monHocController.monHoc_list);
 module.exports = router;
