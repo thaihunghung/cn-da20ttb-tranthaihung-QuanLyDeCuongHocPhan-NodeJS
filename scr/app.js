@@ -39,6 +39,15 @@ app.get('/', (req, res) => {
 
 app.use('/monhoc', monHocRoutes);
 
+
+
+app.post('/updateA4Content', (req, res) => {
+  const a4Content = req.body.a4Content;
+  console.log('Nội dung từ phần tử a4:', a4Content);
+  res.send('Nội dung từ phần tử a4 đã được cập nhật thành công!');
+});
+
+
 const port = process.env.PORT || 8080;
 
 app.listen(port, () => {
