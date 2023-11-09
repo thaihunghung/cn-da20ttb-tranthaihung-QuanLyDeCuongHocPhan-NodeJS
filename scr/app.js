@@ -9,11 +9,14 @@ const dotenv = require('dotenv')
 const monHocRoutes = require('./routes/monHoc');
 const db = require('./database/config.js');
 
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+
 db.connect();
 //khoi tao dotenv
 dotenv.config();
 //khoi tao public folder
-app.use(express.static(__dirname + '/public'));
+app.use(express.static(__dirname + '/public/css'));
 
 //su dung templates hbs
 app.use(express.urlencoded({ extended: true }));
@@ -30,12 +33,9 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
 
-
-
 app.get('/', (req, res) => {
-  res.render('test/test2')
+  res.render('formInput_monHoc/formInput_monHoc.hbs')
 })
-
 
 app.use('/monhoc', monHocRoutes);
 

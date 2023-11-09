@@ -3,6 +3,10 @@
 }
 
 .page {
+    font-size: 13pt;
+    font-family: 'Times New Roman', Times, serif;
+    line-height: 1.15;
+    text-align: justify;
     box-sizing: border-box;
     height: 297mm;
     width: 210mm;
@@ -10,10 +14,10 @@
     margin: 0 auto 5mm;
     border: 1px solid #d3d3d3;
     background: white;
-    page-break-after: always;
+    page-break-before: always; 
+    page-break-after: always; 
     overflow: hidden;
 }
-
 .editor-table {
     width: 100%;
     border-collapse: collapse;
