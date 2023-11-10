@@ -1,5 +1,5 @@
 <div class="formInput">
-    <form action="" class="formInput_monHoc">
+    <div class="formInput_monHoc"  id="formInput_monHoc"> 
         <div class="formInput_baseA4" id="formInput_baseA4">
            <div class="formInput_print">
             {{!-- <p class="section-content">&nbsp;</p>--}}
@@ -10,9 +10,7 @@
                 <p class="section-content text-center"><strong><span>MSHP: 320045</span></strong></p>
                 <p class="section-content">&nbsp;</p>
                 <p class="section-content"><strong><span>1. Thông tin chung (General information):</span></strong></p>
-               
-
-
+                <p class="section-content">&nbsp;</p>
                 {{!-- table general-information --}}
                 <table class="table-general-information-1 section-content">
                     <tbody>
@@ -56,8 +54,6 @@
                 <p><span>Chuy&ecirc;n ng&agrave;nh: &hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;. (nếu c&oacute;)</span></p>
                 <p><span>Học kỳ: V&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Năm thứ: 3</span></p>
                 <p><strong><em><span>Điều kiện tham gia học phần:</span></em></strong></p>
-           
-           
                 <table class="table-general-information-2">
                     <tbody>
                         <tr>
@@ -86,34 +82,12 @@
                         </tr>
                     </tbody>
                 </table>
-
                 <p class="section-content">&nbsp;</p>
+                <p class="section-content">&nbsp;</p>  
+                <p class="section-content"><strong><span>2. Nguồn học liệu (Learning resources):</span></strong></p>      
                 <p class="section-content">&nbsp;</p>
-           
-                <p class="section-content"><strong><span>2. Nguồn học liệu (Learning resources):</span></strong></p>
-                
-                <p class="section-content">&nbsp;</p>
-                <table class="table_learning_resources">
+                <table class="table_learning_resources"> 
                     <tbody>
-                        {{!-- <tr>
-                            <td class="table-learning-left">
-                                <p><span>Gi&aacute;o tr&igrave;nh/T&agrave;i liệu học tập ch&iacute;nh</span></p>
-                            </td>
-                            <td class="table-learning-right">
-                                <p class="table-learning-p">
-                                    <span style="color:black;">
-                                        [1] Nguyễn Văn Tuấn (2014). <em>Ph&acirc;n t&iacute;ch dữ liệu với R.</em> NXB Tổng hợp TP Hồ Ch&iacute; Minh.</span></p>
-                                <p class="table-learning-p">
-                                    <span style="color:black;">
-                                        [2]<em>&nbsp;</em>Danielle Navarro, Ethan Weed (2021). <em>Learning Statistics with Python</em>. Online:&nbsp;
-                                        </span><a href="https://ethanweed.github.io/pythonbook/landingpage.html">
-                                <p class="table-learning-p">
-                                    <span style="color:black;">
-                                        [3]<em>&nbsp;</em>Peter Bruce, Andrew Bruce, Peter Gedeck (2020). <em>Practical Statistics for Data Scientists: 50+ Essential Concepts Using R and Python</em>. O&apos;Reilly Media.
-                                        </span></p>
-                                            </td>
-                                            <td class="empty"></td>
-                        </tr> --}}
                         <tr>
                             <td class="table-learning-left">
                                 <p>Gi&aacute;o tr&igrave;nh/T&agrave;i liệu học tập ch&iacute;nh</p>
@@ -125,6 +99,8 @@
                             </td>
                             <td class="empty"></td>
                         </tr>
+                        
+                       
                         <tr>
                             <td class="table-learning-left">
                                 <p>T&agrave;i liệu tham khảo th&ecirc;m</p>
@@ -135,36 +111,56 @@
                             </td>
                             <td class="empty"></td>
                         </tr>
+                        
+                        
                         <tr>
-                            <td class="cell">
+                            <td class="table-learning-left">
                                 <p>C&aacute;c loại học liệu kh&aacute;c</p>
                             </td>
-                            <td class="content">
+                            <td class="table-learning-right">
                                 <p>[6] Mirko Stojiljković (2022). <em>Python Statistics Fundamentals: How to Describe Your Data</em></p>
-                                <p>[7] FreeCodeCamp. <em>Courses: Data Analysis with Python</em><em><span style="font-size:16px;line-height:115%;color:black;">&nbsp;</span></em><span style="font-size:16px;line-height:115%;color:black;">[</span><a href="https://www.freecodecamp.org/learn/data-analysis-with-python"><span style="color:black;">https://www.freecodecamp.org/learn/data-analysis-with-python</span></a><span style="color:black;">].&nbsp;</span></p>
+                                <p>[7] FreeCodeCamp. <em>Courses: Data Analysis with Python</em><em><span>&nbsp;</span></em><span>[</span><a href="https://www.freecodecamp.org/learn/data-analysis-with-python"><span >https://www.freecodecamp.org/learn/data-analysis-with-python</span></a><span >].&nbsp;</span></p>
                                 <p>[8] Dionysia Lemonaki (2022). <em>What is Data Analysis?</em></p>
-                                <p>[9] Colaboratory-team, Craig Citro (2020). <em>Using Google Colab with GitHub</em> [</span><a href="https://colab.research.google.com/github/googlecolab/colabtools/blob/master/notebooks/colab-github-demo.ipynb"><span style="color:black;">https://colab.research.google.com/github/<br>&nbsp;googlecolab/colabtools/blob/master/notebooks/colab-github-demo.ipynb</span></a><span style="color:black;">]</span></p>
+                                <p>[9] Colaboratory-team, Craig Citro (2020). <em>Using Google Colab with GitHub</em> [</span><a href="https://colab.research.google.com/github/googlecolab/colabtools/blob/master/notebooks/colab-github-demo.ipynb"><span >https://colab.research.google.com/github/<br>&nbsp;googlecolab/colabtools/blob/master/notebooks/colab-github-demo.ipynb</span></a><span >]</span></p>
                             </td>
                             <td class="empty"></td>
                         </tr>
-                    </tbody>
+                    </tbody>  
                 </table>
-                <p class="section-content"><strong><span>3. Mô tả học phần (Course description):</span></strong></p>
-           
-                <p class="section-content Thut-dau-dong"><span style="color:black;">Học phần gi&uacute;p trang bị cho sinh vi&ecirc;n c&aacute;c kiến thức cơ bản về x&aacute;c suất v&agrave; thống k&ecirc; để ph&acirc;n t&iacute;ch dữ liệu trong nghi&ecirc;n cứu. Sinh vi&ecirc;n sẽ được học c&aacute;ch bi&ecirc;n tập dữ liệu, c&aacute;ch m&ocirc; tả dữ liệu bằng biểu đồ v&agrave; bằng c&aacute;c đặc trưng thống k&ecirc;, c&aacute;ch thu thập dữ liệu, thiết kế nghi&ecirc;n cứu v&agrave; kiểm định c&aacute;c giả thuyết thống k&ecirc; tr&ecirc;n ng&ocirc;n ngữ Python/R. Nhờ đ&oacute; sinh vi&ecirc;n c&oacute; thể ứng dụng c&aacute;c kiến thức của m&ocirc;n học để thực hiện c&aacute;c nghi&ecirc;n cứu khoa học v&agrave; học c&aacute;c m&ocirc;n học c&oacute; ứng dụng kiến thức thống k&ecirc; như Tr&iacute; tuệ nh&acirc;n tạo, Khai ph&aacute; dữ liệu&hellip; Đồng thời, kỹ năng sử dụng ng&ocirc;n ngữ Python/R gi&uacute;p sinh vi&ecirc;n c&oacute; thể dễ d&agrave;ng tham gia c&aacute;c cộng đồng ph&acirc;n t&iacute;ch số liệu để c&oacute; thể tự học v&agrave; nghi&ecirc;n cứu s&acirc;u hơn. Học phần cũng gi&uacute;p sinh vi&ecirc;n h&igrave;nh th&agrave;nh th&aacute;i độ v&agrave; nhận thức đ&uacute;ng đắn về vai tr&ograve; của thống k&ecirc; v&agrave; khoa học dữ liệu trong bối cảnh hiện đại.</span></p>
-           
+                <p class="section-content">&nbsp;</p>
+                <p class="section-content"><strong><span>3. Mô tả học phần (Course description):</span></strong></p> 
+                <p class="section-content Thut-dau-dong"><span>
+                    Học phần gi&uacute;p trang bị cho sinh vi&ecirc;n c&aacute;
+                    c kiến thức cơ bản về x&aacute;c suất v&agrave; thống k&ecirc; 
+                    để ph&acirc;n t&iacute;ch dữ liệu trong nghi&ecirc;
+                    n cứu. Sinh vi&ecirc;n sẽ được học c&aacute;ch bi&ecirc;
+                    n tập dữ liệu, c&aacute;ch m&ocirc; tả dữ liệu bằng biểu đồ v&agrave; 
+                    bằng c&aacute;c đặc trưng thống k&ecirc;, c&aacute;ch thu thập dữ liệu, 
+                    thiết kế nghi&ecirc;n cứu v&agrave; kiểm định c&aacute;
+                    c giả thuyết thống k&ecirc; tr&ecirc;n ng&ocirc;n ngữ Python/R. 
+                    Nhờ đ&oacute; sinh vi&ecirc;n c&oacute; thể ứng dụng c&aacute;c 
+                    kiến thức của m&ocirc;n học để thực hiện c&aacute;c nghi&ecirc;n 
+                    cứu khoa học v&agrave; học c&aacute;c m&ocirc;n học c&oacute; 
+                    ứng dụng kiến thức thống k&ecirc; như Tr&iacute; tuệ nh&acirc;n tạo, 
+                    Khai ph&aacute; dữ liệu&hellip; Đồng thời, kỹ năng sử dụng ng&ocirc;n 
+                    ngữ Python/R gi&uacute;p sinh vi&ecirc;n c&oacute; thể dễ d&agrave;ng 
+                    tham gia c&aacute;c cộng đồng ph&acirc;n t&iacute;ch số liệu để c&oacute; 
+                    thể tự học v&agrave; nghi&ecirc;n cứu s&acirc;u hơn. 
+                    Học phần cũng gi&uacute;p sinh vi&ecirc;n h&igrave;nh th&agrave;nh 
+                    th&aacute;i độ v&agrave; nhận thức đ&uacute;ng đắn về vai tr&ograve; 
+                    của thống k&ecirc; v&agrave; khoa học dữ liệu trong bối cảnh hiện đại.</span></p>
            </div>
         </div>
-    </form>
+    </div>
 </div>
 <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
   <script>
     function sendA4Content() {
       // Lấy nội dung của phần tử a4
-      var a4Content = document.getElementById('formInput_baseA4').innerHTML;
+      var a4Content = document.getElementById('formInput_monHoc').innerHTML;
 
       // Gửi nội dung lên server bằng Axios
-      axios.post('/updateA4Content', { a4Content })
+      axios.post('/pdf', { a4Content })
         .then(function (response) {
           console.log(response.data);
         })

@@ -33,19 +33,27 @@
     border: none;
 }
 
-.cell {
-    width: 116.75pt;
-    border: 1pt solid black;
-    padding: 0cm 5.4pt;
-    vertical-align: top;
+.section-content {
+    margin: 0cm;
+    color: black;
+    text-align: justify;
 }
 
-.content {
-    width: 351.0pt;
-    border-top: none;
-    border-left: none;
-    border-bottom: 1pt solid black;
-    border-right: 1pt solid black;
-    padding: 0cm 5.4pt;
-    vertical-align: top;
+.section-content strong {
+    color: black; 
+}
+
+.section-content span {
+    color: black; 
+}
+
+.section-content.text-right {
+    text-align: right; 
+}
+
+.section-content.text-center {
+    text-align: center; 
+}
+.Thut-dau-dong {
+    text-indent:36.0pt;
 }
