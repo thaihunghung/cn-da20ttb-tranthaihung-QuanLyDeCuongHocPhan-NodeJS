@@ -32,14 +32,11 @@ app.set('views', path.join(__dirname, './views'));
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
-
 app.get('/', (req, res) => {
   res.render('formInput_monHoc/formInput_monHoc.hbs')
 })
 
 app.use('/monhoc', monHocRoutes);
-
-
 
 app.all('/pdf', (req, res) => {
   const a4Content = req.body.a4Content;
@@ -65,32 +62,9 @@ app.all('/pdf', (req, res) => {
   
     // Generate the PDF with specified margins
     await page.pdf(pdfOptions);
-  
     await browser.close();
   })();
-  // // Đặt tùy chọn cho html-pdf
-  // const options = {
-  //   format: 'A4',
-  //   border: {
-  //     top: '2cm',
-  //     left: '3cm',
-  //     right: '2cm',
-  //     bottom: '2cm',
-  //   },
-  // };
-
-  // // Chuyển đổi HTML thành PDF và ghi vào file
-  // pdf.create(htmlContent1, options).toFile('./output.pdf', (err, _) => {
-  //   if (err) {
-  //     console.error('Lỗi khi tạo PDF:', err);
-  //     res.status(500).send('Có lỗi xảy ra khi tạo PDF.');
-  //   } else {
-  //     console.log('PDF đã được tạo thành công');
-  //     res.send('Nội dung từ phần tử a4 đã được cập nhật và xuất PDF thành công!');
-  //   }
-  // });
 });
-
 
 const port = process.env.PORT || 8080;
 
