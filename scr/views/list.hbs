@@ -1,0 +1,30 @@
+ <h1>{{ title }}</h1>
+    <ul>
+        {{#each monHocList}}
+            <li>
+                <strong>Tên Môn Học:</strong> {{ tenMonHoc }}<br>
+                <strong>TLTK:</strong> {{ TLTK }}<br>
+
+                {{#if dapUng_MH.length}}
+                    <strong>DapUng_MH:</strong>
+                    <ul>
+                        {{#each dapUng_MH}}
+                            <li>{{ someField }}</li>
+                            <!-- Add additional fields as needed -->
+                        {{/each}}
+                    </ul>
+                {{/if}}
+
+                {{#if chuong.length}}
+                    <strong>Chuong:</strong>
+                    <ul>
+                        {{#each chuong}}
+                            <li>{{ someField }}</li>
+                            <!-- Add additional fields as needed -->
+                        {{/each}}
+                    </ul>
+                {{/if}}
+
+            </li>
+        {{/each}}
+    </ul>

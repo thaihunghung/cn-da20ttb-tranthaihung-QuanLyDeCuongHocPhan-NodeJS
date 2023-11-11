@@ -1,5 +1,5 @@
-const MonHoc = require('../models/MonHoc'); // Adjust the path as needed
-
+const MonHoc = require('../models/monHoc'); // Adjust the path as needed
+const {mongooseToObject}= require('../util/mongoose');
 exports.monHoc_create_get = (req, res) => {
   res.render('monHocForm', { title: 'Create MonHoc' });
 };
@@ -22,7 +22,7 @@ exports.monHoc_create_post = async (req, res) => {
 exports.monHoc_list = async (req, res) => {
     try {
       const monHocs = await MonHoc.find();
-      res.render('monHocList', { title: 'MonHoc List', monHocList: monHocs });
+      res.render('list', { title: 'MonHoc List', monHocList: monHocs.map(mongooseToObject) });
     } catch (err) {
       res.status(500).send('Error retrieving MonHocs');
     }
