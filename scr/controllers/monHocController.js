@@ -1,6 +1,18 @@
-const MonHoc = require('../models/monHoc'); // Adjust the path as needed
+const MonHoc = require('../models/monHoc'); 
 const {mongooseToObject}= require('../util/mongoose');
-exports.monHoc_create_get = (req, res) => {
+const path = require('path');
+
+exports.monHoc_create_get = async (req, res) => {
+  let monHoc = new MonHoc({
+    tenMonHoc: req.body.tenMonHoc,
+    TLTK: req.body.TLTK
+    // Include additional fields as necessary
+  });
+  try {
+    await User.save();
+  } catch (err) {
+    res.render('monHocForm', { title: 'Create MonHoc', errorMessage: 'Error creating MonHoc' });
+  }
   res.render('monHocForm', { title: 'Create MonHoc' });
 };
 
@@ -15,7 +27,7 @@ exports.monHoc_create_post = async (req, res) => {
       await monHoc.save();
       res.redirect('/monhoc/list');
     } catch (err) {
-      res.render('monHocForm', { title: 'Create MonHoc', errorMessage: 'Error creating MonHoc' });
+      res.render(__dirname,'monHocForm', { title: 'Create MonHoc', errorMessage: 'Error creating MonHoc' });
     }
   };
   

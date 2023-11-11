@@ -1,0 +1,122 @@
+HocPhan {
+    PK:  MaMon;
+        TenMon;
+        SoGioTuHoc;
+        TH;
+        LT;
+        MoTa;
+        LoaiHocPhan;
+        SoTC_LT;
+        SoTC_TH;
+        TrinhDo_DT;
+        ChuyenNganh;
+        HocKy;
+        NamHoc;
+}
+Tao {
+    PK,FK1: MaMon;
+    PK,FK2: id_NguoiDung;
+}
+NguoiDung {
+    PK: id_NguoiDung;
+        TenNguoiDung; 
+        TaiKhoan;
+        MatKhau;
+}
+Tokens {
+    PK: id_Token;
+    FK: id_NguoiDung;
+        token;
+        ThoiGian;
+}
+NguoiDung_Quyen {
+    PK,FK1: id_Quyen;
+    PK,FK2: id_NguoiDung;
+}
+Quyen {
+    PK: id_Quyen;
+        Ten_Quyen;
+}
+TLTK {
+   PK:  MaTLTK;
+   FK:  MaMon;
+       TenTL;
+       LoaiTaiLieu;
+       MoTa;
+}
+PP_Day_hoc {
+    PK: MaPP;
+    FK: MaMon;
+       TenPP;
+}
+DieuKienThamGia {
+    PK: MaDK_TG;
+    FK: MaMon;
+       HocPhan_TQ;
+       HocPhan_SH;
+       YC_khac
+}
+QuyDinh {
+    PK: MaQD;
+    FK: MaMon;
+        NoiDung;
+        LoaiQD;
+}
+GiangVien {
+    PK: MaGiangVien;
+    Fk: MaMon;
+        HoTen;
+        ChucDanh;
+}
+Chuong {
+    PK: MaChuong;
+    FK: MaMon;
+        TenChuong;
+}
+NoiDungChiTietChuong {
+    PK: ID_Noidung;
+    FK: MaChuong;
+        TenNoiDung;
+        GioLyThuyet;
+        GiothucHanh;
+        SoGioTuHoc;
+}
+DapUng_MH {
+    PK,FK1: MaCDR_MH;
+    PK,FK2: MaChuong;
+}
+CDR_MonHoc {
+    PK: MaCDR_MH;
+    FK: MaMon;
+        TrinhDo;
+        Loai_TUA;
+};
+DapUng_CDR {
+    PK,FK1:  id_CDR;
+    PK,FK2:  MaCDR_MH;
+};
+CDR_CT {
+    PK: id_CDR;
+    FK: id_CT;
+        Ten_CDR;
+        LoaiCDR_CT;
+        NoiDung;
+}
+ChuongTrinh {
+    PK: id_CT;
+        TenChuongTrinh;
+        LoaiHinh;
+        STC_YeuCau;
+        Tg_DaoTao;
+        Bac;
+}
+MucTieuCTDT {
+    PK: MaMT_CTDT;
+    FK: id_CT;
+        TenMT_CTDT;
+        NoiDung;
+}
+Dapung_CT {
+    PK,FK1: MaMT_CTDT;
+    PK,FK2: id_CDR;
+}

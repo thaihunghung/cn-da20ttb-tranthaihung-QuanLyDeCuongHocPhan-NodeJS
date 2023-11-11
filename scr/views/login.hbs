@@ -1,20 +1,15 @@
-<form action="">
-    <label>tai khoan</label>
-    <br>
-    <input type="text" name="username" id="username">
-    <br>
-    <label>tai khoan</label>
-    <br>
-    <input type="text" name="password" id="password">
-    <br>
-    <button class="btn" onclick="login()"></button>
-</form>
+ <div class="container">
+    <h1>Login</h1>
+    <form id="loginForm">
+      <label for="username">Username:</label>
+      <input type="text" id="username" name="username" required>
 
-<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-<script>
-    function login() {
-      var username = do;
+      <label for="password">Password:</label>
+      <input type="password" id="password" name="password" required>
 
-      // Gửi nội dung lên server bằng Axios
-    }
-</script>
+      <button type="button" onclick="login()">Login</button>
+    </form>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  <script src="/js/client.js"></script>

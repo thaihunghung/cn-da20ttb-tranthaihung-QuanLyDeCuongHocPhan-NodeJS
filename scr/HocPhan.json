@@ -1,0 +1,262 @@
+{
+    "HocPhan": {
+      "MaHocPhan": "320045", 
+      "TenHocPhan": "Thống kê và phân tích dữ liệu",
+      "SoTinChi": 3,
+      "SoGio": {
+        "LyThuyet": 30,
+        "ThucHanh": 30,
+        "TuHoc": 90
+      },
+      "DoiTuongHoc": "Đại học, ngành Công nghệ Thông tin, học kỳ V, năm thứ 3",
+      "DieuKienThamGia": {
+        "HocPhanTienQuyet": "Vi tích phân A1 MSHP: 110042", 
+        "HocPhanSongHanh": "Không",
+        "YeuCauKhac": "Kiến thức toán học phổ thông, kỹ năng phân tích, giải quyết vấn đề, tập trung, ghi nhớ, tính toán, biến đổi, thái độ chủ động học tập"
+      },
+      "MoTaHocPhan": "Học phần trang bị kiến thức cơ bản về xác suất và thống kê để phân tích dữ liệu trong nghiên cứu. Học cách biên tập, mô tả, thu thập dữ liệu; thiết kế nghiên cứu; kiểm định giả thuyết thống kê trên Python/R. Giúp SV nghiên cứu khoa học và học các môn như Trí tuệ nhân tạo, Khai phá dữ liệu. Kỹ năng Python/R giúp SV dễ dàng tham gia cộng đồng phân tích số liệu. Hình thành nhận thức đúng về vai trò thống kê và khoa học dữ liệu."
+    },
+  
+    "ChuanDauRa": [
+      {
+        "MaChuan": "1", 
+        "MaHocPhan": "320045",
+        "MoTaChuan": "Trình bày các khái niệm cơ bản về xác suất",
+        "CapDo": "2"
+      },
+      {
+        "MaChuan": "2",
+        "MaHocPhan": "320045",
+        "MoTaChuan": "Trình bày vai trò của thống kê trong nghiên cứu khoa học", 
+        "CapDo": "3"
+      },
+      {
+        "MaChuan": "3",
+        "MaHocPhan": "320045",
+        "MoTaChuan": "Phân tích dữ liệu biểu đồ bằng ngôn ngữ Python/R",
+        "CapDo": "4"
+      },
+      {
+        "MaChuan": "4",
+        "MaHocPhan": "320045", 
+        "MoTaChuan": "Thực hiện các bài toán kiểm định giả thuyết thống kê",
+        "CapDo": "3"
+      },
+      {
+        "MaChuan": "5",
+        "MaHocPhan": "320045",
+        "MoTaChuan": "Thực hiện phân tích phương sai, tương quan, hồi quy, dữ liệu chuỗi thời gian",
+        "CapDo": "3" 
+      },
+      {
+        "MaChuan": "6",
+        "MaHocPhan": "320045",
+        "MoTaChuan": "Vận dụng các kiến thức chuyên ngành trong thiết kế nghiên cứu",
+        "CapDo": "3"
+      },
+      {
+        "MaChuan": "7", 
+        "MaHocPhan": "320045",
+        "MoTaChuan": "Ước lượng và phân tích định tính vấn đề",
+        "CapDo": "3"
+      },
+      {
+        "MaChuan": "8",
+        "MaHocPhan": "320045",
+        "MoTaChuan": "Kiểm tra và bảo vệ giả thuyết",
+        "CapDo": "4" 
+      },
+      {
+        "MaChuan": "9",
+        "MaHocPhan": "320045",
+        "MoTaChuan": "Tôn trọng đạo đức nghiên cứu và học tập suốt đời",
+        "CapDo": "3"
+      }
+    ],
+  
+    "DeCuong": [
+      {
+        "MaDeCuong": "1",
+        "MaHocPhan": "320045",
+        "NoiDung": "Chương 1. Các khái niệm cơ bản về xác suất",
+        "GioLyThuyet": 5,
+        "GioThucHanh": 5,
+        "GioTuHoc": 5
+      },
+      {
+        "MaDeCuong": "2",
+        "MaHocPhan": "320045",
+        "NoiDung": "Chương 2. Phân tích thống kê mô tả",
+        "GioLyThuyet": 5,
+        "GioThucHanh": 5,
+        "GioTuHoc": 15
+      },
+      {
+        "MaDeCuong": "3",
+        "MaHocPhan": "320045",
+        "NoiDung": "Chương 3. Phân tích dữ liệu bằng biểu đồ",
+        "GioLyThuyet": 5,
+        "GioThucHanh": 3,
+        "GioTuHoc": 5
+      },
+      {
+        "MaDeCuong": "4",
+        "MaHocPhan": "320045",
+        "NoiDung": "Chương 4. Kiểm định giả thuyết thống kê",
+        "GioLyThuyet": 7,
+        "GioThucHanh": 5,
+        "GioTuHoc": 15
+      },
+      {
+        "MaDeCuong": "5", 
+        "MaHocPhan": "320045",
+        "NoiDung": "Chương 5. Phân tích tương quan và hồi quy",
+        "GioLyThuyet": 4,
+        "GioThucHanh": 4,
+        "GioTuHoc": 15
+      },
+      {
+        "MaDeCuong": "6",
+        "MaHocPhan": "320045",
+        "NoiDung": "Chương 6. Phân tích phương sai", 
+        "GioLyThuyet": 1,
+        "GioThucHanh": 3,
+        "GioTuHoc": 15
+      },
+      {
+        "MaDeCuong": "7",
+        "MaHocPhan": "320045",
+        "NoiDung": "Chương 7. Phân tích hồi quy logistic",
+        "GioLyThuyet": 1,
+        "GioThucHanh": 3,
+        "GioTuHoc": 15
+      },
+      {
+        "MaDeCuong": "8",
+        "MaHocPhan": "320045",
+        "NoiDung": "Chương 8. Phân tích dữ liệu chuỗi thời gian",
+        "GioLyThuyet": 2,
+        "GioThucHanh": 2,
+        "GioTuHoc": 5
+      }
+    ],
+  
+    "DanhGia": [
+      {
+        "MaDanhGia": "1",
+        "MaHocPhan": "320045",
+        "TenDanhGia": "Kiểm tra giữa kỳ",
+        "LoaiDanhGia": "Kiểm tra lý thuyết hoặc thực hành",
+        "TrongSo": 25,
+        "TieuChi": "Theo đáp án"
+      },
+      {
+        "MaDanhGia": "2", 
+        "MaHocPhan": "320045",
+        "TenDanhGia": "Bài tập lớn",
+        "LoaiDanhGia": "Bài tập",
+        "TrongSo": 25,
+        "TieuChi": "Theo đáp án"
+      },
+      {
+        "MaDanhGia": "3",
+        "MaHocPhan": "320045",
+        "TenDanhGia": "Đồ án nhóm",
+        "LoaiDanhGia": "Đồ án",
+        "TrongSo": 50,
+        "TieuChi": "Theo đáp án"
+      },
+      {
+        "MaDanhGia": "4",
+        "MaHocPhan": "320045",
+        "TenDanhGia": "Thi thực hành",
+        "LoaiDanhGia": "Thi thực hành",
+        "TrongSo": 50,
+        "TieuChi": "Theo đáp án" 
+      }
+    ],
+  
+    "TaiLieu": [
+      {
+        "MaTaiLieu": "1",
+        "MaHocPhan": "320045",
+        "TenTaiLieu": "Phân tích dữ liệu với R",
+        "LoaiTaiLieu": "Giáo trình chính",
+        "MoTa": "Nguyễn Văn Tuấn (2014). NXB Tổng hợp TP Hồ Chí Minh."
+      },
+      {
+        "MaTaiLieu": "2",
+        "MaHocPhan": "320045",
+        "TenTaiLieu": "Learning Statistics with Python",
+        "LoaiTaiLieu": "Giáo trình chính",
+        "MoTa": "Danielle Navarro, Ethan Weed (2021). Online."
+      },
+      {
+        "MaTaiLieu": "3",
+        "MaHocPhan": "320045",
+        "TenTaiLieu": "Practical Statistics for Data Scientists: 50+ Essential Concepts Using R and Python",
+        "LoaiTaiLieu": "Giáo trình chính",
+        "MoTa": "Peter Bruce, Andrew Bruce, Peter Gedeck (2020). O'Reilly Media."
+      },
+      {
+        "MaTaiLieu": "4",
+        "MaHocPhan": "320045",
+        "TenTaiLieu": "Python Data Science Handbook: Essential Tools for Working with Data",
+        "LoaiTaiLieu": "Tài liệu tham khảo",
+        "MoTa": "Jake VanderPlas (2017). O'Reilly Media."
+      },
+      {
+        "MaTaiLieu": "5",
+        "MaHocPhan": "320045", 
+        "TenTaiLieu": "Statistics: The Art and Science of Learning from Data 5th edition",
+        "LoaiTaiLieu": "Tài liệu tham khảo",
+        "MoTa": "Alan Agresti, Christine A. Franklin, Bernhard Klingenberg (2020). Pearson."
+      },
+      {
+        "MaTaiLieu": "6",
+        "MaHocPhan": "320045",
+        "TenTaiLieu": "Python Statistics Fundamentals: How to Describe Your Data",
+        "LoaiTaiLieu": "Tài liệu học liệu khác",
+        "MoTa": "Mirko Stojiljković (2022). Online."
+      },
+      {
+        "MaTaiLieu": "7",
+        "MaHocPhan": "320045",
+        "TenTaiLieu": "Courses: Data Analysis with Python",
+        "LoaiTaiLieu": "Tài liệu học liệu khác", 
+        "MoTa": "FreeCodeCamp. Online."
+      },
+      {
+        "MaTaiLieu": "8",
+        "MaHocPhan": "320045",
+        "TenTaiLieu": "What is Data Analysis?",
+        "LoaiTaiLieu": "Tài liệu học liệu khác",
+        "MoTa": "Dionysia Lemonaki (2022). Online."
+      },
+      {
+        "MaTaiLieu": "9",
+        "MaHocPhan": "320045",
+        "TenTaiLieu": "Using Google Colab with GitHub",
+        "LoaiTaiLieu": "Tài liệu học liệu khác",
+        "MoTa": "Colaboratory-team, Craig Citro (2020). Online."
+      }
+    ],
+  
+    "QuyDinh": [
+      +
+    ],
+  
+    "GiangVien": [
+      {
+        "MaGiangVien": "1",
+        "HoTen": "Nguyễn Bảo Ân",
+        "ChucDanh": "Giảng viên"
+      },
+      {
+        "MaGiangVien": "2",
+        "HoTen": "Phạm Thị Trúc Mai",
+        "ChucDanh": "Giảng viên phản biện"
+      }
+    ]
+  
+  }

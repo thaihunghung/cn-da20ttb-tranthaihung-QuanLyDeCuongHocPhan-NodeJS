@@ -9,15 +9,19 @@ const dotenv = require('dotenv')
 const monHocRoutes = require('./routes/monHocRoute.js');
 const loginRoutes = require('./routes/loginRoute.js');
 const db = require('./database/config.js');
-
+const verifyToken = require('./middleware/verifyToken');
+const cookieParser = require('cookie-parser');
+const morgan = require('morgan');
+morgan('combined')
 app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
+app.use(express.urlencoded({ extended: false }));
+app.use(cookieParser());
+
 
 db.connect();
 //khoi tao dotenv
 dotenv.config();
 //khoi tao public folder
-
 app.use(express.static(path.join(__dirname, 'public')))
 
 //su dung templates hbs
@@ -30,14 +34,15 @@ const hbs = exphbs.create({
 app.engine('hbs', hbs.engine);
 app.set('view engine', 'hbs');
 app.set('views', path.join(__dirname, 'views'));
-
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
+app.get('/protected', verifyToken, (req, res) => {
+  res.json({ message: 'Access granted', userId: req.userId });
+});
 
-
+app.use('/login', loginRoutes)
 app.use('/monhoc', monHocRoutes);
-
 app.all('/pdf', (req, res) => {
   const a4Content = req.body.a4Content;
   console.log(a4Content)
