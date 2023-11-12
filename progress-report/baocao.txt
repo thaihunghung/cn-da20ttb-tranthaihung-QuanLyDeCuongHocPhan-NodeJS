@@ -1,0 +1,5 @@
+- Nghiên cứu và thiết kế cơ sở
+dữ liệu.(hoàn thành)
+- Tạo Git để lưu trữ Source
+Code. (hoàn thành)
+- tạo git (hoàn thành)
