@@ -449,3 +449,10 @@ body{ font-size: 13pt;line-height: 1.15;font-family: 'Times New Roman', Times, s
     margin-left:0cm;
     line-height:115%;
 }
+.header-course-content-p {
+    margin-top:3.0pt;
+    margin-right:0cm;
+    margin-bottom:7.2pt;
+    margin-left:0cm;
+    text-align:center;
+}
