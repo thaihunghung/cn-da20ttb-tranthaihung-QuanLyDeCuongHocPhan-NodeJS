@@ -1,10 +1,10 @@
 
 const User = require('../models/users');
-const jwt = require('jsonwebtoken');
+// const jwt = require('jsonwebtoken');
 const bcrypt = require('bcrypt');
 
 const jwt = require('jsonwebtoken');
-const User = require('../models/User');
+// const User = require('../models/User');
 
 exports.login_post = async (req, res) => {
   const { username, password } = req.body;

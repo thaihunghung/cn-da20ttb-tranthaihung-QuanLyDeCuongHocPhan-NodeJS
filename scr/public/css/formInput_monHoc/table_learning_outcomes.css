@@ -1,5 +1,7 @@
+/* header table-learning-outcomes */
+
 .table-learning-outcomes {
-    width: 625px;
+    width: 4.7e+2pt;
     border-collapse: collapse;
     border: none;
 }
@@ -43,6 +45,7 @@
     text-align: center;
 }
 
+/* header table-body-outcomes */
 .table-body-outcomes {
     width: 460.85pt;
     border: solid black 1.0pt;
@@ -58,4 +61,17 @@
     margin-bottom: 0cm;
     list-style-type: decimal;
     margin-left: -2.75px;   
+}
+/* table-content-outcomes */
+
+.table-content-outcomes-1,
+.table-content-outcomes-2,
+.table-content-outcomes-3,
+.table-content-outcomes-4,
+.table-content-outcomes-5 {
+    width: 26.75pt;
+    border: solid black 1.0pt;
+    border-top: none;
+    padding: 0cm 5.4pt 0cm 5.4pt;
+    height: 34.45pt;
 }
