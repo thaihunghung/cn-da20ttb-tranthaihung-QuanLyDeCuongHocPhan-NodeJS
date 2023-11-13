@@ -1,0 +1,33 @@
+<div contenteditable="true" class="MaMon" style="border: 1px solid #ccc; padding: 5px;"></div>
+    <div contenteditable="true" class="TenMon" style="border: 1px solid #ccc; padding: 5px;"></div>
+    <button onclick="saveHocPhan()">Save HocPhan</button>
+
+    <script>
+        function saveHocPhan() {
+            var MaMon = document.querySelector('.MaMon').innerText;
+            var TenMon = document.querySelector('.TenMon').innerText;
+
+            // Prepare the data to be sent
+            var data = {
+                MaMon: MaMon,
+                TenMon: TenMon
+            };
+
+            // Send a POST request to the server
+            fetch('/saveHocPhan', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(data),
+            })
+            .then(response => response.json())
+            .then(result => {
+                console.log(result);
+                // Handle the result as needed
+            })
+            .catch(error => {
+                console.error('Error saving data:', error);
+            });
+        }
+    </script>

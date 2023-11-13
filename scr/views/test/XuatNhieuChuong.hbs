@@ -1,0 +1,71 @@
+<table class="table-course-content" style="background-color: burlywood;">
+    <tbody>
+        <tr>
+            <td rowspan="2" class="header-course-content-255_55pt">
+                <p style='header-course-content-p'><strong><span>Nội dung</span></strong></p>
+            </td>
+            <td rowspan="2" class="header-course-content-71_8pt">
+                <p style='header-course-content-p'><strong><span>CĐR học phần</span></strong></p>
+            </td>
+            <td colspan="2" class="header-course-content-85_25pt">
+                <p style='header-course-content-p'><strong><span>Số giờ</span></strong></p>
+            </td>
+            <td class="header-course-content-55_85pt">
+                <p style='header-course-content-p'><strong><span>Giờ tự học v&agrave; giờ học
+                            kh&aacute;c</span></strong></p>
+            </td>
+        </tr>
+        <tr>
+            <td class="header-course-content-44_85pt">
+                <p style='header-course-content-p'><strong><span>LT</span></strong></p>
+            </td>
+            <td class="header-course-content-55_85pt-2">
+                <p style='header-course-content-p'><strong><span>TH</span></strong></p>
+            </td>
+            <td class="header-course-content-55_85pt-2">
+                <p class="table-course-content-p"><span>&nbsp;</span></p>
+            </td>
+        </tr>
+        {{!-- body - tital --}}
+        {{#each chiTietChuong}}
+
+        <tr>
+            <td class="body-course-content-255_55pt">
+                <p class="table-course-content-p"><strong><span style="color:  black;">{{TenChuong}}</span></strong></p>
+            </td>
+            <td class="body-course-content-71_8pt">
+                <p style='header-course-content-p'><strong><span></span></strong></p>
+            </td>
+            <td class="body-course-content-44_85pt">
+                <p style='header-course-content-p'><strong><span></span></strong></p>
+            </td>
+            <td class="body-course-content-40_4pt">
+                <p style='header-course-content-p'><strong><span></span></strong></p>
+            </td>
+            <td class="body-course-content-55_85pt">
+                <p style='header-course-content-p'><strong><span></span></strong></p>
+            </td>
+        </tr>
+        {{!-- body - content --}}
+        {{#each NoiDung}}
+        <tr>
+            <td class="body-content-course-content-255_55pt">
+                <p class="table-course-content-p"><span>{{TenNoiDung}}</span></p>
+            </td>
+            <td class="body-content-course-content-71_8pt">
+                <p class="table-course-content-p"><span></span></p>
+            </td>
+            <td class="body-content-course-content-44_85pt">
+                <p class="table-course-content-p"><span>{{GioLyThuyet}}</span></p>
+            </td>
+            <td class="body-content--course-content-40_4pt">
+                <p class="table-course-content-p"><span>{{GiothucHanh}}</span></p>
+            </td>
+            <td class="body-course-content-55_85pt">
+                <p class="table-course-content-p"><span>{{SoGioTuHoc}}</span></p>
+            </td>
+        </tr>
+        {{/each}}
+        {{/each}}
+    </tbody>
+</table>

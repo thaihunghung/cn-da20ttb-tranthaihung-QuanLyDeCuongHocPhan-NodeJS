@@ -1,11 +1,13 @@
-/* table 1 */
-.table-general-information-1 {
+/* table-1-general-information-1 */
+.table-1-general-information-1 {
     width: 4.7e+2pt;
     border-collapse: collapse;
     border: none;
 }
 
-.table-general-cell-1 {
+.header-general-information-1,
+.body-general-information-1
+ {
     width: 95.25pt;
     border: 1px solid black;
     border-image: initial;

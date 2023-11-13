@@ -1,18 +1,18 @@
 /* header table-learning-outcomes */
 
-.table-learning-outcomes {
+.table-4-learning-outcomes {
     width: 4.7e+2pt;
     border-collapse: collapse;
     border: none;
 }
-.table-learning-outcomes .table-header-outcomes-1{
+.table-4-learning-outcomes .header-learning-outcomes-1{
     width: 26.75pt;
     border: solid black 1.0pt;
     padding: 0cm 5.4pt;
     height: 51.4pt;
     text-align: center;
 }
-.table-learning-outcomes .table-header-outcomes-2{
+.table-4-learning-outcomes .header-learning-outcomes-2{
     width: 231.15pt;
     border: solid black 1.0pt;
     border-left: none;
@@ -20,7 +20,7 @@
     height: 51.4pt;
     text-align: center;
 }
-.table-learning-outcomes .table-header-outcomes-3{
+.table-4-learning-outcomes .header-learning-outcomes-3{
     width: 69.15pt;
     border: solid black 1.0pt;
     border-left: none;
@@ -28,7 +28,7 @@
     height: 51.4pt;
     text-align: center;
 }
-.table-learning-outcomes .table-header-outcomes-4{
+.table-4-learning-outcomes .header-learning-outcomes-4{
     width: 78.45pt;
     border: solid black 1.0pt;
     border-left: none;
@@ -36,7 +36,7 @@
     height: 51.4pt;
     text-align: center;
 }
-.table-learning-outcomes .table-header-outcomes-5{
+.table-4-learning-outcomes .header-learning-outcomes-5{
     width: 55.35pt;
     border: solid black 1.0pt;
     border-left: none;

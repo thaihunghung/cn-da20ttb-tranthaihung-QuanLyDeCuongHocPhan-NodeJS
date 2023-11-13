@@ -1,6 +1,6 @@
 const MonHoc = require('../models/monHoc'); 
+const MonHocTest = require('../models/Monhocdemo');
 const {mongooseToObject}= require('../util/mongoose');
-const path = require('path');
 
 exports.monHoc_create_get = async (req, res) => {
   let monHoc = new MonHoc({
@@ -17,9 +17,9 @@ exports.monHoc_create_get = async (req, res) => {
 };
 
 exports.monHoc_create_post = async (req, res) => {
-    let monHoc = new MonHoc({
-      tenMonHoc: req.body.tenMonHoc,
-      TLTK: req.body.TLTK
+    let monHoc = new MonHocTest({
+      MaMon: req.body.tenMonHoc,
+      TenMon: req.body.TLTK
       // Include additional fields as necessary
     });
   

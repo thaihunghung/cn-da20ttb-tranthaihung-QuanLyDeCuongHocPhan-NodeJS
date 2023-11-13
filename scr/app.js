@@ -6,10 +6,14 @@ const exphbs = require('express-handlebars');
 const bodyParser = require('body-parser');
 const app = express();
 const dotenv = require('dotenv')
+// // // // 
+// Routes     
+// // // // 
 const monHocRoutes = require('./routes/monHocRoute.js');
-const loginRoutes = require('./routes/loginRoute.js');
+const chuongrouter = require('./routes/ChuongRoute.js');
+// const loginRoutes = require('./routes/loginRoute.js');
 const db = require('./database/config.js');
-const verifyToken = require('./middleware/verifyToken');
+// const verifyToken = require('./middleware/verifyToken');
 const cookieParser = require('cookie-parser');
 const morgan = require('morgan');
 morgan('combined')
@@ -37,12 +41,13 @@ app.set('views', path.join(__dirname, 'views'));
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
-app.get('/protected', verifyToken, (req, res) => {
-  res.json({ message: 'Access granted', userId: req.userId });
-});
+// app.get('/protected', verifyToken, (req, res) => {
+//   res.json({ message: 'Access granted', userId: req.userId });
+// });
 
-app.use('/login', loginRoutes)
+// app.use('/login', loginRoutes)
 app.use('/monhoc', monHocRoutes);
+app.use('/chuong', chuongrouter);
 app.all('/pdf', (req, res) => {
   const a4Content = req.body.a4Content;
   console.log(a4Content)
@@ -71,12 +76,30 @@ app.all('/pdf', (req, res) => {
   })();
 });
 // app.use('/login', loginRoutes);
+// const HocPhan = require('./models/fulldatabase');
+app.post('/saveHocPhan',  (req, res) => {
+  console.log('Request Body:', req.body);
+  const { MaMon, TenMon } = req.body;
 
+  // Create a new instance of the HocPhan model
+  const hocPhan = new HocPhan({ MaMon, TenMon });
+
+  // Save the data to the database
+  hocPhan.save()
+      .then(savedData => {
+          console.log('Data saved successfully:', savedData);
+          res.json({ success: true, data: savedData });
+      })
+      .catch(error => {
+          console.error('Error saving data:', error);
+          res.status(500).json({ success: false, error: 'Internal Server Error' });
+      });
+  // await hocPhanInstance.findOne({ MaMon:, TenMon: });        
+});
 app.get('/', (req, res) => {
-  res.render('formInput_monHoc/formInput_monHoc.hbs')
+  // res.render('formInput_monHoc/formInput_monHoc.hbs')
+  res.render('test/XuatNhieuChuong')
 })
-
-
 
 const port = process.env.PORT || 8080;
 app.listen(port, () => {
