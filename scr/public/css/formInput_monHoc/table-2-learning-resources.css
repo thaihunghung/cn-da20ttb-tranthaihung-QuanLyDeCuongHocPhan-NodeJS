@@ -1,0 +1,21 @@
+/* 2. Nguồn học liệu (Learning resources): */
+.table-2-learning-resources { width: 4.7e+2pt;border-collapse:collapse;border:none; }
+.table-2-learning-header,
+.table-2-learning-body {
+    border: 1pt solid black;
+    padding: 0cm 5.4pt;
+    vertical-align: top;
+}
+.table-2-learning-header {
+    width: 116.75pt;
+}
+.table-2-learning-body {
+    width: 351pt;
+}
+.table-learning-p {
+    margin:6pt 0cm 6pt 15.1pt;
+    text-align:justify;
+    text-indent:-17.6pt;
+    border:none;
+}
+

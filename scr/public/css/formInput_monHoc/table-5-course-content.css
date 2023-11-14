@@ -1,0 +1,134 @@
+/* 5. Nội dung học phần (Course content) */
+
+.table-5-course-content { width: 4.7e+2pt;border-collapse:collapse;border:none; }
+
+/* header-5-course-content */
+
+.header-5-course-content-255_55pt {
+    width: 255.55pt;
+    border: 1pt solid black;
+    padding: 0cm 5.75pt;
+    height: 70.6pt;
+    vertical-align: top;
+}
+.header-5-course-content-71_8pt,
+.header-5-course-content-85_25pt,
+.header-5-course-content-55_85pt,
+.header-5-course-content-44_85pt,
+.header-5-course-content-55_85pt-2 {
+    border-top: 1pt solid black;
+    border-right: 1pt solid black;
+    border-bottom: 1pt solid black;
+    border-image: initial;
+    border-left: none;
+    padding: 0cm 5.75pt;
+    height: 70.6pt;
+    vertical-align: top;
+}
+.header-5-course-content-71_8pt { width: 71.8pt;}
+.header-5-course-content-85_25pt { width: 85.25pt;}
+.header-5-course-content-55_85pt { width: 55.85pt;}
+.header-5-course-content-44_85pt {
+    width: 44.85pt;
+    height: 6.6pt;
+    border-top: none;
+}
+.header-5-course-content-55_85pt-2 {
+    width: 40.4pt;
+    height: 6.6pt;
+    border-image:none;
+    border-top: none;
+    border-left: none;
+}
+
+/* body-5-content-course */
+.body-5-course-content-255_55pt,
+.body-5-course-content-71_8pt,
+.body-5-course-content-44_85pt,
+.body-5-course-content-40_4pt,
+.body-5-course-content-55_85pt,
+.body-5-content-course-content-255_55pt,
+.body-5-content-course-content-71_8pt,
+.body-5-content-course-content-44_85pt,
+.body-content--course-content-40_4pt,
+.body-5-course-content-55_85pt
+ {
+    border: none;
+    border-bottom: 1pt solid black;
+    border-right: 1pt solid black;
+    padding: 0cm 5.75pt;
+    height: 14.35pt;
+    vertical-align: top;
+ }
+
+.body-5-course-content-255_55pt {
+    width: 255.55pt;
+    border-left: 1pt solid black;
+    border-image: initial;
+}
+.body-5-course-content-71_8pt {
+    width: 71.8pt;
+}
+.body-5-course-content-44_85pt {
+    width: 44.85pt;
+    height: 14.35pt;
+}
+.body-5-course-content-40_4pt {
+    width: 40.4pt;
+}
+.body-5-course-content-55_85pt {
+    width: 55.85pt;
+    height: 14.35pt;
+}
+.body-5-content-course-content-255_55pt {
+    width: 255.55pt;
+    border-left: 1pt solid black;
+    border-image: initial;
+}
+.body-5-content-course-content-71_8pt {
+    width: 71.8pt;
+    height: 14.35pt;
+}
+.body-5-content-course-content-44_85pt {
+    width: 44.85pt;
+    height: 14.35pt;
+}
+.body-content--course-content-40_4pt {
+    width: 40.4pt;
+    height: 14.35pt;
+}
+.body-5-course-content-55_85pt {
+    width: 55.85pt;
+    height: 14.35pt;
+}
+/* footer-5-content-course */
+.footer-5-course-content-255_55pt,
+.footer-5-course-content-212_9pt { 
+    border-top: none;
+    border-right: 1pt solid black;
+    border-bottom: 1pt solid black;
+    padding: 0cm 5.75pt;
+    vertical-align: top;
+}
+.footer-5-course-content-255_55pt { 
+    width: 255.55pt;
+    height: 29.3pt;
+    border-image: initial;
+    border-left: 1pt solid black;
+}
+.footer-5-course-content-212_9pt {
+    width: 212.9pt;
+    height: 29.3pt;
+    border-left: none;
+}
+.table-5-course-content-p,
+.header-5-course-content-p {
+    margin-top:3.0pt;
+    margin-right:0cm;
+    margin-bottom:7.2pt;
+    margin-left:0cm;
+    line-height:115%;
+}
+.header-5-course-content-p {
+    text-align:center;
+}

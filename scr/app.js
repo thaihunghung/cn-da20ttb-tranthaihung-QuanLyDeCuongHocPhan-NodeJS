@@ -98,7 +98,7 @@ app.post('/saveHocPhan',  (req, res) => {
 });
 app.get('/', (req, res) => {
   // res.render('formInput_monHoc/formInput_monHoc.hbs')
-  res.render('test/XuatNhieuChuong')
+  res.render('formInput_monHoc/formInput_monHoc')
 })
 
 const port = process.env.PORT || 8080;

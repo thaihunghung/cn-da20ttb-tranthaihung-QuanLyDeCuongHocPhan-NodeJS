@@ -1,0 +1,62 @@
+/* 4. Chuẩn đầu ra của học phần (Course learning outcomes): */
+.table-4-learning-outcomes { width: 4.7e+2pt;border-collapse: collapse;border: none;}
+/* header-4-learning-outcomes */
+.header-4-learning-outcomes-1,
+.header-4-learning-outcomes-2,
+.header-4-learning-outcomes-3,
+.header-4-learning-outcomes-4,
+.header-4-learning-outcomes-5 {
+    border: solid black 1.0pt;
+    padding: 0cm 5.4pt;
+    height: 51.4pt;
+    text-align: center;
+}
+.header-4-learning-outcomes-1{
+    width: 26.75pt;
+}
+.header-4-learning-outcomes-2{
+    width: 231.15pt;
+    border-left: none;
+}
+.header-4-learning-outcomes-3{
+    width: 69.15pt;
+    border-left: none;
+}
+.header-4-learning-outcomes-4{
+    width: 78.45pt;
+    border-left: none;
+}
+.header-4-learning-outcomes-5{
+    width: 55.35pt;
+    border-left: none;
+}
+/* header body-4-learning-outcomes */
+.body-4-learning-outcomes {
+    width: 460.85pt;
+    border: solid black 1.0pt;
+    padding: 0cm 5.4pt;
+    height: 17.5pt; 
+}
+.body-4-learning-outcomes-tital{
+    margin-bottom: 5px;
+    list-style-type: undefined;
+    margin-left: 26px;    
+}
+.body-4-learning-outcomes-tital li {
+    margin-bottom: 0cm;
+    list-style-type: decimal;
+    margin-left: -2.75px;   
+}
+/* content-4-learning-outcomes */
+
+.content-4-learning-outcomes-1,
+.content-4-learning-outcomes-2,
+.content-4-learning-outcomes-3,
+.content-4-learning-outcomes-4,
+.content-4-learning-outcomes-5 {
+    width: 26.75pt;
+    border: solid black 1.0pt;
+    border-top: none;
+    padding: 0cm 5.4pt 0cm 5.4pt;
+    height: 34.45pt;
+}

@@ -1,11 +1,48 @@
 :root {
     --background-main: #f5f5f5;
-    --text-Black:black;
+    --text-Black: black;
     --font-size: 1.05em;
     --line-height: 1.4;
     --font-family: 'Times New Roman', Times, serif;
     --color-white: #ffffff;
 }
-.Thut-dau-dong {
-    text-indent:36.0pt;
+/* viết như word */
+[contenteditable] {
+    outline: 0px solid transparent;
 }
+/* thụt đầu dòng */
+.Thut-dau-dong {
+    text-indent: 36.0pt;
+}
+.padding-top-bottom-5_4pt {
+    padding:0cm 5.4pt;
+}
+.margin-top-bottom-3pt {
+    margin: 3pt 0cm;
+}
+
+.section-content {
+    margin: 0cm;
+    color: black;
+    text-align: justify;
+}
+strong,
+span {
+    color: black;
+}
+/* căng phải */
+.text-right {
+    text-align: right;
+}
+/* căng giữa */
+.text-center {
+    text-align: center;
+}
+/* chiều cao 10pt */
+.height-10_0pt {
+    height: 10.0pt;
+}
+/* căng đều */
+.text-justify {
+    text-align: justify;
+}    

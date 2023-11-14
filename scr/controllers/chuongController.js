@@ -57,17 +57,18 @@ async function layChiTietChuongVaNoiDung(maMonHoc) {
 // layDuLieuChuongVaNoiDungTheoMonHoc('CS101'); 
 exports.ChuongVaTatCaNoiDung = async (req, res) => {
     try {
-        const tatCaChuong = await Chuong.find({ MaMon: 'CS101' });
+    const tatCaChuong = await Chuong.find({ MaMon: 'CS101' });
 
     // Lấy chi tiết cho từng chương
     const chiTietChuong = await Promise.all(tatCaChuong.map(async (chuong) => {
-      const noiDungChuong = await NoiDungChiTietChuong.find({ MaChuong: chuong.MaChuong });
+    const noiDungChuong = await NoiDungChiTietChuong.find({ MaChuong: chuong.MaChuong });
+    
       return {
         ...chuong.toObject(),
         NoiDung: noiDungChuong.map((item) => item.toObject())
       };
     }));
-        res.render('test/XuatNhieuChuong',{ chiTietChuong });
+        res.render('test/XuatNhieuChuong', { chiTietChuong });
         // res.json({chiTietChuong})
       } catch (error) {
         res.status(500).json({ error: 'Internal Server Error' });

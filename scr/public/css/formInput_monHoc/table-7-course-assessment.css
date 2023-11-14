@@ -1,0 +1,44 @@
+/* 7. Đánh giá học phần (Course assessment): */
+.table-7-course-assessment { width: 4.7e+2pt;margin-left:.5pt;border-collapse:collapse;border:none; }
+/*  */
+/* header-7-course-assessment */
+/*  */
+.header-7-course-assessment-60_75pt,
+.header-7-course-assessment-95_25pt,
+.header-7-course-assessment-99_0pt,
+.header-7-course-assessment-72_0pt,
+.header-7-course-assessment-79_5pt,
+.header-7-course-assessment-46_5pt {
+    border:solid black 1.0pt;
+    border-left:none;
+    padding:0cm 5.4pt;
+}
+.header-7-course-assessment-60_75pt { width:60.75pt; border-top:none;}
+.header-7-course-assessment-95_25pt { width:95.25pt;}
+.header-7-course-assessment-99_0pt { width:99.0pt; }
+.header-7-course-assessment-72_0pt { width:72.0pt; }
+.header-7-course-assessment-79_5pt { width:79.5pt; }
+.header-7-course-assessment-46_5pt { width:46.5pt; }
+
+
+/*  */
+/* body-7-course-assessment */
+/*  */
+.body-7-course-assessment-95_25pt,
+.body-7-course-assessment-99_0pt,
+.body-7-course-assessment-72_0pt,
+.body-7-course-assessment-79_5pt,
+.body-7-course-assessment-46_5pt,
+.body-7-course-assessment-60_75pt {
+    border-top:none;
+    border-left:none;
+    border-bottom:solid black 1.0pt;
+    border-right:solid black 1.0pt;
+    padding:0cm 5.4pt;
+}
+.body-7-course-assessment-95_25pt { width:95.25pt; }
+.body-7-course-assessment-99_0pt { width:99.0pt; }
+.body-7-course-assessment-72_0pt { width:72.0pt; }
+.body-7-course-assessment-79_5pt { width:79.5pt; }
+.body-7-course-assessment-46_5pt { width:46.5pt; }
+.body-7-course-assessment-60_75pt { width:60.75pt; border-left:solid black 1.0pt; }

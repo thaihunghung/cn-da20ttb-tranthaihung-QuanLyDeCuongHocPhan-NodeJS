@@ -1,0 +1,55 @@
+/* 1. Thông tin chung (General information): */
+
+/* table-1-general-information-1 */
+.table-1-general-information-1,
+.table-1-general-information-2 {
+    width: 4.7e+2pt;
+    border-collapse: collapse;
+    border: none;
+}
+.header-1-general-information-1,
+.body-1-general-information-1
+ {
+    width: 95.25pt;
+    border: 1px solid black;
+    border-image: initial;
+    background: white;
+    padding: 0cm 5.4pt;
+    vertical-align: top;
+}
+.table-general-cell-1 p {
+    margin: 0cm;
+}
+/* table-1-general-information-2 */
+.header-1-general-information-2,
+.body-1-general-colspan-2,
+.body-1-general-left-2,
+.body-1-general-right-2 {
+    border: solid black 1.0pt;
+    padding: 0cm 5.4pt;
+    vertical-align: top;
+}
+.body-1-general-colspan-2 {
+    width: 336pt;
+    height: 16.8pt;
+    border-left: none;
+    border-image: initial;
+    vertical-align: none;
+}
+.body-1-general-left-2 {
+    width: 131.35pt;
+    height: 17.4pt;
+    border-top: none; 
+    vertical-align: none;   
+}
+.body-1-general-right-2 {
+    width: 336pt;
+    height: 17.4pt;
+    border-top: none;
+    border-left: none;
+}
+.header-1-general-information-2 {
+    width: 131.35pt;
+    height: 16.8pt;
+    vertical-align: none;
+}
