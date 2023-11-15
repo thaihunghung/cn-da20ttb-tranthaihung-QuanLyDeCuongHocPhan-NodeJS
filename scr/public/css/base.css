@@ -46,3 +46,25 @@ span {
 .text-justify {
     text-align: justify;
 }    
+
+.flex-row {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+.flex-column {
+    display: flex;
+    flex-direction: column;
+}
+.test {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+.test input[type="checkbox"] {
+    width: 18pt;
+    text-align: center;
+    margin-bottom: 6px;
+    background-color: #FA9E57;
+}

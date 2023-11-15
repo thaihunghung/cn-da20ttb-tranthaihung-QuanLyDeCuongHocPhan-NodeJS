@@ -1,14 +1,19 @@
+<script src="/js/FunctionToAll.js"></script>
+<button id="sendButton">Send Data</button>
 <div class="formInput">
     <div class="formInput_monHoc" id="formInput_monHoc">
         <div class="formInput_baseA4" id="formInput_baseA4">
-            <div class="formInput_print" contenteditable="true">
+            <div class="formInput_print">
                 {{!-- <p class="section-content">&nbsp;</p>--}}
                 {{! enter xuống dòng}}
                 {{!----}}
-                <p class="section-content text-right" contenteditable="true"><strong><span>PHỤ LỤC</span></strong></p>
-                <p class="section-content text-center"><strong><span>ĐỀ CƯƠNG CHI TIẾT HỌC PHẦN</span></strong></p>
-                <p class="section-content text-center"><strong><span>THỐNG KÊ VÀ PHÂN TÍCH DỮ LIỆU</span></strong></p>
-                <p class="section-content text-center"><strong><span>MSHP: 320045</span></strong></p>
+                <p class="section-content text-right"><strong><span contenteditable="true">PHỤ LỤC</span></strong></p>
+                <p class="section-content text-center"><strong><span contenteditable="true">ĐỀ CƯƠNG CHI TIẾT HỌC
+                            PHẦN</span></strong></p>
+                <p class="section-content text-center"><strong><span contenteditable="true" id="TenMon">THỐNG KÊ VÀ PHÂN
+                            TÍCH DỮ LIỆU</span></strong></p>
+                <p class="section-content text-center"><strong>MSHP:<span contenteditable="true"
+                            id="MaMon">320045</span></strong></p>
                 <p class="section-content">&nbsp;</p>
                 <p class="section-content"><strong><span>1. Thông tin chung (General information):</span></strong></p>
                 <p class="section-content">&nbsp;</p>
@@ -29,38 +34,75 @@
                                 <p><strong><em>Số giờ dự giảng</em></strong></p>
                             </td>
                             <td class="header-1-general-information-1">
-                                <p><strong><em>Giờ tự học và giờ học khác</em></strong></p>
+                                <p><strong><em> Giờ tự học và giờ học khác</em></strong></p>
                             </td>
                         </tr>
                         {{!-- body-general-information-1 --}}
                         <tr>
+                            {{!-- style="font-family:Wingdings;"> o 🗹 --}}
                             <td class="body-1-general-information-1">
-                                <p>Đại cương &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<span
-                                        style="font-family:Wingdings;">o</span></p>
-                                <p>Cơ sở &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 🗹</p>
-                                <p>Chuyên ngành &nbsp;&nbsp;<span style="font-family:  Wingdings;">o</span></p>
+
+                                {{!-- checkbox --}}
+
+                                <p class="flex-row">
+                                    <span>
+                                        <label for="LoaiHocPhan1">Đại cương</label>
+                                    </span>
+
+                                    <span class="test">
+                                      
+                                        <input class="test" type="checkbox" value="Đại cương" id="LoaiHocPhan1"
+                                            onclick="functionToAll.checkboxClicked('LoaiHocPhan1')">
+                                           
+                                    </span>
+                                </p>
+                                <p class="flex-row">
+                                    <span>
+                                        <label for="LoaiHocPhan2">Cơ sở</label>
+                                    </span>
+
+                                    <span class="test">
+                                        <input  type="checkbox" value="Cơ sở" id="LoaiHocPhan2"
+                                            onclick="functionToAll.checkboxClicked('LoaiHocPhan2')">
+                                            
+                                    </span>
+                                </p>
+                                <p class="flex-row">
+                                    <span>
+                                        <label for="LoaiHocPhan3">Chuyên ngành</label>
+                                    </span>
+
+                                    <span class="test">
+                                        
+                                        <input type="checkbox" value="Chuyên ngành" id="LoaiHocPhan3"
+                                            onclick="functionToAll.checkboxClicked('LoaiHocPhan3')">
+                                
+                                    </span>
+                                </p>
+                            </td>
+
+                            <td class="body-1-general-information-1">
+                                <p>Lý thuyết: &nbsp; <span id="SoTC_LT" contenteditable="true">&nbsp;2</span></p>
+                                <p>Thực hành: &nbsp; <span id="SoTC_TH" contenteditable="true">1</span></p>
                             </td>
                             <td class="body-1-general-information-1">
-                                <p>Lý thuyết: &nbsp; &nbsp;&nbsp;2</p>
-                                <p>Thực hành: &nbsp; &nbsp;1</p>
+                                <p>Lý thuyết: &nbsp; <span id="TH">&nbsp;30</span></p>
+                                <p>Thực hành: &nbsp; <span id="LT">30</span> </p>
                             </td>
                             <td class="body-1-general-information-1">
-                                <p>Lý thuyết: &nbsp; &nbsp;&nbsp;30</p>
-                                <p>Thực hành: &nbsp; &nbsp;30</p>
-                            </td>
-                            <td class="body-1-general-information-1">
-                                <p>90</p>
+                                <p><span id="SoGioTuHoc" contenteditable="true">90</span></p>
                             </td>
                         </tr>
                     </tbody>
                 </table>
                 <p><strong><em><span>Đối tượng học</span></em><span>: &nbsp; &nbsp; &nbsp;&nbsp;</span></strong></p>
-                <p><span>Tr&igrave;nh độ đ&agrave;o tạo: Đại học</span></p>
-                <p><span>Ng&agrave;nh: C&ocirc;ng nghệ Th&ocirc;ng tin</span></p>
+                <p>Tr&igrave;nh độ đ&agrave;o tạo:<span id="TrinhDo_DT"> Đại học</span></p>
+                <p><span id="ChuyenNganh">Ng&agrave;nh: C&ocirc;ng nghệ Th&ocirc;ng tin</span></p>
                 <p><span>Chuy&ecirc;n ng&agrave;nh:
                         &hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;.
                         (nếu c&oacute;)</span></p>
-                <p><span>Học kỳ: V&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Năm thứ: 3</span></p>
+                <p>Học kỳ:&nbsp;<span id="HocKy" contenteditable="true">5</span> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+                    &nbsp; &nbsp; &nbsp; Năm thứ:<span id="NamHoc" contenteditable="true"> 3</span></p>
                 <p><strong><em><span>Điều kiện tham gia học phần:</span></em></strong></p>
                 <table class="table-1-general-information-2">
                     <tbody>
@@ -164,7 +206,7 @@
 
                 <p class="section-content">&nbsp;</p>
                 <p class="section-content"><strong><span>3. Mô tả học phần (Course description):</span></strong></p>
-                <p class="section-content Thut-dau-dong"><span>
+                <p class="section-content Thut-dau-dong"><span id="MoTa" contenteditable="true">
                         Học phần gi&uacute;p trang bị cho sinh vi&ecirc;n c&aacute;
                         c kiến thức cơ bản về x&aacute;c suất v&agrave; thống k&ecirc;
                         để ph&acirc;n t&iacute;ch dữ liệu trong nghi&ecirc;
@@ -752,7 +794,9 @@
 </div>
 
 
-
+<script>
+    const functionToAll = new FunctionToAll();
+</script>
 <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 <script>
     function sendA4Content() {
@@ -769,3 +813,59 @@
             });
     }
 </script>
+<!-- Include jQuery library -->
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+
+<!-- Your HTML content -->
+<p class="section-content text-center">
+    <strong><span contenteditable="true" id="TenMon">THỐNG KÊ VÀ PHÂN TÍCH DỮ LIỆU</span></strong>
+</p>
+
+<!-- Other HTML content -->
+
+{{!--
+<script>
+    // Function to send data to the server
+    function sendDataToServer(data) {
+        // You can replace this with your actual server endpoint
+        const serverEndpoint = '/test';
+
+        // Send data to the server using AJAX
+        $.ajax({
+            type: 'POST',
+            url: serverEndpoint,
+            contentType: 'application/json', // Set the content type to JSON
+            data: JSON.stringify(data), // Convert the data to JSON string
+            success: function (response) {
+                console.log('Data sent successfully');
+                // Handle the server response if needed
+            },
+            error: function (error) {
+                console.error('Error sending data to the server', error);
+            }
+        });
+    }
+
+    // Attach a click event listener to the button
+    $('#sendButton').on('click', function () {
+        // Create a JSON object with specific ids and values
+        const jsonData = {
+            MaMon: $('#MaMon').text().trim(),
+            TenMon: $('#TenMon').text().trim(),
+            SoGioTuHoc: $('#SoGioTuHoc').text().trim(),
+            TH: $('#TH').text().trim(),
+            LT: $('#LT').text().trim(),
+            MoTa: $('#MoTa').text().trim(),
+            LoaiHocPhan: $('#LoaiHocPhan').text().trim(),
+            SoTC_LT: $('#SoTC_LT').text().trim(),
+            SoTC_TH: $('#SoTC_TH').text().trim(),
+            TrinhDo_DT: $('#TrinhDo_DT').text().trim(),
+            ChuyenNganh: $('#ChuyenNganh').text().trim(),
+            HocKy: $('#HocKy').text().trim(),
+            NamHoc: $('#NamHoc').text().trim()
+        };
+
+        // Send the data to the server
+        sendDataToServer(jsonData);
+    });
+</script> --}}
