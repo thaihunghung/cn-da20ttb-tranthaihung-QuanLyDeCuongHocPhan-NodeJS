@@ -22,12 +22,7 @@ const TaoSchema = new mongoose.Schema({
   id_NguoiDung: { type: String, required: true },
 });
 
-const NguoiDungSchema = new mongoose.Schema({
-  id_NguoiDung: { type: String, required: true, unique: true },
-  TenNguoiDung: String,
-  TaiKhoan: String,
-  MatKhau: String,
-});
+
 
 const TokensSchema = new mongoose.Schema({
   id_Token: { type: String, required: true, unique: true },
@@ -146,10 +141,7 @@ const Dapung_CTSchema = new mongoose.Schema({
 // Create models
 module.exports = mongoose.model('HocPhan', HocPhanSchema);
 module.exports = mongoose.model('Tao', TaoSchema);
-module.exports = mongoose.model('NguoiDung', NguoiDungSchema);
 module.exports = mongoose.model('Tokens', TokensSchema);
-module.exports = mongoose.model('NguoiDung_Quyen', NguoiDung_QuyenSchema);
-module.exports = mongoose.model('Quyen', QuyenSchema);
 module.exports = mongoose.model('TLTK', TLTKSchema);
 module.exports = mongoose.model('PP_Day_hoc', PP_Day_hocSchema);
 module.exports = mongoose.model('DieuKienThamGia', DieuKienThamGiaSchema);

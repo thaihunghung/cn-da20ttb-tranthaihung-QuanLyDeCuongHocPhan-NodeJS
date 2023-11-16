@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+
 const HocPhanSchema = new mongoose.Schema({
     MaMon: { type: String, required: true, unique: true },
     TenMon: String,
@@ -15,4 +16,4 @@ const HocPhanSchema = new mongoose.Schema({
     NamHoc: Number,
   });
 
-  module.exports = mongoose.model('HocPhan', HocPhanSchema);
+module.exports = mongoose.model('HocPhan', HocPhanSchema);
