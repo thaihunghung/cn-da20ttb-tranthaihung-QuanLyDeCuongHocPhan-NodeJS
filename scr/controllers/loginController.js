@@ -1,11 +1,15 @@
+const express = require('express');
+const cookieParser = require('cookie-parser');
 const jwt = require('jsonwebtoken');
-const dotenv = require('dotenv')
+const dotenv = require('dotenv');
+const app = express();
+app.use(cookieParser());
 dotenv.config();
 const NguoiDung = require('../models/NguoiDung.model');
 exports.login_get = (req, res, next) => {
     res.render('login/login');
 }
-exports.login_post = async (req, res) => {
+exports.login_post = (req, res) => {
     const username = req.body.username;
     const password = req.body.password;
     NguoiDung.findOne({ 
@@ -18,12 +22,11 @@ exports.login_post = async (req, res) => {
             username: data.username,
             role: data.role
            }, process.env.TOKEN_SECRET_KEY)
-            return  res.json({ 
-                token
-             });
+            res.cookie('token', token, { httpOnly: true }); 
+            res.json({ message: 'Logged in successfully' });
         } else {
-            return res.json('that bai')
-        }   
+            res.json('that bai')
+        }  
     })
     .catch((err) => {
         res.status(500).json('khong tim thay');
@@ -33,40 +36,21 @@ exports.login_post = async (req, res) => {
 
 exports.home_get = (req, res) => {
     res.render('home', { user: req.user }); // Pass user information to the view
-  };
-
-  exports.verifyToken = (req, res, next) => {
-    if (req.headers && req.headers["authorization"]) {
-        const token = req.headers && req.headers["authorization"].split(' ')[1];
-        console.log(token);
-
-        try {
-            const decoded = jwt.verify(token, process.env.TOKEN_SECRET_KEY);
-            console.log(decoded);
-
-            // Additional verification logic can be added here
-            // const user = await User.findById(decoded.userId);
-
-            // if (!user) {
-            //     return res.json({
-            //         success: false,
-            //         message: 'Unauthorized access!'
-            //     });
-            // }
-
-            // req.user = user;
-            next();
-        } catch (error) {
-            console.error(error);
-            res.json({
-                success: false,
-                message: 'Failed to authenticate token'
-            });
-        }
-    } else {
-        res.json({
-            success: false,
-            message: 'Unauthorized access!'
-        });
-    }
 };
+
+// exports.verifyToken =async (req, res, next) => {
+//     const token = localStorage.getItem('token');
+//    await console.log(`Verifying ${token}`);
+//     if(!token) {
+//       return res.status(401).send('Access denied');
+//     }
+  
+//     try {
+//       const verified = jwt.verify(token, 'secretkey');
+//       req.user = verified; 
+//       next();
+//     } catch(err) {
+//       res.status(400).send('Invalid token');
+//     }
+//   }
+  

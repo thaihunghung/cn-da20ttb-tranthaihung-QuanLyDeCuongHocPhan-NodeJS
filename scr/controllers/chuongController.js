@@ -33,3 +33,7 @@ exports.ChuongVaTatCaNoiDung = async (req, res) => {
         res.status(500).json({ error: 'Internal Server Error' });
       }
 };
+
+exports.index = (req, res) => {
+  res.json('thanhcong')
+}

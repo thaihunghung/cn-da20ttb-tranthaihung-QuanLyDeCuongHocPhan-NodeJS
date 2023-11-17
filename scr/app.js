@@ -1,5 +1,6 @@
 const path = require('path');
 const puppeteer = require('puppeteer');
+const cookieParser = require('cookie-parser');
 const fs = require('fs');
 const express = require('express');
 const exphbs = require('express-handlebars');
@@ -9,18 +10,19 @@ app.use(express.urlencoded({ extended: true }));
 const bodyParser = require('body-parser');
 app.use(bodyParser.urlencoded({ extended: true }));
 const jwt = require('jsonwebtoken');
-
+app.use(cookieParser());
 const dotenv = require('dotenv')
-// // // // 
+// // // // // // 
 // Routes     
-// // // // 
+// // // // // //
 const UpdateRouter = require('./routes/ChuongRoute.js');
 const loginRoutes = require('./routes/loginRoute.js');
 const homeRoutes = require('./routes/homeRoutes.js'); 
 const testRoutes = require('./routes/loginRoute.js');
 const db = require('./database/config.js');
-const cookieParser = require('cookie-parser');
-
+// // // // // // 
+// Routes     
+// // // // // //
 const HocPhan = require('./models/hocPhan.model.js');
 const morgan = require('morgan');
 
@@ -126,11 +128,11 @@ app.post('/pdf', (req, res) => {
   })();
 });
 
-// Error handling middleware (if needed)
-app.use((err, req, res, next) => {
-  console.error(err.stack);
-  res.status(500).send('Something went wrong!');
-});
+// // Error handling middleware (if needed)
+// app.use((err, req, res, next) => {
+//   console.error(err.stack);
+//   res.status(500).send('Something went wrong!');
+// });
 const port = process.env.PORT || 8080;
 app.listen(port, () => {
   console.log(`App listening http://localhost:${port}`)
