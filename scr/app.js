@@ -17,7 +17,8 @@ const dotenv = require('dotenv')
 // // // // // //
 const UpdateRouter = require('./routes/ChuongRoute.js');
 const loginRoutes = require('./routes/loginRoute.js');
-const homeRoutes = require('./routes/homeRoutes.js'); 
+const homeRoutes = require('./routes/homeRoutes.js');
+const chuongtrinhRoutes = require('./routes/chuongTrinhRoute.js'); 
 // const testRoutes = require('./routes/loginRoute.js');
 const db = require('./database/config.js');
 // // // // // // 
@@ -25,6 +26,8 @@ const db = require('./database/config.js');
 // // // // // //
 // const HocPhan = require('./models/hocPhan.model.js');
 // const fulldatabase= require('./models/fulldatabase.js');
+
+
 const morgan = require('morgan');
 
 morgan('combined')
@@ -39,12 +42,9 @@ const hbs = exphbs.create({
   defaultLayout: 'main',
   extname: '.hbs',
   partialsDir: path.join(__dirname, 'views','partials'),
-  helpers: {
-    isEqualLoaiHocPhan: function (value, targetValue, options) {
-      return value === targetValue ? options.fn(this) : options.inverse(this);
-    }
-  }
+  helpers: require('./helperHBS/helpers.js'),
 });
+
 app.engine('hbs', hbs.engine);
 app.set('view engine', 'hbs');
 app.set('views', path.join(__dirname, 'views'));
@@ -53,6 +53,7 @@ app.set('views', path.join(__dirname, 'views'));
 app.use('/update', UpdateRouter);
 app.use('/login', loginRoutes);
 app.use('/home', homeRoutes);
+app.use('/chuongtrinh', chuongtrinhRoutes);
 // const HocPhan = require('./models/fulldatabase');
 // app.post('/saveHocPhan',  (req, res) => {
 //   console.log('Request Body:', req.body);

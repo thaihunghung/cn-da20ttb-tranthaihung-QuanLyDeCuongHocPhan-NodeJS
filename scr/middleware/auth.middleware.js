@@ -1,13 +1,9 @@
 const jwt = require('jsonwebtoken');
 const User = require('../models/NguoiDung.model'); // Adjust the path accordingly
 
-verifyToken
 function verifyToken(req, res, next)  {
   // Lấy token từ header, query parameter hoặc cookie
   const token = req.cookies.token;
-
-  
-console.log(token);
   if (!token) {
       return res.status(403).json({ message: 'Token không tồn tại' });
   }

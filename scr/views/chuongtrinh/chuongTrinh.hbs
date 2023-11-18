@@ -1,0 +1,102 @@
+<div class="tong" style="height: 4000px;">
+
+
+  {{#each chuongTrinh}}
+  <div class="Chuongtrinh">
+    <h1>
+      {{TenChuongTrinh}}
+    </h1>
+    <br>
+    <p>
+      loại hình: {{LoaiHinh}}
+    </p>
+    <br>
+    <p>
+      Số tính chỉ yêu cầu: {{STC_YeuCau}}
+    </p>
+    <br>
+    <p>
+      thời gian đào tạo: {{Tg_DaoTao}} năm
+    </p>
+    <br>
+    <p>
+      bậc: {{Bac}}
+    </p>
+  </div>
+  {{/each}}
+
+
+  <h1>Ma Trận Ánh Xạ PO-PLO</h1>
+
+  <table>
+    <thead>
+      
+      <tr>
+        <th>PLO</th>
+        <th>Nội dung</th>
+        {{#each PO}}
+        <th>{{this.MaMT_CTDT}}</th>
+        {{/each}}
+      </tr>
+    </thead>
+
+    <tbody>
+      {{#each PLO}}
+     {{#ifDifferent this.LoaiCDR_CT ../currentLoaiCDR}}
+                <tr>
+                    <td colspan="7">{{this.LoaiCDR_CT}}</td>
+                </tr>
+            {{/ifDifferent}}
+      <tr>
+        <td>{{this.Ten_CDR}}</td>
+        <td>{{this.NoiDung}}</td>
+        {{#each ../PO}}
+        <td>
+          {{#ifMatch ../this.id_CDR this.MaMT_CTDT ../../DapungCT}}
+          X
+          {{else}}
+
+          {{/ifMatch}}
+        </td>
+        {{/each}}
+      </tr>
+      {{/each}}
+    </tbody>
+  </table>
+
+  <h1>hung</h1>
+  <table>
+  <thead>
+    <tr>
+      <th>Loại kỹ năng</th>
+      <th>PLO</th>
+      <th>Nội dung</th>
+      {{#each PO}}
+        <th>{{this.MaMT_CTDT}}</th>
+      {{/each}}
+    </tr>
+  </thead>
+
+  <tbody>
+    {{#each groupedPLO}}
+      {{#each this}}
+        <tr>
+          {{#if @first}}
+            <td colspan="7">{{getKey ../}}</td>
+          {{/if}}
+          <td>{{this.Ten_CDR}}</td>
+          <td>{{this.NoiDung}}</td>
+          {{#each ../../PO}}
+            <td>
+              {{#ifMatch ../../../this.id_CDR this.MaMT_CTDT ../../../../DapungCT}}
+                X
+              {{else}}
+                  
+              {{/ifMatch}}
+            </td>
+          {{/each}}
+        </tr>
+      {{/each}}
+    {{/each}}
+  </tbody>
+</table>
