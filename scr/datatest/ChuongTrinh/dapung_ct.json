@@ -1,0 +1,111 @@
+[
+  {
+    "MaMT_CTD": "mt001",
+    "id_CDR": "cdr001"
+  },
+  {
+    "MaMT_CTD": "mt003",
+    "id_CDR": "cdr001"
+  },
+
+  {
+    "MaMT_CTD": "mt002",
+    "id_CDR": "cdr002"
+  },
+  {
+    "MaMT_CTD": "mt003",
+    "id_CDR": "cdr002"
+  },
+  {
+    "MaMT_CTD": "mt005",
+    "id_CDR": "cdr002"
+  },
+  {
+    "MaMT_CTD": "mt002",
+    "id_CDR": "cdr003"
+  },
+  {
+    "MaMT_CTD": "mt003",
+    "id_CDR": "cdr003"
+  },
+  {
+    "MaMT_CTD": "mt005",
+    "id_CDR": "cdr003"
+  },
+  {
+    "MaMT_CTD": "mt002",
+    "id_CDR": "cdr004"
+  },
+  {
+    "MaMT_CTD": "mt003",
+    "id_CDR": "cdr004"
+  },
+  {
+    "MaMT_CTD": "mt005",
+    "id_CDR": "cdr004"
+  },
+  {
+    "MaMT_CTD": "mt002",
+    "id_CDR": "cdr005"
+  },
+  {
+    "MaMT_CTD": "mt003",
+    "id_CDR": "cdr005"
+  },
+  {
+    "MaMT_CTD": "mt005",
+    "id_CDR": "cdr005"
+  },
+  {
+    "MaMT_CTD": "mt001",
+    "id_CDR": "cdr006"
+  },
+  {
+    "MaMT_CTD": "mt003",
+    "id_CDR": "cdr006"
+  },
+  {
+    "MaMT_CTD": "mt005",
+    "id_CDR": "cdr006"
+  },
+  {
+    "MaMT_CTD": "mt003",
+    "id_CDR": "cdr007"
+  },
+  {
+    "MaMT_CTD": "mt004",
+    "id_CDR": "cdr007"
+  },
+  {
+    "MaMT_CTD": "mt001",
+    "id_CDR": "cdr008"
+  },
+  {
+    "MaMT_CTD": "mt003",
+    "id_CDR": "cdr008"
+  },
+  {
+    "MaMT_CTD": "mt004",
+    "id_CDR": "cdr008"
+  },
+  {
+    "MaMT_CTD": "mt001",
+    "id_CDR": "cdr009"
+  },
+  {
+    "MaMT_CTD": "mt003",
+    "id_CDR": "cdr009"
+  },
+  {
+    "MaMT_CTD": "mt004",
+    "id_CDR": "cdr009"
+  },
+  {
+    "MaMT_CTD": "mt005",
+    "id_CDR": "cdr009"
+  },
+  {
+    "MaMT_CTD": "mt005",
+    "id_CDR": "cdr0010"
+  }
+]

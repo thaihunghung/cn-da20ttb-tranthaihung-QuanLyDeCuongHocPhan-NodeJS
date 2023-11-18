@@ -1,0 +1,72 @@
+[
+  {
+    "id_CDR": "cdr001",
+    "id_CT": "ct001",
+    "Ten_CDR": "PLO1",
+    "LoaiCDR_CT": "kiến thức",
+    "NoiDung": "Vận dụng kiến thức cơ bản về khoa học tự nhiên, khoa học xã hội, khoa học chính trị và pháp luật để giải quyết vấn đề liên quan chuyên ngành."
+  },
+  {
+    "id_CDR": "cdr002",
+    "id_CT": "ct001",
+    "Ten_CDR": "PLO2",
+    "LoaiCDR_CT": "kiến thức",
+    "NoiDung": "Kết hợp kiến thức chuyên môn để giải quyết các vấn đề liên quan chuyên ngành"
+  },
+  {
+    "id_CDR": "cdr003",
+    "id_CT": "ct001",
+    "Ten_CDR": "PLO3",
+    "LoaiCDR_CT": "kỹ năng",
+    "NoiDung": "Phân tích các vấn đề tính toán phức tạp, áp dụng các nguyên lý của máy tính và kiến thức liên quan khác để xác định các giải pháp."
+  },
+  {
+    "id_CDR": "cdr004",
+    "id_CT": "ct001",
+    "Ten_CDR": "PLO4",
+    "LoaiCDR_CT": "kỹ năng",
+    "NoiDung": "Thiết kế, cài đặt, triển khai và đánh giá các giải pháp dựa trên máy tính để đáp ứng yêu cầu thực tế."
+  },
+  {
+    "id_CDR": "cdr005",
+    "id_CT": "ct001",
+    "Ten_CDR": "PLO5",
+    "LoaiCDR_CT": "kỹ năng",
+    "NoiDung": "Kết hợp các giải pháp có tính hệ thống để lựa chọn, phát triển, áp dụng, tích hợp và quản trị an toàn các hệ thống công nghệ thông tin nhằm đạt được các mục tiêu của người dùng."
+  },
+  {
+    "id_CDR": "cdr006",
+    "id_CT": "ct001",
+    "Ten_CDR": "PLO6",
+    "LoaiCDR_CT": "kỹ năng",
+    "NoiDung": "Sử dụng tốt tiếng Anh trong soạn thảo, đọc tài liệu và giao tiếp, đạt bậc 4/6 theo khung năng lực ngoại ngữ của Việt Nam."
+  },
+  {
+    "id_CDR": "cdr007",
+    "id_CT": "ct001",
+    "Ten_CDR": "PLO7",
+    "LoaiCDR_CT": "kỹ năng",
+    "NoiDung": "Phối hợp tốt các kỹ năng giao tiếp trong bối cảnh nghề nghiệp."
+  },
+  {
+    "id_CDR": "cdr008",
+    "id_CT": "ct001",
+    "Ten_CDR": "PLO8",
+    "LoaiCDR_CT": "kỹ năng",
+    "NoiDung": "Phối hợp hiệu quả các kỹ năng làm việc nhóm với tư cách là thành viên hoặc người lãnh đạo"
+  },
+  {
+    "id_CDR": "cdr009",
+    "id_CT": "ct001",
+    "Ten_CDR": "PLO9",
+    "LoaiCDR_CT": "mức độ tự chủ và trách nhiệm",
+    "NoiDung": "Coi trọng trách nhiệm nghề nghiệp để đưa ra các đánh giá chuyên môn dựa trên chuẩn mực đạo đức và pháp luật"
+  },
+  {
+    "id_CDR": "cdr0010",
+    "id_CT": "ct001",
+    "Ten_CDR": "PLO10",
+    "LoaiCDR_CT": "mức độ tự chủ và trách nhiệm",
+    "NoiDung": "Coi trọng sự cần thiết của quá trình học tập suốt đời."
+  }
+]

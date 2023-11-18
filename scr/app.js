@@ -18,12 +18,13 @@ const dotenv = require('dotenv')
 const UpdateRouter = require('./routes/ChuongRoute.js');
 const loginRoutes = require('./routes/loginRoute.js');
 const homeRoutes = require('./routes/homeRoutes.js'); 
-const testRoutes = require('./routes/loginRoute.js');
+// const testRoutes = require('./routes/loginRoute.js');
 const db = require('./database/config.js');
 // // // // // // 
 // Routes     
 // // // // // //
-const HocPhan = require('./models/hocPhan.model.js');
+// const HocPhan = require('./models/hocPhan.model.js');
+// const fulldatabase= require('./models/fulldatabase.js');
 const morgan = require('morgan');
 
 morgan('combined')
@@ -53,52 +54,52 @@ app.use('/update', UpdateRouter);
 app.use('/login', loginRoutes);
 app.use('/home', homeRoutes);
 // const HocPhan = require('./models/fulldatabase');
-app.post('/saveHocPhan',  (req, res) => {
-  console.log('Request Body:', req.body);
-  const { MaMon, TenMon } = req.body;
+// app.post('/saveHocPhan',  (req, res) => {
+//   console.log('Request Body:', req.body);
+//   const { MaMon, TenMon } = req.body;
 
-  // Create a new instance of the HocPhan model
-  const hocPhan = new HocPhan({ MaMon, TenMon });
+//   // Create a new instance of the HocPhan model
+//   const hocPhan = new HocPhan({ MaMon, TenMon });
 
-  // Save the data to the database
-  hocPhan.save()
-      .then(savedData => {
-          console.log('Data saved successfully:', savedData);
-          res.json({ success: true, data: savedData });
-      })
-      .catch(error => {
-          console.error('Error saving data:', error);
-          res.status(500).json({ success: false, error: 'Internal Server Error' });
-      });
-  // await hocPhanInstance.findOne({ MaMon:, TenMon: });        
-});
+//   // Save the data to the database
+//   hocPhan.save()
+//       .then(savedData => {
+//           console.log('Data saved successfully:', savedData);
+//           res.json({ success: true, data: savedData });
+//       })
+//       .catch(error => {
+//           console.error('Error saving data:', error);
+//           res.status(500).json({ success: false, error: 'Internal Server Error' });
+//       });
+//   // await hocPhanInstance.findOne({ MaMon:, TenMon: });        
+// });
 app.get('/', (req, res) => {
   res.render('formInput_monHoc/formInput_monHoc')
 })
-app.post('/test', async (req, res) => {
-  // Handle the incoming JSON data
-  const hocPhanData = req.body;
+// app.post('/test', async (req, res) => {
+//   // Handle the incoming JSON data
+//   const hocPhanData = req.body;
   
-  console.log('Received data:', hocPhanData);
+//   console.log('Received data:', hocPhanData);
 
-  try {
-    // Create a new instance of the HocPhan model with the received data
-    const hocPhanInstance = new HocPhan(hocPhanData);
+//   try {
+//     // Create a new instance of the HocPhan model with the received data
+//     const hocPhanInstance = new HocPhan(hocPhanData);
 
-    // Save the instance to the database
-    const savedHocPhan = await hocPhanInstance.save();
+//     // Save the instance to the database
+//     const savedHocPhan = await hocPhanInstance.save();
 
-    console.log('Data saved to the database:', savedHocPhan);
+//     console.log('Data saved to the database:', savedHocPhan);
 
-    // Send a response back to the client
-    res.json({ message: 'Data received and saved successfully' });
-  } catch (error) {
-    console.error('Error saving data to the database:', error);
-    res.status(500).json({ error: 'Internal Server Error' });
-  }
-});
-app.get('/test', (req, res) => {
-});
+//     // Send a response back to the client
+//     res.json({ message: 'Data received and saved successfully' });
+//   } catch (error) {
+//     console.error('Error saving data to the database:', error);
+//     res.status(500).json({ error: 'Internal Server Error' });
+//   }
+// });
+// app.get('/test', (req, res) => {
+// });
 
 app.post('/pdf', (req, res) => {
   const a4Content = req.body.a4Content;

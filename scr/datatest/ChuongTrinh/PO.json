@@ -1,0 +1,33 @@
+[   
+    {
+      "MaMT_CTDT": "mt001",
+      "id_CT": "ct001",
+      "TenMT_CTDT": "PO1",
+      "NoiDung": "Có kiến thức cơ bản về khoa học xã hội, khoa học chính trị, pháp luật, ngoại ngữ, có tinh thần trách nhiệm và ý thức tổ chức kỷ luật tốt."   
+    },
+    {
+      "MaMT_CTDT": "mt002",
+      "id_CT": "ct001",
+      "TenMT_CTDT": "PO2",
+      "NoiDung": "Có kiến thức và kỹ năng chuyên môn trong lĩnh vực công nghệ thông tin, đáp ứng yêu cầu của cách mạng công nghiệp 4.0."
+    },
+    {
+      "MaMT_CTDT": "mt003",
+      "id_CT": "ct001",
+      "TenMT_CTDT": "P03",
+      "NoiDung": "Có khả năng làm việc hiệu quả trong lĩnh vực công nghệ thông tin, tạo ra những đóng góp tích cực cho xã hội."
+    },
+    {
+      "MaMT_CTDT": "mt004",
+      "id_CT": "ct001",
+      "TenMT_CTDT": "PO4",
+      "NoiDung": "Có khả năng làm việc độc lập hoặc làm việc theo nhóm, hướng dẫn, giám sát những người khác thực hiện nhiệm vụ trong lĩnh vực công nghệ thông tin."
+    },
+    {
+      "MaMT_CTDT": "mt005",
+      "id_CT": "ct001",
+      "TenMT_CTDT": "PO5",
+      "NoiDung": "Có khả năng khám phá tri thức, giải quyết vấn đề, tư duy hệ thống, phát triển phẩm chất cá nhân và nghề nghiệp thông qua hoạt động học tập suốt đời."
+    }
+]
+  

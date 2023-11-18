@@ -1,12 +1,27 @@
 [
   {
-    "username": "hung",
-    "password": "1",
-    "role": 1
+    "MaMT_CTDT": "mt002",
+    "id_CT": "ct001",
+    "TenMT_CTDT": "PO2",
+    "NoiDung": ""
   },
   {
-    "username": "hung2",
-    "password": "1",
-    "role": 0
+    "MaMT_CTDT": "mt003",
+    "id_CT": "ct001",
+    "TenMT_CTDT": "P03",
+    "NoiDung": ""
+  },
+  {
+    "MaMT_CTDT": "mt004",
+    "id_CT": "ct001",
+    "TenMT_CTDT": "PO4",
+    "NoiDung": ""
+  },
+  {
+    "MaMT_CTDT": "mt005",
+    "id_CT": "ct001",
+    "TenMT_CTDT": "PO5",
+    "NoiDung": ""
   }
 ]
+
