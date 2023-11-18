@@ -1,14 +1,16 @@
 <div class="formInput">
     <div class="formInput_monHoc" id="formInput_monHoc">
         <div class="formInput_baseA4" id="formInput_baseA4">
-            <div class="formInput_print" contenteditable="true">
+            <div class="formInput_print">
                 {{!-- <p class="section-content">&nbsp;</p>--}}
                 {{! enter xuống dòng}}
                 {{!----}}
                 <p class="section-content text-right" contenteditable="true"><strong><span>PHỤ LỤC</span></strong></p>
                 <p class="section-content text-center"><strong><span>ĐỀ CƯƠNG CHI TIẾT HỌC PHẦN</span></strong></p>
-                <p class="section-content text-center"><strong><span>THỐNG KÊ VÀ PHÂN TÍCH DỮ LIỆU</span></strong></p>
-                <p class="section-content text-center"><strong><span>MSHP: 320045</span></strong></p>
+                <p class="section-content text-center"><strong><span contenteditable="true">THỐNG KÊ VÀ PHÂN TÍCH DỮ
+                            LIỆU</span></strong></p>
+                <p class="section-content text-center"><strong>MSHP:<span contenteditable="true">320045</span></strong>
+                </p>
                 <p class="section-content">&nbsp;</p>
                 <p class="section-content"><strong><span>1. Thông tin chung (General information):</span></strong></p>
                 <p class="section-content">&nbsp;</p>
@@ -35,60 +37,98 @@
                         {{!-- body-general-information-1 --}}
                         <tr>
                             <td class="body-1-general-information-1">
-                                <p>Đại cương &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<span
-                                        style="font-family:Wingdings;">o</span></p>
-                                <p>Cơ sở &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 🗹</p>
-                                <p>Chuyên ngành &nbsp;&nbsp;<span style="font-family:  Wingdings;">o</span></p>
+                                <p class="flex-row">
+                                    <span>
+                                        <label for="LoaiHocPhan1">Đại cương</label>
+                                    </span>
+
+                                    <span class="test">
+
+                                        <input class="test" type="checkbox" value="Đại cương" id="LoaiHocPhan1"
+                                            onclick="checkboxChanged('LoaiHocPhan1')">
+
+                                    </span>
+                                </p>
+                                <p class="flex-row">
+                                    <span>
+                                        <label for="LoaiHocPhan2">Cơ sở</label>
+                                    </span>
+
+                                    <span class="test">
+                                        <input type="checkbox" value="Cơ sở" id="LoaiHocPhan2"
+                                            onclick="checkboxChanged('LoaiHocPhan2')">
+
+                                    </span>
+                                </p>
+                                <p class="flex-row">
+                                    <span>
+                                        <label for="LoaiHocPhan3">Chuyên ngành</label>
+                                    </span>
+
+                                    <span class="test">
+
+                                        <input type="checkbox" value="Chuyên ngành" id="LoaiHocPhan3"
+                                            onclick="checkboxChanged('LoaiHocPhan3')">
+                                    </span>
+                                </p>
                             </td>
                             <td class="body-1-general-information-1">
-                                <p>Lý thuyết: &nbsp; &nbsp;&nbsp;2</p>
-                                <p>Thực hành: &nbsp; &nbsp;1</p>
+                                <p>Lý thuyết: &nbsp; &nbsp;&nbsp;<span contenteditable="true">2</span></p>
+                                <p>Thực hành: &nbsp; &nbsp;<span contenteditable="true">1</span></p>
                             </td>
                             <td class="body-1-general-information-1">
-                                <p>Lý thuyết: &nbsp; &nbsp;&nbsp;30</p>
-                                <p>Thực hành: &nbsp; &nbsp;30</p>
+                                <p>Lý thuyết:&nbsp;<span contenteditable="true">30</span></p>
+                                <p>Thực hành:&nbsp;<span contenteditable="true">30</span></p>
                             </td>
                             <td class="body-1-general-information-1">
-                                <p>90</p>
+                                <p><span contenteditable="true">90</span></p>
                             </td>
                         </tr>
                     </tbody>
                 </table>
                 <p><strong><em><span>Đối tượng học</span></em><span>: &nbsp; &nbsp; &nbsp;&nbsp;</span></strong></p>
-                <p><span>Tr&igrave;nh độ đ&agrave;o tạo: Đại học</span></p>
-                <p><span>Ng&agrave;nh: C&ocirc;ng nghệ Th&ocirc;ng tin</span></p>
-                <p><span>Chuy&ecirc;n ng&agrave;nh:
-                        &hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;.
-                        (nếu c&oacute;)</span></p>
-                <p><span>Học kỳ: V&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Năm thứ: 3</span></p>
+                <p>Trình độ đào tạo:&nbsp;<span contenteditable="true">Đại học</span></p>
+                <p>Ngành:&nbsp;<span contenteditable="true">Công nghệ Thông tin</span></p>
+                <p><span>Chuyên ngành:&nbsp;<span contenteditable="true">
+                            &hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;.
+                        </span>(nếu có)</span></p>
+                <p>Học kỳ:&nbsp;<span contenteditable="true">V</span> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+                    &nbsp;
+                    Năm thứ:&nbsp;<span contenteditable="true">3</span>
+                </p>
                 <p><strong><em><span>Điều kiện tham gia học phần:</span></em></strong></p>
                 <table class="table-1-general-information-2">
                     <tbody>
                         <tr>
-                            <td class="header-1-general-information-2">Học phần ti&ecirc;n quyết</td>
-                            <td colspan="2" class="body-1-general-colspan-2">Vi t&iacute;ch ph&acirc;n A1&nbsp; &nbsp;
+                            <td class="header-1-general-information-2">Học phần tiên quyết</td>
+                            <td colspan="2" class="body-1-general-colspan-2"><span contenteditable="true">Vi tích phân
+                                    A1</span> &nbsp; &nbsp;
                                 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-                                &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;MSHP: 110042</td>
+                                &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;MSHP:<span contenteditable="true">110042</span> </td>
                         </tr>
                         <tr>
-                            <td class="body-1-general-left-2">Học phần song h&agrave;nh</td>
-                            <td colspan="2" class="body-1-general-right-2">Kh&ocirc;ng</td>
-                        </tr>
-                        <tr>
-                            <td rowspan="3" class="body-1-general-left-2">C&aacute;c y&ecirc;u cầu kh&aacute;c</td>
-                            <td class="header-1-general-information-2">Về kiến thức:</td>
-                            <td class="body-1-general-colspan-2">kiến thức to&aacute;n học phổ th&ocirc;ng</td>
-                        </tr>
-                        <tr>
-                            <td class="header-1-general-information-2">Về kỹ năng:&nbsp;</td>
-                            <td class="body-1-general-colspan-2">
-                                <p>- Kỹ năng ph&acirc;n t&iacute;ch, giải quyết vấn đề</p>
-                                <p>- Kỹ năng tập trung, ghi nhớ, t&iacute;nh to&aacute;n, biến đổi</p>
+                            <td class="body-1-general-left-2">Học phần song hành</td>
+                            <td colspan="2" class="body-1-general-right-2"><span contenteditable="true">Không</span>
                             </td>
                         </tr>
                         <tr>
-                            <td class="header-1-general-information-2">Về th&aacute;i độ:</td>
-                            <td class="body-1-general-colspan-2">Chủ động trong học tập</td>
+                            <td rowspan="3" class="body-1-general-left-2">Các yêu cầu khác</td>
+                            <td class="header-1-general-information-2">Về kiến thức:</td>
+                            <td class="body-1-general-colspan-2"><span contenteditable="true">kiến thức toán học phổ
+                                    thông</span></td>
+                        </tr>
+                        <tr>
+                            <td class="header-1-general-information-2">Về kỹ năng:</td>
+                            <td class="body-1-general-colspan-2">
+                                <p><span contenteditable="true">- Kỹ năng phân tích, giải quyết vấn đề</span></p>
+                                <p><span contenteditable="true">- Kỹ năng tập trung, ghi nhớ, tính toán, biến đổi</span>
+                                </p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="header-1-general-information-2">Về thái độ:</td>
+                            <td class="body-1-general-colspan-2"><span contenteditable="true">Chủ động trong học
+                                    tập</span></td>
                         </tr>
                     </tbody>
                 </table>
@@ -104,18 +144,18 @@
                     <tbody>
                         <tr>
                             <td class="table-2-learning-header">
-                                <p>Gi&aacute;o tr&igrave;nh/T&agrave;i liệu học tập ch&iacute;nh</p>
+                                <p>Giáo trình/Tài liệu học tập chính</p>
                             </td>
                             <td class="table-2-learning-body">
-                                <p>[1] Nguyễn Văn Tuấn (2014). <em>Ph&acirc;n t&iacute;ch dữ liệu với R.</em> NXB Tổng
-                                    hợp TP Hồ Ch&iacute; Minh.</p>
+                                <p>[1] Nguyễn Văn Tuấn (2014). <em>Phân tích dữ liệu với R.</em> NXB Tổng
+                                    hợp TP Hồ Chí Minh.</p>
                                 <p>[2]<em>&nbsp;</em>Danielle Navarro, Ethan Weed (2021). <em>Learning Statistics with
                                         Python</em>. Online:&nbsp;<a
                                         href="https://ethanweed.github.io/pythonbook/landingpage.html">https://ethanweed.github.io/pythonbook/landingpage.html</a>.
                                 </p>
                                 <p>[3]<em>&nbsp;</em>Peter Bruce, Andrew Bruce, Peter Gedeck (2020). <em>Practical
                                         Statistics for Data Scientists: 50+ Essential Concepts Using R and Python</em>.
-                                    O&apos;Reilly Media.</p>
+                                    O'Reilly Media.</p>
                             </td>
                             <td class="empty"></td>
                         </tr>
@@ -123,11 +163,11 @@
 
                         <tr>
                             <td class="table-2-learning-header">
-                                <p>T&agrave;i liệu tham khảo th&ecirc;m</p>
+                                <p>Tài liệu tham khảo thêm</p>
                             </td>
                             <td class="table-2-learning-body">
                                 <p>[4] Jake VanderPlas (2017) <em>Python Data Science Handbook: Essential Tools for
-                                        Working with Data</em>. O&apos;Reilly Media.</p>
+                                        Working with Data</em>. O'Reilly Media.</p>
                                 <p>[5] Alan Agresti, Christine A. Franklin, Bernhard Klingenberg (2020).
                                     &nbsp;<em>Statistics:</em> <em>The Art and Science of Learning from Data
                                         5<sup>th</sup> edition.&nbsp;</em>Pearson</p>
@@ -164,26 +204,16 @@
 
                 <p class="section-content">&nbsp;</p>
                 <p class="section-content"><strong><span>3. Mô tả học phần (Course description):</span></strong></p>
-                <p class="section-content Thut-dau-dong"><span>
-                        Học phần gi&uacute;p trang bị cho sinh vi&ecirc;n c&aacute;
-                        c kiến thức cơ bản về x&aacute;c suất v&agrave; thống k&ecirc;
-                        để ph&acirc;n t&iacute;ch dữ liệu trong nghi&ecirc;
-                        n cứu. Sinh vi&ecirc;n sẽ được học c&aacute;ch bi&ecirc;
-                        n tập dữ liệu, c&aacute;ch m&ocirc; tả dữ liệu bằng biểu đồ v&agrave;
-                        bằng c&aacute;c đặc trưng thống k&ecirc;, c&aacute;ch thu thập dữ liệu,
-                        thiết kế nghi&ecirc;n cứu v&agrave; kiểm định c&aacute;
-                        c giả thuyết thống k&ecirc; tr&ecirc;n ng&ocirc;n ngữ Python/R.
-                        Nhờ đ&oacute; sinh vi&ecirc;n c&oacute; thể ứng dụng c&aacute;c
-                        kiến thức của m&ocirc;n học để thực hiện c&aacute;c nghi&ecirc;n
-                        cứu khoa học v&agrave; học c&aacute;c m&ocirc;n học c&oacute;
-                        ứng dụng kiến thức thống k&ecirc; như Tr&iacute; tuệ nh&acirc;n tạo,
-                        Khai ph&aacute; dữ liệu&hellip; Đồng thời, kỹ năng sử dụng ng&ocirc;n
-                        ngữ Python/R gi&uacute;p sinh vi&ecirc;n c&oacute; thể dễ d&agrave;ng
-                        tham gia c&aacute;c cộng đồng ph&acirc;n t&iacute;ch số liệu để c&oacute;
-                        thể tự học v&agrave; nghi&ecirc;n cứu s&acirc;u hơn.
-                        Học phần cũng gi&uacute;p sinh vi&ecirc;n h&igrave;nh th&agrave;nh
-                        th&aacute;i độ v&agrave; nhận thức đ&uacute;ng đắn về vai tr&ograve;
-                        của thống k&ecirc; v&agrave; khoa học dữ liệu trong bối cảnh hiện đại.</span></p>
+                <p class="section-content Thut-dau-dong"><span contenteditable="true">
+                        Học phần giúp trang bị cho sinh viên cá c kiến thức cơ bản về xác suất và thống kê để phân tích
+                        dữ liệu trong nghiê n cứu. Sinh viên sẽ được học cách biê n tập dữ liệu, cách mô tả dữ liệu bằng
+                        biểu đồ và bằng các đặc trưng thống kê, cách thu thập dữ liệu, thiết kế nghiên cứu và kiểm định
+                        cá c giả thuyết thống kê trên ngôn ngữ Python/R. Nhờ đó sinh viên có thể ứng dụng các kiến thức
+                        của môn học để thực hiện các nghiên cứu khoa học và học các môn học có ứng dụng kiến thức thống
+                        kê như Trí tuệ nhân tạo, Khai phá dữ liệu… Đồng thời, kỹ năng sử dụng ngôn ngữ Python/R giúp
+                        sinh viên có thể dễ dàng tham gia các cộng đồng phân tích số liệu để có thể tự học và nghiên cứu
+                        sâu hơn. Học phần cũng giúp sinh viên hình thành thái độ và nhận thức đúng đắn về vai trò của
+                        thống kê và khoa học dữ liệu trong bối cảnh hiện đại.</span></p>
                 <p class="section-content">&nbsp;</p>
                 <p class="section-content"><strong><span>4. Chuẩn đầu ra của học phần (Course learning
                             outcomes):</span></strong></p>
@@ -205,10 +235,10 @@
                                 <p><strong>Chuẩn đầu ra của học phần</strong></p>
                             </td>
                             <td class="header-4-learning-outcomes-3">
-                                <p><strong>Đ&aacute;p ứng CĐR của CTĐT</strong></p>
+                                <p><strong>Đáp ứng CĐR của CTĐT</strong></p>
                             </td>
                             <td class="header-4-learning-outcomes-4">
-                                <p><strong>Tr&igrave;nh độ năng lực</strong></p>
+                                <p><strong>Trình độ năng lực</strong></p>
                             </td>
                             <td class="header-4-learning-outcomes-5">
                                 <p><strong>TUA</strong></p>
@@ -227,19 +257,23 @@
                         {{!-- <tr> noi dung --}}
                         <tr>
                             <td class="content-4-learning-outcomes-1">
-                                <p class="text-left">1.</p>
+                                <p class="text-left"><span contenteditable="true">1.</span></p>
                             </td>
                             <td class="content-4-learning-outcomes-2">
-                                <p class="section-content">Trình bày các khái niệm cơ bản về xác suất</p>
+                                <p class="section-content">
+                                    <span contenteditable="true">
+                                        Trình bày các khái niệm cơ bản về xác suất
+                                    </span>
+                                </p>
                             </td>
                             <td class="content-4-learning-outcomes-3">
-                                <p class="paragraph">PLO1</p>
+                                <p class="paragraph"> <span contenteditable="true">PLO1</span></p>
                             </td>
                             <td class="content-4-learning-outcomes-4">
-                                <p class="text-center">2</p>
+                                <p class="text-center"><span contenteditable="true">2</span></p>
                             </td>
                             <td class="content-4-learning-outcomes-5">
-                                <p class="paragraph">TUA</p>
+                                <p class="paragraph"><span contenteditable="true">TUA</span></p>
                             </td>
                         </tr>
                         {{!-- <tr> tieu de 2 --}}
@@ -254,19 +288,23 @@
                         {{!-- <tr> noi dung --}}
                         <tr>
                             <td class="content-4-learning-outcomes-1">
-                                <p class="text-left">2.</p>
+                                <p class="text-left"><span contenteditable="true">1.</span></p>
                             </td>
                             <td class="content-4-learning-outcomes-2">
-                                <p class="section-content">Trình bày các khái niệm cơ bản về xác suất</p>
+                                <p class="section-content">
+                                    <span contenteditable="true">
+                                        Trình bày các khái niệm cơ bản về xác suất
+                                    </span>
+                                </p>
                             </td>
                             <td class="content-4-learning-outcomes-3">
-                                <p class="paragraph">PLO1</p>
+                                <p class="paragraph"> <span contenteditable="true">PLO1</span></p>
                             </td>
                             <td class="content-4-learning-outcomes-4">
-                                <p class="text-center">2</p>
+                                <p class="text-center"><span contenteditable="true">2</span></p>
                             </td>
                             <td class="content-4-learning-outcomes-5">
-                                <p class="paragraph">TUA</p>
+                                <p class="paragraph"><span contenteditable="true">TUA</span></p>
                             </td>
                         </tr>
                         {{!-- <tr> tieu de 3 --}}
@@ -281,19 +319,23 @@
                         {{!-- <tr> noi dung --}}
                         <tr>
                             <td class="content-4-learning-outcomes-1">
-                                <p class="text-left">3.</p>
+                                <p class="text-left"><span contenteditable="true">1.</span></p>
                             </td>
                             <td class="content-4-learning-outcomes-2">
-                                <p class="section-content">Trình bày các khái niệm cơ bản về xác suất</p>
+                                <p class="section-content">
+                                    <span contenteditable="true">
+                                        Trình bày các khái niệm cơ bản về xác suất
+                                    </span>
+                                </p>
                             </td>
                             <td class="content-4-learning-outcomes-3">
-                                <p class="paragraph">PLO1</p>
+                                <p class="paragraph"> <span contenteditable="true">PLO1</span></p>
                             </td>
                             <td class="content-4-learning-outcomes-4">
-                                <p class="text-center">2</p>
+                                <p class="text-center"><span contenteditable="true">2</span></p>
                             </td>
                             <td class="content-4-learning-outcomes-5">
-                                <p class="paragraph">TUA</p>
+                                <p class="paragraph"><span contenteditable="true">TUA</span></p>
                             </td>
                         </tr>
                     </tbody>
@@ -318,8 +360,8 @@
                                 <p style='header-5-course-content-p'><strong><span>Số giờ</span></strong></p>
                             </td>
                             <td class="header-5-course-content-55_85pt">
-                                <p style='header-5-course-content-p'><strong><span>Giờ tự học v&agrave; giờ học
-                                            kh&aacute;c</span></strong></p>
+                                <p style='header-5-course-content-p'><strong><span>Giờ tự học và giờ học khác
+                                        </span></strong></p>
                             </td>
                         </tr>
                         <tr>
@@ -336,8 +378,8 @@
                         {{!-- body - tital --}}
                         <tr>
                             <td class="body-5-course-content-255_55pt">
-                                <p class="table-5-course-content-p"><strong><span>Chương 1. C&aacute;c kh&aacute;i niệm
-                                            cơ bản về x&aacute;c suất</span></strong></p>
+                                <p class="table-5-course-content-p"><strong><span>Chương 1. Các khái niệm cơ bản về xác
+                                            suất</span></strong></p>
                             </td>
                             <td class="body-5-course-content-71_8pt">
                                 <p style='header-5-course-content-p'><strong><span>1</span></strong></p>
@@ -355,8 +397,7 @@
                         {{!-- body - content --}}
                         <tr>
                             <td class="body-5-content-course-content-255_55pt">
-                                <p class="table-5-course-content-p"><span>1.1. Bổ t&uacute;c về giải t&iacute;ch tổ
-                                        hợp</span></p>
+                                <p class="table-5-course-content-p"><span>1.1. Bổ túc về giải tích tổ hợp</span></p>
                             </td>
                             <td class="body-5-content-course-content-71_8pt">
                                 <p class="table-5-course-content-p"><span>&nbsp;</span></p>
@@ -374,7 +415,7 @@
                         {{!-- footer - content --}}
                         <tr>
                             <td class="footer-5-course-content-255_55pt">
-                                <p class="text-justify"><em><span>Kỹ năng mềm v&agrave; th&aacute;i độ</span></em></p>
+                                <p class="text-justify"><em><span>Kỹ năng mềm và thái độ</span></em></p>
                             </td>
                             <td colspan="4" class="footer-5-course-content-212_9pt">
                                 <p class="table-5-course-content-p"><span>9</span></p>
@@ -383,8 +424,8 @@
                         {{!-- body - tital --}}
                         <tr>
                             <td class="body-5-course-content-255_55pt">
-                                <p class="table-5-course-content-p"><strong><span>Chương 1. C&aacute;c kh&aacute;i niệm
-                                            cơ bản về x&aacute;c suất</span></strong></p>
+                                <p class="table-5-course-content-p"><strong><span>Chương 1. Các khái niệm cơ bản về xác
+                                            suất</span></strong></p>
                             </td>
                             <td class="body-5-course-content-71_8pt">
                                 <p style='header-5-course-content-p'><strong><span>1</span></strong></p>
@@ -402,8 +443,7 @@
                         {{!-- body - content --}}
                         <tr>
                             <td class="body-5-content-course-content-255_55pt">
-                                <p class="table-5-course-content-p"><span>1.1. Bổ t&uacute;c về giải t&iacute;ch tổ
-                                        hợp</span></p>
+                                <p class="table-5-course-content-p"><span>1.1. Bổ túc về giải tích tổ hợp</span></p>
                             </td>
                             <td class="body-5-content-course-content-71_8pt">
                                 <p class="table-5-course-content-p"><span>&nbsp;</span></p>
@@ -421,7 +461,7 @@
                         {{!-- footer - content --}}
                         <tr>
                             <td class="footer-5-course-content-255_55pt">
-                                <p class="text-justify"><em><span>Kỹ năng mềm v&agrave; th&aacute;i độ</span></em></p>
+                                <p class="text-justify"><em><span>Kỹ năng mềm và thái độ</span></em></p>
                             </td>
                             <td colspan="4" class="footer-5-course-content-212_9pt">
                                 <p class="table-5-course-content-p"><span>9</span></p>
@@ -430,8 +470,8 @@
                         {{!-- body - tital --}}
                         <tr>
                             <td class="body-5-course-content-255_55pt">
-                                <p class="table-5-course-content-p"><strong><span>Chương 1. C&aacute;c kh&aacute;i niệm
-                                            cơ bản về x&aacute;c suất</span></strong></p>
+                                <p class="table-5-course-content-p"><strong><span>Chương 1. Các khái niệm cơ bản về xác
+                                            suất</span></strong></p>
                             </td>
                             <td class="body-5-course-content-71_8pt">
                                 <p style='header-5-course-content-p'><strong><span>1</span></strong></p>
@@ -449,8 +489,7 @@
                         {{!-- body - content --}}
                         <tr>
                             <td class="body-5-content-course-content-255_55pt">
-                                <p class="table-5-course-content-p"><span>1.1. Bổ t&uacute;c về giải t&iacute;ch tổ
-                                        hợp</span></p>
+                                <p class="table-5-course-content-p"><span>1.1. Bổ túc về giải tích tổ hợp</span></p>
                             </td>
                             <td class="body-5-content-course-content-71_8pt">
                                 <p class="table-5-course-content-p"><span>&nbsp;</span></p>
@@ -468,59 +507,14 @@
                         {{!-- footer - content --}}
                         <tr>
                             <td class="footer-5-course-content-255_55pt">
-                                <p class="text-justify"><em><span>Kỹ năng mềm v&agrave; th&aacute;i độ</span></em></p>
+                                <p class="text-justify"><em><span>Kỹ năng mềm và thái độ</span></em></p>
                             </td>
                             <td colspan="4" class="footer-5-course-content-212_9pt">
                                 <p class="table-5-course-content-p"><span>9</span></p>
                             </td>
                         </tr>
-                        {{!-- body - tital --}}
-                        <tr>
-                            <td class="body-5-course-content-255_55pt">
-                                <p class="table-5-course-content-p"><strong><span>Chương 1. C&aacute;c kh&aacute;i niệm
-                                            cơ bản về x&aacute;c suất</span></strong></p>
-                            </td>
-                            <td class="body-5-course-content-71_8pt">
-                                <p style='header-5-course-content-p'><strong><span>1</span></strong></p>
-                            </td>
-                            <td class="body-5-course-content-44_85pt">
-                                <p style='header-5-course-content-p'><strong><span>5</span></strong></p>
-                            </td>
-                            <td class="body-5-course-content-40_4pt">
-                                <p style='header-5-course-content-p'><strong><span>5</span></strong></p>
-                            </td>
-                            <td class="body-5-course-content-55_85pt">
-                                <p style='header-5-course-content-p'><strong><span>5</span></strong></p>
-                            </td>
-                        </tr>
-                        {{!-- body - content --}}
-                        <tr>
-                            <td class="body-5-content-course-content-255_55pt">
-                                <p class="table-5-course-content-p"><span>1.1. Bổ t&uacute;c về giải t&iacute;ch tổ
-                                        hợp</span></p>
-                            </td>
-                            <td class="body-5-content-course-content-71_8pt">
-                                <p class="table-5-course-content-p"><span>&nbsp;</span></p>
-                            </td>
-                            <td class="body-5-content-course-content-44_85pt">
-                                <p class="table-5-course-content-p"><span>&nbsp;</span></p>
-                            </td>
-                            <td class="body-content--course-content-40_4pt">
-                                <p class="table-5-course-content-p"><span>&nbsp;</span></p>
-                            </td>
-                            <td class="body-5-course-content-55_85pt">
-                                <p class="table-5-course-content-p"><span>&nbsp;</span></p>
-                            </td>
-                        </tr>
-                        {{!-- footer - content --}}
-                        <tr>
-                            <td class="footer-5-course-content-255_55pt">
-                                <p class="text-justify"><em><span>Kỹ năng mềm v&agrave; th&aacute;i độ</span></em></p>
-                            </td>
-                            <td colspan="4" class="footer-5-course-content-212_9pt">
-                                <p class="table-5-course-content-p"><span>9</span></p>
-                            </td>
-                        </tr>
+
+
                     </tbody>
                 </table>
                 {{!----}}
@@ -528,11 +522,14 @@
                 {{!----}}
                 <p class="section-content"><strong><span>6. Phương pháp dạy và học (Teaching and learning
                             methods):</span></strong></p>
-                <p class="section-content Thut-dau-dong"><span>- Diễn giảng </span></p>
-                <p class="section-content Thut-dau-dong"><span>- Vấn đáp (Questions – Answers)</span></p>
-                <p class="section-content Thut-dau-dong"><span>- Hoạt động nhóm (Group-based Learning)</span></p>
-                <p class="section-content Thut-dau-dong"><span>- Học dựa trên dự án (Project-based Learning)</span></p>
-                <p class="section-content Thut-dau-dong"><span>- Thao tác mẫu (Demo)</span></p>
+                <p class="section-content Thut-dau-dong"><span contenteditable="true">- Diễn giảng </span></p>
+                <p class="section-content Thut-dau-dong"><span contenteditable="true">- Vấn đáp (Questions –
+                        Answers)</span></p>
+                <p class="section-content Thut-dau-dong"><span contenteditable="true">- Hoạt động nhóm (Group-based
+                        Learning)</span></p>
+                <p class="section-content Thut-dau-dong"><span contenteditable="true">- Học dựa trên dự án
+                        (Project-based Learning)</span></p>
+                <p class="section-content Thut-dau-dong"><span contenteditable="true">- Thao tác mẫu (Demo)</span></p>
                 <p class="section-content"><strong><span>7. Đánh giá học phần (Course assessment):</span></strong></p>
                 {{!----}}
                 {{!-- 7. Đánh giá học phần (Course assessment): --}}
@@ -545,17 +542,17 @@
                                 <p><span>&nbsp;</span></p>
                             </td>
                             <td class="header-7-course-assessment-95_25pt">
-                                <p><strong><span>H&igrave;nh thức đ&aacute;nh gi&aacute;/thời gian</span></strong></p>
+                                <p><strong><span>Hình thức đánh giá/thời gian</span></strong></p>
                             </td>
                             <td class="header-7-course-assessment-99_0pt">
-                                <p><strong><span>Nội dung&nbsp;</span></strong></p>
-                                <p><strong><span>đ&aacute;nh gi&aacute;</span></strong></p>
+                                <p><strong><span>Nội dung &nbsp;</span></strong></p>
+                                <p><strong><span>đánh giá</span></strong></p>
                             </td>
                             <td class="header-7-course-assessment-72_0pt">
                                 <p><strong><span>CĐR của học phần</span></strong></p>
                             </td>
                             <td class="header-7-course-assessment-79_5pt">
-                                <p><strong><span>Ti&ecirc;u ch&iacute; đ&aacute;nh gi&aacute;</span></strong></p>
+                                <p><strong><span>Tiêu chí đánh giá</span></strong></p>
                             </td>
                             <td class="header-7-course-assessment-46_5pt">
                                 <p><strong><span>Tỷ lệ %</span></strong></p>
@@ -564,11 +561,11 @@
                         {{!-- body-course-assessment --}}
                         <tr>
                             <td rowspan="2" class="body-7-course-assessment-60_75pt">
-                                <p><strong><span>Đ&aacute;nh gi&aacute; qu&aacute; tr&igrave;nh</span></strong></p>
+                                <p><strong><span>Đánh giá quá trình</span></strong></p>
                             </td>
                             <td class="body-7-course-assessment-95_25pt">
-                                <p><span>Kiểm tra l&yacute; thuyết hoặc</span></p>
-                                <p><span>Kiểm tra thực h&agrave;nh</span></p>
+                                <p><span>Kiểm tra lý thuyết hoặc</span></p>
+                                <p><span>Kiểm tra thực hành</span></p>
                             </td>
                             <td class="body-7-course-assessment-99_0pt">
                                 <p><span>Từ Chương 1 đến Chương 4</span></p>
@@ -577,7 +574,7 @@
                                 <p><span>Từ 1 đến 4</span></p>
                             </td>
                             <td class="body-7-course-assessment-79_5pt">
-                                <p><span>Theo đ&aacute;p &aacute;n</span></p>
+                                <p><span>Theo đáp án</span></p>
                             </td>
                             <td class="body-7-course-assessment-46_5pt">
                                 <p><span>25%</span></p>
@@ -585,7 +582,7 @@
                         </tr>
                         <tr>
                             <td class="body-7-course-assessment-95_25pt">
-                                <p><span>B&agrave;i tập lớn</span></p>
+                                <p><span>Bài tập lớn</span></p>
                             </td>
                             <td class="body-7-course-assessment-99_0pt">
                                 <p><span>Từ Chương 4 đến Chương 8</span></p>
@@ -594,7 +591,7 @@
                                 <p><span>Từ 3 đến 8</span></p>
                             </td>
                             <td class="body-7-course-assessment-79_5pt">
-                                <p><span>Theo đ&aacute;p &aacute;n</span></p>
+                                <p><span>Theo đáp án</span></p>
                             </td>
                             <td class="body-7-course-assessment-46_5pt">
                                 <p><span>25%</span></p>
@@ -602,11 +599,11 @@
                         </tr>
                         <tr>
                             <td rowspan="2" class="body-7-course-assessment-60_75pt height-10_0pt">
-                                <p><strong><span>Đ&aacute;nh gi&aacute; kết th&uacute;c học phần</span></strong></p>
+                                <p><strong><span>Đánh giá kết thúc học phần</span></strong></p>
                                 <p><em><span>(Chọn 1 trong 2)</span></em></p>
                             </td>
                             <td class="body-7-course-assessment-95_25pt height-10_0pt">
-                                <p><span>Đồ &aacute;n (nh&oacute;m)</span></p>
+                                <p><span>Đồ án (nhóm)</span></p>
                             </td>
                             <td class="body-7-course-assessment-99_0pt height-10_0pt">
                                 <p><span>Từ Chương 1 đến Chương 6</span></p>
@@ -615,7 +612,7 @@
                                 <p><span>Từ 1 đến 9</span></p>
                             </td>
                             <td class="body-7-course-assessment-79_5pt height-10_0pt">
-                                <p><span>Theo đ&aacute;p &aacute;n</span></p>
+                                <p><span>Theo đáp án</span></p>
                             </td>
                             <td class="body-7-course-assessment-46_5pt height-10_0pt">
                                 <p><span>50%</span></p>
@@ -632,7 +629,7 @@
                                 <p><span>Từ 1 đến 8</span></p>
                             </td>
                             <td class="body-7-course-assessment-79_5pt height-10_0pt">
-                                <p><span>Theo đ&aacute;p &aacute;n</span></p>
+                                <p><span>Theo đáp án</span></p>
                             </td>
                             <td class="body-7-course-assessment-46_5pt height-10_0pt">
                                 <p><span>50%</span></p>
@@ -678,7 +675,7 @@
                 <p class="section-content">TS. Nguyễn Bảo Ân</p>
                 <p class="section-content">Ths. Phạm Thị Trúc Mai</p>
                 <p class="section-content">&nbsp;</p>
-                <p class="section-content"><span>Ng&agrave;y ph&ecirc; duyệt: ....../......./ .......<em>&nbsp;
+                <p class="section-content"><span>Ngày phê duyệt: ....../......./ .......<em>&nbsp;
                             &nbsp;</em></span></p>
 
                 <table class="table-9-list-teacher">
@@ -687,24 +684,23 @@
                             <td class="header-9-list-teacher-140_5pt">
                                 <p class="margin-top-bottom-3pt text-center"><strong><span>TRƯỞNG KHOA</span></strong>
                                 </p>
-                                <p class="margin-top-bottom-3pt text-center"><em><span>(K&yacute; v&agrave; ghi
-                                            r&otilde; họ t&ecirc;n)</span></em></p>
+                                <p class="margin-top-bottom-3pt text-center"><em><span>(Ký và ghi rõ họ tên)</span></em>
+                                </p>
                             </td>
                             <td class="header-9-list-teacher-176_35pt">
-                                <p class="margin-top-bottom-3pt text-center"><strong><span>TRƯỞNG BỘ
-                                            M&Ocirc;N&nbsp;</span></strong></p>
-                                <p class="margin-top-bottom-3pt text-center"><em><span>(K&yacute; v&agrave; ghi
-                                            r&otilde; họ t&ecirc;n)</span></em></p>
+                                <p class="margin-top-bottom-3pt text-center"><strong><span>TRƯỞNG BỘ MÔN
+                                        </span></strong></p>
+                                <p class="margin-top-bottom-3pt text-center"><em><span>(Ký và ghi rõ họ tên)</span></em>
+                                </p>
                             </td>
                             <td class="header-9-list-teacher-153_4pt">
-                                <p class="margin-top-bottom-3pt text-center"><strong><span>GIẢNG
-                                            VI&Ecirc;N&nbsp;</span></strong></p>
-                                <p class="margin-top-bottom-3pt text-center"><strong><span>BI&Ecirc;N
-                                            SOẠN</span></strong></p>
+                                <p class="margin-top-bottom-3pt text-center"><strong><span>GIẢNG VIÊN </span></strong>
+                                </p>
+                                <p class="margin-top-bottom-3pt text-center"><strong><span>BIÊN SOẠN</span></strong></p>
                                 <p class="margin-top-bottom-3pt text-center"><strong><span>&nbsp;</span></strong></p>
                                 <p class="margin-top-bottom-3pt text-center"><strong><span>&nbsp;</span></strong></p>
-                                <p class="margin-top-bottom-3pt text-center"><strong><span>Nguyễn Bảo
-                                            &Acirc;n</span></strong></p>
+                                <p class="margin-top-bottom-3pt text-center"><strong><span>Nguyễn Bảo Ân</span></strong>
+                                </p>
                             </td>
                         </tr>
                         <tr>
@@ -731,13 +727,13 @@
                                 </p>
                             </td>
                             <td class="body-9-list-teacher-153_4pt">
-                                <p class="margin-top-bottom-3pt text-center"><strong><span>GIẢNG
-                                            VI&Ecirc;N&nbsp;</span></strong></p>
+                                <p class="margin-top-bottom-3pt text-center"><strong><span>GIẢNG VIÊN </span></strong>
+                                </p>
                                 <p class="margin-top-bottom-3pt text-center"><strong><span>PHẢN BIỆN</span></strong></p>
                                 <p class="margin-top-bottom-3pt text-center"><strong><span>&nbsp;</span></strong></p>
                                 <p class="margin-top-bottom-3pt text-center"><strong><span>&nbsp;</span></strong></p>
                                 <p class="margin-top-bottom-3pt text-center"><strong><span>&nbsp;</span></strong></p>
-                                <p class="margin-top-bottom-3pt text-center"><strong><span>Phạm Thị Tr&uacute;c
+                                <p class="margin-top-bottom-3pt text-center"><strong><span>Phạm Thị Trúc
                                             Mai</span></strong></p>
                                 <p class="margin-top-bottom-3pt text-center"><strong><span>&nbsp;</span></strong></p>
                             </td>
@@ -767,5 +763,16 @@
             .catch(function (error) {
                 console.error('Error:', error);
             });
+    }
+</script>
+
+<script>
+    function checkboxChanged(checkboxId) {
+        var checkboxes = document.querySelectorAll('input[type="checkbox"]');
+        checkboxes.forEach(function (checkbox) {
+            if (checkbox.id !== checkboxId) {
+                checkbox.checked = false;
+            }
+        });
     }
 </script>

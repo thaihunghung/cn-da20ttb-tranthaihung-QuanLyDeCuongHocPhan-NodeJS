@@ -73,8 +73,7 @@ app.post('/saveHocPhan',  (req, res) => {
   // await hocPhanInstance.findOne({ MaMon:, TenMon: });        
 });
 app.get('/', (req, res) => {
-  // res.render('formInput_monHoc/formInput_monHoc.hbs')
-  res.render('test/formInput_monHoc_test')
+  res.render('formInput_monHoc/formInput_monHoc')
 })
 app.post('/test', async (req, res) => {
   // Handle the incoming JSON data

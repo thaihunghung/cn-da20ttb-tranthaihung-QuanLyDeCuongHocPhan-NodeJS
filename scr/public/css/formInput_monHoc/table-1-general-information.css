@@ -11,6 +11,7 @@
 .body-1-general-information-1
  {
     width: 95.25pt;
+    max-width: 95.25pt;
     border: 1px solid black;
     border-image: initial;
     background: white;
@@ -31,25 +32,34 @@
 }
 .body-1-general-colspan-2 {
     width: 336pt;
+    max-width: 336pt;
     height: 16.8pt;
+    min-height: 16.8;
     border-left: none;
     border-image: initial;
     vertical-align: none;
 }
 .body-1-general-left-2 {
     width: 131.35pt;
+    max-width: 131.35pt;
     height: 17.4pt;
+    min-height: 17.4pt;
     border-top: none; 
     vertical-align: none;   
 }
 .body-1-general-right-2 {
     width: 336pt;
+    max-width: 336pt;
     height: 17.4pt;
+    min-height: 17.4pt;
     border-top: none;
     border-left: none;
 }
 .header-1-general-information-2 {
     width: 131.35pt;
+    max-width: 131.35pt;
     height: 16.8pt;
+    min-height: 16.8pt;
     vertical-align: none;
+    margin: 0 5.4pt;
 }

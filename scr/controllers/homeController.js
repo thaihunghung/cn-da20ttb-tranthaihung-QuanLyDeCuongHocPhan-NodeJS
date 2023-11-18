@@ -1,3 +1,3 @@
 exports.index = (req, res) => {
-    res.send('hung')
+    res.render('formInput_monHoc/formInput_monHoc')
 }

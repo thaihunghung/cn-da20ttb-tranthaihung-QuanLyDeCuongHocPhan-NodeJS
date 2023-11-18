@@ -102,16 +102,16 @@
     </p>
 </td>
 <script>
-    
+
     function checkboxChanged(checkboxId) {
-  var checkboxes = document.querySelectorAll('input[type="checkbox"]');
-  checkboxes.forEach(function (checkbox) {
-    if (checkbox.id !== checkboxId) {
-      checkbox.checked = false;
+        var checkboxes = document.querySelectorAll('input[type="checkbox"]');
+        checkboxes.forEach(function (checkbox) {
+            if (checkbox.id !== checkboxId) {
+                checkbox.checked = false;
+            }
+        });
     }
-  });
-}
 </script>
 <script src="/js/FunctionToAll.js">
-
+    const function_all = new FunctionToAll();
 </script>
