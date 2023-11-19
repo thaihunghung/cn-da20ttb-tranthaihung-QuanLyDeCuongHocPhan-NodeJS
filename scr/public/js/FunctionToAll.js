@@ -16,4 +16,20 @@ class FunctionToAll {
             }
         });
     }
+    sendDataToServer(data) {
+        const serverEndpoint = '/savedata';
+        // Send data to the server using AJAX
+        $.ajax({
+            type: 'POST',
+            url: serverEndpoint,
+            contentType: 'application/json', 
+            data: JSON.stringify(data), 
+            success: function (response) {
+                console.log('Data sent successfully');
+            },
+            error: function (error) {
+                console.error('Error sending data to the server', error);
+            }
+        });
+    }
 }

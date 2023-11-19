@@ -7,6 +7,7 @@ const ChuongSchema = new mongoose.Schema({
     GioLyThuyet: Number,
     GiothucHanh: Number,
     SoGioTuHoc: Number,
+    KyNangMem: Number,
+    ChiTietChuong: [String]
 });
-
 module.exports = mongoose.model('Chuong', ChuongSchema);

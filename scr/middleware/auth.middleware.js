@@ -1,5 +1,5 @@
 const jwt = require('jsonwebtoken');
-const User = require('../models/NguoiDung.model'); // Adjust the path accordingly
+const User = require('../models/NguoiDung/NguoiDung.model'); // Adjust the path accordingly
 
 function verifyToken(req, res, next)  {
   // Lấy token từ header, query parameter hoặc cookie

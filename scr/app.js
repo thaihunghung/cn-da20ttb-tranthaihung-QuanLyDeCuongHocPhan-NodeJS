@@ -24,8 +24,7 @@ const db = require('./database/config.js');
 // // // // // // 
 // Routes     
 // // // // // //
-// const HocPhan = require('./models/hocPhan.model.js');
-// const fulldatabase= require('./models/fulldatabase.js');
+const f= require('./models/HocPhan/DanhGia_HocPhan.model.js');
 
 
 const morgan = require('morgan');

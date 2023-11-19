@@ -16,7 +16,8 @@ exports.ChuongTrinh_GET = async (req, res) => {
         const ploObjects = PLO.map(mongooseToObject);
         const mappingObjects = DapungCT.map(mongooseToObject);
         const chuongTrinhAsObject = chuongTrinh.map(mongooseToObject);
-        console.log(posObjects);
+        
+        // Tao group PLO theo loai
         const groupedPLO = ploObjects.reduce((grouped, item) => {
             const key = item.LoaiCDR_CT;
             if (!grouped[key]) {
@@ -26,7 +27,6 @@ exports.ChuongTrinh_GET = async (req, res) => {
             return grouped;
           }, {});
           
-          // groupedPLO sẽ là một đối tượng với key là LoaiCDR_CT và value là một mảng các PLOObjects tương ứng
         res.render('chuongTrinh/chuongTrinh',{chuongTrinh:chuongTrinhAsObject, PO: posObjects,PLO:ploObjects, DapungCT:mappingObjects, GroupLoai: groupedPLO})
 
     } catch (error) {

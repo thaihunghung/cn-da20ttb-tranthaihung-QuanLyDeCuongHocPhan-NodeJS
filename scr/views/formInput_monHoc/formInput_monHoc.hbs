@@ -5,11 +5,14 @@
                 {{!-- <p class="section-content">&nbsp;</p>--}}
                 {{! enter xuống dòng}}
                 {{!----}}
-                <p class="section-content text-right"><strong>PHỤ LỤC&nbsp;<span contenteditable="true"></span></strong></p>
+   {{!-- <div class="input" id="input-container">
+    <p contenteditable="true" id="1">[1]</p>
+</div> --}}
+                <p class="section-content text-right"><strong>PHỤ LỤC&nbsp;<span contenteditable="true" id="PhuLuc"></span></strong></p>
                 <p class="section-content text-center"><strong><span>ĐỀ CƯƠNG CHI TIẾT HỌC PHẦN</span></strong></p>
-                <p class="section-content text-center"><strong><span contenteditable="true">THỐNG KÊ VÀ PHÂN TÍCH DỮ
+                <p class="section-content text-center"><strong><span contenteditable="true" id="TenMon">THỐNG KÊ VÀ PHÂN TÍCH DỮ
                             LIỆU</span></strong></p>
-                <p class="section-content text-center"><strong>MSHP:<span contenteditable="true">320045</span></strong>
+                <p class="section-content text-center"><strong>MSHP:<span contenteditable="true" id="MaMon">320045</span></strong>
                 </p>
                 <p class="section-content">&nbsp;</p>
                 <p class="section-content"><strong><span>1. Thông tin chung (General information):</span></strong></p>
@@ -73,42 +76,42 @@
                                 </p>
                             </td>
                             <td class="body-1-general-information-1">
-                                <p>Lý thuyết: &nbsp; &nbsp;&nbsp;<span contenteditable="true">2</span></p>
-                                <p>Thực hành: &nbsp; &nbsp;<span contenteditable="true">1</span></p>
+                                <p>Lý thuyết: &nbsp; &nbsp;&nbsp;<span contenteditable="true" id="SoTC_LT">2</span></p>
+                                <p>Thực hành: &nbsp; &nbsp;<span contenteditable="true" id="SoTC_TH">1</span></p>
                             </td>
                             <td class="body-1-general-information-1">
-                                <p>Lý thuyết:&nbsp;<span contenteditable="true">30</span></p>
-                                <p>Thực hành:&nbsp;<span contenteditable="true">30</span></p>
+                                <p>Lý thuyết:&nbsp;<span contenteditable="true" id="LT">30</span></p>
+                                <p>Thực hành:&nbsp;<span contenteditable="true" id="TH">30</span></p>
                             </td>
                             <td class="body-1-general-information-1">
-                                <p><span contenteditable="true">90</span></p>
+                                <p><span contenteditable="true" id="SoGioTuHoc">90</span></p>
                             </td>
                         </tr>
                     </tbody>
                 </table>
                 <p><strong><em><span>Đối tượng học</span></em><span>: &nbsp; &nbsp; &nbsp;&nbsp;</span></strong></p>
-                <p>Trình độ đào tạo:&nbsp;<span contenteditable="true">Đại học</span></p>
-                <p>Ngành:&nbsp;<span contenteditable="true">Công nghệ Thông tin</span></p>
-                <p><span>Chuyên ngành:&nbsp;<span contenteditable="true">
+                <p>Trình độ đào tạo:&nbsp;<span contenteditable="true" id="TrinhDo_DT">Đại học</span></p>
+                <p>Ngành:&nbsp;<span contenteditable="true" id="Nganh">Công nghệ Thông tin</span></p>
+                <p><span>Chuyên ngành:&nbsp;<span contenteditable="true" id="ChuyenNganh">
                             &hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;.
                         </span>(nếu có)</span></p>
-                <p>Học kỳ:&nbsp;<span contenteditable="true">V</span> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+                <p>Học kỳ:&nbsp;<span contenteditable="true" id="HocKy">5</span> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
                     &nbsp;
-                    Năm thứ:&nbsp;<span contenteditable="true">3</span>
+                    Năm thứ:&nbsp;<span contenteditable="true" id="NamHoc">3</span>
                 </p>
                 <p><strong><em><span>Điều kiện tham gia học phần:</span></em></strong></p>
                 <table class="table-1-general-information-2">
                     <tbody>
                         <tr>
                             <td class="header-1-general-information-2">Học phần tiên quyết</td>
-                            <td colspan="2" class="body-1-general-colspan-2"><span contenteditable="true">Vi tích phân
+                            <td colspan="2" class="body-1-general-colspan-2"><span contenteditable="true" id="HocPhanTQ">Vi tích phân
                                     A1</span> &nbsp; &nbsp;
                                 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-                                &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;MSHP:<span contenteditable="true">110042</span> </td>
+                                &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;MSHP:<span contenteditable="true" id="HocPhanTQ">110042</span> </td>
                         </tr>
                         <tr>
                             <td class="body-1-general-left-2">Học phần song hành</td>
-                            <td colspan="2" class="body-1-general-right-2"><span contenteditable="true">Không</span>
+                            <td colspan="2" class="body-1-general-right-2"><span contenteditable="true" id="HocPhan_SH">Không</span>
                             </td>
                         </tr>
                         <tr>
@@ -122,7 +125,6 @@
                             <td class="body-1-general-colspan-2">
                                 <p><span contenteditable="true">
                                 - Kỹ năng phân tích, giải quyết vấn đề
-                                <br>
                                 - Kỹ năng tập trung, ghi nhớ, tính toán, biến đổi
                                 </span>
                                 </p>
@@ -142,23 +144,27 @@
                 {{!----}}
                 {{!-- 2. Nguồn học liệu (Learning resources): --}}
                 {{!----}}
-
+               
                 <table class="table-2-learning-resources">
                     <tbody>
                         <tr>
                             <td class="table-2-learning-header">
-                                <p>Giáo trình/Tài liệu học tập chính</p>
+                                <p><span id="loaiHocLieu">Giáo trình/Tài liệu học tập chính</span></p>
                             </td>
                             <td class="table-2-learning-body">
-                                <p>[1] Nguyễn Văn Tuấn (2014). <em>Phân tích dữ liệu với R.</em> NXB Tổng
-                                    hợp TP Hồ Chí Minh.</p>
-                                <p>[2]<em>&nbsp;</em>Danielle Navarro, Ethan Weed (2021). <em>Learning Statistics with
-                                        Python</em>. Online:&nbsp;<a
-                                        href="https://ethanweed.github.io/pythonbook/landingpage.html">https://ethanweed.github.io/pythonbook/landingpage.html</a>.
-                                </p>
-                                <p>[3]<em>&nbsp;</em>Peter Bruce, Andrew Bruce, Peter Gedeck (2020). <em>Practical
-                                        Statistics for Data Scientists: 50+ Essential Concepts Using R and Python</em>.
-                                    O'Reilly Media.</p>
+                                <div class="input" id="input-container">
+                                    <p contenteditable="true" id="1">[1] <span id="tacGia">Nguyễn Văn Tuấn</span>(<span id="namXuatBan">2014</span>). <span class="text-nghien" id="tenTLTK"> Phân tích dữ liệu với R.</span><span id="nguon">NXB Tổnghợp TP Hồ Chí Minh.</span>
+                                    </p>
+                                    
+                                </div>
+                                <p contenteditable="true" id="2">[2]<span id="tacGia"></span> Danielle Navarro, Ethan Weed </span> (<span id="namXuatBan">2021</span>). <span class="text-nghien" id="tenTLTK">Learning Statistics with
+                                            Python</span>. Online:&nbsp;<a
+                                            href="https://ethanweed.github.io/pythonbook/landingpage.html"><span id="nguon">https://ethanweed.github.io/pythonbook/landingpage.html</span></a>.
+                                    </p>
+                                    <p contenteditable="true" id="3">[3]<em>&nbsp;</em>Peter Bruce, Andrew Bruce, Peter Gedeck (2020). <em>Practical
+                                            Statistics for Data Scientists: 50+ Essential Concepts Using R and Python</em>.
+                                        O'Reilly Media.
+                                    </p>
                             </td>
                             <td class="empty"></td>
                         </tr>
@@ -166,14 +172,16 @@
 
                         <tr>
                             <td class="table-2-learning-header">
-                                <p>Tài liệu tham khảo thêm</p>
+                                <p><span id="loaiHocLieu">Tài liệu tham khảo thêm</span></p>
                             </td>
                             <td class="table-2-learning-body">
-                                <p>[4] Jake VanderPlas (2017) <em>Python Data Science Handbook: Essential Tools for
+                                <div class="input" id="input-container">
+                                <p contenteditable="true" id="4">[4] Jake VanderPlas (2017) <em>Python Data Science Handbook: Essential Tools for
                                         Working with Data</em>. O'Reilly Media.</p>
-                                <p>[5] Alan Agresti, Christine A. Franklin, Bernhard Klingenberg (2020).
+                                <p contenteditable="true" id="5">[5] Alan Agresti, Christine A. Franklin, Bernhard Klingenberg (2020).
                                     &nbsp;<em>Statistics:</em> <em>The Art and Science of Learning from Data
                                         5<sup>th</sup> edition.&nbsp;</em>Pearson</p>
+                                </div>
                             </td>
                             <td class="empty"></td>
                         </tr>
@@ -181,20 +189,22 @@
 
                         <tr>
                             <td class="table-2-learning-header">
-                                <p>C&aacute;c loại học liệu kh&aacute;c</p>
+                                <p><span id="loaiHocLieu">Các loại học liệu khác</span></p>
                             </td>
                             <td class="table-2-learning-body">
-                                <p>[6] Mirko Stojiljković (2022). <em>Python Statistics Fundamentals: How to Describe
+                                <div class="input" id="input-container">
+                                <p contenteditable="true" id="6">[6] Mirko Stojiljković (2022). <em>Python Statistics Fundamentals: How to Describe
                                         Your Data</em></p>
-                                <p>[7] FreeCodeCamp. <em>Courses: Data Analysis with
+                                <p contenteditable="true" id="7">[7] FreeCodeCamp. <em>Courses: Data Analysis with
                                         Python</em><em><span>&nbsp;</span></em><span>[</span><a
                                         href="https://www.freecodecamp.org/learn/data-analysis-with-python"><span>https://www.freecodecamp.org/learn/data-analysis-with-python</span></a><span>].&nbsp;</span>
                                 </p>
-                                <p>[8] Dionysia Lemonaki (2022). <em>What is Data Analysis?</em></p>
-                                <p>[9] Colaboratory-team, Craig Citro (2020). <em>Using Google Colab with GitHub</em>
+                                <p contenteditable="true" id="8">[8] Dionysia Lemonaki (2022). <em>What is Data Analysis?</em></p>
+                                <p contenteditable="true" id="9">[9] Colaboratory-team, Craig Citro (2020). <em>Using Google Colab with GitHub</em>
                                     [</span><a
                                         href="https://colab.research.google.com/github/googlecolab/colabtools/blob/master/notebooks/colab-github-demo.ipynb"><span>https://colab.research.google.com/github/<br>&nbsp;googlecolab/colabtools/blob/master/notebooks/colab-github-demo.ipynb</span></a><span>]</span>
                                 </p>
+                                </div>
                             </td>
                             <td class="empty"></td>
                         </tr>
@@ -207,7 +217,7 @@
 
                 <p class="section-content">&nbsp;</p>
                 <p class="section-content"><strong><span>3. Mô tả học phần (Course description):</span></strong></p>
-                <p class="section-content Thut-dau-dong"><span contenteditable="true">
+                <p class="section-content Thut-dau-dong"><span contenteditable="true" id="MoTa">
                         Học phần giúp trang bị cho sinh viên cá c kiến thức cơ bản về xác suất và thống kê để phân tích
                         dữ liệu trong nghiê n cứu. Sinh viên sẽ được học cách biê n tập dữ liệu, cách mô tả dữ liệu bằng
                         biểu đồ và bằng các đặc trưng thống kê, cách thu thập dữ liệu, thiết kế nghiên cứu và kiểm định
@@ -251,8 +261,7 @@
                         <tr>
                             <td colspan="5" class="body-4-learning-outcomes">
                                 <div class="body-4-learning-outcomes-tital">
-                                    <p class="decimal-list"><strong><em><span class="strong-text">❖ Về kiến
-                                                    thức:</span></em></strong></p>
+                                    <p class="decimal-list"><strong><em><span class="strong-text">❖ <span class="loai_CDRMH">Về kiến thức</span>:</span></em></strong></p>
                                 </div>
                             </td>
                         </tr>
@@ -263,7 +272,7 @@
                             </td>
                             <td class="content-4-learning-outcomes-2">
                                 <p class="section-content">
-                                    <span contenteditable="true">
+                                    <span contenteditable="true" class="Noidung_CDRMH">
                                         Trình bày các khái niệm cơ bản về xác suất
                                     </span>
                                 </p>
@@ -272,10 +281,10 @@
                                 <p class="paragraph"> <span contenteditable="true">PLO1</span></p>
                             </td>
                             <td class="content-4-learning-outcomes-4">
-                                <p class="text-center"><span contenteditable="true">2</span></p>
+                                <p class="text-center"><span contenteditable="true" class="TrinhDo">2</span></p>
                             </td>
                             <td class="content-4-learning-outcomes-5">
-                                <p class="paragraph"><span contenteditable="true">TUA</span></p>
+                                <p class="paragraph"><span contenteditable="true" class="loaiTUA">TUA</span></p>
                             </td>
                         </tr>
                         <tr>
@@ -508,7 +517,7 @@
                         <tr>
                             <td class="body-5-course-content-255_55pt">
                                 <p class="table-5-course-content-p">
-                                    <strong><span contenteditable="true">
+                                    <strong><span contenteditable="true" id="TenChuong">
                                         Chương 1. Các khái niệm cơ bản về xác suất
                                         </span></strong></p>
                             </td>
@@ -516,19 +525,19 @@
                                 <p style='header-5-course-content-p'><strong><span contenteditable="true">1</span></strong></p>
                             </td>
                             <td class="body-5-course-content-44_85pt">
-                                <p style='header-5-course-content-p'><strong><span contenteditable="true">5</span></strong></p>
+                                <p style='header-5-course-content-p'><strong><span contenteditable="true" id="GioLyThuyet">5</span></strong></p>
                             </td>
                             <td class="body-5-course-content-40_4pt">
-                                <p style='header-5-course-content-p'><strong><span contenteditable="true">5</span></strong></p>
+                                <p style='header-5-course-content-p'><strong><span contenteditable="true" id="GiothucHanh">5</span></strong></p>
                             </td>
                             <td class="body-5-course-content-55_85pt">
-                                <p style='header-5-course-content-p'><strong><span contenteditable="true">5</span></strong></p>
+                                <p style='header-5-course-content-p'><strong><span contenteditable="true" id="SoGioTuHoc">5</span></strong></p>
                             </td>
                         </tr>
                         {{!-- body - content --}}
                         <tr>
                             <td class="body-5-content-course-content-255_55pt">
-                                <p class="table-5-course-content-p"><span contenteditable="true">1.1. Bổ túc về giải tích tổ hợp</span></p>
+                                <p class="table-5-course-content-p"><span contenteditable="true" id="ChiTietChuong">1.1. Bổ túc về giải tích tổ hợp</span></p>
                             </td>
                             <td class="body-5-content-course-content-71_8pt">
                                 <p class="table-5-course-content-p"><span>&nbsp;</span></p>
@@ -545,7 +554,7 @@
                         </tr>
                         <tr>
                             <td class="body-5-content-course-content-255_55pt">
-                                <p class="table-5-course-content-p"><span contenteditable="true">1.2. Biến cố và quan hệ giữa các biến cố
+                                <p class="table-5-course-content-p"><span contenteditable="true" id="ChiTietChuong">1.2. Biến cố và quan hệ giữa các biến cố
                                     </span></p>
                             </td>
                             <td class="body-5-content-course-content-71_8pt">
@@ -563,7 +572,7 @@
                         </tr>
                         <tr>
                             <td class="body-5-content-course-content-255_55pt">
-                                <p class="table-5-course-content-p"><span contenteditable="true">1.3. Xác suất và một số công thức tính xác
+                                <p class="table-5-course-content-p"><span contenteditable="true" id="ChiTietChuong">1.3. Xác suất và một số công thức tính xác
                                         suất</span></p>
                             </td>
                             <td class="body-5-content-course-content-71_8pt">
@@ -581,7 +590,7 @@
                         </tr>
                         <tr>
                             <td class="body-5-content-course-content-255_55pt">
-                                <p class="table-5-course-content-p"><span contenteditable="true">1.4. Dãy phép thử Bernoulli</span></p>
+                                <p class="table-5-course-content-p"><span contenteditable="true" id="ChiTietChuong">1.4. Dãy phép thử Bernoulli</span></p>
                             </td>
                             <td class="body-5-content-course-content-71_8pt">
                                 <p class="table-5-course-content-p"><span>&nbsp;</span></p>
@@ -598,7 +607,7 @@
                         </tr>
                         <tr>
                             <td class="body-5-content-course-content-255_55pt">
-                                <p class="table-5-course-content-p"><span contenteditable="true">1.5. Biến ngẫu nhiên và hàm phân phối</span>
+                                <p class="table-5-course-content-p"><span contenteditable="true" id="ChiTietChuong">1.5. Biến ngẫu nhiên và hàm phân phối</span>
                                 </p>
                             </td>
                             <td class="body-5-content-course-content-71_8pt">
@@ -616,7 +625,7 @@
                         </tr>
                         <tr>
                             <td class="body-5-content-course-content-255_55pt">
-                                <p class="table-5-course-content-p"><span contenteditable="true">1.6. Một số phân phối thông dụng (phân phối
+                                <p class="table-5-course-content-p"><span contenteditable="true" id="ChiTietChuong">1.6. Một số phân phối thông dụng (phân phối
                                         nhị thức, phân phối Poisson, phân phối chuẩn, phân phối Student, phân phối F và
                                         phân phối χ2)</span></p>
                             </td>
@@ -635,7 +644,7 @@
                         </tr>
                         <tr>
                             <td class="body-5-content-course-content-255_55pt">
-                                <p class="table-5-course-content-p"><span contenteditable="true">1.7. Giới thiệu ngôn ngữ Python/R và lập trình
+                                <p class="table-5-course-content-p"><span contenteditable="true" id="ChiTietChuong">1.7. Giới thiệu ngôn ngữ Python/R và lập trình
                                         trong Python/R</span></p>
                             </td>
                             <td class="body-5-content-course-content-71_8pt">
@@ -657,7 +666,7 @@
                                 <p class="text-justify"><em><span>Kỹ năng mềm và thái độ</span></em></p>
                             </td>
                             <td colspan="4" class="footer-5-course-content-212_9pt">
-                                <p class="table-5-course-content-p"><span contenteditable="true">9</span></p>
+                                <p class="table-5-course-content-p"><span contenteditable="true" id="KyNangMem">9</span></p>
                             </td>
                         </tr>
                         {{!-- body - tital --}}
@@ -785,14 +794,14 @@
                 {{!----}}
                 <p class="section-content"><strong><span>6. Phương pháp dạy và học (Teaching and learning
                             methods):</span></strong></p>
-                <p class="section-content Thut-dau-dong"><span contenteditable="true">- Diễn giảng </span></p>
-                <p class="section-content Thut-dau-dong"><span contenteditable="true">- Vấn đáp (Questions –
+                <p class="section-content Thut-dau-dong"><span contenteditable="true" id="TenPP">- Diễn giảng </span></p>
+                <p class="section-content Thut-dau-dong"><span contenteditable="true" id="TenPP">- Vấn đáp (Questions –
                         Answers)</span></p>
-                <p class="section-content Thut-dau-dong"><span contenteditable="true">- Hoạt động nhóm (Group-based
+                <p class="section-content Thut-dau-dong"><span contenteditable="true" id="TenPP">- Hoạt động nhóm (Group-based
                         Learning)</span></p>
-                <p class="section-content Thut-dau-dong"><span contenteditable="true">- Học dựa trên dự án
+                <p class="section-content Thut-dau-dong"><span contenteditable="true" id="TenPP">- Học dựa trên dự án
                         (Project-based Learning)</span></p>
-                <p class="section-content Thut-dau-dong"><span contenteditable="true">- Thao tác mẫu (Demo)</span></p>
+                <p class="section-content Thut-dau-dong"><span contenteditable="true" id="TenPP">- Thao tác mẫu (Demo)</span></p>
                 {{!----}}
                 {{!-- 7. Đánh giá học phần (Course assessment): --}}
                 {{!----}}
@@ -905,8 +914,8 @@
                 {{!----}}
                 <p class="section-content"><strong><span>8. Các quy định (Course requirements and
                             expectation):</span></strong></p>
-                <p class="section-content"><strong><span>8.1. Quy định về tham dự lớp học</span></strong></p>
-                <p class="section-content Thut-dau-dong"><span contenteditable="true">● Sinh viên có trách nhiệm tham dự đầy đủ các buổi học.
+                <p class="section-content"><strong><span id="LoaiQD">8.1. Quy định về tham dự lớp học</span></strong></p>
+                <p class="section-content Thut-dau-dong"><span contenteditable="true" id="NoiDung">● Sinh viên có trách nhiệm tham dự đầy đủ các buổi học.
                         Trong trường hợp phải nghỉ học vì lý do bất khả kháng thì phải có giấy tờ chứng minh đầy đủ và
                         hợp lý.</span></p>
                 <p class="section-content Thut-dau-dong"><span contenteditable="true">● Sinh viên vắng quá 20% số giờ dự giảng của học phần bị
@@ -935,8 +944,8 @@
                 {{!----}}
                 {{!-- 9.Dự kiến danh sách cán bộ tham gia giảng dạy --}}
                 {{!----}}
-                <p class="section-content" contenteditable="true">TS. Nguyễn Bảo Ân</p>
-                <p class="section-content" contenteditable="true">Ths. Phạm Thị Trúc Mai</p>
+                <p class="section-content" contenteditable="true"><span id="HoTen"></span>TS. Nguyễn Bảo Ân</span></p>
+                <p class="section-content" contenteditable="true"><span id="HoTen"></span>Ths. Phạm Thị Trúc Mai</span></p>
                 <p class="section-content">&nbsp;</p>
                 <p class="section-content"><span>Ngày phê duyệt: ....../......./ .......<em>&nbsp;
                             &nbsp;</em></span></p>
@@ -1028,14 +1037,158 @@
             });
     }
 </script>
-
 <script>
     function checkboxChanged(checkboxId) {
-        var checkboxes = document.querySelectorAll('input[type="checkbox"]');
+        var checkboxes = document.querySelectorAll('input[type="checkbox"]')
         checkboxes.forEach(function (checkbox) {
             if (checkbox.id !== checkboxId) {
-                checkbox.checked = false;
+                checkbox.checked = false
             }
-        });
+        })
+    }
+</script>
+{{!-- lấy loại học phần ra khi checkbox --}}
+<script>
+    {{!-- const selectedOption = document.querySelector('input[type="checkbox"]:checked');
+    if (selectedOption) {
+      const LoaiHocPhan = selectedOption: selectedOption.value;
+    }; --}}
+
+</script>
+{{!-- <script>
+    document.getElementById('input-container').addEventListener('keydown', function (event) {
+        if (event.key === 'Enter') {
+            event.preventDefault();
+
+            // Tạo một phần tử mới <p> và thêm vào div
+            var newParagraph = document.createElement('p');
+            newParagraph.contentEditable = true;
+            var index = this.getElementsByTagName('p').length + 1;
+            newParagraph.textContent = '[' + index + ']';
+            newParagraph.id = index.toString(); // Set id của phần tử là chỉ số
+            this.appendChild(newParagraph);
+
+            // Focus vào phần tử mới tạo
+            newParagraph.focus();
+        }
+    });
+
+    document.getElementById('input-container').addEventListener('keydown', function (event) {
+        if (event.key === 'Backspace') {
+            var focusedElement = document.activeElement;
+
+            // Kiểm tra xem phần tử đang focus có id trống không
+            if (focusedElement.tagName === 'P' && focusedElement.id === '') {
+                event.preventDefault();
+                focusedElement.remove();
+                // Cập nhật lại chỉ số của các phần tử còn lại
+                updateIndexes();
+            }
+        }
+    });
+
+    function updateIndexes() {
+        var paragraphs = document.getElementById('input-container').getElementsByTagName('p');
+        for (var i = 0; i < paragraphs.length; i++) {
+            paragraphs[i].textContent = '[' + (i + 1) + ']';
+            paragraphs[i].id = (i + 1).toString(); // Cập nhật lại id của phần tử
+        }
+    }
+</script> --}}
+<script>
+    {{!-- ham focus the --}}
+    const div = document.querySelector('.formInput_print');
+    div.addEventListener('click', (event) => {
+        // Lấy thẻ đang được click
+        const clickedElement = event.target;
+
+        // Kiểm tra xem phần tử có thể nhận focus hay không
+        const canReceiveFocus = clickedElement instanceof HTMLInputElement ||
+                                clickedElement instanceof HTMLTextAreaElement ||
+                                clickedElement.isContentEditable;
+
+        if (canReceiveFocus) {
+            // Xử lý thẻ được click
+            // Ví dụ thêm class focus
+            clickedElement.classList.add('focus');
+
+            // Xử lý mất focus cho các thẻ khác
+            div.querySelectorAll('.focus').forEach(el => {
+                if (el !== clickedElement) {
+                    el.classList.remove('focus');
+                }
+            });
+        }
+    });
+</script>
+<script>
+    document.getElementById('input-container').addEventListener('keydown', function (event) {
+        if (event.key === 'Enter') {
+            event.preventDefault();
+
+            // Tạo một phần tử mới <p> và thêm vào div
+            var newParagraph = document.createElement('p');
+            newParagraph.contentEditable = true;
+            var index = this.getElementsByTagName('p').length + 1;
+            newParagraph.textContent = '[' + index + ']';
+            newParagraph.id = index.toString(); // Set id của phần tử là chỉ số
+            this.appendChild(newParagraph);
+
+            // Lắng nghe sự kiện khi người dùng xóa
+            newParagraph.addEventListener('input', function () {
+                // Nếu nội dung của phần tử bị xóa hoặc chỉ chứa khoảng trắng, và có class 'focus', thì xóa phần tử
+                if (!this.textContent.trim() && this.classList.contains('focus')) {
+                    var deletedIndex = parseInt(this.id);
+                    this.remove();
+                    // Cập nhật lại chỉ số của các phần tử còn lại
+                    updateIndexes(deletedIndex, this);
+                }
+            });
+
+            // Lắng nghe sự kiện focus để thêm class khi được focus
+            newParagraph.addEventListener('focus', function () {
+                this.classList.add('focus');
+                // Di chuyển con trỏ text vào cuối của nội dung
+                moveCaretToEnd(this);
+            });
+
+            // Lắng nghe sự kiện blur để xóa class khi mất focus
+            newParagraph.addEventListener('blur', function () {
+                this.classList.remove('focus');
+            });
+
+            // Focus vào phần tử mới tạo
+            newParagraph.focus();
+        }
+    });
+
+    function updateIndexes(deletedIndex, focusedElement) {
+        var paragraphs = document.getElementById('input-container').getElementsByTagName('p');
+        for (var i = 0; i < paragraphs.length; i++) {
+            var currentIndex = parseInt(paragraphs[i].id);
+            if (currentIndex > deletedIndex) {
+                // Giảm chỉ số của các phần tử có chỉ số lớn hơn phần tử bị xóa
+                paragraphs[i].textContent = '[' + (currentIndex - 1) + '] ' + paragraphs[i].textContent.slice(paragraphs[i].textContent.indexOf(']') + 1);
+                paragraphs[i].id = (currentIndex - 1).toString();
+            }
+        }
+
+        // Move caret to the previous element if the focused element is deleted
+        if (focusedElement && parseInt(focusedElement.id) === deletedIndex) {
+            var previousIndex = Math.max(1, deletedIndex - 1);
+            var previousElement = document.getElementById(previousIndex.toString());
+            if (previousElement) {
+                moveCaretToEnd(previousElement);
+            }
+        }
+    }
+
+    function moveCaretToEnd(element) {
+        var range = document.createRange();
+        var selection = window.getSelection();
+        range.selectNodeContents(element);
+        range.collapse(false);
+        selection.removeAllRanges();
+        selection.addRange(range);
     }
 </script>

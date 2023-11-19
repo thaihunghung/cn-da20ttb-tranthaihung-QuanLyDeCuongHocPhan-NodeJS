@@ -5,7 +5,7 @@ const dotenv = require('dotenv');
 const app = express();
 app.use(cookieParser());
 dotenv.config();
-const NguoiDung = require('../models/NguoiDung.model');
+const NguoiDung = require('../models/NguoiDung/NguoiDung.model');
 exports.login_get = (req, res, next) => {
     res.render('login/login');
 }
