@@ -7,7 +7,6 @@ const {mongooseToObject,MutipleMongooseToObject} = require('../util/mongoose');
 
 exports.ChuongTrinh_GET = async (req, res) => {
     try {
-        const groupedplo  = {};
         const PO = await POModel.find({});
         const PLO = await PLOModel.find({});
         const DapungCT = await dapUng_CTModel.find({});
@@ -16,18 +15,20 @@ exports.ChuongTrinh_GET = async (req, res) => {
         const posObjects = PO.map(mongooseToObject);
         const ploObjects = PLO.map(mongooseToObject);
         const mappingObjects = DapungCT.map(mongooseToObject);
-        
         const chuongTrinhAsObject = chuongTrinh.map(mongooseToObject);
-
-        ploObjects.forEach(item => {
+        console.log(posObjects);
+        const groupedPLO = ploObjects.reduce((grouped, item) => {
             const key = item.LoaiCDR_CT;
-          
-            if (!groupedplo[key]) {
-                groupedplo[key] = [];
+            if (!grouped[key]) {
+              grouped[key] = [];
             }
-            groupedplo[key].push(item);
-        });
-        res.render('chuongTrinh/chuongTrinh',{chuongTrinh:chuongTrinhAsObject, PO: posObjects,PLO:ploObjects, DapungCT:mappingObjects, groupedplo})
+            grouped[key].push(item);
+            return grouped;
+          }, {});
+          
+          // groupedPLO sẽ là một đối tượng với key là LoaiCDR_CT và value là một mảng các PLOObjects tương ứng
+        res.render('chuongTrinh/chuongTrinh',{chuongTrinh:chuongTrinhAsObject, PO: posObjects,PLO:ploObjects, DapungCT:mappingObjects, GroupLoai: groupedPLO})
+
     } catch (error) {
         console.error('Error fetching ChuongTrinh:', error.message);
         res.status(500).send('Internal Server Error');

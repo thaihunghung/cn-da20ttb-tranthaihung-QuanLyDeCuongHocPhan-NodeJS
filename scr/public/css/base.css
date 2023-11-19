@@ -22,6 +22,8 @@
 }
 
 .section-content {
+    font-size: 13pt;
+    font-family: calc(--font-family);
     margin: 0cm;
     color: black;
     text-align: justify;

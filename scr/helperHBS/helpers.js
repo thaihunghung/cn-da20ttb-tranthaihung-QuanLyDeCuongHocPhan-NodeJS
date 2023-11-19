@@ -3,10 +3,6 @@ const Handlebars = require('handlebars');
 
 module.exports = {
     ifMatch: function(idCDR, maMT_CTDT, dapungCT) {
-        console.log("plo",idCDR);
-        console.log("po",maMT_CTDT);
-
-        console.log('dap ung',dapungCT);
         if (!Array.isArray(dapungCT)) {
           console.error("dapungCT must be an array");
           return '';
@@ -20,7 +16,7 @@ module.exports = {
           return item.id_CDR.trim() === idCDR.trim() && 
                 item.MaMT_CTD.trim() === maMT_CTDT.trim();
         });
-      
+        
         if (mapping) {
           return 'X';
         } else {

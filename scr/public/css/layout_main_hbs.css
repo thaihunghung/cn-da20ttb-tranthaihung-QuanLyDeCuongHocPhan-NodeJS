@@ -5,7 +5,7 @@
     font-size: var(--font-size);
     line-height: var(--line-height);
     font-family: var(--font-family);
-    background-color:darkgray;
+    background-color:white;
     height: 100%;
     min-height: 600px;
 }

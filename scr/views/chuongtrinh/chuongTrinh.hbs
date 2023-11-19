@@ -1,4 +1,4 @@
-<div class="tong" style="height: 4000px;">
+<div class="program" style="height: 4000px;">
 
 
   {{#each chuongTrinh}}
@@ -26,7 +26,53 @@
   {{/each}}
 
 
-  <h1>Ma Trận Ánh Xạ PO-PLO</h1>
+  <table class="table-program section-content">
+    <tbody>
+      
+      <tr>
+        <td class="table-header-program-58_55pt">
+                <p class="section-content text-center"><strong>PLO</span></strong></p>
+        </td>
+        <td class="table-header-program-229_6pt">
+                <p class="section-content text-center"><strong>Nội&nbsp;dung</span></strong></p>
+            </td>
+        {{#each PO}}
+          <th class="table-header-program-36pt"> 
+            <p class="section-content text-center"><strong>{{this.TenMT_CTDT}}</strong></p>
+          </th>  
+        {{/each}}
+      </tr>
+      {{#each GroupLoai}}
+      <tr>
+        <td colspan="7" class="table-tital-program-468_2pt"><p><strong>{{this.[0].LoaiCDR_CT}}</p></strong></td>
+      </tr>
+
+      {{#each this}}
+        <tr>
+          <td class="table-body-program-58_55pt text-center"><p><strong>{{this.Ten_CDR}}</strong></p></td>
+          <td class="table-body-program-229_6pt"><p>&nbsp;{{this.NoiDung}}&nbsp;</p></td>
+          {{#each ../../PO}}
+            <td class="table-body-program-36pt text-center">
+              <div class="modify-flex"></div>
+              {{#ifMatch ../this.id_CDR this.MaMT_CTDT ../../../DapungCT}}
+              
+                <strong>X</strong> 
+              
+              
+              {{/ifMatch}}
+             </div> 
+            </td>
+          {{/each}}
+        </tr>
+      {{/each}}
+    {{/each}}  
+    </tbody>
+  </table>
+</div>
+
+
+
+{{!-- <h1>Ma Trận Ánh Xạ PO-PLO</h1>
 
   <table>
     <thead>
@@ -42,12 +88,6 @@
 
     <tbody>
       {{#each PLO}}
-     {{#ifDifferent this.LoaiCDR_CT ../currentLoaiCDR}}
-                <tr>
-                    <td colspan="7">{{this.LoaiCDR_CT}}</td>
-                </tr>
-            {{/ifDifferent}}
-      <tr>
         <td>{{this.Ten_CDR}}</td>
         <td>{{this.NoiDung}}</td>
         {{#each ../PO}}
@@ -58,45 +98,51 @@
 
           {{/ifMatch}}
         </td>
+        <td>
+
+        </td>
         {{/each}}
       </tr>
       {{/each}}
     </tbody>
-  </table>
+  </table> --}}
 
-  <h1>hung</h1>
-  <table>
-  <thead>
-    <tr>
-      <th>Loại kỹ năng</th>
-      <th>PLO</th>
-      <th>Nội dung</th>
-      {{#each PO}}
-        <th>{{this.MaMT_CTDT}}</th>
-      {{/each}}
-    </tr>
-  </thead>
+{{!-- <h1>phan loai</h1> 
+{{#each GroupLoai}}
+  <table class="table-program">
+    <tbody>
+      <tr>
+        <td class="table-header-program-58_55pt">
+                <p class="section-content text-center"><strong>PLO</span></strong></p>
+        </td>
+        <td class="table-header-program-229_6pt">
+                <p class="section-content text-center"><strong>Nội&nbsp;dung</span></strong></p>
+            </td>
+        {{#each ../PO}}
+          <th class="table-header-program-36pt"> 
+            <p class="section-content text-center"><strong>{{this.MaMT_CTDT}}</strong></p>
+          </th>  
+        {{/each}}
+      </tr>
+      <tr>
+        <td colspan="7" class="table-tital-program-468_2pt"><p>{{this.[0].LoaiCDR_CT}}</p></td>
+      </tr>
 
-  <tbody>
-    {{#each groupedPLO}}
+    
       {{#each this}}
         <tr>
-          {{#if @first}}
-            <td colspan="7">{{getKey ../}}</td>
-          {{/if}}
-          <td>{{this.Ten_CDR}}</td>
-          <td>{{this.NoiDung}}</td>
+          <td style="width: 58.55pt;border-right: 1pt solid black;border-bottom: 1pt solid black;border-left: 1pt solid black;border-image: initial;border-top: none;padding: 0cm;height: 44.85pt;vertical-align: top;">{{this.Ten_CDR}}</td>
+          <td style="width: 229.6pt;border-top: none;border-left: none;border-bottom: 1pt solid black;border-right: 1pt solid black;padding: 0cm;height: 44.85pt;vertical-align: top;">{{this.NoiDung}}</td>
           {{#each ../../PO}}
-            <td>
-              {{#ifMatch ../../../this.id_CDR this.MaMT_CTDT ../../../../DapungCT}}
+            <td style="width: 36pt;border-top: none;border-left: none;border-bottom: 1pt solid black;border-right: 1pt solid black;padding: 0cm;height: 44.7pt;vertical-align: top;">
+              {{#ifMatch ../this.id_CDR this.MaMT_CTDT ../../../DapungCT}}
                 X
               {{else}}
-                  
               {{/ifMatch}}
             </td>
           {{/each}}
         </tr>
       {{/each}}
-    {{/each}}
-  </tbody>
-</table>
+    {{/each}}  
+    </tbody>
+  </table> --}}
