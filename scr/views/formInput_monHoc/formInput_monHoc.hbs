@@ -1,3 +1,4 @@
+<button onclick="showSkills()">Hiển thị Kỹ năng</button>
 <div class="formInput">
     <div class="formInput_monHoc" id="formInput_monHoc">
         <div class="formInput_baseA4" id="formInput_baseA4">
@@ -15,7 +16,7 @@
                 <p class="section-content text-center"><strong>MSHP:<span contenteditable="true" id="MaMon">320045</span></strong>
                 </p>
                 <p class="section-content">&nbsp;</p>
-                <p class="section-content"><strong><span>1. Thông tin chung (General information):</span></strong></p>
+                <p class="section-content"><strong><span contenteditable="false">1. Thông tin chung (General information):</span></strong></p>
                 <p class="section-content">&nbsp;</p>
                 {{!-- table general-information --}}
                 {{!-- 1. Thông tin c"class="body-course-content" (General information): --}}
@@ -104,10 +105,12 @@
                     <tbody>
                         <tr>
                             <td class="header-1-general-information-2">Học phần tiên quyết</td>
-                            <td colspan="2" class="body-1-general-colspan-2"><span contenteditable="true" id="HocPhanTQ">Vi tích phân
+                            <td colspan="2" class="body-1-general-colspan-2">
+                                <span contenteditable="true" id="Ten_HocPhan_TQ">Vi tích phân
                                     A1</span> &nbsp; &nbsp;
                                 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-                                &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;MSHP:<span contenteditable="true" id="HocPhanTQ">110042</span> </td>
+                                &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;MSHP:
+                                <span contenteditable="true" id="MSHP_TQ">110042</span> </td>
                         </tr>
                         <tr>
                             <td class="body-1-general-left-2">Học phần song hành</td>
@@ -117,23 +120,34 @@
                         <tr>
                             <td rowspan="3" class="body-1-general-left-2">Các yêu cầu khác</td>
                             <td class="header-1-general-information-2">Về kiến thức:</td>
-                            <td class="body-1-general-colspan-2"><span contenteditable="true">kiến thức toán học phổ
-                                    thông</span></td>
-                        </tr>
-                        <tr>
-                            <td class="header-1-general-information-2">Về kỹ năng:</td>
-                            <td class="body-1-general-colspan-2">
-                                <p><span contenteditable="true">
-                                - Kỹ năng phân tích, giải quyết vấn đề
-                                - Kỹ năng tập trung, ghi nhớ, tính toán, biến đổi
-                                </span>
-                                </p>
+                            <td class="body-1-general-colspan-2" id="KienThuc" contenteditable="true">
+
+                                <p id="KienThuc-1">&nbsp;-&nbsp;Kiến thức toán học phổ thông</p>
                             </td>
                         </tr>
                         <tr>
+                            <td class="header-1-general-information-2">Về kỹ năng:</td>
+                            
+                            <td class="body-1-general-colspan-2" id="KyNang" contenteditable="true">
+                                <p id="KyNang-1">&nbsp;-&nbsp;Kỹ năng phân tích, giải quyết vấn đề</p> 
+                                <p id="KyNang-2">&nbsp;-&nbsp;Kỹ năng tập trung, ghi nhớ, tính toán, biến đổi</p>      
+                            </td>
+                            {{!-- <p><span contenteditable="true">
+
+                                - Kỹ năng tập trung, ghi nhớ, tính toán, biến đổi
+                                
+                                </span></p> --}}
+                        </tr>
+                        <tr>
                             <td class="header-1-general-information-2">Về thái độ:</td>
-                            <td class="body-1-general-colspan-2"><span contenteditable="true">Chủ động trong học
-                                    tập</span></td>
+                            <td class="body-1-general-colspan-2" id="ThaiDo" contenteditable="true">
+                            <p contenteditable="true" id="ThaiDo=1">
+                                &nbsp;-&nbsp;Chủ động trong học tập
+                            </p>
+                            
+                            
+                            </td>
+                           
                         </tr>
                     </tbody>
                 </table>
@@ -1049,11 +1063,42 @@
 </script>
 {{!-- lấy loại học phần ra khi checkbox --}}
 <script>
-    {{!-- const selectedOption = document.querySelector('input[type="checkbox"]:checked');
-    if (selectedOption) {
-      const LoaiHocPhan = selectedOption: selectedOption.value;
-    }; --}}
+    {{!-- HocPhan --}}
+    const MaMon = document.getElementById('MaMon');
+    const PhuLuc = document.getElementById('PhuLuc');
+    const TenMon = document.getElementById('TenMon');
+    const SoGioTuHoc = document.getElementById('SoGioTuHoc');
+    const TH = document.getElementById('TH');
+    const LT = document.getElementById('LT');
+    const MoTa = document.getElementById('MoTa');
+    {{!-- const LoaiHocPhan = checkedValue; --}}
+    const LoaiHocPhan = document.getElementsByClassName("test");
+    const SoTC_LT = document.getElementById('SoTC_LT');
+    const SoTC_TH = document.getElementById('SoTC_TH');
+    const TrinhDo_DT = document.getElementById('TrinhDo_DT');
+    const ChuyenNganh = document.getElementById('ChuyenNganh');
+    const HocKy = document.getElementById('HocKy');
+    const NamHoc = document.getElementById('NamHoc');
+    {{!-- Điều kiện tham gia --}}
+    
+     function getSkills() {
+        // Get the content of the skills span
+        var skillsContent = document.getElementById('KyNang').textContent;
 
+        // Split the content into an array of skills
+        {{!-- var skillsArray = skillsContent.split('\n').map(skill => skill.trim()).filter(skill => skill !== '');
+
+        return skillsArray; --}}
+    }
+
+    // Function to display skills when the button is clicked
+    function showSkills() {
+        // Get the skills
+        var skillsContent = document.getElementById('KyNang').textContent;
+
+        // Display the skills (you can modify this part based on your application's needs)
+        alert('Kỹ năng:', skillsContent );
+    }
 </script>
 {{!-- <script>
     document.getElementById('input-container').addEventListener('keydown', function (event) {
@@ -1191,4 +1236,29 @@
         selection.removeAllRanges();
         selection.addRange(range);
     }
+</script>
+<script>
+    function AddElementP(key) {
+        document.getElementById(key).addEventListener('keydown', function (event) {
+            if (event.key === 'Enter') {
+                event.preventDefault();
+                var newcontent = document.createElement('p')
+                newcontent.contentEditable="true";
+                var index = this.getElementsByTagName('p').length + 1;
+                newcontent.innerHTML='&nbsp;-&nbsp;'
+                newcontent.id = key+"-"+index.toString();
+                this.appendChild(newcontent);
+            }
+        })
+    }
+    AddElementP('KyNang');
+    AddElementP('KienThuc');
+    AddElementP('ThaiDo');
+    {{!-- <td class="body-1-general-colspan-2" id="KyNang" contenteditable="true">
+    <p id="KyNang-1">&nbsp;-&nbsp;Kỹ năng phân tích, giải quyết vấn đề</p>  --}}
+    var kyNang1Element = document.getElementById('KyNang-1');
+
+// Kiểm tra xem nội dung có bắt đầu bằng '&nbsp;-&nbsp;' hay không
+
+
 </script>

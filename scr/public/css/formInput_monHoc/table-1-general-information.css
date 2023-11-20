@@ -40,7 +40,7 @@
     vertical-align: none;
 }
 .body-1-general-left-2 {
-    width: 131.35pt;
+    width: 130.25pt;
     max-width: 131.35pt;
     height: 17.4pt;
     min-height: 17.4pt;
@@ -48,7 +48,7 @@
     vertical-align: none;   
 }
 .body-1-general-right-2 {
-    width: 336pt;
+    width: 339pt;
     max-width: 336pt;
     height: 17.4pt;
     min-height: 17.4pt;
@@ -61,5 +61,8 @@
     height: 16.8pt;
     min-height: 16.8pt;
     vertical-align: none;
+    margin: 0 5.4pt;
+}
+.body-1-general-colspan-2 {
     margin: 0 5.4pt;
 }

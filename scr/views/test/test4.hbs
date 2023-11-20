@@ -1,33 +1,63 @@
-<div contenteditable="true" class="MaMon" style="border: 1px solid #ccc; padding: 5px;"></div>
-    <div contenteditable="true" class="TenMon" style="border: 1px solid #ccc; padding: 5px;"></div>
-    <button onclick="saveHocPhan()">Save HocPhan</button>
 
-    <script>
-        function saveHocPhan() {
-            var MaMon = document.querySelector('.MaMon').innerText;
-            var TenMon = document.querySelector('.TenMon').innerText;
 
-            // Prepare the data to be sent
-            var data = {
-                MaMon: MaMon,
-                TenMon: TenMon
-            };
+<table id="myTable">
+    <tr id="Tr-KienThuc">
+        <th colspan="5">Về kiến thức</th>
+    </tr>
+    <tr>
+        <th id="Th-KienThuc">1.</th>
+        <th id="Th-KienThuc">Trình bày các khái niệm cơ bản về xác suất</th>
+        <th id="Th-KienThuc">PLO1</th>
+        <th id="Th-KienThuc">2</th>
+        <th id="Th-KienThuc">TUA</th>
+    </tr>
+    <tr id="Tr-KyNang">
+        <th colspan="5">Về kỹ năng</th>
+    </tr>
+    <tr>
+        <th id="Th-KyNang">1.</th>
+        <th id="Th-KyNang">Trình bày các khái niệm cơ bản về xác suất</th>
+        <th id="Th-KyNang">PLO1</th>
+        <th id="Th-KyNang">2</th>
+        <th id="Th-KyNang">TUA</th>
+    </tr>
+    <tr id="Tr-ThaiDo"> 
+        <th colspan="5">Về thái độ:</th>
+    </tr>
+    <tr>
+        <th id="Th-ThaiDo">1.</th>
+        <th id="Th-ThaiDo">Trình bày các khái niệm cơ bản về xác suất</th>
+        <th id="Th-ThaiDo">PLO1</th>
+        <th id="Th-ThaiDo">2</th>
+        <th id="Th-ThaiDo">TUA</th>
+    </tr>
+</table>
 
-            // Send a POST request to the server
-            fetch('/saveHocPhan', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify(data),
-            })
-            .then(response => response.json())
-            .then(result => {
-                console.log(result);
-                // Handle the result as needed
-            })
-            .catch(error => {
-                console.error('Error saving data:', error);
-            });
-        }
-    </script>
+<button data-target="Tr-KienThuc" onclick="addTableRow(this)">Thêm Hàng Kiến Thức</button>
+<button data-target="Tr-KyNang" onclick="addTableRow(this)">Thêm Hàng Kỹ Năng</button>
+<button data-target="Tr-ThaiDo" onclick="addTableRow(this)">Thêm Hàng Thái Độ</button>
+
+<script>
+function addTableRow(button) {
+    // Lấy giá trị data-target của nút bấm để xác định phần tử cụ thể trong bảng
+    var targetId = button.getAttribute('data-target');
+    
+    var table = document.getElementById('myTable');
+    var newRow = table.insertRow(table.rows.length);
+
+    // Tạo nội dung và thêm vào hàng mới
+    for (var i = 0; i < 5; i++) {
+        var cell = newRow.insertCell(i);
+        cell.id = 'Th-New';
+        cell.textContent = 'Nội dung mới';
+    }
+    
+    // Thiết lập thuộc tính colspan cho hàng mới
+    newRow.setAttribute('colspan', '5');
+    
+    // Thiết lập ID cho hàng mới dựa trên data-target của nút bấm
+    newRow.id = targetId + '-New';
+}
+</script>
+
+
