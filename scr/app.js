@@ -74,7 +74,7 @@ app.use('/chuongtrinh', chuongtrinhRoutes);
 //   // await hocPhanInstance.findOne({ MaMon:, TenMon: });        
 // });
 app.get('/', (req, res) => {
-  res.render('formInput_monHoc/formInput_monHoc')
+  res.render('test/test2')
 })
 // app.post('/test', async (req, res) => {
 //   // Handle the incoming JSON data

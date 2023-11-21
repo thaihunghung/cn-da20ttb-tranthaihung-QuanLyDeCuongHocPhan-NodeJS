@@ -57,7 +57,8 @@
     border-bottom: 1pt solid black;
     border-right: 1pt solid black;
     padding: 0cm 5.75pt;
-    height: 14.35pt;
+    height: 20 pt;
+    min-height: 17pt;
     vertical-align: top;
  }
 
@@ -71,14 +72,14 @@
 }
 .body-5-course-content-44_85pt {
     width: 44.85pt;
-    height: 14.35pt;
+    height: 20pt;
 }
 .body-5-course-content-40_4pt {
     width: 40.4pt;
 }
 .body-5-course-content-55_85pt {
     width: 55.85pt;
-    height: 14.35pt;
+    height: 20pt;
 }
 .body-5-content-course-content-255_55pt {
     width: 255.55pt;
@@ -87,11 +88,11 @@
 }
 .body-5-content-course-content-71_8pt {
     width: 71.8pt;
-    height: 14.35pt;
+    height: 20pt;
 }
 .body-5-content-course-content-44_85pt {
     width: 44.85pt;
-    height: 14.35pt;
+    height: 20pt;
 }
 .body-content--course-content-40_4pt {
     width: 40.4pt;

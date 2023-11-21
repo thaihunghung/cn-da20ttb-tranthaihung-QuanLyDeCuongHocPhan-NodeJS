@@ -1,63 +1,100 @@
 
 
-<table id="myTable">
-    <tr id="Tr-KienThuc">
-        <th colspan="5">Về kiến thức</th>
+
+<table>
+  <tbody id="myTable">
+    <tr id="1">
+      <th colspan="4">Thành phần cha 1</th>
     </tr>
-    <tr>
-        <th id="Th-KienThuc">1.</th>
-        <th id="Th-KienThuc">Trình bày các khái niệm cơ bản về xác suất</th>
-        <th id="Th-KienThuc">PLO1</th>
-        <th id="Th-KienThuc">2</th>
-        <th id="Th-KienThuc">TUA</th>
+    <tr id="1.1">
+      <th>1</th>
+      <th>2</th>
+      <th>3</th>
+      <th>4</th>
     </tr>
-    <tr id="Tr-KyNang">
-        <th colspan="5">Về kỹ năng</th>
+
+    <tr id="2">
+      <th colspan="4">Thành phần cha 2</th>
     </tr>
-    <tr>
-        <th id="Th-KyNang">1.</th>
-        <th id="Th-KyNang">Trình bày các khái niệm cơ bản về xác suất</th>
-        <th id="Th-KyNang">PLO1</th>
-        <th id="Th-KyNang">2</th>
-        <th id="Th-KyNang">TUA</th>
+    <tr id="2.1">
+      <th>1</th>
+      <th>2</th>
+      <th>3</th>
+      <th>4</th>
     </tr>
-    <tr id="Tr-ThaiDo"> 
-        <th colspan="5">Về thái độ:</th>
-    </tr>
-    <tr>
-        <th id="Th-ThaiDo">1.</th>
-        <th id="Th-ThaiDo">Trình bày các khái niệm cơ bản về xác suất</th>
-        <th id="Th-ThaiDo">PLO1</th>
-        <th id="Th-ThaiDo">2</th>
-        <th id="Th-ThaiDo">TUA</th>
-    </tr>
+  </tbody>
 </table>
 
-<button data-target="Tr-KienThuc" onclick="addTableRow(this)">Thêm Hàng Kiến Thức</button>
-<button data-target="Tr-KyNang" onclick="addTableRow(this)">Thêm Hàng Kỹ Năng</button>
-<button data-target="Tr-ThaiDo" onclick="addTableRow(this)">Thêm Hàng Thái Độ</button>
+<!-- Nút Thêm Thành Phần Cha và Con -->
+<button id="nutThem">Thêm Thành Phần</button>
+
+<!-- Nút Thêm Thành Phần Con -->
+<button id="nutThemCon">Thêm Thành Phần Con</button>
 
 <script>
-function addTableRow(button) {
-    // Lấy giá trị data-target của nút bấm để xác định phần tử cụ thể trong bảng
-    var targetId = button.getAttribute('data-target');
-    
-    var table = document.getElementById('myTable');
-    var newRow = table.insertRow(table.rows.length);
+function themTrChaVaCon() {
+  // Tìm tbody trong bảng
+  var tbody = document.getElementById('myTable');
 
-    // Tạo nội dung và thêm vào hàng mới
-    for (var i = 0; i < 5; i++) {
-        var cell = newRow.insertCell(i);
-        cell.id = 'Th-New';
-        cell.textContent = 'Nội dung mới';
-    }
-    
-    // Thiết lập thuộc tính colspan cho hàng mới
-    newRow.setAttribute('colspan', '5');
-    
-    // Thiết lập ID cho hàng mới dựa trên data-target của nút bấm
-    newRow.id = targetId + '-New';
+  // Tạo một hàng mới cho thành phần cha
+  var trMoiCha = document.createElement('tr');
+
+  // Thêm một ô tiêu đề vào hàng mới cho thành phần cha
+  var oTieuDeCha = document.createElement('th');
+  oTieuDeCha.colSpan = "4";
+  oTieuDeCha.textContent = 'Thành phần cha mới';
+
+  // Thêm ô tiêu đề vào hàng mới cho thành phần cha
+  trMoiCha.appendChild(oTieuDeCha);
+
+  // Thêm hàng mới cho thành phần cha vào tbody
+  tbody.appendChild(trMoiCha);
+
+  // Tạo một hàng mới cho thành phần con
+  var trMoiCon = document.createElement('tr');
+
+  // Thêm các ô tiêu đề vào hàng mới cho thành phần con
+  for (var i = 1; i <= 4; i++) {
+    var oTieuDeCon = document.createElement('th');
+    oTieuDeCon.textContent = i;
+    trMoiCon.appendChild(oTieuDeCon);
+  }
+
+  // Thêm Thành phần con vào tbody sau Thành phần cha
+  tbody.appendChild(trMoiCon);
 }
+
+function themTrCon(trChaId) {
+  // Tìm Thành phần cha trong tbody
+  var trCha = document.getElementById(trChaId);
+
+  // Nếu không tìm thấy Thành phần cha
+  if (!trCha) {
+    console.error('Không tìm thấy Thành phần cha.');
+    return;
+  }
+
+  // Tạo Thành phần con mới
+  var trCon = document.createElement('tr');
+
+  // Thêm các ô tiêu đề vào hàng mới cho Thành phần con
+  for (var i = 1; i <= 4; i++) {
+    var oTieuDeCon = document.createElement('th');
+    oTieuDeCon.textContent = i;
+    trCon.appendChild(oTieuDeCon);
+  }
+
+  // Thêm Thành phần con vào cuối danh sách các Thành phần con của Thành phần cha
+  trCha.parentNode.appendChild(trCon);
+}
+// Gán sự kiện click cho nút "Thêm Thành Phần Cha và Con"
+document.getElementById('nutThem').addEventListener('click', function() {
+  themTrChaVaCon();
+});
+
+// Gán sự kiện click cho nút "Thêm Thành Phần Con"
+document.getElementById('nutThemCon').addEventListener('click', function() {
+  // Trong ví dụ này, thêm Thành phần con vào Thành phần cha có ID là "1" (có thể sửa thành ID khác)
+  themTrCon('1');
+});
 </script>
-
-
