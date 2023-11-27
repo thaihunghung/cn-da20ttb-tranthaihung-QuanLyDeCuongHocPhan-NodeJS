@@ -444,3 +444,10 @@ span {
     margin-bottom: 6px;
     background-color: #FA9E57;
 }
+.instructionForm-table5,
+.instructionForm-table4,
+.instructionForm-table2
+ {
+  display: none;
+
+}

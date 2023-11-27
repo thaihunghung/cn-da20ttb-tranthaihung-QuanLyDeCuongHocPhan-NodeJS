@@ -1,152 +1,151 @@
-<div class="body-body">
-    <div class="submitdemo">
-        <button class="btn btn-outline-success my-2 my-sm-0" id="taocautruc"type="submit">tạo cấu trúc</button>
-    </div>
-    <div class="app" id="app">
-    <div class="app-A4" id="app-A4">
-        {{!-- <div class="content-header" id="content-header">
-        </div>
-        <div class="content-table-course">
-        </div> --}}
-            
-            <table class="my-table" width="625" id="myTable">
-                <tr style="height:70.6pt">
-                    <td class="width-342" rowspan="2">
-                        <b class="color-000">Nội dung</b>
-                    </td>
-                    <td class="width-96" rowspan="2">
-                        <b class="color-000">CĐR học phần</b>
-                    </td>
-                    <td class="width-114" colspan="2">
-                        <b class="color-000">Số giờ</b>
-                    </td>
-                    <td class="width-74">
-                        <b class="color-000">Giờ tự học và giờ học khác</b>
-                    </td>
-                </tr>
-                <tr style="height:6.6pt">
-                    <td class="width-60">
-                        <b class="color-000">LT</b>
-                    </td>
-                    <td class="width-54">
-                        <b class="color-000">TH</b>
-                    </td>
-                    <td class="width-74-gth"></td>
-                </tr>
-                <tr style="height:14.35pt">
-                    <td class="width-341">
-                        <b class="color-000">Chương 1. Các khái niệm cơ bản về xác suất</b>
-                    </td>
-                    <td class="width-96-gth">
-                        <b class="color-000">1</b>
-                    </td>
-                    <td class="width-60-gth">
-                        <b class="color-000">5</b>
-                    </td>
-                    <td class="width-54-gth">
-                        <b class="color-000">5</b>
-                    </td>
-                    <td class="width-74-gth">
-                        <b class="color-000">5</b>
-                    </td>
-                </tr>
-            </table>
-    </div>
-    
+<div class="formInput_print">
+    <table class="table-2-learning-resources">
+        <tbody>
+            <tr>
+                <td class="table-2-learning-header">
+                    <p><span id="loaiHocLieu">Giáo trình/Tài liệu học tập chính</span></p>
+                </td>
+                <td class="table-2-learning-body">
+                    <div id="TaiLieuGiaotrinh">
+                        <p id="giaotrinh1">
+                            [<span id="STT" contenteditable="true" onclick="toggleElement('giaotrinh1')">1</span>]
+                            <span id="tacGiaGT-1" contenteditable="true" onclick="toggleElement('giaotrinh1')">'Tên tác
+                                giả'</span>
+                            (<span id="namxuatbangt-1" contenteditable="true"
+                                onclick="toggleElement('giaotrinh1')">2014</span>).&nbsp;
+                            <span id="tenTLTKGT-1" contenteditable="true" onclick="toggleElement('giaotrinh1')"
+                                class="text-nghien">'Tên tác phẩm'</span>
+                            [<span id="nguongt-1" contenteditable="true"
+                                onclick="toggleElement('giaotrinh1')">'Nguồn'</span>]
+                            <strong
+                                contenteditable="true">.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</strong>
+                        </p>
+                        <div id="giaotrinh1Div" class="hidden"
+                            onblur="updateAndToggleElement('giaotrinh1', 'giaotrinh1Div')"
+                            onkeydown="handleKeyDown(event, 'giaotrinh1', 'giaotrinh1Div')">
+                            <p><strong>Stt:</strong>&nbsp;<span id="STTDivSpan" contenteditable="true"></span></p>
+                            <p><strong>Tên tác giả:</strong> &nbsp;<span id="tacGiaDivSpan"
+                                    contenteditable="true"></span></p>
+                            <p><strong>Năm Xuất bảng:</strong> &nbsp;<span id="namDivSpan"
+                                    contenteditable="true"></span></p>
+                            <p><strong>Tên tài liệu tham khảo:</strong> &nbsp;<span id="tenTLTKDivSpan"
+                                    contenteditable="true" class="text-nghien"></span></p>
+                            <p><strong>Nguồn:</strong> &nbsp;<span id="nguonDivSpan" contenteditable="true"></span></p>
+                        </div>
+                <td class="empty"></td>
+            </tr>
+            <tr>
+                <td class="table-2-learning-header">
+                    <p><span id="loaiHocLieu">Tài liệu tham khảo thêm</span></p>
+                </td>
+                <td class="table-2-learning-body">
+                    <div class="input" id="input-container">
+                        <p contenteditable="true" id="4">[4] Jake VanderPlas (2017) <em>Python Data Science
+                                Handbook: Essential Tools for
+                                Working with Data</em>. O'Reilly Media.</p>
+                        <p contenteditable="true" id="5">[5] Alan Agresti, Christine A. Franklin, Bernhard
+                            Klingenberg (2020).
+                            &nbsp;<em>Statistics:</em> <em>The Art and Science of Learning from Data
+                                5<sup>th</sup> edition.&nbsp;</em>Pearson</p>
+                    </div>
+                </td>
+                <td class="empty"></td>
+            </tr>
+
+
+            <tr>
+                <td class="table-2-learning-header">
+                    <p><span id="loaiHocLieu">Các loại học liệu khác</span></p>
+                </td>
+                <td class="table-2-learning-body">
+                    <div class="input" id="input-container">
+                        <p contenteditable="true" id="6">[6] Mirko Stojiljković (2022). <em>Python
+                                Statistics Fundamentals: How to Describe
+                                Your Data</em></p>
+                        <p contenteditable="true" id="7">[7] FreeCodeCamp. <em>Courses: Data Analysis with
+                                Python</em><em><span>&nbsp;</span></em><span>[</span><a
+                                href="https://www.freecodecamp.org/learn/data-analysis-with-python"><span>https://www.freecodecamp.org/learn/data-analysis-with-python</span></a><span>].&nbsp;</span>
+                        </p>
+                        <p contenteditable="true" id="8">[8] Dionysia Lemonaki (2022). <em>What is Data
+                                Analysis?</em></p>
+                        <p contenteditable="true" id="9">[9] Colaboratory-team, Craig Citro (2020).
+                            <em>Using Google Colab with GitHub</em>
+                            [</span><a
+                                href="https://colab.research.google.com/github/googlecolab/colabtools/blob/master/notebooks/colab-github-demo.ipynb"><span>https://colab.research.google.com/github/<br>&nbsp;googlecolab/colabtools/blob/master/notebooks/colab-github-demo.ipynb</span></a><span>]</span>
+                        </p>
+                    </div>
+                </td>
+                <td class="empty"></td>
+            </tr>
+        </tbody>
+    </table>
 </div>
-</div>
-<script>// Mảng KiemTra để theo dõi trạng thái
-var KiemTra = [0];
-// Mảng để theo dõi các hàng đã được tạo
-var createdRows = [];
-var contentOverflowed = false;
-  document.getElementById('taocautruc').addEventListener('click', function() {
-    
-   var table = document.getElementById('myTable');
-    var newRow = document.createElement('tr');
-    newRow.innerHTML = `
-        <td class="width-341"><b class="color-000">Chương 1. Các khái niệm cơ bản về xác suất</b></td>
-        <td class="width-96-gth"><b class="color-000">1</b></td>
-        <td class="width-60-gth"><b class="color-000">5</b></td>
-        <td class="width-54-gth"><b class="color-000">5</b></td>
-        <td class="width-74-gth"><b class="color-000">5</b></td>`;
-    table.appendChild(newRow);
+{{>AddElementP_table_2}}
+{{>createFocus}}
+<script>
+    function toggleElement(elementId) {
+        var pElement = document.getElementById(elementId);
+        var divElement = document.getElementById(elementId + 'Div');
+        var delay = 300;
 
-    var appA4 = document.querySelector('.app-A4');
-    var appA4Height = appA4.clientHeight;
-    var totalContentHeight = appA4.scrollHeight;
-    if (totalContentHeight > appA4Height && !contentOverflowed) {
-        // Create a new .app-A4 container for new content
-        var newAppA4 = document.createElement('div');
-        newAppA4.className = 'app-A4';
-        // Optionally, clone the header row from the original table to the new table
-        var newTable = document.createElement('table');
-        newTable.className = 'my-table';
-        newTable.setAttribute('width', '625');
-        newTable.appendChild(table.rows[0].cloneNode(true)); // Clone the header row
-        newAppA4.appendChild(newTable); // Append the new table to the new .app-A4
+        if (pElement.style.display !== 'none') {
+            setTimeout(function () {
+                pElement.style.display = 'none';
+                divElement.style.display = 'block';
 
-        // Get the .app container
-        var appContainer = document.getElementById('app');
-        appContainer.appendChild(newAppA4); // Append the new .app-A4 to the .app container
-        
-        contentOverflowed = true; // Set the flag to true to avoid creating multiple new pages unnecessarily
+                //trỏ vào div
+                var firstEditableSpan = divElement.querySelector('span[contenteditable="true"]');
+                firstEditableSpan.focus();
+                var nameSpanContent = document.getElementById('tacGiaGT-1').textContent;
+                var tuoiSpanContent = document.getElementById('tenTLTKGT-1').textContent;
+                var stt = document.getElementById('STT').textContent;
+                var Namxuatban = document.getElementById('namxuatbangt-1').textContent;
+                var Nguon = document.getElementById('nguongt-1').textContent;
+
+                document.getElementById('tacGiaDivSpan').textContent = nameSpanContent;
+                document.getElementById('namDivSpan').textContent = Namxuatban;
+                document.getElementById('tenTLTKDivSpan').textContent = tuoiSpanContent;
+                document.getElementById('STTDivSpan').textContent = stt;
+                document.getElementById('nguonDivSpan').textContent = Nguon
+            }, delay);
+        } else {
+            setTimeout(function () {
+                pElement.style.display = 'block';
+                divElement.style.display = 'none';
+            }, delay);
+        }
     }
-  </script>
-  <script>
-function calculateHeight(element) {
-    var totalHeight = 0;
-    for (var i = 0; i < element.children.length; i++) {
-        totalHeight += element.children[i].offsetHeight;
+
+    function updateAndToggleElement(pElementId, divElementId) {
+        var pElement = document.getElementById(pElementId);
+        var divElement = document.getElementById(divElementId);
+        var pSpans = pElement.querySelectorAll('span[contenteditable="true"]');
+        var divSpans = divElement.querySelectorAll('span[contenteditable="true"]');
+
+        for (var i = 0; i < pSpans.length; i++) {
+            pSpans[i].innerHTML = divSpans[i].innerHTML;
+
+            if (pSpans[i].id === 'tacGiaGT-1') {
+                document.getElementById('tacGiaDivSpan').textContent = pSpans[i].textContent;
+            } else if (pSpans[i].id === 'tenTLTKGT-1') {
+                document.getElementById('tenTLTKDivSpan').textContent = pSpans[i].textContent;
+            } else if (pSpans[i].id === 'STT') {
+                document.getElementById('STTDivSpan').textContent = pSpans[i].textContent;
+            } else if (pSpans[i].id === 'namDivSpan') {
+                document.getElementById('namxuatbangt-1').textContent = pSpans[i].textContent;
+            } else if (pSpans[i].id === 'nguonDivSpan') {
+                document.getElementById('nguongt-1').textContent = pSpans[i].textContent;
+            }
+
+        }
+        pElement.style.display = 'block';
+        divElement.style.display = 'none';
     }
-    return totalHeight;
-}
 
-function addNewPage() {
-    var newPage = document.createElement('div');
-    newPage.className = 'app-A4';
-    document.getElementById('app').appendChild(newPage);
-    return newPage;
-}
-
-function addRowToPage(page, row) {
-    var table = page.getElementsByTagName('table')[0];
-    if (!table) {
-        table = document.createElement('table');
-        table.className = 'my-table';
-        table.setAttribute('width', '625');
-        page.appendChild(table);
+    function handleKeyDown(event, pElementId, divElementId) {
+        if (event.key === 'Enter') {
+            event.preventDefault();
+            updateAndToggleElement(pElementId, divElementId);
+        }
     }
-    table.appendChild(row);
-}
-
-function addNewRow() {
-    // Create the new row
-    var newRow = document.createElement('tr');
-    newRow.innerHTML = `<td class="width-341"><b class="color-000">New Content</b></td>
-                        <td class="width-96-gth"><b class="color-000">1</b></td>
-                        <td class="width-60-gth"><b class="color-000">5</b></td>
-                        <td class="width-54-gth"><b class="color-000">5</b></td>
-                        <td class="width-74-gth"><b class="color-000">5</b></td>`;
-
-    // Get the last page
-    var pages = document.getElementsByClassName('app-A4');
-    var lastPage = pages[pages.length - 1];
-    var contentHeightBeforeAdding = calculateHeight(lastPage);
-    var pageHeight = 1123; // A4 page height in pixels
-
-    // Check if adding the new row would exceed the height of the last page
-    if (contentHeightBeforeAdding + newRow.offsetHeight > pageHeight) {
-        // Create a new page and add the row there
-        var newPage = addNewPage();
-        addRowToPage(newPage, newRow);
-    } else {
-        // Add the new row to the last page
-        addRowToPage(lastPage, newRow);
-    }
-}
-
-document.getElementById('taocautruc').addEventListener('click', addNewRow);
-
-
 </script>

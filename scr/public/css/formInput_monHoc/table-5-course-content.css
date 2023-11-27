@@ -1,6 +1,6 @@
 /* 5. Nội dung học phần (Course content) */
 
-.table-5-course-content { width: 4.7e+2pt;border-collapse:collapse;border:none; }
+.table-5-course-content { width: 4.7e+2pt;min-width: 4.7e+2pt; border-collapse:collapse;border:none;}
 
 /* header-5-course-content */
 
@@ -132,4 +132,40 @@
 }
 .header-5-course-content-p {
     text-align:center;
+}
+.custom-button {
+    width: 100px;
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: transparent;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    cursor: pointer;
+    outline: none;
+    transition: color 0.3s ease, border-color 0.3s ease;
+  }
+
+  /* Change color on hover */
+  .custom-button:hover {
+    color: blue;
+    border-color: blue;
+  }
+
+  /* Change color on click */
+  .custom-button:active {
+    color: red;
+    border-color: red;
+  }
+
+  .table-5-display-row {
+    display: flex;
+  }
+  .ctc {
+    display: flex;
+    flex-direction: column;
+    
+    
+}
+.ctc1{
+    margin: 10px 0;
 }

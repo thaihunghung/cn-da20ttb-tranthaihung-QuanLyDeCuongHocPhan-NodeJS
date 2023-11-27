@@ -1,0 +1,58 @@
+<script>
+    function AddElementP(key) {
+        document.getElementById(key).addEventListener('keydown', function (event) {
+            if (event.key === 'Enter') {
+                event.preventDefault();
+                var index = this.getElementsByTagName('p').length + 1;
+                var newParagraph = document.createElement('p');
+                var newSpan = document.createElement('span');
+                newSpan.contentEditable = true;
+                newSpan.id = key + "-" + index.toString();
+                newSpan.innerHTML = '&nbsp;-&nbsp;';
+                if (key === 'TenPP') {
+                    newParagraph.className = 'section-content';
+                }
+                if (key === 'QD_TD' || key === 'QD_HV' || key === 'QD_HVu') {
+                    newParagraph.className = 'section-content Thut-dau-dong';
+                    newSpan.innerHTML = '&nbsp;●&nbsp;';
+                }
+                newParagraph.appendChild(newSpan);
+                this.appendChild(newParagraph);
+
+
+
+                
+                newSpan.focus();
+                // use hàm cập nhật cuối hàng
+                var range = document.createRange();
+                var selection = window.getSelection();
+                range.selectNodeContents(newSpan);
+                range.collapse(false);
+                selection.removeAllRanges();
+                selection.addRange(range);
+
+            } else if (event.key === 'Backspace') {
+                // Kiểm tra nếu đang xóa và nội dung của phần tử <p> là rỗng
+                var currentP = this.lastElementChild;
+                if (currentP && currentP.tagName === 'P' && currentP.textContent.trim() === "" && !currentP.classList.contains("DontRemove")) {
+                    currentP.remove();
+                }
+            }
+        });
+    }
+    function DiChuyenDenCuoi(element) {
+        var range = document.createRange();
+        var selection = window.getSelection();
+        range.selectNodeContents(element);
+        range.collapse(false);
+        selection.removeAllRanges();
+        selection.addRange(range);
+    }
+    AddElementP('KyNang');
+    AddElementP('KienThuc');
+    AddElementP('ThaiDo');
+    AddElementP('TenPP');
+    AddElementP('QD_TD');
+    AddElementP('QD_HV');
+    AddElementP('QD_HVu')
+</script>

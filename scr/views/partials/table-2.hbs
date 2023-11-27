@@ -1,0 +1,115 @@
+<script>
+
+    async function toggleElement(elementId) {
+        var pElement = document.getElementById(elementId);
+        var divElement = document.getElementById(elementId + 'Div');
+        var index = document.getElementsByClassName('giaotrinh').length;
+
+        if (pElement.style.display !== 'none') {
+
+            pElement.style.display = 'none';
+            divElement.style.display = 'block';
+            //trỏ vào div
+            var firstEditableSpan = divElement.querySelector('span[contenteditable="true"]');
+            //{{!-- firstEditableSpan.focus(); --}}
+            var TenTacGia =await document.getElementById('TG_GT_' + index).textContent;
+
+            var TenTP =await document.getElementById('Ten_GT_' + index).textContent;
+
+            var stt =await document.getElementById('STT_' + index).textContent;
+            var Namxuatban =await document.getElementById('NXB_GT_' + index).textContent;
+
+            var Nguon =await document.getElementById('NGUON_GT_' + index).textContent;
+
+            document.getElementById('STT_DSpan_' + index).textContent = stt;
+            document.getElementById('TG_DSpan_' + index).textContent = TenTacGia;
+            document.getElementById('NXB_DSpan_' + index).textContent = Namxuatban;
+            document.getElementById('TEN_DSpan_' + index).textContent = TenTP;
+
+            document.getElementById('NGUON_DSpan_' + index).textContent = Nguon
+
+        } else {
+            pElement.style.display = 'block';
+            divElement.style.display = 'none';
+        }
+    }
+    function updateAndToggleElement(pElementId, divElementId) {
+        var pElement = document.getElementById(pElementId);
+        var divElement = document.getElementById(divElementId);
+        var pSpans = pElement.querySelectorAll('span[contenteditable="true"]');
+        var divSpans = divElement.querySelectorAll('span[contenteditable="true"]');
+        var index = document.getElementsByClassName('giaotrinh').length;
+        for (var i = 0; i < pSpans.length; i++) {
+            pSpans[i].innerHTML = divSpans[i].innerHTML;
+
+            if (pSpans[i].id === 'TG_GT_' + index) {
+
+                document.getElementById('TG_GT_' + index).textContent = pSpans[i].textContent;
+            } else if (pSpans[i].id === 'Ten_GT_' + index) {
+
+                document.getElementById('TEN_DSpan_' + index).textContent = pSpans[i].textContent;
+            } else if (pSpans[i].id === 'STT_' + index) {
+
+                document.getElementById('STT_DSpan_' + index).textContent = pSpans[i].textContent;
+            } else if (pSpans[i].id === 'NXB_GT_' + index) {
+
+                document.getElementById('NXB_DSpan_' + index).textContent = pSpans[i].textContent;
+            } else if (pSpans[i].id === 'NGUON_DSpan_' + index) {
+
+                document.getElementById('NGUON_GT_' + index).textContent = pSpans[i].textContent;
+            }
+        }
+        pElement.style.display = 'block';
+        divElement.style.display = 'none';
+    }
+    function handleKeyDown(event, pElementId, divElementId) {
+        if (event.key === 'Enter') {
+            event.preventDefault();
+            updateAndToggleElement(pElementId, divElementId);
+        }
+    }
+
+    function createEntry() {
+        let idCount = (document.getElementsByClassName('giaotrinh').length + 1);
+        // Elements created as before 
+        var STTT = document.getElementsByClassName("STT").length;
+        const para = document.createElement('p');
+        para.id = 'giaotrinh' + idCount;
+        para.className = 'giaotrinh';
+
+        para.innerHTML = `
+            [<span id="STT_${idCount}" class="STT" contenteditable="true" onclick="toggleElement('giaotrinh${idCount}')">${idCount}</span>] 
+            <span id="TG_GT_${idCount}" contenteditable="true" onclick="toggleElement('giaotrinh${idCount}')">'Tên tác giả,'</span>
+            (<span id="NXB_GT_${idCount}" contenteditable="true"
+                onclick="toggleElement('giaotrinh${idCount}')">'Năm'</span>).&nbsp;
+            <span id="Ten_GT_${idCount}" contenteditable="true" onclick="toggleElement('giaotrinh${idCount}')"
+                class="text-nghien">'Tên tài liệu'</span>
+            [<span id="NGUON_GT_${idCount}" contenteditable="true"
+                onclick="toggleElement('giaotrinh${idCount}')">'Nguồn'</span>]
+            <strong contenteditable="true">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</strong>
+        `;
+        const div = document.createElement('div');
+        div.id = 'giaotrinh' + idCount + 'Div';
+        div.className = 'hidden';
+        div.setAttribute('onblur', `updateAndToggleElement('giaotrinh${idCount}', 'giaotrinh${idCount}Div')`);
+        div.setAttribute('onkeydown', `handleKeyDown(event, 'giaotrinh${idCount}', 'giaotrinh${idCount}Div')`);
+        div.innerHTML = `
+            <p>Stt:&nbsp;<span id='STT_DSpan_${idCount}'contenteditable="true"></span></p>
+            <p>Tên tác giả:&nbsp;<span id="TG_DSpan_${idCount}" contenteditable="true"></span></p>
+            <p>Năm Xuất bảng:&nbsp;<span id="NXB_DSpan_${idCount}" contenteditable="true"></span></p>
+            <p>Tên tài liệu tham khảo:&nbsp;<span id="TEN_DSpan_${idCount}" 
+                contenteditable="true" class="text-nghien"></span></p>
+            <p>Nguồn:&nbsp;<span id="NGUON_DSpan_${idCount}" contenteditable="true"></span></p>
+        `;
+        const parent = document.getElementById('giaotrinh');
+        parent.appendChild(para);
+        parent.appendChild(div);
+    }
+    const button = document.getElementById('addButton');
+
+    button.addEventListener('click', function () {
+
+        createEntry();
+
+    });
+</script>

@@ -1,5 +1,5 @@
 /* 4. Chuẩn đầu ra của học phần (Course learning outcomes): */
-.table-4-learning-outcomes { width: 4.7e+2pt;border-collapse: collapse;border: none;}
+.table-4-learning-outcomes { width: 4.7e+2pt;min-width: 4.7e+2pt; border-collapse: collapse;border: none;}
 /* header-4-learning-outcomes */
 .header-4-learning-outcomes-1,
 .header-4-learning-outcomes-2,
@@ -59,4 +59,10 @@
     border-top: none;
     padding: 0cm 5.4pt 0cm 5.4pt;
     height: 34.45pt;
+}
+.table-4-display-row {
+    display: flex;
+}
+.instructionForm-table4 {
+    height: 400px;
 }

@@ -1,0 +1,168 @@
+<script>
+async function ThemCDRLoaiKT(index) {
+  let KN = (document.getElementsByClassName('KyNang').length)+1;
+  var tbody = document.getElementById("table-4-learning-outcomes")
+  var className = ["content-4-learning-outcomes-1","content-4-learning-outcomes-2", "content-4-learning-outcomes-3","content-4-learning-outcomes-4","content-4-learning-outcomes-5"]
+  if (index === 1) {
+    var CountclassKyNangKT = document.getElementsByClassName("KyNangKT");
+    var newRow = document.createElement("tr");
+    var stemp = await (CountclassKyNangKT.length + 1)
+    newRow.className = "KyNang KyNangKT KyNangKT" + stemp;
+    newRow.id = "allowDeletion";
+     var newth = document.createElement("th");
+    newth.className = className[0]+" section-content text-left";
+    newth.contentEditable = true;
+    newRow.appendChild(newth);
+
+
+    for (let i = 1; i <= 4; i++) {
+      var cell = document.createElement("td");
+      cell.className = className[i];
+      var p = document.createElement("p");
+      p.className = "section-content";
+      var span = document.createElement("span");
+      span.contentEditable = true;
+      span.id ="KT"+ stemp +"."+(i);
+     
+      
+      
+      p.appendChild(span);
+      cell.appendChild(p);
+      newRow.appendChild(cell);
+      
+    }
+
+    var nextRow = document.getElementById("KyNangKN");
+    nextRow.parentNode.insertBefore(newRow, nextRow);
+    UpdateSTTskill_TB4()
+    
+  } else if (index === 2) {
+    var CountclassKyNangKT = document.getElementsByClassName("KyNangKN").length;
+    var newRow = document.createElement("tr");
+    var stemp = CountclassKyNangKT + 1
+    newRow.id = "allowDeletion"
+
+    newRow.className = "KyNang KyNangKN KyNangKN" + stemp;
+
+
+
+    var newth = document.createElement("th");
+    newth.className = className[0]+" section-content text-left";
+    newth.contentEditable = true;
+    newRow.appendChild(newth);
+
+    for (let i = 1; i <= 4; i++) {
+      var cell = document.createElement("td");
+      cell.className = className[i];
+      var p = document.createElement("p");
+      p.className = "section-content";
+      var span = document.createElement("span");
+      span.contentEditable = true;
+      span.id = "KN"+stemp +"."+(i);
+     
+      
+      p.appendChild(span);
+      cell.appendChild(p);
+      newRow.appendChild(cell);
+    }
+    
+    var nextRow = document.getElementById("KyNangTD");
+    nextRow.parentNode.insertBefore(newRow, nextRow);
+    UpdateSTTskill_TB4()
+    
+  } else {
+    // Trường hợp index không phải 1 hoặc 2
+    var CountclassKyNangTD = document.getElementsByClassName("KyNangTD").length;
+    var newRow = document.createElement("tr");
+    var stemp = CountclassKyNangTD + 1;
+    
+    newRow.className = "KyNang KyNangTD KyNangTD" + stemp;
+    newRow.id = "allowDeletion"
+
+    var newth = document.createElement("th");
+    newth.className = className[0]+" section-content text-left";
+    newth.contentEditable = true;
+    newRow.appendChild(newth);
+    for (let i = 1; i <= 4; i++) {
+      var cell = document.createElement("td");
+      cell.className = className[i];
+      var p = document.createElement("p");
+      p.className = "section-content";
+      var span = document.createElement("span");
+      span.contentEditable = true;
+      span.id = "TD"+stemp +"."+(i);
+      
+      
+      p.appendChild(span);
+      cell.appendChild(p);
+      newRow.appendChild(cell);
+      
+    }
+    
+    // Thêm <tr> vào cuối <tbody>
+    tbody.appendChild(newRow);
+    UpdateSTTskill_TB4()
+  } 
+}
+{{!-- const focusedSpan = document.querySelector('.focus'); // Đặt tham chiếu đến thẻ span đang được tập trung
+
+if (focusedSpan && focusedSpan.classList.contains('focus')) {
+    const parentTd = getParentByTagName(focusedSpan, 'TD'); // Lấy thẻ td cha của thẻ span
+    if (parentTd && parentTd.id === 'test') {
+        // Thực hiện các hành động mong muốn với thẻ td
+        console.log("Thẻ td có ID là 'test' chứa thẻ span đang được tập trung:", parentTd);
+    } else {
+        console.log("Không tìm thấy hoặc thẻ td không có ID là 'test'.");
+    }
+} else {
+    console.log("Không tìm thấy hoặc thẻ span không có class 'focus'.");
+}
+
+// Hàm lấy thẻ cha theo tên thẻ
+function getParentByTagName(element, tagName) {
+    while (element && element.tagName !== tagName) {
+        element = element.parentElement;
+    }
+    return element;
+} --}}
+
+document.getElementById('testButton').addEventListener('click', function() {
+    const focusedSpan = document.querySelector('.focus'); // Đặt tham chiếu đến thẻ span đang được tập trung
+
+    if (focusedSpan && focusedSpan.classList.contains('focus')) {
+        const parentTr = focusedSpan.closest('tr[id="allowDeletion"]');
+        
+        if (parentTr) {
+            const confirmation = window.confirm('Bạn có chắc muốn xóa phần tử này?');
+            // Nếu người dùng chọn "OK", thực hiện xóa
+            if (confirmation) {
+                parentTr.remove();
+                
+                UpdateSTTskill_TB4()
+
+                // Gọi lại hàm cập nhật STT
+            } else {
+                console.log("Người dùng đã từ chối xóa.");
+            }
+        } else {
+            console.log("Không tìm thấy hoặc thẻ tr không có ID là 'allowDeletion'.");
+        }
+    } else {
+        console.log("Không tìm thấy hoặc thẻ span không có class 'focus'.");
+    }
+});
+
+
+function UpdateSTTskill_TB4() {
+  var rows = document.querySelectorAll('.KyNang' );
+
+  rows.forEach((row, index) => {
+    var sttElements = row.querySelectorAll('th');
+
+    sttElements.forEach((sttElement, sttIndex) => {
+      // Cập nhật số thứ tự cho tất cả các phần tử có class 'stt'
+      sttElement.textContent = index * sttElements.length + sttIndex + 1;
+    });
+  });
+}
+</script>
