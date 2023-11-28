@@ -84,6 +84,9 @@ span {
 .width16_cm {
     width: 16cm;
 }
+.strong {
+    font-weight: bold;
+}
 .instructionForm-table5,
 .instructionForm-table4,
 .instructionForm-table2

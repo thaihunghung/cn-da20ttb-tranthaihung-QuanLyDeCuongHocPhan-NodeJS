@@ -1,18 +1,12 @@
 <script>
 
 function AddElementP_tb2(key) {
-    document.getElementById(key).addEventListener('keydown', function (event) {
-        
+    document.getElementById(key).addEventListener('keydown', function (event) {    
             event.preventDefault();
-
-            // Create a new paragraph element
             var newParagraph = document.createElement('p');
-
-            // Set the id attribute of the new paragraph element
             var newIndex = document.getElementsByClassName('giaotrinh');
             newParagraph.id = 'giaotrinh' + (newIndex.length);
             newParagraph.className ='giaotrinh' + (newIndex.length);
-            // Construct the inner HTML content for the new paragraph
             var innerHTMLContent = '[' +
                 '<span id="STT" contenteditable="true" onclick="toggleElement(\'giaotrinh' + newIndex.length + '\')">' + newIndex.length + '</span>] ' +
                 '<span id="tacGiaGT-' + newIndex.length + '" contenteditable="true" onclick="toggleElement(\'giaotrinh' + newIndex.length + '\')">\'Tên tác giả\'</span> ' +
@@ -20,39 +14,24 @@ function AddElementP_tb2(key) {
                 '<span id="tenTLTKGT-' + newIndex.length + '" contenteditable="true" onclick="toggleElement(\'giaotrinh' + newIndex.length + '\')" class="text-nghien">\'Tên tác phẩm\'</span> ' +
                 '[<span id="nguongt-' + newIndex.length + '" contenteditable="true" onclick="toggleElement(\'giaotrinh' + newIndex.length + '\')">\'Nguồn\'</span>] ' +
                 '<strong contenteditable="true">.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</strong>';
-
-            // Set the innerHTML of the new paragraph element
             newParagraph.innerHTML = innerHTMLContent;
-
-            // Append the new paragraph element to the #TaiLieuGiaotrinh div
             document.getElementById('TaiLieuGiaotrinh').appendChild(newParagraph);
-
-            // Create a new div element associated with the new paragraph
             var newDiv = document.createElement('div');
-
-            // Set the id attribute of the new div element
             newDiv.id = 'giaotrinh' + newIndex.length + 'Div';
             newDiv.className = 'hidden';
             newDiv.setAttribute('onblur', 'updateAndToggleElement(\'giaotrinh' + newIndex.length + '\', \'giaotrinh' + newIndex.length + 'Div\')');
             newDiv.setAttribute('onkeydown', 'handleKeyDown(event, \'giaotrinh' + newIndex.length + '\', \'giaotrinh' + newIndex.length + 'Div\')');
-
-            // Construct the inner HTML content for the new div
             var innerHTMLContentDiv = 
             '<p><strong>Stt:</strong>&nbsp;<span id="STTDivSpan" contenteditable="true"></span></p>' +
                 '<p><strong>Tên tác giả:</strong> &nbsp;<span id="tacGiaDivSpan" contenteditable="true"></span></p>' +
                 '<p><strong>Năm Xuất bảng:</strong> &nbsp;<span id="namDivSpan" contenteditable="true"></span></p>' +
                 '<p><strong>Tên tài liệu tham khảo:</strong> &nbsp;<span id="tenTLTKDivSpan" contenteditable="true" class="text-nghien"></span></p>' +
                 '<p><strong>Nguồn:</strong> &nbsp;<span id="nguonDivSpan" contenteditable="true"></span></p>';
-
-            // Set the innerHTML of the new div element
             newDiv.innerHTML = innerHTMLContentDiv;
-
-            // Append the new div element to the #TaiLieuGiaotrinh div
             document.getElementById('TaiLieuGiaotrinh').appendChild(newDiv);
         
     });
 }
 
-// Call the function with the key 'giaotrinh1'
 AddElementP_tb2('TaiLieuGiaotrinh');   
 </script>

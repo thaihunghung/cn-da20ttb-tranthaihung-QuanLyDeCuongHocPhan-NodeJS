@@ -21,7 +21,6 @@
             });
             allCTCData["Chuong" + i] = chuongData;
         }
-        // In ra JSON chứa tất cả ID và giá trị của chi tiết chương
         console.log(JSON.stringify(allCTCData));
     }
 
@@ -44,11 +43,9 @@
         var classNameFooterRows = ["footer-5-course-content-255_55pt", "footer-5-course-content-212_9pt"];
         for (var i = 0; i < classNameHeaderRows.length; i++) {
             var newHeaderCell = newHeaderRow.insertCell(i);
-            //tạo id
             newHeaderCell.id = newChuongId + "." + (i + 1);
             newHeaderCell.className = classNameHeaderRows[i];
             newHeaderCell.contentEditable = true;
-            // Create a new paragraph element
             var newParagraph = document.createElement("p");
             newParagraph.className = 'header-5-course-content-p text-left';
             var newStrong = document.createElement("strong");
@@ -56,15 +53,10 @@
             if (i === 1 && i === 2 && i === 3 && i === 4) {
                 newSpan.textContent = "text";
             }
-
             if (i === 0) {
                 newSpan.className = "STT_CHUONG"
-                //{ { !--newSpan.textContent = "Chương " + (chuongRows.length) + ". " -- } }
             }
-
-            if (i === 5) {
-
-            }
+            if (i === 5) { }
             newStrong.appendChild(newSpan);
             newParagraph.appendChild(newStrong);
             newHeaderCell.appendChild(newParagraph);
@@ -75,17 +67,13 @@
         newButton.onclick = function () {
             themChiTietChuong(stempindexbutton);
         };
-        newButton.className = "btn btn-secondary ctc1"
+        newButton.className = "btn btn-secondary Chitiet"
+        newButton.id = "ctc" + stempindexbutton
         newButton.innerHTML = "+ Thêm chi tiết chương " + stempindexbutton;
-
-
         indexbutton.appendChild(newButton);
-
-        // Add detail row
         var newDetailRow = table.insertRow(table.rows.length);
         newDetailRow.className = newClassCTC;
-
-        // Add th elements to the newDetailRow
+        newDetailRow.id = "allowDeletion";
         for (var i = 0; i < classNameDetailRows.length; i++) {
 
             var newDetailCell = newDetailRow.insertCell(i);
@@ -96,35 +84,25 @@
             var newSpan = document.createElement("span");
             var temp = (chuongRows.length);
             var ctc = document.getElementsByClassName("ChiTietChuong" + temp)
+
             var temp2 = ctc.length;
             if (i === 0) {
-
-                newSpan.textContent = temp + "." + temp2;
-                newSpan.id = "CTC" + temp + "." + temp2;
-                newSpan.className ="STT_CTC"+temp;
+                newSpan.innerHTML = temp + '.' + temp2 + '.&nbsp;';
+                newSpan.id = 'CTC' + temp + '.' + temp2;
+                newSpan.className = "STT_CTC" + temp;
                 // {{!-- newDetailCell.textContent = temp + "." + temp2;
                 // newDetailCell.id = "CTC" + temp + "." + temp2; --}}
             }
-            // Append the span to the paragraph
             newParagraph.appendChild(newSpan);
-
-            // Append the paragraph to the cell
             newDetailCell.appendChild(newParagraph);
-
-
         }
-
         var FooterRow = table.insertRow(table.rows.length);
         FooterRow.id = footerChuongId;
 
         for (var i = 0; i < classNameFooterRows.length; i++) {
             var newFooterCell = FooterRow.insertCell(i);
             newFooterCell.className = classNameFooterRows[i];
-
-            // Tạo phần tử paragraph
             var newParagraph = document.createElement("p");
-
-            // Nếu là ô thứ nhất (i = 0), thêm thẻ em và span
             if (i === 0) {
                 var newEm = document.createElement("em");
                 var newSpan = document.createElement("span");
@@ -132,21 +110,15 @@
                 newEm.appendChild(newSpan);
                 newParagraph.appendChild(newEm);
             }
-
-            // Nếu là ô thứ hai (i = 1), thêm colspan="4"
             if (i === 1) {
                 newFooterCell.colSpan = 4;
             }
-
-            // Nếu là ô thứ hai (i = 1), thêm input có contenteditable và id
             if (i === 1) {
                 var editableSpan = document.createElement("span");
                 editableSpan.contentEditable = true;
                 editableSpan.id = "KyNangMem";
                 newParagraph.appendChild(editableSpan);
             }
-
-            // Thêm phần tử paragraph vào ô
             newFooterCell.appendChild(newParagraph);
         }
         UpdateSTTskill()
@@ -159,9 +131,9 @@
         var tbody = document.getElementById("table-5-course-content");
         var newDetailRow = document.createElement('tr');
         newDetailRow.className = "ChiTietChuong" + index;
+        newDetailRow.id = "allowDeletion"
         var h = await document.getElementsByClassName("ChiTietChuong" + index);
         var chuong1Row = document.getElementById("Chuong" + index);
-
         // Tạo các ô mới dựa trên số lượng ô trong dòng cuối cùng của "Chuong1"
         for (var i = 0; i < chuong1Row.children.length; i++) {
             var newCell = document.createElement('td');
@@ -175,9 +147,9 @@
 
             if (i === 0) {
                 // Cập nhật giá trị của newSpan.id chỉ khi i là 0 (đầu tiên)
-                newSpan.innerHTML = index + "." + stemp2 + "&nbsp;";
+                newSpan.innerHTML = index + "." + stemp2 + '.&nbsp;';
                 newSpan.id = "CTC" + index + "." + stemp2;
-                newSpan.className ="STT_CTC"+index;
+                newSpan.className = "STT_CTC" + index;
             }
             newParagraph.appendChild(newSpan);
             newCell.appendChild(newParagraph);
@@ -185,7 +157,6 @@
         }
 
         // Thêm tr vào tbody trước tr có id là "CuoiChuong1"
-        UpdateSTTskill_CTC(index);
         tbody.insertBefore(newDetailRow, document.getElementById("CuoiChuong" + index));
     }
 </script>
@@ -195,50 +166,159 @@
 
         rows.forEach((row, index) => {
             var sttElements = row.querySelectorAll('.STT_CHUONG');
-
+            //lấy chuỗi từ 9 tương đương với Chuong1." "
             sttElements.forEach((sttElement, sttIndex) => {
                 sttElement.textContent = 'Chương ' + (index * sttElements.length + sttIndex + 1) + '. ' + sttElement.textContent.substring(9);
             });
         });
     }
 
-    function UpdateSTTskill_CTC(temp) {
-        var rows = document.querySelectorAll('.ChiTietChuong'+temp);
-
+    function UpdateSTTskill_CTC(i) {
+        var rows = document.querySelectorAll('.ChiTietChuong' + i);
         rows.forEach((row, index) => {
-            var sttElements = row.querySelectorAll('.STT_CHUONG'+temp);
-
+            var sttElements = row.querySelectorAll('[id*="CTC' + i + "." + '"]');
             sttElements.forEach((sttElement, sttIndex) => {
-                sttElement.textContent = temp+"." + (index * sttElements.length + sttIndex + 1) + '. ' + sttElement.textContent.substring(9);
+                //lấy chuỗi từ 5 tương đương với 1.1." "
+                sttElement.textContent = i + "." + (index * sttElements.length + sttIndex + 1) + '. ' + sttElement.textContent.substring(5);
+
             });
         });
     }
-
- document.addEventListener('DOMContentLoaded', function() {   
-    document.getElementById('hung').addEventListener('click', function() {
-    const focusedSpan = document.querySelector('.focus'); // Đặt tham chiếu đến thẻ span đang được tập trung
-
-    if (focusedSpan && focusedSpan.classList.contains('focus')) {
-        const parentTr = focusedSpan.closest('tr[id="allowDeletion"]');
+    async function UpdateAll_TB5_WhenDelete_Chuong(TimTatCaViTriCanCapNhap) {
+        var chuong = await document.getElementsByClassName("Chuong").length;
+        var tatcacuong = document.querySelector('[class*="Chuong"]');
+        //console.log(TimTatCaViTriCanCapNhap);
+        //tatcacuong.forEach(function(element) {
+        //  console.log(tatcacuong.id);
+        //});
+        const index = parseInt(TimTatCaViTriCanCapNhap) + 1
+        for (var i = index; i <= chuong; i++) {
+            var temp = i;
+        CapNhat1Chuong(temp);
         
-        if (parentTr) {
-            const confirmation = window.confirm('Bạn có chắc muốn xóa phần tử này?');
-            // Nếu người dùng chọn "OK", thực hiện xóa
-            if (confirmation) {
-                parentTr.remove();
-                
-                
-
-                // Gọi lại hàm cập nhật STT
-            } else {
-                console.log("Người dùng đã từ chối xóa.");
-            }
-        } else {
-            console.log("Không tìm thấy hoặc thẻ tr không có ID là 'allowDeletion'.");
-        }
-    } else {
-        console.log("Không tìm thấy hoặc thẻ span không có class 'focus'.");
     }
-});
- })
+    
+    }
+    function CapNhat1Chuong(index) {
+        var GetAllChuong = document.getElementById('Chuong' + index);
+        if (GetAllChuong) {
+            var idNumber = GetAllChuong.id.match(/\d+$/)[0];
+
+            //idNumber lấy số trong id dùng để xác định tr con lên trong
+            var ChildChuong = document.querySelectorAll('[id*="Chuong' + idNumber + "." + '"]')
+
+            var ChildCTC_Chuong = document.querySelectorAll('[class*="ChiTietChuong' + idNumber + '"]')
+
+            var ChildCuoiChuong = document.querySelectorAll('[id*="CuoiChuong' + idNumber + '"]')
+
+            for (var j = 0; j < ChildCuoiChuong.length; j++) {
+                var StempId = StringIdGetNumber_DecreaseBy1Unit(ChildCuoiChuong[j].id);
+                ChildCuoiChuong[j].id = "CuoiChuong" + StempId;
+            }
+
+            for (var j = 0; j < ChildChuong.length; j++) {
+                var StempId = StringIdGetNumber_DecreaseBy1Unit(ChildChuong[j].id);
+                ChildChuong[j].id = "Chuong" + StempId + "." + (j + 1);
+            }
+
+            for (var CTC = 0; CTC < ChildCTC_Chuong.length; CTC++) {
+                ChildCTC_Chuong[CTC].className = "ChiTietChuong" + (idNumber - 1);
+                //{{!-- const parent = ChildCTC_Chuong[CTC]; --}}
+                const CTC_Id = document.querySelector('[id*="CTC' + idNumber + '."]');
+                const STT_CTC = document.querySelector('[class*="STT_CTC' + idNumber + '"]');
+                STT_CTC.className = "STT_CTC" + (idNumber - 1);
+                CTC_Id.id = "CTC" + (idNumber - 1) + "." + (CTC + 1);
+
+            }
+            UpdateSTTskill_CTC(idNumber - 1)
+            UpdateSTTskill();
+            GetAllChuong.id = "Chuong" + (idNumber - 1)
+        } else {
+            console.error('Element not found: ' + 'Chuong' + index);
+        }
+
+    }
+
+    function tachChuoi(chuoi, kyTuTach) {
+        var mangKetQua = chuoi.split(kyTuTach);
+        var ketQua = mangKetQua[1];
+        return ketQua;
+    }
+
+    document.addEventListener('DOMContentLoaded', function () {
+        document.getElementById('hung').addEventListener('click', function () {
+            const focusedSpan = document.querySelector('.focus');
+            if (focusedSpan && focusedSpan.classList.contains('focus')) {
+                const CTCfocus = focusedSpan.closest('tr[id="allowDeletion"]');
+                const Chuongfocus = focusedSpan.closest('tr[class="Chuong"]');
+                if (CTCfocus) {
+                    //tìm 1 class trong thẻ tr được focus
+                    const classValue = CTCfocus.className;
+
+                    //nhận được class name ChiTietChuong1 tách lấy số 1 thôi
+                    var match = classValue.match(/\d+/);
+
+                    if (match) {
+                        var number = match[0];
+                    } else {
+                        console.log('Không tìm thấy số trong class.');
+                    }
+                    const confirmation = window.confirm('Bạn có chắc muốn xóa chi tiết chương này?');
+                    if (confirmation) {
+                        CTCfocus.remove();
+                        UpdateSTTskill_CTC(match)
+                    } else {
+                        console.log("Hủy xóa.");
+                    }
+                } else if (Chuongfocus) {
+                    const confirmation = window.confirm('Bạn có chắc muốn xóa chương này là tất cả trong chương này');
+                    if (confirmation) {
+                        const idValue = Chuongfocus.id;
+                        var matchid = idValue.match(/\d+/);
+                        
+                        if (matchid) {
+                            var number = matchid[0];
+                            
+
+                            var Delete_all_CTC_inChuong = document.querySelectorAll('.ChiTietChuong' + number);
+
+                        } else {
+                            console.log('Không tìm thấy id nào');
+                        }
+                        var GetCountChuong = document.getElementsByClassName('Chuong').length;
+                        Delete_CuoiChuong_inChuong(number)
+                        Delete_all_CTC_inChuong.forEach(function (ChiTietChuong) {
+                            ChiTietChuong.remove();
+                        });
+                        console.log('dau vao'+number)
+                        UpdateAll_TB5_WhenDelete_Chuong(number)
+                        Chuongfocus.remove();
+                        //updateChapters(number)
+                        //UpdateAll_TB5_WhenDelete_Chuong();
+                        //UpdateSTTskill();
+                    } else {
+                        console.log("Hủy xóa.");
+                    }
+                }
+                else {
+                    console.log("Không tìm thấy chương.");
+                }
+            } else {
+                console.log("Không tìm thấy hoặc thẻ span không có class 'focus'.");
+            }
+        });
+    })
+
+
+    function Delete_CuoiChuong_inChuong(index) {
+        const CuoiChuongElement = document.getElementById('CuoiChuong' + index);
+
+        if (CuoiChuongElement) {
+            CuoiChuongElement.remove();
+            //console.log('CuoiChuong' + index + ' removed successfully');
+        } else {
+            // console.log('CuoiChuong' + index + ' element not found');
+        }
+    }
 </script>
+{{>StringID}}

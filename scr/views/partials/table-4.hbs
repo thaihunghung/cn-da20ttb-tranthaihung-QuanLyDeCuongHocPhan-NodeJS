@@ -104,37 +104,15 @@ async function ThemCDRLoaiKT(index) {
     UpdateSTTskill_TB4()
   } 
 }
-{{!-- const focusedSpan = document.querySelector('.focus'); // Đặt tham chiếu đến thẻ span đang được tập trung
 
-if (focusedSpan && focusedSpan.classList.contains('focus')) {
-    const parentTd = getParentByTagName(focusedSpan, 'TD'); // Lấy thẻ td cha của thẻ span
-    if (parentTd && parentTd.id === 'test') {
-        // Thực hiện các hành động mong muốn với thẻ td
-        console.log("Thẻ td có ID là 'test' chứa thẻ span đang được tập trung:", parentTd);
-    } else {
-        console.log("Không tìm thấy hoặc thẻ td không có ID là 'test'.");
-    }
-} else {
-    console.log("Không tìm thấy hoặc thẻ span không có class 'focus'.");
-}
-
-// Hàm lấy thẻ cha theo tên thẻ
-function getParentByTagName(element, tagName) {
-    while (element && element.tagName !== tagName) {
-        element = element.parentElement;
-    }
-    return element;
-} --}}
-
-document.getElementById('testButton').addEventListener('click', function() {
-    const focusedSpan = document.querySelector('.focus'); // Đặt tham chiếu đến thẻ span đang được tập trung
+document.getElementById('button_delete_tb4').addEventListener('click', function() {
+    const focusedSpan = document.querySelector('.focus'); 
 
     if (focusedSpan && focusedSpan.classList.contains('focus')) {
         const parentTr = focusedSpan.closest('tr[id="allowDeletion"]');
         
         if (parentTr) {
             const confirmation = window.confirm('Bạn có chắc muốn xóa phần tử này?');
-            // Nếu người dùng chọn "OK", thực hiện xóa
             if (confirmation) {
                 parentTr.remove();
                 

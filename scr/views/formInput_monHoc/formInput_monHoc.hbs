@@ -209,9 +209,6 @@
 
                                             </span></p>
                                         </div>
-
-
-
                                         {{!-- <p id="giaotrinh2" class="giaotrinh">
                                             [<span id="STT_2" class="STT" contenteditable="true" onclick="toggleElement('giaotrinh2')">2</span>]
                                             <span id="TG_GT_2" contenteditable="true" onclick="toggleElement('giaotrinh2')">Danielle Navarro, Ethan Weed</span>
@@ -265,8 +262,6 @@
                                 </td>
                                 <td class="empty"></td>
                             </tr>
-
-
                             <tr>
                                 <td class="table-2-learning-header">
                                     <p><span id="loaiHocLieu">Tài liệu tham khảo thêm</span></p>
@@ -529,7 +524,7 @@
                         </button>
                         <h3>Quy tắc xóa</h3>
                         <p>Click vào CDR cần xóa</p>
-                        <button id="testButton" class="btn btn-secondary">Xóa 1 CDR</button>
+                        <button id="button_delete_tb4" class="btn btn-secondary">Xóa 1 CDR</button>
                     </div>
 
                     {{>table-4}}
@@ -730,15 +725,12 @@
                         </thead>
                         <tbody id="table-5-course-content">
                             {{!-- body - tital --}}
-
-
-
-                            <tr id="Chuong1" class="Chuong" >
+                            <tr id="Chuong1" class="Chuong">
                                 <td id="Chuong1.1" class="body-5-course-content-255_55pt">
                                     <p class="table-5-course-content-p text-justify">
-                                        <strong><span contenteditable="true" id="TenChuong" class="STT_CHUONG">
-                                                 Các khái niệm cơ bản về xác suất
-                                            </span></strong>
+                                        <span contenteditable="true" id="TenChuong" class="STT_CHUONG">
+                                                Các khái niệm cơ bản về xác suất
+                                            </span>
                                     </p>
                                 </td>
                                 <td id="Chuong1.2" class="body-5-course-content-71_8pt">
@@ -757,10 +749,7 @@
                                     <p style='header-5-course-content-p'><strong><span contenteditable="true"
                                                 id="SoGioTuHoc">5</span></strong></p>
                                 </td>
-
                             </tr>
-
-
                             <tr class="ChiTietChuong1" id="allowDeletion">
                                 <td class="body-5-content-course-content-255_55pt">
                                     <p class="table-5-course-content-p text-justify"><span contenteditable="true"
@@ -800,6 +789,7 @@
                                 </td>
 
                             </tr>
+                            
                             <tr class="ChiTietChuong1" id="allowDeletion">
                                 <td class="body-5-content-course-content-255_55pt">
                                     <p class="table-5-course-content-p text-justify"><span contenteditable="true"
@@ -1047,31 +1037,21 @@
 
                     <div class="instructionForm-table5" id="instructionForm-table5">
                         <h2 align="center"> <strong>Bảng Chương phần 5</strong></h2>
-
-
                         <div style="display: flex;">
-
                             <button onclick="themChuong()" class="btn btn-dark">
-
                                 + Thêm chương
-
                             </button>
                             <button id="test1" onclick="getAllCTCIdsAndValues()">get</button>
                         </div>
                         <div id="instructionForm-table5-CTC" class="ctc">
-                            <button type="button" class="btn btn-secondary ctc1"
+                            <button type="button" class="btn btn-secondary Chitiet" id="ctc1"
                                 onclick="themChiTietChuong(1)">+&nbsp;Thêm chi tiết chương 1</button>
-
                             </button>
+
                             <p>Click vào CDR cần xóa</p>
-
-
                         <button id="hung" class="btn btn-secondary">Xóa 1 CDR</button>
-
                         </div>
-
                     </div>
-
                 </div>
 
                 {{!----}}
@@ -1392,7 +1372,7 @@
         })
     }
 </script>
-{{!-- lấy loại học phần ra khi checkbox --}}
+
 
 <script>
 
@@ -1435,43 +1415,3 @@
     }
 </script>
 
-<script>
-    document.getElementById('input-container').addEventListener('keydown', function (event) {
-        if (event.key === 'Enter') {
-            event.preventDefault();
-
-            // Tạo một phần tử mới <p> và thêm vào div
-            var newParagraph = document.createElement('p');
-            newParagraph.contentEditable = true;
-            var index = this.getElementsByTagName('p').length + 1;
-            newParagraph.textContent = '[' + index + ']';
-            newParagraph.id = index.toString(); // Set id của phần tử là chỉ số
-            this.appendChild(newParagraph);
-
-            // Focus vào phần tử mới tạo
-            newParagraph.focus();
-        }
-    });
-
-    document.getElementById('input-container').addEventListener('keydown', function (event) {
-        if (event.key === 'Backspace') {
-            var focusedElement = document.activeElement;
-
-            // Kiểm tra xem phần tử đang focus có id trống không
-            if (focusedElement.tagName === 'P' && focusedElement.id === '') {
-                event.preventDefault();
-                focusedElement.remove();
-                // Cập nhật lại chỉ số của các phần tử còn lại
-                updateIndexes();
-            }
-        }
-    });
-
-    function updateIndexes() {
-        var paragraphs = document.getElementById('input-container').getElementsByTagName('p');
-        for (var i = 0; i < paragraphs.length; i++) {
-            paragraphs[i].textContent = '[' + (i + 1) + ']';
-            paragraphs[i].id = (i + 1).toString(); // Cập nhật lại id của phần tử
-        }
-    }
-</script>
