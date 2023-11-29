@@ -1,0 +1,12 @@
+<script>
+
+function AddElementP_tb2(key) {
+    document.getElementById(key).addEventListener('keydown', function (event) {    
+            event.preventDefault();
+            CreateCDR(loai, classParent);
+    });
+}
+
+AddElementP_tb2('TaiLieuGiaotrinh');   
+</script>
+{{>table-2}}

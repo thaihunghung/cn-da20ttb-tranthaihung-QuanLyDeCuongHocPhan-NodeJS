@@ -1,146 +1,205 @@
 <script>
-async function ThemCDRLoaiKT(index) {
-  let KN = (document.getElementsByClassName('KyNang').length)+1;
-  var tbody = document.getElementById("table-4-learning-outcomes")
-  var className = ["content-4-learning-outcomes-1","content-4-learning-outcomes-2", "content-4-learning-outcomes-3","content-4-learning-outcomes-4","content-4-learning-outcomes-5"]
-  if (index === 1) {
-    var CountclassKyNangKT = document.getElementsByClassName("KyNangKT");
-    var newRow = document.createElement("tr");
-    var stemp = await (CountclassKyNangKT.length + 1)
-    newRow.className = "KyNang KyNangKT KyNangKT" + stemp;
-    newRow.id = "allowDeletion";
-     var newth = document.createElement("th");
-    newth.className = className[0]+" section-content text-left";
-    newth.contentEditable = true;
-    newRow.appendChild(newth);
+  async function ThemCDRLoaiKT(index) {
+    let KN = (document.getElementsByClassName('KyNang').length) + 1;
+    var tbody = document.getElementById("table-4-learning-outcomes")
+    var className = ["content-4-learning-outcomes-1", "content-4-learning-outcomes-2", "content-4-learning-outcomes-3", "content-4-learning-outcomes-4", "content-4-learning-outcomes-5"]
+    if (index === 1) {
+      var CountclassKyNangKT = document.getElementsByClassName("KyNangKT");
+      var newRow = document.createElement("tr");
+      var stemp = await (CountclassKyNangKT.length + 1)
+      newRow.className = "KyNang KyNangKT"
+      newRow.id = "KyNangKT" + stemp;
+      var newth = document.createElement("th");
+      newth.className = className[0] + " section-content text-left";
+      newth.contentEditable = true;
+      newRow.appendChild(newth);
+      for (let i = 1; i <= 4; i++) {
+        var cell = document.createElement("td");
+        cell.className = className[i];
+        var p = document.createElement("p");
+        p.className = "section-content";
+        var span = document.createElement("span");
+        span.contentEditable = true;
 
-
-    for (let i = 1; i <= 4; i++) {
-      var cell = document.createElement("td");
-      cell.className = className[i];
-      var p = document.createElement("p");
-      p.className = "section-content";
-      var span = document.createElement("span");
-      span.contentEditable = true;
-      span.id ="KT"+ stemp +"."+(i);
-     
-      
-      
-      p.appendChild(span);
-      cell.appendChild(p);
-      newRow.appendChild(cell);
-      
-    }
-
-    var nextRow = document.getElementById("KyNangKN");
-    nextRow.parentNode.insertBefore(newRow, nextRow);
-    UpdateSTTskill_TB4()
-    
-  } else if (index === 2) {
-    var CountclassKyNangKT = document.getElementsByClassName("KyNangKN").length;
-    var newRow = document.createElement("tr");
-    var stemp = CountclassKyNangKT + 1
-    newRow.id = "allowDeletion"
-
-    newRow.className = "KyNang KyNangKN KyNangKN" + stemp;
-
-
-
-    var newth = document.createElement("th");
-    newth.className = className[0]+" section-content text-left";
-    newth.contentEditable = true;
-    newRow.appendChild(newth);
-
-    for (let i = 1; i <= 4; i++) {
-      var cell = document.createElement("td");
-      cell.className = className[i];
-      var p = document.createElement("p");
-      p.className = "section-content";
-      var span = document.createElement("span");
-      span.contentEditable = true;
-      span.id = "KN"+stemp +"."+(i);
-     
-      
-      p.appendChild(span);
-      cell.appendChild(p);
-      newRow.appendChild(cell);
-    }
-    
-    var nextRow = document.getElementById("KyNangTD");
-    nextRow.parentNode.insertBefore(newRow, nextRow);
-    UpdateSTTskill_TB4()
-    
-  } else {
-    // Trường hợp index không phải 1 hoặc 2
-    var CountclassKyNangTD = document.getElementsByClassName("KyNangTD").length;
-    var newRow = document.createElement("tr");
-    var stemp = CountclassKyNangTD + 1;
-    
-    newRow.className = "KyNang KyNangTD KyNangTD" + stemp;
-    newRow.id = "allowDeletion"
-
-    var newth = document.createElement("th");
-    newth.className = className[0]+" section-content text-left";
-    newth.contentEditable = true;
-    newRow.appendChild(newth);
-    for (let i = 1; i <= 4; i++) {
-      var cell = document.createElement("td");
-      cell.className = className[i];
-      var p = document.createElement("p");
-      p.className = "section-content";
-      var span = document.createElement("span");
-      span.contentEditable = true;
-      span.id = "TD"+stemp +"."+(i);
-      
-      
-      p.appendChild(span);
-      cell.appendChild(p);
-      newRow.appendChild(cell);
-      
-    }
-    
-    // Thêm <tr> vào cuối <tbody>
-    tbody.appendChild(newRow);
-    UpdateSTTskill_TB4()
-  } 
-}
-
-document.getElementById('button_delete_tb4').addEventListener('click', function() {
-    const focusedSpan = document.querySelector('.focus'); 
-
-    if (focusedSpan && focusedSpan.classList.contains('focus')) {
-        const parentTr = focusedSpan.closest('tr[id="allowDeletion"]');
-        
-        if (parentTr) {
-            const confirmation = window.confirm('Bạn có chắc muốn xóa phần tử này?');
-            if (confirmation) {
-                parentTr.remove();
-                
-                UpdateSTTskill_TB4()
-
-                // Gọi lại hàm cập nhật STT
-            } else {
-                console.log("Người dùng đã từ chối xóa.");
-            }
+        if (i === 1) {
+          span.id = 'KT_ND_' + stemp;
+        } else if (i === 2) {
+          span.id = 'KT_DUPO_' + stemp;
+        } else if (i === 3) {
+          span.id = 'KT_TD_' + stemp;
         } else {
-            console.log("Không tìm thấy hoặc thẻ tr không có ID là 'allowDeletion'.");
+          span.id = 'KT_TUA_' + stemp;
         }
+        p.appendChild(span);
+        cell.appendChild(p);
+        newRow.appendChild(cell);
+      }
+
+      var nextRow = document.getElementById("KyNangKN");
+      nextRow.parentNode.insertBefore(newRow, nextRow);
+      UpdateSTTskill_TB4()
+
+    } else if (index === 2) {
+      var CountclassKyNangKT = document.getElementsByClassName("KyNangKN").length;
+      var newRow = document.createElement("tr");
+      var stemp = CountclassKyNangKT + 1
+      newRow.id = "KyNangKN"+stemp
+      
+      newRow.className = "KyNang KyNangKN";
+      var newth = document.createElement("th");
+      newth.className = className[0] + " section-content text-left";
+      newth.contentEditable = true;
+      newRow.appendChild(newth);
+
+      for (let i = 1; i <= 4; i++) {
+        var cell = document.createElement("td");
+        cell.className = className[i];
+        var p = document.createElement("p");
+        p.className = "section-content";
+        var span = document.createElement("span");
+        span.contentEditable = true;
+        if (i === 1) {
+          span.id = 'KN_ND_' + stemp;
+        } else if (i === 2) {
+          span.id = 'KN_DUPO_' + stemp;
+        } else if (i === 3) {
+          span.id = 'KN_TD_' + stemp;
+        } else {
+          span.id = 'KN_TUA_' + stemp;
+        }
+
+
+        p.appendChild(span);
+        cell.appendChild(p);
+        newRow.appendChild(cell);
+      }
+
+      var nextRow = document.getElementById("KyNangTD");
+      nextRow.parentNode.insertBefore(newRow, nextRow);
+      UpdateSTTskill_TB4()
+
     } else {
-        console.log("Không tìm thấy hoặc thẻ span không có class 'focus'.");
+      // Trường hợp index không phải 1 hoặc 2
+      var CountclassKyNangTD = document.getElementsByClassName("KyNangTD").length;
+      var newRow = document.createElement("tr");
+      var stemp = CountclassKyNangTD + 1;
+
+      newRow.className = "KyNang KyNangTD" 
+      newRow.id = "KyNangTD" + stemp;
+
+      var newth = document.createElement("th");
+      newth.className = className[0] + " section-content text-left";
+      newth.contentEditable = true;
+      newRow.appendChild(newth);
+      for (let i = 1; i <= 4; i++) {
+        var cell = document.createElement("td");
+        cell.className = className[i];
+        var p = document.createElement("p");
+        p.className = "section-content";
+        var span = document.createElement("span");
+        span.contentEditable = true;
+        if (i === 1) {
+          span.id = 'TD_ND_' + stemp;
+        } else if (i === 2) {
+          span.id = 'TD_DUPO_' + stemp;
+        } else if (i === 3) {
+          span.id = 'TD_TD_' + stemp;
+        } else {
+          span.id = 'TD_TUA_' + stemp;
+        }
+        p.appendChild(span);
+        cell.appendChild(p);
+        newRow.appendChild(cell);
+      }
+      // Thêm <tr> vào cuối <tbody>
+      tbody.appendChild(newRow);
+      UpdateSTTskill_TB4()
     }
-});
+  }
 
+  document.getElementById('button_delete_tb4').addEventListener('click', function () {
+    const focusedSpan = document.querySelector('.focus');
+    if (focusedSpan && focusedSpan.classList.contains('focus')) {
+      const parentTr = focusedSpan.closest('tr[class*="KyNang"]');      
+      if (parentTr) {
+        var parentID = parentTr.id;
+        var SoTrongID = parseInt(parentID.match(/\d+/)[0], 10);
+        var ChuTrongID = parentID.match(/[a-zA-Z]+/)[0];
 
-function UpdateSTTskill_TB4() {
-  var rows = document.querySelectorAll('.KyNang' );
+        const confirmation = window.confirm('Bạn có chắc muốn xóa phần tử này?');
+        if (confirmation) {
+          parentTr.remove();
+          UpdateAllId_TB4(ChuTrongID, SoTrongID);
+          UpdateSTTskill_TB4()
 
-  rows.forEach((row, index) => {
-    var sttElements = row.querySelectorAll('th');
-
-    sttElements.forEach((sttElement, sttIndex) => {
-      // Cập nhật số thứ tự cho tất cả các phần tử có class 'stt'
-      sttElement.textContent = index * sttElements.length + sttIndex + 1;
-    });
+        } else {
+          console.log("Người dùng đã từ chối xóa.");
+        }
+      } else {
+        console.log("Không tìm thấy hoặc thẻ tr không có ID là 'allowDeletion_4'.");
+      }
+    } else {
+      console.log("Không tìm thấy hoặc thẻ span không có class 'focus'.");
+    }
   });
+
+function UpdateAllId_TB4(ChuTrongID, SoTrongID) {
+  const Countallclass = document.getElementsByClassName(ChuTrongID).length;
+  var updateIndex = parseInt(SoTrongID)+1;
+  for (let i = updateIndex; i <= Countallclass+1; i++) {
+      oneId_TB4(ChuTrongID, i);
+    }
+   
 }
+
+function oneId_TB4(ChuTrongID, i) {
+  var key = getKeyWithClass(ChuTrongID);
+  console.log(key);
+  var I = i;
+  console.log(I);
+  var Iupdate = parseInt(I) - 1;
+
+  const ND = document.getElementById(`${key}_ND_${I}`);
+  const DUPO = document.getElementById(`${key}_DUPO_${I}`);
+  const TD = document.getElementById(`${key}_TD_${I}`);
+  const TUA = document.getElementById(`${key}_TUA_${I}`);
+
+  const newNDId = `${key}_ND_${Iupdate}`;
+  const newDUPOId = `${key}_DUPO_${Iupdate}`;
+  const newTDId = `${key}_TD_${Iupdate}`;
+  const newTUAId = `${key}_TUA_${Iupdate}`;
+
+  // Thực hiện thay đổi trực tiếp ID của các phần tử
+  ND.id = newNDId;
+  DUPO.id = newDUPOId;
+  TD.id = newTDId;
+  TUA.id = newTUAId;
+
+  var updateId = document.getElementById(ChuTrongID+i);
+  updateId.id = ChuTrongID + Iupdate;
+  console.log(updateId.id);  
+}
+
+function getKeyWithClass(code) {
+  if (code === 'KyNangKT') {
+    return 'KT';
+  } else if (code === 'KyNangKN') {
+    return 'KN';
+  } else if (code === 'KyNangTD') {
+    return 'TD';
+  } else {
+    return null;
+  }
+}
+
+  function UpdateSTTskill_TB4() {
+    var rows = document.querySelectorAll('.KyNang');
+    rows.forEach((row, index) => {
+      var sttElements = row.querySelectorAll('th');
+      sttElements.forEach((sttElement, sttIndex) => {
+        // Cập nhật số thứ tự cho tất cả các phần tử có class 'stt'
+        sttElement.textContent = index * sttElements.length + sttIndex + 1;
+      });
+    });
+  }
 </script>

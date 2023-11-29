@@ -162,7 +162,8 @@
                 </table>
                 <p class="section-content">&nbsp;</p>
                 <p class="section-content">&nbsp;</p>
-                <p class="section-content break"><strong><span>2. Nguồn học liệu (Learning resources):</span></strong></p>
+                <p class="section-content break"><strong><span>2. Nguồn học liệu (Learning resources):</span></strong>
+                </p>
                 <p class="section-content">&nbsp;</p>
                 {{!----}}
                 {{!-- 2. Nguồn học liệu (Learning resources): --}}
@@ -177,87 +178,104 @@
                                     <p><span id="loaiHocLieu">Giáo trình/Tài liệu học tập chính</span></p>
                                 </td>
                                 <td class="table-2-learning-body">
-                                    <div id="giaotrinh">                                  
-                                        <p id="giaotrinh1" class="giaotrinh">
-                                            [<span id="STT_1" class="STT" contenteditable="true" onclick="toggleElement('giaotrinh1')">1</span>]
-                                            <span id="TG_GT_1" contenteditable="true" onclick="toggleElement('giaotrinh1')">Nguyễn Văn Tuấn</span>
-                                            (<span id="NXB_GT_1" contenteditable="true"
-                                                onclick="toggleElement('giaotrinh1')">2014</span>).&nbsp;
-                                            <span id="Ten_GT_1" contenteditable="true" onclick="toggleElement('giaotrinh1')"
-                                                class="text-nghien">Phân tích dữ liệu với R</span>
-                                            [<span id="NGUON_GT_1" contenteditable="true"
-                                                onclick="toggleElement('giaotrinh1')">NXB Tổng hợp TP Hồ Chí Minh</span>]
-                                            <strong
-                                                contenteditable="true">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</strong>
+                                    <div id="giaotrinh">
+                                        <p id="GT1" class="allowDeletion2 giaotrinh">
+                                            [<span id="STT_GT_1" class="STT_TB2"
+                                                onclick="hiddenAndShow(1,GT)"
+                                                contenteditable="true">1</span>]
+                                            <span id="TG_GT_1" onclick="hiddenAndShow(1,'GT')"
+                                                contenteditable="true">Nguyễn
+                                                Văn
+                                                Tuấn</span>
+                                            (<span id="NXB_GT_1" onclick="hiddenAndShow(1,'GT')"
+                                                contenteditable="true">2014</span>).&nbsp;
+                                            <span id="Ten_GT_1" onclick="hiddenAndShow(1,'GT')"
+                                                contenteditable="true" class="text-nghien">Phân tích dữ liệu với
+                                                R</span>
+                                            [<span id="NGUON_GT_1" onclick="hiddenAndShow(1,'GT')"
+                                                contenteditable="true">NXB Tổng hợp TP
+                                                Hồ Chí Minh</span>]
+                                            <span contenteditable="true"
+                                                id="No">.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
                                         </p>
-                                        <div id="giaotrinh1Div" class="hidden"
-                                            onblur="updateAndToggleElement('giaotrinh1', 'giaotrinh1Div')"
-                                            onkeydown="handleKeyDown(event, 'giaotrinh1', 'giaotrinh1Div')">
-                                            <p>Stt:&nbsp;<span id="STT_DSpan_1" contenteditable="true"></span></p>
-
-                                            <p>Tên tác giả:&nbsp;<span id="TG_DSpan_1"
-
-                                                    contenteditable="true"></span></p>
-                                            <p>Năm Xuất bảng:&nbsp;<span id="NXB_DSpan_1"
-
-                                                    contenteditable="true"></span></p>
-                                            <p>Tên tài liệu tham khảo:&nbsp;<span id="TEN_DSpan_1"
-
+                                        <div id="GT1div" class="hidden_GT1 hidden">
+                                            <p><strong>STT:</strong>&nbsp;[<span id="STT_GT_DSpan_1"></span>]</p>
+                                            <p><strong>Tên tác giả:</strong>&nbsp;<span id="TG_GT_DSpan_1"
+                                                    contenteditable="true"></span>
+                                            </p>
+                                            <p><strong>Năm Xuất bảng:</strong>&nbsp;<span id="NXB_GT_DSpan_1"
+                                                    contenteditable="true"></span>
+                                            </p>
+                                            <p><strong>Tên tài liệu tham khảo:</strong>&nbsp;<span id="TEN_GT_DSpan_1"
                                                     contenteditable="true" class="text-nghien"></span></p>
-                                            <p>Nguồn:&nbsp;<span id="NGUON_DSpan_1" contenteditable="true">
-
-
-                                            </span></p>
+                                            <p><strong>Nguồn:</strong>&nbsp;<span id="NGUON_GT_DSpan_1"
+                                                    contenteditable="true"></span></p>
                                         </div>
-                                        {{!-- <p id="giaotrinh2" class="giaotrinh">
-                                            [<span id="STT_2" class="STT" contenteditable="true" onclick="toggleElement('giaotrinh2')">2</span>]
-                                            <span id="TG_GT_2" contenteditable="true" onclick="toggleElement('giaotrinh2')">Danielle Navarro, Ethan Weed</span>
-                                            (<span id="NXB_GT_2" contenteditable="true"
-                                                onclick="toggleElement('giaotrinh2')">2021</span>).&nbsp;
-                                            <span id="Ten_GT_2" contenteditable="true" onclick="toggleElement('giaotrinh2')"
-                                                class="text-nghien">Learning Statistics with Python</span>
-                                            [<span id="NGUON_GT_2" contenteditable="true"
-                                                onclick="toggleElement('giaotrinh2')">https://ethanweed.github.io/pythonbook/landingpage.html</span>]
-                                            <strong
-                                                contenteditable="true">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</strong>
+
+                                        <p id="GT2" class="allowDeletion2 giaotrinh">
+                                            [<span id="STT_GT_2" class="STT_TB2"
+                                                onclick="hiddenAndShow(2,'GT')"
+                                                contenteditable="true">2</span>]
+                                            <span id="TG_GT_2" onclick="hiddenAndShow(2,'GT')"
+                                                contenteditable="true">Danielle Navarro, Ethan Weed</span>
+                                            (<span id="NXB_GT_2" onclick="hiddenAndShow(2,'GT')"
+                                                contenteditable="true">2021</span>).&nbsp;
+                                            <span id="Ten_GT_2" onclick="hiddenAndShow(2,'GT')"
+                                                contenteditable="true" class="text-nghien">Learning Statistics with
+                                                Python</span>
+                                            [<span id="NGUON_GT_2" onclick="hiddenAndShow(2,'GT')"
+                                                contenteditable="true">https://ethanweed.github.io/pythonbook/landingpage.html</span>]
+                                            .<span contenteditable="true"
+                                                id="No">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
                                         </p>
-                                        <div id="giaotrinh2Div" class="hidden"
-                                            onblur="updateAndToggleElement('giaotrinh2', 'giaotrinh2Div')"
-                                            onkeydown="handleKeyDown(event, 'giaotrinh2', 'giaotrinh2Div')">
-                                            <p>Stt:&nbsp;<span id="STT_DSpan_2" contenteditable="true"></span></p>
 
-                                            <p>Tên tác giả:&nbsp;<span id="TG_DSpan_2"
-
-                                                    contenteditable="true"></span></p>
-                                            <p>Năm Xuất bảng:&nbsp;<span id="NXB_DSpan_2"
-
-                                                    contenteditable="true"></span></p>
-                                            <p>Tên tài liệu tham khảo:&nbsp;<span id="TEN_DSpan_2"
-
+                                        <div id="GT2div" class="hidden_GT2 hidden">
+                                            <p><strong>STT:</strong>&nbsp;[<span id="STT_GT_DSpan_2"></span>]</p>
+                                            <p><strong>Tên tác giả:</strong>&nbsp;<span id="TG_GT_DSpan_2"
+                                                    contenteditable="true"></span>
+                                            </p>
+                                            <p><strong>Năm Xuất bảng:</strong>&nbsp;<span id="NXB_GT_DSpan_2"
+                                                    contenteditable="true"></span>
+                                            </p>
+                                            <p><strong>Tên tài liệu tham khảo:</strong>&nbsp;<span id="TEN_GT_DSpan_2"
                                                     contenteditable="true" class="text-nghien"></span></p>
-                                            <p>Nguồn:&nbsp;<span id="NGUON_DSpan_2" contenteditable="true">
+                                            <p><strong>Nguồn:</strong>&nbsp;<span id="NGUON_GT_DSpan_2"
+                                                    contenteditable="true"></span></p>
+                                        </div>
 
-
-                                            </span></p>
-                                        </div> --}}
-
-
-
-                                        <p  id="2">
-                                            [2]<span id="tacGia"></span> Danielle Navarro, Ethan Weed
-                                            </span> (<span id="namXuatBan">2021</span>). <span class="text-nghien"
-                                                id="tenTLTK">Learning Statistics with
-                                                Python</span>. Online:&nbsp;<a
-                                                href="https://ethanweed.github.io/pythonbook/landingpage.html"><span
-                                                    id="nguon">https://ethanweed.github.io/pythonbook/landingpage.html</span></a>.
+                                        <p id="GT3" class="allowDeletion2 giaotrinh">
+                                            [<span id="STT_GT_3" class="STT_TB2"
+                                                onclick="hiddenAndShow(3,GT)"
+                                                contenteditable="true">3</span>]
+                                            <span id="TG_GT_3" onclick="hiddenAndShow(3,'GT')"
+                                                contenteditable="true">Peter
+                                                Bruce, Andrew Bruce,
+                                                Peter</span>
+                                            (<span id="NXB_GT_3" onclick="hiddenAndShow(3,'GT')"
+                                                contenteditable="true">2020</span>).&nbsp;
+                                            <span id="Ten_GT_3" onclick="hiddenAndShow(3,'GT')"
+                                                contenteditable="true" class="text-nghien">Phân tích dữ liệu với
+                                                R</span>
+                                            [<span id="NGUON_GT_3" onclick="hiddenAndShow(3,'GT')"
+                                                contenteditable="true">
+                                                O'Reilly Media</span>]
+                                            <span contenteditable="true"
+                                                id="No">.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
                                         </p>
-                                        <p contenteditable="true" id="3">[3]<em>&nbsp;</em>Peter Bruce, Andrew Bruce,
-                                            Peter
-                                            Gedeck (2020). <em>Practical
-                                                Statistics for Data Scientists: 50+ Essential Concepts Using R and
-                                                Python</em>.
-                                            O'Reilly Media.
-                                        </p>
+
+                                        <div id="GT3div" class="hidden_GT3 hidden">
+                                            <p><strong>STT:</strong>&nbsp;[<span id="STT_GT_DSpan_3"></span>]</p>
+                                            <p><strong>Tên tác giả:</strong>&nbsp;<span id="TG_GT_DSpan_3"
+                                                    contenteditable="true"></span>
+                                            </p>
+                                            <p><strong>Năm Xuất bảng:</strong>&nbsp;<span id="NXB_GT_DSpan_3"
+                                                    contenteditable="true"></span>
+                                            </p>
+                                            <p><strong>Tên tài liệu tham khảo:</strong>&nbsp;<span id="TEN_GT_DSpan_3"
+                                                    contenteditable="true" class="text-nghien"></span></p>
+                                            <p><strong>Nguồn:</strong>&nbsp;<span id="NGUON_GT_DSpan_3"
+                                                    contenteditable="true"></span></p>
+                                        </div>
                                     </div>
                                 </td>
                                 <td class="empty"></td>
@@ -267,62 +285,189 @@
                                     <p><span id="loaiHocLieu">Tài liệu tham khảo thêm</span></p>
                                 </td>
                                 <td class="table-2-learning-body">
-                                    <div class="input" id="input-container">
-                                        <p contenteditable="true" id="4">[4] Jake VanderPlas (2017) <em>Python Data
+                                    <div id="TaiLieuThamKhao">
+                                        <p id="TL1" class="allowDeletion2 TaiLieuThamKhao">
+                                            [<span id="STT_TL_1" class="STT_TB2"
+                                                onclick="hiddenAndShow(1,TL)"
+                                                contenteditable="true">4</span>]
+                                            <span id="TG_TL_1" onclick="hiddenAndShow(1,'TL')"
+                                                contenteditable="true">Jake VanderPlas</span>
+                                            (<span id="NXB_TL_1" onclick="hiddenAndShow(1,'TL')"
+                                                contenteditable="true">2017</span>).&nbsp;
+                                            <span id="Ten_TL_1" onclick="hiddenAndShow(1,'TL')"
+                                                contenteditable="true" class="text-nghien">Python Data
                                                 Science
                                                 Handbook: Essential Tools for
-                                                Working with Data</em>. O'Reilly Media.</p>
-                                        <p contenteditable="true" id="5">[5] Alan Agresti, Christine A. Franklin,
-                                            Bernhard
-                                            Klingenberg (2020).
-                                            &nbsp;<em>Statistics:</em> <em>The Art and Science of Learning from Data
-                                                5<sup>th</sup> edition.&nbsp;</em>Pearson</p>
+                                                Working with Data</span>
+                                            [<span id="NGUON_TL_1" onclick="hiddenAndShow(1,'TL')"
+                                                contenteditable="true">O'Reilly Media</span>]
+                                            <span contenteditable="true"
+                                                id="No">.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                                        </p>
+
+                                        <div id="TLdiv" class="hidden_TL1 hidden">
+                                            <p><strong>STT:</strong>&nbsp;[<span id="STT_TL_DSpan_1"></span>]</p>
+                                            <p><strong>Tên tác giả:</strong>&nbsp;<span id="TG_TL_DSpan_1"
+                                                    contenteditable="true"></span></p>
+                                            <p><strong>Năm Xuất bảng:</strong>&nbsp;<span id="NXB_TL_DSpan_1"
+                                                    contenteditable="true"></span></p>
+                                            <p><strong>Tên tài liệu tham khảo:</strong>&nbsp;<span id="TEN_TL_DSpan_1"
+                                                    contenteditable="true" class="text-nghien"></span></p>
+                                            <p><strong>Nguồn:</strong>&nbsp;<span id="NGUON_TL_DSpan_1"
+                                                    contenteditable="true"></span></p>
+                                        </div>
+
+                                        <p id="TL2" class="allowDeletion2 TaiLieuThamKhao">
+                                            [<span id="STT_TL_2" class="STT_TB2"
+                                                onclick="hiddenAndShow(2,TL)"
+                                                contenteditable="true">5</span>]
+                                            <span id="TG_TL_2" onclick="hiddenAndShow(2,'TL')"
+                                                contenteditable="true">Jake VanderPlas</span>
+                                            (<span id="NXB_TL_2" onclick="hiddenAndShow(2,'TL')"
+                                                contenteditable="true">2017</span>).&nbsp;
+                                            <span id="Ten_TL_2" onclick="hiddenAndShow(2,'TL')"
+                                                contenteditable="true" class="text-nghien">Python Data
+                                                Science
+                                                Handbook: Essential Tools for
+                                                Working with Data</span>
+                                            [<span id="NGUON_TL_2" onclick="hiddenAndShow(2,'TL')"
+                                                contenteditable="true">O'Reilly Media</span>]
+                                            <span contenteditable="true"
+                                                id="No">.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                                        </p>
+
+                                        <div id="TL2div" class="hidden_TL2 hidden">
+                                            <p><strong>STT:</strong>&nbsp;[<span id="STT_TL_DSpan_2"></span>]</p>
+                                            <p><strong>Tên tác giả:</strong>&nbsp;<span id="TG_TL_DSpan_2"
+                                                    contenteditable="true"></span></p>
+                                            <p><strong>Năm Xuất bảng:</strong>&nbsp;<span id="NXB_TL_DSpan_2"
+                                                    contenteditable="true"></span></p>
+                                            <p><strong>Tên tài liệu tham khảo:</strong>&nbsp;<span id="TEN_TL_DSpan_2"
+                                                    contenteditable="true" class="text-nghien"></span></p>
+                                            <p><strong>Nguồn:</strong>&nbsp;<span id="NGUON_TL_DSpan_2"
+                                                    contenteditable="true"></span></p>
+                                        </div>
                                     </div>
                                 </td>
                                 <td class="empty"></td>
                             </tr>
-
-
                             <tr>
                                 <td class="table-2-learning-header">
                                     <p><span id="loaiHocLieu">Các loại học liệu khác</span></p>
                                 </td>
                                 <td class="table-2-learning-body">
-                                    <div class="input" id="input-container">
-                                        <p contenteditable="true" id="6">[6] Mirko Stojiljković (2022). <em>Python
+                                    <div id="HocLieu">
+                                        <p id="HL1" class="allowDeletion2 HocLieu">
+                                            [<span id="STT_HL_1" class="STT_TB2" onclick="hiddenAndShow(1,HL)"
+                                                contenteditable="true">5</span>]
+                                            <span id="TG_HL_1" onclick="hiddenAndShow(1,'HL')"
+                                                contenteditable="true">Mirko Stojiljković</span>
+                                            (<span id="NXB_HL_1" onclick="hiddenAndShow(1,'HL')"
+                                                contenteditable="true">2022</span>).&nbsp;
+                                            <span id="Ten_HL_1" onclick="hiddenAndShow(1,'HL')"
+                                                contenteditable="true" class="text-nghien">Python Data
+                                                Science
+                                                Handbook: Essential Tools for
+                                                Working with Data</span>
+                                            [<span id="NGUON_HL_1" onclick="hiddenAndShow(1,'HL')"
+                                                contenteditable="true">O'Reilly Media</span>]
+                                            <span contenteditable="true"
+                                                id="No">.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                                        </p>
+                                        <div id="HL1div" class="hidden_HL1 hidden">
+                                            <p><strong>STT:</strong>&nbsp;[<span id="STT_HL_DSpan_1"></span>]</p>
+                                            <p><strong>Tên tác giả:</strong>&nbsp;<span id="TG_HL_DSpan_1"
+                                                    contenteditable="true"></span></p>
+                                            <p><strong>Năm Xuất bảng:</strong>&nbsp;<span id="NXB_HL_DSpan_1"
+                                                    contenteditable="true"></span></p>
+                                            <p><strong>Tên tài liệu tham khảo:</strong>&nbsp;<span id="TEN_HL_DSpan_1"
+                                                    contenteditable="true" class="text-nghien"></span></p>
+                                            <p><strong>Nguồn:</strong>&nbsp;<span id="NGUON_HL_DSpan_1"
+                                                    contenteditable="true"></span></p>
+                                        </div>
+
+                                        <p id="HL2" class="allowDeletion2 HocLieu">
+                                            [<span id="STT_HL_2" class="STT_TB2" onclick="hiddenAndShow(2,HL)"
+                                                contenteditable="true">6</span>]
+                                            <span id="TG_HL_2" onclick="hiddenAndShow(2,'HL')"
+                                                contenteditable="true">Mirko Stojiljković</span>
+                                            (<span id="NXB_HL_2" onclick="hiddenAndShow(2,'HL')"
+                                                contenteditable="true">2022</span>).&nbsp;
+                                            <span id="Ten_HL_2" onclick="hiddenAndShow(2,'HL')"
+                                                contenteditable="true" class="text-nghien">ython
                                                 Statistics Fundamentals: How to Describe
-                                                Your Data</em></p>
-                                        <p contenteditable="true" id="7">[7] FreeCodeCamp. <em>Courses: Data Analysis
+                                                Your Data</span>
+                                            [<span id="NGUON_HL_2" onclick="hiddenAndShow(2,'HL')"
+                                                contenteditable="true">O'Reilly Media</span>]
+                                            <span contenteditable="true"
+                                                id="No">.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                                        </p>
+                                        <div id="HL2div" class="hidden_HL2 hidden">
+                                            <p><strong>STT:</strong>&nbsp;[<span id="STT_HL_DSpan_2"></span>]</p>
+                                            <p><strong>Tên tác giả:</strong>&nbsp;<span id="TG_HL_DSpan_2"
+                                                    contenteditable="true"></span></p>
+                                            <p><strong>Năm Xuất bảng:</strong>&nbsp;<span id="NXB_HL_DSpan_2"
+                                                    contenteditable="true"></span></p>
+                                            <p><strong>Tên tài liệu tham khảo:</strong>&nbsp;<span id="TEN_HL_DSpan_2"
+                                                    contenteditable="true" class="text-nghien"></span></p>
+                                            <p><strong>Nguồn:</strong>&nbsp;<span id="NGUON_HL_DSpan_2"
+                                                    contenteditable="true"></span></p>
+                                        </div>
+
+                                        <p id="HL3" class="allowDeletion2 HocLieu">
+                                            [<span id="STT_HL_3" class="STT_TB2" onclick="hiddenAndShow(3,HL)"
+                                                contenteditable="true">7</span>]
+                                            <span id="TG_HL_3" onclick="hiddenAndShow(3,'HL')"
+                                                contenteditable="true">FreeCodeCamp</span>
+                                            (<span id="NXB_HL_3" onclick="hiddenAndShow(3,'HL')"
+                                                contenteditable="true"></span>).&nbsp;
+                                            <span id="Ten_HL_3" onclick="hiddenAndShow(3,'HL')"
+                                                contenteditable="true" class="text-nghien">Courses: Data Analysis
                                                 with
-                                                Python</em><em><span>&nbsp;</span></em><span>[</span><a
-                                                href="https://www.freecodecamp.org/learn/data-analysis-with-python"><span>https://www.freecodecamp.org/learn/data-analysis-with-python</span></a><span>].&nbsp;</span>
+                                                Python</span>
+                                            [<span id="NGUON_HL_3" onclick="hiddenAndShow(3,'HL')"
+                                                contenteditable="true">https://www.freecodecamp.org/learn/data-analysis-with-python</span>]
+                                            <span contenteditable="true"
+                                                id="No">.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
                                         </p>
-                                        <p contenteditable="true" id="8">[8] Dionysia Lemonaki (2022). <em>What is Data
-                                                Analysis?</em></p>
-                                        <p contenteditable="true" id="9">[9] Colaboratory-team, Craig Citro (2020).
-                                            <em>Using Google Colab with GitHub</em>
-                                            [</span><a
-                                                href="https://colab.research.google.com/github/googlecolab/colabtools/blob/master/notebooks/colab-github-demo.ipynb"><span>https://colab.research.google.com/github/<br>&nbsp;googlecolab/colabtools/blob/master/notebooks/colab-github-demo.ipynb</span></a><span>]</span>
-                                        </p>
+                                        <div id="HL3div" class="hidden_HL3 hidden">
+                                            <p><strong>STT:</strong>&nbsp;[<span id="STT_HL_DSpan_3"></span>]</p>
+                                            <p><strong>Tên tác giả:</strong>&nbsp;<span id="TG_HL_DSpan_3"
+                                                    contenteditable="true"></span></p>
+                                            <p><strong>Năm Xuất bảng:</strong>&nbsp;<span id="NXB_HL_DSpan_3"
+                                                    contenteditable="true"></span></p>
+                                            <p><strong>Tên tài liệu tham khảo:</strong>&nbsp;<span id="TEN_HL_DSpan_3"
+                                                    contenteditable="true" class="text-nghien"></span></p>
+                                            <p><strong>Nguồn:</strong>&nbsp;<span id="NGUON_HL_DSpan_3"
+                                                    contenteditable="true"></span></p>
+                                        </div>
                                     </div>
                                 </td>
                                 <td class="empty"></td>
                             </tr>
                         </tbody>
                     </table>
+
                     <div class="instructionForm-table2" id="instructionForm-table2">
                         <h3>Bảng Chương phần 2</h3>
-                       
-                        <button id="addButton" class="btn btn-secondary ctc1">
-                            + thêm 1 tài liệu
-                        </button>
-                        <button class="btn btn-secondary ctc1">
 
-                           
+                        <button id="addButton" onclick="CreateCDR('GT','giaotrinh')" class="btn btn-secondary ctc1">
+                            + thêm 1 giaotrinh
                         </button>
-                        <button class="btn btn-secondary ctc1">
+
+                        <button id="addButton" onclick="CreateCDR('TL','TaiLieuThamKhao')"
+                            class="btn btn-secondary ctc1">
+                            + thêm 1 TaiLieuThamKhao
+                        </button>
+                        <button id="addButton" onclick="CreateCDR('GT', 'HocLieu')" class="btn btn-secondary ctc1">
+                            + thêm 1 HocLieu
+                        </button>
+
+                        <button id="button_delete_tb2" class="btn btn-secondary ctc1">
+                            + xóa
+                        </button>
                     </div>
-                    {{>table-2}}
+
                 </div>
                 {{!----}}
                 {{!-- 3. Mô tả học phần (Course description): --}}
@@ -387,7 +532,7 @@
                                 <td colspan="5" class="body-4-learning-outcomes">
                                     <div class="body-4-learning-outcomes-tital">
                                         <p class="decimal-list"><strong><em><span class="strong-text">❖ <span
-                                                            class="loai_CDRMH">Về kiến thức</span>:</span></em></strong>
+                                                            >Về kiến thức</span>:</span></em></strong>
                                         </p>
                                     </div>
                                 </td>
@@ -395,30 +540,29 @@
                             </tr>
                             {{!-- <tr> tieu de 1 --}}
 
-
-
-                            <tr class="KyNang KyNangKT KyNangKT1" id="allowDeletion">
-                                <th class="content-4-learning-outcomes-1 section-content text-left stt" contenteditable="true">
+                            <tr class="allowDeletion_4 KyNang KyNangKT" id="KyNangKT1">
+                                <th class="content-4-learning-outcomes-1 section-content text-left stt"
+                                    contenteditable="true">
                                     1
                                 </th>
                                 <td class="content-4-learning-outcomes-2">
                                     <p class="section-content">
-                                        <span contenteditable="true" class="Noidung_CDRMH">
+                                        <span contenteditable="true" id="KT_ND_1">
                                             Trình bày các khái niệm cơ bản về xác suất
                                         </span>
                                     </p>
                                 </td>
                                 <td class="content-4-learning-outcomes-3">
                                     <p class="section-content"> <span contenteditable="true"
-                                            class="DapUngPO-1.1">PLO1</span></p>
+                                            id="KT_DUPO_1">PLO1</span></p>
                                 </td>
                                 <td class="content-4-learning-outcomes-4">
                                     <p class="section-content text-center"><span contenteditable="true"
-                                            class="TrinhDo-1.1">2</span></p>
+                                            id="KT_TD_1">2</span></p>
                                 </td>
                                 <td class="content-4-learning-outcomes-5">
                                     <p class="section-content"><span contenteditable="true"
-                                            class="loaiTUA-1.1">TUA</span>
+                                            id="KT_TUA_1">TUA</span>
                                     </p>
                                 </td>
                             </tr>
@@ -436,28 +580,29 @@
                             </tr>
 
                             {{!-- <tr> tieu de 1 --}}
-                            <tr class="KyNang KyNangKN KyNangKN1" id="allowDeletion">
-                                <th class="content-4-learning-outcomes-1 section-content text-left" contenteditable="true">
+                            <tr class="KyNang KyNangKN" id="KyNangKN1">
+                                <th class="content-4-learning-outcomes-1 section-content text-left"
+                                    contenteditable="true">
                                     2
                                 </th>
                                 <td class="content-4-learning-outcomes-2">
                                     <p class="section-content">
-                                        <span contenteditable="true" class="Noidung_CDRMH">
+                                        <span contenteditable="true" id="KN_ND_1">
                                             Trình bày các khái niệm cơ bản về xác suất
                                         </span>
                                     </p>
                                 </td>
                                 <td class="content-4-learning-outcomes-3">
                                     <p class="section-content"> <span contenteditable="true"
-                                            class="DapUngPO-1.1">PLO1</span></p>
+                                            id="KN_DUPO_1">PLO1</span></p>
                                 </td>
                                 <td class="content-4-learning-outcomes-4">
                                     <p class="section-content text-center"><span contenteditable="true"
-                                            class="TrinhDo-1.1">2</span></p>
+                                            id="KN_TD_1">2</span></p>
                                 </td>
                                 <td class="content-4-learning-outcomes-5">
                                     <p class="section-content"><span contenteditable="true"
-                                            class="loaiTUA-1.1">TUA</span>
+                                            id="KN_TUA_1">TUA</span>
                                     </p>
                                 </td>
                             </tr>
@@ -475,29 +620,31 @@
 
                             </tr>
                             {{!-- <tr> tieu de 1 --}}
-                            <tr class="KyNang KyNangTD KyNangTD1" id="allowDeletion">
-                                <th class="content-4-learning-outcomes-1 section-content text-left" contenteditable="true">
-                                     3
+                            <tr class="KyNang KyNangTD" id="KyNangTD1">
+                                <th class="content-4-learning-outcomes-1 section-content text-left"
+                                    contenteditable="true">
+                                    3
                                 </th>
                                 <td class="content-4-learning-outcomes-2">
                                     <p class="section-content">
-                                        <span contenteditable="true" class="Noidung_CDRMH">
+                                        <span contenteditable="true" id="TD_ND_1">
                                             Trình bày các khái niệm cơ bản về xác suất
                                         </span>
                                     </p>
                                 </td>
-                                
+
                                 <td class="content-4-learning-outcomes-3">
                                     <p class="section-content"> <span contenteditable="true"
-                                            class="DapUngPO-1.1">PLO1</span></p>
+                                            id="TD_DUPO_1">PLO1</span></p>
                                 </td>
                                 <td class="content-4-learning-outcomes-4">
                                     <p class="section-content text-center"><span contenteditable="true"
-                                            class="TrinhDo-1.1">2</span></p>
+                                            {{!-- tự do trình độ --}}
+                                            id="TD_TD_1">2</span></p>
                                 </td>
                                 <td class="content-4-learning-outcomes-5">
                                     <p class="section-content"><span contenteditable="true"
-                                            class="loaiTUA-1.1">TUA</span>
+                                            id="TD_TUA_1">TUA</span>
                                     </p>
                                 </td>
                             </tr>
@@ -729,8 +876,8 @@
                                 <td id="Chuong1.1" class="body-5-course-content-255_55pt">
                                     <p class="table-5-course-content-p text-justify">
                                         <span contenteditable="true" id="TenChuong" class="STT_CHUONG">
-                                                Các khái niệm cơ bản về xác suất
-                                            </span>
+                                            Các khái niệm cơ bản về xác suất
+                                        </span>
                                     </p>
                                 </td>
                                 <td id="Chuong1.2" class="body-5-course-content-71_8pt">
@@ -789,7 +936,7 @@
                                 </td>
 
                             </tr>
-                            
+
                             <tr class="ChiTietChuong1" id="allowDeletion">
                                 <td class="body-5-content-course-content-255_55pt">
                                     <p class="table-5-course-content-p text-justify"><span contenteditable="true"
@@ -829,8 +976,9 @@
                             </tr>
                             <tr class="ChiTietChuong1" id="allowDeletion">
                                 <td class="body-5-content-course-content-255_55pt">
-                                    <p class="table-5-course-content-p text-justify" ><span contenteditable="true"
-                                            id="CTC1.5" class="STT_CTC1">1.5.&nbsp;Biến ngẫu nhiên và hàm phân phối</span>
+                                    <p class="table-5-course-content-p text-justify"><span contenteditable="true"
+                                            id="CTC1.5" class="STT_CTC1">1.5.&nbsp;Biến ngẫu nhiên và hàm phân
+                                            phối</span>
                                     </p>
                                 </td>
                                 <td class="body-5-content-course-content-71_8pt">
@@ -849,7 +997,8 @@
                             <tr class="ChiTietChuong1" id="allowDeletion">
                                 <td class="body-5-content-course-content-255_55pt">
                                     <p class="table-5-course-content-p text-justify"><span contenteditable="true"
-                                            id="CTC1.6" class="STT_CTC1">1.6.&nbsp;Một số phân phối thông dụng (phân phối
+                                            id="CTC1.6" class="STT_CTC1">1.6.&nbsp;Một số phân phối thông dụng (phân
+                                            phối
                                             nhị thức, phân phối Poisson, phân phối chuẩn, phân phối Student, phân phối F
                                             và
                                             phân phối χ2)</span></p>
@@ -870,7 +1019,8 @@
                             <tr class="ChiTietChuong1" id="allowDeletion">
                                 <td class="body-5-content-course-content-255_55pt">
                                     <p class="table-5-course-content-p text-justify"><span contenteditable="true"
-                                            id="CTC1.7" class="STT_CTC1">1.7.&nbsp;Giới thiệu ngôn ngữ Python/R và lập trình
+                                            id="CTC1.7" class="STT_CTC1">1.7.&nbsp;Giới thiệu ngôn ngữ Python/R và lập
+                                            trình
                                             trong Python/R</span></p>
                                 </td>
                                 <td class="body-5-content-course-content-71_8pt">
@@ -1049,7 +1199,7 @@
                             </button>
 
                             <p>Click vào CDR cần xóa</p>
-                        <button id="hung" class="btn btn-secondary">Xóa 1 CDR</button>
+                            <button id="hung" class="btn btn-secondary">Xóa 1 CDR</button>
                         </div>
                     </div>
                 </div>
@@ -1345,7 +1495,7 @@
 
     </div>
 </div>
-
+{{>table-2}}
 <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 <script>
     function sendA4Content() {
@@ -1373,9 +1523,7 @@
     }
 </script>
 
-
 <script>
-
     const MaMon = document.getElementById('MaMon');
     const PhuLuc = document.getElementById('PhuLuc');
     const TenMon = document.getElementById('TenMon');
@@ -1393,8 +1541,12 @@
     const NamHoc = document.getElementById('NamHoc');
 
 
+
+
+
+
+
     function getSkills() {
-        // Get the content of the skills span
         var skillsContent = document.getElementById('KyNang').textContent;
 
         // Split the content into an array of skills
@@ -1414,4 +1566,3 @@
         alert('Kỹ năng:', skillsContent);
     }
 </script>
-

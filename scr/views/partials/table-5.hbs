@@ -180,24 +180,18 @@
             sttElements.forEach((sttElement, sttIndex) => {
                 //lấy chuỗi từ 5 tương đương với 1.1." "
                 sttElement.textContent = i + "." + (index * sttElements.length + sttIndex + 1) + '. ' + sttElement.textContent.substring(5);
-
             });
         });
     }
     async function UpdateAll_TB5_WhenDelete_Chuong(TimTatCaViTriCanCapNhap) {
         var chuong = await document.getElementsByClassName("Chuong").length;
         var tatcacuong = document.querySelector('[class*="Chuong"]');
-        //console.log(TimTatCaViTriCanCapNhap);
-        //tatcacuong.forEach(function(element) {
-        //  console.log(tatcacuong.id);
-        //});
         const index = parseInt(TimTatCaViTriCanCapNhap) + 1
         for (var i = index; i <= chuong; i++) {
             var temp = i;
-        CapNhat1Chuong(temp);
-        
-    }
-    
+            CapNhat1Chuong(temp);
+        }
+
     }
     function CapNhat1Chuong(index) {
         var GetAllChuong = document.getElementById('Chuong' + index);
@@ -244,6 +238,30 @@
         var ketQua = mangKetQua[1];
         return ketQua;
     }
+    function CapNhatCTC(classNameCTC, indexUpdate, numberInParent) {
+        if (classNameCTC) {
+            var numberCTCinclassName = document.getElementsByClassName(classNameCTC);
+            
+            var updateIndex = parseInt(indexUpdate) + 1;
+            for (var i = updateIndex; i < numberCTCinclassName.length; i++) {
+                OneCTC(numberInParent, i);
+            }
+        }
+        else {
+            console.log('khong có chương');
+        }
+    }
+    function OneCTC(classNameCTC, indexUpdate) {
+      
+        var update = document.getElementById('CTC' + classNameCTC + '.' + indexUpdate);
+        if (update) {
+            var updateIndex = parseInt(indexUpdate)-1
+            update.id = 'CTC' + classNameCTC + '.' + updateIndex;
+        }
+        else {
+            console.log('khong có CTC');
+        }
+    }
 
     document.addEventListener('DOMContentLoaded', function () {
         document.getElementById('hung').addEventListener('click', function () {
@@ -253,9 +271,24 @@
                 const Chuongfocus = focusedSpan.closest('tr[class="Chuong"]');
                 if (CTCfocus) {
                     //tìm 1 class trong thẻ tr được focus
-                    const classValue = CTCfocus.className;
-
+                    var classValue = CTCfocus.className;
+                    var childrenID = CTCfocus.querySelector('[id]');
+                    var stempId = childrenID.id;
+                    console.log(stempId)
+                    //tìm kiếm id con ctc1.1 lấy số số làm tiền đề cập nhật id
                     //nhận được class name ChiTietChuong1 tách lấy số 1 thôi
+                    var parts = stempId.split(/\D+/);
+
+                    if (parts.length > 0) {
+                        //1.3
+                        //lấy ra số 3
+                        var numberIndex = parts[parts.length - 1];
+                       
+                        //lấy ra số 1 tương ứng ChiTietChuong1
+
+                        var numberCTC = parts[1];
+                        
+                    }
                     var match = classValue.match(/\d+/);
 
                     if (match) {
@@ -266,6 +299,7 @@
                     const confirmation = window.confirm('Bạn có chắc muốn xóa chi tiết chương này?');
                     if (confirmation) {
                         CTCfocus.remove();
+                        CapNhatCTC(classValue, numberIndex, numberCTC)
                         UpdateSTTskill_CTC(match)
                     } else {
                         console.log("Hủy xóa.");
@@ -275,11 +309,8 @@
                     if (confirmation) {
                         const idValue = Chuongfocus.id;
                         var matchid = idValue.match(/\d+/);
-                        
                         if (matchid) {
                             var number = matchid[0];
-                            
-
                             var Delete_all_CTC_inChuong = document.querySelectorAll('.ChiTietChuong' + number);
 
                         } else {
@@ -290,7 +321,7 @@
                         Delete_all_CTC_inChuong.forEach(function (ChiTietChuong) {
                             ChiTietChuong.remove();
                         });
-                        console.log('dau vao'+number)
+                        console.log('dau vao' + number)
                         UpdateAll_TB5_WhenDelete_Chuong(number)
                         Chuongfocus.remove();
                         //updateChapters(number)
