@@ -14,6 +14,7 @@ const HocPhanSchema = new mongoose.Schema({
     ChuyenNganh: String,
     HocKy: Number,
     NamHoc: Number,
+
   });
 
 module.exports = mongoose.model('HocPhan', HocPhanSchema);

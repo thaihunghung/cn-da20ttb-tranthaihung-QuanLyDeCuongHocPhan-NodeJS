@@ -3,7 +3,12 @@
 
         <div class="formInput_baseA4" id="formInput_baseA4">
             <div class="formInput_print">
-
+                <button class="btn" onclick="CleanUp_AllTaiLieuThamKhao()">CleanUp_AllTaiLieuThamKhao</button>
+                <button class="btn" onclick="CleanUp_AllTB4()">CleanUp_AllTB4</button>
+                <button class="btn" onclick="CleanUp_AllTB5()">CleanUp_AllTB5</button>
+                <button class="btn" onclick="CleaUp_6()">CleaUp_6</button>
+                <button class="btn" onclick="CleaUp_7()">CleaUp_7()</button>
+                {{>CleanUpDataPost}}
                 <div class="width16_cm">
                     <p class="section-content text-right"><strong>PHỤ LỤC&nbsp;<span contenteditable="true"
                                 id="PhuLuc"></span></strong></p>
@@ -547,22 +552,22 @@
                                 </th>
                                 <td class="content-4-learning-outcomes-2">
                                     <p class="section-content">
-                                        <span contenteditable="true" id="KT_ND_1">
+                                        <span contenteditable="true" id="KT_ND_1" class="KT">
                                             Trình bày các khái niệm cơ bản về xác suất
                                         </span>
                                     </p>
                                 </td>
                                 <td class="content-4-learning-outcomes-3">
                                     <p class="section-content"> <span contenteditable="true"
-                                            id="KT_DUPO_1">PLO1</span></p>
+                                            id="KT_DUPO_1" class="KT">PLO1</span></p>
                                 </td>
                                 <td class="content-4-learning-outcomes-4">
                                     <p class="section-content text-center"><span contenteditable="true"
-                                            id="KT_TD_1">2</span></p>
+                                            id="KT_TD_1" class="KT">2</span></p>
                                 </td>
                                 <td class="content-4-learning-outcomes-5">
                                     <p class="section-content"><span contenteditable="true"
-                                            id="KT_TUA_1">TUA</span>
+                                            id="KT_TUA_1" class="KT">TUA</span>
                                     </p>
                                 </td>
                             </tr>
@@ -587,22 +592,22 @@
                                 </th>
                                 <td class="content-4-learning-outcomes-2">
                                     <p class="section-content">
-                                        <span contenteditable="true" id="KN_ND_1">
+                                        <span contenteditable="true" id="KN_ND_1" class="KN">
                                             Trình bày các khái niệm cơ bản về xác suất
                                         </span>
                                     </p>
                                 </td>
                                 <td class="content-4-learning-outcomes-3">
                                     <p class="section-content"> <span contenteditable="true"
-                                            id="KN_DUPO_1">PLO1</span></p>
+                                            id="KN_DUPO_1" class="KN">PLO1</span></p>
                                 </td>
                                 <td class="content-4-learning-outcomes-4">
                                     <p class="section-content text-center"><span contenteditable="true"
-                                            id="KN_TD_1">2</span></p>
+                                            id="KN_TD_1" class="KN">2</span></p>
                                 </td>
                                 <td class="content-4-learning-outcomes-5">
                                     <p class="section-content"><span contenteditable="true"
-                                            id="KN_TUA_1">TUA</span>
+                                            id="KN_TUA_1" class="KN">TUA</span>
                                     </p>
                                 </td>
                             </tr>
@@ -627,7 +632,7 @@
                                 </th>
                                 <td class="content-4-learning-outcomes-2">
                                     <p class="section-content">
-                                        <span contenteditable="true" id="TD_ND_1">
+                                        <span contenteditable="true" id="TD_ND_1"  class="TD">
                                             Trình bày các khái niệm cơ bản về xác suất
                                         </span>
                                     </p>
@@ -635,16 +640,16 @@
 
                                 <td class="content-4-learning-outcomes-3">
                                     <p class="section-content"> <span contenteditable="true"
-                                            id="TD_DUPO_1">PLO1</span></p>
+                                            id="TD_DUPO_1"  class="TD">PLO1</span></p>
                                 </td>
                                 <td class="content-4-learning-outcomes-4">
                                     <p class="section-content text-center"><span contenteditable="true"
                                             {{!-- tự do trình độ --}}
-                                            id="TD_TD_1">2</span></p>
+                                            id="TD_TD_1"  class="TD">2</span></p>
                                 </td>
                                 <td class="content-4-learning-outcomes-5">
                                     <p class="section-content"><span contenteditable="true"
-                                            id="TD_TUA_1">TUA</span>
+                                            id="TD_TUA_1"  class="TD">TUA</span>
                                     </p>
                                 </td>
                             </tr>
@@ -845,25 +850,25 @@
                             {{!-- header --}}
                             <tr>
                                 <td rowspan="2" class="header-5-course-content-255_55pt">
-                                    <p style='header-5-course-content-p'><strong><span>Nội dung</span></strong></p>
+                                    <p class="header-5-course-content-p"><strong><span>Nội dung</span></strong></p>
                                 </td>
                                 <td rowspan="2" class="header-5-course-content-71_8pt">
-                                    <p style='header-5-course-content-p'><strong><span>CĐR học phần</span></strong></p>
+                                    <p class="header-5-course-content-p"><strong><span>CĐR học phần</span></strong></p>
                                 </td>
                                 <td colspan="2" class="header-5-course-content-85_25pt">
-                                    <p style='header-5-course-content-p'><strong><span>Số giờ</span></strong></p>
+                                    <p class="header-5-course-content-p"><strong><span>Số giờ</span></strong></p>
                                 </td>
                                 <td class="header-5-course-content-55_85pt">
-                                    <p style='header-5-course-content-p'><strong><span>Giờ tự học và giờ học khác
+                                    <p class="header-5-course-content-p"><strong><span>Giờ tự học và giờ học khác
                                             </span></strong></p>
                                 </td>
                             </tr>
                             <tr>
                                 <td class="header-5-course-content-44_85pt">
-                                    <p style='header-5-course-content-p'><strong><span>LT</span></strong></p>
+                                    <p class="header-5-course-content-p"><strong><span>LT</span></strong></p>
                                 </td>
                                 <td class="header-5-course-content-55_85pt-2">
-                                    <p style='header-5-course-content-p'><strong><span>TH</span></strong></p>
+                                    <p class="header-5-course-content-p"><strong><span>TH</span></strong></p>
                                 </td>
                                 <td class="header-5-course-content-55_85pt-2">
                                     <p class="table-5-course-content-p text-justify"><span>&nbsp;</span></p>
@@ -875,26 +880,26 @@
                             <tr id="Chuong1" class="Chuong">
                                 <td id="Chuong1.1" class="body-5-course-content-255_55pt">
                                     <p class="table-5-course-content-p text-justify">
-                                        <span contenteditable="true" id="TenChuong" class="STT_CHUONG">
+                                        <span contenteditable="true" class="TenChuong STT_CHUONG">
                                             Các khái niệm cơ bản về xác suất
                                         </span>
                                     </p>
                                 </td>
                                 <td id="Chuong1.2" class="body-5-course-content-71_8pt">
-                                    <p style='header-5-course-content-p'><strong><span
+                                    <p class="header-5-course-content-p"><strong><span
                                                 contenteditable="true">1</span></strong></p>
                                 </td>
                                 <td id="Chuong1.3" class="body-5-course-content-44_85pt">
-                                    <p style='header-5-course-content-p'><strong><span contenteditable="true"
-                                                id="GioLyThuyet">5</span></strong></p>
+                                    <p class="header-5-course-content-p"><strong><span contenteditable="true"
+                                                class="GioLyThuyet">5</span></strong></p>
                                 </td>
                                 <td id="Chuong1.4" class="body-5-course-content-40_4pt">
-                                    <p style='header-5-course-content-p'><strong><span contenteditable="true"
-                                                id="GiothucHanh">5</span></strong></p>
+                                    <p class="header-5-course-content-p"><strong><span contenteditable="true"
+                                                class="GiothucHanh">5</span></strong></p>
                                 </td>
                                 <td id="Chuong1.5" class="body-5-course-content-55_85pt">
-                                    <p style='header-5-course-content-p'><strong><span contenteditable="true"
-                                                id="SoGioTuHoc">5</span></strong></p>
+                                    <p class="header-5-course-content-p"><strong><span contenteditable="true"
+                                                class="SoGioTuHoc">5</span></strong></p>
                                 </td>
                             </tr>
                             <tr class="ChiTietChuong1" id="allowDeletion">
@@ -1043,145 +1048,10 @@
                                 </td>
                                 <td colspan="4" class="footer-5-course-content-212_9pt">
                                     <p class="table-5-course-content-p text-justify"><span contenteditable="true"
-                                            id="KyNangMem">9</span></p>
+                                            class="KyNangMem">9</span></p>
                                 </td>
                             </tr>
-
-                            {{!-- <div>
-                                <tr>
-                                    <td class="body-5-course-content-255_55pt">
-                                        <p class="table-5-course-content-p text-justify">
-                                            <strong><span contenteditable="true">
-                                                    Chương 2. Phân tích thống kê mô tả
-                                                </span></strong>
-                                        </p>
-                                    </td>
-                                    <td class="body-5-course-content-71_8pt">
-                                        <p style='header-5-course-content-p'><strong><span
-                                                    contenteditable="true">1</span></strong></p>
-                                    </td>
-                                    <td class="body-5-course-content-44_85pt">
-                                        <p style='header-5-course-content-p'><strong><span
-                                                    contenteditable="true">5</span></strong></p>
-                                    </td>
-                                    <td class="body-5-course-content-40_4pt">
-                                        <p style='header-5-course-content-p'><strong><span
-                                                    contenteditable="true">5</span></strong></p>
-                                    </td>
-                                    <td class="body-5-course-content-55_85pt">
-                                        <p style='header-5-course-content-p'><strong><span
-                                                    contenteditable="true">5</span></strong></p>
-                                    </td>
-                                </tr>
-
-                                <tr>
-                                    <td class="body-5-content-course-content-255_55pt">
-                                        <p class="table-5-course-content-p text-justify"><span
-                                                contenteditable="true">2.1. Tổng
-                                                thể và mẫu</span></p>
-                                    </td>
-                                    <td class="body-5-content-course-content-71_8pt">
-                                        <p class="table-5-course-content-p text-justify"><span>&nbsp;</span></p>
-                                    </td>
-                                    <td class="body-5-content-course-content-44_85pt">
-                                        <p class="table-5-course-content-p text-justify"><span>&nbsp;</span></p>
-                                    </td>
-                                    <td class="body-content--course-content-40_4pt">
-                                        <p class="table-5-course-content-p text-justify"><span>&nbsp;</span></p>
-                                    </td>
-                                    <td class="body-5-course-content-55_85pt">
-                                        <p class="table-5-course-content-p text-justify"><span>&nbsp;</span></p>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td class="body-5-content-course-content-255_55pt">
-                                        <p class="table-5-course-content-p text-justify"><span
-                                                contenteditable="true">2.2. Biến
-                                                phân loại, biến nhị phân và biến
-                                                liên tục</span></p>
-                                    </td>
-                                    <td class="body-5-content-course-content-71_8pt">
-                                        <p class="table-5-course-content-p text-justify"><span>&nbsp;</span></p>
-                                    </td>
-                                    <td class="body-5-content-course-content-44_85pt">
-                                        <p class="table-5-course-content-p text-justify"><span>&nbsp;</span></p>
-                                    </td>
-                                    <td class="body-content--course-content-40_4pt">
-                                        <p class="table-5-course-content-p text-justify"><span>&nbsp;</span></p>
-                                    </td>
-                                    <td class="body-5-course-content-55_85pt">
-                                        <p class="table-5-course-content-p text-justify"><span>&nbsp;</span></p>
-                                    </td>
-                                </tr>
-
-                                <tr>
-                                    <td class="footer-5-course-content-255_55pt">
-                                        <p class="text-justify"><em><span>Kỹ năng mềm và thái độ</span></em></p>
-                                    </td>
-                                    <td colspan="4" class="footer-5-course-content-212_9pt">
-                                        <p class="table-5-course-content-p text-justify"><span
-                                                contenteditable="true">9</span>
-                                        </p>
-                                    </td>
-                                </tr>
-
-                                <tr>
-                                    <td class="body-5-course-content-255_55pt">
-                                        <p class="table-5-course-content-p text-justify">
-                                            <strong><span contenteditable="true">
-                                                    Chương 3. Phân tích dữ liệu bằng biểu đồ
-                                                </span></strong>
-                                        </p>
-                                    </td>
-                                    <td class="body-5-course-content-71_8pt">
-                                        <p style='header-5-course-content-p'><strong><span
-                                                    contenteditable="true">3</span></strong></p>
-                                    </td>
-                                    <td class="body-5-course-content-44_85pt">
-                                        <p style='header-5-course-content-p'><strong><span
-                                                    contenteditable="true">5</span></strong></p>
-                                    </td>
-                                    <td class="body-5-course-content-40_4pt">
-                                        <p style='header-5-course-content-p'><strong><span
-                                                    contenteditable="true">3</span></strong></p>
-                                    </td>
-                                    <td class="body-5-course-content-55_85pt">
-                                        <p style='header-5-course-content-p'><strong><span
-                                                    contenteditable="true">5</span></strong></p>
-                                    </td>
-                                </tr>
-
-                                <tr>
-                                    <td class="body-5-content-course-content-255_55pt">
-                                        <p class="table-5-course-content-p text-justify"><span
-                                                contenteditable="true">3.1. Cửa
-                                                sổ biểu đồ trong Python/R</span></p>
-                                    </td>
-                                    <td class="body-5-content-course-content-71_8pt">
-                                        <p class="table-5-course-content-p text-justify"><span>&nbsp;</span></p>
-                                    </td>
-                                    <td class="body-5-content-course-content-44_85pt">
-                                        <p class="table-5-course-content-p text-justify"><span>&nbsp;</span></p>
-                                    </td>
-                                    <td class="body-content--course-content-40_4pt">
-                                        <p class="table-5-course-content-p text-justify"><span>&nbsp;</span></p>
-                                    </td>
-                                    <td class="body-5-course-content-55_85pt">
-                                        <p class="table-5-course-content-p text-justify"><span>&nbsp;</span></p>
-                                    </td>
-                                </tr>
-
-                                <tr>
-                                    <td class="footer-5-course-content-255_55pt">
-                                        <p class="text-justify"><em><span>Kỹ năng mềm và thái độ</span></em></p>
-                                    </td>
-                                    <td colspan="4" class="footer-5-course-content-212_9pt">
-                                        <p class="table-5-course-content-p text-justify"><span
-                                                contenteditable="true">9</span>
-                                        </p>
-                                    </td>
-                                </tr>
-                            </div> --}}
+  
                         </tbody>
                     </table>
 
@@ -1212,8 +1082,8 @@
                     <p class="section-content"><strong><span>6. Phương pháp dạy và học (Teaching and learning
                                 methods):</span></strong></p>
                     <div id="TenPP" contenteditable="true">
-                        <p class="section-content DontRemove">&nbsp;-&nbsp;<span contenteditable="true"
-                                id="TenPP-1">Diễn giảng</span></p>
+                        <p class="section-content DontRemove"><span contenteditable="true"
+                                id="TenPP-1">&nbsp;-&nbsp;Diễn giảng</span></p>
                         <p class="section-content"><span contenteditable="true" id="TenPP-2">&nbsp;-&nbsp;Vấn đáp
                                 (Questions – Answers)</span></p>
                         <p class="section-content"><span contenteditable="true" id="TenPP-3">&nbsp;-&nbsp;Hoạt động nhóm

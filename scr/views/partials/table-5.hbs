@@ -50,13 +50,26 @@
             newParagraph.className = 'header-5-course-content-p text-left';
             var newStrong = document.createElement("strong");
             var newSpan = document.createElement("span");
-            if (i === 1 && i === 2 && i === 3 && i === 4) {
+            
+            if (i === 1){
+                newSpan.textContent = 'text';
+                
+            } else if (i ===2) {
+                newSpan.textContent = 'text';
+                newSpan.className = 'GioLyThuyet';
+            } else if (i ===3) {
                 newSpan.textContent = "text";
+                newSpan.className = 'GiothucHanh';
+            } else if (i ===4) {
+                newSpan.textContent = "text";
+                newSpan.className = 'SoGioTuHoc';
             }
+
+
             if (i === 0) {
-                newSpan.className = "STT_CHUONG"
+                newSpan.className = "TenChuong STT_CHUONG"
             }
-            if (i === 5) { }
+        
             newStrong.appendChild(newSpan);
             newParagraph.appendChild(newStrong);
             newHeaderCell.appendChild(newParagraph);
@@ -116,7 +129,7 @@
             if (i === 1) {
                 var editableSpan = document.createElement("span");
                 editableSpan.contentEditable = true;
-                editableSpan.id = "KyNangMem";
+                editableSpan.class = "KyNangMem";
                 newParagraph.appendChild(editableSpan);
             }
             newFooterCell.appendChild(newParagraph);
@@ -159,6 +172,7 @@
         // Thêm tr vào tbody trước tr có id là "CuoiChuong1"
         tbody.insertBefore(newDetailRow, document.getElementById("CuoiChuong" + index));
     }
+    
 </script>
 <script>
     function UpdateSTTskill() {
@@ -168,7 +182,7 @@
             var sttElements = row.querySelectorAll('.STT_CHUONG');
             //lấy chuỗi từ 9 tương đương với Chuong1." "
             sttElements.forEach((sttElement, sttIndex) => {
-                sttElement.textContent = 'Chương ' + (index * sttElements.length + sttIndex + 1) + '. ' + sttElement.textContent.substring(9);
+                sttElement.innerHTML = "Chương&nbsp;"+(index * sttElements.length + sttIndex + 1) + ".&nbsp;" + sttElement.textContent.substring(9);
             });
         });
     }
@@ -264,6 +278,7 @@
     }
 
     document.addEventListener('DOMContentLoaded', function () {
+        UpdateSTTskill();
         document.getElementById('hung').addEventListener('click', function () {
             const focusedSpan = document.querySelector('.focus');
             if (focusedSpan && focusedSpan.classList.contains('focus')) {
@@ -351,5 +366,6 @@
             // console.log('CuoiChuong' + index + ' element not found');
         }
     }
+    
 </script>
 {{>StringID}}

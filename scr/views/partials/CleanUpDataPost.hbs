@@ -1,0 +1,281 @@
+<script>
+    function CleanUp_AllTaiLieuThamKhao() {
+        // Xử lý Giaotrinh
+        const giaotrinhContainer = document.getElementById('giaotrinh');
+        const giaotrinhItems = Array.from(giaotrinhContainer.getElementsByClassName('giaotrinh'));
+
+        const giaotrinhData = giaotrinhItems.map((item, index) => {
+            const key = getKeyTaiLieuByKey('giaotrinh');
+
+            const TG_Element = item.querySelector(`#TG_${key}_${index + 1}`);
+            const TG = TG_Element ? cleanUpString(TG_Element.textContent) : '';
+
+            const NXB_Element = item.querySelector(`#NXB_${key}_${index + 1}`);
+            const NXB = NXB_Element ? cleanUpString(NXB_Element.textContent) : '';
+
+            const Ten_Element = item.querySelector(`#Ten_${key}_${index + 1}`);
+            const Ten = Ten_Element ? cleanUpString(Ten_Element.textContent) : '';
+
+            const NGUON_Element = item.querySelector(`#NGUON_${key}_${index + 1}`);
+            const NGUON = NGUON_Element ? cleanUpString(NGUON_Element.textContent) : '';
+
+            const tacGiaArray = TG.split(',').map(author => author.trim());
+
+            return {
+                tenTLTK: Ten,
+                tacGia: tacGiaArray,
+                namXuatBan: NXB,
+                loaiHocLieu: 'Giáo trình',
+                nguon: NGUON
+            };
+        });
+
+
+        // Xử lý TaiLieuThamKhaoData
+        const TaiLieuThamKhaoContainer = document.getElementById('TaiLieuThamKhao');
+        const TaiLieuThamKhaoItems = Array.from(TaiLieuThamKhaoContainer.getElementsByClassName('TaiLieuThamKhao'));
+
+        const TaiLieuThamKhaoData = TaiLieuThamKhaoItems.map((item, index) => {
+            const key = getKeyTaiLieuByKey('TaiLieuThamKhao');
+
+            const TG_Element = item.querySelector(`#TG_${key}_${index + 1}`);
+            const TG = TG_Element ? cleanUpString(TG_Element.textContent) : '';
+
+            const NXB_Element = item.querySelector(`#NXB_${key}_${index + 1}`);
+            const NXB = NXB_Element ? cleanUpString(NXB_Element.textContent) : '';
+
+            const Ten_Element = item.querySelector(`#Ten_${key}_${index + 1}`);
+            const Ten = Ten_Element ? cleanUpString(Ten_Element.textContent) : '';
+
+            const NGUON_Element = item.querySelector(`#NGUON_${key}_${index + 1}`);
+            const NGUON = NGUON_Element ? cleanUpString(NGUON_Element.textContent) : '';
+
+            const tacGiaArray = TG.split(',').map(author => author.trim());
+
+            return {
+                tenTLTK: Ten,
+                tacGia: tacGiaArray,
+                namXuatBan: NXB,
+                loaiHocLieu: 'Tài liệu tham khảo',
+                nguon: NGUON
+            };
+        });
+
+        // Xử lý HocLieuData
+        const HocLieuContainer = document.getElementById('HocLieu');
+        const HocLieuItems = Array.from(HocLieuContainer.getElementsByClassName('HocLieu'));
+
+        const HocLieuData = HocLieuItems.map((item, index) => {
+            const key = getKeyTaiLieuByKey('HocLieu');
+
+            const TG_Element = item.querySelector(`#TG_${key}_${index + 1}`);
+            const TG = TG_Element ? cleanUpString(TG_Element.textContent) : '';
+
+            const NXB_Element = item.querySelector(`#NXB_${key}_${index + 1}`);
+            const NXB = NXB_Element ? cleanUpString(NXB_Element.textContent) : '';
+
+            const Ten_Element = item.querySelector(`#Ten_${key}_${index + 1}`);
+            const Ten = Ten_Element ? cleanUpString(Ten_Element.textContent) : '';
+
+            const NGUON_Element = item.querySelector(`#NGUON_${key}_${index + 1}`);
+            const NGUON = NGUON_Element ? cleanUpString(NGUON_Element.textContent) : '';
+
+            const tacGiaArray = TG.split(',').map(author => author.trim());
+
+            return {
+                tenTLTK: Ten,
+                tacGia: tacGiaArray,
+                namXuatBan: NXB,
+                loaiHocLieu: 'Học liệu',
+                nguon: NGUON
+            };
+        });
+
+
+        const tltkData = {
+            "tltkData": {
+                "GiaotrinhData": giaotrinhData,
+                "TaiLieuThamKhaoData": TaiLieuThamKhaoData,
+                "HocLieuData": HocLieuData
+            }
+        };
+
+        // In ra đối tượng JSON cha
+        const prettyJsonStringTLTK = JSON.stringify(tltkData, null, 2);
+        console.log('TLTK Data:');
+        console.log(prettyJsonStringTLTK);
+    }
+    function CleanUp_AllTB4() {
+        const KyNangKTContainers = document.querySelectorAll('.KyNangKT');
+        const KyNangKTdata = Array.from(KyNangKTContainers).map(container => {
+            const KT_ND_Element = container.querySelector('.content-4-learning-outcomes-2 .KT');
+            const KT_ND = KT_ND_Element ? cleanUpString(KT_ND_Element.textContent) : '';
+
+            const KT_TD_Element = container.querySelector('.content-4-learning-outcomes-4 .KT');
+            const KT_TD = KT_TD_Element ? cleanUpString(KT_TD_Element.textContent) : '';
+
+            const KT_TUA_Element = container.querySelector('.content-4-learning-outcomes-5 .KT');
+            const KT_TUA = KT_TUA_Element ? cleanUpString(KT_TUA_Element.textContent) : '';
+
+            return {
+                loai_CDRMH: 'Về kiến thức',
+                Noidung_CDRMH: KT_ND,
+                TrinhDo: KT_TD,
+                loaiTUA: KT_TUA
+            };
+        });
+        const KyNangKNContainers = document.querySelectorAll('.KyNangKN');
+        const KyNangKNdata = Array.from(KyNangKNContainers).map(container => {
+            const KT_ND_Element = container.querySelector('.content-4-learning-outcomes-2 .KN');
+            const KT_ND = KT_ND_Element ? cleanUpString(KT_ND_Element.textContent) : '';
+
+            const KT_TD_Element = container.querySelector('.content-4-learning-outcomes-4 .KN');
+            const KT_TD = KT_TD_Element ? cleanUpString(KT_TD_Element.textContent) : '';
+
+            const KT_TUA_Element = container.querySelector('.content-4-learning-outcomes-5 .KN');
+            const KT_TUA = KT_TUA_Element ? cleanUpString(KT_TUA_Element.textContent) : '';
+
+            return {
+                loai_CDRMH: 'Về kỹ năng',
+                Noidung_CDRMH: KT_ND,
+                TrinhDo: KT_TD,
+                loaiTUA: KT_TUA
+            };
+        });
+
+        const KyNangTDContainers = document.querySelectorAll('.KyNangTD');
+        const KyNangTDdata = Array.from(KyNangTDContainers).map(container => {
+            const KT_ND_Element = container.querySelector('.content-4-learning-outcomes-2 .TD');
+            const KT_ND = KT_ND_Element ? cleanUpString(KT_ND_Element.textContent) : '';
+
+            const KT_DUPO_Element = container.querySelector('.content-4-learning-outcomes-3 .TD');
+            const KT_DUPO = KT_DUPO_Element ? cleanUpString(KT_DUPO_Element.textContent) : '';
+
+            const KT_TD_Element = container.querySelector('.content-4-learning-outcomes-4 .TD');
+            const KT_TD = KT_TD_Element ? cleanUpString(KT_TD_Element.textContent) : '';
+
+            const KT_TUA_Element = container.querySelector('.content-4-learning-outcomes-5 .TD');
+            const KT_TUA = KT_TUA_Element ? cleanUpString(KT_TUA_Element.textContent) : '';
+
+            return {
+                loai_CDRMH: 'Về thái độ',
+                Noidung_CDRMH: KT_ND,
+                KT_DUPO: KT_DUPO,
+                TrinhDo: KT_TD,
+                loaiTUA: KT_TUA
+            };
+        });
+
+        const CDR_HocPhanData = {
+            "CDR_HocPhanData": {
+                "KyNangKTdata": KyNangKTdata,
+                "KyNangKNdata": KyNangKNdata,
+                "KyNangTDdata": KyNangTDdata
+            }
+        };
+
+        const CDR_HocPhanDataJson = JSON.stringify(CDR_HocPhanData, null, 2);
+        console.log('CDR_HocPhan Data:');
+        console.log(CDR_HocPhanDataJson);
+    }
+
+    function CleanUp_AllTB5() {
+        const chuongRows = document.querySelectorAll('.Chuong');
+        const chuongData = [];
+
+        chuongRows.forEach((chuongRow, chuongIndex) => {
+            const tenChuongElement = chuongRow.querySelector('.TenChuong.STT_CHUONG');
+            const gioLyThuyetElement = chuongRow.querySelector('.GioLyThuyet');
+            const gioThucHanhElement = chuongRow.querySelector('.GiothucHanh');
+            const soGioTuHocElement = chuongRow.querySelector('.SoGioTuHoc');
+
+            const tenChuong = tenChuongElement ? cleanUp2String(tenChuongElement.textContent) : '';
+            const gioLyThuyet = gioLyThuyetElement ? cleanUpString(gioLyThuyetElement.textContent) : '';
+            const gioThucHanh = gioThucHanhElement ? cleanUpString(gioThucHanhElement.textContent) : '';
+            const soGioTuHoc = soGioTuHocElement ? cleanUpString(soGioTuHocElement.textContent) : '';
+
+            const chuong = {
+                TenChuong: tenChuong,
+                GioLyThuyet: gioLyThuyet,
+                GiothucHanh: gioThucHanh,
+                SoGioTuHoc: soGioTuHoc,
+                KyNangMem: 0,
+                ChiTietChuong: []
+            };
+            // Lấy thông tin KyNangMem từ hàng CuoiChuong
+            const kyNangMemRow = document.querySelector(`#CuoiChuong${chuongIndex + 1}`);
+            const kyNangMemElement = kyNangMemRow.querySelector('.KyNangMem');
+            chuong.KyNangMem = kyNangMemElement ? cleanUpString(kyNangMemElement.textContent) : 0;
+
+            // Lấy các hàng ChiTietChuong của chương hiện tại
+            const chiTietChuongRows = document.querySelectorAll(`.ChiTietChuong${chuongIndex + 1} .STT_CTC${chuongIndex + 1}`);
+            chiTietChuongRows.forEach(chiTietRow => {
+                const sttCTC = chiTietRow ? cleanUpString(chiTietRow.textContent) : '';
+                chuong.ChiTietChuong.push(sttCTC);
+            });
+
+            chuongData.push(chuong);
+        });
+
+        // In ra mảng chuongData để kiểm tra
+        console.log(JSON.stringify(chuongData, null, 2));
+    }
+    function CleaUp_6() {
+        const PP_DayHoc = document.getElementById('TenPP');
+        const PP_DayHocItems = PP_DayHoc.querySelectorAll('.section-content');
+        const phuongPhapGiangDayData = Array.from(PP_DayHocItems).map((item, index) => {
+            const tenPhuongPhap = item.querySelector(`span[contenteditable="true"]`);
+            const PP_Text = tenPhuongPhap ? cleanUpString(tenPhuongPhap.textContent) : '';
+            return {
+                TenPP: PP_Text
+            };
+        });
+
+        // Gộp tất cả các mảng con thành một mảng duy nhất
+        const PP_Array = phuongPhapGiangDayData.reduce((acc, item) => {
+            return acc.concat(item.TenPP);
+        }, []);
+
+
+        console.log(JSON.stringify(PP_Array, null, 2));
+    }
+
+    function CleaUp_7() {
+         const quyDinhItems = document.querySelectorAll('#QD_TD p');
+
+    const quyDinhArray = Array.from(quyDinhItems).map((item, index) => {
+        const quyDinhElements = item.querySelectorAll('span[contenteditable="true"]');
+
+        const quyDinhText = Array.from(quyDinhElements).map((quyDinhElement) => {
+            const QD = cleanUpString(quyDinhElement.textContent);
+            const QPText = QD ? QD : '';
+
+            return {
+                NoiDung: QPText
+            };
+        });
+
+        return quyDinhText;
+    });
+
+    const quyDinhText_Array = quyDinhArray.reduce((acc, item) => {
+        return acc.concat(item);
+    }, []);
+
+    console.log(quyDinhText_Array);
+    console.log(JSON.stringify(quyDinhText_Array, null, 2))
+        }
+    function getKeyTaiLieuByKey(code) {
+        if (code === 'giaotrinh') {
+            return 'GT';
+        } else if (code === 'TaiLieuThamKhao') {
+            return 'TL';
+        } else if (code === 'HocLieu') {
+            return 'HL';
+        } else {
+            return null;
+        }
+    }
+
+</script>
+{{>StringID}}
