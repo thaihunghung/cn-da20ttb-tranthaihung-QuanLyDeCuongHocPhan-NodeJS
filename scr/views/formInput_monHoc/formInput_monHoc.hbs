@@ -7,7 +7,8 @@
                 <button class="btn" onclick="CleanUp_AllTB4()">CleanUp_AllTB4</button>
                 <button class="btn" onclick="CleanUp_AllTB5()">CleanUp_AllTB5</button>
                 <button class="btn" onclick="CleaUp_6()">CleaUp_6</button>
-                <button class="btn" onclick="CleaUp_7()">CleaUp_7()</button>
+                <button class="btn" onclick="CleaUp_7()">CleaUp_7</button>
+                <button class="btn" onclick="CleanUp_HocPhan()">HocPhan</button>
                 {{>CleanUpDataPost}}
                 <div class="width16_cm">
                     <p class="section-content text-right"><strong>PHỤ LỤC&nbsp;<span contenteditable="true"
@@ -322,36 +323,7 @@
                                                     contenteditable="true"></span></p>
                                         </div>
 
-                                        <p id="TL2" class="allowDeletion2 TaiLieuThamKhao">
-                                            [<span id="STT_TL_2" class="STT_TB2"
-                                                onclick="hiddenAndShow(2,TL)"
-                                                contenteditable="true">5</span>]
-                                            <span id="TG_TL_2" onclick="hiddenAndShow(2,'TL')"
-                                                contenteditable="true">Jake VanderPlas</span>
-                                            (<span id="NXB_TL_2" onclick="hiddenAndShow(2,'TL')"
-                                                contenteditable="true">2017</span>).&nbsp;
-                                            <span id="Ten_TL_2" onclick="hiddenAndShow(2,'TL')"
-                                                contenteditable="true" class="text-nghien">Python Data
-                                                Science
-                                                Handbook: Essential Tools for
-                                                Working with Data</span>
-                                            [<span id="NGUON_TL_2" onclick="hiddenAndShow(2,'TL')"
-                                                contenteditable="true">O'Reilly Media</span>]
-                                            <span contenteditable="true"
-                                                id="No">.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
-                                        </p>
-
-                                        <div id="TL2div" class="hidden_TL2 hidden">
-                                            <p><strong>STT:</strong>&nbsp;[<span id="STT_TL_DSpan_2"></span>]</p>
-                                            <p><strong>Tên tác giả:</strong>&nbsp;<span id="TG_TL_DSpan_2"
-                                                    contenteditable="true"></span></p>
-                                            <p><strong>Năm Xuất bảng:</strong>&nbsp;<span id="NXB_TL_DSpan_2"
-                                                    contenteditable="true"></span></p>
-                                            <p><strong>Tên tài liệu tham khảo:</strong>&nbsp;<span id="TEN_TL_DSpan_2"
-                                                    contenteditable="true" class="text-nghien"></span></p>
-                                            <p><strong>Nguồn:</strong>&nbsp;<span id="NGUON_TL_DSpan_2"
-                                                    contenteditable="true"></span></p>
-                                        </div>
+                                        
                                     </div>
                                 </td>
                                 <td class="empty"></td>
@@ -684,7 +656,7 @@
                 </div>
 
 
-                {{!-- f
+                {{!-- <div>
                 </tr>
                 <tr>
                     <td class="content-4-learning-outcomes-1">
@@ -835,7 +807,7 @@
                         <p class="paragraph"><span contenteditable="true">TUA</span></p>
                     </td>
                 </tr>
-                h--}}
+               </div>--}}
                 <p class="section-content">&nbsp;</p>
 
                 {{!----}}
@@ -1215,11 +1187,11 @@
                     <p class="section-content"><strong><span id="QD_TG">8.1. Quy định về tham dự lớp học</span></strong>
                     </p>
                     <div id="QD_TD" contenteditable="true">
-                        <p class="section-content Thut-dau-dong DontRemove"><span contenteditable="true" id="QD_TD-1">
+                        <p class="section-content Thut-dau-dong DontRemove"><span contenteditable="true" id="QD_TD-1" class="QD_TD">
                                 &nbsp;●&nbsp;Sinh viên có trách nhiệm tham dự đầy đủ các buổi học.Trong trường hợp phải
                                 nghỉ học vì lý do bất khả kháng thì phải có giấy tờ chứng minh đầy đủ và hợp lý.
                             </span></p>
-                        <p class="section-content Thut-dau-dong"><span contenteditable="true" id="QD_TD-2">
+                        <p class="section-content Thut-dau-dong"><span contenteditable="true" id="QD_TD-2" class="QD_TD">
                                 &nbsp;●&nbsp;Sinh viên vắng quá 20% số giờ dự giảng của học phần bị xem như không hoàn
                                 thành học phần và phải đăng ký học lại vào học kỳ sau. Những trường hợp khác phải do Ban
                                 Giám hiệu hoặc Trưởng khoa quyết định
@@ -1228,11 +1200,11 @@
 
                     <p class="section-content"><strong><span>8.2. Quy định về hành vi trong lớp học</span></strong></p>
                     <div id="QD_HV" contenteditable="true">
-                        <p class="section-content Thut-dau-dong DontRemove"><span contenteditable="true" id="QD_HV-1">
+                        <p class="section-content Thut-dau-dong DontRemove"><span contenteditable="true" id="QD_HV-1" class="QD_HV">
                                 &nbsp;●&nbsp;Sinh viên có trách nhiệm tham dự đầy đủ các buổi học. Trong trường hợp phải
                                 nghỉ học vì lý do bất khả kháng thì phải có giấy tờ chứng minh đầy đủ và hợp lý.</span>
                         </p>
-                        <p class="section-content Thut-dau-dong"><span contenteditable="true" id="QD_HV-2">
+                        <p class="section-content Thut-dau-dong"><span contenteditable="true" id="QD_HV-2" class="QD_HV">
                                 &nbsp;●&nbsp;Sinh viên vắng quá 20% số giờ dự giảng của học phần bị xem như không hoàn
                                 thành học phần và phải đăng ký học lại vào học kỳ sau. Những trường hợp khác phải do Ban
                                 Giám hiệu hoặc Trưởng khoa quyết định</span></p>
@@ -1240,11 +1212,11 @@
 
                     <p class="section-content"><strong><span>8.3. Quy định về học vụ</span></strong></p>
                     <div id="QD_HVu" contenteditable="true">
-                        <p class="section-content Thut-dau-dong DontRemove"><span contenteditable="true" id="QD_HVu-1">
+                        <p class="section-content Thut-dau-dong DontRemove"><span contenteditable="true" id="QD_HVu-1" class="QD_HVu">
                                 &nbsp;●&nbsp;Sinh viên có trách nhiệm tham dự đầy đủ các buổi học. Trong trường hợp phải
                                 nghỉ học vì lý do bất khả kháng thì phải có giấy tờ chứng minh đầy đủ và hợp lý.</span>
                         </p>
-                        <p class="section-content Thut-dau-dong"><span contenteditable="true" id="QD_HVu-2">
+                        <p class="section-content Thut-dau-dong"><span contenteditable="true" id="QD_HVu-2" class="QD_HVu">
                                 &nbsp;●&nbsp;Sinh viên vắng quá 20% số giờ dự giảng của học phần bị xem như không hoàn
                                 thành học phần và phải đăng ký học lại vào học kỳ sau. Những trường hợp khác phải do Ban
                                 Giám hiệu hoặc Trưởng khoa quyết định</span></p>
@@ -1366,13 +1338,11 @@
     </div>
 </div>
 {{>table-2}}
+{{>CheckBox}}
 <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 <script>
     function sendA4Content() {
-        // Lấy nội dung của phần tử a4
         var a4Content = document.getElementById('formInput_monHoc').innerHTML;
-
-        // Gửi nội dung lên server bằng Axios
         axios.post('/pdf', { a4Content })
             .then(function (response) {
                 console.log(response.data);
@@ -1382,57 +1352,5 @@
             });
     }
 </script>
-<script>
-    function checkboxChanged(checkboxId) {
-        var checkboxes = document.querySelectorAll('input[type="checkbox"]')
-        checkboxes.forEach(function (checkbox) {
-            if (checkbox.id !== checkboxId) {
-                checkbox.checked = false
-            }
-        })
-    }
-</script>
-
-<script>
-    const MaMon = document.getElementById('MaMon');
-    const PhuLuc = document.getElementById('PhuLuc');
-    const TenMon = document.getElementById('TenMon');
-    const SoGioTuHoc = document.getElementById('SoGioTuHoc');
-    const TH = document.getElementById('TH');
-    const LT = document.getElementById('LT');
-    const MoTa = document.getElementById('MoTa');
-
-    const LoaiHocPhan = document.getElementsByClassName("test");
-    const SoTC_LT = document.getElementById('SoTC_LT');
-    const SoTC_TH = document.getElementById('SoTC_TH');
-    const TrinhDo_DT = document.getElementById('TrinhDo_DT');
-    const ChuyenNganh = document.getElementById('ChuyenNganh');
-    const HocKy = document.getElementById('HocKy');
-    const NamHoc = document.getElementById('NamHoc');
 
 
-
-
-
-
-
-    function getSkills() {
-        var skillsContent = document.getElementById('KyNang').textContent;
-
-        // Split the content into an array of skills
-        {
-            var skillsArray = skillsContent.split('\n').map(skill => skill.trim()).filter(skill => skill !== '');
-
-            return skillsArray;
-        }
-    }
-
-    // Function to display skills when the button is clicked
-    function showSkills() {
-        // Get the skills
-        var skillsContent = document.getElementById('KyNang').textContent;
-
-        // Display the skills (you can modify this part based on your application's needs)
-        alert('Kỹ năng:', skillsContent);
-    }
-</script>

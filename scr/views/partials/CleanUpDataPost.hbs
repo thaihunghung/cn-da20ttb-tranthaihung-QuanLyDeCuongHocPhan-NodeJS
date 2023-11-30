@@ -1,4 +1,55 @@
 <script>
+    function CleanUp_HocPhan() {
+        const PhuLuc = document.getElementById('PhuLuc');
+        const TenMon = document.getElementById('TenMon');
+        const MaMon = document.getElementById('MaMon');
+        const SoTC_LT = document.getElementById('SoTC_LT');
+        const SoTC_TH = document.getElementById('SoTC_TH');
+        const LT = document.getElementById('LT');
+        const TH = document.getElementById('TH');
+        const TrinhDo_DT = document.getElementById('TrinhDo_DT');
+        const SoGioTuHoc = document.getElementById('SoGioTuHoc');
+        const ChuyenNganh = document.getElementById('ChuyenNganh');
+        const HocKy = document.getElementById('HocKy');
+        const NamHoc = document.getElementById('NamHoc');
+        const MoTa = document.getElementById('MoTa');
+        const LoaiHocPhan = ketquaCheckBox();
+
+        // Kiểm tra và gán giá trị mặc định nếu `textContent` là null
+        const phuLucValue = cleanUpString(PhuLuc.textContent) || '';
+        const tenMonValue = cleanUpString(TenMon.textContent) || '';
+        const maMonValue = cleanUpString(MaMon.textContent) || '';
+        const soTCLTValue = cleanUpString(SoTC_LT.textContent) || '';
+        const soTCTHValue = cleanUpString(SoTC_TH.textContent) || '';
+        const ltValue = cleanUpString(LT.textContent) || '';
+        const thValue = cleanUpString(TH.textContent) || '';
+        const trinhDoDTValue = cleanUpString(TrinhDo_DT.textContent) || '';
+        const soGioTuHocValue = cleanUpString(SoGioTuHoc.textContent) || '';
+        const chuyenNganhValue = cleanUpString(ChuyenNganh.textContent) || '';
+        const hocKyValue = cleanUpString(HocKy.textContent) || '';
+        const namHocValue = cleanUpString(NamHoc.textContent) || '';
+        const moTaValue = cleanUpString(MoTa.textContent) || '';
+        const LoaiHocPhanValue = cleanUpString(LoaiHocPhan) || '';
+        const HocPhanData = {
+            PhuLuc: phuLucValue,
+            TenMon: tenMonValue,
+            MaMon: maMonValue,
+            SoTC_LT: soTCLTValue,
+            SoTC_TH: soTCTHValue,
+            LT: ltValue,
+            TH: thValue,
+            TrinhDo_DT: trinhDoDTValue,
+            SoGioTuHoc: soGioTuHocValue,
+            ChuyenNganh: chuyenNganhValue,
+            HocKy: hocKyValue,
+            NamHoc: namHocValue,
+            MoTa: moTaValue,
+            LoaiHocPhan: LoaiHocPhanValue
+        };
+
+        const jsonString = JSON.stringify(HocPhanData, null, 2);
+        console.log(jsonString);
+    }
     function CleanUp_AllTaiLieuThamKhao() {
         // Xử lý Giaotrinh
         const giaotrinhContainer = document.getElementById('giaotrinh');
@@ -241,30 +292,72 @@
     }
 
     function CleaUp_7() {
-         const quyDinhItems = document.querySelectorAll('#QD_TD p');
+        const quyDinhDataArray = [];
 
-    const quyDinhArray = Array.from(quyDinhItems).map((item, index) => {
-        const quyDinhElements = item.querySelectorAll('span[contenteditable="true"]');
-
-        const quyDinhText = Array.from(quyDinhElements).map((quyDinhElement) => {
-            const QD = cleanUpString(quyDinhElement.textContent);
-            const QPText = QD ? QD : '';
+        // Xử lý cho ID 'QD_TD'
+        const quyDinhTDItems = document.querySelectorAll('#QD_TD');
+        const quyDinhTDArray = Array.from(quyDinhTDItems).map((item, index) => {
+            const quyDinhTDElements = item.querySelectorAll('span[contenteditable="true"]');
+            const quyDinhTDTextArray = Array.from(quyDinhTDElements).map(quyDinhElement => {
+                return cleanUpString(quyDinhElement.textContent) || '';
+            });
 
             return {
-                NoiDung: QPText
+                NoiDung: quyDinhTDTextArray
             };
         });
+        const allNoiDungTDArray = quyDinhTDArray.reduce((acc, item) => {
+            return acc.concat(item.NoiDung);
+        }, []);
+        quyDinhDataArray.push({
+            "NoiDung": allNoiDungTDArray,
+            "LoaiQD": 'Quy định về tham dự lớp học'
+        });
 
-        return quyDinhText;
-    });
+        // Xử lý cho ID 'QD_HV'
+        const quyDinhHVItems = document.querySelectorAll('#QD_HV');
+        const quyDinhHVArray = Array.from(quyDinhHVItems).map((item, index) => {
+            const quyDinhHVElements = item.querySelectorAll('span[contenteditable="true"]');
+            const quyDinhHVTextArray = Array.from(quyDinhHVElements).map(quyDinhElement => {
+                return cleanUpString(quyDinhElement.textContent) || '';
+            });
 
-    const quyDinhText_Array = quyDinhArray.reduce((acc, item) => {
-        return acc.concat(item);
-    }, []);
+            return {
+                NoiDung: quyDinhHVTextArray
+            };
+        });
+        const allNoiDungHVArray = quyDinhHVArray.reduce((acc, item) => {
+            return acc.concat(item.NoiDung);
+        }, []);
+        quyDinhDataArray.push({
+            "NoiDung": allNoiDungHVArray,
+            "LoaiQD": 'Quy định về hành vi trong lớp học'
+        });
 
-    console.log(quyDinhText_Array);
-    console.log(JSON.stringify(quyDinhText_Array, null, 2))
-        }
+        // Xử lý cho ID 'QD_HVu'
+        const quyDinhHVuItems = document.querySelectorAll('#QD_HVu');
+        const quyDinhHVuArray = Array.from(quyDinhHVuItems).map((item, index) => {
+            const quyDinhHVuElements = item.querySelectorAll('span[contenteditable="true"]');
+            const quyDinhHVuTextArray = Array.from(quyDinhHVuElements).map(quyDinhElement => {
+                return cleanUpString(quyDinhElement.textContent) || '';
+            });
+
+            return {
+                NoiDung: quyDinhHVuTextArray
+            };
+        });
+        const allNoiDungHVuArray = quyDinhHVuArray.reduce((acc, item) => {
+            return acc.concat(item.NoiDung);
+        }, []);
+        quyDinhDataArray.push({
+            "NoiDung": allNoiDungHVuArray,
+            "LoaiQD": 'Quy định về học vụ'
+        });
+
+        // Xuất kết quả
+        console.log(JSON.stringify(quyDinhDataArray, null, 2));
+    }
+
     function getKeyTaiLieuByKey(code) {
         if (code === 'giaotrinh') {
             return 'GT';
@@ -279,3 +372,4 @@
 
 </script>
 {{>StringID}}
+{{>CheckBox}}

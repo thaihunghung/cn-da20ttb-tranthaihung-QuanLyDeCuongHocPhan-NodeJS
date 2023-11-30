@@ -1,7 +1,8 @@
 const mongoose = require('mongoose');
 
 const HocPhanSchema = new mongoose.Schema({
-    MaMon: { type: String, required: true, unique: true },
+    _id: mongoose.Schema.Types.ObjectId,
+    MaMon: String,
     TenMon: String,
     SoGioTuHoc: Number,
     TH: Number,
@@ -14,7 +15,11 @@ const HocPhanSchema = new mongoose.Schema({
     ChuyenNganh: String,
     HocKy: Number,
     NamHoc: Number,
-
+    fileName: 
+      {
+        type: String, 
+        ref: 'Create.fileName' 
+      }
   });
 
 module.exports = mongoose.model('HocPhan', HocPhanSchema);
