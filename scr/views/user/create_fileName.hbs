@@ -1,0 +1,30 @@
+<div class="">
+    <h3>
+        Vui lòng nhập tên dự án của bạn
+    </h3>
+    <h3>
+        <input type="text" name="filename" id="filename">
+    </h3>
+    <button onclick="checkName()">
+        nhập tên
+    </button>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+<script>
+     async function checkName() {
+        const filename = document.getElementById('filename').value;
+        try {
+            const response = await axios.post('/user/checkname', { filename });
+            if (response.data.exists) {
+                alert('Dự án đã tồn tại. Vui lòng nhập lại tên dự án khác.');
+                return;
+            } else {
+                alert('Dự án tạo thành công')
+                window.location.href='/user';
+                return;
+            }
+        } catch (error) {
+            console.error('Lỗi kiểm tra tên dự án:', error.message);
+        }
+    }
+</script>

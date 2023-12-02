@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const jwt = require('jsonwebtoken');
 const uuid = require('uuid');
 const HocPhanModel = require('../models/HocPhan/hocPhan.model');
 const GiangVienModel = require('../models/HocPhan/GiangVien.model');
@@ -9,81 +10,47 @@ const DieuKienThamGiaModel = require('../models/HocPhan/DieuKienThamGia');
 const DG_HocPhanModel = require('../models/HocPhan/DanhGia_HocPhan.model');
 const ChuongModel = require('../models/HocPhan/Chuong.model');
 const CDR_HocPhanModel = require('../models/HocPhan/Cdr_HocPhan.model')
+const CreateModel = require('../models/NguoiDung/Create.model');
+const {verifyToken} = require('../middleware/auth.middleware');
 
+exports.HocPhanGet = async (req, res) => {
+  res.render('HocPhan');
+}
 exports.HocPhanPostSave = async (req, res) => {
-    const { hocPhanData, giangVienData, tltkData, ppDayHocData, quyDinhData, dieuKienThamGiaData, dgHocPhanData, chuongData, cdrHocPhanData } = req.body;
-    try {
-        // Thêm mới hoặc cập nhật thông tin HocPhan
-        const savedHocPhan = await HocPhanModel.findOneAndUpdate(
-          { MaMon: hocPhanData.MaMon },
-          hocPhanData,
-          { upsert: true, new: true }
-        );
-    
-        // Cập nhật thông tin GiangVien
-        await GiangVienModel.findOneAndUpdate(
-          { MaMon: hocPhanData.MaMon },
-          { $set: { giangVienData } },
-          { upsert: true, new: true }
-        );
-    
-        // Cập nhật thông tin TLTK
-        await TLTKModel.findOneAndUpdate(
-          { MaMon: hocPhanData.MaMon },
-          { $set: { tltkData } },
-          { upsert: true, new: true }
-        );
-    
-        // Cập nhật thông tin PP_Day_hoc
-        await PP_Day_hocModel.findOneAndUpdate(
-          { MaMon: hocPhanData.MaMon },
-          { $set: { ppDayHocData } },
-          { upsert: true, new: true }
-        );
-    
-        // Cập nhật thông tin QuyDinh
-        await QuyDinhModel.findOneAndUpdate(
-          { MaMon: hocPhanData.MaMon },
-          { $set: { quyDinhData} },
-          { upsert: true, new: true }
-        );
-    
-        // Cập nhật thông tin DieuKienThamGia
-        await DieuKienThamGiaModel.findOneAndUpdate(
-          { MaMon: hocPhanData.MaMon },
-          { $set: { dieuKienThamGiaData } },
-          { upsert: true, new: true }
-        );
-    
-        // Cập nhật thông tin DG_HocPhan
-        await DG_HocPhanModel.findOneAndUpdate(
-          { MaMon: hocPhanData.MaMon },
-          { $set: { dgHocPhanData } },
-          { upsert: true, new: true }
-        );
-    
-        // Cập nhật thông tin Chuong
-        await ChuongModel.findOneAndUpdate(
-          { MaMon: hocPhanData.MaMon },
-          { $set: { chuongData } },
-          { upsert: true, new: true }
-        );
-    
-        // Cập nhật thông tin CDR_HocPhan
-        await CDR_HocPhanModel.findOneAndUpdate(
-          { MaMon: hocPhanData.MaMon },
-          { $set: { cdrHocPhanData } },
-          { upsert: true, new: true }
-        );
-    
-        // Trả về thông tin HocPhan đã thêm mới hoặc cập nhật
+    const {hocPhanData} = req.body;
+    const token = req.cookies.token;
+  
+  // Verify and get user info
+    const {username, role}= jwt.verify(token, process.env.TOKEN_SECRET_KEY);
+    if (username){
+      console.log('thanh cong '+username);
+    }
+
+    else{
+      console.log('loi');
+    }
+      try {
+        const Create = await CreateModel.findOne({ username: username });
+        if (!Create) {
+          return res.status(404).json({ message: 'Create not found' });
+        }
+        //gọi fileName từ tb CreateModel sau đó gắn vào json hocPhanData
+        const fileName = Create.fileName;
+        hocPhanData.fileName = fileName;
+
+        const hocPhanInstance = new HocPhanModel(hocPhanData);
+        if (!hocPhanInstance._id) {
+          hocPhanInstance._id = new mongoose.Types.ObjectId(); 
+        }
+        //lấy json học phần đã chỉnh sửa save
+        const savedHocPhan = await hocPhanInstance.save();
         res.json({ savedHocPhan });
+
       } catch (error) {
         console.error('Error saving or updating data:', error.message);
         res.status(500).send('Internal Server Error');
       }
     }
-
     exports.HocPhanPut = async (req, res) => {
         const maMon = req.params.maMon;
   

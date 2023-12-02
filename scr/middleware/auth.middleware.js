@@ -16,7 +16,7 @@ function verifyToken(req, res, next)  {
       req.decoded = decoded;
       next();
   });
-};
+}
 function hasRole(requiredRoles) {
   return (req, res, next) => {
     const userRole = req.decoded.role;

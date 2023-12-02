@@ -1,47 +1,36 @@
 <div class="container">
-  <h1>Login</h1>
-  <form method="post" id="loginForm" action="">
-    <label for="username">Username:</label>
-    <input type="text" id="username" name="username" required>
+    <h1>Login</h1>
+    <form method="post" id="loginForm" action="">
+        <label for="username">Username:</label>
+        <input type="text" id="username" name="username" required>
 
-    <label for="password">Password:</label>
-    <input type="password" id="password" name="password" required>
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" required>
 
-    <!-- Call the login function when the button is clicked -->
-    <button type="button" onclick="login()">Login</button>
-  </form>
+        <!-- Call the login function when the button is clicked -->
+        <button type="button" onclick="login()">Login</button>
+    </form>
+    <button type="button" onclick="hung()">test</button>
 </div>
 
 <!-- Include the Axios library -->
-<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 <script>
-async function login() {
-  const username = document.getElementById('username').value;
-  const password = document.getElementById('password').value;
-
-  try {
-  const res = await axios.post('/login', { username, password });
-  const token = res.data.token;
-
-  if (token) {
-    // Save the token in localStorage for future use
-    localStorage.setItem('token', token);
-
-    // Set up an interceptor to include the token in headers for all requests
-    axios.interceptors.request.use(config => {
-      const storedToken = localStorage.getItem('token');
-      if (storedToken) {
-        config.headers.Authorization = `Bearer ${storedToken}`;
-      }
-      return config;
-    });
-  } else {
-    console.error('Login failed: No token received');
-  }
-} catch (error) {
-  console.error('Login failed:', error.response.data.message);
-}
-
-}
+   async function login() {
+       await $.ajax({
+            url: '/login',
+            type: 'POST',
+            data: {
+                username: $('#username').val(), // Call the val() function
+                password: $('#password').val()  // Call the val() function
+            }
+        }).then(data => {
+            setCookie('token', data.token, 1);
+        }).catch(err => {
+            console.log(err);
+        });
+      
+    }
 </script>
+
+{{>Get_Set_Cookie}}

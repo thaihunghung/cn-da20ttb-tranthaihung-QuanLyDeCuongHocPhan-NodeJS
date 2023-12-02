@@ -22,10 +22,12 @@ exports.login_post = (req, res) => {
             username: data.username,
             role: data.role
            }, process.env.TOKEN_SECRET_KEY)
-            res.cookie('token', token, { httpOnly: true }); 
-            res.json({ message: 'Logged in successfully' });
+            return res.json({ 
+                message: 'Logged in successfully',
+                token: token
+            });   
         } else {
-            res.json('that bai')
+            return res.json('that bai')
         }  
     })
     .catch((err) => {
@@ -35,22 +37,7 @@ exports.login_post = (req, res) => {
 }
 
 exports.home_get = (req, res) => {
-    res.render('home', { user: req.user }); // Pass user information to the view
+    res.render('home', { user: req.user }); 
 };
 
-// exports.verifyToken =async (req, res, next) => {
-//     const token = localStorage.getItem('token');
-//    await console.log(`Verifying ${token}`);
-//     if(!token) {
-//       return res.status(401).send('Access denied');
-//     }
-  
-//     try {
-//       const verified = jwt.verify(token, 'secretkey');
-//       req.user = verified; 
-//       next();
-//     } catch(err) {
-//       res.status(400).send('Invalid token');
-//     }
-//   }
   

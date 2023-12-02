@@ -20,6 +20,7 @@ const loginRoutes = require('./routes/loginRoute.js');
 const homeRoutes = require('./routes/homeRoutes.js');
 const chuongtrinhRoutes = require('./routes/chuongTrinhRoute.js'); 
 const hocphanRoutes = require('./routes/HocPhanRoute.js');
+const userRoutes = require('./routes/userRoute.js');
 // const testRoutes = require('./routes/loginRoute.js');
 const db = require('./database/config.js');
 // // // // // // 
@@ -55,6 +56,7 @@ app.use('/login', loginRoutes);
 app.use('/home', homeRoutes);
 app.use('/chuongtrinh', chuongtrinhRoutes);
 app.use('/hung',hocphanRoutes);
+app.use('/user', userRoutes);
 // const HocPhan = require('./models/fulldatabase');
 // app.post('/saveHocPhan',  (req, res) => {
 //   console.log('Request Body:', req.body);
@@ -137,8 +139,8 @@ app.use((err, req, res, next) => {
   res.status(500).send('Something went wrong!');
 });
 
-
 const port = process.env.PORT || 8080;
 app.listen(port, () => {
   console.log(`App listening http://localhost:${port}`)
 })
+

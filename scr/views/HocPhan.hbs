@@ -1,0 +1,40 @@
+<h1>hi</h1>
+<button onclick="hung()">
+    ddđ
+</button>
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+<script>
+    function hung() {
+        const token = getCookie('token');
+        var data = {
+            "hocPhanData": {
+                "PhuLuc": "",
+                "TenMon": "THỐNG KÊ VÀ PHÂN TÍCH DỮ LIỆU",
+                "MaMon": "320045",
+                "SoTC_LT": "2",
+                "SoTC_TH": "1",
+                "LT": "30",
+                "TH": "30",
+                "TrinhDo_DT": "Đại học",
+                "SoGioTuHoc": "90",
+                "ChuyenNganh": "…………………………………….",
+                "HocKy": "5",
+                "NamHoc": "3",
+                "MoTa": "Học phần giúp trang bị cho sinh viên các kiến thức cơ bản về xác suất và thống kê để phân tích dữ liệu trong nghiên cứu. Sinh viên sẽ được học cách biên tập dữ liệu, cách mô tả dữ liệu bằng biểu đồ và bằng các đặc trưng thống kê, cách thu thập dữ liệu, thiết kế nghiên cứu và kiểm định các giả thuyết thống kê trên ngôn ngữ Python/R. Nhờ đó sinh viên có thể ứng dụng các kiến thức của môn học để thực hiện các nghiên cứu khoa học và học các môn học có ứng dụng kiến thức thống kê như Trí tuệ nhân tạo, Khai phá dữ liệu… Đồng thời, kỹ năng sử dụng ngôn ngữ Python/R giúp sinh viên có thể dễ dàng tham gia các cộng đồng phân tích số liệu để có thể tự học và nghiên cứu sâu hơn. Học phần cũng giúp sinh viên hình thành thái độ và nhận thức đúng đắn về vai trò của thống kê và khoa học dữ liệu trong bối cảnh hiện đại.",
+                "LoaiHocPhan": ""
+            }
+        }
+        axios.post('/hung', data, {
+            headers: {
+                Authorization: `Bearer ${token}`
+            }
+        })
+        .then(response => {
+            console.log(response.data);
+        })
+        .catch(error => {
+            console.error('Error:', error);
+        });
+    }
+</script>
+{{>Get_Set_Cookie}}

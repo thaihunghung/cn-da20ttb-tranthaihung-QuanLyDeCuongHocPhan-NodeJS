@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 
 const HocPhanSchema = new mongoose.Schema({
-    _id: mongoose.Schema.Types.ObjectId,
+    PhuLuc: String,
     MaMon: String,
     TenMon: String,
     SoGioTuHoc: Number,
@@ -18,7 +18,8 @@ const HocPhanSchema = new mongoose.Schema({
     fileName: 
       {
         type: String, 
-        ref: 'Create.fileName' 
+        ref: 'Create.fileName',
+        unique: true
       }
   });
 

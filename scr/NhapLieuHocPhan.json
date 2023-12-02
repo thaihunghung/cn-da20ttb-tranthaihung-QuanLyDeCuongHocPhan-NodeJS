@@ -1,0 +1,17 @@
+{
+    "PhuLuc": "A",
+    "MaMon": "ABC123",
+    "TenMon": "Example Course",
+    "SoGioTuHoc": 20,
+    "TH": 2,
+    "LT": 3,
+    "MoTa": "Description of the course",
+    "LoaiHocPhan": "Elective",
+    "SoTC_LT": 3,
+    "SoTC_TH": 2,
+    "TrinhDo_DT": "Intermediate",
+    "ChuyenNganh": "Computer Science",
+    "HocKy": 2,
+    "NamHoc": 2023,
+    "fileName": "hung:QuanLyHocPhan"  
+  }

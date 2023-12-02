@@ -1,12 +1,12 @@
 const mongoose = require('mongoose');
-const CreateSchema = new Schema({
+const CreateSchema = new mongoose.Schema({
     fileName: { 
         type: String,
         required: true,
         unique: true
       },
-    User: {
-        type: mongoose.Schema.Types.ObjectId, 
+    username: {
+        type: String, 
         ref: 'User'
       }      
   });
