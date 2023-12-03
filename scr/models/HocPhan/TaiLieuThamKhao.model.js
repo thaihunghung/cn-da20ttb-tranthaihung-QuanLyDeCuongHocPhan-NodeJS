@@ -5,7 +5,7 @@ const TLTKSchema = new mongoose.Schema({
     MaHP: { type: String, ref: 'HocPhan.fileName'},
     tenTLTK: String,
     tacGia: [String],
-    namXuatBan: Number,
+    namXuatBan: String,
     loaiHocLieu: String,
     nguon: String, 
   });

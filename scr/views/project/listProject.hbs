@@ -1,0 +1,54 @@
+<div class="list_project">
+    <div class="LP-stital">
+        <h1>Danh sách dự án đã làm của bạn</h1>
+    </div>
+    <div class="LP-product">
+
+        {{#if ListCreate.length}}
+
+        <div class="LP-product-item">
+            {{#each ListCreate}}
+            <p id="username" class="hidden">{{this.username}}</p>
+            <p id="filenam{{@index}}"> {{this.nameProject}}</p>
+            <button class="btn" onclick="Update({{@index}})">Chỉnh sửa</button>
+            <button class="btn" onclick="delete({{@index}})">Xóa</button>
+
+            {{/each}}
+        </div>
+        {{else}}
+        <p>Không có dự án nào được tìm thấy.</p>
+        {{/if}}
+    </div>
+</div>
+
+<script>
+    const username = document.getElementById('username').textContent.trim();
+    function Update(index) {
+        const tenduanElement = document.getElementById('filenam' + index);
+        const usernameElement = document.getElementById('username');
+
+        if (tenduanElement && usernameElement) {
+            const tenduan = tenduanElement.textContent.trim();
+            const username = usernameElement.textContent.trim();
+
+            const filename = encodeURIComponent(username + ':' + tenduan);
+
+            // Sử dụng axios để thực hiện yêu cầu GET với tham số trên URL
+            axios.get(`../project/Update/:?filename=${filename}`)
+                .then(response => {
+                    // Xử lý phản hồi từ server nếu cần
+                    console.log(response.data);
+                    window.location.href = `../project/Update/:?filename=${filename}`
+                })
+                .catch(error => {
+                    // Xử lý lỗi nếu có
+                    console.error('Lỗi khi thực hiện yêu cầu GET:', error);
+                });
+        } else {
+            console.error(`Không tìm thấy phần tử với id filenam${index} hoặc id username`);
+        }
+
+
+    }
+   
+</script>

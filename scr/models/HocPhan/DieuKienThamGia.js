@@ -7,7 +7,7 @@ const DieuKienThamGiaSchema = new mongoose.Schema({
     MaHP: { type: String, ref: 'HocPhan.fileName'},
     HocPhan_TQ: {
         Ten_HocPhan_TQ: [String],
-        MSHP_TQ: [Number]
+        MSHP_TQ: [String]
     },
     HocPhan_SH: [String],
     YC_khac: {

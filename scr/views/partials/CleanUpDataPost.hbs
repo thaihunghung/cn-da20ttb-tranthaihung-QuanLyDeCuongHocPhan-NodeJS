@@ -33,15 +33,15 @@
             PhuLuc: phuLucValue,
             TenMon: tenMonValue,
             MaMon: maMonValue,
-            SoTC_LT: soTCLTValue,
-            SoTC_TH: soTCTHValue,
-            LT: ltValue,
-            TH: thValue,
+            SoTC_LT: convertToNumber(soTCLTValue),
+            SoTC_TH: convertToNumber(soTCTHValue),
+            LT: convertToNumber(ltValue),
+            TH: convertToNumber(thValue),
             TrinhDo_DT: trinhDoDTValue,
-            SoGioTuHoc: soGioTuHocValue,
+            SoGioTuHoc: convertToNumber(soGioTuHocValue),
             ChuyenNganh: chuyenNganhValue,
-            HocKy: hocKyValue,
-            NamHoc: namHocValue,
+            HocKy: convertToNumber(hocKyValue),
+            NamHoc: convertToNumber(namHocValue),
             MoTa: moTaValue,
             LoaiHocPhan: LoaiHocPhanValue
         };
@@ -481,7 +481,7 @@
             return null;
         }
     }
-    function TestSave_HocPhan() {
+    function Save_Project(TRANTHAIHUNG) {
         const PhuLuc = document.getElementById('PhuLuc');
         const TenMon = document.getElementById('TenMon');
         const MaMon = document.getElementById('MaMon');
@@ -515,15 +515,15 @@
             PhuLuc: phuLucValue,
             TenMon: tenMonValue,
             MaMon: maMonValue,
-            SoTC_LT: soTCLTValue,
-            SoTC_TH: soTCTHValue,
-            LT: ltValue,
-            TH: thValue,
+            SoTC_LT: convertToNumber(soTCLTValue),
+            SoTC_TH: convertToNumber(soTCTHValue),
+            LT: convertToNumber(ltValue),
+            TH: convertToNumber(thValue),
             TrinhDo_DT: trinhDoDTValue,
-            SoGioTuHoc: soGioTuHocValue,
+            SoGioTuHoc: convertToNumber(soGioTuHocValue),
             ChuyenNganh: chuyenNganhValue,
-            HocKy: hocKyValue,
-            NamHoc: namHocValue,
+            HocKy: convertToNumber(hocKyValue),
+            NamHoc: convertToNumber(namHocValue),
             MoTa: moTaValue,
             LoaiHocPhan: LoaiHocPhanValue
         };
@@ -720,25 +720,26 @@
 
             const CDR_HocPhan = CDR_HocPhanElement ? cleanUpString(CDR_HocPhanElement.textContent) : '';
             const tenChuong = tenChuongElement ? cleanUp2String(tenChuongElement.textContent) : '';
-            const gioLyThuyet = gioLyThuyetElement ? cleanUpString(gioLyThuyetElement.textContent) : '';
-            const gioThucHanh = gioThucHanhElement ? cleanUpString(gioThucHanhElement.textContent) : '';
-            const soGioTuHoc = soGioTuHocElement ? cleanUpString(soGioTuHocElement.textContent) : '';
+            const gioLyThuyet = gioLyThuyetElement ? cleanUpString(gioLyThuyetElement.textContent) : 0;
+            const gioThucHanh = gioThucHanhElement ? cleanUpString(gioThucHanhElement.textContent) : 0;
+            const soGioTuHoc = soGioTuHocElement ? cleanUpString(soGioTuHocElement.textContent) : 0;
+            // Lấy thông tin KyNangMem từ hàng CuoiChuong
+            const kyNangMemRow = document.querySelector(`#CuoiChuong${chuongIndex + 1}`);
+            const kyNangMemElement = kyNangMemRow.querySelector('.KyNangMem');
+            const KyNangMem = kyNangMemElement ? cleanUpString(kyNangMemElement.textContent) : 0;
 
             const CDR_HocPhanArray = CDR_HocPhan.split(',').map(item => parseInt(item.trim(), 10));
             const cleanedTenChuong = tenChuong.replace(/^Chương \d+\.\s*/, '').trim();
             const chuong = {
                 TenChuong: cleanedTenChuong,
                 CDR_HocPhan: CDR_HocPhanArray,
-                GioLyThuyet: gioLyThuyet,
-                GiothucHanh: gioThucHanh,
-                SoGioTuHoc: soGioTuHoc,
-                KyNangMem: 0,
+                GioLyThuyet: convertToNumber(gioLyThuyet),
+                GiothucHanh: convertToNumber(gioThucHanh),
+                SoGioTuHoc: convertToNumber(soGioTuHoc),
+                KyNangMem: convertToNumber(KyNangMem),
                 ChiTietChuong: []
             };
-            // Lấy thông tin KyNangMem từ hàng CuoiChuong
-            const kyNangMemRow = document.querySelector(`#CuoiChuong${chuongIndex + 1}`);
-            const kyNangMemElement = kyNangMemRow.querySelector('.KyNangMem');
-            chuong.KyNangMem = kyNangMemElement ? cleanUpString(kyNangMemElement.textContent) : 0;
+            
 
             // Lấy các hàng ChiTietChuong của chương hiện tại
             const chiTietChuongRows = document.querySelectorAll(`.ChiTietChuong${chuongIndex + 1} .STT_CTC${chuongIndex + 1}`);
@@ -749,7 +750,7 @@
 
             chuongData.push(chuong);
 
-            
+
         });
         //tách và xóa chuẩn đầu ra trong Chuong
         const CDR_HocPhanArray = chuongData.map(chuong => {
@@ -770,7 +771,7 @@
         });
 
         // Gộp tất cả các mảng con thành một mảng duy nhất
-       
+
         const PP_Array = phuongPhapGiangDayData.map(item => item.TenPP);
         // Gộp mảng các chuỗi thành một mảng duy nhất
         const phuongPhapGiangDayArray = [].concat(...PP_Array);
@@ -931,15 +932,18 @@
             "QuyDinhData": quyDinhDataArray,
             "GiangVienData": GiangVienArray
         }
-
-        axios.post('/hung', data)
+        const nameUrl = TRANTHAIHUNG;  // Thay thế bằng endpoint cụ thể của bạn
+        const url = `/${nameUrl}`;
+        axios.post(url, data)
             .then(response => {
                 console.log('Dữ liệu đã được gửi thành công:', response.data);  // Use response.data
             })
             .catch(error => {
                 console.error('Lỗi khi gửi dữ liệu:', error.message);
             });
-    }   
+    }
+      
 </script>
+{{>convertToNumber}}
 {{>StringID}}
 {{>CheckBox}}

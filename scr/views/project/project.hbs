@@ -4,23 +4,25 @@
         <div class="formInput_baseA4" id="formInput_baseA4">
             <div class="formInput_print">
                 <button class="btn" onclick="CleanUp_AllTaiLieuThamKhao()">CleanUp_AllTaiLieuThamKhao</button>
+                <button class="btn" onclick="CleanUp_1()">CleanUp_1</button>
                 <button class="btn" onclick="CleanUp_AllTB4()">CleanUp_AllTB4</button>
                 <button class="btn" onclick="CleanUp_AllTB5()">CleanUp_AllTB5</button>
-                <button class="btn" onclick="CleanUp_6()">CleaUp_6</button>
-                <button class="btn" onclick="CleanUp_7()">CleaUp_7</button>
+                <button class="btn" onclick="CleanUp_6()">CleanUp_6</button>
+                <button class="btn" onclick="CleanUp_7()">CleanUp_7</button>
                 <button class="btn" onclick="CleanUp_8()">CleaUp_8</button>
-                
                 <button class="btn" onclick="CleanUp_9()">CleaUp_9</button>
                 <button class="btn" onclick="CleanUp_HocPhan()">HocPhan</button>
+                <button class="btn" id="buttonSave">TestSave_HocPhan</button>
+
                 
-                {{>CleanUpDataPost}}
                 <div class="width16_cm">
                     <p class="section-content text-right"><strong>PHỤ LỤC&nbsp;<span contenteditable="true"
                                 id="PhuLuc"></span></strong></p>
                     <p class="section-content text-center"><strong><span>ĐỀ CƯƠNG CHI TIẾT HỌC PHẦN</span></strong></p>
-                    <p class="section-content text-center"><strong><span contenteditable="true" id="TenMon">[Tên học phần]</span></strong></p>
-                    <p class="section-content text-center"><strong>MSHP:<span contenteditable="true"
-                                id="MaMon">[Mã học phần]</span></strong>
+                    <p class="section-content text-center"><strong><span contenteditable="true" id="TenMon">[Tên học
+                                phần]</span></strong></p>
+                    <p class="section-content text-center"><strong>MSHP:<span contenteditable="true" id="MaMon">[Mã học
+                                phần]</span></strong>
                     </p>
                     <p class="section-content">&nbsp;</p>
                 </div>
@@ -106,7 +108,8 @@
                 <p><span>Chuyên ngành:&nbsp;<span contenteditable="true" id="ChuyenNganh">
                             &hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;.
                         </span>(nếu có)</span></p>
-                <p>Học kỳ:&nbsp;<span contenteditable="true" id="HocKy">[học kỳ]</span> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+                <p>Học kỳ:&nbsp;<span contenteditable="true" id="HocKy">[học kỳ]</span> &nbsp; &nbsp; &nbsp; &nbsp;
+                    &nbsp;
                     &nbsp; &nbsp;
                     &nbsp;
                     Năm thứ:&nbsp;<span contenteditable="true" id="NamHoc">[năm học]</span>
@@ -135,7 +138,8 @@
                             <td class="header-1-general-information-2">Về kiến thức:</td>
                             <td class="body-1-general-colspan-2" id="KienThuc" contenteditable="true">
 
-                                <p><span contenteditable="true" id="KienThuc-1">&nbsp;-&nbsp;[yêu cầu kiến thức 1]</span></p>
+                                <p><span contenteditable="true" id="KienThuc-1">&nbsp;-&nbsp;[yêu cầu kiến thức
+                                        1]</span></p>
                             </td>
                         </tr>
                         <tr>
@@ -185,8 +189,7 @@
                                 <td class="table-2-learning-body">
                                     <div id="giaotrinh">
                                         <p id="GT1" class="allowDeletion2 giaotrinh">
-                                            [<span id="STT_GT_1" class="STT_TB2"
-                                                onclick="hiddenAndShow(1,GT)"
+                                            [<span id="STT_GT_1" class="STT_TB2" onclick="hiddenAndShow(1,GT)"
                                                 contenteditable="true">1</span>]
                                             <span id="TG_GT_1" onclick="hiddenAndShow(1,'GT')"
                                                 contenteditable="true">Nguyễn
@@ -194,8 +197,8 @@
                                                 Tuấn</span>
                                             (<span id="NXB_GT_1" onclick="hiddenAndShow(1,'GT')"
                                                 contenteditable="true">2014</span>).&nbsp;
-                                            <span id="Ten_GT_1" onclick="hiddenAndShow(1,'GT')"
-                                                contenteditable="true" class="text-nghien">Phân tích dữ liệu với
+                                            <span id="Ten_GT_1" onclick="hiddenAndShow(1,'GT')" contenteditable="true"
+                                                class="text-nghien">Phân tích dữ liệu với
                                                 R</span>
                                             [<span id="NGUON_GT_1" onclick="hiddenAndShow(1,'GT')"
                                                 contenteditable="true">NXB Tổng hợp TP
@@ -227,15 +230,14 @@
                                 <td class="table-2-learning-body">
                                     <div id="TaiLieuThamKhao">
                                         <p id="TL1" class="allowDeletion2 TaiLieuThamKhao">
-                                            [<span id="STT_TL_1" class="STT_TB2"
-                                                onclick="hiddenAndShow(1,TL)"
+                                            [<span id="STT_TL_1" class="STT_TB2" onclick="hiddenAndShow(1,TL)"
                                                 contenteditable="true">4</span>]
                                             <span id="TG_TL_1" onclick="hiddenAndShow(1,'TL')"
                                                 contenteditable="true">Jake VanderPlas</span>
                                             (<span id="NXB_TL_1" onclick="hiddenAndShow(1,'TL')"
                                                 contenteditable="true">2017</span>).&nbsp;
-                                            <span id="Ten_TL_1" onclick="hiddenAndShow(1,'TL')"
-                                                contenteditable="true" class="text-nghien">Python Data
+                                            <span id="Ten_TL_1" onclick="hiddenAndShow(1,'TL')" contenteditable="true"
+                                                class="text-nghien">Python Data
                                                 Science
                                                 Handbook: Essential Tools for
                                                 Working with Data</span>
@@ -257,7 +259,7 @@
                                                     contenteditable="true"></span></p>
                                         </div>
 
-                                        
+
                                     </div>
                                 </td>
                                 <td class="empty"></td>
@@ -275,8 +277,8 @@
                                                 contenteditable="true">Mirko Stojiljković</span>
                                             (<span id="NXB_HL_1" onclick="hiddenAndShow(1,'HL')"
                                                 contenteditable="true">2022</span>).&nbsp;
-                                            <span id="Ten_HL_1" onclick="hiddenAndShow(1,'HL')"
-                                                contenteditable="true" class="text-nghien">Python Data
+                                            <span id="Ten_HL_1" onclick="hiddenAndShow(1,'HL')" contenteditable="true"
+                                                class="text-nghien">Python Data
                                                 Science
                                                 Handbook: Essential Tools for
                                                 Working with Data</span>
@@ -371,8 +373,8 @@
                             <tr id="KyNangKT" class="LoaiKN">
                                 <td colspan="5" class="body-4-learning-outcomes">
                                     <div class="body-4-learning-outcomes-tital">
-                                        <p class="decimal-list"><strong><em><span class="strong-text">❖ <span
-                                                            >Về kiến thức</span>:</span></em></strong>
+                                        <p class="decimal-list"><strong><em><span class="strong-text">❖ <span>Về kiến
+                                                            thức</span>:</span></em></strong>
                                         </p>
                                     </div>
                                 </td>
@@ -393,16 +395,16 @@
                                     </p>
                                 </td>
                                 <td class="content-4-learning-outcomes-3">
-                                    <p class="section-content"> <span contenteditable="true"
-                                            id="KT_DUPO_1" class="KT">PLO1</span></p>
+                                    <p class="section-content"> <span contenteditable="true" id="KT_DUPO_1"
+                                            class="KT">PLO1</span></p>
                                 </td>
                                 <td class="content-4-learning-outcomes-4">
-                                    <p class="section-content text-center"><span contenteditable="true"
-                                            id="KT_TD_1" class="KT">2</span></p>
+                                    <p class="section-content text-center"><span contenteditable="true" id="KT_TD_1"
+                                            class="KT">2</span></p>
                                 </td>
                                 <td class="content-4-learning-outcomes-5">
-                                    <p class="section-content"><span contenteditable="true"
-                                            id="KT_TUA_1" class="KT">TUA</span>
+                                    <p class="section-content"><span contenteditable="true" id="KT_TUA_1"
+                                            class="KT">TUA</span>
                                     </p>
                                 </td>
                             </tr>
@@ -433,16 +435,16 @@
                                     </p>
                                 </td>
                                 <td class="content-4-learning-outcomes-3">
-                                    <p class="section-content"> <span contenteditable="true"
-                                            id="KN_DUPO_1" class="KN">PLO1</span></p>
+                                    <p class="section-content"> <span contenteditable="true" id="KN_DUPO_1"
+                                            class="KN">PLO1</span></p>
                                 </td>
                                 <td class="content-4-learning-outcomes-4">
-                                    <p class="section-content text-center"><span contenteditable="true"
-                                            id="KN_TD_1" class="KN">2</span></p>
+                                    <p class="section-content text-center"><span contenteditable="true" id="KN_TD_1"
+                                            class="KN">2</span></p>
                                 </td>
                                 <td class="content-4-learning-outcomes-5">
-                                    <p class="section-content"><span contenteditable="true"
-                                            id="KN_TUA_1" class="KN">TUA</span>
+                                    <p class="section-content"><span contenteditable="true" id="KN_TUA_1"
+                                            class="KN">TUA</span>
                                     </p>
                                 </td>
                             </tr>
@@ -467,24 +469,23 @@
                                 </th>
                                 <td class="content-4-learning-outcomes-2">
                                     <p class="section-content">
-                                        <span contenteditable="true" id="TD_ND_1"  class="TD">
+                                        <span contenteditable="true" id="TD_ND_1" class="TD">
                                             [Nội dung chuẩn đầu ra]
                                         </span>
                                     </p>
                                 </td>
 
                                 <td class="content-4-learning-outcomes-3">
-                                    <p class="section-content"> <span contenteditable="true"
-                                            id="TD_DUPO_1"  class="TD">PLO1</span></p>
+                                    <p class="section-content"> <span contenteditable="true" id="TD_DUPO_1"
+                                            class="TD">PLO1</span></p>
                                 </td>
                                 <td class="content-4-learning-outcomes-4">
-                                    <p class="section-content text-center"><span contenteditable="true"
-                                            {{!-- tự do trình độ --}}
-                                            id="TD_TD_1"  class="TD">2</span></p>
+                                    <p class="section-content text-center"><span contenteditable="true" {{!-- tự do
+                                            trình độ --}} id="TD_TD_1" class="TD">2</span></p>
                                 </td>
                                 <td class="content-4-learning-outcomes-5">
-                                    <p class="section-content"><span contenteditable="true"
-                                            id="TD_TUA_1"  class="TD">TUA</span>
+                                    <p class="section-content"><span contenteditable="true" id="TD_TUA_1"
+                                            class="TD">TUA</span>
                                     </p>
                                 </td>
                             </tr>
@@ -611,7 +612,7 @@
                                             class="KyNangMem">9</span></p>
                                 </td>
                             </tr>
-  
+
                         </tbody>
                     </table>
 
@@ -775,29 +776,35 @@
                     <p class="section-content"><strong><span id="QD_TG">8.1. Quy định về tham dự lớp học</span></strong>
                     </p>
                     <div id="QD_TD" contenteditable="true">
-                        <p class="section-content Thut-dau-dong DontRemove"><span contenteditable="true" id="QD_TD-1" class="QD_TD">
+                        <p class="section-content Thut-dau-dong DontRemove"><span contenteditable="true" id="QD_TD-1"
+                                class="QD_TD">
                                 &nbsp;●&nbsp;[Quy định tham dự 1]
                             </span></p>
-                        <p class="section-content Thut-dau-dong"><span contenteditable="true" id="QD_TD-2" class="QD_TD">
+                        <p class="section-content Thut-dau-dong"><span contenteditable="true" id="QD_TD-2"
+                                class="QD_TD">
                                 &nbsp;●&nbsp;[Quy định tham dự 2]
                             </span></p>
                     </div>
 
                     <p class="section-content"><strong><span>8.2. Quy định về hành vi trong lớp học</span></strong></p>
                     <div id="QD_HV" contenteditable="true">
-                        <p class="section-content Thut-dau-dong DontRemove"><span contenteditable="true" id="QD_HV-1" class="QD_HV">
+                        <p class="section-content Thut-dau-dong DontRemove"><span contenteditable="true" id="QD_HV-1"
+                                class="QD_HV">
                                 &nbsp;●&nbsp;[Quy định hành vi 1]</span>
                         </p>
-                        <p class="section-content Thut-dau-dong"><span contenteditable="true" id="QD_HV-2" class="QD_HV">
+                        <p class="section-content Thut-dau-dong"><span contenteditable="true" id="QD_HV-2"
+                                class="QD_HV">
                                 &nbsp;●&nbsp;[Quy định hành vi 2]</span></p>
                     </div>
 
                     <p class="section-content"><strong><span>8.3. Quy định về học vụ</span></strong></p>
                     <div id="QD_HVu" contenteditable="true">
-                        <p class="section-content Thut-dau-dong DontRemove"><span contenteditable="true" id="QD_HVu-1" class="QD_HVu">
+                        <p class="section-content Thut-dau-dong DontRemove"><span contenteditable="true" id="QD_HVu-1"
+                                class="QD_HVu">
                                 &nbsp;●&nbsp;[Quy định học vụ 1]</span>
                         </p>
-                        <p class="section-content Thut-dau-dong"><span contenteditable="true" id="QD_HVu-2" class="QD_HVu">
+                        <p class="section-content Thut-dau-dong"><span contenteditable="true" id="QD_HVu-2"
+                                class="QD_HVu">
                                 &nbsp;●&nbsp;[Quy định học vụ 2]</span></p>
                     </div>
                 </div>
@@ -812,11 +819,16 @@
                     {{!----}}
                     {{!-- 9.Dự kiến danh sách cán bộ tham gia giảng dạy --}}
                     {{!----}}
-                    <p class="section-content" contenteditable="true"><span id="HoTen"></span>TS. Nguyễn Bảo Ân</span>
-                    </p>
-                    <p class="section-content" contenteditable="true"><span id="HoTen"></span>Ths. Phạm Thị Trúc
-                        Mai</span>
-                    </p>
+                    <div class="GiangVien">
+                        <p class="section-content"><span class="ChucDanh" contenteditable="true">TS</span>.&nbsp;<span
+                                class="HoTen" contenteditable="true">Nguyễn Bảo Ân</span>
+                        </p>
+                        <p class="section-content"><span class="ChucDanh" contenteditable="true">Ths</span>.&nbsp;<span
+                                class="HoTen">Phạm
+                                Thị Trúc
+                                Mai</span>
+                        </p>
+                    </div>
                     <p class="section-content">&nbsp;</p>
                     <p class="section-content"><span>Ngày phê duyệt: ....../......./ .......<em>&nbsp;
                                 &nbsp;</em></span></p>
@@ -912,8 +924,6 @@
                 {{>createFocus}}
             </div>
         </div>
-
-
     </div>
 </div>
 {{>table-2}}
@@ -931,5 +941,19 @@
             });
     }
 </script>
+<script>
+    const buttonSave = document.getElementById('buttonSave');
 
+    buttonSave.addEventListener('click', function () {
+        const userConfirmation = window.confirm('Bạn có chắc chắn muốn lưu dữ liệu không?');
 
+        if (userConfirmation) {
+            Save_Project('project');
+            window.location.href='../user/listProject'
+
+        } else {
+            console.log('Người dùng không đồng ý lưu dữ liệu.');
+        }
+    });
+</script>
+{{>CleanUpDataPost}}

@@ -20,8 +20,8 @@ const loginRoutes = require('./routes/loginRoute.js');
 const homeRoutes = require('./routes/homeRoutes.js');
 const chuongtrinhRoutes = require('./routes/chuongTrinhRoute.js'); 
 const hocphanRoutes = require('./routes/HocPhanRoute.js');
-const userRoutes = require('./routes/userRoute.js');
-// const testRoutes = require('./routes/loginRoute.js');
+const projectRoutes = require('./routes/projectRoute.js');
+const userRoutes = require('./routes/userRoutes.js');
 const db = require('./database/config.js');
 // // // // // // 
 // Routes     
@@ -56,7 +56,8 @@ app.use('/login', loginRoutes);
 app.use('/home', homeRoutes);
 app.use('/chuongtrinh', chuongtrinhRoutes);
 app.use('/hung',hocphanRoutes);
-app.use('/project', userRoutes);
+app.use('/user', userRoutes);
+app.use('/project', projectRoutes);
 // const HocPhan = require('./models/fulldatabase');
 // app.post('/saveHocPhan',  (req, res) => {
 //   console.log('Request Body:', req.body);
