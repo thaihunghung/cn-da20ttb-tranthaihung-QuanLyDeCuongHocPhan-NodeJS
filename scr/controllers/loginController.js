@@ -7,7 +7,8 @@ app.use(cookieParser());
 dotenv.config();
 const NguoiDung = require('../models/NguoiDung/NguoiDung.model');
 exports.login_get = (req, res, next) => {
-    res.render('login/login');
+    const message = req.query.message || '';
+    res.render('login/login',{ message });
 }
 exports.login_post = (req, res) => {
     const username = req.body.username;

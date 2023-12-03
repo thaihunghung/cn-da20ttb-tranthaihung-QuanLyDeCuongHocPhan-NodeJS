@@ -3,7 +3,7 @@ const uuid = require('uuid');
 
 const QuyDinhSchema = new mongoose.Schema({
     MaQD: { type: String,default:uuid.v4, required: true, unique: true },
-    MaHP: { type: mongoose.Schema.Types.ObjectId, ref: 'HocPhan._id', required: true },
+    MaHP: { type: String, ref: 'HocPhan.fileName'},
     NoiDung: [String],
     LoaiQD: String,
   });

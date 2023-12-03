@@ -17,39 +17,131 @@ exports.HocPhanGet = async (req, res) => {
   res.render('HocPhan');
 }
 exports.HocPhanPostSave = async (req, res) => {
-    const {hocPhanData} = req.body;
-    const token = req.cookies.token;
+
+    const {GiaotrinhData,TaiLieuThamKhaoData,HocLieuData,HocPhanData,DieuKienThamGiaData,KyNangKTdata,KyNangKNdata,KyNangTDdata,ChuongData,DU_CDR_ChuongData,PhuongPhapData,DanhGiaData,QuyDinhData,GiangVienData} = req.body;
+    const maHPValue = 'hung:hung1'; // TÊN TÀI LIỆU THAY ĐỔI 
+    //////////////////////////////////////////////////////////////
+    //                         HOCPHAN
+    //////////////////////////////////////////////////////////////
   
-  // Verify and get user info
-    const {username, role}= jwt.verify(token, process.env.TOKEN_SECRET_KEY);
-    if (username){
-      console.log('thanh cong '+username);
-    }
+    HocPhanData.fileName = maHPValue;
+    //////////////////////////////////////////////////////////////
+    //                         TABLE 1
+    //////////////////////////////////////////////////////////////
+    DieuKienThamGiaData.MaHP = maHPValue;
+    /////Cần update lại DieuKienThamGia
 
-    else{
-      console.log('loi');
-    }
-      try {
-        const Create = await CreateModel.findOne({ username: username });
-        if (!Create) {
-          return res.status(404).json({ message: 'Create not found' });
-        }
-        //gọi fileName từ tb CreateModel sau đó gắn vào json hocPhanData
-        const fileName = Create.fileName;
-        hocPhanData.fileName = fileName;
+    //////////////////////////////////////////////////////////////
+    //                         TABLE 2
+    //////////////////////////////////////////////////////////////
 
-        const hocPhanInstance = new HocPhanModel(hocPhanData);
-        if (!hocPhanInstance._id) {
-          hocPhanInstance._id = new mongoose.Types.ObjectId(); 
-        }
-        //lấy json học phần đã chỉnh sửa save
-        const savedHocPhan = await hocPhanInstance.save();
-        res.json({ savedHocPhan });
+    // Thêm trường MaHP vào mỗi mục trong mảng dữ liệu
+    const MapGT = GiaotrinhData.map(item => ({
+      ...item,
+      MaHP: maHPValue,
+    }));
 
-      } catch (error) {
-        console.error('Error saving or updating data:', error.message);
-        res.status(500).send('Internal Server Error');
-      }
+    const MapTL = TaiLieuThamKhaoData.map(item => ({
+      ...item,
+      MaHP: maHPValue,
+    }));
+
+    const MapHL =  HocLieuData.map(item => ({
+      ...item,
+      MaHP: maHPValue,
+    }));
+
+    //////////////////////////////////////////////////////////////
+    //                         TABLE 4
+    //////////////////////////////////////////////////////////////
+    const MapKNKT =  KyNangKTdata.map(item => ({
+      ...item,
+      MaHP: maHPValue,
+    }));
+    const MapKNKN =  KyNangKNdata.map(item => ({
+      ...item,
+      MaHP: maHPValue,
+    }));
+    const MapKNTD =  KyNangTDdata.map(item => ({
+      ...item,
+      MaHP: maHPValue,
+    }));
+
+    //////////////////////////////////////////////////////////////
+    //                         TABLE 5
+    //////////////////////////////////////////////////////////////
+
+    const MapChuong =  ChuongData.map(item => ({
+      ...item,
+      MaHP: maHPValue,
+    }));
+   
+
+    //////////////////////////////////////////////////////////////
+    //                         TABLE 6
+    //////////////////////////////////////////////////////////////
+    PhuongPhapData.MaHP = maHPValue;
+
+    //////////////////////////////////////////////////////////////
+    //                         TABLE 7
+    //////////////////////////////////////////////////////////////
+    const MapDanhGia =  DanhGiaData.map(item => ({
+      ...item,
+      MaHP: maHPValue,
+    }));
+
+    //////////////////////////////////////////////////////////////
+    //                         TABLE 8
+    //////////////////////////////////////////////////////////////
+    const MapQuyDinh =  QuyDinhData.map(item => ({
+      ...item,
+      MaHP: maHPValue,
+    }));
+
+    //////////////////////////////////////////////////////////////
+    //                         TABLE 9
+    //////////////////////////////////////////////////////////////
+    const MapGiangVien =  GiangVienData.map(item => ({
+      ...item,
+      MaHP: maHPValue,
+    }));
+    console.log(GiangVienData);
+
+  try {
+    
+    const SaveHP = new HocPhanModel(HocPhanData);
+    const SaveHPSave =await SaveHP.save();
+
+    const SaveGT = await TLTKModel.insertMany(MapGT);
+    const SaveTL = await TLTKModel.insertMany(MapTL);
+    const SaveHL = await TLTKModel.insertMany(MapHL);
+
+    const SaveDKTG = new DieuKienThamGiaModel(DieuKienThamGiaData);
+    const SaveDKTGSave =await SaveDKTG.save();
+    
+    const SaveKNKT = await CDR_HocPhanModel.insertMany(MapKNKT);
+    const SaveKNKN = await CDR_HocPhanModel.insertMany(MapKNKN);
+    const SaveKNTD = await CDR_HocPhanModel.insertMany(MapKNTD);
+
+    const SaveChuong = await ChuongModel.insertMany(MapChuong);
+    
+    const SavePhuongPhap = new PP_Day_hocModel(PhuongPhapData);
+    const SavePhuongPhapSave = SavePhuongPhap.save();
+   
+    const SaveDanhGia = await DG_HocPhanModel.insertMany(MapDanhGia);
+    const SaveQuyDinh = await QuyDinhModel.insertMany(MapQuyDinh);
+    
+    const SaveGiangVien = await GiangVienModel.insertMany(MapGiangVien);
+    
+    
+  } catch (error) {
+    console.error('Error saving document:', error);
+    res.status(500).json({ error: 'Internal Server Error', message: error.message });
+  }
+    
+    
+        
+      
     }
     exports.HocPhanPut = async (req, res) => {
         const maMon = req.params.maMon;

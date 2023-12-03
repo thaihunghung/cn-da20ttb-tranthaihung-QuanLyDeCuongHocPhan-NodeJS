@@ -1,5 +1,6 @@
 <div class="container">
     <h1>Login</h1>
+    <p>{{message}}</p>
     <form method="post" id="loginForm" action="">
         <label for="username">Username:</label>
         <input type="text" id="username" name="username" required>
@@ -26,6 +27,7 @@
             }
         }).then(data => {
             setCookie('token', data.token, 1);
+            window.location.href = 'home';
         }).catch(err => {
             console.log(err);
         });

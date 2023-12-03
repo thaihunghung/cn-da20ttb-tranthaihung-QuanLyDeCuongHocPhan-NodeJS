@@ -46,30 +46,45 @@
             newHeaderCell.id = newChuongId + "." + (i + 1);
             newHeaderCell.className = classNameHeaderRows[i];
             newHeaderCell.contentEditable = true;
-            var newParagraph = document.createElement("p");
-            newParagraph.className = 'header-5-course-content-p text-left';
-            var newStrong = document.createElement("strong");
-            var newSpan = document.createElement("span");
-            
-            if (i === 1){
-                newSpan.textContent = 'text';
-                
-            } else if (i ===2) {
-                newSpan.textContent = 'text';
-                newSpan.className = 'GioLyThuyet';
-            } else if (i ===3) {
-                newSpan.textContent = "text";
-                newSpan.className = 'GiothucHanh';
-            } else if (i ===4) {
-                newSpan.textContent = "text";
-                newSpan.className = 'SoGioTuHoc';
-            }
-
 
             if (i === 0) {
+                var newParagraph = document.createElement("p");
+                newParagraph.className = 'header-5-course-content-p text-left';
+                var newStrong = document.createElement("strong");
+                var newSpan = document.createElement("span");
                 newSpan.className = "TenChuong STT_CHUONG"
             }
-        
+
+            if (i === 1) {
+                var newParagraph = document.createElement("p");
+                newParagraph.className = 'header-5-course-content-p text-center';
+                var newStrong = document.createElement("strong");
+                var newSpan = document.createElement("span");
+                newSpan.textContent = '1';
+                newSpan.className = 'CDR_HocPhan';
+            } else if (i === 2) {
+                var newParagraph = document.createElement("p");
+                newParagraph.className = 'header-5-course-content-p text-center';
+                var newStrong = document.createElement("strong");
+                var newSpan = document.createElement("span");
+                newSpan.textContent = '1';
+                newSpan.className = 'GioLyThuyet';
+            } else if (i === 3) {
+                var newParagraph = document.createElement("p");
+                newParagraph.className = 'header-5-course-content-p text-center';
+                var newStrong = document.createElement("strong");
+                var newSpan = document.createElement("span");
+                newSpan.textContent = "1";
+                newSpan.className = 'GiothucHanh';
+            } else if (i === 4) {
+                var newParagraph = document.createElement("p");
+                newParagraph.className = 'header-5-course-content-p text-center';
+                var newStrong = document.createElement("strong");
+                var newSpan = document.createElement("span");
+                newSpan.textContent = "1";
+                newSpan.className = 'SoGioTuHoc';
+            }
+            
             newStrong.appendChild(newSpan);
             newParagraph.appendChild(newStrong);
             newHeaderCell.appendChild(newParagraph);
@@ -172,7 +187,7 @@
         // Thêm tr vào tbody trước tr có id là "CuoiChuong1"
         tbody.insertBefore(newDetailRow, document.getElementById("CuoiChuong" + index));
     }
-    
+
 </script>
 <script>
     function UpdateSTTskill() {
@@ -182,7 +197,7 @@
             var sttElements = row.querySelectorAll('.STT_CHUONG');
             //lấy chuỗi từ 9 tương đương với Chuong1." "
             sttElements.forEach((sttElement, sttIndex) => {
-                sttElement.innerHTML = "Chương&nbsp;"+(index * sttElements.length + sttIndex + 1) + ".&nbsp;" + sttElement.textContent.substring(9);
+                sttElement.innerHTML = "Chương&nbsp;" + (index * sttElements.length + sttIndex + 1) + ".&nbsp;" + sttElement.textContent.substring(9);
             });
         });
     }
@@ -255,7 +270,7 @@
     function CapNhatCTC(classNameCTC, indexUpdate, numberInParent) {
         if (classNameCTC) {
             var numberCTCinclassName = document.getElementsByClassName(classNameCTC);
-            
+
             var updateIndex = parseInt(indexUpdate) + 1;
             for (var i = updateIndex; i < numberCTCinclassName.length; i++) {
                 OneCTC(numberInParent, i);
@@ -266,10 +281,10 @@
         }
     }
     function OneCTC(classNameCTC, indexUpdate) {
-      
+
         var update = document.getElementById('CTC' + classNameCTC + '.' + indexUpdate);
         if (update) {
-            var updateIndex = parseInt(indexUpdate)-1
+            var updateIndex = parseInt(indexUpdate) - 1
             update.id = 'CTC' + classNameCTC + '.' + updateIndex;
         }
         else {
@@ -298,11 +313,11 @@
                         //1.3
                         //lấy ra số 3
                         var numberIndex = parts[parts.length - 1];
-                       
+
                         //lấy ra số 1 tương ứng ChiTietChuong1
 
                         var numberCTC = parts[1];
-                        
+
                     }
                     var match = classValue.match(/\d+/);
 
@@ -366,6 +381,6 @@
             // console.log('CuoiChuong' + index + ' element not found');
         }
     }
-    
+
 </script>
 {{>StringID}}

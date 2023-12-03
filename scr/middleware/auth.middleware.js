@@ -5,7 +5,8 @@ function verifyToken(req, res, next)  {
   // Lấy token cookie
   const token = req.cookies.token;
   if (!token) {
-      return res.status(403).json({ message: 'Token không tồn tại' });
+      
+      return res.redirect('/login?message=Bạn cần đăng nhập');
   }
 
   // Giải mã token

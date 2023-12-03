@@ -3,7 +3,7 @@ const uuid = require('uuid');
 
 const PP_Day_hocSchema = new mongoose.Schema({
     MaPP: { type: String,default: uuid.v4 ,required: true, unique: true },
-    MaHP: { type: mongoose.Schema.Types.ObjectId, ref: 'HocPhan._id', required: true },
+    MaHP: { type: String, ref: 'HocPhan.fileName'},
     TenPP: [String]
   });
   

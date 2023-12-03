@@ -2,10 +2,10 @@ const jwt = require('jsonwebtoken');
 const create = require('../models/NguoiDung/Create.model');
 
 exports.index = (req, res) =>{
-    res.render('home');
+    res.render('project/project');
 }
 exports.User_Create_fileName = (req, res) =>{
-    res.render('user/create_fileName')
+    res.render('project/create_fileName')
 }
 
 exports.Check_File_Name = async (req, res) =>{

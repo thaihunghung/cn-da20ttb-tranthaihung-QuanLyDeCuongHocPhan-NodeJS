@@ -56,7 +56,7 @@ app.use('/login', loginRoutes);
 app.use('/home', homeRoutes);
 app.use('/chuongtrinh', chuongtrinhRoutes);
 app.use('/hung',hocphanRoutes);
-app.use('/user', userRoutes);
+app.use('/project', userRoutes);
 // const HocPhan = require('./models/fulldatabase');
 // app.post('/saveHocPhan',  (req, res) => {
 //   console.log('Request Body:', req.body);
