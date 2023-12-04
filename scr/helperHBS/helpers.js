@@ -2,6 +2,15 @@
 const Handlebars = require('handlebars');
 
 module.exports = {
+    joinArray: function(array) {
+    return array.join(', ');
+    },
+    inc: function(value) {
+      return parseInt(value) + 1;
+    },
+    nestedIndex: function(outerIndex, innerIndex, options) {
+      return outerIndex + '.' + innerIndex;
+  },
     ifMatch: function(idCDR, maMT_CTDT, dapungCT) {
         if (!Array.isArray(dapungCT)) {
           console.error("dapungCT must be an array");

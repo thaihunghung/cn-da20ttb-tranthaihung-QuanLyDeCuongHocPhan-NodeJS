@@ -11,6 +11,7 @@ exports.ChuongTrinh_GET = async (req, res) => {
         const PLO = await PLOModel.find({});
         const DapungCT = await dapUng_CTModel.find({});
         const chuongTrinh = await ChuongTrinh.find();
+        
         // Chuyển đổi sang object
         const posObjects = PO.map(mongooseToObject);
         const ploObjects = PLO.map(mongooseToObject);

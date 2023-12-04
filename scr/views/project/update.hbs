@@ -1,0 +1,1054 @@
+<div class="formInput">
+    <div class="formInput_monHoc" id="formInput_monHoc">
+
+        <div class="formInput_baseA4" id="formInput_baseA4">
+            <div class="formInput_print">
+                <button class="btn" onclick="CleanUp_AllTaiLieuThamKhao()">CleanUp_AllTaiLieuThamKhao</button>
+                <button class="btn" onclick="CleanUp_1()">CleanUp_1</button>
+                <button class="btn" onclick="CleanUp_AllTB4()">CleanUp_AllTB4</button>
+                <button class="btn" onclick="CleanUp_AllTB5()">CleanUp_AllTB5</button>
+                <button class="btn" onclick="CleanUp_6()">CleanUp_6</button>
+                <button class="btn" onclick="CleanUp_7()">CleanUp_7</button>
+                <button class="btn" onclick="CleanUp_8()">CleaUp_8</button>
+                <button class="btn" onclick="CleanUp_9()">CleaUp_9</button>
+                <button class="btn" onclick="CleanUp_HocPhan()">HocPhan</button>
+                <button class="btn" onclick="Put_Save_Delete()">TestSave_HocPhan</button>
+
+
+                <div class="width16_cm">
+                    <p class="section-content text-right"><strong>PHỤ LỤC&nbsp;<span contenteditable="true"
+                                id="PhuLuc">{{HocPhan.PhuLuc}}</span></strong></p>
+                    <p class="section-content text-center"><strong><span>ĐỀ CƯƠNG CHI TIẾT HỌC PHẦN</span></strong></p>
+                    <p class="section-content text-center"><strong><span contenteditable="true"
+                                id="TenMon">{{HocPhan.TenMon}}</span></strong></p>
+                    <p class="section-content text-center"><strong>MSHP:<span contenteditable="true"
+                                id="MaMon">{{HocPhan.MaMon}}</span></strong>
+                    </p>
+                    <p class="section-content">&nbsp;</p>
+
+                    {{!-- name id ẩn --}}
+                    <div class="hidden" id="findName">{{findName}}</div>
+                    {{!-- --}}
+                </div>
+                <p class="section-content"><strong><span contenteditable="false">1. Thông tin chung (General
+                            information):</span></strong></p>
+                <p class="section-content">&nbsp;</p>
+                {{!-- table general-information --}}
+                {{!-- 1. Thông tin c"class="body-course-content" (General information): --}}
+                {{!-- table-1-general-information --}}
+                <table class="table-1-general-information-1 section-content">
+                    <tbody>
+                        {{!-- header-general-information-1 --}}
+                        <tr>
+                            <td class="header-1-general-information-1">
+                                <p><strong><em>Loại học phần</em></strong></p>
+                            </td>
+                            <td class="header-1-general-information-1">
+                                <p><strong><em>Số tín chỉ</em></strong></p>
+                            </td>
+                            <td class="header-1-general-information-1">
+                                <p><strong><em>Số giờ dự giảng</em></strong></p>
+                            </td>
+                            <td class="header-1-general-information-1">
+                                <p><strong><em>Giờ tự học và giờ học khác</em></strong></p>
+                            </td>
+                        </tr>
+                        {{!-- body-general-information-1 --}}
+                        <tr>
+                            <td class="body-1-general-information-1">
+                                <p class="flex-row">
+                                    <span>
+                                        <label for="LoaiHocPhan1">Đại cương</label>
+                                    </span>
+
+                                    <span class="test">
+
+                                        <input class="test" type="checkbox" value="Đại cương" id="LoaiHocPhan1"
+                                            onclick="checkboxChanged('LoaiHocPhan1')">
+
+                                    </span>
+                                </p>
+                                <p class="flex-row">
+                                    <span>
+                                        <label for="LoaiHocPhan2">Cơ sở</label>
+                                    </span>
+
+                                    <span class="test">
+                                        <input type="checkbox" value="Cơ sở" id="LoaiHocPhan2"
+                                            onclick="checkboxChanged('LoaiHocPhan2')">
+
+                                    </span>
+                                </p>
+                                <p class="flex-row">
+                                    <span>
+                                        <label for="LoaiHocPhan3">Chuyên ngành</label>
+                                    </span>
+
+                                    <span class="test">
+
+                                        <input type="checkbox" value="Chuyên ngành" id="LoaiHocPhan3"
+                                            onclick="checkboxChanged('LoaiHocPhan3')">
+                                    </span>
+                                </p>
+                            </td>
+                            <td class="body-1-general-information-1">
+                                <p>Lý thuyết: &nbsp; &nbsp;&nbsp;<span contenteditable="true"
+                                        id="SoTC_LT">{{HocPhan.SoTC_LT}}</span></p>
+                                <p>Thực hành: &nbsp; &nbsp;<span contenteditable="true"
+                                        id="SoTC_TH">{{HocPhan.SoTC_TH}}</span></p>
+                            </td>
+                            <td class="body-1-general-information-1">
+                                <p>Lý thuyết:&nbsp;<span contenteditable="true" id="LT">{{HocPhan.LT}}</span></p>
+                                <p>Thực hành:&nbsp;<span contenteditable="true" id="TH">{{HocPhan.TH}}</span></p>
+                            </td>
+                            <td class="body-1-general-information-1">
+                                <p><span contenteditable="true" id="SoGioTuHoc">{{HocPhan.SoGioTuHoc}}</span></p>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <p><strong><em><span>Đối tượng học</span></em><span>: &nbsp; &nbsp; &nbsp;&nbsp;</span></strong></p>
+                <p>Trình độ đào tạo:&nbsp;<span contenteditable="true" id="TrinhDo_DT">{{HocPhan.TrinhDo_DT}}</span></p>
+                <p>Ngành:&nbsp;<span contenteditable="true" id="Nganh">Công nghệ Thông tin</span></p>
+                <p><span>Chuyên ngành:&nbsp;<span contenteditable="true" id="ChuyenNganh">{{HocPhan.ChuyenNganh}}
+                            .
+                        </span>(nếu có)</span></p>
+                <p>Học kỳ:&nbsp;<span contenteditable="true" id="HocKy">{{HocPhan.HocKy}}</span> &nbsp; &nbsp; &nbsp;
+                    &nbsp;
+                    &nbsp;
+                    &nbsp; &nbsp;
+                    &nbsp;
+                    Năm thứ:&nbsp;<span contenteditable="true" id="NamHoc">{{HocPhan.NamHoc}}</span>
+                </p>
+                <p><strong><em><span>Điều kiện tham gia học phần:</span></em></strong></p>
+                <table class="table-1-general-information-2">
+                    <tbody>
+                        <tr>
+                            <td class="header-1-general-information-2">Học phần tiên quyết</td>
+                            <td colspan="2" class="body-1-general-colspan-2">
+                                {{#each HocPhanTienQuyet.Ten_HocPhan_TQ}}
+                                <span contenteditable="true" id="Ten_HocPhan_TQ">{{this}}</span>
+                                &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+                                &nbsp;
+                                MSHP:
+                                {{/each}}
+                                {{#each HocPhanTienQuyet.MSHP_TQ}}
+                                <span contenteditable="true" id="MSHP_TQ">{{this}}</span>
+                                {{/each}}
+
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="body-1-general-left-2">Học phần song hành</td>
+                            <td colspan="2" class="body-1-general-right-2"><span contenteditable="true" {{#each
+                                    HocPhanSH}} id="HocPhan_SH">{{this}}</span>
+                                {{/each}}
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td rowspan="3" class="body-1-general-left-2">Các yêu cầu khác</td>
+                            <td class="header-1-general-information-2">Về kiến thức:</td>
+                            <td class="body-1-general-colspan-2" id="KienThuc" contenteditable="true">
+                                {{#each YeuCauKhac.KienThuc}}
+                                <p><span contenteditable="true">{{this}}</span></p>
+                                {{/each}}
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="header-1-general-information-2">Về kỹ năng:</td>
+                            <td class="body-1-general-colspan-2 section-content text-justify" id="KyNang"
+                                contenteditable="true">
+                                {{#each YeuCauKhac.KyNang}}
+                                <p><span>{{this}}</span></p>
+                                {{/each}}
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="header-1-general-information-2">Về thái độ:</td>
+                            <td class="body-1-general-colspan-2 text-justify" id="ThaiDo" contenteditable="true">
+                                {{#each YeuCauKhac.ThaiDo}}
+                                <p contenteditable="true">{{this}}</p>
+                                {{/each}}
+                            </td>
+                        </tr>
+
+
+                    </tbody>
+                </table>
+                <p class="section-content">&nbsp;</p>
+                <p class="section-content">&nbsp;</p>
+                <p class="section-content break"><strong><span>2. Nguồn học liệu (Learning resources):</span></strong>
+                </p>
+                <p class="section-content">&nbsp;</p>
+                {{!----}}
+                {{!-- 2. Nguồn học liệu (Learning resources): --}}
+                {{!----}}
+                <p class="section-content">[STT] 'Tên tác giả 1,Tên tác giả 2'('Năm'). 'Tên tài liệu'. ['Nguồn']</p>
+                <p class="section-content">&nbsp;</p>
+                <div class="table-2-display-row">
+                    <table class="table-2-learning-resources">
+                        <tbody>
+                            <tr>
+                                <td class="table-2-learning-header">
+                                    <p><span id="loaiHocLieu">Giáo trình/Tài liệu học tập chính</span></p>
+                                </td>
+                                <td class="table-2-learning-body">
+                                    <div id="giaotrinh">
+                                        {{#each TLTK_GT}}
+                                        <p id="GT{{inc @index}}" class="allowDeletion2 giaotrinh">
+                                            [<span id="STT_GT_{{inc @index}}" class="STT_TB2"
+                                                onclick="hiddenAndShow({{inc @index}}, 'GT')"
+                                                contenteditable="true">{{inc @index}}</span>]
+                                            <span id="TG_GT_{{inc @index}}"
+                                                onclick="hiddenAndShow({{inc @index}}, 'GT')"
+                                                contenteditable="true">{{joinArray this.tacGia}}</span>
+                                            (<span id="NXB_GT_{{inc @index}}"
+                                                onclick="hiddenAndShow({{inc @index}}, 'GT')"
+                                                contenteditable="true">{{this.namXuatBan}}</span>).&nbsp;
+                                            <span id="Ten_GT_{{inc @index}}"
+                                                onclick="hiddenAndShow({{inc @index}}, 'GT')" contenteditable="true"
+                                                class="text-nghien">{{this.tenTLTK}}</span>
+                                            [<span id="NGUON_GT_{{inc @index}}"
+                                                onclick="hiddenAndShow({{inc @index}}, 'GT')"
+                                                contenteditable="true">{{this.nguon}}</span>]
+                                            <span contenteditable="true"
+                                                id="No">.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                                        </p>
+                                        <div id="GT{{inc @index}}div" class="hidden_GT{{inc @index}} hidden">
+                                            <!-- Additional details for each document can be displayed here -->
+                                            <p><strong>STT:</strong>&nbsp;[<span
+                                                    id="STT_GT_DSpan_{{inc @index}}"></span>]
+                                            </p>
+                                            <p><strong>Tên tác giả:</strong>&nbsp;<span id="TG_GT_DSpan_{{inc @index}}"
+                                                    contenteditable="true"></span></p>
+                                            <p><strong>Năm Xuất bảng:</strong>&nbsp;<span
+                                                    id="NXB_GT_DSpan_{{inc @index}}" contenteditable="true"></span></p>
+                                            <p><strong>Tên tài liệu tham khảo:</strong>&nbsp;<span
+                                                    id="TEN_GT_DSpan_{{inc @index}}" contenteditable="true"
+                                                    class="text-nghien"></span></p>
+                                            <p><strong>Nguồn:</strong>&nbsp;<span id="NGUON_GT_DSpan_{{inc @index}}"
+                                                    contenteditable="true"></span></p>
+                                        </div>
+                                        {{/each}}
+                                    </div>
+                                </td>
+                                <td class="empty"></td>
+                            </tr>
+                            <tr>
+                                <td class="table-2-learning-header">
+                                    <p><span id="loaiHocLieu">Tài liệu tham khảo thêm</span></p>
+                                </td>
+                                <td class="table-2-learning-body">
+                                    <div id="TaiLieuThamKhao">
+                                        {{#each TLTK_TK}}
+                                        <p id="TL{{inc @index}}" class="allowDeletion2 giaotrinh">
+                                            [<span id="STT_TL_{{inc @index}}" class="STT_TB2"
+                                                onclick="hiddenAndShow({{inc @index}}, 'TL')"
+                                                contenteditable="true">{{inc @index}}</span>]
+                                            <span id="TG_TL_{{inc @index}}"
+                                                onclick="hiddenAndShow({{inc @index}}, 'TL')"
+                                                contenteditable="true">{{joinArray this.tacGia}}</span>
+                                            (<span id="NXB_TL_{{inc @index}}"
+                                                onclick="hiddenAndShow({{inc @index}}, 'TL')"
+                                                contenteditable="true">{{this.namXuatBan}}</span>).&nbsp;
+                                            <span id="Ten_TL_{{inc @index}}"
+                                                onclick="hiddenAndShow({{inc @index}}, 'TL')" contenteditable="true"
+                                                class="text-nghien">{{this.tenTLTK}}</span>
+                                            [<span id="NGUON_TL_{{inc @index}}"
+                                                onclick="hiddenAndShow({{inc @index}}, 'TL')"
+                                                contenteditable="true">{{this.nguon}}</span>]
+                                            <span contenteditable="true"
+                                                id="No">.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                                        </p>
+                                        <div id="TL{{inc @index}}div" class="hidden_TL{{inc @index}} hidden">
+                                            <!-- Additional details for each document can be displayed here -->
+                                            <p><strong>STT:</strong>&nbsp;[<span
+                                                    id="STT_TL_DSpan_{{inc @index}}"></span>]
+                                            </p>
+                                            <p><strong>Tên tác giả:</strong>&nbsp;<span id="TG_TL_DSpan_{{inc @index}}"
+                                                    contenteditable="true"></span></p>
+                                            <p><strong>Năm Xuất bảng:</strong>&nbsp;<span
+                                                    id="NXB_TL_DSpan_{{inc @index}}" contenteditable="true"></span></p>
+                                            <p><strong>Tên tài liệu tham khảo:</strong>&nbsp;<span
+                                                    id="TEN_TL_DSpan_{{inc @index}}" contenteditable="true"
+                                                    class="text-nghien"></span></p>
+                                            <p><strong>Nguồn:</strong>&nbsp;<span id="NGUON_TL_DSpan_{{inc @index}}"
+                                                    contenteditable="true"></span></p>
+                                        </div>
+                                        {{/each}}
+                                    </div>
+                                </td>
+                                <td class="empty"></td>
+                            </tr>
+                            <tr>
+                                <td class="table-2-learning-header">
+                                    <p><span id="loaiHocLieu">Các loại học liệu khác</span></p>
+                                </td>
+                                <td class="table-2-learning-body">
+                                    <div id="HocLieu">
+                                        {{#each TLTK_HL}}
+                                        <p id="HL{{inc @index}}" class="allowDeletion2 giaotrinh">
+                                            [<span id="STT_HL_{{inc @index}}" class="STT_TB2"
+                                                onclick="hiddenAndShow({{inc @index}}, 'HL')"
+                                                contenteditable="true">{{inc @index}}</span>]
+                                            <span id="TG_HL_{{inc @index}}"
+                                                onclick="hiddenAndShow({{inc @index}}, 'HL')"
+                                                contenteditable="true">{{joinArray this.tacGia}}</span>
+                                            (<span id="NXB_HL_{{inc @index}}"
+                                                onclick="hiddenAndShow({{inc @index}}, 'HL')"
+                                                contenteditable="true">{{this.namXuatBan}}</span>).&nbsp;
+                                            <span id="Ten_HL_{{inc @index}}"
+                                                onclick="hiddenAndShow({{inc @index}}, 'HL')" contenteditable="true"
+                                                class="text-nghien">{{this.tenTLTK}}</span>
+                                            [<span id="NGUON_HL_{{inc @index}}"
+                                                onclick="hiddenAndShow({{inc @index}}, 'HL')"
+                                                contenteditable="true">{{this.nguon}}</span>]
+                                            <span contenteditable="true"
+                                                id="No">.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                                        </p>
+                                        <div id="HL{{inc @index}}div" class="hidden_HL{{inc @index}} hidden">
+                                            <!-- Additional details for each document can be displayed here -->
+                                            <p><strong>STT:</strong>&nbsp;[<span
+                                                    id="STT_HL_DSpan_{{inc @index}}"></span>]
+                                            </p>
+                                            <p><strong>Tên tác giả:</strong>&nbsp;<span id="TG_HL_DSpan_{{inc @index}}"
+                                                    contenteditable="true"></span></p>
+                                            <p><strong>Năm Xuất bảng:</strong>&nbsp;<span
+                                                    id="NXB_HL_DSpan_{{inc @index}}" contenteditable="true"></span></p>
+                                            <p><strong>Tên tài liệu tham khảo:</strong>&nbsp;<span
+                                                    id="TEN_HL_DSpan_{{inc @index}}" contenteditable="true"
+                                                    class="text-nghien"></span></p>
+                                            <p><strong>Nguồn:</strong>&nbsp;<span id="NGUON_HL_DSpan_{{inc @index}}"
+                                                    contenteditable="true"></span></p>
+                                        </div>
+                                        {{/each}}
+                                    </div>
+                                </td>
+                                <td class="empty"></td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <div class="instructionForm-table2" id="instructionForm-table2">
+                        <h3>Bảng Chương phần 2</h3>
+
+                        <button id="addButton" onclick="CreateCDR('GT','giaotrinh')" class="btn btn-secondary ctc1">
+                            + thêm 1 giaotrinh
+                        </button>
+
+                        <button id="addButton" onclick="CreateCDR('TL','TaiLieuThamKhao')"
+                            class="btn btn-secondary ctc1">
+                            + thêm 1 TaiLieuThamKhao
+                        </button>
+                        <button id="addButton" onclick="CreateCDR('GT', 'HocLieu')" class="btn btn-secondary ctc1">
+                            + thêm 1 HocLieu
+                        </button>
+
+                        <button id="button_delete_tb2" class="btn btn-secondary ctc1">
+                            + xóa
+                        </button>
+                    </div>
+
+                </div>
+                {{!----}}
+                {{!-- 3. Mô tả học phần (Course description): --}}
+                {{!----}}
+
+                <p class="section-content">&nbsp;</p>
+                <div class="width16_cm">
+                    <p class="section-content"><strong><span>3. Mô tả học phần (Course description):</span></strong></p>
+                    <p class="section-content Thut-dau-dong"><span contenteditable="true" id="MoTa">
+                            {{HocPhan.MoTa}}</span></p>
+                    <p class="section-content">&nbsp;</p>
+                </div>
+                <p class="section-content"><strong><span>4. Chuẩn đầu ra của học phần (Course learning
+                            outcomes):</span></strong></p>
+                <p class="section-content">&nbsp;</p>
+                <p class="section-content">Sau khi hoàn thành học phần, sinh viên có thể:</p>
+
+                {{!-- Course learning outcomes --}}
+                {{!-- 4. Chuẩn đầu ra của học phần (Course learning outcomes): --}}
+                {{!-- Course learning outcomes --}}
+
+                <div class="table-4-display-row">
+                    <table class="table-4-learning-outcomes">
+                        <thead>
+                            {{!-- header-learning-outcomes --}}
+                            <tr>
+                                <td class="header-4-learning-outcomes-1">
+                                    <p><span>&nbsp;</span></p>
+                                </td>
+                                <td class="header-4-learning-outcomes-2">
+                                    <p><strong>Chuẩn đầu ra của học phần</strong></p>
+                                </td>
+                                <td class="header-4-learning-outcomes-3">
+                                    <p><strong>Đáp ứng CĐR của CTĐT</strong></p>
+                                </td>
+                                <td class="header-4-learning-outcomes-4">
+                                    <p><strong>Trình độ năng lực</strong></p>
+                                </td>
+                                <td class="header-4-learning-outcomes-5">
+                                    <p><strong>TUA</strong></p>
+                                </td>
+                            </tr>
+                        </thead>
+                        <tbody id="table-4-learning-outcomes">
+                            {{!-- <tr> tieu de 1 --}}
+                            <tr id="KyNangKT" class="LoaiKN">
+                                <td colspan="5" class="body-4-learning-outcomes">
+                                    <div class="body-4-learning-outcomes-tital">
+                                        <p class="decimal-list"><strong><em><span class="strong-text">❖ <span>Về kiến
+                                                            thức</span>:</span></em></strong>
+                                        </p>
+                                    </div>
+                                </td>
+
+                            </tr>
+                            {{!-- <tr> tieu de 1 --}}
+                                {{#each CDR_KT}}
+                            <tr class="allowDeletion_4 KyNang KyNangKT" id="KyNangKT{{inc @index}}">
+                                <th class="content-4-learning-outcomes-1 section-content text-left stt"
+                                    contenteditable="true">
+                                    1
+                                </th>
+                                <td class="content-4-learning-outcomes-2">
+                                    <p class="section-content">
+                                        <span contenteditable="true" id="KT_ND_{{inc @index}}" class="KT">
+                                            {{this.Noidung_CDRMH}}
+                                        </span>
+                                    </p>
+                                </td>
+                                <td class="content-4-learning-outcomes-3">
+                                    <p class="section-content">
+                                        <span contenteditable="true" id="KT_DUPO_{{inc @index}}" class="KT">
+                                            {{this.DapUng_CDRMH}}
+                                        </span>
+                                    </p>
+                                </td>
+                                <td class="content-4-learning-outcomes-4">
+                                    <p class="section-content text-center">
+                                        <span contenteditable="true" id="KT_TD_{{inc @index}}" class="KT">
+                                            {{this.TrinhDo}}
+                                        </span>
+                                    </p>
+                                </td>
+                                <td class="content-4-learning-outcomes-5">
+                                    <p class="section-content">
+                                        <span contenteditable="true" id="KT_TUA_{{inc @index}}" class="KT">
+                                            {{this.loaiTUA}}
+                                        </span>
+                                    </p>
+                                </td>
+                            </tr>
+                            {{/each}}
+
+                            {{!-- <tr> tieu de 1 --}}
+                            <tr id="KyNangKN" class="LoaiKN">
+                                <td colspan="5" class="body-4-learning-outcomes">
+                                    <div class="body-4-learning-outcomes-tital">
+                                        <p class="decimal-list"><strong><em><span class="strong-text">❖ Về kỹ năng (bao
+                                                        gồm
+                                                        kỹ năng chuyên môn và kỹ năng mềm)</span></em></strong></p>
+                                    </div>
+                                </td>
+
+                            </tr>
+
+                            {{!-- <tr> tieu de 1 --}}
+                                {{#each CDR_KN}}
+                            <tr class="allowDeletion_4 KyNang KyNangKN" id="KyNangKN{{inc @index}}">
+                                <th class="content-4-learning-outcomes-1 section-content text-left stt"
+                                    contenteditable="true">
+                                    1
+                                </th>
+                                <td class="content-4-learning-outcomes-2">
+                                    <p class="section-content">
+                                        <span contenteditable="true" id="KN_ND_{{inc @index}}" class="KN">
+                                            {{this.Noidung_CDRMH}}
+                                        </span>
+                                    </p>
+                                </td>
+                                <td class="content-4-learning-outcomes-3">
+                                    <p class="section-content">
+                                        <span contenteditable="true" id="KN_DUPO_{{inc @index}}" class="KN">
+                                            {{this.DapUng_CDRMH}}
+                                        </span>
+                                    </p>
+                                </td>
+                                <td class="content-4-learning-outcomes-4">
+                                    <p class="section-content text-center">
+                                        <span contenteditable="true" id="KN_TD_{{inc @index}}" class="KN">
+                                            {{this.TrinhDo}}
+                                        </span>
+                                    </p>
+                                </td>
+                                <td class="content-4-learning-outcomes-5">
+                                    <p class="section-content">
+                                        <span contenteditable="true" id="KN_TUA_{{inc @index}}" class="KN">
+                                            {{this.loaiTUA}}
+                                        </span>
+                                    </p>
+                                </td>
+                            </tr>
+                            {{/each}}
+
+
+                            {{!-- <tr> tieu de 1 --}}
+                            <tr id="KyNangTD" class="LoaiKN">
+                                <td colspan="5" class="body-4-learning-outcomes">
+                                    <div class="body-4-learning-outcomes-tital">
+                                        <p class="decimal-list"><strong><em>
+                                                    <span class="strong-text">❖ Về thái độ:
+                                                    </span></em></strong></p>
+                                    </div>
+                                </td>
+
+                            </tr>
+                            {{!-- <tr> tieu de 1 --}}
+                                {{#each CDR_TD}}
+                            <tr class="allowDeletion_4 KyNang KyNangTD" id="KyNangTD{{inc @index}}">
+                                <th class="content-4-learning-outcomes-1 section-content text-left stt"
+                                    contenteditable="true">
+                                    1
+                                </th>
+                                <td class="content-4-learning-outcomes-2">
+                                    <p class="section-content">
+                                        <span contenteditable="true" id="TD_ND_{{inc @index}}" class="TD">
+                                            {{this.Noidung_CDRMH}}
+                                        </span>
+                                    </p>
+                                </td>
+                                <td class="content-4-learning-outcomes-3">
+                                    <p class="section-content">
+                                        <span contenteditable="true" id="TD_DUPO_{{inc @index}}" class="TD">
+                                            {{this.DapUng_CDRMH}}
+                                        </span>
+                                    </p>
+                                </td>
+                                <td class="content-4-learning-outcomes-4">
+                                    <p class="section-content text-center">
+                                        <span contenteditable="true" id="TD_TD_{{inc @index}}" class="TD">
+                                            {{this.TrinhDo}}
+                                        </span>
+                                    </p>
+                                </td>
+                                <td class="content-4-learning-outcomes-5">
+                                    <p class="section-content">
+                                        <span contenteditable="true" id="TD_TUA_{{inc @index}}" class="TD">
+                                            {{this.loaiTUA}}
+                                        </span>
+                                    </p>
+                                </td>
+                            </tr>
+                            {{/each}}
+                        </tbody>
+                    </table>
+
+
+                    <div class="instructionForm-table4" id="instructionForm-table4">
+                        <h3>Bảng Chương phần 4</h3>
+                        <div>
+
+                        </div>
+                        <button onclick="ThemCDRLoaiKT(1)" class="btn btn-secondary ctc1">
+
+                            + Thêm CDR KT
+                        </button>
+                        <button onclick="ThemCDRLoaiKT(2)" class="btn btn-secondary ctc1">
+
+                            + Thêm CDR KN
+                        </button>
+                        <button onclick="ThemCDRLoaiKT(3)" class="btn btn-secondary ctc1">
+
+                            + Thêm CDR TD
+                        </button>
+                        <h3>Quy tắc xóa</h3>
+                        <p>Click vào CDR cần xóa</p>
+                        <button id="button_delete_tb4" class="btn btn-secondary">Xóa 1 CDR</button>
+                    </div>
+
+                    {{>table-4}}
+
+                </div>
+                <p class="section-content">&nbsp;</p>
+
+                {{!----}}
+                {{!-- 5. Nội dung học phần (Course content) --}}
+                {{!----}}
+                <p class="section-content break"><strong><span>5. Nội dung học phần (Course content)</span></strong></p>
+
+                {{> table-5}}
+                <div class="table-5-display-row">
+                    <table class="table-5-course-content">
+                        <thead>
+                            {{!-- header --}}
+                            <tr>
+                                <td rowspan="2" class="header-5-course-content-255_55pt">
+                                    <p class="header-5-course-content-p"><strong><span>Nội dung</span></strong></p>
+                                </td>
+                                <td rowspan="2" class="header-5-course-content-71_8pt">
+                                    <p class="header-5-course-content-p"><strong><span>CĐR học phần</span></strong></p>
+                                </td>
+                                <td colspan="2" class="header-5-course-content-85_25pt">
+                                    <p class="header-5-course-content-p"><strong><span>Số giờ</span></strong></p>
+                                </td>
+                                <td class="header-5-course-content-55_85pt">
+                                    <p class="header-5-course-content-p"><strong><span>Giờ tự học và giờ học khác
+                                            </span></strong></p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="header-5-course-content-44_85pt">
+                                    <p class="header-5-course-content-p"><strong><span>LT</span></strong></p>
+                                </td>
+                                <td class="header-5-course-content-55_85pt-2">
+                                    <p class="header-5-course-content-p"><strong><span>TH</span></strong></p>
+                                </td>
+                                <td class="header-5-course-content-55_85pt-2">
+                                    <p class="table-5-course-content-p text-justify"><span>&nbsp;</span></p>
+                                </td>
+                            </tr>
+                        </thead>
+                        <tbody id="table-5-course-content">
+                            {{!-- body - tital --}}
+                            {{#each Chuong as |chuong chuongIndex|}}
+                            <tr id="Chuong{{inc @index}}" class="Chuong">
+                                <td id="Chuong1.1" class="body-5-course-content-255_55pt">
+                                    <p class="table-5-course-content-p text-justify">
+                                        <span contenteditable="true" class="TenChuong STT_CHUONG">
+                                            {{this.TenChuong}}
+                                        </span>
+                                    </p>
+                                </td>
+                                <td id="Chuong{{inc chuongIndex}}.2" class="body-5-course-content-71_8pt">
+                                    <p class="header-5-course-content-p"><strong><span
+                                                contenteditable="true">1</span></strong></p>
+                                </td>
+                                <td id="Chuong{{inc chuongIndex}}.3" class="body-5-course-content-44_85pt">
+                                    <p class="header-5-course-content-p"><strong><span contenteditable="true"
+                                                class="GioLyThuyet">{{this.GioLyThuyet}}</span></strong></p>
+                                </td>
+                                <td id="Chuong{{inc chuongIndex}}.4" class="body-5-course-content-40_4pt">
+                                    <p class="header-5-course-content-p"><strong><span contenteditable="true"
+                                                class="GiothucHanh">{{this.GiothucHanh}}</span></strong></p>
+                                </td>
+                                <td id="Chuong{{inc chuongIndex}}.5" class="body-5-course-content-55_85pt">
+                                    <p class="header-5-course-content-p"><strong><span contenteditable="true"
+                                                class="SoGioTuHoc">{{this.SoGioTuHoc}}</span></strong></p>
+                                </td>
+                            </tr>
+                            {{#each chuong.ChiTietChuong as |chiTietChuong chiTietIndex|}}
+                            <tr class="ChiTietChuong{{inc chuongIndex}}" id="allowDeletion">
+                                <td class="body-5-content-course-content-255_55pt">
+                                    <p class="table-5-course-content-p text-justify">
+                                        <span contenteditable="true" id="CTC{{inc chuongIndex}}.{{inc chiTietIndex}}"
+                                            class="STT_CTC{{inc chuongIndex}}">
+                                            {{chiTietChuong}}
+                                        </span>
+                                    </p>
+                                </td>
+                                <td class="body-5-content-course-content-71_8pt">
+                                    <p class="table-5-course-content-p text-justify"><span>&nbsp;</span></p>
+                                </td>
+                                <td class="body-5-content-course-content-44_85pt">
+                                    <p class="table-5-course-content-p text-justify"><span>&nbsp;</span></p>
+                                </td>
+                                <td class="body-content--course-content-40_4pt">
+                                    <p class="table-5-course-content-p text-justify"><span>&nbsp;</span></p>
+                                </td>
+                                <td class="body-5-course-content-55_85pt">
+                                    <p class="table-5-course-content-p text-justify"><span>&nbsp;</span></p>
+                                </td>
+                            </tr>
+                            {{/each}}
+                            <tr id="CuoiChuong{{inc @index}}">
+                                <td class="footer-5-course-content-255_55pt">
+                                    <p class="text-justify"><em><span>Kỹ năng mềm và thái độ</span></em></p>
+                                </td>
+                                <td colspan="4" class="footer-5-course-content-212_9pt">
+                                    <p class="table-5-course-content-p text-justify"><span contenteditable="true"
+                                            class="KyNangMem">{{this.KyNangMem}}</span></p>
+                                </td>
+                            </tr>
+                            {{/each}}
+
+
+                        </tbody>
+                    </table>
+
+                    <div class="instructionForm-table5" id="instructionForm-table5">
+                        <h2 align="center"> <strong>Bảng Chương phần 5</strong></h2>
+                        <div style="display: flex;">
+                            <button onclick="themChuong()" class="btn btn-dark">
+                                + Thêm chương
+                            </button>
+                            <button id="test1" onclick="getAllCTCIdsAndValues()">get</button>
+                        </div>
+                        <div id="instructionForm-table5-CTC" class="ctc">
+                            <button type="button" class="btn btn-secondary Chitiet" id="ctc1"
+                                onclick="themChiTietChuong(1)">+&nbsp;Thêm chi tiết chương 1</button>
+                            </button>
+
+                            <p>Click vào CDR cần xóa</p>
+                            <button id="hung" class="btn btn-secondary">Xóa 1 CDR</button>
+                        </div>
+                    </div>
+                </div>
+
+                {{!----}}
+                {{!-- 6. Phương pháp dạy và học (Teaching and learning methods): --}}
+                {{!----}}
+                <div class="width16_cm">
+                    <p class="section-content">&nbsp;</p>
+                    <p class="section-content"><strong><span>6. Phương pháp dạy và học (Teaching and learning
+                                methods):</span></strong></p>
+                    <div id="TenPP" contenteditable="true">
+                        {{#each PhuongPhapDayHoc}}
+                        {{#each TenPP}}
+                        <p class="section-content DontRemove">
+                            <span contenteditable="true" id="TenPP-{{@index}}">{{this}}</span>
+                        </p>
+                        {{/each}}
+                        {{/each}}
+                    </div>
+                    <p class="section-content">&nbsp;</p>
+                </div>
+                {{!----}}
+                {{!-- 7. Đánh giá học phần (Course assessment): --}}
+                {{!----}}
+                <div class="width16_cm">
+                    <p class="section-content"><strong><span>7. Đánh giá học phần (Course assessment):</span></strong>
+                    </p>
+                    <table class="table-7-course-assessment">
+                        <tbody>
+                            {{!-- header-course-assessment --}}
+                            <tr>
+                                <td class="header-7-course-assessment-60_75pt">
+                                    <p><span>&nbsp;</span></p>
+                                </td>
+                                <td class="header-7-course-assessment-95_25pt">
+                                    <p><strong><span>Hình thức đánh giá/thời gian</span></strong></p>
+                                </td>
+                                <td class="header-7-course-assessment-99_0pt">
+                                    <p><strong><span>Nội dung &nbsp;</span></strong></p>
+                                    <p><strong><span>đánh giá</span></strong></p>
+                                </td>
+                                <td class="header-7-course-assessment-72_0pt">
+                                    <p><strong><span>CĐR của học phần</span></strong></p>
+                                </td>
+                                <td class="header-7-course-assessment-79_5pt">
+                                    <p><strong><span>Tiêu chí đánh giá</span></strong></p>
+                                </td>
+                                <td class="header-7-course-assessment-46_5pt">
+                                    <p><strong><span>Tỷ lệ %</span></strong></p>
+                                </td>
+                            </tr>
+                            {{!-- body-course-assessment --}}
+                            <tr class="Danhgia HT_DG_QT" id="HT_DG_QT_1">
+                                <td rowspan="2" class="body-7-course-assessment-60_75pt">
+                                    <p><strong><span>Đánh giá quá trình</span></strong></p>
+                                </td>
+                                {{#each DanhGia1}}
+                                <td class="body-7-course-assessment-95_25pt">
+                                    <p><span contenteditable="true" class="HinhThucDG DG">{{this.HinhThucDG}}</span></p>
+                                </td>
+                                <td class="body-7-course-assessment-99_0pt">
+                                    <p><span contenteditable="true" class="NoiDung_DG DG">{{this.NoiDungDG}}</span></p>
+                                </td>
+                                <td class="body-7-course-assessment-72_0pt">
+                                    <p><span contenteditable="true" class="CĐR_KetThuc DG">{{this.CDRKetThuc}}</span>
+                                    </p>
+                                </td>
+                                <td class="body-7-course-assessment-79_5pt">
+                                    <p><span contenteditable="true" class="TieuChiDG DG">{{this.TieuChiDG}}</span></p>
+                                </td>
+                                <td class="body-7-course-assessment-46_5pt">
+                                    <p><span contenteditable="true" class="Tyle DG">{{this.Tyle}}</span></p>
+                                </td>
+                                {{/each}}
+
+                            </tr>
+                            <tr class="Danhgia HT_DG_QT" id="HT_DG_QT_2">
+                                {{#each DanhGia2}}
+                                <td class="body-7-course-assessment-95_25pt">
+                                    <p><span contenteditable="true" class="HinhThucDG DG">{{this.HinhThucDG}}</span></p>
+                                </td>
+                                <td class="body-7-course-assessment-99_0pt">
+                                    <p><span contenteditable="true" class="NoiDung_DG DG">{{this.NoiDungDG}}</span></p>
+                                </td>
+                                <td class="body-7-course-assessment-72_0pt">
+                                    <p><span contenteditable="true" class="CĐR_KetThuc DG">{{this.CDRKetThuc}}</span>
+                                    </p>
+                                </td>
+                                <td class="body-7-course-assessment-79_5pt">
+                                    <p><span contenteditable="true" class="TieuChiDG DG">{{this.TieuChiDG}}</span></p>
+                                </td>
+                                <td class="body-7-course-assessment-46_5pt">
+                                    <p><span contenteditable="true" class="Tyle DG">{{this.Tyle}}</span></p>
+                                </td>
+                                {{/each}}
+                            </tr>
+                            <tr class="Danhgia HT_DG_KT" id="HT_DG_KT_1">
+                                <td rowspan="2" class="body-7-course-assessment-60_75pt height-10_0pt">
+                                    <p><strong><span contenteditable="true">Đánh giá kết thúc học phần</span></strong>
+                                    </p>
+                                    <p><em><span contenteditable="true">(Chọn 1 trong 2)</span></em></p>
+                                </td>
+
+                                {{#each DanhGia3}}
+                                <td class="body-7-course-assessment-95_25pt">
+                                    <p><span contenteditable="true" class="HinhThucDG DG">{{this.HinhThucDG}}</span></p>
+                                </td>
+                                <td class="body-7-course-assessment-99_0pt">
+                                    <p><span contenteditable="true" class="NoiDung_DG DG">{{this.NoiDungDG}}</span></p>
+                                </td>
+                                <td class="body-7-course-assessment-72_0pt">
+                                    <p><span contenteditable="true" class="CĐR_KetThuc DG">{{this.CDRKetThuc}}</span>
+                                    </p>
+                                </td>
+                                <td class="body-7-course-assessment-79_5pt">
+                                    <p><span contenteditable="true" class="TieuChiDG DG">{{this.TieuChiDG}}</span></p>
+                                </td>
+                                <td class="body-7-course-assessment-46_5pt">
+                                    <p><span contenteditable="true" class="Tyle DG">{{this.Tyle}}</span></p>
+                                </td>
+                                {{/each}}
+
+                            </tr>
+                            <tr class="Danhgia HT_DG_KT" id="HT_DG_KT_2">
+                                {{#each DanhGia4}}
+                                <td class="body-7-course-assessment-95_25pt">
+                                    <p><span contenteditable="true" class="HinhThucDG DG">{{this.HinhThucDG}}</span></p>
+                                </td>
+                                <td class="body-7-course-assessment-99_0pt">
+                                    <p><span contenteditable="true" class="NoiDung_DG DG">{{this.NoiDungDG}}</span></p>
+                                </td>
+                                <td class="body-7-course-assessment-72_0pt">
+                                    <p><span contenteditable="true" class="CĐR_KetThuc DG">{{this.CDRKetThuc}}</span>
+                                    </p>
+                                </td>
+                                <td class="body-7-course-assessment-79_5pt">
+                                    <p><span contenteditable="true" class="TieuChiDG DG">{{this.TieuChiDG}}</span></p>
+                                </td>
+                                <td class="body-7-course-assessment-46_5pt">
+                                    <p><span contenteditable="true" class="Tyle DG">{{this.Tyle}}</span></p>
+                                </td>
+                                {{/each}}
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                {{!----}}
+                {{!-- 8. Các quy định (Course requirements and expectation): --}}
+                {{!----}}
+                <div class="width16_cm">
+                    <p class="section-content"><strong><span>8. Các quy định (Course requirements and
+                                expectation):</span></strong></p>
+                    <p class="section-content"><strong><span id="QD_TG">8.1. Quy định về tham dự lớp học</span></strong>
+                    </p>
+                    <div id="QD_TD" contenteditable="true">
+                        {{#each QuyDinhThamDu}}
+                        {{#each this.NoiDung}}
+                        <p class="section-content Thut-dau-dong"><span contenteditable="true" id="QD_TD-{{@index}}"
+                                class="QD_TD">&nbsp;{{this}}</span></p>
+                        {{/each}}
+                        {{/each}}
+                    </div>
+
+                    <p class="section-content"><strong><span>8.2. Quy định về hành vi trong lớp học</span></strong></p>
+                    <div id="QD_HV" contenteditable="true">
+                        {{#each QuyDinhHanhVi}}
+                        {{#each this.NoiDung}}
+                        <p class="section-content Thut-dau-dong DontRemove"><span contenteditable="true"
+                                id="QD_HV-{{@index}}" class="QD_HV">&nbsp;{{this}}</span>
+                        </p>
+                        {{/each}}
+                        {{/each}}
+
+                    </div>
+
+                    <p class="section-content"><strong><span>8.3. Quy định về học vụ</span></strong></p>
+                    <div id="QD_HVu" contenteditable="true">
+                        {{#each QuyDinhHocVu}}
+                        {{#each this.NoiDung}}
+                        <p class="section-content Thut-dau-dong DontRemove"><span contenteditable="true"
+                                id="QD_HVu-{{@index}}" class="QD_HVu">
+                                &nbsp;{{this}}</span>
+                        </p>
+                        {{/each}}
+                        {{/each}}
+                    </div>
+                </div>
+                {{>AddElementP}}
+
+                <div class="width16_cm">
+                    <p class="section-content">&nbsp;</p>
+                    <p class="section-content"><strong><span>9. Dự kiến danh sách cán bộ tham gia giảng
+                                dạy</span></strong>
+                    </p>
+                    <p class="section-content">&nbsp;</p>
+                    {{!----}}
+                    {{!-- 9.Dự kiến danh sách cán bộ tham gia giảng dạy --}}
+                    {{!----}}
+                    <div class="GiangVien">
+                        {{#each GiangVien}}
+                        <p class="section-content"><span class="ChucDanh"
+                                contenteditable="true">{{this.ChucDanh}}</span>.&nbsp;<span class="HoTen"
+                                contenteditable="true">{{this.HoTen}}</span>
+                        </p>
+                        {{/each}}
+                    </div>
+                    <p class="section-content">&nbsp;</p>
+                    <p class="section-content"><span>Ngày phê duyệt: ....../......./ .......<em>&nbsp;
+                                &nbsp;</em></span></p>
+
+                    <table class="table-9-list-teacher">
+                        <tbody>
+                            <tr>
+                                <td class="header-9-list-teacher-140_5pt">
+                                    <p class="margin-top-bottom-3pt text-center"><strong><span>TRƯỞNG
+                                                KHOA</span></strong>
+                                    </p>
+                                    <p class="margin-top-bottom-3pt text-center"><em><span>(Ký và ghi rõ họ
+                                                tên)</span></em>
+                                    </p>
+                                </td>
+                                <td class="header-9-list-teacher-176_35pt">
+                                    <p class="margin-top-bottom-3pt text-center"><strong><span>TRƯỞNG BỘ MÔN
+                                            </span></strong></p>
+                                    <p class="margin-top-bottom-3pt text-center"><em><span>(Ký và ghi rõ họ
+                                                tên)</span></em>
+                                    </p>
+                                </td>
+                                <td class="header-9-list-teacher-153_4pt">
+                                    <p class="margin-top-bottom-3pt text-center"><strong><span>GIẢNG VIÊN
+                                            </span></strong>
+                                    </p>
+                                    <p class="margin-top-bottom-3pt text-center"><strong><span>BIÊN SOẠN</span></strong>
+                                    </p>
+                                    <p class="margin-top-bottom-3pt text-center"><strong><span>&nbsp;</span></strong>
+                                    </p>
+                                    <p class="margin-top-bottom-3pt text-center"><strong><span>&nbsp;</span></strong>
+                                    </p>
+                                    <p class="margin-top-bottom-3pt text-center" contenteditable="true">
+                                        <strong><span>Nguyễn
+                                                Bảo Ân</span></strong>
+                                    </p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="body-9-list-teacher-140_5pt">
+                                    <p class="section-content margin-top-bottom-3pt">
+                                        <strong><span>&nbsp;</span></strong>
+                                    </p>
+                                </td>
+                                <td class="body-9-list-teacher-176_35pt">
+                                    <p class="section-content margin-top-bottom-3pt">
+                                        <strong><span>&nbsp;</span></strong>
+                                    </p>
+                                </td>
+                                <td class="body-9-list-teacher-153_4pt">
+                                    <p class="section-content margin-top-bottom-3pt">
+                                        <strong><span>&nbsp;</span></strong>
+                                    </p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="body-9-list-teacher-140_5pt">
+                                    <p class="section-content margin-top-bottom-3pt">
+                                        <strong><span>&nbsp;</span></strong>
+                                    </p>
+                                </td>
+                                <td class="body-9-list-teacher-176_35pt">
+                                    <p class="section-content margin-top-bottom-3pt">
+                                        <strong><span>&nbsp;</span></strong>
+                                    </p>
+                                </td>
+                                <td class="body-9-list-teacher-153_4pt">
+                                    <p class="margin-top-bottom-3pt text-center"><strong><span>GIẢNG VIÊN
+                                            </span></strong>
+                                    </p>
+                                    <p class="margin-top-bottom-3pt text-center"><strong><span>PHẢN BIỆN</span></strong>
+                                    </p>
+                                    <p class="margin-top-bottom-3pt text-center"><strong><span>&nbsp;</span></strong>
+                                    </p>
+                                    <p class="margin-top-bottom-3pt text-center"><strong><span>&nbsp;</span></strong>
+                                    </p>
+                                    <p class="margin-top-bottom-3pt text-center"><strong><span>&nbsp;</span></strong>
+                                    </p>
+                                    <p class="margin-top-bottom-3pt text-center" contenteditable="true">
+                                        <strong><span>Phạm
+                                                Thị Trúc
+                                                Mai</span></strong>
+                                    </p>
+                                    <p class="margin-top-bottom-3pt text-center"><strong><span>&nbsp;</span></strong>
+                                    </p>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <p class="section-content"><span>&nbsp;</span></p>
+                    <p class="section-content">&nbsp;</p>
+                </div>
+                {{>createFocus}}
+            </div>
+        </div>
+    </div>
+</div>
+{{>table-2}}
+{{>CheckBox}}
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+<script>
+    function sendA4Content() {
+        var a4Content = document.getElementById('formInput_monHoc').innerHTML;
+        axios.post('/pdf', { a4Content })
+            .then(function (response) {
+                console.log(response.data);
+            })
+            .catch(function (error) {
+                console.error('Error:', error);
+            });
+    }
+</script>
+<script>
+    const temp = "{{HocPhan.LoaiHocPhan}}";
+    async function Put_Save_Delete() {
+        const findNameElement = document.getElementById('findName').textContent;
+        const MaHP = findNameElement.toString();
+        const userConfirmation = window.confirm('Bạn có chắc chắn muốn lưu dữ liệu không?');
+        if (userConfirmation) {
+            try {
+                const response = await axios.delete(`../delete/${MaHP}`);
+                console.log(response.data);  
+                Save_Project('project');
+                window.location.href = '../../user/listProject';
+            } catch (error) {
+                console.error('Error deleting project:', error);
+            }
+        } else {
+            console.log('Người dùng không đồng ý lưu dữ liệu.');
+        }
+    }
+</script>
+{{>CleanUpDataPost}}
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        // Get the filename parameter from the URL
+        const urlParams = new URLSearchParams(window.location.search);
+        const filename = urlParams.get('filename');
+        console.log(filename);
+
+        const temp = "{{HocPhan.LoaiHocPhan}}";
+        if (temp === "Đại cương") {
+            document.getElementById("LoaiHocPhan1").checked = true;
+        } else if (temp === "Cơ sở") {
+            document.getElementById("LoaiHocPhan2").checked = true;
+        } else if (temp === "Chuyên ngành") {
+            document.getElementById("LoaiHocPhan3").checked = true;
+        }
+        UpdateSTT_TB2();
+        UpdateSTTskill_TB4()
+    });
+</script>

@@ -6,9 +6,8 @@ const DanhGia_HocPhanSchema = new mongoose.Schema({
     LoaiDG: String,
     HinhThucDG: String,
     TieuChiDG: String,
-    NoiDung_DG: String,
+    NoiDungDG: String,
     CDRKetThuc: String,
     Tyle: String
   });
-
 module.exports = mongoose.model('DG_HocPhan', DanhGia_HocPhanSchema);

@@ -34,21 +34,8 @@
             const filename = encodeURIComponent(username + ':' + tenduan);
 
             // Sử dụng axios để thực hiện yêu cầu GET với tham số trên URL
-            axios.get(`../project/Update/:?filename=${filename}`)
-                .then(response => {
-                    // Xử lý phản hồi từ server nếu cần
-                    console.log(response.data);
-                    window.location.href = `../project/Update/:?filename=${filename}`
-                })
-                .catch(error => {
-                    // Xử lý lỗi nếu có
-                    console.error('Lỗi khi thực hiện yêu cầu GET:', error);
-                });
-        } else {
-            console.error(`Không tìm thấy phần tử với id filenam${index} hoặc id username`);
+
+            window.location.href = `../project/update/?filename=${filename}`;
         }
-
-
     }
-   
 </script>

@@ -16,18 +16,18 @@
         const LoaiHocPhan = ketquaCheckBox();
         // Kiểm tra và gán giá trị mặc định nếu `textContent` là null
         const phuLucValue = cleanUpString(PhuLuc.textContent) || '';
-        const tenMonValue = cleanUpString(TenMon.textContent) || '';
-        const maMonValue = cleanUpString(MaMon.textContent) || '';
-        const soTCLTValue = cleanUpString(SoTC_LT.textContent) || '';
-        const soTCTHValue = cleanUpString(SoTC_TH.textContent) || '';
-        const ltValue = cleanUpString(LT.textContent) || '';
-        const thValue = cleanUpString(TH.textContent) || '';
-        const trinhDoDTValue = cleanUpString(TrinhDo_DT.textContent) || '';
-        const soGioTuHocValue = cleanUpString(SoGioTuHoc.textContent) || '';
+        const tenMonValue = cleanUpString(TenMon.textContent) || '[Tên học phần]';
+        const maMonValue = cleanUpString(MaMon.textContent) || '[Mã học phần]';
+        const soTCLTValue = cleanUpString(SoTC_LT.textContent) || '0';
+        const soTCTHValue = cleanUpString(SoTC_TH.textContent) || '0';
+        const ltValue = cleanUpString(LT.textContent) || '0';
+        const thValue = cleanUpString(TH.textContent) || '0';
+        const trinhDoDTValue = cleanUpString(TrinhDo_DT.textContent) || '[trình độ]';
+        const soGioTuHocValue = cleanUpString(SoGioTuHoc.textContent) || '0';
         const chuyenNganhValue = cleanUpString(ChuyenNganh.textContent) || '';
-        const hocKyValue = cleanUpString(HocKy.textContent) || '';
-        const namHocValue = cleanUpString(NamHoc.textContent) || '';
-        const moTaValue = cleanUpString(MoTa.textContent) || '';
+        const hocKyValue = cleanUpString(HocKy.textContent) || '0';
+        const namHocValue = cleanUpString(NamHoc.textContent) || '0';
+        const moTaValue = cleanUpString(MoTa.textContent) || '[Mô tả học phần]';
         const LoaiHocPhanValue = cleanUpString(LoaiHocPhan) || '';
         const HocPhanData = {
             PhuLuc: phuLucValue,
@@ -702,6 +702,7 @@
             return {
                 loai_CDRMH: 'Về thái độ',
                 Noidung_CDRMH: TD_ND,
+                DapUng_CDRMH: TD_DUPO,
                 KT_DUPO: TD_DUPO,
                 TrinhDo: TD_TD,
                 loaiTUA: TD_TUA
@@ -916,6 +917,7 @@
         const phuongPhapGiangData = {
             TenPP: phuongPhapGiangDayArray
         }
+        
         const data = {
             "HocPhanData": HocPhanData,
             "GiaotrinhData": giaotrinhData,
@@ -941,8 +943,7 @@
             .catch(error => {
                 console.error('Lỗi khi gửi dữ liệu:', error.message);
             });
-    }
-      
+    }    
 </script>
 {{>convertToNumber}}
 {{>StringID}}

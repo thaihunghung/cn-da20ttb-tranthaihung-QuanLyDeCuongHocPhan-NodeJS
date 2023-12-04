@@ -22,8 +22,8 @@
             url: '/login',
             type: 'POST',
             data: {
-                username: $('#username').val(), // Call the val() function
-                password: $('#password').val()  // Call the val() function
+                username: $('#username').val(), 
+                password: $('#password').val() 
             }
         }).then(data => {
             setCookie('token', data.token, 1);
