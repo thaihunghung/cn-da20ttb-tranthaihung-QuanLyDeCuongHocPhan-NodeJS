@@ -17,9 +17,8 @@ exports.HocPhanGet = async (req, res) => {
   res.render('HocPhan');
 }
 exports.HocPhanPostSave = async (req, res) => {
-
-    const {GiaotrinhData,TaiLieuThamKhaoData,HocLieuData,HocPhanData,DieuKienThamGiaData,KyNangKTdata,KyNangKNdata,KyNangTDdata,ChuongData,DU_CDR_ChuongData,PhuongPhapData,DanhGiaData,QuyDinhData,GiangVienData} = req.body;
-    const maHPValue = 'hung:hung1'; // TÊN TÀI LIỆU THAY ĐỔI 
+    const {Name,GiaotrinhData,TaiLieuThamKhaoData,HocLieuData,HocPhanData,DieuKienThamGiaData,KyNangKTdata,KyNangKNdata,KyNangTDdata,ChuongData,DU_CDR_ChuongData,PhuongPhapData,DanhGiaData,QuyDinhData,GiangVienData} = req.body;
+    const maHPValue = Name; // TÊN TÀI LIỆU THAY ĐỔI 
     //////////////////////////////////////////////////////////////
     //                         HOCPHAN
     //////////////////////////////////////////////////////////////
@@ -105,7 +104,7 @@ exports.HocPhanPostSave = async (req, res) => {
       ...item,
       MaHP: maHPValue,
     }));
-    console.log(GiangVienData);
+    
 
   try {
     

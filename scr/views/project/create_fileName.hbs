@@ -13,14 +13,17 @@
 <script>
      async function checkName() {
         const filename = document.getElementById('filename').value;
+        console.log(filename);
         try {
             const response = await axios.post('/project/checkname', { filename });
             if (response.data.exists) {
                 alert('Dự án đã tồn tại. Vui lòng nhập lại tên dự án khác.');
                 return;
             } else {
-                alert('Dự án tạo thành công')
-                window.location.href='/project';
+                const responseData = response.data;
+                alert(`Dự án tạo thành công. Filename: ${responseData.data}`);
+                
+                window.location.href='/project?filename=' + encodeURIComponent(responseData.data);;
                 return;
             }
         } catch (error) {

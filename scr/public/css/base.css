@@ -103,3 +103,16 @@ span {
   background-color: burlywood;
 
 }
+
+span[contenteditable="true"] {
+    width: 100%;
+    min-height: 13pt;
+    background-color: #FA9E57;
+}
+p {
+    line-height: 13pt; /* Set the line height to the same value as the minimum height */
+    min-height: 13pt;
+    min-width: 10pt;
+
+    padding: 2px;
+}

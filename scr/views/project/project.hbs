@@ -13,8 +13,10 @@
                 <button class="btn" onclick="CleanUp_9()">CleaUp_9</button>
                 <button class="btn" onclick="CleanUp_HocPhan()">HocPhan</button>
                 <button class="btn" id="buttonSave">TestSave_HocPhan</button>
-
-                
+                <p id="save">0</p>
+                <h1 id="fileName">
+                   
+                </h1>
                 <div class="width16_cm">
                     <p class="section-content text-right"><strong>PHỤ LỤC&nbsp;<span contenteditable="true"
                                 id="PhuLuc"></span></strong></p>
@@ -186,22 +188,24 @@
                                 <td class="table-2-learning-header">
                                     <p><span id="loaiHocLieu">Giáo trình/Tài liệu học tập chính</span></p>
                                 </td>
-                                <td class="table-2-learning-body">
+                                
+
+                                <td class="table-2-learning-body"> 
                                     <div id="giaotrinh">
                                         <p id="GT1" class="allowDeletion2 giaotrinh">
                                             [<span id="STT_GT_1" class="STT_TB2" onclick="hiddenAndShow(1,GT)"
                                                 contenteditable="true">1</span>]
                                             <span id="TG_GT_1" onclick="hiddenAndShow(1,'GT')"
-                                                contenteditable="true">Nguyễn
+                                                contenteditable="true" class="TacGia">Nguyễn
                                                 Văn
                                                 Tuấn</span>
                                             (<span id="NXB_GT_1" onclick="hiddenAndShow(1,'GT')"
-                                                contenteditable="true">2014</span>).&nbsp;
+                                                contenteditable="true" class="NamXB">2014</span>).&nbsp;
                                             <span id="Ten_GT_1" onclick="hiddenAndShow(1,'GT')" contenteditable="true"
-                                                class="text-nghien">Phân tích dữ liệu với
+                                                class="TenTL text-nghien">Phân tích dữ liệu với
                                                 R</span>
                                             [<span id="NGUON_GT_1" onclick="hiddenAndShow(1,'GT')"
-                                                contenteditable="true">NXB Tổng hợp TP
+                                                contenteditable="true" class="Nguon">NXB Tổng hợp TP
                                                 Hồ Chí Minh</span>]
                                             <span contenteditable="true"
                                                 id="No">.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
@@ -228,21 +232,22 @@
                                     <p><span id="loaiHocLieu">Tài liệu tham khảo thêm</span></p>
                                 </td>
                                 <td class="table-2-learning-body">
+
                                     <div id="TaiLieuThamKhao">
                                         <p id="TL1" class="allowDeletion2 TaiLieuThamKhao">
                                             [<span id="STT_TL_1" class="STT_TB2" onclick="hiddenAndShow(1,TL)"
                                                 contenteditable="true">4</span>]
                                             <span id="TG_TL_1" onclick="hiddenAndShow(1,'TL')"
-                                                contenteditable="true">Jake VanderPlas</span>
+                                                contenteditable="true" class="TacGia">Jake VanderPlas</span>
                                             (<span id="NXB_TL_1" onclick="hiddenAndShow(1,'TL')"
-                                                contenteditable="true">2017</span>).&nbsp;
+                                                contenteditable="true" class="NamXB">2017</span>).&nbsp;
                                             <span id="Ten_TL_1" onclick="hiddenAndShow(1,'TL')" contenteditable="true"
-                                                class="text-nghien">Python Data
+                                                class="TenTL text-nghien">Python Data
                                                 Science
                                                 Handbook: Essential Tools for
                                                 Working with Data</span>
                                             [<span id="NGUON_TL_1" onclick="hiddenAndShow(1,'TL')"
-                                                contenteditable="true">O'Reilly Media</span>]
+                                                contenteditable="true" class="Nguon">O'Reilly Media</span>]
                                             <span contenteditable="true"
                                                 id="No">.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
                                         </p>
@@ -269,21 +274,22 @@
                                     <p><span id="loaiHocLieu">Các loại học liệu khác</span></p>
                                 </td>
                                 <td class="table-2-learning-body">
+
                                     <div id="HocLieu">
                                         <p id="HL1" class="allowDeletion2 HocLieu">
                                             [<span id="STT_HL_1" class="STT_TB2" onclick="hiddenAndShow(1,HL)"
                                                 contenteditable="true">5</span>]
                                             <span id="TG_HL_1" onclick="hiddenAndShow(1,'HL')"
-                                                contenteditable="true">Mirko Stojiljković</span>
+                                                contenteditable="true" class="TacGia">Mirko Stojiljković</span>
                                             (<span id="NXB_HL_1" onclick="hiddenAndShow(1,'HL')"
-                                                contenteditable="true">2022</span>).&nbsp;
+                                                contenteditable="true" class="NamXB">2022</span>).&nbsp;
                                             <span id="Ten_HL_1" onclick="hiddenAndShow(1,'HL')" contenteditable="true"
-                                                class="text-nghien">Python Data
+                                                class="TenTL text-nghien">Python Data
                                                 Science
                                                 Handbook: Essential Tools for
                                                 Working with Data</span>
                                             [<span id="NGUON_HL_1" onclick="hiddenAndShow(1,'HL')"
-                                                contenteditable="true">O'Reilly Media</span>]
+                                                contenteditable="true" class="Nguon">O'Reilly Media</span>]
                                             <span contenteditable="true"
                                                 id="No">.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
                                         </p>
@@ -687,81 +693,82 @@
                                 </td>
                             </tr>
                             {{!-- body-course-assessment --}}
-                            <tr>
+                            <tr class="Danhgia HT_DG_QT" id="HT_DG_QT_1">
                                 <td rowspan="2" class="body-7-course-assessment-60_75pt">
                                     <p><strong><span>Đánh giá quá trình</span></strong></p>
                                 </td>
+
                                 <td class="body-7-course-assessment-95_25pt">
-                                    <p><span contenteditable="true">Kiểm tra lý thuyết hoặc</span></p>
-                                    <p><span contenteditable="true">Kiểm tra thực hành</span></p>
+                                    <p><span contenteditable="true" class="HinhThucDG DG">Kiểm tra lý thuyết hoặc Kiểm tra thực hành</span></p>
                                 </td>
                                 <td class="body-7-course-assessment-99_0pt">
-                                    <p><span contenteditable="true">Từ Chương 1 đến Chương 4</span></p>
+                                    <p><span contenteditable="true" class="NoiDung_DG DG">Từ Chương 1 đến Chương 4</span></p>
                                 </td>
                                 <td class="body-7-course-assessment-72_0pt">
-                                    <p><span contenteditable="true">Từ 1 đến 4</span></p>
+                                    <p><span contenteditable="true" class="CĐR_KetThuc DG">Từ 1 đến 4</span></p>
                                 </td>
                                 <td class="body-7-course-assessment-79_5pt">
-                                    <p><span contenteditable="true">Theo đáp án</span></p>
+                                    <p><span contenteditable="true" class="TieuChiDG DG">Theo đáp án</span></p>
                                 </td>
                                 <td class="body-7-course-assessment-46_5pt">
-                                    <p><span contenteditable="true">25%</span></p>
+                                    <p><span contenteditable="true" class="Tyle DG">25%</span></p>
                                 </td>
+
                             </tr>
-                            <tr>
+                            <tr class="Danhgia HT_DG_QT" id="HT_DG_QT_2">
                                 <td class="body-7-course-assessment-95_25pt">
-                                    <p><span contenteditable="true">Bài tập lớn</span></p>
+                                    <p><span contenteditable="true"  class="HinhThucDG DG">Bài tập lớn</span></p>
                                 </td>
                                 <td class="body-7-course-assessment-99_0pt">
-                                    <p><span contenteditable="true">Từ Chương 4 đến Chương 8</span></p>
+                                    <p><span contenteditable="true" class="NoiDung_DG DG">Từ Chương 4 đến Chương 8</span></p>
                                 </td>
                                 <td class="body-7-course-assessment-72_0pt">
-                                    <p><span contenteditable="true">Từ 3 đến 8</span></p>
+                                    <p><span contenteditable="true" class="CĐR_KetThuc DG">Từ 3 đến 8</span></p>
                                 </td>
                                 <td class="body-7-course-assessment-79_5pt">
-                                    <p><span contenteditable="true">Theo đáp án</span></p>
+                                    <p><span contenteditable="true" class="TieuChiDG DG">Theo đáp án</span></p>
                                 </td>
                                 <td class="body-7-course-assessment-46_5pt">
-                                    <p><span contenteditable="true">25%</span></p>
+                                    <p><span contenteditable="true" class="Tyle DG">25%</span></p>
                                 </td>
                             </tr>
-                            <tr>
+                            <tr class="Danhgia HT_DG_KT" id="HT_DG_KT_1">
                                 <td rowspan="2" class="body-7-course-assessment-60_75pt height-10_0pt">
                                     <p><strong><span contenteditable="true">Đánh giá kết thúc học phần</span></strong>
                                     </p>
                                     <p><em><span contenteditable="true">(Chọn 1 trong 2)</span></em></p>
                                 </td>
                                 <td class="body-7-course-assessment-95_25pt height-10_0pt">
-                                    <p><span contenteditable="true">Đồ án (nhóm)</span></p>
+                                    <p><span contenteditable="true" class="HinhThucDG DG">Đồ án (nhóm)</span></p>
                                 </td>
                                 <td class="body-7-course-assessment-99_0pt height-10_0pt">
-                                    <p><span contenteditable="true">Từ Chương 1 đến Chương 6</span></p>
+                                    <p><span contenteditable="true" class="NoiDung_DG DG">Từ Chương 1 đến Chương 6</span></p>
                                 </td>
                                 <td class="body-7-course-assessment-72_0pt height-10_0pt">
-                                    <p><span contenteditable="true">Từ 1 đến 9</span></p>
+                                    <p><span contenteditable="true" class="CĐR_KetThuc DG">Từ 1 đến 9</span></p>
                                 </td>
                                 <td class="body-7-course-assessment-79_5pt height-10_0pt">
-                                    <p><span contenteditable="true">Theo đáp án</span></p>
+                                    <p><span contenteditable="true" class="TieuChiDG DG">Theo đáp án</span></p>
                                 </td>
                                 <td class="body-7-course-assessment-46_5pt height-10_0pt">
-                                    <p><span contenteditable="true">50%</span></p>
+                                    <p><span contenteditable="true" class="Tyle DG">50%</span></p>
                                 </td>
                             </tr>
-                            <tr>
+                            <tr class="Danhgia HT_DG_KT" id="HT_DG_KT_2">
                                 <td class="body-7-course-assessment-95_25pt height-10_0pt">
-                                    <p><span contenteditable="true">Thi thực hành</span></p>
+                                    <p><span contenteditable="true" class="HinhThucDG DG">Thi thực hành</span></p>
                                 </td>
                                 <td class="body-7-course-assessment-99_0pt height-10_0pt">
-                                    <p><span contenteditable="true">Từ Chương 1 đến Chương 6</span></p>
+                                    <p><span contenteditable="true" class="NoiDung_DG DG">Từ Chương 1 đến Chương 6</span></p>
                                 </td>
                                 <td class="body-7-course-assessment-72_0pt height-10_0pt">
-                                    <p><span contenteditable="true">Từ 1 đến 8</span></p>
+                                    <p><span contenteditable="true" class="CĐR_KetThuc DG">Từ 1 đến 8</span></p>
                                 </td>
                                 <td class="body-7-course-assessment-79_5pt height-10_0pt">
-                                    <p><span contenteditable="true">Theo đáp án</span></p>
+                                    <p><span contenteditable="true" class="TieuChiDG DG">Theo đáp án</span></p>
                                 </td>
                                 <td class="body-7-course-assessment-46_5pt height-10_0pt">
-                                    <p><span contenteditable="true">50%</span></p>
+                                    <p><span contenteditable="true" class="Tyle DG">50%</span></p>
                                 </td>
                             </tr>
                         </tbody>
@@ -946,14 +953,20 @@
 
     buttonSave.addEventListener('click', function () {
         const userConfirmation = window.confirm('Bạn có chắc chắn muốn lưu dữ liệu không?');
-
         if (userConfirmation) {
-            Save_Project('project');
-            window.location.href='../user/listProject'
-
+            Save_Project();
+           window.location.href='../user/listProject'
         } else {
             console.log('Người dùng không đồng ý lưu dữ liệu.');
         }
     });
+
+</script>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        UpdateSTT_TB2();
+        UpdateSTTskill_TB4()
+    });
 </script>
 {{>CleanUpDataPost}}
+{{>PostUpdate}}

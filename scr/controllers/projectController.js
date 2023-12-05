@@ -15,13 +15,32 @@ const {verifyToken} = require('../middleware/auth.middleware');
 const {mongooseToObject,MutipleMongooseToObject} = require('../util/mongoose');
 const { config } = require('dotenv');
 
-exports.index = (req, res) =>{
-    res.render('project/project');
+exports.index = async (req, res) =>{
+    const filename = req.query.filename;
+    try {
+      const project = await CreateModel.findOne({ fileName: filename });
+      if (project) {
+          res.render('project/project', {filename:filename});
+      } else {
+          res.redirect('/project/Create');
+      }
+  } catch (error) {
+      console.error('Error:', error);
+      res.status(500).send('Internal Server Error');
+  }
 }
 exports.User_Create_fileName = (req, res) =>{
     res.render('project/create_fileName')
 }
-
+exports.delete_File_Name =async (req, res) =>{
+    const fileName = req.params.fileName;
+    try {
+    await CreateModel.findOneAndDelete({ fileName: fileName });
+    } catch (error) {
+    // Xử lý lỗi
+    res.status(500).json({ error: 'Lỗi xóa documents', message: error.message });
+}
+}
 exports.Check_File_Name = async (req, res) =>{
     const { filename } = req.body;
     const token = req.cookies.token;
@@ -35,20 +54,22 @@ exports.Check_File_Name = async (req, res) =>{
     }
     try {
         // Kiểm tra xem tên dự án đã tồn tại trong database chưa
-        const project = await create.findOne({ fileName: fileNameInCreate });
+        const project = await CreateModel.findOne({ fileName: fileNameInCreate });
         if (project) {
             // Tên dự án đã tồn tại
             res.json({ exists: true });
             return;
         } else {
+
             const data = {
                 "fileName": username+":"+filename,
                 "username": username
             }
-            const Duan = new create(data);
+            const Duan = new CreateModel(data);
             const saverDuan = await Duan.save();
+            
             //gửi tính hiệu về font end 
-            res.json({ exists: false });
+            res.json({ exists: false, data: fileNameInCreate});
             return;
         }
     } catch (error) {
@@ -58,8 +79,12 @@ exports.Check_File_Name = async (req, res) =>{
 };
 
 exports.project_Post_Save = async (req, res) => {
-    const {GiaotrinhData,TaiLieuThamKhaoData,HocLieuData,HocPhanData,DieuKienThamGiaData,KyNangKTdata,KyNangKNdata,KyNangTDdata,ChuongData,DU_CDR_ChuongData,PhuongPhapData,DanhGiaData,QuyDinhData,GiangVienData} = req.body;
-    const maHPValue = 'hung:hung1'; // TÊN TÀI LIỆU THAY ĐỔI 
+    const {GiaotrinhData, Name,TaiLieuThamKhaoData,HocLieuData,HocPhanData,DieuKienThamGiaData,KyNangKTdata,KyNangKNdata,KyNangTDdata,ChuongData,DU_CDR_ChuongData,PhuongPhapData,DanhGiaData,QuyDinhData,GiangVienData} = req.body;
+    console.log(GiaotrinhData)
+    console.log(TaiLieuThamKhaoData)
+    console.log(HocLieuData)
+    var maHPValue = Name;
+     // TÊN TÀI LIỆU THAY ĐỔI 
     //////////////////////////////////////////////////////////////
     //                         HOCPHAN
     //////////////////////////////////////////////////////////////
@@ -145,7 +170,6 @@ exports.project_Post_Save = async (req, res) => {
       ...item,
       MaHP: maHPValue,
     }));
-    console.log(GiangVienData);
 
   try {
     
@@ -240,17 +264,17 @@ exports.project_Get_Update = async (req, res) => {
     if (TLTK_GT) {
       var TLTK_GT_Object = TLTK_GT.map(mongooseToObject)
     }
-
+    
     const TLTK_TK = await TLTKModel.find({ MaHP: findName.toString(), loaiHocLieu: 'Tài liệu tham khảo' });
     if (TLTK_TK) {
       var TLTK_TK_Object = TLTK_TK.map(mongooseToObject)
     }
-
+    console.log("giao trinh"+TLTK_TK)
     const TLTK_HL = await TLTKModel.find({ MaHP: findName.toString(), loaiHocLieu: 'Học liệu' });
     if (TLTK_HL) {
       var TLTK_HL_Object = TLTK_HL.map(mongooseToObject)
     }
-
+    console.log("hoc lieu"+TLTK_HL)
     //////////////////////////////////////////////////////////////
     //                         table 4
     //////////////////////////////////////////////////////////////
@@ -326,7 +350,7 @@ exports.project_Get_Update = async (req, res) => {
     //                         table 9 
     //////////////////////////////////////////////////////////////
     const GiangVien = await GiangVienModel.find({MaHP: findName.toString()})
-    console.log(GiangVien)
+
     if (GiangVien) {
       var GiangVien_Object = GiangVien.map(mongooseToObject)
     }

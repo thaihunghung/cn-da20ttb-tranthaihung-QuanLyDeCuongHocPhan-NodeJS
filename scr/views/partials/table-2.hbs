@@ -55,14 +55,14 @@
         var idCount = (document.getElementsByClassName(ClassParent).length) + 1;
         // Elements created as before 
         const para = document.createElement('p');
-        para.id = loai + idCount;
+        para.id = loai + idCount; // NamXB TenTL Nguon
         para.className = 'allowDeletion2' + ' ' + ClassParent;
         para.innerHTML = `
             [<span id="STT_${loai}_${idCount}" class="STT_TB2" contenteditable="true" onclick="hiddenAndShow(${idCount},'${loai}')"></span>] 
-            <span id="TG_${loai}_${idCount}" contenteditable="true" onclick="hiddenAndShow(${idCount},'${loai}')">Tác giả</span>
-            (<span id="NXB_${loai}_${idCount}" contenteditable="true" onclick="hiddenAndShow(${idCount},'${loai}')">Năm</span>).&nbsp;
-            <span id="Ten_${loai}_${idCount}" contenteditable="true" onclick="hiddenAndShow(${idCount},'${loai}')">Tên tài liệu</span>
-            [<span id="NGUON_${loai}_${idCount}" contenteditable="true" onclick="hiddenAndShow(${idCount},'${loai}')">Nguồn</span>]
+            <span id="TG_${loai}_${idCount}" contenteditable="true" class ="TacGia" onclick="hiddenAndShow(${idCount},'${loai}')">Tác giả</span>
+            (<span id="NXB_${loai}_${idCount}" contenteditable="true" class = "NamXB" onclick="hiddenAndShow(${idCount},'${loai}')">Năm</span>).&nbsp;
+            <span id="Ten_${loai}_${idCount}" contenteditable="true" class = "TenTL text-nghien" onclick="hiddenAndShow(${idCount},'${loai}')">Tên tài liệu</span>
+            [<span id="NGUON_${loai}_${idCount}" contenteditable="true" class = "Nguon" onclick="hiddenAndShow(${idCount},'${loai}')">Nguồn</span>]
             <span contenteditable="true" id="No">.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
         `;
         const div = document.createElement('div');

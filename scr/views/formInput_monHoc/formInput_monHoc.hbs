@@ -12,8 +12,9 @@
                 <button class="btn" onclick="CleanUp_8()">CleaUp_8</button>                
                 <button class="btn" onclick="CleanUp_9()">CleaUp_9</button>
                 <button class="btn" onclick="CleanUp_HocPhan()">HocPhan</button>
-                <button class="btn" onclick="Save_Project('hung')">Save_Project</button>
-                {{>CleanUpDataPost}}
+                <button class="btn" onclick="Save_Project()">Save_Project</button>
+                <button class="btn" onclick="hungtest()">hungtest()</button>
+
                 <div class="width16_cm">
                     <p class="section-content text-right"><strong>PHỤ LỤC&nbsp;<span contenteditable="true"
                                 id="PhuLuc"></span></strong></p>
@@ -163,10 +164,7 @@
                                 <p contenteditable="true" id="ThaiDo=1">
                                     &nbsp;-&nbsp;Chủ động trong học tập
                                 </p>
-
-
                             </td>
-
                         </tr>
                     </tbody>
                 </table>
@@ -189,21 +187,22 @@
                                 </td>
                                 <td class="table-2-learning-body">
                                     <div id="giaotrinh">
+                                            {{!-- //TacGia NamXB TenTL Nguon --}}                                        
                                         <p id="GT1" class="allowDeletion2 giaotrinh">
                                             [<span id="STT_GT_1" class="STT_TB2"
                                                 onclick="hiddenAndShow(1,GT)"
                                                 contenteditable="true">1</span>]
                                             <span id="TG_GT_1" onclick="hiddenAndShow(1,'GT')"
-                                                contenteditable="true">Nguyễn
+                                                contenteditable="true" class="TacGia">Nguyễn
                                                 Văn
                                                 Tuấn</span>
                                             (<span id="NXB_GT_1" onclick="hiddenAndShow(1,'GT')"
-                                                contenteditable="true">2014</span>).&nbsp;
+                                                contenteditable="true" class="NamXB">2014</span>).&nbsp;
                                             <span id="Ten_GT_1" onclick="hiddenAndShow(1,'GT')"
-                                                contenteditable="true" class="text-nghien">Phân tích dữ liệu với
+                                                contenteditable="true" class="TenTL text-nghien">Phân tích dữ liệu với
                                                 R</span>
                                             [<span id="NGUON_GT_1" onclick="hiddenAndShow(1,'GT')"
-                                                contenteditable="true">NXB Tổng hợp TP
+                                                contenteditable="true" class="Nguon">NXB Tổng hợp TP
                                                 Hồ Chí Minh</span>]
                                             <span contenteditable="true"
                                                 id="No">.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
@@ -227,14 +226,14 @@
                                                 onclick="hiddenAndShow(2,'GT')"
                                                 contenteditable="true">2</span>]
                                             <span id="TG_GT_2" onclick="hiddenAndShow(2,'GT')"
-                                                contenteditable="true">Danielle Navarro, Ethan Weed</span>
+                                                contenteditable="true" class="TacGia">Danielle Navarro, Ethan Weed</span>
                                             (<span id="NXB_GT_2" onclick="hiddenAndShow(2,'GT')"
-                                                contenteditable="true">2021</span>).&nbsp;
+                                                contenteditable="true" class="NamXB">2021</span>).&nbsp;
                                             <span id="Ten_GT_2" onclick="hiddenAndShow(2,'GT')"
-                                                contenteditable="true" class="text-nghien">Learning Statistics with
+                                                contenteditable="true" class="TenTL text-nghien">Learning Statistics with
                                                 Python</span>
                                             [<span id="NGUON_GT_2" onclick="hiddenAndShow(2,'GT')"
-                                                contenteditable="true">https://ethanweed.github.io/pythonbook/landingpage.html</span>]
+                                                contenteditable="true" class="Nguon">https://ethanweed.github.io/pythonbook/landingpage.html</span>]
                                             .<span contenteditable="true"
                                                 id="No">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
                                         </p>
@@ -253,21 +252,21 @@
                                                     contenteditable="true"></span></p>
                                         </div>
 
-                                        <p id="GT3" class="allowDeletion2 giaotrinh">
+                                        <p id="GT3" class="allowDeletion2 giaotrinh"> 
                                             [<span id="STT_GT_3" class="STT_TB2"
                                                 onclick="hiddenAndShow(3,GT)"
                                                 contenteditable="true">3</span>]
                                             <span id="TG_GT_3" onclick="hiddenAndShow(3,'GT')"
-                                                contenteditable="true">Peter
+                                                contenteditable="true" class="TacGia">Peter
                                                 Bruce, Andrew Bruce,
                                                 Peter</span>
                                             (<span id="NXB_GT_3" onclick="hiddenAndShow(3,'GT')"
-                                                contenteditable="true">2020</span>).&nbsp;
+                                                contenteditable="true" class="NamXB">2020</span>).&nbsp;
                                             <span id="Ten_GT_3" onclick="hiddenAndShow(3,'GT')"
-                                                contenteditable="true" class="text-nghien">Phân tích dữ liệu với
+                                                contenteditable="true" class="TenTL text-nghien">Phân tích dữ liệu với
                                                 R</span>
                                             [<span id="NGUON_GT_3" onclick="hiddenAndShow(3,'GT')"
-                                                contenteditable="true">
+                                                contenteditable="true" class="Nguon">
                                                 O'Reilly Media</span>]
                                             <span contenteditable="true"
                                                 id="No">.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
@@ -295,22 +294,22 @@
                                     <p><span id="loaiHocLieu">Tài liệu tham khảo thêm</span></p>
                                 </td>
                                 <td class="table-2-learning-body">
-                                    <div id="TaiLieuThamKhao">
+                                    <div id="TaiLieuThamKhao"> 
                                         <p id="TL1" class="allowDeletion2 TaiLieuThamKhao">
                                             [<span id="STT_TL_1" class="STT_TB2"
                                                 onclick="hiddenAndShow(1,TL)"
                                                 contenteditable="true">4</span>]
                                             <span id="TG_TL_1" onclick="hiddenAndShow(1,'TL')"
-                                                contenteditable="true">Jake VanderPlas</span>
+                                                contenteditable="true" class="TacGia">Jake VanderPlas</span>
                                             (<span id="NXB_TL_1" onclick="hiddenAndShow(1,'TL')"
-                                                contenteditable="true">2017</span>).&nbsp;
+                                                contenteditable="true" class="NamXB">2017</span>).&nbsp;
                                             <span id="Ten_TL_1" onclick="hiddenAndShow(1,'TL')"
-                                                contenteditable="true" class="text-nghien">Python Data
+                                                contenteditable="true" class="TenTL text-nghien">Python Data
                                                 Science
                                                 Handbook: Essential Tools for
                                                 Working with Data</span>
                                             [<span id="NGUON_TL_1" onclick="hiddenAndShow(1,'TL')"
-                                                contenteditable="true">O'Reilly Media</span>]
+                                                contenteditable="true" class="Nguon">O'Reilly Media</span>]
                                             <span contenteditable="true"
                                                 id="No">.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
                                         </p>
@@ -336,25 +335,48 @@
                                 <td class="table-2-learning-header">
                                     <p><span id="loaiHocLieu">Các loại học liệu khác</span></p>
                                 </td>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+{{!-- //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////             --}}
                                 <td class="table-2-learning-body">
                                     <div id="HocLieu">
                                         <p id="HL1" class="allowDeletion2 HocLieu">
                                             [<span id="STT_HL_1" class="STT_TB2" onclick="hiddenAndShow(1,HL)"
                                                 contenteditable="true">5</span>]
                                             <span id="TG_HL_1" onclick="hiddenAndShow(1,'HL')"
-                                                contenteditable="true">Mirko Stojiljković</span>
+                                                contenteditable="true" class="TacGia">Mirko Stojiljković</span>
                                             (<span id="NXB_HL_1" onclick="hiddenAndShow(1,'HL')"
-                                                contenteditable="true">2022</span>).&nbsp;
+                                                contenteditable="true" class="NamXB">2022</span>).&nbsp;
                                             <span id="Ten_HL_1" onclick="hiddenAndShow(1,'HL')"
-                                                contenteditable="true" class="text-nghien">Python Data
+                                                contenteditable="true" class="TenTL text-nghien">Python Data
                                                 Science
                                                 Handbook: Essential Tools for
                                                 Working with Data</span>
                                             [<span id="NGUON_HL_1" onclick="hiddenAndShow(1,'HL')"
-                                                contenteditable="true">O'Reilly Media</span>]
+                                                contenteditable="true" class="Nguon">O'Reilly Media</span>]
                                             <span contenteditable="true"
                                                 id="No">.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
                                         </p>
+                                        
+                                  
+
+
                                         <div id="HL1div" class="hidden_HL1 hidden">
                                             <p><strong>STT:</strong>&nbsp;[<span id="STT_HL_DSpan_1"></span>]</p>
                                             <p><strong>Tên tác giả:</strong>&nbsp;<span id="TG_HL_DSpan_1"
@@ -366,20 +388,20 @@
                                             <p><strong>Nguồn:</strong>&nbsp;<span id="NGUON_HL_DSpan_1"
                                                     contenteditable="true"></span></p>
                                         </div>
-
-                                        <p id="HL2" class="allowDeletion2 HocLieu">
+                                                
+                                        <p id="HL2" class="allowDeletion2 HocLieu"> 
                                             [<span id="STT_HL_2" class="STT_TB2" onclick="hiddenAndShow(2,HL)"
                                                 contenteditable="true">6</span>]
                                             <span id="TG_HL_2" onclick="hiddenAndShow(2,'HL')"
-                                                contenteditable="true">Mirko Stojiljković</span>
+                                                contenteditable="true" class="TacGia">Mirko Stojiljković</span>
                                             (<span id="NXB_HL_2" onclick="hiddenAndShow(2,'HL')"
-                                                contenteditable="true">2022</span>).&nbsp;
+                                                contenteditable="true" class="NamXB">2022</span>).&nbsp;
                                             <span id="Ten_HL_2" onclick="hiddenAndShow(2,'HL')"
-                                                contenteditable="true" class="text-nghien">ython
+                                                contenteditable="true" class="TenTL text-nghien">ython
                                                 Statistics Fundamentals: How to Describe
                                                 Your Data</span>
                                             [<span id="NGUON_HL_2" onclick="hiddenAndShow(2,'HL')"
-                                                contenteditable="true">O'Reilly Media</span>]
+                                                contenteditable="true" class="Nguon">O'Reilly Media</span>]
                                             <span contenteditable="true"
                                                 id="No">.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
                                         </p>
@@ -395,19 +417,19 @@
                                                     contenteditable="true"></span></p>
                                         </div>
 
-                                        <p id="HL3" class="allowDeletion2 HocLieu">
+                                        <p id="HL3" class="allowDeletion2 HocLieu">{{!-- //TacGia NamXB TenTL Nguon --}}
                                             [<span id="STT_HL_3" class="STT_TB2" onclick="hiddenAndShow(3,HL)"
                                                 contenteditable="true">7</span>]
                                             <span id="TG_HL_3" onclick="hiddenAndShow(3,'HL')"
-                                                contenteditable="true">FreeCodeCamp</span>
+                                                contenteditable="true" class="TacGia">FreeCodeCamp</span>
                                             (<span id="NXB_HL_3" onclick="hiddenAndShow(3,'HL')"
-                                                contenteditable="true"></span>).&nbsp;
+                                                contenteditable="true" class="NamXB"></span>).&nbsp;
                                             <span id="Ten_HL_3" onclick="hiddenAndShow(3,'HL')"
-                                                contenteditable="true" class="text-nghien">Courses: Data Analysis
+                                                contenteditable="true" class="TenTL text-nghien">Courses: Data Analysis
                                                 with
                                                 Python</span>
                                             [<span id="NGUON_HL_3" onclick="hiddenAndShow(3,'HL')"
-                                                contenteditable="true">https://www.freecodecamp.org/learn/data-analysis-with-python</span>]
+                                                contenteditable="true" class="Nguon">https://www.freecodecamp.org/learn/data-analysis-with-python</span>]
                                             <span contenteditable="true"
                                                 id="No">.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
                                         </p>
@@ -421,7 +443,7 @@
                                                     contenteditable="true" class="text-nghien"></span></p>
                                             <p><strong>Nguồn:</strong>&nbsp;<span id="NGUON_HL_DSpan_3"
                                                     contenteditable="true"></span></p>
-                                        </div>
+                                        </div> 
                                     </div>
                                 </td>
                                 <td class="empty"></td>
@@ -1360,6 +1382,38 @@
                 console.error('Error:', error);
             });
     }
-</script>
+     function hungtest() {
+        const giaotrinhContainer = document.querySelectorAll('.HocLieu');
 
+        const giaotrinhData = []; //TacGia NamXB TenTL Nguon
+
+        for (const parentItem of giaotrinhContainer) {
+            const TG_Element = parentItem.querySelector('.TacGia');
+            const TG = TG_Element ? cleanUpString(TG_Element.textContent) : '';
+
+            const NXB_Element = parentItem.querySelector('.NamXB');
+            const NXB = NXB_Element ? cleanUpString(NXB_Element.textContent) : '';
+
+            const Ten_Element = parentItem.querySelector('.TenTL');
+            const Ten = Ten_Element ? cleanUpString(Ten_Element.textContent) : '';
+
+            const NGUON_Element = parentItem.querySelector('.Nguon');
+            const NGUON = NGUON_Element ? cleanUpString(NGUON_Element.textContent) : '';
+
+            const tacGiaArray = TG.split(',').map(author => author.trim());
+
+            giaotrinhData.push({
+                tenTLTK: Ten,
+                tacGia: tacGiaArray,
+                namXuatBan: NXB,
+                loaiHocLieu: 'Giáo trình',
+                nguon: NGUON
+            });
+        }
+
+        console.log(giaotrinhData);
+    }
+</script>
+                {{>CleanUpDataPost}}
+                {{>PostUpdate}}
 

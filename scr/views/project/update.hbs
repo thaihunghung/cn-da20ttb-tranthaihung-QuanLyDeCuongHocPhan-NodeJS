@@ -194,7 +194,8 @@
                                 <td class="table-2-learning-header">
                                     <p><span id="loaiHocLieu">Giáo trình/Tài liệu học tập chính</span></p>
                                 </td>
-                                <td class="table-2-learning-body">
+                                <td class="table-2-learning-body" contenteditable="true">
+                                 
                                     <div id="giaotrinh">
                                         {{#each TLTK_GT}}
                                         <p id="GT{{inc @index}}" class="allowDeletion2 giaotrinh">
@@ -203,16 +204,16 @@
                                                 contenteditable="true">{{inc @index}}</span>]
                                             <span id="TG_GT_{{inc @index}}"
                                                 onclick="hiddenAndShow({{inc @index}}, 'GT')"
-                                                contenteditable="true">{{joinArray this.tacGia}}</span>
+                                                contenteditable="true" class="TacGia">{{joinArray this.tacGia}}</span>
                                             (<span id="NXB_GT_{{inc @index}}"
                                                 onclick="hiddenAndShow({{inc @index}}, 'GT')"
-                                                contenteditable="true">{{this.namXuatBan}}</span>).&nbsp;
+                                                contenteditable="true" class="NamXB">{{this.namXuatBan}}</span>).&nbsp;
                                             <span id="Ten_GT_{{inc @index}}"
                                                 onclick="hiddenAndShow({{inc @index}}, 'GT')" contenteditable="true"
-                                                class="text-nghien">{{this.tenTLTK}}</span>
+                                                class="TenTL text-nghien">{{this.tenTLTK}}</span>
                                             [<span id="NGUON_GT_{{inc @index}}"
                                                 onclick="hiddenAndShow({{inc @index}}, 'GT')"
-                                                contenteditable="true">{{this.nguon}}</span>]
+                                                contenteditable="true" class="Nguon">{{this.nguon}}</span>]
                                             <span contenteditable="true"
                                                 id="No">.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
                                         </p>
@@ -241,24 +242,25 @@
                                     <p><span id="loaiHocLieu">Tài liệu tham khảo thêm</span></p>
                                 </td>
                                 <td class="table-2-learning-body">
+                                   
                                     <div id="TaiLieuThamKhao">
                                         {{#each TLTK_TK}}
-                                        <p id="TL{{inc @index}}" class="allowDeletion2 giaotrinh">
+                                        <p id="TL{{inc @index}}" class="allowDeletion2 TaiLieuThamKhao">
                                             [<span id="STT_TL_{{inc @index}}" class="STT_TB2"
                                                 onclick="hiddenAndShow({{inc @index}}, 'TL')"
                                                 contenteditable="true">{{inc @index}}</span>]
                                             <span id="TG_TL_{{inc @index}}"
                                                 onclick="hiddenAndShow({{inc @index}}, 'TL')"
-                                                contenteditable="true">{{joinArray this.tacGia}}</span>
+                                                contenteditable="true" class="TacGia">{{joinArray this.tacGia}}</span>
                                             (<span id="NXB_TL_{{inc @index}}"
                                                 onclick="hiddenAndShow({{inc @index}}, 'TL')"
-                                                contenteditable="true">{{this.namXuatBan}}</span>).&nbsp;
+                                                contenteditable="true" class="NamXB">{{this.namXuatBan}}</span>).&nbsp;
                                             <span id="Ten_TL_{{inc @index}}"
                                                 onclick="hiddenAndShow({{inc @index}}, 'TL')" contenteditable="true"
-                                                class="text-nghien">{{this.tenTLTK}}</span>
+                                                class="TenTL text-nghien">{{this.tenTLTK}}</span>
                                             [<span id="NGUON_TL_{{inc @index}}"
                                                 onclick="hiddenAndShow({{inc @index}}, 'TL')"
-                                                contenteditable="true">{{this.nguon}}</span>]
+                                                contenteditable="true" class="Nguon">{{this.nguon}}</span>]
                                             <span contenteditable="true"
                                                 id="No">.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
                                         </p>
@@ -287,24 +289,25 @@
                                     <p><span id="loaiHocLieu">Các loại học liệu khác</span></p>
                                 </td>
                                 <td class="table-2-learning-body">
+                                    
                                     <div id="HocLieu">
                                         {{#each TLTK_HL}}
-                                        <p id="HL{{inc @index}}" class="allowDeletion2 giaotrinh">
+                                        <p id="HL{{inc @index}}" class="allowDeletion2 HocLieu">
                                             [<span id="STT_HL_{{inc @index}}" class="STT_TB2"
                                                 onclick="hiddenAndShow({{inc @index}}, 'HL')"
                                                 contenteditable="true">{{inc @index}}</span>]
                                             <span id="TG_HL_{{inc @index}}"
                                                 onclick="hiddenAndShow({{inc @index}}, 'HL')"
-                                                contenteditable="true">{{joinArray this.tacGia}}</span>
+                                                contenteditable="true" class="TacGia">{{joinArray this.tacGia}}</span>
                                             (<span id="NXB_HL_{{inc @index}}"
                                                 onclick="hiddenAndShow({{inc @index}}, 'HL')"
-                                                contenteditable="true">{{this.namXuatBan}}</span>).&nbsp;
+                                                contenteditable="true" class="NamXB">{{this.namXuatBan}}</span>).&nbsp;
                                             <span id="Ten_HL_{{inc @index}}"
                                                 onclick="hiddenAndShow({{inc @index}}, 'HL')" contenteditable="true"
-                                                class="text-nghien">{{this.tenTLTK}}</span>
+                                                class="TenTL text-nghien">{{this.tenTLTK}}</span>
                                             [<span id="NGUON_HL_{{inc @index}}"
                                                 onclick="hiddenAndShow({{inc @index}}, 'HL')"
-                                                contenteditable="true">{{this.nguon}}</span>]
+                                                contenteditable="true" class="Nguon">{{this.nguon}}</span>]
                                             <span contenteditable="true"
                                                 id="No">.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
                                         </p>
@@ -997,8 +1000,7 @@
         </div>
     </div>
 </div>
-{{>table-2}}
-{{>CheckBox}}
+
 <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 <script>
     function sendA4Content() {
@@ -1014,15 +1016,22 @@
 </script>
 <script>
     const temp = "{{HocPhan.LoaiHocPhan}}";
+    const urlParams = new URLSearchParams(window.location.search);
+    const filename = urlParams.get('filename');
+    var MaHP = filename.toString();
     async function Put_Save_Delete() {
-        const findNameElement = document.getElementById('findName').textContent;
-        const MaHP = findNameElement.toString();
+
         const userConfirmation = window.confirm('Bạn có chắc chắn muốn lưu dữ liệu không?');
         if (userConfirmation) {
             try {
                 const response = await axios.delete(`../delete/${MaHP}`);
-                console.log(response.data);  
-                Save_Project('project');
+                if (response.status === 204) {
+                    console.log('Xóa thành công');
+                    
+                } else {
+                    console.log('Xóa không thành công. Mã lỗi:', response.status);
+                }
+                Save_Project();
                 window.location.href = '../../user/listProject';
             } catch (error) {
                 console.error('Error deleting project:', error);
@@ -1032,13 +1041,10 @@
         }
     }
 </script>
-{{>CleanUpDataPost}}
+
 <script>
     document.addEventListener("DOMContentLoaded", function () {
         // Get the filename parameter from the URL
-        const urlParams = new URLSearchParams(window.location.search);
-        const filename = urlParams.get('filename');
-        console.log(filename);
 
         const temp = "{{HocPhan.LoaiHocPhan}}";
         if (temp === "Đại cương") {
@@ -1052,3 +1058,7 @@
         UpdateSTTskill_TB4()
     });
 </script>
+{{>table-2}}
+{{>CheckBox}}
+{{>PostUpdate}}
+{{>CleanUpDataPost}}

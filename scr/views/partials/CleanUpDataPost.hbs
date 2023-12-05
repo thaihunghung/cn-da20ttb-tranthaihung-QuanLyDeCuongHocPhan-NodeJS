@@ -51,95 +51,98 @@
     }
     function CleanUp_AllTaiLieuThamKhao() {
         // Xử lý Giaotrinh
-        const giaotrinhContainer = document.getElementById('giaotrinh');
-        const giaotrinhItems = Array.from(giaotrinhContainer.getElementsByClassName('giaotrinh'));
+        const giaotrinhContainer = document.querySelectorAll('.giaotrinh');
 
-        const giaotrinhData = giaotrinhItems.map((item, index) => {
-            const key = getKeyTaiLieuByKey('giaotrinh');
+        const giaotrinhData = []; //TacGia NamXB TenTL Nguon
 
-            const TG_Element = item.querySelector(`#TG_${key}_${index + 1}`);
+        for (const parentItem of giaotrinhContainer) {
+            const TG_Element = parentItem.querySelector('.TacGia');
             const TG = TG_Element ? cleanUpString(TG_Element.textContent) : '';
 
-            const NXB_Element = item.querySelector(`#NXB_${key}_${index + 1}`);
+            const NXB_Element = parentItem.querySelector('.NamXB');
             const NXB = NXB_Element ? cleanUpString(NXB_Element.textContent) : '';
 
-            const Ten_Element = item.querySelector(`#Ten_${key}_${index + 1}`);
+            const Ten_Element = parentItem.querySelector('.TenTL');
             const Ten = Ten_Element ? cleanUpString(Ten_Element.textContent) : '';
 
-            const NGUON_Element = item.querySelector(`#NGUON_${key}_${index + 1}`);
+            const NGUON_Element = parentItem.querySelector('.Nguon');
             const NGUON = NGUON_Element ? cleanUpString(NGUON_Element.textContent) : '';
 
             const tacGiaArray = TG.split(',').map(author => author.trim());
 
-            return {
+            giaotrinhData.push({
                 tenTLTK: Ten,
                 tacGia: tacGiaArray,
                 namXuatBan: NXB,
                 loaiHocLieu: 'Giáo trình',
                 nguon: NGUON
-            };
-        });
+            });
+        }
 
 
         // Xử lý TaiLieuThamKhaoData
-        const TaiLieuThamKhaoContainer = document.getElementById('TaiLieuThamKhao');
-        const TaiLieuThamKhaoItems = Array.from(TaiLieuThamKhaoContainer.getElementsByClassName('TaiLieuThamKhao'));
+        const TaiLieuThamKhaoContainer = document.querySelectorAll('.TaiLieuThamKhao');
+        const TaiLieuThamKhaoData = []; //TacGia NamXB TenTL Nguon
 
-        const TaiLieuThamKhaoData = TaiLieuThamKhaoItems.map((item, index) => {
-            const key = getKeyTaiLieuByKey('TaiLieuThamKhao');
-
-            const TG_Element = item.querySelector(`#TG_${key}_${index + 1}`);
+        for (const parentItem of TaiLieuThamKhaoContainer) {
+            const TG_Element = parentItem.querySelector('.TacGia');
             const TG = TG_Element ? cleanUpString(TG_Element.textContent) : '';
 
-            const NXB_Element = item.querySelector(`#NXB_${key}_${index + 1}`);
+            const NXB_Element = parentItem.querySelector('.NamXB');
             const NXB = NXB_Element ? cleanUpString(NXB_Element.textContent) : '';
 
-            const Ten_Element = item.querySelector(`#Ten_${key}_${index + 1}`);
+            const Ten_Element = parentItem.querySelector('.TenTL');
             const Ten = Ten_Element ? cleanUpString(Ten_Element.textContent) : '';
 
-            const NGUON_Element = item.querySelector(`#NGUON_${key}_${index + 1}`);
+            const NGUON_Element = parentItem.querySelector('.Nguon');
             const NGUON = NGUON_Element ? cleanUpString(NGUON_Element.textContent) : '';
 
             const tacGiaArray = TG.split(',').map(author => author.trim());
 
-            return {
+            TaiLieuThamKhaoData.push({
                 tenTLTK: Ten,
                 tacGia: tacGiaArray,
                 namXuatBan: NXB,
                 loaiHocLieu: 'Tài liệu tham khảo',
                 nguon: NGUON
-            };
-        });
+            });
+        }
 
         // Xử lý HocLieuData
-        const HocLieuContainer = document.getElementById('HocLieu');
-        const HocLieuItems = Array.from(HocLieuContainer.getElementsByClassName('HocLieu'));
 
-        const HocLieuData = HocLieuItems.map((item, index) => {
-            const key = getKeyTaiLieuByKey('HocLieu');
+        const HocLieuContainer = document.querySelectorAll('.HocLieu');
+        const   HocLieuData = []; //TacGia NamXB TenTL Nguon
 
-            const TG_Element = item.querySelector(`#TG_${key}_${index + 1}`);
+        for (const parentItem of TaiLieuThamKhaoContainer) {
+            const TG_Element = parentItem.querySelector('.TacGia');
             const TG = TG_Element ? cleanUpString(TG_Element.textContent) : '';
 
-            const NXB_Element = item.querySelector(`#NXB_${key}_${index + 1}`);
+            const NXB_Element = parentItem.querySelector('.NamXB');
             const NXB = NXB_Element ? cleanUpString(NXB_Element.textContent) : '';
 
-            const Ten_Element = item.querySelector(`#Ten_${key}_${index + 1}`);
+            const Ten_Element = parentItem.querySelector('.TenTL');
             const Ten = Ten_Element ? cleanUpString(Ten_Element.textContent) : '';
 
-            const NGUON_Element = item.querySelector(`#NGUON_${key}_${index + 1}`);
+            const NGUON_Element = parentItem.querySelector('.Nguon');
             const NGUON = NGUON_Element ? cleanUpString(NGUON_Element.textContent) : '';
 
             const tacGiaArray = TG.split(',').map(author => author.trim());
 
-            return {
+            HocLieuData.push({
                 tenTLTK: Ten,
                 tacGia: tacGiaArray,
                 namXuatBan: NXB,
                 loaiHocLieu: 'Học liệu',
                 nguon: NGUON
-            };
-        });
+            });
+        }
+
+
+
+
+
+
+
 
 
         const tltkData = {
@@ -481,469 +484,7 @@
             return null;
         }
     }
-    function Save_Project(TRANTHAIHUNG) {
-        const PhuLuc = document.getElementById('PhuLuc');
-        const TenMon = document.getElementById('TenMon');
-        const MaMon = document.getElementById('MaMon');
-        const SoTC_LT = document.getElementById('SoTC_LT');
-        const SoTC_TH = document.getElementById('SoTC_TH');
-        const LT = document.getElementById('LT');
-        const TH = document.getElementById('TH');
-        const TrinhDo_DT = document.getElementById('TrinhDo_DT');
-        const SoGioTuHoc = document.getElementById('SoGioTuHoc');
-        const ChuyenNganh = document.getElementById('ChuyenNganh');
-        const HocKy = document.getElementById('HocKy');
-        const NamHoc = document.getElementById('NamHoc');
-        const MoTa = document.getElementById('MoTa');
-        const LoaiHocPhan = ketquaCheckBox();
-        // Kiểm tra và gán giá trị mặc định nếu `textContent` là null
-        const phuLucValue = cleanUpString(PhuLuc.textContent) || '';
-        const tenMonValue = cleanUpString(TenMon.textContent) || '';
-        const maMonValue = cleanUpString(MaMon.textContent) || '';
-        const soTCLTValue = cleanUpString(SoTC_LT.textContent) || '';
-        const soTCTHValue = cleanUpString(SoTC_TH.textContent) || '';
-        const ltValue = cleanUpString(LT.textContent) || '';
-        const thValue = cleanUpString(TH.textContent) || '';
-        const trinhDoDTValue = cleanUpString(TrinhDo_DT.textContent) || '';
-        const soGioTuHocValue = cleanUpString(SoGioTuHoc.textContent) || '';
-        const chuyenNganhValue = cleanUpString(ChuyenNganh.textContent) || '';
-        const hocKyValue = cleanUpString(HocKy.textContent) || '';
-        const namHocValue = cleanUpString(NamHoc.textContent) || '';
-        const moTaValue = cleanUpString(MoTa.textContent) || '';
-        const LoaiHocPhanValue = cleanUpString(LoaiHocPhan) || '';
-        const HocPhanData = {
-            PhuLuc: phuLucValue,
-            TenMon: tenMonValue,
-            MaMon: maMonValue,
-            SoTC_LT: convertToNumber(soTCLTValue),
-            SoTC_TH: convertToNumber(soTCTHValue),
-            LT: convertToNumber(ltValue),
-            TH: convertToNumber(thValue),
-            TrinhDo_DT: trinhDoDTValue,
-            SoGioTuHoc: convertToNumber(soGioTuHocValue),
-            ChuyenNganh: chuyenNganhValue,
-            HocKy: convertToNumber(hocKyValue),
-            NamHoc: convertToNumber(namHocValue),
-            MoTa: moTaValue,
-            LoaiHocPhan: LoaiHocPhanValue
-        };
-        //////////////////////////////////////////////////////////////////////////////
-        const tenHocPhanTQ = cleanUpString(document.getElementById('Ten_HocPhan_TQ').textContent) || null;
-        const msHPTQ = parseInt(cleanUpString(document.getElementById('MSHP_TQ').textContent)) || null;
-        const hocPhanSH = cleanUpString(document.getElementById('HocPhan_SH').textContent) || null;
-        const kienThuc = Array.from(document.getElementById('KienThuc').querySelectorAll('span')).map(span => cleanUpString(span.textContent.trim())) || [];
-        const kyNang = Array.from(document.getElementById('KyNang').querySelectorAll('span')).map(span => cleanUpString(span.textContent.trim())) || [];
-        const thaiDo = Array.from(document.getElementById('ThaiDo').querySelectorAll('p')).map(p => cleanUpString(p.textContent.trim())) || [];
-
-        // Tạo đối tượng dữ liệu
-        const CleanUp_TB1 = {
-            HocPhan_TQ: {
-                Ten_HocPhan_TQ: tenHocPhanTQ,
-                MSHP_TQ: msHPTQ,
-            },
-            HocPhan_SH: hocPhanSH,
-            YC_khac: {
-                KienThuc: kienThuc,
-                KyNang: kyNang,
-                ThaiDo: thaiDo,
-            },
-        };
-        //////////////////////////////////////////////////////////////////////////////
-
-        const giaotrinhContainer = document.getElementById('giaotrinh');
-        const giaotrinhItems = Array.from(giaotrinhContainer.getElementsByClassName('giaotrinh'));
-
-        const giaotrinhData = giaotrinhItems.map((item, index) => {
-            const key = getKeyTaiLieuByKey('giaotrinh');
-
-            const TG_Element = item.querySelector(`#TG_${key}_${index + 1}`);
-            const TG = TG_Element ? cleanUpString(TG_Element.textContent) : '';
-
-            const NXB_Element = item.querySelector(`#NXB_${key}_${index + 1}`);
-            const NXB = NXB_Element ? cleanUpString(NXB_Element.textContent) : '';
-
-            const Ten_Element = item.querySelector(`#Ten_${key}_${index + 1}`);
-            const Ten = Ten_Element ? cleanUpString(Ten_Element.textContent) : '';
-
-            const NGUON_Element = item.querySelector(`#NGUON_${key}_${index + 1}`);
-            const NGUON = NGUON_Element ? cleanUpString(NGUON_Element.textContent) : '';
-
-            const tacGiaArray = TG ? TG.split(',').map(author => author.trim()) : [];
-
-            return {
-                tenTLTK: Ten,
-                tacGia: tacGiaArray,
-                namXuatBan: NXB,
-                loaiHocLieu: 'Giáo trình',
-                nguon: NGUON
-            };
-        });
-
-
-        // Xử lý TaiLieuThamKhaoData
-        const TaiLieuThamKhaoContainer = document.getElementById('TaiLieuThamKhao');
-        const TaiLieuThamKhaoItems = Array.from(TaiLieuThamKhaoContainer.getElementsByClassName('TaiLieuThamKhao'));
-
-        const TaiLieuThamKhaoData = TaiLieuThamKhaoItems.map((item, index) => {
-            const key = getKeyTaiLieuByKey('TaiLieuThamKhao');
-
-            const TG_Element = item.querySelector(`#TG_${key}_${index + 1}`);
-            const TG = TG_Element ? cleanUpString(TG_Element.textContent) : "";
-
-            const NXB_Element = item.querySelector(`#NXB_${key}_${index + 1}`);
-            const NXB = NXB_Element ? cleanUpString(NXB_Element.textContent) : "";
-
-            const Ten_Element = item.querySelector(`#Ten_${key}_${index + 1}`);
-            const Ten = Ten_Element ? cleanUpString(Ten_Element.textContent) : "";
-
-            const NGUON_Element = item.querySelector(`#NGUON_${key}_${index + 1}`);
-            const NGUON = NGUON_Element ? cleanUpString(NGUON_Element.textContent) : "";
-
-            const tacGiaArray = TG ? TG.split(',').map(author => author.trim()) : [];
-
-            return {
-                tenTLTK: Ten,
-                tacGia: tacGiaArray,
-                namXuatBan: NXB,
-                loaiHocLieu: 'Tài liệu tham khảo',
-                nguon: NGUON
-            };
-        });
-
-        // Xử lý HocLieuData
-        const HocLieuContainer = document.getElementById('HocLieu');
-        const HocLieuItems = Array.from(HocLieuContainer.getElementsByClassName('HocLieu'));
-
-        const HocLieuData = HocLieuItems.map((item, index) => {
-            const key = getKeyTaiLieuByKey('HocLieu');
-
-            const TG_Element = item.querySelector(`#TG_${key}_${index + 1}`);
-            const TG = TG_Element ? cleanUpString(TG_Element.textContent) : "";
-
-            const NXB_Element = item.querySelector(`#NXB_${key}_${index + 1}`);
-            const NXB = NXB_Element ? cleanUpString(NXB_Element.textContent) : "";
-
-            const Ten_Element = item.querySelector(`#Ten_${key}_${index + 1}`);
-            const Ten = Ten_Element ? cleanUpString(Ten_Element.textContent) : "";
-
-            const NGUON_Element = item.querySelector(`#NGUON_${key}_${index + 1}`);
-            const NGUON = NGUON_Element ? cleanUpString(NGUON_Element.textContent) : "";
-
-            const tacGiaArray = TG ? TG.split(',').map(author => author.trim()) : [];
-
-            return {
-                tenTLTK: Ten,
-                tacGia: tacGiaArray,
-                namXuatBan: NXB,
-                loaiHocLieu: 'Học liệu',
-                nguon: NGUON
-            };
-        });
-        ///////////////////////////////////////////////////////////////////////////////
-        const KyNangKTContainers = document.querySelectorAll('.KyNangKT');
-        const KyNangKTdata = Array.from(KyNangKTContainers).map(container => {
-            const KT_ND_Element = container.querySelector('.content-4-learning-outcomes-2 .KT');
-            const KT_ND = KT_ND_Element ? cleanUpString(KT_ND_Element.textContent) : '';
-
-            const KT_DUPO_Element = container.querySelector('.content-4-learning-outcomes-3 .KT');
-            const KT_DUPO = KT_DUPO_Element ? cleanUpString(KT_DUPO_Element.textContent) : '';
-
-            const KT_TD_Element = container.querySelector('.content-4-learning-outcomes-4 .KT');
-            const KT_TD = KT_TD_Element ? cleanUpString(KT_TD_Element.textContent) : '';
-
-            const KT_TUA_Element = container.querySelector('.content-4-learning-outcomes-5 .KT');
-            const KT_TUA = KT_TUA_Element ? cleanUpString(KT_TUA_Element.textContent) : '';
-
-            return {
-                loai_CDRMH: 'Về kiến thức',
-                Noidung_CDRMH: KT_ND,
-                DapUng_CDRMH: KT_DUPO,
-                TrinhDo: KT_TD,
-                loaiTUA: KT_TUA,
-            };
-        });
-        const KyNangKNContainers = document.querySelectorAll('.KyNangKN');
-        const KyNangKNdata = Array.from(KyNangKNContainers).map(container => {
-            const KN_ND_Element = container.querySelector('.content-4-learning-outcomes-2 .KN');
-            const KN_ND = KN_ND_Element ? cleanUpString(KN_ND_Element.textContent) : '';
-
-            const KN_DUPO_Element = container.querySelector('.content-4-learning-outcomes-3 .KN');
-            const KN_DUPO = KN_DUPO_Element ? cleanUpString(KN_DUPO_Element.textContent) : '';
-
-            const KN_TD_Element = container.querySelector('.content-4-learning-outcomes-4 .KN');
-            const KN_TD = KN_TD_Element ? cleanUpString(KN_TD_Element.textContent) : '';
-
-            const KN_TUA_Element = container.querySelector('.content-4-learning-outcomes-5 .KN');
-            const KN_TUA = KN_TUA_Element ? cleanUpString(KN_TUA_Element.textContent) : '';
-
-            return {
-                loai_CDRMH: 'Về kỹ năng',
-                Noidung_CDRMH: KN_ND,
-                DapUng_CDRMH: KN_DUPO,
-                TrinhDo: KN_TD,
-                loaiTUA: KN_TUA
-            };
-        });
-
-        const KyNangTDContainers = document.querySelectorAll('.KyNangTD');
-        const KyNangTDdata = Array.from(KyNangTDContainers).map(container => {
-            const TD_ND_Element = container.querySelector('.content-4-learning-outcomes-2 .TD');
-            const TD_ND = TD_ND_Element ? cleanUpString(TD_ND_Element.textContent) : '';
-
-            const TD_DUPO_Element = container.querySelector('.content-4-learning-outcomes-3 .TD');
-            const TD_DUPO = TD_DUPO_Element ? cleanUpString(TD_DUPO_Element.textContent) : '';
-
-            const TD_TD_Element = container.querySelector('.content-4-learning-outcomes-4 .TD');
-            const TD_TD = TD_TD_Element ? cleanUpString(TD_TD_Element.textContent) : '';
-
-            const TD_TUA_Element = container.querySelector('.content-4-learning-outcomes-5 .TD');
-            const TD_TUA = TD_TUA_Element ? cleanUpString(TD_TUA_Element.textContent) : '';
-
-            return {
-                loai_CDRMH: 'Về thái độ',
-                Noidung_CDRMH: TD_ND,
-                DapUng_CDRMH: TD_DUPO,
-                KT_DUPO: TD_DUPO,
-                TrinhDo: TD_TD,
-                loaiTUA: TD_TUA
-            };
-        });
-        /////////////////////////////////////////////////////////////////////////////////////////////////
-        const chuongRows = document.querySelectorAll('.Chuong');
-        const chuongData = [];
-
-        chuongRows.forEach((chuongRow, chuongIndex) => {
-            const tenChuongElement = chuongRow.querySelector('.TenChuong.STT_CHUONG');
-            const CDR_HocPhanElement = chuongRow.querySelector('.CDR_HocPhan');
-            const gioLyThuyetElement = chuongRow.querySelector('.GioLyThuyet');
-            const gioThucHanhElement = chuongRow.querySelector('.GiothucHanh');
-            const soGioTuHocElement = chuongRow.querySelector('.SoGioTuHoc');
-
-            const CDR_HocPhan = CDR_HocPhanElement ? cleanUpString(CDR_HocPhanElement.textContent) : '';
-            const tenChuong = tenChuongElement ? cleanUp2String(tenChuongElement.textContent) : '';
-            const gioLyThuyet = gioLyThuyetElement ? cleanUpString(gioLyThuyetElement.textContent) : 0;
-            const gioThucHanh = gioThucHanhElement ? cleanUpString(gioThucHanhElement.textContent) : 0;
-            const soGioTuHoc = soGioTuHocElement ? cleanUpString(soGioTuHocElement.textContent) : 0;
-            // Lấy thông tin KyNangMem từ hàng CuoiChuong
-            const kyNangMemRow = document.querySelector(`#CuoiChuong${chuongIndex + 1}`);
-            const kyNangMemElement = kyNangMemRow.querySelector('.KyNangMem');
-            const KyNangMem = kyNangMemElement ? cleanUpString(kyNangMemElement.textContent) : 0;
-
-            const CDR_HocPhanArray = CDR_HocPhan.split(',').map(item => parseInt(item.trim(), 10));
-            const cleanedTenChuong = tenChuong.replace(/^Chương \d+\.\s*/, '').trim();
-            const chuong = {
-                TenChuong: cleanedTenChuong,
-                CDR_HocPhan: CDR_HocPhanArray,
-                GioLyThuyet: convertToNumber(gioLyThuyet),
-                GiothucHanh: convertToNumber(gioThucHanh),
-                SoGioTuHoc: convertToNumber(soGioTuHoc),
-                KyNangMem: convertToNumber(KyNangMem),
-                ChiTietChuong: []
-            };
-            
-
-            // Lấy các hàng ChiTietChuong của chương hiện tại
-            const chiTietChuongRows = document.querySelectorAll(`.ChiTietChuong${chuongIndex + 1} .STT_CTC${chuongIndex + 1}`);
-            chiTietChuongRows.forEach(chiTietRow => {
-                const sttCTC = chiTietRow ? cleanUpString(chiTietRow.textContent) : '';
-                chuong.ChiTietChuong.push(sttCTC);
-            });
-
-            chuongData.push(chuong);
-
-
-        });
-        //tách và xóa chuẩn đầu ra trong Chuong
-        const CDR_HocPhanArray = chuongData.map(chuong => {
-            const CDR_HocPhan = chuong.CDR_HocPhan;
-            delete chuong.CDR_HocPhan;
-            return CDR_HocPhan;
-        });
-
-        /////////////////////////////////////////////////////////////////////////////////////////////////
-        const PP_DayHoc = document.getElementById('TenPP');
-        const PP_DayHocItems = PP_DayHoc.querySelectorAll('.section-content');
-        const phuongPhapGiangDayData = Array.from(PP_DayHocItems).map((item, index) => {
-            const tenPhuongPhap = item.querySelector(`span[contenteditable="true"]`);
-            const PP_Text = tenPhuongPhap ? cleanUpString(tenPhuongPhap.textContent) : '';
-            return {
-                TenPP: PP_Text
-            };
-        });
-
-        // Gộp tất cả các mảng con thành một mảng duy nhất
-
-        const PP_Array = phuongPhapGiangDayData.map(item => item.TenPP);
-        // Gộp mảng các chuỗi thành một mảng duy nhất
-        const phuongPhapGiangDayArray = [].concat(...PP_Array);
-
-
-
-        //////////////////////////////////////////////////////////////////////////////////////
-        const ALL_HT_DG_QT = document.querySelectorAll('.HT_DG_QT');
-
-        const HT_DG_QT_Array = Array.from(ALL_HT_DG_QT).map(row => {
-            const HinhThucDGElement = row.querySelector('.HinhThucDG')
-            const HinhThucDG = HinhThucDGElement ? cleanUpString(HinhThucDGElement.textContent) : '';
-
-            const NoiDungDGElement = row.querySelector('.NoiDung_DG')
-            const NoiDungDG = NoiDungDGElement ? cleanUpString(NoiDungDGElement.textContent) : '';
-
-            const CDRKetThucElement = row.querySelector('.CĐR_KetThuc')
-            const CDRKetThuc = CDRKetThucElement ? cleanUpString(CDRKetThucElement.textContent) : '';
-
-            const TieuChiDGElement = row.querySelector('.TieuChiDG')
-            const TieuChiDG = TieuChiDGElement ? cleanUpString(TieuChiDGElement.textContent) : '';
-
-            const TyleElement = row.querySelector('.Tyle')
-            const Tyle = TyleElement ? cleanUpString(TyleElement.textContent) : '';
-            return {
-                LoaiDG: 'Đánh giá quá trình',
-                HinhThucDG: HinhThucDG,
-                NoiDungDG: NoiDungDG,
-                CDRKetThuc: CDRKetThuc,
-                TieuChiDG: TieuChiDG,
-                Tyle: Tyle,
-            };
-        });
-
-        const ALL_HT_DG_KT = document.querySelectorAll('.HT_DG_KT');
-
-        const HT_DG_KT_Array = Array.from(ALL_HT_DG_KT).map(row => {
-            const HinhThucDGElement = row.querySelector('.HinhThucDG')
-            const HinhThucDG = HinhThucDGElement ? cleanUpString(HinhThucDGElement.textContent) : '';
-
-            const NoiDungDGElement = row.querySelector('.NoiDung_DG')
-            const NoiDungDG = NoiDungDGElement ? cleanUpString(NoiDungDGElement.textContent) : '';
-
-            const CDRKetThucElement = row.querySelector('.CĐR_KetThuc')
-            const CDRKetThuc = CDRKetThucElement ? cleanUpString(CDRKetThucElement.textContent) : '';
-
-            const TieuChiDGElement = row.querySelector('.TieuChiDG')
-            const TieuChiDG = TieuChiDGElement ? cleanUpString(TieuChiDGElement.textContent) : '';
-
-            const TyleElement = row.querySelector('.Tyle')
-            const Tyle = TyleElement ? cleanUpString(TyleElement.textContent) : '';
-
-            return {
-                LoaiDG: 'Đánh giá kết thúc học phần',
-                HinhThucDG: HinhThucDG,
-                NoiDungDG: NoiDungDG,
-                CDRKetThuc: CDRKetThuc,
-                TieuChiDG: TieuChiDG,
-                Tyle: Tyle,
-            };
-        });
-
-        const DanhGiaArray = HT_DG_QT_Array.concat(HT_DG_KT_Array);
-        ///////////////////////////////////////////////////////////////////////////
-        const quyDinhDataArray = [];
-
-        // Xử lý cho ID 'QD_TD'
-        const quyDinhTDItems = document.querySelectorAll('#QD_TD');
-        const quyDinhTDArray = Array.from(quyDinhTDItems).map((item, index) => {
-            const quyDinhTDElements = item.querySelectorAll('span[contenteditable="true"]');
-            const quyDinhTDTextArray = Array.from(quyDinhTDElements).map(quyDinhElement => {
-                return cleanUpString(quyDinhElement.textContent) || '';
-            });
-
-            return {
-                NoiDung: quyDinhTDTextArray
-            };
-        });
-        const allNoiDungTDArray = quyDinhTDArray.reduce((acc, item) => {
-            return acc.concat(item.NoiDung);
-        }, []);
-        quyDinhDataArray.push({
-            "NoiDung": allNoiDungTDArray,
-            "LoaiQD": 'Quy định về tham dự lớp học'
-        });
-
-        // Xử lý cho ID 'QD_HV'
-        const quyDinhHVItems = document.querySelectorAll('#QD_HV');
-        const quyDinhHVArray = Array.from(quyDinhHVItems).map((item, index) => {
-            const quyDinhHVElements = item.querySelectorAll('span[contenteditable="true"]');
-            const quyDinhHVTextArray = Array.from(quyDinhHVElements).map(quyDinhElement => {
-                return cleanUpString(quyDinhElement.textContent) || '';
-            });
-
-            return {
-                NoiDung: quyDinhHVTextArray
-            };
-        });
-        const allNoiDungHVArray = quyDinhHVArray.reduce((acc, item) => {
-            return acc.concat(item.NoiDung);
-        }, []);
-        quyDinhDataArray.push({
-            "NoiDung": allNoiDungHVArray,
-            "LoaiQD": 'Quy định về hành vi trong lớp học'
-        });
-
-        // Xử lý cho ID 'QD_HVu'
-        const quyDinhHVuItems = document.querySelectorAll('#QD_HVu');
-        const quyDinhHVuArray = Array.from(quyDinhHVuItems).map((item, index) => {
-            const quyDinhHVuElements = item.querySelectorAll('span[contenteditable="true"]');
-            const quyDinhHVuTextArray = Array.from(quyDinhHVuElements).map(quyDinhElement => {
-                return cleanUpString(quyDinhElement.textContent) || '';
-            });
-
-            return {
-                NoiDung: quyDinhHVuTextArray
-            };
-        });
-        const allNoiDungHVuArray = quyDinhHVuArray.reduce((acc, item) => {
-            return acc.concat(item.NoiDung);
-        }, []);
-        quyDinhDataArray.push({
-            "NoiDung": allNoiDungHVuArray,
-            "LoaiQD": 'Quy định về học vụ'
-        });
-        ////////////////////////////////////////////////////////////////////////////
-        const giangVienDiv = document.querySelector('.GiangVien');
-
-        const All_GiangVien = giangVienDiv.querySelectorAll('.section-content');
-
-        const GiangVienArray = Array.from(All_GiangVien).map(GiangVien => {
-            const chucDanhElement = GiangVien.querySelector('.ChucDanh');
-            const hoTenElement = GiangVien.querySelector('.HoTen');
-            const chucDanh = chucDanhElement ? cleanUpString(chucDanhElement.textContent) : '';
-            const hoTen = hoTenElement ? cleanUpString(hoTenElement.textContent) : '';
-
-            return {
-                ChucDanh: chucDanh,
-                HoTen: hoTen,
-            };
-        });
-        const phuongPhapGiangData = {
-            TenPP: phuongPhapGiangDayArray
-        }
         
-        const data = {
-            "HocPhanData": HocPhanData,
-            "GiaotrinhData": giaotrinhData,
-            "TaiLieuThamKhaoData": TaiLieuThamKhaoData,
-            "HocLieuData": HocLieuData,
-            "DieuKienThamGiaData": CleanUp_TB1,
-            "KyNangKTdata": KyNangKTdata,
-            "KyNangKNdata": KyNangKNdata,
-            "KyNangTDdata": KyNangTDdata,
-            "ChuongData": chuongData,
-            "DU_CDR_ChuongData": CDR_HocPhanArray,
-            "PhuongPhapData": phuongPhapGiangData,
-            "DanhGiaData": DanhGiaArray,
-            "QuyDinhData": quyDinhDataArray,
-            "GiangVienData": GiangVienArray
-        }
-        const nameUrl = TRANTHAIHUNG;  // Thay thế bằng endpoint cụ thể của bạn
-        const url = `/${nameUrl}`;
-        axios.post(url, data)
-            .then(response => {
-                console.log('Dữ liệu đã được gửi thành công:', response.data);  // Use response.data
-            })
-            .catch(error => {
-                console.error('Lỗi khi gửi dữ liệu:', error.message);
-            });
-    }    
 </script>
 {{>convertToNumber}}
 {{>StringID}}
