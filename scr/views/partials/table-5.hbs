@@ -197,7 +197,7 @@
             var sttElements = row.querySelectorAll('.STT_CHUONG');
             //lấy chuỗi từ 9 tương đương với Chuong1." "
             sttElements.forEach((sttElement, sttIndex) => {
-                sttElement.innerHTML = "Chương&nbsp;" + (index * sttElements.length + sttIndex + 1) + ".&nbsp;" + sttElement.textContent.substring(9);
+                sttElement.innerHTML = "Chương&nbsp;" + (index * sttElements.length + sttIndex + 1) + ".&nbsp;" + sttElement.textContent.substring(10);
             });
         });
     }

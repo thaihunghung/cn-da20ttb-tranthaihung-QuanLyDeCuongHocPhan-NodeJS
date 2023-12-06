@@ -1,0 +1,196 @@
+<script>
+    function changeDropdown1(newText) {
+        document.getElementById('HocKy').innerText = newText;
+        closeDropdownList1();
+    }
+    function changeDropdown2(newText) {
+        document.getElementById('NamHoc').innerText = newText;
+        closeDropdownList2();
+    }
+    function changeDropdown3(newText) {
+        document.getElementById('SoTC_LT').innerText = newText;
+        closeDropdownList3();
+    }
+    function changeDropdown4(newText) {
+        document.getElementById('SoTC_TH').innerText = newText;
+        closeDropdownList4();
+    }
+    function changeDropdown5(newText) {
+        document.getElementById('LT').innerText = newText;
+        closeDropdownList5();
+    }
+    function changeDropdown6(newText) {
+        document.getElementById('TH').innerText = newText;
+        closeDropdownList6();
+    }
+    function changeDropdown7(newText) {
+        document.getElementById('SoGioTuHoc').innerText = newText;
+        closeDropdownList7();
+    }
+
+    //////////////////////////////////////////////////////////
+
+    function closeDropdownList1() {
+        document.querySelector('.dropdown-list1').style.display = 'none';
+    }
+    function showDropdownList1() {
+        document.querySelector('.dropdown-list1').style.display = 'block';
+    }
+
+    function toggleDropdownList1() {
+        var dropdownList = document.querySelector('.dropdown-list1');
+        dropdownList.style.display = (dropdownList.style.display === 'block') ? 'none' : 'block';
+    }
+
+    function closeDropdownList2() {
+        document.querySelector('.dropdown-list2').style.display = 'none';
+    }
+
+    function showDropdownList2() {
+        document.querySelector('.dropdown-list2').style.display = 'block';
+    }
+
+    function toggleDropdownList2() {
+        var dropdownList = document.querySelector('.dropdown-list2');
+        dropdownList.style.display = (dropdownList.style.display === 'block') ? 'none' : 'block';
+    }
+
+
+    function closeDropdownList3() {
+        document.querySelector('.dropdown-list3').style.display = 'none';
+    }
+
+    function showDropdownList3() {
+        document.querySelector('.dropdown-list3').style.display = 'block';
+    }
+
+    function toggleDropdownList3() {
+        var dropdownList = document.querySelector('.dropdown-list3');
+        dropdownList.style.display = (dropdownList.style.display === 'block') ? 'none' : 'block';
+    }
+
+    function closeDropdownList4() {
+        document.querySelector('.dropdown-list4').style.display = 'none';
+    }
+
+    function showDropdownList4() {
+        document.querySelector('.dropdown-list4').style.display = 'block';
+    }
+
+    function toggleDropdownList4() {
+        var dropdownList = document.querySelector('.dropdown-list4');
+        dropdownList.style.display = (dropdownList.style.display === 'block') ? 'none' : 'block';
+    }
+    function closeDropdownList5() {
+        document.querySelector('.dropdown-list5').style.display = 'none';
+    }
+
+    function showDropdownList5() {
+        document.querySelector('.dropdown-list5').style.display = 'block';
+    }
+
+    function toggleDropdownList5() {
+        var dropdownList = document.querySelector('.dropdown-list5');
+        dropdownList.style.display = (dropdownList.style.display === 'block') ? 'none' : 'block';
+    }
+
+
+    function closeDropdownList6() {
+        document.querySelector('.dropdown-list6').style.display = 'none';
+    }
+
+    function showDropdownList6() {
+        document.querySelector('.dropdown-list6').style.display = 'block';
+    }
+
+    function toggleDropdownList6() {
+        var dropdownList = document.querySelector('.dropdown-list6');
+        dropdownList.style.display = (dropdownList.style.display === 'block') ? 'none' : 'block';
+    }
+
+
+
+    function closeDropdownList7() {
+        document.querySelector('.dropdown-list7').style.display = 'none';
+    }
+
+    function showDropdownList7() {
+        document.querySelector('.dropdown-list7').style.display = 'block';
+    }
+
+    function toggleDropdownList7() {
+        var dropdownList = document.querySelector('.dropdown-list7');
+        dropdownList.style.display = (dropdownList.style.display === 'block') ? 'none' : 'block';
+    }
+
+
+    document.addEventListener('click', function (event) {
+        // Close dropdowns when clicking outside
+        if (!event.target.classList.contains('dropdown1') && !event.target.classList.contains('dropdown2') &&
+            !event.target.classList.contains('dropdown3') && !event.target.classList.contains('dropdown4') &&
+            !event.target.classList.contains('dropdown5') && !event.target.classList.contains('dropdown6') &&
+            !event.target.classList.contains('dropdown7') && !event.target.classList.contains('dropdown-list1') &&
+            !event.target.classList.contains('dropdown-list2') && !event.target.classList.contains('dropdown-list3') &&
+            !event.target.classList.contains('dropdown-list4') && !event.target.classList.contains('dropdown-list5') &&
+            !event.target.classList.contains('dropdown-list6') && !event.target.classList.contains('dropdown-list7')) {
+            closeDropdownList1();
+            closeDropdownList2();
+            closeDropdownList3();
+            closeDropdownList4();
+            closeDropdownList5();
+            closeDropdownList6();
+            closeDropdownList7();
+        }
+    });
+
+</script>
+{{!-- bt4 --}}
+<script>
+   function createLiElements() {
+    // Lấy tất cả các th có class là "content-4-learning-outcomes-1"
+    const elements = document.querySelectorAll('.content-4-learning-outcomes-1');
+
+    // Đếm số lượng phần tử
+    const count = elements.length;
+
+    // Lấy thẻ ul
+    const ulElement = document.querySelector('.dropdown-content');
+
+    // Khởi tạo một chuỗi HTML để chứa các phần tử li
+    let htmlString = '';
+
+    // Tạo chuỗi HTML với các phần tử li
+    for (let i = 1; i <= count; i++) {
+        htmlString += `<li onclick="updateValue('CDR_HocPhan1', '${i}', 'CDR')">Li ${i}</li>`;
+    }
+
+    // Thêm chuỗi HTML vào ulElement bằng innerHTML
+    ulElement.innerHTML = htmlString;
+}
+
+// Gọi function để tạo ra các phần tử <li>
+createLiElements();
+
+    function updateValue(id, newValue, check) {
+        const spanElement = document.getElementById(id);
+        if (spanElement) {
+            if (check === 'DUPO') {
+                var value, resust = spanElement.textContent
+                if (value === '') {
+                    spanElement.textContent = newValue;
+                } else {
+                    spanElement.textContent = resust + ", " + newValue;
+                }
+            } else if (check === 'CDR') {
+                var value, resust = spanElement.textContent
+                if (value === '') {
+                    spanElement.textContent = newValue;
+                } else {
+                    spanElement.textContent = resust + ", " + newValue;
+                }
+            } else {
+                spanElement.textContent = newValue;
+            }
+        }
+    }
+</script>

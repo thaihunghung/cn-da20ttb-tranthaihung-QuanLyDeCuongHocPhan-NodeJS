@@ -1,116 +1,137 @@
-<table>
-  <thead>
-    <tr>
-      <th>STT</th>
-      <th>Column 1</th>
-      <th>Column 2</th>
-      <th>Actions</th>
-    </tr>
-  </thead>
-  <tbody id="tableBody">
-    <!-- Initial rows for KyNangKT -->
-    <tr class="KyNang KyNangKT">
-      <th contenteditable="true">1</th>
-      <td contenteditable="true">Value 1</td>
-      <td contenteditable="true">Value 2</td>
-      <td><button onclick="deleteRow(this)">Delete</button></td>
-    </tr>
-    <tr class="KyNang KyNangKT">
-      <th contenteditable="true">2</th>
-      <td contenteditable="true">Value 3</td>
-      <td contenteditable="true">Value 4</td>
-      <td><button onclick="deleteRow(this)">Delete</button></td>
-    </tr>
-    <!-- End of initial rows for KyNangKT -->
+<style>
+  .autocomplete {
+    position: relative;
+    display: inline-block;
+    width: 300px;
+  }
 
-    <!-- Initial rows for KyNangTD -->
-    <tr class="KyNang KyNangTD">
-      <th contenteditable="true">3</th>
-      <td contenteditable="true">Value 5</td>
-      <td contenteditable="true">Value 6</td>
-      <td><button onclick="deleteRow(this)">Delete</button></td>
-    </tr>
-    <!-- End of initial rows for KyNangTD -->
+  .autocomplete span {
+    border: 1px solid transparent;
+    background-color: #f1f1f1;
+    padding: 10px;
+    font-size: 16px;
+    display: inline-block;
+  }
 
-    <!-- Initial rows for KyNangKN -->
-    <tr class="KyNang KyNangKN">
-      <th contenteditable="true">4</th>
-      <td contenteditable="true">Value 7</td>
-      <td contenteditable="true">Value 8</td>
-      <td><button onclick="deleteRow(this)">Delete</button></td>
-    </tr>
-    <!-- End of initial rows for KyNangKN -->
-  </tbody>
-</table>
+  .autocomplete-items {
+    position: absolute;
+    border: 1px solid #d4d4d4;
+    border-bottom: none;
+    border-top: none;
+    z-index: 99;
+    top: 100%;
+    left: 0;
+    right: 0;
+  }
 
-<button onclick="addNewRow('KyNangKT')">Thêm dòng mới KyNangKT</button>
-<button onclick="addNewRow('KyNangTD')">Thêm dòng mới KyNangTD</button>
-<button onclick="addNewRow('KyNangKN')">Thêm dòng mới KyNangKN</button>
-<button onclick="deleteFocusedRow()">Xóa Hàng Đang Tập Trung</button>
+  .autocomplete-items div {
+    padding: 10px;
+    cursor: pointer;
+    background-color: #fff;
+    border-bottom: 1px solid #d4d4d4;
+  }
+
+  .autocomplete-items div:hover {
+    background-color: #e9e9e9;
+  }
+
+  .autocomplete-active {
+    background-color: DodgerBlue !important;
+    color: #ffffff;
+  }
+</style>
+
+<p class="autocomplete">
+  <span id="myInput1" contenteditable="true" placeholder="Country"></span>
+</p>
+
+<p class="autocomplete">
+  <span id="myInput2" contenteditable="true" placeholder="Country"></span>
+</p>
 
 <script>
-function UpdateSTTskill() {
-  var kyNangElements = document.querySelectorAll('.KyNang');
+  var countries = ["Afghanistan", "Albania"];
 
-  kyNangElements.forEach((kyNangElement, index) => {
-    var thElements = kyNangElement.querySelectorAll('th');
+  autocomplete(document.getElementById("myInput1"), countries);
+  autocomplete(document.getElementById("myInput2"), countries);
 
-    thElements.forEach((thElement, thIndex) => {
-      thElement.textContent = index * thElements.length + thIndex + 1;
+  function autocomplete(inp, arr) {
+    var currentFocus;
 
-      // Thêm sự kiện click vào th để xóa hàng
-      thElement.onclick = function() {
-        deleteRow(thElement.closest('tr'));
-      };
+    inp.addEventListener("input", function(e) {
+      var a, b, i, val = this.textContent;
+
+      closeAllLists();
+      if (!val) {
+        return false;
+      }
+
+      currentFocus = -1;
+      a = document.createElement("DIV");
+      a.setAttribute("class", "autocomplete-items");
+      this.parentNode.appendChild(a);
+
+      for (i = 0; i < arr.length; i++) {
+        if (arr[i].substr(0, val.length).toUpperCase() == val.toUpperCase()) {
+          b = document.createElement("DIV");
+          b.innerHTML = "<strong>" + arr[i].substr(0, val.length) + "</strong>";
+          b.innerHTML += arr[i].substr(val.length);
+          b.innerHTML += "<input type='hidden' value='" + arr[i] + "'>";
+          b.addEventListener("click", function(e) {
+            inp.innerHTML = this.getElementsByTagName("input")[0].value;
+            closeAllLists();
+          });
+          a.appendChild(b);
+        }
+      }
     });
-  });
-}
 
-function addNewRow(kyNangType) {
-  var tableBody = document.getElementById('tableBody');
-  var newRow = document.createElement('tr');
-  newRow.className = `KyNang ${kyNangType}`;
-  
-  var sttCell = document.createElement('th');
-  sttCell.textContent = '-';
-  
-  var cell1 = document.createElement('td');
-  cell1.textContent = 'New Value 1';
+    inp.addEventListener("keydown", function(e) {
+      var x = document.getElementsByClassName("autocomplete-items");
+if (x.length > 0) {
+  x = x[0].getElementsByTagName("div");
 
-  var cell2 = document.createElement('td');
-  cell2.textContent = 'New Value 2';
-
-  var deleteButtonCell = document.createElement('td');
-  var deleteButton = document.createElement('button');
-  deleteButton.textContent = 'Delete';
-  deleteButton.onclick = function() {
-    deleteRow(newRow);
-  };
-  deleteButtonCell.appendChild(deleteButton);
-
-  newRow.appendChild(sttCell);
-  newRow.appendChild(cell1);
-  newRow.appendChild(cell2);
-  newRow.appendChild(deleteButtonCell);
-
-  // Tìm vị trí để chèn mới
-  var referenceRow = document.getElementsByClassName(kyNangType)[0];
-  referenceRow.parentNode.insertBefore(newRow, referenceRow.nextSibling);
-
-  UpdateSTTskill();
-}
-
-function deleteRow(row) {
-  row.remove();
-  UpdateSTTskill();
-}
-
-function deleteFocusedRow() {
-  var focusedTh = document.querySelector('th.focus');
-  if (focusedTh) {
-    deleteRow(focusedTh.closest('tr'));
+  if (e.keyCode == 40) {
+    currentFocus++;
+    addActive(x);
+  } else if (e.keyCode == 38) {
+    currentFocus--;
+    addActive(x);
+  } else if (e.keyCode == 13) {
+    e.preventDefault();
+    if (currentFocus > -1) {
+      if (x) x[currentFocus].click();
+    }
   }
 }
 
-UpdateSTTskill(); // Cập nhật số thứ tự khi trang được tải
+    });
+
+    function addActive(x) {
+      if (!x) return false;
+      removeActive(x);
+      if (currentFocus >= x.length) currentFocus = 0;
+      if (currentFocus < 0) currentFocus = (x.length - 1);
+      x[currentFocus].classList.add("autocomplete-active");
+    }
+
+    function removeActive(x) {
+      for (var i = 0; i < x.length; i++) {
+        x[i].classList.remove("autocomplete-active");
+      }
+    }
+
+    function closeAllLists(elmnt) {
+      var x = document.getElementsByClassName("autocomplete-items");
+      for (var i = 0; i < x.length; i++) {
+        if (elmnt != x[i] && elmnt != inp) {
+          x[i].parentNode.removeChild(x[i]);
+        }
+      }
+    }
+
+    document.addEventListener("click", function(e) {
+      closeAllLists(e.target);
+    });
+  }
 </script>

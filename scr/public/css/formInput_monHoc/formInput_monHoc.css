@@ -6,6 +6,7 @@
     line-height: var(--line-height-);
     height: 100%;
     margin: 20px 0;
+    z-index: 1;
 }
 .formInput_monHoc {
     width: 100%;
@@ -15,6 +16,7 @@
     align-items: center;
     justify-content: center;
     height: 6000px;
+    z-index: 1;
 }
 .formInput_baseA4 {
     /* width: 21cm; */
@@ -29,11 +31,22 @@
     flex-direction: row;
     justify-content: center;
     align-content: center;
+    z-index: 1;
 }
 .formInput_print {
     /* width: 16cm; */
     width: 80%;
-
+    z-index: 1;
     
 }
+.modify_ideal {
+    position: absolute;
+      z-index: 10000000;
+      background-color: #ffcc00;
+      padding: 20px;
+}
+.modify_position_relative {
+    position: relative;
+}
+
 

@@ -8,13 +8,17 @@
 
         if (canReceiveFocus) {
             clickedElement.classList.add('focus');
+            // Lấy id của phần tử được click
+            const focusedEl = document.querySelector('.focus');
 
-            // Xử lý mất focus cho các thẻ khác
             div.querySelectorAll('.focus').forEach(el => {
                 if (el !== clickedElement) {
+
                     el.classList.remove('focus');
+                    
                 }
             });
+            //modify_ideal
         }
     });
 </script>
