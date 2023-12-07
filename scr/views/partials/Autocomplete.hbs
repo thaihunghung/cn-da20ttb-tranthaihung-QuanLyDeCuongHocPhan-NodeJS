@@ -25,9 +25,6 @@
         'CẤU TRÚC DỮ LIỆU VÀ GIẢI THUẬT',
         'CHỦ NGHĨA XÃ HỘI KHOA HỌC',
         'ANH VĂN KHÔNG CHUYÊN 3',
-
-
-
         'CƠ SỞ DỮ LIỆU',
         'VI TÍCH PHÂN A2',
         'LÝ THUYẾT ĐỒ THỊ',
@@ -48,11 +45,7 @@
         'ĐIỆN TOÁN ĐÁM MÂY',
         'PHÂN TÍCH VÀ THIẾT KẾ HỆ THỐNG THÔNG TIN',
         'LẬP TRÌNH ỨNG DỤNG TRÊN WINDOWS',
-       
-       
-       
-       
-       
+
         'THƯƠNG MẠI ĐIỆN TỬ',
         'ĐỒ HỌA ỨNG DỤNG',
         'CHUYÊN ĐỀ LINUX',
@@ -93,7 +86,7 @@
 
         410291,
         180050,
-        
+
         220233,
 
         220092,
@@ -129,7 +122,7 @@
         120004,
         180053,
         320045,
-        
+
         220265,
         220267,
         220239,
@@ -230,7 +223,6 @@
         'Cấu trúc dữ liệu và giải thuật',
         'Phân tích và thiết kế hệ thống thông tin _ Công nghệ phần mềm',
         'Thiết kế web',
-
         'Lập trình hướng đối tượng _ Công nghệ phần mềm',
         'Kỹ thuật lập trình',
         'Các học phần chuyên ngành',
@@ -241,7 +233,7 @@
     // In mảng ra console để kiểm tra
 
     autocomplete(document.getElementById("TenMon"), TenHocPhan, "TenHocPhan");
-
+    autocomplete(document.getElementById("hungtext1"), TenHocPhan, "hungtext");
     //autocomplete(document.getElementById("MaMon"), MaHocPhan);
     //autocomplete(document.getElementById("myInput2"), countries);
 
@@ -269,49 +261,115 @@
                     b.innerHTML += arr[i].substr(val.length);
                     b.innerHTML += "<input type='hidden' value='" + arr[i] + "'>";
                     b.addEventListener("click", function (e) {
-
+                        inp.innerHTML = this.getElementsByTagName("input")[0].value;
                         if (NameTerm === "TenHocPhan") {
-                            inp.innerHTML = this.getElementsByTagName("input")[0].value;
+                            console.log("đa vao tenhoc phan")
                             var selectedValues = inp.innerHTML;
 
-                            console.log("slten" + TenHocPhan.length)
-                            console.log("sltehn" + HocPhanTienQuyet.length)
+                            var chuoiA = []
                             if (selectedValues) {
                                 for (var i = 0; i < TenHocPhan.length; i++) {
                                     if (selectedValues === TenHocPhan[i]) {
                                         const MaMon = document.getElementById('MaMon')
                                         MaMon.textContent = MaHocPhan[i];
-                                        var chuoi = HocPhanTienQuyet[i];
+                                        var Ma = MaHocPhan[i];
+                                        chuoiA.push(HocPhanTienQuyet[i]);
                                     }
                                 }
                             }
 
-                            console.log(chuoi)
-                            //test Lập trình hướng đối tượng, Công nghệ phần mềm
-                            var mangChuoi = chuoi.split(' _ ');
-                            // Hiển thị mảng kết quả
-                            var tienQuyetDiv = document.getElementById("TienQuyet");
-                            while (tienQuyetDiv.firstChild) {
-                                tienQuyetDiv.removeChild(tienQuyetDiv.firstChild);
+                            var chuoiChuaKyTu_ = chuoiA.filter(function (chuoi) {
+                                return chuoi.includes('_');
+                            });
+
+                            if (chuoiChuaKyTu_.length > 0) {
+                                var chuoi = chuoiChuaKyTu_[0];
+                                var mangChuoi = chuoi.split(' _ ');
+                                var mangChuoiUpper = mangChuoi.map(function (item) {
+                                    return item.toUpperCase();
+                                });
+
+
+                                //console.log('kết quả: ' + mangChuoi.join(', '));
+                                var tienQuyetDiv = document.getElementById("TienQuyet");
+
+                                while (tienQuyetDiv.firstChild) {
+                                    tienQuyetDiv.removeChild(tienQuyetDiv.firstChild);
+                                }
+
+                                // Ma hoc phan của 
+                                var maTQ = [];
+
+                                for (var i = 0; i < TenHocPhan.length; i++) {
+                                    if (mangChuoiUpper[0] === TenHocPhan[i]) {
+                                        maTQ.push(MaHocPhan[i])
+                                    }
+                                    if (mangChuoiUpper[1] === TenHocPhan[i]) {
+                                        maTQ.push(MaHocPhan[i])
+                                    }
+                                }
+                                for (var i = 0; i < mangChuoi.length; i++) {
+                                    // Tạo cấu trúc HTML cần thêm
+                                    var htmlToAdd = `<p class="display-flex">
+                                            <span contenteditable="true" class="TenTienQuyet">${mangChuoi[i]}</span>  
+                                            &nbsp;&nbsp;MSHP:<span contenteditable="true" class="MaTienQuyet">${maTQ[i]}</span>
+                                            </p>`;
+                                    // Thêm cấu trúc HTML vào phần tử "TienQuyet"
+                                    tienQuyetDiv.innerHTML += htmlToAdd;
+                                }
+                            } else {
+                                var tienQuyetDiv = document.getElementById("TienQuyet");
+                                while (tienQuyetDiv.firstChild) {
+                                    tienQuyetDiv.removeChild(tienQuyetDiv.firstChild);
+                                }
+                                var maTQ = [];
+
+                                for (var i = 0; i < TenHocPhan.length; i++) {
+                                    if (chuoiA[0].toUpperCase() === TenHocPhan[i]) {
+                                        maTQ.push(MaHocPhan[i])
+                                    }
+                                }
+
+
+                                if (chuoiA[0] === 'Không') {
+                                    console.log('đã tìm thấy không');
+                                    var htmlToAdd = `<p class="display-flex">
+                                            <span contenteditable="true" class="TenTienQuyet">${chuoiA[0]}</span>  
+                                            &nbsp;&nbsp;MSHP:<span contenteditable="true" class="MaTienQuyet"></span>
+                                            </p>`;
+
+                                    tienQuyetDiv.innerHTML += htmlToAdd;
+
+                                } else if (chuoiA[0] === 'Các học phần chuyên ngành') {
+
+                                    var htmlToAdd = `<p class="display-flex">
+                                            <span contenteditable="true" class="TenTienQuyet">${chuoiA[0]}</span>  
+                                            &nbsp;&nbsp;MSHP:<span contenteditable="true" class="MaTienQuyet"></span>
+                                            </p>`;
+
+                                    tienQuyetDiv.innerHTML += htmlToAdd;
+                                } else if (chuoiA[0] === 'Các học phần cơ sở ngành') {
+                                    var htmlToAdd = `<p class="display-flex">
+                                            <span contenteditable="true" class="TenTienQuyet">${chuoiA[0]}</span>  
+                                            &nbsp;&nbsp;MSHP:<span contenteditable="true" class="MaTienQuyet"></span>
+                                            </p>`;
+
+                                    tienQuyetDiv.innerHTML += htmlToAdd;
+                                }
+                                else {
+                                    console.log('không tìm thấy tôi');
+                                    var htmlToAdd = `<p class="display-flex">
+                                            <span contenteditable="true" class="TenTienQuyet">${chuoiA[0]}</span>  
+                                            &nbsp;&nbsp;MSHP:<span contenteditable="true" class="MaTienQuyet">${maTQ[0]}</span>
+                                            </p>`;
+                                    // Thêm cấu trúc HTML vào phần tử "TienQuyet"
+                                    tienQuyetDiv.innerHTML += htmlToAdd;
+                                }
                             }
-
-                            // Số lượng cấu trúc HTML bạn muốn thêm
-                            var soLuongThem = mangChuoi.length;
-                            for (var i = 0; i < soLuongThem; i++) {
-                                // Tạo cấu trúc HTML cần thêm
-                                var htmlToAdd = `<p class="display-flex">
-                                <span contenteditable="true" class="TenTienQuyet">${mangChuoi[i]}</span>  
-                                &nbsp;&nbsp;MSHP:<span contenteditable="true" class="MaTienQuyet"></span>
-                            </p>`;
-                                // Thêm cấu trúc HTML vào phần tử "TienQuyet"
-                                tienQuyetDiv.innerHTML += htmlToAdd;
-                            }
-
-
-
+                        } else if (NameTerm === "hungtext")
+                        {
+                            console.log("đã vào ")
                         }
-
-
                         closeAllLists();
                     });
                     a.appendChild(b);
@@ -368,7 +426,7 @@
             closeAllLists(e.target);
         });
     }
-   
+
 
 
 </script>

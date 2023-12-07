@@ -229,11 +229,8 @@
 
             //idNumber lấy số trong id dùng để xác định tr con lên trong
             var ChildChuong = document.querySelectorAll('[id*="Chuong' + idNumber + "." + '"]')
-
             var ChildCTC_Chuong = document.querySelectorAll('[class*="ChiTietChuong' + idNumber + '"]')
-
             var ChildCuoiChuong = document.querySelectorAll('[id*="CuoiChuong' + idNumber + '"]')
-
             for (var j = 0; j < ChildCuoiChuong.length; j++) {
                 var StempId = StringIdGetNumber_DecreaseBy1Unit(ChildCuoiChuong[j].id);
                 ChildCuoiChuong[j].id = "CuoiChuong" + StempId;
@@ -259,7 +256,6 @@
         } else {
             console.error('Element not found: ' + 'Chuong' + index);
         }
-
     }
 
     function tachChuoi(chuoi, kyTuTach) {

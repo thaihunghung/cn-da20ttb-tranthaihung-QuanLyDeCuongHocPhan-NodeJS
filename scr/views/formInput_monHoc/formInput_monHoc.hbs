@@ -24,6 +24,10 @@
                                 PHÂN
                                 TÍCH DỮ
                                 LIỆU</span></strong></p>
+
+
+                    
+
                     <p class="section-content text-center"><strong>MSHP:&nbsp;<span contenteditable="true"
                                 id="MaMon">320045</span>
                     </strong></p>
@@ -90,72 +94,69 @@
                                     </span>
                                 </p>
                             </td>
-                            <td class="body-1-general-information-1">
-                                <div class="dropdown3">Lý thuyết: &nbsp;
-                                    <span id="SoTC_LT" contenteditable="true" onmouseenter="showDropdownList3()"
-                                        onclick="toggleDropdownList3()">2</span>
-                                    <ul class="dropdown-list3" onmouseleave="closeDropdownList3()">
-                                        <li onclick="changeDropdown3('1')">1</li>
-                                        <li onclick="changeDropdown3('2')">2</li>
-                                        <li onclick="changeDropdown3('3')">3</li>
-                                        <li onclick="changeDropdown3('4')">4</li>
-                                        <li onclick="changeDropdown3('5')">5</li>
+                            <td class="body-1-general-information-1">            
+                                <div class="dropdown" id="dropdown-SoTC_LT">
+                                    Lý thuyết:&nbsp;
+                                    <span contenteditable="true" id="SoTC_LT">2</span>
+                                    <ul class="dropdown-content">
+                                        <li onclick="updateValue('SoTC_LT', '1','TUA')">1</li>
+                                        <li onclick="updateValue('SoTC_LT', '2','TUA')">2</li>
+                                        <li onclick="updateValue('SoTC_LT', '3','TUA')">3</li>
+                                        <li onclick="updateValue('SoTC_LT', '4','TUA')">4</li>
+                                        <li onclick="updateValue('SoTC_LT', '5','TUA')">5</li>
                                     </ul>
                                 </div>
-
-                                <div class="dropdown4">Thực hành: &nbsp;
-                                    <span id="SoTC_TH" contenteditable="true" onmouseenter="showDropdownList4()"
-                                        onclick="toggleDropdownList4()">2</span>
-                                    <ul class="dropdown-list4" onmouseleave="closeDropdownList4()">
-                                        <li onclick="changeDropdown4('1')">1</li>
-                                        <li onclick="changeDropdown4('2')">2</li>
-                                        <li onclick="changeDropdown4('3')">3</li>
-                                        <li onclick="changeDropdown4('4')">4</li>
-                                        <li onclick="changeDropdown4('5')">5</li>
+                                <div class="dropdown" id="dropdown-SoTC_TH">
+                                    Thực hành:&nbsp;
+                                    <span contenteditable="true" id="SoTC_TH">1</span>
+                                    <ul class="dropdown-content">
+                                        <li onclick="updateValue('SoTC_TH', '1','TUA')">1</li>
+                                        <li onclick="updateValue('SoTC_TH', '2','TUA')">2</li>
+                                        <li onclick="updateValue('SoTC_TH', '3','TUA')">3</li>
+                                        <li onclick="updateValue('SoTC_TH', '4','TUA')">4</li>
+                                        <li onclick="updateValue('SoTC_TH', '5','TUA')">5</li>
                                     </ul>
                                 </div>
-                                
                             </td>
                             <td class="body-1-general-information-1">
-
-                                <div class="dropdown5">Lý thuyết:&nbsp;
-                                    <span id="LT" contenteditable="true" onmouseenter="showDropdownList5()"
-                                        onclick="toggleDropdownList5()">30</span>
-                                    <ul class="dropdown-list5" onmouseleave="closeDropdownList5()">
-                                        <li onclick="changeDropdown5('1')">30</li>
-                                        <li onclick="changeDropdown5('2')">2</li>
-                                        <li onclick="changeDropdown5('3')">3</li>
-                                        <li onclick="changeDropdown5('4')">4</li>
-                                        <li onclick="changeDropdown5('5')">5</li>
+                                <div class="dropdown" id="dropdown-LT">
+                                    Lý thuyết:&nbsp;
+                                    <span contenteditable="true" id="LT">1</span>
+                                    <ul class="dropdown-content">
+                                        <li onclick="updateValue('LT', '1','TUA')">1</li>
+                                        <li onclick="updateValue('LT', '2','TUA')">2</li>
+                                        <li onclick="updateValue('LT', '3','TUA')">3</li>
+                                        <li onclick="updateValue('LT', '4','TUA')">4</li>
+                                        <li onclick="updateValue('LT', '5','TUA')">5</li>
                                     </ul>
                                 </div>
-
-                                <div class="dropdown6">Thực hành:&nbsp;
-                                    <span id="TH" contenteditable="true" onmouseenter="showDropdownList6()"
-                                        onclick="toggleDropdownList6()">30</span>
-                                    <ul class="dropdown-list6" onmouseleave="closeDropdownList6()">
-                                        <li onclick="changeDropdown6('1')">30</li>
-                                        <li onclick="changeDropdown6('2')">2</li>
-                                        <li onclick="changeDropdown6('3')">3</li>
-                                        <li onclick="changeDropdown6('4')">4</li>
-                                        <li onclick="changeDropdown6('5')">5</li>
+                                <div class="dropdown" id="dropdown-TH">
+                                    Thực hành:&nbsp;
+                                    <span contenteditable="true" id="TH">1</span>
+                                    <ul class="dropdown-content">
+                                        <li onclick="updateValue('TH', '1','TUA')">1</li>
+                                        <li onclick="updateValue('TH', '2','TUA')">2</li>
+                                        <li onclick="updateValue('TH', '3','TUA')">3</li>
+                                        <li onclick="updateValue('TH', '4','TUA')">4</li>
+                                        <li onclick="updateValue('TH', '5','TUA')">5</li>
                                     </ul>
                                 </div>
                                
                             </td>
                             <td class="body-1-general-information-1">
-                                <div class="dropdown7">
-                                    <span id="SoGioTuHoc" contenteditable="true" onmouseenter="showDropdownList7()"
-                                        onclick="toggleDropdownList7()">90</span>
-                                    <ul class="dropdown-list7" onmouseleave="closeDropdownList7()">
-                                        <li onclick="changeDropdown7('1')">30</li>
-                                        <li onclick="changeDropdown7('2')">2</li>
-                                        <li onclick="changeDropdown7('3')">3</li>
-                                        <li onclick="changeDropdown7('4')">4</li>
-                                        <li onclick="changeDropdown7('5')">5</li>
+                                
+
+                                <div class="dropdown" id="dropdown-SoGioTuHoc">
+                                    
+                                    <span contenteditable="true" id="SoGioTuHoc">1</span>
+                                    <ul class="dropdown-content">
+                                        <li onclick="updateValue('SoGioTuHoc', '1','TUA')">1</li>
+                                        <li onclick="updateValue('SoGioTuHoc', '2','TUA')">2</li>
+                                        <li onclick="updateValue('SoGioTuHoc', '3','TUA')">3</li>
+                                        <li onclick="updateValue('SoGioTuHoc', '4','TUA')">4</li>
+                                        <li onclick="updateValue('SoGioTuHoc', '5','TUA')">5</li>
                                     </ul>
                                 </div>
-
                             </td>
                         </tr>
                     </tbody>
@@ -170,59 +171,65 @@
                 <p class="display-flex">
 
                 
-                <div class="dropdown1">Học kỳ:&nbsp;
-                    <span id="HocKy" contenteditable="true" onmouseenter="showDropdownList1()"
-                        onclick="toggleDropdownList1()">III</span>
-                    <ul class="dropdown-list1" onmouseleave="closeDropdownList1()">
-                        <li onclick="changeDropdown1('I')">I</li>
-                        <li onclick="changeDropdown1('II')">II</li>
-                        <li onclick="changeDropdown1('III')">III</li>
-                        <li onclick="changeDropdown1('IV')">IV</li>
-                        <li onclick="changeDropdown1('V')">V</li> 
-                        <li onclick="changeDropdown1('VI')">VI</li>
-                        <li onclick="changeDropdown1('VII')">VII</li>
-                        <li onclick="changeDropdown1('VIII')">VIII</li>
+            
+                
+                <div class="dropdown" id="dropdown-HocKy">
+                    Học kỳ:&nbsp;
+                    <span contenteditable="true" id="HocKy">III</span>
+                    <ul class="dropdown-content">
+                        <li onclick="updateValue('HocKy', 'I','TUA')">I</li>
+                        <li onclick="updateValue('HocKy', 'II','TUA')">II</li>
+                        <li onclick="updateValue('HocKy', 'III','TUA')">III</li>
+                        <li onclick="updateValue('HocKy', 'IV','TUA')">IV</li>
+                        <li onclick="updateValue('HocKy', 'V','TUA')">V</li>
+                        <li onclick="updateValue('HocKy', 'VI','TUA')">VI</li>
+                        <li onclick="updateValue('HocKy', 'VII','TUA')">VII</li>
+                        <li onclick="updateValue('HocKy', 'VII','TUA')">VII</li>
+                        <li onclick="updateValue('HocKy', 'VIII','TUA')">VIII</li>
                     </ul>
                 </div>
+                
+                
                 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
                 &nbsp; &nbsp;
                 &nbsp;
-                <div class="dropdown2">Năm thứ:&nbsp;
-                    <span id="NamHoc" contenteditable="true" onmouseenter="showDropdownList2()"
-                        onclick="toggleDropdownList2()">3</span>
-                    <ul class="dropdown-list2" onmouseleave="closeDropdownList2()">
-                        <li onclick="changeDropdown2('1')">1</li>
-                        <li onclick="changeDropdown2('2')">2</li>
-                        <li onclick="changeDropdown2('3')">3</li>
-                        <li onclick="changeDropdown2('4')">4</li>
-                        <li onclick="changeDropdown2('5')">5</li>
+                <div class="dropdown" id="dropdown-NamHoc">
+                    Năm thứ:&nbsp;
+                    <span contenteditable="true" id="NamHoc">3</span>
+                    <ul class="dropdown-content">
+                        <li onclick="updateValue('NamHoc', '1','TUA')">1</li>
+                        <li onclick="updateValue('NamHoc', '2','TUA')">2</li>
+                        <li onclick="updateValue('NamHoc', '3','TUA')">3</li>
+                        <li onclick="updateValue('NamHoc', '4','TUA')">4</li>
+                        <li onclick="updateValue('NamHoc', '5','TUA')">5</li>
                     </ul>
                 </div>
-               
                 </p>
+                 {{!-- <p class="display-flex"> 
+                                        {{!-- Ten_HocPhan_TQ --}}
+                                        
+
+                                                &nbsp;&nbsp;MSHP:<span contenteditable="true" id="MSHP_TQ">110042</span>      
+                                        </p> --}}
                 <p><strong><em><span>Điều kiện tham gia học phần:</span></em></strong></p>
+                
                 <table class="table-1-general-information-2">
                     <tbody>
                         <tr>
                             <td class="header-1-general-information-2">Học phần tiên quyết</td>
                             <td colspan="2" class="body-1-general-colspan-2">
+                                <div><strong class="autocomplete"><span contenteditable="true"
+                                id="hungtext1">texgggggggggggggt</span></strong></div>
                                 <div id="TienQuyet" contenteditable="true">
-                                       
-                                
-                                
+                                   
                                 
                                 </div>
-                                 {{!-- <span contenteditable="true" class="TenTienQuyet"></span>
-                                        &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-                                        MSHP:<span contenteditable="true" class="MaTienQuyet"></span> --}}
-                                 {{!-- id="Ten_HocPhan_TQ" --}}
-                                {{!-- id="MSHP_TQ" --}}
+ 
                             </td>
-                            <span contenteditable="true" id="Ten_HocPhan_TQ">Vi tích phân A1</span> &nbsp; &nbsp;
-                                &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-                                &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-                    MSHP:<span contenteditable="true" id="MSHP_TQ">110042</span>
+                            
                         </tr>
+
+
                         <tr>
                             <td class="body-1-general-left-2">Học phần song hành</td>
                             <td colspan="2" class="body-1-general-right-2"><span contenteditable="true"
@@ -672,7 +679,6 @@
                                         <li onclick="updateValue('KT_TUA_1', 'TUA','TUA')">TUA</li>
                                         <li onclick="updateValue('KT_TUA_1', 'UA','TUA')">UA</li>
                                         <li onclick="updateValue('KT_TUA_1', 'TA','TUA')">TA</li>
-
                                     </ul>
                                     </div>
                                 </td>
@@ -798,8 +804,7 @@
                                         <li onclick="updateValue('TD_TUA_1', 'TUA','TUA')">TUA</li>
                                         <li onclick="updateValue('TD_TUA_1', 'UA','TUA')">UA</li>
                                         <li onclick="updateValue('TD_TUA_1', 'TA','TUA')">TA</li>
-
-                                    </ul>
+                                        </ul>
                                     </div>
                                 </td>
                             </tr>
@@ -1041,12 +1046,11 @@
                                     <div class="dropdown" id="dropdown-CDR_HocPhan1">
                                         <p class="header-5-course-content-p text-center">
                                         <strong><span contenteditable="true" class="CDR_HocPhan" id="CDR_HocPhan1">
-                                            1, 2,
-                                                3</span></strong></p>
-                                        <ul class="dropdown-content">
-                                            <li onclick="updateValue('CDR_HocPhan1', '1','CDR')"></li>
-
-                                
+                                            1, 2, 3</span></strong></p>
+                                        <ul class="dropdown-content-5">
+                                            <li onclick="updateValue('CDR_HocPhan1', '1','CDR')">1</li>
+                                            <li onclick="updateValue('CDR_HocPhan1', '2','CDR')">2</li>
+                                            <li onclick="updateValue('CDR_HocPhan1', '3','CDR')">3</li>
                                         </ul>
                                     </div>
                                 </td>
@@ -1297,17 +1301,75 @@
                                             tra thực hành</span></p>
                                 </td>
                                 <td class="body-7-course-assessment-99_0pt">
-                                    <p><span contenteditable="true" class="NoiDung_DG DG">Từ Chương 1 đến Chương
-                                            4</span></p>
-                                </td>
-                                <td class="body-7-course-assessment-72_0pt">
-                                    <p><span contenteditable="true" class="CĐR_KetThuc DG">Từ 1 đến 4</span></p>
-                                </td>
+                                    <div class="NoiDung_DG DG">
+
+                                    
+                                    Từ
+                                    <div class="dropdown" id="dropdown-DG1">
+                                        <p class="section-content"><span contenteditable="true" id="DG1">Chương 1</span></p>
+                                        <ul class="dropdown-content">
+                                        <li onclick="updateValue('DG1', 'Chương 1','TUA')">Chương 1</li>
+                                        </ul>
+                                    </div>
+
+                                    đến
+                                    <div class="dropdown" id="dropdown-DG2">
+                                        <p class="section-content"><span contenteditable="true" id="DG2">Chương 1</span></p>
+                                        <ul class="dropdown-content">
+                                            <li onclick="updateValue('DG2', 'Chương 1','TUA')">Chương 1</li>
+                                        </ul>
+                                    </div>
+                                    
+                                    </div>
+                                    </td>
+                                    
+                                    <td class="body-7-course-assessment-72_0pt">
+                                    
+                                    
+                                    
+                                        
+                                        <div class="CĐR_KetThuc DG">
+                                    
+                                            Từ
+                                            <div class="dropdown" id="dropdown-KT1">
+                                               <span contenteditable="true" id="KT1">1</span>
+                                                <ul class="dropdown-content">
+                                                    <li onclick="updateValue('KT1', '1','TUA')">1</li>
+                                                    <li onclick="updateValue('KT1', '2','TUA')">2</li>
+                                                    <li onclick="updateValue('KT1', '3','TUA')">3</li>
+                                                </ul>
+                                            </div>
+                                    
+                                            đến
+                                            <div class="dropdown" id="dropdown-KT2">
+                                                <span contenteditable="true" id="KT2">1</span>
+                                                <ul class="dropdown-content">
+                                                    <li onclick="updateValue('KT2', '1','TUA')">1</li>
+                                                    <li onclick="updateValue('KT2', '2','TUA')">2</li>
+                                                    <li onclick="updateValue('KT2', '3','TUA')">3</li>
+                                                </ul>
+                                            </div>
+                                    
+                                        </div>
+                                    </td>
+
+
                                 <td class="body-7-course-assessment-79_5pt">
-                                    <p><span contenteditable="true" class="TieuChiDG DG">Theo đáp án</span></p>
+                                      <div class="flex_tb5">
+<span contenteditable="true" class="TieuChiDG DG">Theo đáp án</span>
+                                    </div>
                                 </td>
                                 <td class="body-7-course-assessment-46_5pt">
-                                    <p><span contenteditable="true" class="Tyle DG">25%</span></p>
+                                    <div class="Tyle DG">
+                                        <div class="dropdown" id="dropdown-Tyle1">
+                                                <span contenteditable="true" id="Tyle1">25</span>%
+                                                <ul class="dropdown-content">
+                                                    <li onclick="updateValue('Tyle1', '25%','TUA')">25</li>
+                                                    <li onclick="updateValue('Tyle1', '50%','TUA')">50</li>
+                                                    <li onclick="updateValue('Tyle1', '75%','TUA')">75</li>
+                                                </ul>
+                                        </div>
+                                    </div>
                                 </td>
 
                             </tr>
@@ -1316,17 +1378,73 @@
                                     <p><span contenteditable="true" class="HinhThucDG DG">Bài tập lớn</span></p>
                                 </td>
                                 <td class="body-7-course-assessment-99_0pt">
-                                    <p><span contenteditable="true" class="NoiDung_DG DG">Từ Chương 4 đến Chương
-                                            8</span></p>
+
+                                    <div class="NoiDung_DG DG">
+
+                                    
+                                    Từ
+                                    <div class="dropdown" id="dropdown-DG3">
+                                        <p class="section-content"><span contenteditable="true" id="DG3">Chương 1</span></p>
+                                        <ul class="dropdown-content">
+                                        <li onclick="updateValue('DG3', 'Chương 1','TUA')">Chương 1</li>
+                                        </ul>
+                                    </div>
+
+                                    đến
+                                    <div class="dropdown" id="dropdown-DG4">
+                                        <p class="section-content"><span contenteditable="true" id="DG4">Chương 1</span></p>
+                                        <ul class="dropdown-content">
+                                            <li onclick="updateValue('DG4', 'Chương 1','TUA')">Chương 1</li>
+                                        </ul>
+                                    </div>
+                                    
+                                    </div>
+
+
+
                                 </td>
                                 <td class="body-7-course-assessment-72_0pt">
-                                    <p><span contenteditable="true" class="CĐR_KetThuc DG">Từ 3 đến 8</span></p>
+                                    <div class="CĐR_KetThuc DG">
+                                    
+                                            Từ
+                                            <div class="dropdown" id="dropdown-KT3">
+                                               <span contenteditable="true" id="KT3">1</span>
+                                                <ul class="dropdown-content">
+                                                    <li onclick="updateValue('KT3', '1','TUA')">1</li>
+                                                    <li onclick="updateValue('KT3', '2','TUA')">2</li>
+                                                    <li onclick="updateValue('KT3', '3','TUA')">3</li>
+                                                </ul>
+                                            </div>
+                                    
+                                            đến
+                                            <div class="dropdown" id="dropdown-KT4">
+                                                <span contenteditable="true" id="KT4">1</span>
+                                                <ul class="dropdown-content">
+                                                    <li onclick="updateValue('KT4', '1','TUA')">1</li>
+                                                    <li onclick="updateValue('KT4', '2','TUA')">2</li>
+                                                    <li onclick="updateValue('KT4', '3','TUA')">3</li>
+                                                </ul>
+                                            </div>
+                                    
+                                        </div>
                                 </td>
                                 <td class="body-7-course-assessment-79_5pt">
-                                    <p><span contenteditable="true" class="TieuChiDG DG">Theo đáp án</span></p>
+                                      <div class="flex_tb5">
+<span contenteditable="true" class="TieuChiDG DG">Theo đáp án</span>
+                                    </div>
                                 </td>
                                 <td class="body-7-course-assessment-46_5pt">
-                                    <p><span contenteditable="true" class="Tyle DG">25%</span></p>
+
+                                    <div class="Tyle DG">
+                                        <div class="dropdown" id="dropdown-Tyle2">
+                                                <span contenteditable="true" id="Tyle2">25</span>%
+                                                <ul class="dropdown-content">
+                                                    <li onclick="updateValue('Tyle2', '25','TUA')">25</li>
+                                                    <li onclick="updateValue('Tyle2', '50','TUA')">50</li>
+                                                    <li onclick="updateValue('Tyle2', '75','TUA')">75</li>
+                                                </ul>
+                                        </div>
+                                    </div>
                                 </td>
                             </tr>
                             <tr class="Danhgia HT_DG_KT" id="HT_DG_KT_1">
@@ -1339,17 +1457,71 @@
                                     <p><span contenteditable="true" class="HinhThucDG DG">Đồ án (nhóm)</span></p>
                                 </td>
                                 <td class="body-7-course-assessment-99_0pt height-10_0pt">
-                                    <p><span contenteditable="true" class="NoiDung_DG DG">Từ Chương 1 đến Chương
-                                            6</span></p>
+                              
+
+                                     <div class="NoiDung_DG DG">
+
+                                    
+                                    Từ
+                                    <div class="dropdown" id="dropdown-DG5">
+                                        <p class="section-content"><span contenteditable="true" id="DG5">Chương 1</span></p>
+                                        <ul class="dropdown-content">
+                                        <li onclick="updateValue('DG5', 'Chương 1','TUA')">Chương 1</li>
+                                        </ul>
+                                    </div>
+
+                                    đến
+                                    <div class="dropdown" id="dropdown-DG6">
+                                        <p class="section-content"><span contenteditable="true" id="DG6">Chương 1</span></p>
+                                        <ul class="dropdown-content">
+                                            <li onclick="updateValue('DG6', 'Chương 1','TUA')">Chương 1</li>
+                                        </ul>
+                                    </div>
+                                    
+                                    </div>        
                                 </td>
                                 <td class="body-7-course-assessment-72_0pt height-10_0pt">
-                                    <p><span contenteditable="true" class="CĐR_KetThuc DG">Từ 1 đến 9</span></p>
+                                    <div class="CĐR_KetThuc DG">
+                                    
+                                            Từ
+                                            <div class="dropdown" id="dropdown-KT5">
+                                               <span contenteditable="true" id="KT5">1</span>
+                                                <ul class="dropdown-content">
+                                                    <li onclick="updateValue('KT5', '1','TUA')">1</li>
+                                                    <li onclick="updateValue('KT5', '2','TUA')">2</li>
+                                                    <li onclick="updateValue('KT5', '3','TUA')">3</li>
+                                                </ul>
+                                            </div>
+                                    
+                                            đến
+                                            <div class="dropdown" id="dropdown-KT6">
+                                                <span contenteditable="true" id="KT6">1</span>
+                                                <ul class="dropdown-content">
+                                                    <li onclick="updateValue('KT6', '1','TUA')">1</li>
+                                                    <li onclick="updateValue('KT6', '2','TUA')">2</li>
+                                                    <li onclick="updateValue('KT6', '3','TUA')">3</li>
+                                                </ul>
+                                            </div>
+                                    
+                                        </div>
                                 </td>
                                 <td class="body-7-course-assessment-79_5pt height-10_0pt">
-                                    <p><span contenteditable="true" class="TieuChiDG DG">Theo đáp án</span></p>
+                                      <div class="flex_tb5">
+<span contenteditable="true" class="TieuChiDG DG">Theo đáp án</span>
+                                    </div>
                                 </td>
                                 <td class="body-7-course-assessment-46_5pt height-10_0pt">
-                                    <p><span contenteditable="true" class="Tyle DG">50%</span></p>
+                                    
+                                    <div class="Tyle DG">
+                                        <div class="dropdown" id="dropdown-Tyle3">
+                                                <span contenteditable="true" id="Tyle3">50</span>%
+                                                <ul class="dropdown-content">
+                                                    <li onclick="updateValue('Tyle3', '25','TUA')">25</li>
+                                                    <li onclick="updateValue('Tyle3', '50','TUA')">50</li>
+                                                    <li onclick="updateValue('Tyle3', '75','TUA')">75</li>
+                                                </ul>
+                                            </div>
+                                    </div>
                                 </td>
                             </tr>
                             <tr class="Danhgia HT_DG_KT" id="HT_DG_KT_2">
@@ -1357,17 +1529,76 @@
                                     <p><span contenteditable="true" class="HinhThucDG DG">Thi thực hành</span></p>
                                 </td>
                                 <td class="body-7-course-assessment-99_0pt height-10_0pt">
-                                    <p><span contenteditable="true" class="NoiDung_DG DG">Từ Chương 1 đến Chương
-                                            6</span></p>
+                                    
+
+
+                                    <div class="NoiDung_DG DG">
+                 
+                                    Từ
+                                    <div class="dropdown" id="dropdown-DG7">
+                                        <p class="section-content"><span contenteditable="true" id="DG7">Chương 1</span></p>
+                                        <ul class="dropdown-content">
+                                        <li onclick="updateValue('DG7', 'Chương 1','TUA')">Chương 1</li>
+                                        </ul>
+                                    </div>
+
+                                    đến
+                                    <div class="dropdown" id="dropdown-DG8">
+                                        <p class="section-content"><span contenteditable="true" id="DG8">Chương 1</span></p>
+                                        <ul class="dropdown-content">
+                                            <li onclick="updateValue('DG8', 'Chương 1','TUA')">Chương 1</li>
+                                        </ul>
+                                    </div>
+                                    
+                                    </div>         
                                 </td>
                                 <td class="body-7-course-assessment-72_0pt height-10_0pt">
-                                    <p><span contenteditable="true" class="CĐR_KetThuc DG">Từ 1 đến 8</span></p>
+           
+
+                                    <div class="CĐR_KetThuc DG">
+                                    
+                                            Từ
+                                            <div class="dropdown" id="dropdown-KT7">
+                                               <span contenteditable="true" id="KT7">1</span>
+                                                <ul class="dropdown-content">
+                                                    <li onclick="updateValue('KT7', '1','TUA')">1</li>
+                                                    <li onclick="updateValue('KT7', '2','TUA')">2</li>
+                                                    <li onclick="updateValue('KT7', '3','TUA')">3</li>
+                                                </ul>
+                                            </div>
+                                    
+                                            đến
+                                            <div class="dropdown" id="dropdown-KT8">
+                                                <span contenteditable="true" id="KT8">1</span>
+                                                <ul class="dropdown-content">
+                                                    <li onclick="updateValue('KT8', '1','TUA')">1</li>
+                                                    <li onclick="updateValue('KT8', '2','TUA')">2</li>
+                                                    <li onclick="updateValue('KT8', '3','TUA')">3</li>
+                                                </ul>
+                                            </div>
+                                    
+                                        </div>
                                 </td>
                                 <td class="body-7-course-assessment-79_5pt height-10_0pt">
-                                    <p><span contenteditable="true" class="TieuChiDG DG">Theo đáp án</span></p>
+                                   
+
+                                    <div class="flex_tb5">
+                                        <span contenteditable="true" class="TieuChiDG DG">Theo đáp án</span>
+                                    </div>
+                           
+
                                 </td>
                                 <td class="body-7-course-assessment-46_5pt height-10_0pt">
-                                    <p><span contenteditable="true" class="Tyle DG">50%</span></p>
+                                    <div class="Tyle DG">
+                                        <div class="dropdown" id="dropdown-Tyle4">
+                                                <span contenteditable="true" id="Tyle4">25</span>%
+                                                <ul class="dropdown-content">
+                                                    <li onclick="updateValue('Tyle4', '25','TUA')">25</li>
+                                                    <li onclick="updateValue('Tyle4', '50','TUA')">50</li>
+                                                    <li onclick="updateValue('Tyle4', '75','TUA')">75</li>
+                                                </ul>
+                                            </div>
+                                    </div>
                                 </td>
                             </tr>
                         </tbody>
