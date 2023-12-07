@@ -11,7 +11,6 @@
 .body-1-general-information-1
  {
     width: 95.25pt;
-    max-width: 95.25pt;
     border: 1px solid black;
     border-image: initial;
     background: white;
@@ -34,7 +33,6 @@
     width: 336pt;
 
     height: 16.8pt;
-    min-height: 16.8;
     border-left: none;
     border-image: initial;
     vertical-align: none;
@@ -43,7 +41,7 @@
     width: 130.25pt;
    
     height: 17.4pt;
-    min-height: 17.4pt;
+
     border-top: none; 
     vertical-align: none;   
 }
@@ -51,7 +49,7 @@
     width: 339pt;
     max-width: 336pt;
     height: 17.4pt;
-    min-height: 17.4pt;
+
     border-top: none;
     border-left: none;
 }

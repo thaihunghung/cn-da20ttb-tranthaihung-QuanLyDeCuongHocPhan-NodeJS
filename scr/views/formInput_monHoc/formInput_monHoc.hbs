@@ -19,14 +19,12 @@
                     <p class="section-content text-right"><strong>PHỤ LỤC&nbsp;<span contenteditable="true"
                                 id="PhuLuc"></span></strong></p>
                     <p class="section-content text-center"><strong><span>ĐỀ CƯƠNG CHI TIẾT HỌC PHẦN</span></strong></p>
-                    <p class="section-content text-center"><strong class="autocomplete"><span contenteditable="true"
+                    <p class="section-content text-center"><strong class="autocomplete"><strong>[&nbsp;</strong><span contenteditable="true"
                                 id="TenMon">THỐNG KÊ VÀ
                                 PHÂN
                                 TÍCH DỮ
-                                LIỆU</span></strong></p>
+                                LIỆU</span><strong>&nbsp;]</strong></strong></p>
 
-
-                    
 
                     <p class="section-content text-center"><strong>MSHP:&nbsp;<span contenteditable="true"
                                 id="MaMon">320045</span>
@@ -205,35 +203,37 @@
                     </ul>
                 </div>
                 </p>
-                 {{!-- <p class="display-flex"> 
-                                        {{!-- Ten_HocPhan_TQ --}}
-                                        
-
-                                                &nbsp;&nbsp;MSHP:<span contenteditable="true" id="MSHP_TQ">110042</span>      
-                                        </p> --}}
+            
                 <p><strong><em><span>Điều kiện tham gia học phần:</span></em></strong></p>
                 
                 <table class="table-1-general-information-2">
                     <tbody>
                         <tr>
                             <td class="header-1-general-information-2">Học phần tiên quyết</td>
-                            <td colspan="2" class="body-1-general-colspan-2">
-                                <div><strong class="autocomplete"><span contenteditable="true"
-                                id="hungtext1">texgggggggggggggt</span></strong></div>
-                                <div id="TienQuyet" contenteditable="true">
+                            <td colspan="2" class="body-1-general-colspan-2" id="TienQuyet"> 
+                                <div class="ModifyTB2">                                                                
+                                    <div class="autocomplete">Tên:&nbsp; 
+                                        <span contenteditable="true" id="TenTQ1">
+                                            Vi tích phân A1
+                                        </span>                                    
+                                    </div>
                                    
-                                
-                                </div>
- 
+                                    <div class="autocomplete">MSHP:&nbsp; 
+                                        <span contenteditable="true" id="MaTQ1">
+                                           110042
+                                        </span>                                    
+                                    </div>
+                                </div>  
+                            </div>
                             </td>
-                            
                         </tr>
-
 
                         <tr>
                             <td class="body-1-general-left-2">Học phần song hành</td>
-                            <td colspan="2" class="body-1-general-right-2"><span contenteditable="true"
-                                    id="HocPhan_SH">Không</span>
+                            <td colspan="2" class="body-1-general-right-2" id="HocPhan_SH">
+                                
+                                <span contenteditable="true"
+                                    >Không</span>
                             </td>
                         </tr>
                         <tr>
@@ -1666,15 +1666,36 @@
                     {{!-- 9.Dự kiến danh sách cán bộ tham gia giảng dạy --}}
                     {{!----}}
                     <div class="GiangVien">
-                        <p class="section-content"><span class="ChucDanh" contenteditable="true">TS</span>.&nbsp;<span
-                                class="HoTen" contenteditable="true">Nguyễn Bảo Ân</span>
-                        </p>
-                        <p class="section-content"><span class="ChucDanh" contenteditable="true">Ths</span>.&nbsp;<span
-                                class="HoTen">Phạm
-                                Thị Trúc
-                                Mai</span>
-                        </p>
+                        <div class="autocomplete">
+                                <div class="dropdown" id="dropdown-ChucDanh1">
+                                    <span contenteditable="true" id="ChucDanh1">TS</span>:&nbsp; 
+                                    <ul class="dropdown-content">
+                                        <li onclick="updateValue('ChucDanh1', 'Ths','TUA')">Ths</li>
+                                        <li onclick="updateValue('ChucDanh1', 'TS','TUA')">TS</li>
+                                        <li onclick="updateValue('ChucDanh1', 'PGS','TUA')">PGS</li>
+                                    </ul>
+                                </div>
+                            <span contenteditable="true" id="HoTen1">
+                                Nguyễn Bảo Ân
+                            </span>
+                        </div> 
+                        <br>                                                                          
+                        <div class="autocomplete">
+                            <div class="dropdown" id="dropdown-ChucDanh2">
+                    
+                                    <span contenteditable="true" id="ChucDanh2">Ths</span>:&nbsp; 
+                                    <ul class="dropdown-content">
+                                        <li onclick="updateValue('ChucDanh2', 'Ths','TUA')">Ths</li>
+                                        <li onclick="updateValue('ChucDanh2', 'TS','TUA')">TS</li>
+                                        <li onclick="updateValue('ChucDanh2', 'PGS','TUA')">PGS</li>
+                                    </ul>
+                                </div>
+                            <span contenteditable="true" id="HoTen2">
+                                Phạm Thị Trúc Mai
+                            </span>
+                        </div>                                       
                     </div>
+  
                     <p class="section-content">&nbsp;</p>
                     <p class="section-content"><span>Ngày phê duyệt: ....../......./ .......<em>&nbsp;
                                 &nbsp;</em></span></p>

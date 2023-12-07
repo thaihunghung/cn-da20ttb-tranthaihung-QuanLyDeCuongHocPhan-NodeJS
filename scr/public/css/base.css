@@ -192,22 +192,15 @@ p {
 .dropdown:hover .dropdown-content-5 {
     display: block;
 }
-
-
-
-  
-
-
-
-
-
-
-
+.ModifyTB2 {
+    display: flex;
+    justify-content: space-between;
+}
 .autocomplete {
   /*the container must be positioned relative:*/
   position: relative;
   display: inline-block;
-  width: 400px;
+  
 }
 input {
   border: 1px solid transparent;
@@ -217,6 +210,7 @@ input {
 }
 
 .autocomplete-items {
+  width: 400px;
   position: absolute;
   border: 1px solid #d4d4d4;
   border-bottom: none;

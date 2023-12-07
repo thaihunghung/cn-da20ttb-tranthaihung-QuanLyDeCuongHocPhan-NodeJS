@@ -230,14 +230,146 @@
         'Các học phần chuyên ngành'
     ]
 
+    var Ten_HocPhan_TQ = [
+        'Anh văn không chuyên 1',
+        'Triết học Mác-Lênin',
+        'Kỹ thuật lập trình',
+        'Vi tích phân A1',
+        'Toán rời rạc',
+        'Anh văn không chuyên 3',
+        'Chủ nghĩa xã hội khoa học',
+        'Kiến trúc máy tính',
+        'Lý thuyết đồ thị',
+        'Đại số tuyến tính',
+        'Tư tưởng Hồ Chí Minh',
+        'Mạng máy tính',
+        'Cơ sở dữ liệu',
+        'Lập trình hướng đối tượng',
+        'Phân tích và thiết kế hệ thống thông tin',
+        'Thống kê và phân tích dữ liệu',
+        'Cấu trúc dữ liệu và giải thuật',
+        'Thiết kế web',
+        'Lập trình hướng đối tượng',
+        'Công nghệ phần mềm',
+        'Các học phần cơ sở ngành',
+        'Các học phần chuyên ngành',
+        'Không',
+    ];
+    var MSHP_HocPhan_TQ = [
+        '410291',
+        '180050',
+        '220228',
+        '110042',
+        '110003',
+        '410293',
+        '180052',
+        '110079',
+        '220100',
+        '110001',
+        '180001',
+        '220018',
+        '220096',
+        '220099',
+        '220239',
+        '320045',
+        '220234',
+        '220236',
+        '220099',
+        '220055',
+    ]
+    var ListChucDanh = [
+        'PGS',
+        'TS',
+        'TS',
+        'TS',
+        'TS',
+        'TS',
+
+        'Ths',
+        'Ths',
+        'Ths',
+        'Ths',
+        'Ths',
+        'Ths',
+
+        'Ths',
+        'Ths',
+        'Ths',
+        'Ths',
+        'Ths',
+        'Ths',
+        
+        'Ths',
+        'Ths',
+        'Ths',
+        'Ths',
+        'Ths',
+        'Ths',
+
+        'Ths',
+        'Ths',
+        'Ths',
+        'Ths',
+        'Ths',
+        'Ths',
+    ]
+    var Teacher = [
+        'Nguyễn Thái Sơn',
+        'Võ Phước Hưng',
+        'Phan Quốc Nghĩa',
+        'Nguyễn Trần Diễm Hạnh',
+        'Nguyễn Nhứt Lam',
+        'Nguyễn Bảo Ân',
+        'Nguyễn Bá Nhiệm',
+        'Phan Thị Phương Nam',
+        'Nguyễn Khắc Quốc',
+        'Võ Thành C',
+        'Lê Minh Tự',
+        'Khấu Văn Nhựt',
+        'Trần Văn Nam',
+        'Nguyễn Thừa Phát Tài',
+        'Huỳnh Văn Thanh',
+        'Nguyễn Hoàng Duy Thiện',
+        'Trịnh Quốc Việt',
+        'Phạm Minh Đương',
+        'Nguyễn Ngọc Đan Thanh',
+        'Hà Thị Thúy Vi',
+        'Ngô Thanh Huy',
+        'Phạm Thị Trúc Mai',
+        'Đoàn Phước Miền',
+        'Trầm Hoàng Nam',
+        'Dương Ngọc Vân Khanh',
+        'Nhan Minh Phúc',
+        'Nguyễn Mộng Hiền',
+        'Thạch Kọng Saoane',
+        'Lê Văn Phol',
+        'Lê Phong Dũ'
+    ]
     // In mảng ra console để kiểm tra
-
-    autocomplete(document.getElementById("TenMon"), TenHocPhan, "TenHocPhan");
-    autocomplete(document.getElementById("hungtext1"), TenHocPhan, "hungtext");
+    if (document.getElementById("TenMon")) {
+        autocomplete(document.getElementById("TenMon"), TenHocPhan, "TenHocPhan");
+    }
+    if (document.getElementById("TenTQ1")) {
+        autocomplete(document.getElementById("TenTQ1"), Ten_HocPhan_TQ, "TenTQ");
+    }
+    if (document.getElementById("MaTQ1")) {
+        autocomplete(document.getElementById("MaTQ1"), Ten_HocPhan_TQ, "hungtext");
+    }
+    if (document.getElementById("TenTQ2")) {
+        autocomplete(document.getElementById("TenTQ2"), Ten_HocPhan_TQ, "TenTQ");
+    }
+    if (document.getElementById("MaTQ2")) {
+        autocomplete(document.getElementById("MaTQ2"), Ten_HocPhan_TQ, "hungtext");
+    }
     //autocomplete(document.getElementById("MaMon"), MaHocPhan);
-    //autocomplete(document.getElementById("myInput2"), countries);
+    //autocomplete(document.getElementById("myInput2"), countries);HoTen1
 
-
+    if (document.getElementById("HoTen1")) {
+        autocomplete(document.getElementById("HoTen1"), Teacher, "Teacher");
+    }
+    if (document.getElementById("HoTen2")) {
+        autocomplete(document.getElementById("HoTen2"), Teacher, "Teacher");
+    }
     function autocomplete(inp, arr, NameTerm) {
 
 
@@ -310,12 +442,37 @@
                                 }
                                 for (var i = 0; i < mangChuoi.length; i++) {
                                     // Tạo cấu trúc HTML cần thêm
-                                    var htmlToAdd = `<p class="display-flex">
-                                            <span contenteditable="true" class="TenTienQuyet">${mangChuoi[i]}</span>  
-                                            &nbsp;&nbsp;MSHP:<span contenteditable="true" class="MaTienQuyet">${maTQ[i]}</span>
-                                            </p>`;
+                                    var htmlToAdd = `
+                                            <div class="ModifyTB2">
+                                                <div class="autocomplete">Tên:&nbsp;
+                                                    <span contenteditable="true" id="TenTQ${i + 1}">${mangChuoi[i]}</span>
+                                                </div>
+
+                                                <div class="autocomplete">MSHP:&nbsp;
+                                                    <span contenteditable="true" id="MaTQ${i + 1}">${maTQ[i]}</span>
+                                                </div>
+                                            </div>
+                                        `;
                                     // Thêm cấu trúc HTML vào phần tử "TienQuyet"
                                     tienQuyetDiv.innerHTML += htmlToAdd;
+                                }
+                                if (document.getElementById("TenTQ1")) {
+                                    autocomplete(document.getElementById("TenTQ1"), Ten_HocPhan_TQ, "TenTQ");
+                                }
+                                if (document.getElementById("MaTQ1")) {
+                                    autocomplete(document.getElementById("MaTQ1"), Ten_HocPhan_TQ, "hungtext");
+                                }
+                                if (document.getElementById("TenTQ2")) {
+                                    autocomplete(document.getElementById("TenTQ2"), Ten_HocPhan_TQ, "TenTQ");
+                                }
+                                if (document.getElementById("MaTQ2")) {
+                                    autocomplete(document.getElementById("MaTQ2"), Ten_HocPhan_TQ, "hungtext");
+                                }
+                                if (document.getElementById("TenTQ3")) {
+                                    autocomplete(document.getElementById("TenTQ3"), Ten_HocPhan_TQ, "TenTQ");
+                                }
+                                if (document.getElementById("MaTQ3")) {
+                                    autocomplete(document.getElementById("MaTQ3"), Ten_HocPhan_TQ, "hungtext");
                                 }
                             } else {
                                 var tienQuyetDiv = document.getElementById("TienQuyet");
@@ -332,43 +489,142 @@
 
 
                                 if (chuoiA[0] === 'Không') {
-                                    console.log('đã tìm thấy không');
-                                    var htmlToAdd = `<p class="display-flex">
-                                            <span contenteditable="true" class="TenTienQuyet">${chuoiA[0]}</span>  
-                                            &nbsp;&nbsp;MSHP:<span contenteditable="true" class="MaTienQuyet"></span>
-                                            </p>`;
+                                    var htmlToAdd = `
+                                            <div class="ModifyTB2">
+                                                <div class="autocomplete">Tên:&nbsp;
+                                                    <span contenteditable="true" id="TenTQ1">Không</span>
+                                                </div>
 
-                                    tienQuyetDiv.innerHTML += htmlToAdd;
-
-                                } else if (chuoiA[0] === 'Các học phần chuyên ngành') {
-
-                                    var htmlToAdd = `<p class="display-flex">
-                                            <span contenteditable="true" class="TenTienQuyet">${chuoiA[0]}</span>  
-                                            &nbsp;&nbsp;MSHP:<span contenteditable="true" class="MaTienQuyet"></span>
-                                            </p>`;
-
-                                    tienQuyetDiv.innerHTML += htmlToAdd;
-                                } else if (chuoiA[0] === 'Các học phần cơ sở ngành') {
-                                    var htmlToAdd = `<p class="display-flex">
-                                            <span contenteditable="true" class="TenTienQuyet">${chuoiA[0]}</span>  
-                                            &nbsp;&nbsp;MSHP:<span contenteditable="true" class="MaTienQuyet"></span>
-                                            </p>`;
-
-                                    tienQuyetDiv.innerHTML += htmlToAdd;
-                                }
-                                else {
-                                    console.log('không tìm thấy tôi');
-                                    var htmlToAdd = `<p class="display-flex">
-                                            <span contenteditable="true" class="TenTienQuyet">${chuoiA[0]}</span>  
-                                            &nbsp;&nbsp;MSHP:<span contenteditable="true" class="MaTienQuyet">${maTQ[0]}</span>
-                                            </p>`;
+                                                <div class="autocomplete">MSHP:&nbsp;
+                                                    <span contenteditable="true" id="MaTQ1"></span>
+                                                </div>
+                                            </div>
+                                        `;
                                     // Thêm cấu trúc HTML vào phần tử "TienQuyet"
                                     tienQuyetDiv.innerHTML += htmlToAdd;
+                                    if (document.getElementById("TenTQ1")) {
+                                        autocomplete(document.getElementById("TenTQ1"), Ten_HocPhan_TQ, "TenTQ");
+                                    }
+                                } else if (chuoiA[0] === 'Các học phần chuyên ngành') {
+
+                                    var htmlToAdd = `
+                                            <div class="ModifyTB2">
+                                                <div class="autocomplete">Tên:&nbsp;
+                                                    <span contenteditable="true" id="TenTQ1">Các học phần chuyên ngành</span>
+                                                </div>
+
+                                                <div class="autocomplete">&nbsp;
+                                                    <span contenteditable="true" id="MaTQ1"></span>
+                                                </div>
+                                            </div>
+                                        `;
+                                    // Thêm cấu trúc HTML vào phần tử "TienQuyet"
+                                    tienQuyetDiv.innerHTML += htmlToAdd;
+                                    if (document.getElementById("TenTQ1")) {
+                                        autocomplete(document.getElementById("TenTQ1"), Ten_HocPhan_TQ, "TenTQ");
+                                    }
+                                } else if (chuoiA[0] === 'Các học phần cơ sở ngành') {
+                                    var htmlToAdd = `
+                                            <div class="ModifyTB2">
+                                                <div class="autocomplete">Tên:&nbsp;
+                                                    <span contenteditable="true" id="TenTQ1">Các học phần cơ sở ngành</span>
+                                                </div>
+
+                                                <div class="autocomplete">&nbsp;
+                                                    <span contenteditable="true" id="MaTQ1"></span>
+                                                </div>
+                                            </div>
+                                        `;
+                                    // Thêm cấu trúc HTML vào phần tử "TienQuyet"
+                                    tienQuyetDiv.innerHTML += htmlToAdd;
+                                    if (document.getElementById("TenTQ1")) {
+                                        autocomplete(document.getElementById("TenTQ1"), Ten_HocPhan_TQ, "TenTQ");
+                                    }
+                                }
+                                else {
+                                    var htmlToAdd = `
+                                            <div class="ModifyTB2">
+                                                <div class="autocomplete">Tên:&nbsp;
+                                                    <span contenteditable="true" id="TenTQ1">${chuoiA[0]}</span>
+                                                </div>
+
+                                                <div class="autocomplete">MSHP:&nbsp;
+                                                    <span contenteditable="true" id="MaTQ1">${maTQ[0]}</span>
+                                                </div>
+                                            </div>
+                                        `;
+                                    // Thêm cấu trúc HTML vào phần tử "TienQuyet"
+                                    tienQuyetDiv.innerHTML += htmlToAdd;
+                                    if (document.getElementById("TenTQ1")) {
+                                        autocomplete(document.getElementById("TenTQ1"), Ten_HocPhan_TQ, "TenTQ");
+                                    }
                                 }
                             }
-                        } else if (NameTerm === "hungtext")
-                        {
-                            console.log("đã vào ")
+
+                        } else if (NameTerm === "TenTQ") {
+
+                            var selectedValue = inp.innerHTML;
+                            //Ten_HocPhan_TQ ,MSHP_HocPhan_TQ
+                            if (selectedValue) {
+                                var Id = inp.id
+                                var numbers = Id.match(/\d+/g);
+                                var MaTQ = document.getElementById('MaTQ' + numbers[0])
+                                var IdMaTQ = MaTQ.id;
+
+                                if (selectedValue === 'Các học phần cơ sở ngành') {
+                                    const TQparent = MaTQ.parentNode;
+                                    TQparent.innerHTML = "";
+                                    var htmlToAdd = `
+                                            &nbsp;
+                                                <span contenteditable="true" id="${IdMaTQ}"></span>
+                                  
+                                        `;
+                                    TQparent.innerHTML += htmlToAdd;
+                                } else if (selectedValue === 'Các học phần chuyên ngành') {
+                                    const TQparent = MaTQ.parentNode;
+                                    TQparent.innerHTML = "";
+                                    var htmlToAdd = `
+                                            &nbsp;
+                                                <span contenteditable="true" id="${IdMaTQ}"></span>
+                                       
+                                        `;
+                                    TQparent.innerHTML += htmlToAdd;
+                                } else if (selectedValue === 'Không') {
+                                    const TQparent = MaTQ.parentNode;
+                                    TQparent.innerHTML = "";
+                                    var htmlToAdd = `
+                                      &nbsp;
+                                                <span contenteditable="true" id="${IdMaTQ}"></span>
+                                       
+                                        `;
+                                    TQparent.innerHTML += htmlToAdd;
+                                } else {
+                                    const TQparent = MaTQ.parentNode;
+                                    TQparent.innerHTML = "";
+                                    for (var i = 0; i < TenHocPhan.length; i++) {
+                                        if (selectedValue === Ten_HocPhan_TQ[i]) {
+                                            var MaTQ = MSHP_HocPhan_TQ[i];
+                                        }
+                                    }
+                                    var htmlToAdd = `
+                                    MSHP:&nbsp;
+                                                <span contenteditable="true" id="${IdMaTQ}">${MaTQ}</span>
+                                  
+                                        `;
+                                    TQparent.innerHTML += htmlToAdd;
+                                }
+                            }
+                        } else if (NameTerm === "Teacher") {
+                            var Teachers = inp.innerHTML;
+                            var Id = inp.id
+                            var numbers = Id.match(/\d+/g);
+                            var ChucDanh = document.getElementById('ChucDanh'+numbers)
+                            for (var i = 0; i < Teacher.length; i++) {
+                                    if (Teachers === Teacher[i]) {
+                                        ChucDanh.textContent = ListChucDanh[i];
+                                    }
+                                }
+                            
                         }
                         closeAllLists();
                     });
@@ -426,7 +682,5 @@
             closeAllLists(e.target);
         });
     }
-
-
 
 </script>
