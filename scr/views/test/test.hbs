@@ -1,75 +1,113 @@
-<table>
-    <tr>
-        <td class="table-2-learning-body">
-            <div id="giaotrinh">
-                <p id="giaotrinh1" class="giaotrinh">
-                    [<span id="STT_1" class="STT" contenteditable="true">1</span>]
-                    <span id="TG_GT_1" contenteditable="true">Nguyễn Văn
-                        Tuấn</span>
-                    (<span id="NXB_GT_1" contenteditable="true">2014</span>).&nbsp;
-                    <span id="Ten_GT_1" contenteditable="true" class="text-nghien">Phân tích dữ liệu với R</span>
-                    [<span id="NGUON_GT_1" contenteditable="true">NXB Tổng hợp TP
-                        Hồ Chí Minh</span>]
-                    <span contenteditable="true"
-                        id="No">.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
-                </p>
-                <div class="hidden hidden-table-2">
-                    <p>Stt:&nbsp;<span id="STT_DSpan_1" contenteditable="true"></span></p>
-                    <p>Tên tác giả:&nbsp;<span id="TG_DSpan_1" contenteditable="true"></span></p>
-                    <p>Năm Xuất bảng:&nbsp;<span id="NXB_DSpan_1" contenteditable="true"></span></p>
-                    <p>Tên tài liệu tham khảo:&nbsp;<span id="TEN_DSpan_1" contenteditable="true"
-                            class="text-nghien"></span></p>
-                    <p>Nguồn:&nbsp;<span id="NGUON_DSpan_1" contenteditable="true"></span></p>
-                </div>
-            </div>
-        </td>
-    </tr>
-</table>
+<div class="textflex">
 
+
+
+  <div id="huntran" contenteditable="true" onkeydown="handleKeyPress(event)" onmouseup="getCursorPosition()">
+    f
+  </div>
+
+</div>
 <script>
-    function HiddenAndShow_Tb2(idIndex){
-        document.addEventListener('DOMContentLoaded', function () {
-            var giaotrinh1 = document.getElementById('idIndex');
-            var hiddenDiv = document.querySelector('.hidden-table-2');
-            var timeoutId;
+  function handleKeyPress(event) {
+    const huntranDiv = document.getElementById('huntran');
+    var selection = window.getSelection();
+    if (selection.rangeCount > 0) {
+      var range = selection.getRangeAt(0);
 
-            document.addEventListener('click', function (event) {
-                if (!hiddenDiv.contains(event.target) && event.target !== giaotrinh1) {
-                    timeoutId = setTimeout(function () {
-                        // Copy nội dung từ div sang p
-                        updateContent();
-                        hiddenDiv.style.display = 'none';
-                        giaotrinh1.style.display = 'block';
-                    }, 700);
-                }
-            });
+      // Lấy vị trí của con trỏ
+      var cursorPosition = range.startOffset;
 
-            giaotrinh1.addEventListener('click', function (event) {
-                if (event.target.id === 'No') {
-                    return;
-                }
-                event.stopPropagation();
-                // Copy nội dung từ p sang div
-                copyContent();
-                timeoutId = setTimeout(function () {
-                    giaotrinh1.style.display = 'none';
-                    hiddenDiv.style.display = (hiddenDiv.style.display === 'none' || hiddenDiv.style.display === '') ? 'block' : 'none';
-                }, 700);
-            });
-            function copyContent() {
-                document.getElementById('STT_DSpan_1').innerText = document.getElementById('STT_1').innerText;
-                document.getElementById('TG_DSpan_1').innerText = document.getElementById('TG_GT_1').innerText;
-                document.getElementById('NXB_DSpan_1').innerText = document.getElementById('NXB_GT_1').innerText;
-                document.getElementById('TEN_DSpan_1').innerText = document.getElementById('Ten_GT_1').innerText;
-                document.getElementById('NGUON_DSpan_1').innerText = document.getElementById('NGUON_GT_1').innerText;
-            }
-            function updateContent() {
-                document.getElementById('STT_1').innerText = document.getElementById('STT_DSpan_1').innerText;
-                document.getElementById('TG_GT_1').innerText = document.getElementById('TG_DSpan_1').innerText;
-                document.getElementById('NXB_GT_1').innerText = document.getElementById('NXB_DSpan_1').innerText;
-                document.getElementById('Ten_GT_1').innerText = document.getElementById('TEN_DSpan_1').innerText;
-                document.getElementById('NGUON_GT_1').innerText = document.getElementById('NGUON_DSpan_1').innerText;
-            }
+      // Lấy văn bản phía trước
+      //var textBeforeCursor = range.startContainer.textContent.slice(0, cursorPosition);
+
+      // Lấy văn bản phía sau
+      var textAfterCursor = range.startContainer.textContent.slice(cursorPosition);
+      if (textAfterCursor.includes(' ')) {
+        // Văn bản phía sau chứa khoảng trắng
+        console.log('Text after cursor contains a space.');
+      } else {
+        // Văn bản phía sau không chứa khoảng trắng
+        console.log('Text after cursor does not contain a space.');
+      }
+    }
+
+
+    // Kiểm tra xem phần tử có focus không
+    if (document.activeElement === huntranDiv && huntranDiv.contentEditable === 'true') {
+    if (event.key === ' ') {
+      var huntran = document.getElementById('huntran');
+      var textAfterCursor = range.startContainer.textContent.slice(cursorPosition);
+
+      // Kiểm tra xem văn bản phía sau chứa khoảng trắng hay không
+      if (textAfterCursor.includes(' ')) {
+        // Tạo một phạm vi từ vị trí con trỏ
+        var newRange = document.createRange();
+        newRange.setStart(range.startContainer, cursorPosition);
+        newRange.setEnd(range.startContainer, cursorPosition);
+
+        // Tạo một đối tượng div để chứa cấu trúc HTML mới
+        var newContent = document.createElement('div');
+        newContent.className = 'autocomplete';
+        newContent.innerHTML = '<span contenteditable="true" id="textdiv"></span>';
+
+        newRange.insertNode(newContent);
+        var textDiv = document.getElementById('textdiv');
+        
+        textDiv.focus();
+
+        // Xử lý tiếp theo nếu cần
+        autocomplete(textDiv, Teacher);
+        huntranDiv.contentEditable = false;
+        DiChuyenDenCuoi(textDiv);
+        textDiv.addEventListener('blur', function() {
+          newContent.remove();
+            
         });
     }
+  }
+}
+
+  }
+</script>
+
+{{>Autocompletecopy}}
+
+<script>
+  function DiChuyenDenCuoi(element) {
+    var range = document.createRange();
+    var selection = window.getSelection();
+    range.selectNodeContents(element);
+    range.collapse(false);
+    selection.removeAllRanges();
+    selection.addRange(range);
+  }
+
+</script>
+<script>
+  function getCursorPosition() {
+    // Lấy đối tượng chứa văn bản có thể chỉnh sửa
+    var editableDiv = document.getElementById('huntran');
+
+    // Tạo đối tượng Selection từ vùng được chọn hoặc con trỏ
+    var selection = window.getSelection();
+
+    // Kiểm tra xem có văn bản được chọn không
+    if (selection.rangeCount > 0) {
+      var range = selection.getRangeAt(0);
+
+      // Lấy vị trí của con trỏ
+      var cursorPosition = range.startOffset;
+
+      // In ra console vị trí của con trỏ
+      console.log('Cursor position:', cursorPosition);
+
+      // Lấy văn bản phía trước
+      var textBeforeCursor = range.startContainer.textContent.slice(0, cursorPosition);
+      console.log('Text before cursor:', textBeforeCursor);
+
+      // Lấy văn bản phía sau
+      var textAfterCursor = range.startContainer.textContent.slice(cursorPosition);
+      console.log('Text after cursor:', textAfterCursor);
+    }
+  }
 </script>

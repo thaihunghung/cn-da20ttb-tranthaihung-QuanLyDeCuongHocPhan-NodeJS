@@ -27,3 +27,15 @@
     border: 1px solid #d3d3d3;
     min-height: 20mm; /* Minimum height for a table row */
 }
+
+.textdiv {
+    height: 16pt;
+    background-color: white;
+    text-align: center;
+    color: brown;
+}
+.textflex {
+    background-color: bisque;
+    justify-content: center;
+    display: flex;
+}

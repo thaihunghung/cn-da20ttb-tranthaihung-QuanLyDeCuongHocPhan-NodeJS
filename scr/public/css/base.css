@@ -161,20 +161,29 @@ p {
 .dropdown {
     position: relative;
     display: inline-block;
+    
+	
+    
 }
 
 .dropdown-content,
 .dropdown-content-5 {
+    overflow-y: auto;
+    height: auto;
+    max-height: 150px;
+    width: 150px;
     display: none;
     position: absolute;
     background-color: #f1f1f1;
     box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+
     z-index: 1;
     list-style: none;
     padding: 0;
     right: 0;
     min-width: 40pt;
     text-align: center;
+    
 }
 
 .dropdown-content li,
@@ -196,11 +205,15 @@ p {
     display: flex;
     justify-content: space-between;
 }
-.autocomplete {
+.autocomplete,
+.autocompletetext {
   /*the container must be positioned relative:*/
   position: relative;
   display: inline-block;
   
+}
+.with400px {
+    width: 400px;
 }
 input {
   border: 1px solid transparent;
