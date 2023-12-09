@@ -79,8 +79,8 @@ app.use('/project', projectRoutes);
 //   // await hocPhanInstance.findOne({ MaMon:, TenMon: });        
 // });
 app.get('/', (req, res) => {
-  //res.render('formInput_monHoc/formInput_monHoc')
-  res.render('test/test');
+  res.render('formInput_monHoc/formInput_monHoc')
+  //res.render('test/test');
 })
 // app.post('/test', async (req, res) => {
 //   // Handle the incoming JSON data

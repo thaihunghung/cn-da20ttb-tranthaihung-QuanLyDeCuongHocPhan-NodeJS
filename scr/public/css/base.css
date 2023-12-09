@@ -120,7 +120,7 @@ span {
 span[contenteditable="true"] {
     width: 100%;
     min-height: 13pt;
-    background-color: #FA9E57;
+    
 }
 p {
     line-height: 13pt; /* Set the line height to the same value as the minimum height */
@@ -155,15 +155,9 @@ p {
   background-color: #e9e9e9;
 }
 
-
-
-
 .dropdown {
     position: relative;
     display: inline-block;
-    
-	
-    
 }
 
 .dropdown-content,
@@ -206,7 +200,8 @@ p {
     justify-content: space-between;
 }
 .autocomplete,
-.autocompletetext {
+.autocompletetext,
+.Autocomplete {
   /*the container must be positioned relative:*/
   position: relative;
   display: inline-block;
