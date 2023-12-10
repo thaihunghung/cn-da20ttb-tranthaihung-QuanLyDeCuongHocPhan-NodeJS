@@ -52,7 +52,7 @@ span {
 .display-flex {
     display: flex;
     flex-direction: row;
-    background-color: #f5f5f5;
+   
 }
 .hungtext {
   display: flex;
@@ -66,6 +66,12 @@ span {
     display: flex;
     flex-direction: row;
     align-items: center;
+    justify-content:flex-end;
+}
+.flex-row-text {
+    display: flex;
+    justify-content: flex-start;
+    flex: 1;
 }
 .flex-column {
     display: flex;

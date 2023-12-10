@@ -16,6 +16,7 @@
             // Lấy văn bản phía sau
             textAfterCursor = range.startContainer.textContent.slice(cursorPosition);
         }
+        
         if (document.activeElement === huntranDiv) {
             if (event.key === ' ') {
                 var huntran = document.getElementById(currentID);
@@ -41,8 +42,24 @@
                 textDiv.addEventListener('blur', function () {
                     huntranDiv.contentEditable = true;
                 });
+            } else if (event.key === 'Tab') {
+                event.preventDefault();
+                var huntran = document.getElementById(currentID);
+                //console.log(textBeforeCursor)
+                // Tạo một phạm vi từ vị trí con trỏ
+                var newRange = document.createRange();
+                newRange.setStart(range.startContainer, cursorPosition);
+                newRange.setEnd(range.startContainer, cursorPosition);
+                var newContent = document.createElement('span');
+              
+                
+                newContent.innerHTML = '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;';
+                newRange.insertNode(newContent);
+            
+                FocusToEnd(newContent);
             }
         }
+        
     }
     // In mảng ra console để kiểm tra
     function Autocomplete(inp, arr, id) {
@@ -135,6 +152,7 @@
                         var newSpan = document.createElement('span');
                         newSpan.innerHTML = '&nbsp;';
                         range.insertNode(newSpan);
+                        FocusToEnd(newSpan);
                     }
                     id.contentEditable = true;
                 }
@@ -154,8 +172,8 @@
                         id.contentEditable = true;
                     }
                 }
-            }
-        });
+            } 
+        })
         function removeAutocompleteContainer() {
             var autocompleteContainer = document.querySelector('.Autocomplete');
 
@@ -201,7 +219,7 @@
                     range.selectNode(childrenDiv);
                     removeAutocompleteContainer()
                     var newSpan = document.createElement('span');
-                    newSpan.innerHTML = '&nbsp;' + childrenDiv.textContent;
+                    newSpan.innerHTML = childrenDiv.textContent;
                     range.insertNode(newSpan);
                 }
             }

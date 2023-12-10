@@ -47,9 +47,9 @@
         
         var rowHTML = `
             <td id="Chuong${chuongRows.length}.1" class="body-5-course-content-255_55pt">
-                <div contenteditable="true" class="table-5-course-content-p text-left TenChuong STT_CHUONG" id="hungdeptrai${chuongRows.length}" onkeydown="handleKeyPress('hungdeptrai${chuongRows.length}',event)">
-                    Các khái niệm cơ bản về xác suất
-                </div>
+                <strong><div contenteditable="true" class="table-5-course-content-p text-left TenChuong STT_CHUONG" id="hungdeptrai${chuongRows.length}" onkeydown="handleKeyPress('hungdeptrai${chuongRows.length}',event)">
+                    [Tên chương]
+                </div></strong>
             </td>
             <td id="Chuong${chuongRows.length}.2" class="body-5-course-content-71_8pt">
                 <div class="dropdown" id="dropdown-CDR_HocPhan${chuongRows.length}">
@@ -100,7 +100,7 @@
         var innerHTML_DetailRow = `
             <td class="body-5-content-course-content-255_55pt">
                 <p class="table-5-course-content-p text-justify" contenteditable="true" onkeydown="handleKeyPress('CTC${chuongRows.length}.1',event)"
-                    id="CTC${chuongRows.length}.1" class="STT_CTC${chuongRows.length}">${chuongRows.length}.1</span>
+                    id="CTC${chuongRows.length}.1" class="STT_CTC${chuongRows.length}">${chuongRows.length}.1.&nbsp;[Chi tiết chương]</span>
                 </p>
             </td>
             <td class="body-5-content-course-content-71_8pt">
@@ -148,7 +148,7 @@
         var innerHTML_DetailRow = `
             <td class="body-5-content-course-content-255_55pt">
                 <p class="table-5-course-content-p text-justify" contenteditable="true" onkeydown="handleKeyPress('CTC${index}.${stemp2}',event)"
-                    id="CTC${index}.${stemp2}" class="STT_CTC${index}">${index}.${stemp2}.&nbsp;</span>
+                    id="CTC${index}.${stemp2}" class="STT_CTC${index}">${index}.${stemp2}.&nbsp;[Chi tiết chương]</span>
                 </p>
             </td>
             <td class="body-5-content-course-content-71_8pt">

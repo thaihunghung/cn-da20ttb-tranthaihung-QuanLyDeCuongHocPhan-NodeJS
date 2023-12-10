@@ -162,9 +162,9 @@
                 <p><strong><em><span>Đối tượng học</span></em><span>: &nbsp; &nbsp; &nbsp;&nbsp;</span></strong></p>
                 <p>Trình độ đào tạo:&nbsp;<span contenteditable="true" id="TrinhDo_DT">Đại học</span></p>
                 <p>Ngành:&nbsp;<span contenteditable="true" id="Nganh">Công nghệ Thông tin</span></p>
-                <p><span>Chuyên ngành:&nbsp;<span contenteditable="true" id="ChuyenNganh">
+                <div><span>Chuyên ngành:&nbsp;<span contenteditable="true" id="ChuyenNganh">
                             &hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;.
-                        </span>(nếu có)</span></p>
+                        </span>(nếu có)</span></div>
                 <p class="display-flex">
  
                 <div class="dropdown" id="dropdown-HocKy">
@@ -236,7 +236,7 @@
                             <td class="header-1-general-information-2">Về kiến thức:</td>
                             <td class="body-1-general-colspan-2">
                                 <div contenteditable="true" id="KienThuc" onkeydown="handleKeyPress('KienThuc',event)">
-                                    -&nbsp;Kiến thức toán học phổ
+                                   Kiến thức toán học phổ
                                     thông
                                 </div>
                             </td>
@@ -244,11 +244,11 @@
                         <tr>
                             <td class="header-1-general-information-2">Về kỹ năng:</td>
 
-                            <td class="body-1-general-colspan-2 section-content text-justify">
-                                <div class="section-content" contenteditable="true" id="KyNang" onkeydown="handleKeyPress('KyNang',event)">
-                                -&nbsp;Kỹ năng phân tích, giải quyết vấn đề <br>
-                                -&nbsp;Kỹ năng tập trung, ghi nhớ, tính toán, biến đổi
-                                </div>       
+                            <td class="body-1-general-colspan-2 section-content text-left" contenteditable="true" id="KyNang" onkeydown="handleKeyPress('KyNang',event)">
+                               
+                                <div>&nbsp;&nbsp;-&nbsp;&nbsp;Kỹ năng phân tích, giải quyết vấn đề</div>
+                               <div>&nbsp;&nbsp;-&nbsp;&nbsp;Kỹ năng tập trung, ghi nhớ, tính toán, biến đổi</div>
+                               
                             </td>
                             {{!-- <p><span contenteditable="true">
 
@@ -258,10 +258,8 @@
                         </tr>
                         <tr>
                             <td class="header-1-general-information-2">Về thái độ:</td>
-                            <td class="body-1-general-colspan-2 text-justify" id="ThaiDo" contenteditable="true">
-                                <p contenteditable="true" id="ThaiDo=1">
-                                    -&nbsp;Chủ động trong học tập
-                                </p>
+                            <td class="body-1-general-colspan-2 text-left"  contenteditable="true" id="ThaiDo" onkeydown="handleKeyPress('ThaiDo',event)">
+                                Chủ động trong học tập
                             </td>
                         </tr>
                     </tbody>
@@ -580,7 +578,7 @@
 
 
 
-                            {{>all_Autocomplete}}
+                            
                     <p class="section-content">&nbsp;</p>
                 </div>
                 <p class="section-content"><strong><span>4. Chuẩn đầu ra của học phần (Course learning
@@ -1240,11 +1238,11 @@
                     <p class="section-content"><strong><span>6. Phương pháp dạy và học (Teaching and learning
                                 methods):</span></strong></p>
                     <div id="TenPP" class="section-content" contenteditable="true" onkeydown="handleKeyPress('TenPP',event)">
-                        &nbsp;- Diễn giảng <br>
-                        &nbsp;- Vấn đáp (Questions – Answers)<br>
-                        &nbsp;- Hoạt động nhóm (Group-based Learning)<br>
-                        &nbsp;- Học dựa trên dự án (Project-based Learning)<br>
-                        &nbsp;- Thao tác mẫu (Demo)
+                        &nbsp;&nbsp;-&nbsp;&nbsp;Diễn giảng <br>
+                        &nbsp;&nbsp;-&nbsp;&nbsp;Vấn đáp (Questions – Answers)<br>
+                        &nbsp;&nbsp;-&nbsp;&nbsp;Hoạt động nhóm (Group-based Learning)<br>
+                        &nbsp;&nbsp;-&nbsp;&nbsp;Học dựa trên dự án (Project-based Learning)<br>
+                        &nbsp;&nbsp;-&nbsp;&nbsp;Thao tác mẫu (Demo)
                         
                     </div>
                     <p class="section-content">&nbsp;</p>
@@ -1587,10 +1585,10 @@
                     
                     <div id="QD_TD" contenteditable="true" onkeydown="handleKeyPress('QD_TD',event)">
                       
-                        &nbsp;●&nbsp;Sinh viên có trách nhiệm tham dự đầy đủ các buổi học.Trong trường hợp phải
+                        &nbsp;&nbsp;●&nbsp;&nbsp;Sinh viên có trách nhiệm tham dự đầy đủ các buổi học.Trong trường hợp phải
                         nghỉ học vì lý do bất khả kháng thì phải có giấy tờ chứng minh đầy đủ và hợp lý.
-
-                        &nbsp;●&nbsp;Sinh viên vắng quá 20% số giờ dự giảng của học phần bị xem như không hoàn
+<br>
+                        &nbsp;&nbsp;●&nbsp;&nbsp;Sinh viên vắng quá 20% số giờ dự giảng của học phần bị xem như không hoàn
                         thành học phần và phải đăng ký học lại vào học kỳ sau. Những trường hợp khác phải do Ban
                         Giám hiệu hoặc Trưởng khoa quyết định
 
@@ -1599,11 +1597,11 @@
                     <p class="section-content"><strong><span>8.2. Quy định về hành vi trong lớp học</span></strong></p>
                     <div id="QD_HV" contenteditable="true" onkeydown="handleKeyPress('QD_HV',event)">
                     
-                                &nbsp;●&nbsp;Sinh viên có trách nhiệm tham dự đầy đủ các buổi học. Trong trường hợp phải
+                                &nbsp;&nbsp;●&nbsp;&nbsp;Sinh viên có trách nhiệm tham dự đầy đủ các buổi học. Trong trường hợp phải
                                 nghỉ học vì lý do bất khả kháng thì phải có giấy tờ chứng minh đầy đủ và hợp lý.</span>
                     
-               
-                                &nbsp;●&nbsp;Sinh viên vắng quá 20% số giờ dự giảng của học phần bị xem như không hoàn
+               <br>
+                                &nbsp;&nbsp;●&nbsp;&nbsp;Sinh viên vắng quá 20% số giờ dự giảng của học phần bị xem như không hoàn
                                 thành học phần và phải đăng ký học lại vào học kỳ sau. Những trường hợp khác phải do Ban
                                 Giám hiệu hoặc Trưởng khoa quyết định
                     </div>
@@ -1611,11 +1609,11 @@
                     <p class="section-content"><strong><span>8.3. Quy định về học vụ</span></strong></p>
                     <div id="QD_HVu" contenteditable="true" onkeydown="handleKeyPress('QD_HVu',event)">
                         
-                                &nbsp;●&nbsp;Sinh viên có trách nhiệm tham dự đầy đủ các buổi học. Trong trường hợp phải
-                                nghỉ học vì lý do bất khả kháng thì phải có giấy tờ chứng minh đầy đủ và hợp lý.</span>
+                                &nbsp;&nbsp;●&nbsp;&nbsp;Sinh viên có trách nhiệm tham dự đầy đủ các buổi học. Trong trường hợp phải
+                                nghỉ học vì lý do bất khả kháng thì phải có giấy tờ chứng minh đầy đủ và hợp lý.
                         
-            
-                                &nbsp;●&nbsp;Sinh viên vắng quá 20% số giờ dự giảng của học phần bị xem như không hoàn
+            <br>
+                                &nbsp;&nbsp;●&nbsp;&nbsp;Sinh viên vắng quá 20% số giờ dự giảng của học phần bị xem như không hoàn
                                 thành học phần và phải đăng ký học lại vào học kỳ sau. Những trường hợp khác phải do Ban
                                 Giám hiệu hoặc Trưởng khoa quyết định
                     </div>
@@ -1808,7 +1806,7 @@
         console.log(giaotrinhData);
     }
 </script>
-
+{{>all_Autocomplete}}
 {{>Autocomplete}}
 {{>ChangeDropdownText}}
 {{>CleanUpDataPost}}

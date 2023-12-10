@@ -8,13 +8,10 @@
                 var newSpan = document.createElement('span');
                 newSpan.contentEditable = true;
                 newSpan.id = key + "-" + index.toString();
-                newSpan.innerHTML = '&nbsp;-&nbsp;';
-                if (key === 'TenPP') {
-                    newParagraph.className = 'section-content';
-                }
+                newSpan.innerHTML = '&nbsp;&nbsp;-&nbsp;&nbsp;';
+               
                 if (key === 'QD_TD' || key === 'QD_HV' || key === 'QD_HVu') {
-                    newParagraph.className = 'section-content Thut-dau-dong';
-                    newSpan.innerHTML = '&nbsp;●&nbsp;';
+                newSpan.innerHTML = '&nbsp;&nbsp;●&nbsp;&nbsp;';
                 }
                 newParagraph.appendChild(newSpan);
                 this.appendChild(newParagraph);
