@@ -38,117 +38,98 @@
         newHeaderRow.className = "Chuong";
 
         //tạo các mảng để chứa các class css
+
+        var stempIndex = 1 ;
         var classNameHeaderRows = ["body-5-course-content-255_55pt", "body-5-course-content-71_8pt", "body-5-course-content-44_85pt", "body-content--course-content-40_4pt", "body-5-course-content-55_85pt"];
         var classNameDetailRows = ["body-5-content-course-content-255_55pt", "body-5-content-course-content-71_8pt", "body-5-content-course-content-44_85pt", "body-content--course-content-40_4pt", "body-5-course-content-55_85pt"];
         var classNameFooterRows = ["footer-5-course-content-255_55pt", "footer-5-course-content-212_9pt"];
-        for (var i = 0; i < classNameHeaderRows.length; i++) {
-            var newHeaderCell = newHeaderRow.insertCell(i);
-            newHeaderCell.id = newChuongId + "." + (i + 1);
-            newHeaderCell.className = classNameHeaderRows[i];
-            newHeaderCell.contentEditable = true;
+        
+        
+        var rowHTML = `
+            <td id="Chuong${chuongRows.length}.1" class="body-5-course-content-255_55pt">
+                <div contenteditable="true" class="table-5-course-content-p text-left TenChuong STT_CHUONG" id="hungdeptrai${chuongRows.length}" onkeydown="handleKeyPress('hungdeptrai${chuongRows.length}',event)">
+                    Các khái niệm cơ bản về xác suất
+                </div>
+            </td>
+            <td id="Chuong${chuongRows.length}.2" class="body-5-course-content-71_8pt">
+                <div class="dropdown" id="dropdown-CDR_HocPhan${chuongRows.length}">
+                    <p class="header-5-course-content-p text-center">
+                        <strong><span contenteditable="true" class="CDR_HocPhan" id="CDR_HocPhan${chuongRows.length}">
+                            1, 2, 3</span></strong>
+                    </p>
+                    <ul class="dropdown-content-5">
+                        <li onclick="updateValue('CDR_HocPhan${chuongRows.length}', '1','CDR')">1</li>
+                        <li onclick="updateValue('CDR_HocPhan${chuongRows.length}', '2','CDR')">2</li>
+                        <li onclick="updateValue('CDR_HocPhan${chuongRows.length}', '3','CDR')">3</li>
+                    </ul>
+                </div>
+            </td>
+            <td id="Chuong${chuongRows.length}.3" class="body-5-course-content-44_85pt">
+                <p class="header-5-course-content-p text-center"><strong><span
+                    contenteditable="true" class="GioLyThuyet">5</span></strong></p>
+            </td>
+            <td id="Chuong${chuongRows.length}.4" class="body-5-course-content-40_4pt">
+                <p class="header-5-course-content-p text-center"><strong><span
+                    contenteditable="true" class="GiothucHanh">5</span></strong></p>
+            </td>
+            <td id="Chuong${chuongRows.length}.5" class="body-5-course-content-55_85pt">
+                <p class="header-5-course-content-p text-center"><strong><span
+                    contenteditable="true" class="SoGioTuHoc">5</span></strong></p>
+            </td>
+        `;
+        newHeaderRow.innerHTML = rowHTML
 
-            if (i === 0) {
-                var newParagraph = document.createElement("p");
-                newParagraph.className = 'header-5-course-content-p text-left';
-                var newStrong = document.createElement("strong");
-                var newSpan = document.createElement("span");
-                newSpan.className = "TenChuong STT_CHUONG"
-            }
-
-            if (i === 1) {
-                var newParagraph = document.createElement("p");
-                newParagraph.className = 'header-5-course-content-p text-center';
-                var newStrong = document.createElement("strong");
-                var newSpan = document.createElement("span");
-                newSpan.textContent = '1';
-                newSpan.className = 'CDR_HocPhan';
-            } else if (i === 2) {
-                var newParagraph = document.createElement("p");
-                newParagraph.className = 'header-5-course-content-p text-center';
-                var newStrong = document.createElement("strong");
-                var newSpan = document.createElement("span");
-                newSpan.textContent = '1';
-                newSpan.className = 'GioLyThuyet';
-            } else if (i === 3) {
-                var newParagraph = document.createElement("p");
-                newParagraph.className = 'header-5-course-content-p text-center';
-                var newStrong = document.createElement("strong");
-                var newSpan = document.createElement("span");
-                newSpan.textContent = "1";
-                newSpan.className = 'GiothucHanh';
-            } else if (i === 4) {
-                var newParagraph = document.createElement("p");
-                newParagraph.className = 'header-5-course-content-p text-center';
-                var newStrong = document.createElement("strong");
-                var newSpan = document.createElement("span");
-                newSpan.textContent = "1";
-                newSpan.className = 'SoGioTuHoc';
-            }
-            
-            newStrong.appendChild(newSpan);
-            newParagraph.appendChild(newStrong);
-            newHeaderCell.appendChild(newParagraph);
-        }
         var stempindexbutton = (chuongRows.length);
         var indexbutton = document.getElementById('instructionForm-table5-CTC')
+
         var newButton = document.createElement("button");
         newButton.onclick = function () {
             themChiTietChuong(stempindexbutton);
         };
         newButton.className = "btn btn-secondary Chitiet"
         newButton.id = "ctc" + stempindexbutton
+
         newButton.innerHTML = "+ Thêm chi tiết chương " + stempindexbutton;
         indexbutton.appendChild(newButton);
+
         var newDetailRow = table.insertRow(table.rows.length);
+
         newDetailRow.className = newClassCTC;
         newDetailRow.id = "allowDeletion";
-        for (var i = 0; i < classNameDetailRows.length; i++) {
+        
+        var innerHTML_DetailRow = `
+            <td class="body-5-content-course-content-255_55pt">
+                <p class="table-5-course-content-p text-justify" contenteditable="true" onkeydown="handleKeyPress('CTC${chuongRows.length}.1',event)"
+                    id="CTC${chuongRows.length}.1" class="STT_CTC${chuongRows.length}">${chuongRows.length}.1</span>
+                </p>
+            </td>
+            <td class="body-5-content-course-content-71_8pt">
+                <p class="table-5-course-content-p text-justify"><span>&nbsp;</span></p>
+            </td>
+            <td class="body-5-content-course-content-44_85pt">
+                <p class="table-5-course-content-p text-justify"><span>&nbsp;</span></p>
+            </td>
+            <td class="body-content--course-content-40_4pt">
+                <p class="table-5-course-content-p text-justify"><span>&nbsp;</span></p>
+            </td>
+            <td class="body-5-course-content-55_85pt">
+                <p class="table-5-course-content-p text-justify"><span>&nbsp;</span></p>
+            </td>
+        `;
+        newDetailRow.innerHTML = innerHTML_DetailRow
 
-            var newDetailCell = newDetailRow.insertCell(i);
-            newDetailCell.contentEditable = true;
-            newDetailCell.className = classNameDetailRows[i];
-            var newParagraph = document.createElement("p");
-            newParagraph.className = 'header-5-course-content-p text-justify';
-            var newSpan = document.createElement("span");
-            var temp = (chuongRows.length);
-            var ctc = document.getElementsByClassName("ChiTietChuong" + temp)
-
-            var temp2 = ctc.length;
-            if (i === 0) {
-                newSpan.innerHTML = temp + '.' + temp2 + '.&nbsp;';
-                newSpan.id = 'CTC' + temp + '.' + temp2;
-                newSpan.className = "STT_CTC" + temp;
-                // {{!-- newDetailCell.textContent = temp + "." + temp2;
-                // newDetailCell.id = "CTC" + temp + "." + temp2; --}}
-            }
-            newParagraph.appendChild(newSpan);
-            newDetailCell.appendChild(newParagraph);
-        }
         var FooterRow = table.insertRow(table.rows.length);
         FooterRow.id = footerChuongId;
-
-        for (var i = 0; i < classNameFooterRows.length; i++) {
-            var newFooterCell = FooterRow.insertCell(i);
-            newFooterCell.className = classNameFooterRows[i];
-            var newParagraph = document.createElement("p");
-            if (i === 0) {
-                var newEm = document.createElement("em");
-                var newSpan = document.createElement("span");
-                newSpan.textContent = "Kỹ năng mềm và thái độ";
-                newEm.appendChild(newSpan);
-                newParagraph.appendChild(newEm);
-            }
-            if (i === 1) {
-                newFooterCell.colSpan = 4;
-            }
-            if (i === 1) {
-                var editableSpan = document.createElement("span");
-                editableSpan.contentEditable = true;
-                editableSpan.class = "KyNangMem";
-                newParagraph.appendChild(editableSpan);
-            }
-            newFooterCell.appendChild(newParagraph);
-        }
+        var innerHTML_FooterRow = `
+            <td class="footer-5-course-content-255_55pt">
+                <p class="text-justify"><em><span>Kỹ năng mềm và thái độ</span></em></p>
+            </td>
+            <td colspan="4" class="footer-5-course-content-212_9pt">
+                <div class="table-5-course-content-p text-justify" contenteditable="true"
+                    class="KyNangMem">9</span></div>
+            </td>
+        `;
+        FooterRow.innerHTML = innerHTML_FooterRow
         UpdateSTTskill()
     }
 
@@ -161,45 +142,59 @@
         newDetailRow.className = "ChiTietChuong" + index;
         newDetailRow.id = "allowDeletion"
         var h = await document.getElementsByClassName("ChiTietChuong" + index);
+        var stemp2 = (h.length + 1)
         var chuong1Row = document.getElementById("Chuong" + index);
         // Tạo các ô mới dựa trên số lượng ô trong dòng cuối cùng của "Chuong1"
-        for (var i = 0; i < chuong1Row.children.length; i++) {
-            var newCell = document.createElement('td');
-            newCell.className = classNameDetailRows[i];
-            newCell.contentEditable = true;
-            var newParagraph = document.createElement("p");
-            newParagraph.className = 'header-5-course-content-p text-left';
+        var innerHTML_DetailRow = `
+            <td class="body-5-content-course-content-255_55pt">
+                <p class="table-5-course-content-p text-justify" contenteditable="true" onkeydown="handleKeyPress('CTC${index}.${stemp2}',event)"
+                    id="CTC${index}.${stemp2}" class="STT_CTC${index}">${index}.${stemp2}.&nbsp;</span>
+                </p>
+            </td>
+            <td class="body-5-content-course-content-71_8pt">
+                <p class="table-5-course-content-p text-justify"><span>&nbsp;</span></p>
+            </td>
+            <td class="body-5-content-course-content-44_85pt">
+                <p class="table-5-course-content-p text-justify"><span>&nbsp;</span></p>
+            </td>
+            <td class="body-content--course-content-40_4pt">
+                <p class="table-5-course-content-p text-justify"><span>&nbsp;</span></p>
+            </td>
+            <td class="body-5-course-content-55_85pt">
+                <p class="table-5-course-content-p text-justify"><span>&nbsp;</span></p>
+            </td>
+        `;
 
-            var newSpan = document.createElement("span");
-            var stemp2 = (h.length + 1)
-
-            if (i === 0) {
-                // Cập nhật giá trị của newSpan.id chỉ khi i là 0 (đầu tiên)
-                newSpan.innerHTML = index + "." + stemp2 + '.&nbsp;';
-                newSpan.id = "CTC" + index + "." + stemp2;
-                newSpan.className = "STT_CTC" + index;
-            }
-            newParagraph.appendChild(newSpan);
-            newCell.appendChild(newParagraph);
-            newDetailRow.appendChild(newCell);
-        }
-
+        newDetailRow.innerHTML = innerHTML_DetailRow;
         // Thêm tr vào tbody trước tr có id là "CuoiChuong1"
         tbody.insertBefore(newDetailRow, document.getElementById("CuoiChuong" + index));
     }
 
-</script>
-<script>
     function UpdateSTTskill() {
         var rows = document.querySelectorAll('.Chuong');
-
         rows.forEach((row, index) => {
             var sttElements = row.querySelectorAll('.STT_CHUONG');
             //lấy chuỗi từ 9 tương đương với Chuong1." "
             sttElements.forEach((sttElement, sttIndex) => {
                 sttElement.innerHTML = "Chương&nbsp;" + (index * sttElements.length + sttIndex + 1) + ".&nbsp;" + sttElement.textContent.substring(10);
             });
+        }); //dropdown-content-chuong dropdown-content-chuong
+        var ul_DG7 = document.querySelectorAll('.dropdown-content-chuong');
+        var chuongContent =document.getElementsByClassName('Chuong').length;
+
+        ul_DG7.forEach(function (ulElement, index) {
+            ulElement.innerHTML = '';
+            var hung = [];
+            for (var i = 1; i <= chuongContent; i++) {
+                hung.push(`
+                    <li onclick="updateValue('DG${(index + 1)}','Chương ${i}', 'TUA')">
+                    Chương ${i}
+                    </li>
+                `);
+            }
+            ulElement.innerHTML = hung.join('');
         });
+
     }
 
     function UpdateSTTskill_CTC(i) {
@@ -377,6 +372,5 @@
             // console.log('CuoiChuong' + index + ' element not found');
         }
     }
-
 </script>
 {{>StringID}}

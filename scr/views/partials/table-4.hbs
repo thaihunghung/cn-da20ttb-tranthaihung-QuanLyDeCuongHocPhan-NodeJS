@@ -9,36 +9,47 @@
       var stemp = await (CountclassKyNangKT.length + 1)
       newRow.className = "KyNang KyNangKT"
       newRow.id = "KyNangKT" + stemp;
-      var newth = document.createElement("th");
-      newth.className = className[0] + " section-content text-left";
-      newth.contentEditable = true;
-      newRow.appendChild(newth);
-      for (let i = 1; i <= 4; i++) {
-        var cell = document.createElement("td");
-        cell.className = className[i];
-        var p = document.createElement("p");
-        p.className = "section-content";
-        var span = document.createElement("span");
-        span.contentEditable = true;
 
-        if (i === 1) {
-          span.id = 'KT_ND_' + stemp;
-          span.class = 'KT';
-        } else if (i === 2) {
-          span.id = 'KT_DUPO_' + stemp;
-          span.class = 'KT';
-        } else if (i === 3) {
-          span.id = 'KT_TD_' + stemp;
-          span.class = 'KT';
-        } else {
-          span.id = 'KT_TUA_' + stemp;
-          span.class = 'KT';
-        }
-        p.appendChild(span);
-        cell.appendChild(p);
-        newRow.appendChild(cell);
-      }
+      var newRowHTML = `
+          <th class="content-4-learning-outcomes-1 section-content text-left stt" contenteditable="true">${stemp}</th>
+          <td class="content-4-learning-outcomes-2">
+              <div class="section-content KT" id="KT_ND_${stemp}" contenteditable="true" onkeydown="handleKeyPress('KT_ND_${stemp}',event)"> 
+                  Trình bày các khái niệm cơ bản về xác suất
+              </div>  
+          </td>
+          <td class="content-4-learning-outcomes-3">
+              <div class="dropdown" id="dropdown-KT_DUPO_${stemp}">
+                  <p class="section-content"> <span contenteditable="true" id="KT_DUPO_${stemp}" class="KT">PLO1</span></p>
+                  <ul class="dropdown-content">
+                      <li onclick="updateValue('KT_DUPO_${stemp}', 'PLO1','DUPO')">PLO1</li>
+                      <li onclick="updateValue('KT_DUPO_${stemp}', 'PLO2','DUPO')">PLO2</li>
+                      <li onclick="updateValue('KT_DUPO_${stemp}', 'PLO3','DUPO')">PLO3</li>
+                      <li onclick="updateValue('KT_DUPO_${stemp}', 'PLO4','DUPO')">PLO4</li>
+                      <li onclick="updateValue('KT_DUPO_${stemp}', 'PLO5','DUPO')">PLO5</li>
+                      <li onclick="updateValue('KT_DUPO_${stemp}', 'PLO6','DUPO')">PLO6</li>
+                      <li onclick="updateValue('KT_DUPO_${stemp}', 'PLO7','DUPO')">PLO7</li>
+                      <li onclick="updateValue('KT_DUPO_${stemp}', 'PLO8','DUPO')">PLO8</li>
+                      <li onclick="updateValue('KT_DUPO_${stemp}', 'PLO9','DUPO')">PLO9</li>
+                      <li onclick="updateValue('KT_DUPO_${stemp}', 'PLO10','DUPO')">PLO10</li>
+                  </ul>
+              </div>
+          </td>
+          <td class="content-4-learning-outcomes-4">
+              <p class="section-content text-center"><span contenteditable="true" id="KT_TD_${stemp}" class="KT">2</span></p>
+          </td>
+          <td class="content-4-learning-outcomes-5">
+              <div class="dropdown" id="dropdown-KT_DUPO_${stemp}">
+                  <p class="section-content"><span contenteditable="true" id="KT_TUA_${stemp}" class="KT">TUA</span></p>
+                  <ul class="dropdown-content">
+                      <li onclick="updateValue('KT_TUA_${stemp}', 'TUA','TUA')">TUA</li>
+                      <li onclick="updateValue('KT_TUA_${stemp}', 'UA','TUA')">UA</li>
+                      <li onclick="updateValue('KT_TUA_${stemp}', 'TA','TUA')">TA</li>
+                  </ul>
+              </div>
+          </td>
+      `;
 
+      newRow.innerHTML = newRowHTML
       var nextRow = document.getElementById("KyNangKN");
       nextRow.parentNode.insertBefore(newRow, nextRow);
       UpdateSTTskill_TB4()
@@ -47,41 +58,48 @@
       var CountclassKyNangKT = document.getElementsByClassName("KyNangKN").length;
       var newRow = document.createElement("tr");
       var stemp = CountclassKyNangKT + 1
-      newRow.id = "KyNangKN"+stemp
-      
+      newRow.id = "KyNangKN" + stemp
       newRow.className = "KyNang KyNangKN";
-      var newth = document.createElement("th");
-      newth.className = className[0] + " section-content text-left";
-      newth.contentEditable = true;
-      newRow.appendChild(newth);
 
-      for (let i = 1; i <= 4; i++) {
-        var cell = document.createElement("td");
-        cell.className = className[i];
-        var p = document.createElement("p");
-        p.className = "section-content";
-        var span = document.createElement("span");
-        span.contentEditable = true;
-        if (i === 1) {
-          span.id = 'KN_ND_' + stemp;
-          span.class = 'KN';
-        } else if (i === 2) {
-          span.id = 'KN_DUPO_' + stemp;
-          span.class = 'KN';
-        } else if (i === 3) {
-          span.id = 'KN_TD_' + stemp;
-          span.class = 'KN';
-        } else {
-          span.id = 'KN_TUA_' + stemp;
-          span.class = 'KN';
-        }
-
-
-        p.appendChild(span);
-        cell.appendChild(p);
-        newRow.appendChild(cell);
-      }
-
+      var newRowHTML = `
+            <th class="content-4-learning-outcomes-1 section-content text-left" contenteditable="true">${stemp}</th>
+            <td class="content-4-learning-outcomes-2">
+                <div class="section-content KN" id="KN_ND_${stemp}" contenteditable="true" onkeydown="handleKeyPress('KN_ND_${stemp}',event)"> 
+                    Trình bày các khái niệm cơ bản về xác suất
+                </div>                        
+            </td>
+            <td class="content-4-learning-outcomes-3">
+                <div class="dropdown" id="dropdown-KN_DUPO_${stemp}">
+                    <p class="section-content"> <span contenteditable="true" id="KN_DUPO_${stemp}" class="KN">PLO1</span></p>
+                    <ul class="dropdown-content">
+                        <li onclick="updateValue('KN_DUPO_${stemp}', 'PLO1','DUPO')">PLO1</li>
+                        <li onclick="updateValue('KN_DUPO_${stemp}', 'PLO2','DUPO')">PLO2</li>
+                        <li onclick="updateValue('KN_DUPO_${stemp}', 'PLO3','DUPO')">PLO3</li>
+                        <li onclick="updateValue('KN_DUPO_${stemp}', 'PLO4','DUPO')">PLO4</li>
+                        <li onclick="updateValue('KN_DUPO_${stemp}', 'PLO5','DUPO')">PLO5</li>
+                        <li onclick="updateValue('KN_DUPO_${stemp}', 'PLO6','DUPO')">PLO6</li>
+                        <li onclick="updateValue('KN_DUPO_${stemp}', 'PLO7','DUPO')">PLO7</li>
+                        <li onclick="updateValue('KN_DUPO_${stemp}', 'PLO8','DUPO')">PLO8</li>
+                        <li onclick="updateValue('KN_DUPO_${stemp}', 'PLO9','DUPO')">PLO9</li>
+                        <li onclick="updateValue('KN_DUPO_${stemp}', 'PLO10','DUPO')">PLO10</li>
+                    </ul>
+                </div>
+            </td>
+            <td class="content-4-learning-outcomes-4">
+                <p class="section-content text-center"><span contenteditable="true" id="KN_TD_${stemp}" class="KN">2</span></p>
+            </td>
+            <td class="content-4-learning-outcomes-5">
+                <div class="dropdown" id="dropdown-KN_DUPO_${stemp}">
+                    <p class="section-content"><span contenteditable="true" id="KN_TUA_${stemp}" class="KN">TUA</span></p>
+                    <ul class="dropdown-content">
+                        <li onclick="updateValue('KN_TUA_${stemp}', 'TUA','TUA')">TUA</li>
+                        <li onclick="updateValue('KN_TUA_${stemp}', 'UA','TUA')">UA</li>
+                        <li onclick="updateValue('KN_TUA_${stemp}', 'TA','TUA')">TA</li>
+                    </ul>
+                </div>
+            </td>
+        `;
+      newRow.innerHTML = newRowHTML
       var nextRow = document.getElementById("KyNangTD");
       nextRow.parentNode.insertBefore(newRow, nextRow);
       UpdateSTTskill_TB4()
@@ -92,37 +110,48 @@
       var newRow = document.createElement("tr");
       var stemp = CountclassKyNangTD + 1;
 
-      newRow.className = "KyNang KyNangTD" 
+      newRow.className = "KyNang KyNangTD"
       newRow.id = "KyNangTD" + stemp;
 
-      var newth = document.createElement("th");
-      newth.className = className[0] + " section-content text-left";
-      newth.contentEditable = true;
-      newRow.appendChild(newth);
-      for (let i = 1; i <= 4; i++) {
-        var cell = document.createElement("td");
-        cell.className = className[i];
-        var p = document.createElement("p");
-        p.className = "section-content";
-        var span = document.createElement("span");
-        span.contentEditable = true;
-        if (i === 1) {
-          span.id = 'TD_ND_' + stemp;
-          span.class = 'TD';
-        } else if (i === 2) {
-          span.id = 'TD_DUPO_' + stemp;
-          span.class = 'TD';
-        } else if (i === 3) {
-          span.id = 'TD_TD_' + stemp;
-          span.class = 'TD';
-        } else {
-          span.id = 'TD_TUA_' + stemp;
-          span.class = 'TD';
-        }
-        p.appendChild(span);
-        cell.appendChild(p);
-        newRow.appendChild(cell);
-      }
+      var newRowHTML = `
+          <th class="content-4-learning-outcomes-1 section-content text-left" contenteditable="true">${stemp}</th>
+          <td class="content-4-learning-outcomes-2"> 
+              <div class="section-content TD" id="TD_ND_${stemp}" contenteditable="true" onkeydown="handleKeyPress('TD_ND_${stemp}',event)"> 
+                  Trình bày các khái niệm cơ bản về xác suất
+              </div>
+          </td>
+          <td class="content-4-learning-outcomes-3">
+              <div class="dropdown" id="dropdown-TD_DUPO_${stemp}">
+                  <p class="section-content"> <span contenteditable="true" id="TD_DUPO_${stemp}" class="TD">PLO1</span></p>
+                  <ul class="dropdown-content">
+                      <li onclick="updateValue('TD_DUPO_${stemp}', 'PLO1','DUPO')">PLO1</li>
+                      <li onclick="updateValue('TD_DUPO_${stemp}', 'PLO2','DUPO')">PLO2</li>
+                      <li onclick="updateValue('TD_DUPO_${stemp}', 'PLO3','DUPO')">PLO3</li>
+                      <li onclick="updateValue('TD_DUPO_${stemp}', 'PLO4','DUPO')">PLO4</li>
+                      <li onclick="updateValue('TD_DUPO_${stemp}', 'PLO5','DUPO')">PLO5</li>
+                      <li onclick="updateValue('TD_DUPO_${stemp}', 'PLO6','DUPO')">PLO6</li>
+                      <li onclick="updateValue('TD_DUPO_${stemp}', 'PLO7','DUPO')">PLO7</li>
+                      <li onclick="updateValue('TD_DUPO_${stemp}', 'PLO8','DUPO')">PLO8</li>
+                      <li onclick="updateValue('TD_DUPO_${stemp}', 'PLO9','DUPO')">PLO9</li>
+                      <li onclick="updateValue('TD_DUPO_${stemp}', 'PLO10','DUPO')">PLO10</li>
+                  </ul>
+              </div>
+          </td>
+          <td class="content-4-learning-outcomes-4">
+              <p class="section-content text-center"><span contenteditable="true" id="TD_TD_${stemp}" class="TD">2</span></p>
+          </td>
+          <td class="content-4-learning-outcomes-5">
+              <div class="dropdown" id="dropdown-TD_DUPO_${stemp}">
+                  <p class="section-content"><span contenteditable="true" id="TD_TUA_${stemp}" class="TD">TUA</span></p>
+                  <ul class="dropdown-content">
+                      <li onclick="updateValue('TD_TUA_${stemp}', 'TUA','TUA')">TUA</li>
+                      <li onclick="updateValue('TD_TUA_${stemp}', 'UA','TUA')">UA</li>
+                      <li onclick="updateValue('TD_TUA_${stemp}', 'TA','TUA')">TA</li>
+                  </ul>
+              </div>
+          </td>
+      `;
+      newRow.innerHTML = newRowHTML
       // Thêm <tr> vào cuối <tbody>
       tbody.appendChild(newRow);
       UpdateSTTskill_TB4()
@@ -132,7 +161,7 @@
   document.getElementById('button_delete_tb4').addEventListener('click', function () {
     const focusedSpan = document.querySelector('.focus');
     if (focusedSpan && focusedSpan.classList.contains('focus')) {
-      const parentTr = focusedSpan.closest('tr[class*="KyNang"]');      
+      const parentTr = focusedSpan.closest('tr[class*="KyNang"]');
       if (parentTr) {
         var parentID = parentTr.id;
         var SoTrongID = parseInt(parentID.match(/\d+/)[0], 10);
@@ -155,54 +184,54 @@
     }
   });
 
-function UpdateAllId_TB4(ChuTrongID, SoTrongID) {
-  const Countallclass = document.getElementsByClassName(ChuTrongID).length;
-  var updateIndex = parseInt(SoTrongID)+1;
-  for (let i = updateIndex; i <= Countallclass+1; i++) {
+  function UpdateAllId_TB4(ChuTrongID, SoTrongID) {
+    const Countallclass = document.getElementsByClassName(ChuTrongID).length;
+    var updateIndex = parseInt(SoTrongID) + 1;
+    for (let i = updateIndex; i <= Countallclass + 1; i++) {
       oneId_TB4(ChuTrongID, i);
     }
-   
-}
 
-function oneId_TB4(ChuTrongID, i) {
-  var key = getKeyWithClass(ChuTrongID);
-  console.log(key);
-  var I = i;
-  console.log(I);
-  var Iupdate = parseInt(I) - 1;
-
-  const ND = document.getElementById(`${key}_ND_${I}`);
-  const DUPO = document.getElementById(`${key}_DUPO_${I}`);
-  const TD = document.getElementById(`${key}_TD_${I}`);
-  const TUA = document.getElementById(`${key}_TUA_${I}`);
-
-  const newNDId = `${key}_ND_${Iupdate}`;
-  const newDUPOId = `${key}_DUPO_${Iupdate}`;
-  const newTDId = `${key}_TD_${Iupdate}`;
-  const newTUAId = `${key}_TUA_${Iupdate}`;
-
-  // Thực hiện thay đổi trực tiếp ID của các phần tử
-  ND.id = newNDId;
-  DUPO.id = newDUPOId;
-  TD.id = newTDId;
-  TUA.id = newTUAId;
-
-  var updateId = document.getElementById(ChuTrongID+i);
-  updateId.id = ChuTrongID + Iupdate;
-  console.log(updateId.id);  
-}
-
-function getKeyWithClass(code) {
-  if (code === 'KyNangKT') {
-    return 'KT';
-  } else if (code === 'KyNangKN') {
-    return 'KN';
-  } else if (code === 'KyNangTD') {
-    return 'TD';
-  } else {
-    return null;
   }
-}
+
+  function oneId_TB4(ChuTrongID, i) {
+    var key = getKeyWithClass(ChuTrongID);
+    console.log(key);
+    var I = i;
+    console.log(I);
+    var Iupdate = parseInt(I) - 1;
+
+    const ND = document.getElementById(`${key}_ND_${I}`);
+    const DUPO = document.getElementById(`${key}_DUPO_${I}`);
+    const TD = document.getElementById(`${key}_TD_${I}`);
+    const TUA = document.getElementById(`${key}_TUA_${I}`);
+
+    const newNDId = `${key}_ND_${Iupdate}`;
+    const newDUPOId = `${key}_DUPO_${Iupdate}`;
+    const newTDId = `${key}_TD_${Iupdate}`;
+    const newTUAId = `${key}_TUA_${Iupdate}`;
+
+    // Thực hiện thay đổi trực tiếp ID của các phần tử
+    ND.id = newNDId;
+    DUPO.id = newDUPOId;
+    TD.id = newTDId;
+    TUA.id = newTUAId;
+
+    var updateId = document.getElementById(ChuTrongID + i);
+    updateId.id = ChuTrongID + Iupdate;
+    console.log(updateId.id);
+  }
+
+  function getKeyWithClass(code) {
+    if (code === 'KyNangKT') {
+      return 'KT';
+    } else if (code === 'KyNangKN') {
+      return 'KN';
+    } else if (code === 'KyNangTD') {
+      return 'TD';
+    } else {
+      return null;
+    }
+  }
 
   function UpdateSTTskill_TB4() {
     var rows = document.querySelectorAll('.KyNang');
@@ -213,5 +242,43 @@ function getKeyWithClass(code) {
         sttElement.textContent = index * sttElements.length + sttIndex + 1;
       });
     });
+
+    //update value dropdown CDR tb5
+
+    var AllCDR = document.getElementsByClassName('content-4-learning-outcomes-1').length;
+    var chuong = document.getElementsByClassName('Chuong').length;
+    var ul_5 = document.querySelectorAll('.dropdown-content-5');
+    
+    ul_5.forEach(function (ulElement,index) {
+      ulElement.innerHTML = '';
+      var hung = [];
+      for (var i = 1; i <= AllCDR; i++) {
+        hung.push(cleanUpString(`
+        <li onclick="updateValue('CDR_HocPhan${(index + 1)}', '${i}', 'CDR')">
+          ${i}
+        </li>
+      `));
+      }
+      
+      ulElement.innerHTML = hung.join('');
+    });
+
+    //update value dropdown CDR tb7_KT7
+    var ul_KT7 = document.querySelectorAll('.dropdown-content-KT7');
+
+      ul_KT7.forEach(function (ulElement, index) {
+        ulElement.innerHTML = '';
+        var hung = [];
+        for (var i = 1; i <= AllCDR; i++) {
+          hung.push(`
+              <li onclick="updateValue('KT${(index + 1)}', '${i}', 'TUA')">
+                ${i}
+              </li>
+            `);
+        }
+        ulElement.innerHTML = hung.join('');
+    });
+
   }
 </script>
+{{>StringID}}
