@@ -1,37 +1,77 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light" style="background-color: var(--color-white);">
-  <a class="navbar-brand" href=""><i class="fa-solid fa-house"></i></a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
+<style>
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 
-  <div class="collapse navbar-collapse" id="navbarSupportedContent">
-    <ul class="navbar-nav mr-auto">
-      <li class="nav-item active">
-        <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
-      </li>
-      <li class="nav-item">
-        
-        <a class="nav-link" href="/project/Create">Create</a>
-      </li>
-      <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="/test/XuatNhieuChuong" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          Dropdown
-        </a>
-        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" href="/monhoc/create">Action</a>
-          <a class="dropdown-item" href="#">Another action</a>
-          <div class="dropdown-divider"></div>
-          <a class="dropdown-item" href="#">Something else here</a>
+.header {
+    background-color: #333;
+    color: white;
+    padding: 10px 0;
+}
+
+.container {
+    width: 80%;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.navigation ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+}
+
+.navigation ul li {
+    margin-left: 20px;
+}
+
+.navigation ul li a {
+    color: white;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.navigation ul li a:hover {
+    color: #ffcc00;
+}
+
+.send-content button {
+    background-color: #ffcc00;
+    color: #333;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.send-content button:hover {
+    background-color: #f5f5f5;
+    color: #333;
+}
+
+</style>
+
+
+<header class="header">
+        <div class="container">
+            <nav class="navigation">
+                <ul>
+                    <li><a href="/project/Create">Tạo Dự Án</a></li>
+                    <li><a href="/monhoc/create">Tạo Môn Học</a></li>
+                    <li><a href="/user/listProject">Danh Sách Dự Án</a></li>
+                </ul>
+            </nav>
+            <div class="send-content">
+                <button onclick="sendA4Content()">Gửi Nội Dung</button>
+            </div>
         </div>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="/user/listProject">User</a>
-      </li>
-    </ul>
-    <form class="form-inline my-2 my-lg-0">
-      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-      <button onclick="sendA4Content()">Gửi nội dung</button>
-    </form>
-  </div>
-</nav>
+    </header>
+
+
+

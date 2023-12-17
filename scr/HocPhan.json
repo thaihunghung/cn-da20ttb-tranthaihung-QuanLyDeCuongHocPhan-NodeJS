@@ -1,179 +1,32 @@
-{
-  "HocPhan": [
-    {
-      "MaMon": "CS101",
-      "TenMon": "Introduction to Computer Science",
-      "SoGioTuHoc": 50,
-      "TH": true,
-      "LT": true,
-      "MoTa": "An introductory course to computer science.",
-      "LoaiHocPhan": "Compulsory",
-      "SoTC_LT": 3,
-      "SoTC_TH": 3,
-      "TrinhDo_DT": "Undergraduate",
-      "ChuyenNganh": "Computer Science",
-      "HocKy": 1,
-      "NamHoc": 2023
-    },
-    {
-      "MaMon": "CS102",
-      "TenMon": "Data Structures",
-      "SoGioTuHoc": 60,
-      "TH": true,
-      "LT": true,
-      "MoTa": "A course on fundamental data structures.",
-      "LoaiHocPhan": "Compulsory",
-      "SoTC_LT": 4,
-      "SoTC_TH": 4,
-      "TrinhDo_DT": "Undergraduate",
-      "ChuyenNganh": "Computer Science",
-      "HocKy": 2,
-      "NamHoc": 2023
-    }
-  ],
-  "Tao": [
-    {
-      "MaMon": "CS101",
-      "id_NguoiDung": "user001"
-    }
-  ],
-  "NguoiDung": [
-    {
-      "id_NguoiDung": "user001",
-      "TenNguoiDung": "John Doe",
-      "TaiKhoan": "john_doe",
-      "MatKhau": "hashed_password"
-    }
-  ],
-  "Tokens": [
-    {
-      "id_Token": "token001",
-      "id_NguoiDung": "user001",
-      "token": "abc123",
-      "ThoiGian": "2023-11-13T12:00:00Z"
-    }
-  ],
-  "NguoiDung_Quyen": [
-    {
-      "id_Quyen": "quyen001",
-      "id_NguoiDung": "user001"
-    }
-  ],
-  "Quyen": [
-    {
-      "id_Quyen": "quyen001",
-      "Ten_Quyen": "Admin"
-    }
-  ],
-  "TLTK": [
-    {
-      "MaTLTK": "tltk001",
-      "MaMon": "CS101",
-      "TenTL": "Lecture Notes",
-      "LoaiTaiLieu": "PDF",
-      "MoTa": "Comprehensive lecture notes for CS101."
-    }
-  ],
-  "PP_Day_hoc": [
-    {
-      "MaPP": "pp001",
-      "MaMon": "CS101",
-      "TenPP": "Interactive Lectures"
-    }
-  ],
-  "DieuKienThamGia": [
-    {
-      "MaDK_TG": "dk001",
-      "MaMon": "CS102",
-      "HocPhan_TQ": "CS101",
-      "HocPhan_SH": "CS103",
-      "YC_khac": "Good academic standing."
-    }
-  ],
-  "QuyDinh": [
-    {
-      "MaQD": "qd001",
-      "MaMon": "CS101",
-      "NoiDung": "Attendance is mandatory.",
-      "LoaiQD": "Compulsory"
-    }
-  ],
-  "GiangVien": [
-    {
-      "MaGiangVien": "gv001",
-      "MaMon": "CS101",
-      "HoTen": "Prof. Smith",
-      "ChucDanh": "Professor"
-    }
-  ],
-  "Chuong": [
-    {
-      "MaChuong": "ch001",
-      "MaMon": "CS101",
-      "TenChuong": "Introduction to Computers"
-    }
-  ],
-  "NoiDungChiTietChuong": [
-    {
-      "ID_Noidung": "nd001",
-      "MaChuong": "ch001",
-      "TenNoiDung": "History of Computers",
-      "GioLyThuyet": 2,
-      "GiothucHanh": 1,
-      "SoGioTuHoc": 1
-    }
-  ],
-  "DapUng_MH": [
-    {
-      "MaCDR_MH": "cdr001",
-      "MaChuong": "ch001"
-    }
-  ],
-  "CDR_MonHoc": [
-    {
-      "MaCDR_MH": "cdr001",
-      "MaMon": "CS101",
-      "TrinhDo": "Intermediate",
-      "Loai_TUA": "Test"
-    }
-  ],
-  "DapUng_CDR": [
-    {
-      "id_CDR": "cdr001",
-      "MaCDR_MH": "cdr001"
-    }
-  ],
-  "CDR_CT": [
-    {
-      "id_CDR": "cdr001",
-      "id_CT": "ct001",
-      "Ten_CDR": "Assessment",
-      "LoaiCDR_CT": "Test",
-      "NoiDung": "Written examination."
-    }
-  ],
-  "ChuongTrinh": [
-    {
-      "id_CT": "ct001",
-      "TenChuongTrinh": "Bachelor of Computer Science",
-      "LoaiHinh": "Full-time",
-      "STC_YeuCau": 120,
-      "Tg_DaoTao": 48,
-      "Bac": "Undergraduate"
-    }
-  ],
-  "MucTieuCTDT": [
-    {
-      "MaMT_CTDT": "mt001",
-      "id_CT": "ct001",
-      "TenMT_CTDT": "Critical Thinking",
-      "NoiDung": "Develop critical thinking skills."
-    }
-  ],
-  "Dapung_CT": [
-    {
-      "MaMT_CTDT": "mt001",
-      "id_CDR": "cdr001"
-    }
-  ]
-}
+[ {
+    "order": 1,
+    "compileMethod": "header",
+    "htmlContent": ""
+  },
+  {
+    "order": 2,
+    "compileMethod": "detail1",
+    "htmlContent": ""
+  },
+  {
+    "order": 3,
+    "compileMethod": "detail2",
+    "htmlContent": ""
+  },
+  {
+    "order": 4,
+    "compileMethod": "detail3",
+    "htmlContent": ""
+  },
+  {
+    "order": 5,
+    "compileMethod": "detail4",
+    "htmlContent": ""
+  },
+  {
+    "order": 6,
+    "compileMethod": "footer",
+    "htmlContent": ""
+  }
+]
+

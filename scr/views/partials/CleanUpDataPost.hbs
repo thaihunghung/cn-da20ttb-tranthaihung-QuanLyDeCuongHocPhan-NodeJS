@@ -19,15 +19,15 @@
         const phuLucValue = cleanUpString(PhuLuc.textContent) || '';
         const tenMonValue = cleanUpString(TenMon.textContent) || '[Tên học phần]';
         const maMonValue = cleanUpString(MaMon.textContent) || '[Mã học phần]';
-        const soTCLTValue = cleanUpString(SoTC_LT.textContent) || '0';
-        const soTCTHValue = cleanUpString(SoTC_TH.textContent) || '0';
-        const ltValue = cleanUpString(LT.textContent) || '0';
-        const thValue = cleanUpString(TH.textContent) || '0';
+        const soTCLTValue = cleanUpString(SoTC_LT.textContent) || '1';
+        const soTCTHValue = cleanUpString(SoTC_TH.textContent) || '1';
+        const ltValue = cleanUpString(LT.textContent) || '1';
+        const thValue = cleanUpString(TH.textContent) || '1';
         const trinhDoDTValue = cleanUpString(TrinhDo_DT.textContent) || '[trình độ]';
-        const soGioTuHocValue = cleanUpString(SoGioTuHoc.textContent) || '0';
-        const chuyenNganhValue = cleanUpString(ChuyenNganh.textContent) || '';
-        const hocKyValue = cleanUpString(HocKy.textContent) || '0';
-        const namHocValue = cleanUpString(NamHoc.textContent) || '0';
+        const soGioTuHocValue = cleanUpString(SoGioTuHoc.textContent) || '1';
+        const chuyenNganhValue = cleanUpString(ChuyenNganh.textContent) || '1';
+        const hocKyValue = cleanUpString(HocKy.textContent) || 'I';
+        const namHocValue = cleanUpString(NamHoc.textContent) || '1';
         const moTaValue = cleanUpString(MoTa.textContent) || '[Mô tả học phần]';
         const LoaiHocPhanValue = cleanUpString(LoaiHocPhan) || '';
         const NganhValue = cleanUpString(Nganh.textContent) || '';
@@ -162,22 +162,19 @@
         console.log(prettyJsonStringTLTK);
     }
     function CleanUp_1() {
-        const tenHocPhanTQ = cleanUpString(document.getElementById('TenTQ1').textContent) || null;
-        const msHPTQ = parseInt(cleanUpString(document.getElementById('MaTQ1').textContent)) || null;
-        const hocPhanSH = document.getElementById('HocPhan_SH').innerHTML || 'Không';
+        const TienQuyet = cleanUpString(document.getElementById('TienQuyet').innerHTML) || 'Không';
+
+        const hocPhanSH = cleanUpString(document.getElementById('HocPhan_SH').innerHTML) || 'Không';
 
         const kienThuc = document.getElementById('KienThuc')
-        const kienThucValue = kienThuc? kienThuc.innerHTML : '';
+        const kienThucValue = kienThuc? cleanUpString(kienThuc.innerHTML) : '';
         const kyNang = document.getElementById('KyNang')
-        const kyNangValue = kyNang? kyNang.innerHTML : '';
+        const kyNangValue = kyNang? cleanUpString(kyNang.innerHTML) : '';
         const thaiDo = document.getElementById('ThaiDo')
-        const thaiDoValue = thaiDo? thaiDo.innerHTML : '';
+        const thaiDoValue = thaiDo? cleanUpString(thaiDo.innerHTML) : '';
         // Tạo đối tượng dữ liệu
         const CleanUp_TB1 = {
-            HocPhan_TQ: {
-                Ten_HocPhan_TQ: tenHocPhanTQ,
-                MSHP_TQ: msHPTQ,
-            },
+            HocPhan_TQ: TienQuyet,
             HocPhan_SH: hocPhanSH,
             YC_khac: {
                 KienThuc: kienThucValue,
@@ -387,31 +384,11 @@
     }
     function CleanUp_8() {
         const quyDinhDataArray = [];
-
-        // Xử lý cho ID 'QD_TD'
-        const QD_TD = document.getElementById('QD_TD');
-        const QD_TDValue = QD_TD? cleanUpString(QD_TD.innerHTML) : '';
-        quyDinhDataArray.push({
-            "NoiDung": QD_TDValue.innerHTML,
-            "LoaiQD": 'Quy định về tham dự lớp học'
-        });
-
-        // Xử lý cho ID 'QD_HV'
+        const QD_TD = document.getElementById('FormQuyDinh');
+        const FormQuyDinh = QD_TD ? QD_TD.innerHTML : "";
         
-        const QD_HV = document.getElementById("QD_HV");
-        const QD_HVValue = QD_HV? QD_HV.innerHTML : '';
         quyDinhDataArray.push({
-            "NoiDung": QD_HVValue,
-            "LoaiQD": 'Quy định về hành vi trong lớp học'
-        });
-
-        // Xử lý cho ID 'QD_HVu'
-        
-        
-        const QD_HVu = document.getElementById("QD_HVu");
-        const QD_HVuValue = QD_HVu? QD_HVu.innerHTML : '';
-        quyDinhDataArray.push({
-            "NoiDung": QD_HVuValue,
+            "NoiDung": FormQuyDinh,
             "LoaiQD": 'Quy định về học vụ'
         });
 

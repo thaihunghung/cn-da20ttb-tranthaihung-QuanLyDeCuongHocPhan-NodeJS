@@ -1,85 +1,31 @@
-<script>
-    function hiddenAndShow(i, Loai) {
-        var name = document.getElementById(Loai + i);
-
-        var hiddenDiv = document.querySelector('.hidden_' + Loai + i);
-
-        document.addEventListener('click', function (event) {
-            if (hiddenDiv) {
-                if (!hiddenDiv.contains(event.target) && event.target !== name) {
-                    // Copy nội dung từ div sang p
-                    updateContent();
-
-                    hiddenDiv.style.display = 'none';
-                    name.style.display = 'block';
-                }
-            }
-        });
-        name.addEventListener('click', function (event) {
-            if (event.target.id === 'No') {
-                return;
-            }
-            event.stopPropagation();
-            // Copy nội dung từ p sang div
-            copyContent();
-            name.style.display = 'none';
-            hiddenDiv.style.display = 'block';
-        });
-        function copyContent() {
-            document.getElementById('STT_' + Loai + '_DSpan_' + i).innerText = document.getElementById('STT_' + Loai + '_' + i).innerText;
-            document.getElementById('TG_' + Loai + '_DSpan_' + i).innerText = document.getElementById('TG_' + Loai + '_' + i).innerText;
-            document.getElementById('NXB_' + Loai + '_DSpan_' + i).innerText = document.getElementById('NXB_' + Loai + '_' + i).innerText;
-            document.getElementById('TEN_' + Loai + '_DSpan_' + i).innerText = document.getElementById('Ten_' + Loai + '_' + i).innerText;
-            document.getElementById('NGUON_' + Loai + '_DSpan_' + i).innerText = document.getElementById('NGUON_' + Loai + '_' + i).innerText;
-        }
-        function updateContent() {
-            const STT_Element = document.getElementById('STT_' + Loai + '_DSpan_' + i);
-            const TG_Element = document.getElementById('TG_' + Loai + '_DSpan_' + i);
-            const NXB_Element = document.getElementById('NXB_' + Loai + '_DSpan_' + i);
-            const Ten_Element = document.getElementById('TEN_' + Loai + '_DSpan_' + i);
-            const NGUON_Element = document.getElementById('NGUON_' + Loai + '_DSpan_' + i);
-
-            if (hiddenDiv && STT_Element && TG_Element && NXB_Element && Ten_Element && NGUON_Element) {
-                document.getElementById('STT_' + Loai + '_' + i).innerText = STT_Element.innerText;
-                document.getElementById('TG_' + Loai + '_' + i).innerText = TG_Element.innerText;
-                document.getElementById('NXB_' + Loai + '_' + i).innerText = NXB_Element.innerText;
-                document.getElementById('Ten_' + Loai + '_' + i).innerText = Ten_Element.innerText;
-                document.getElementById('NGUON_' + Loai + '_' + i).innerText = NGUON_Element.innerText;
-            }
-        }
-    }
-    function CreateCDR(loai, classParent) {
+<script> 
+    function CreateCDR(classParent) {
         if (classParent) {
             var ClassParent = classParent
         }
         var idCount = (document.getElementsByClassName(ClassParent).length) + 1;
-        // Elements created as before 
-        const para = document.createElement('p');
-        para.id = loai + idCount; // NamXB TenTL Nguon
-        para.className = 'allowDeletion2' + ' ' + ClassParent;
-        para.innerHTML = `
-            [<span id="STT_${loai}_${idCount}" class="STT_TB2" contenteditable="true" onclick="hiddenAndShow(${idCount},'${loai}')"></span>] 
-            <span id="TG_${loai}_${idCount}" contenteditable="true" class ="TacGia" onclick="hiddenAndShow(${idCount},'${loai}')">Tác giả</span>
-            (<span id="NXB_${loai}_${idCount}" contenteditable="true" class = "NamXB" onclick="hiddenAndShow(${idCount},'${loai}')">Năm</span>).&nbsp;
-            <span id="Ten_${loai}_${idCount}" contenteditable="true" class = "TenTL text-nghien" onclick="hiddenAndShow(${idCount},'${loai}')">Tên tài liệu</span>
-            [<span id="NGUON_${loai}_${idCount}" contenteditable="true" class = "Nguon" onclick="hiddenAndShow(${idCount},'${loai}')">Nguồn</span>]
-            <span contenteditable="true" id="No">.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
-        `;
-        const div = document.createElement('div');
-        div.id = loai + idCount + 'div';
-        div.className = 'hidden_' + loai + idCount + " hidden";
-        div.innerHTML = `
-            <p>Stt:&nbsp;<span id='STT_${loai}_DSpan_${idCount}'"></span></p>
-            <p>Tên tác giả:&nbsp;<span id="TG_${loai}_DSpan_${idCount}" contenteditable="true"></span></p>
-            <p>Năm Xuất bảng:&nbsp;<span id="NXB_${loai}_DSpan_${idCount}" contenteditable="true"></span></p>
-            <p>Tên tài liệu tham khảo:&nbsp;<span id="TEN_${loai}_DSpan_${idCount}" 
-                contenteditable="true" class="text-nghien"></span></p>
-            <p>Nguồn:&nbsp;<span id="NGUON_${loai}_DSpan_${idCount}" contenteditable="true"></span></p>
-        `;
+      
+        const para = document.createElement('div');
+      
+        para.style.display='flex';
+        para.className = ClassParent+' TaiLieu section-content text-left'
+        para.id = ClassParent + idCount;
+        
+        para.innerHTML = '<div class="stt" contenteditable="false">[1]&nbsp;&nbsp; </div> <div>' +
+                            '<span contenteditable="true">' +
+                            '[tên tác giả](năm xuất bản)' +
+                            '</span>.&nbsp;' +
+                            '<span contenteditable="true" style="font-style: italic;">' +
+                            '[tên tài liệu]' +
+                            '</span>.&nbsp;<br>' +
+                            '<span contenteditable="true">' +
+                            '[nguồn]' +
+                            '</span>' +
+                        '</div>';
+        
         const parent = document.getElementById(ClassParent);
         if (parent) {
             parent.appendChild(para);
-            parent.appendChild(div);
         }
         else {
             console.log("No parent")
@@ -90,21 +36,18 @@
         const focusedSpan = document.querySelector('.focus');
 
         if (focusedSpan && focusedSpan.classList.contains('focus')) {
-            const parentTr = focusedSpan.closest('.allowDeletion2');
+            const parentTr = focusedSpan.closest('.TaiLieu');
             if (parentTr) {
                 const confirmation = window.confirm('Bạn có chắc muốn xóa phần tử này?');
                 if (confirmation) {
-                    findDivP(parentTr.id)
+                    
+                    var Tachchu = StringNumberAndletter(parentTr.id, 'letters');
+                    
+
                     parentTr.remove();
                     UpdateSTT_TB2();
-                    
-                    //var StringId =parentTr.id;
-                    var Tachchu = StringNumberAndletter(parentTr.id, 'letters');
-                    var Tachso = StringNumberAndletter(parentTr.id, 'numbers');
-                    //GT  truyền GT lấy ra giaotrinh 
-                    var XuLyLayRaKey = getLoaiTaiLieuByKey(Tachchu);
-                    //console.log(XuLyLayRaKey,Tachchu,Tachso)
-                    UpdateALLId_TB2(XuLyLayRaKey,Tachchu,Tachso)
+
+                    UpdateALLId_TB2(Tachchu)
                 } else {
                     console.log("Người dùng đã từ chối xóa.");
                 }
@@ -115,96 +58,26 @@
             console.log("không trỏ vào .");
         }
     });
-    function findDivP(idP) {
-        const divP = document.getElementById(idP + 'div');
-        if (divP) {
-            divP.remove();
-        } else {
-            console.log("khong có divP");
-        };
-    }
+ 
     function UpdateSTT_TB2() {
-        var rows = document.querySelectorAll('.allowDeletion2');
+        var rows = document.querySelectorAll('.TaiLieu');
         rows.forEach((row, index) => {
-            var sttElement = row.querySelector('.STT_TB2');
-            if (sttElement) {
-                sttElement.textContent = index + 1;
-            }
+            var sttElements = row.querySelectorAll('.stt');
+            sttElements.forEach((sttElement, sttIndex) => {
+                sttElement.innerHTML = "[" + (index * sttElements.length + sttIndex + 1) + "]&nbsp;&nbsp;";
+            });
         });
     }
-    function UpdateALLId_TB2(ClassParent,letter,numberIndex) {
-        //ra tổng class lấy vào vòng lập 
-        var CourseAll = document.getElementsByClassName(ClassParent);
-        console.log(CourseAll.length + 1);
-        var UpdateNumberIndex = parseInt(numberIndex)+1;
-        console.log('so'+UpdateNumberIndex);
-        console.log('chu'+letter);
 
-        for (var i = UpdateNumberIndex; i <= CourseAll.length+1; i++)
-        {
-            UpdateOneId_TB2(letter,i)
-        }
+    function UpdateALLId_TB2(NameId) {
+        var elements = document.querySelectorAll(`[id^="${NameId}"]`);
+        elements.forEach(function (element, index) {
+        var newId = `${NameId}${index}`;
+        element.removeAttribute('id');
+        element.setAttribute('id', newId);
+        })
     }
-    function UpdateOneId_TB2(loai, index) {
-        console.log("Updating ID for:", loai, index);
-        // console.log(loai,index)
-        var IdLoaiTL = document.getElementById(loai + index);
-        if (IdLoaiTL) {
-            var idNumber = IdLoaiTL.id.match(/\d+$/)[0];
-            var ValueUpdate = (parseInt(idNumber) - 1);
-
-            var STTid = document.getElementById('STT_' + loai + '_' + idNumber);
-            var TGid = document.getElementById('TG_' + loai + '_' + idNumber);
-            var NXBid = document.getElementById('NXB_' + loai + '_' + idNumber);
-            var Tenid = document.getElementById('Ten_' + loai + '_' + idNumber);
-            var NGUONid = document.getElementById('NGUON_' + loai + '_' + idNumber);
-
-            //CẬP NHẬT ID
-            STTid.id = 'STT_' + loai + '_' + ValueUpdate;
-            TGid.id = 'TG_' + loai + '_' + ValueUpdate;
-            NXBid.id = 'NXB_' + loai + '_' + ValueUpdate;
-            Tenid.id = 'Ten_' + loai + '_' + ValueUpdate;
-            NGUONid.id = 'NGUON_' + loai + '_' + ValueUpdate;
-
-            //CẬP NHẬT ONCLICK
-
-            STTid.onclick = function () { hiddenAndShow(ValueUpdate, loai) };
-            TGid.onclick = function () { hiddenAndShow(ValueUpdate, loai) };
-            console.log(TGid.onclick)
-            NXBid.onclick = function () { hiddenAndShow(ValueUpdate, loai) };
-            Tenid.onclick = function () { hiddenAndShow(ValueUpdate, loai) };
-            NGUONid.onclick = function () { hiddenAndShow(ValueUpdate, loai) };
-            
-            var div = document.getElementById(loai + index + 'div');
-            if (div) {
-                div.id = loai + ValueUpdate + 'div';
-                div.className = 'hidden_' + loai + ValueUpdate + ' hidden';
-
-            } else {
-                console.log('no div')
-            }
-
-            var STTdiv = document.getElementById('STT_' + loai + '_DSpan_' + idNumber);
-            var TGdiv = document.getElementById('TG_' + loai + '_DSpan_' + idNumber);
-            var NXBdiv = document.getElementById('NXB_' + loai + '_DSpan_' + idNumber);
-            var Tendiv = document.getElementById('TEN_' + loai + '_DSpan_' + idNumber);
-
-            var NGUONdiv = document.getElementById('NGUON_' + loai + '_DSpan_' + idNumber);
-
-            //CẬP NHẬT ID
-            STTdiv.id = 'STT_' + loai + '_DSpan_' + ValueUpdate;
-            TGdiv.id = 'TG_' + loai + '_DSpan_' + ValueUpdate;
-            NXBdiv.id = 'NXB_' + loai + '_DSpan_' + ValueUpdate;
-
-            Tendiv.id = 'TEN_' + loai + '_DSpan_' + ValueUpdate;
-            NGUONdiv.id = 'NGUON_' + loai + '_DSpan_' + ValueUpdate;
-
-            IdLoaiTL.id = loai + ValueUpdate;
-            IdLoaiTL.className = "allowDeletion2 " + getLoaiTaiLieuByKey(loai);
-        } else {
-            console.log("không tìm thấy id")
-        }
-    }
+    
     function StringNumberAndletter(inputString, type) {
         // Sử dụng biểu thức tách chữ và số
         var matches = inputString.match(/([a-zA-Z]+)([0-9]+)/);
@@ -223,26 +96,5 @@
             return null;
         }
     }
-    function getLoaiTaiLieuByKey(code) {
-        if (code === 'GT') {
-            return 'giaotrinh';
-        } else if (code === 'TL') {
-            return 'TaiLieuThamKhao';
-        } else if (code === 'HL') {
-            return 'HocLieu';
-        } else {
-            return null;
-        }
-    }
-    function getKeyTaiLieuByKey(code) {
-        if (code === 'giaotrinh') {
-            return 'GT';
-        } else if (code === 'TaiLieuThamKhao') {
-            return 'TL';
-        } else if (code === 'HocLieu') {
-            return 'HL';
-        } else {
-            return null;
-        }
-    }
+    
 </script>

@@ -40,14 +40,14 @@
         //tạo các mảng để chứa các class css
 
         var stempIndex = 1 ;
-        var classNameHeaderRows = ["body-5-course-content-255_55pt", "body-5-course-content-71_8pt", "body-5-course-content-44_85pt", "body-content--course-content-40_4pt", "body-5-course-content-55_85pt"];
-        var classNameDetailRows = ["body-5-content-course-content-255_55pt", "body-5-content-course-content-71_8pt", "body-5-content-course-content-44_85pt", "body-content--course-content-40_4pt", "body-5-course-content-55_85pt"];
-        var classNameFooterRows = ["footer-5-course-content-255_55pt", "footer-5-course-content-212_9pt"];
+        //var classNameHeaderRows = ["body-5-course-content-255_55pt", "body-5-course-content-71_8pt", "body-5-course-content-44_85pt", "body-content--course-content-40_4pt", "body-5-course-content-55_85pt"];
+        //var classNameDetailRows = ["body-5-content-course-content-255_55pt", "body-5-content-course-content-71_8pt", "body-5-content-course-content-44_85pt", "body-content--course-content-40_4pt", "body-5-course-content-55_85pt"];
+        //var classNameFooterRows = ["footer-5-course-content-255_55pt", "footer-5-course-content-212_9pt"];
         
         
         var rowHTML = `
             <td id="Chuong${chuongRows.length}.1" class="body-5-course-content-255_55pt">
-                <strong><div contenteditable="true" class="table-5-course-content-p text-left TenChuong STT_CHUONG" id="hungdeptrai${chuongRows.length}" onkeydown="handleKeyPress('hungdeptrai${chuongRows.length}',event)">
+                <strong><div contenteditable="true" class="table-5-course-content-p text-left TenChuong STT_CHUONG" id="autoChuong${chuongRows.length}" onkeydown="handleKeyPress('autoChuong${chuongRows.length}',event)">
                     [Tên chương]
                 </div></strong>
             </td>
@@ -178,7 +178,8 @@
             sttElements.forEach((sttElement, sttIndex) => {
                 sttElement.innerHTML = "Chương&nbsp;" + (index * sttElements.length + sttIndex + 1) + ".&nbsp;" + sttElement.textContent.substring(10);
             });
-        }); //dropdown-content-chuong dropdown-content-chuong
+        }); 
+        
         var ul_DG7 = document.querySelectorAll('.dropdown-content-chuong');
         var chuongContent =document.getElementsByClassName('Chuong').length;
 

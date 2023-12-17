@@ -1,94 +1,8 @@
 const mongoose = require('mongoose');
 
-// Define schemas
-const HocPhanSchema = new mongoose.Schema({
-  MaMon: { type: String, required: true, unique: true },
-  TenMon: String,
-  SoGioTuHoc: Number,
-  TH: Boolean,
-  LT: Boolean,
-  MoTa: String,
-  LoaiHocPhan: String,
-  SoTC_LT: Number,
-  SoTC_TH: Number,
-  TrinhDo_DT: String,
-  ChuyenNganh: String,
-  HocKy: Number,
-  NamHoc: Number,
-});
-
-const TaoSchema = new mongoose.Schema({
-  MaMon: { type: mongoose.Schema.Types.String, ref: 'HocPhan', required: true },
-  id_NguoiDung: { type: String, required: true },
-});
 
 
 
-const TokensSchema = new mongoose.Schema({
-  id_Token: { type: String, required: true, unique: true },
-  id_NguoiDung: { type: mongoose.Schema.Types.String, ref: 'NguoiDung', required: true },
-  token: String,
-  ThoiGian: { type: Date, default: Date.now },
-});
-
-const NguoiDung_QuyenSchema = new mongoose.Schema({
-  id_Quyen: { type: mongoose.Schema.Types.String, ref: 'Quyen', required: true },
-  id_NguoiDung: { type: mongoose.Schema.Types.String, ref: 'NguoiDung', required: true },
-});
-
-const QuyenSchema = new mongoose.Schema({
-  id_Quyen: { type: String, required: true, unique: true },
-  Ten_Quyen: String,
-});
-
-const TLTKSchema = new mongoose.Schema({
-  MaTLTK: { type: String, required: true, unique: true },
-  MaMon: { type: mongoose.Schema.Types.String, ref: 'HocPhan', required: true },
-  TenTL: String,
-  LoaiTaiLieu: String,
-  MoTa: String,
-});
-
-const PP_Day_hocSchema = new mongoose.Schema({
-  MaPP: { type: String, required: true, unique: true },
-  MaMon: { type: mongoose.Schema.Types.String, ref: 'HocPhan', required: true },
-  TenPP: String,
-});
-
-const DieuKienThamGiaSchema = new mongoose.Schema({
-  MaDK_TG: { type: String, required: true, unique: true },
-  MaMon: { type: mongoose.Schema.Types.String, ref: 'HocPhan', required: true },
-  HocPhan_TQ: String,
-  HocPhan_SH: String,
-  YC_khac: String,
-});
-
-const QuyDinhSchema = new mongoose.Schema({
-  MaQD: { type: String, required: true, unique: true },
-  MaMon: { type: mongoose.Schema.Types.String, ref: 'HocPhan', required: true },
-  NoiDung: String,
-  LoaiQD: String,
-});
-
-const GiangVienSchema = new mongoose.Schema({
-  MaGiangVien: { type: String, required: true, unique: true },
-  MaMon: { type: mongoose.Schema.Types.String, ref: 'HocPhan', required: true },
-  HoTen: String,
-  ChucDanh: String,
-});
-
-const ChuongSchema = new mongoose.Schema({
-  MaChuong: { type: String, required: true, unique: true },
-  MaMon: { type: mongoose.Schema.Types.String, ref: 'HocPhan', required: true },
-  TenChuong: String,
-});
-
-const NoiDungChiTietChuongSchema = new mongoose.Schema({
-  ID_Noidung: { type: String, required: true, unique: true },
-  MaChuong: { type: mongoose.Schema.Types.String, ref: 'Chuong', required: true },
-  TenNoiDung: String,
-
-});
 
 const DapUng_MHSchema = new mongoose.Schema({
   MaCDR_MH: { type: String, required: true },
@@ -103,7 +17,7 @@ const CDR_MonHocSchema = new mongoose.Schema({
 });
 
 const DapUng_CDRSchema = new mongoose.Schema({
-  id_CDR: { type: String, required: true },
+  Ten_CDR: { type: String, required: true },
   MaCDR_MH: { type: mongoose.Schema.Types.String, ref: 'CDR_MonHoc', required: true },
 });
 

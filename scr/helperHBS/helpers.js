@@ -5,12 +5,19 @@ module.exports = {
     joinArray: function(array) {
     return array.join(', ');
     },
+    calculateColspan: function(array, addValue) {
+      
+      if (!array || !Array.isArray(array)) {
+        return addValue; // Trả về addValue nếu array không hợp lệ
+    }
+    return array.length + addValue;
+    },
     inc: function(value) {
       return parseInt(value) + 1;
     },
     nestedIndex: function(outerIndex, innerIndex, options) {
       return outerIndex + '.' + innerIndex;
-  },
+    },
     ifMatch: function(idCDR, maMT_CTDT, dapungCT) {
         if (!Array.isArray(dapungCT)) {
           console.error("dapungCT must be an array");
@@ -39,5 +46,11 @@ module.exports = {
           return options.inverse(this);
       }
     },
-    getKey: Handlebars.helpers.getKey
+    getKey: Handlebars.helpers.getKey,
+    dynamicPartial: function (partialName) {
+      return partialName;
+    },
+    eq: function (v1, v2) {
+      return v1 === v2;
+    }
 }

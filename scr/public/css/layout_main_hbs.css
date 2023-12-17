@@ -28,7 +28,7 @@
     width: 100%;
     height: 200px;
     background-color: brown;
-    z-index: -998;
+   
 }
 table {
     page-break-inside: always;

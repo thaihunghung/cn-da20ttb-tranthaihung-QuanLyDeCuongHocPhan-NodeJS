@@ -1,16 +1,21 @@
 const mongoose = require('mongoose');
+const Handlebars = require('handlebars');
+
 const jwt = require('jsonwebtoken');
 const uuid = require('uuid');
 const HocPhanModel = require('../models/HocPhan/hocPhan.model');
 const GiangVienModel = require('../models/HocPhan/GiangVien.model');
 const TLTKModel = require('../models/HocPhan/TaiLieuThamKhao.model');
+const TempLate = require('../models/Template/Template');
 const PP_Day_hocModel = require('../models/HocPhan/PP_DayHoc');
 const QuyDinhModel = require('../models/HocPhan/QuyDinh.model');
 const DieuKienThamGiaModel = require('../models/HocPhan/DieuKienThamGia');
 const DG_HocPhanModel = require('../models/HocPhan/DanhGia_HocPhan.model');
 const ChuongModel = require('../models/HocPhan/Chuong.model');
 const CDR_HocPhanModel = require('../models/HocPhan/Cdr_HocPhan.model')
+const DapUngCDR = require('../models/HocPhan/DapUngCDR.model');
 const CreateModel = require('../models/NguoiDung/Create.model');
+const PLO = require('../models/Chuongtrinh/PLO.model');
 const {verifyToken} = require('../middleware/auth.middleware');
 const {mongooseToObject,MutipleMongooseToObject} = require('../util/mongoose');
 const { config } = require('dotenv');
@@ -77,125 +82,148 @@ exports.Check_File_Name = async (req, res) =>{
         res.status(500).json({ error: error.message })
     }
 };
+// const {KyNangKTdata,KyNangKNdata,KyNangTDdata} = req.body;
+    // const KyNangKTdataWithMaHP = KyNangKTdata.map(item => ({ ...item, MaHP: maHPValue }));
 
-exports.project_Post_Save = async (req, res) => {
-    const {GiaotrinhData, Name,TaiLieuThamKhaoData,HocLieuData,HocPhanData,DieuKienThamGiaData,KyNangKTdata,KyNangKNdata,KyNangTDdata,ChuongData,DU_CDR_ChuongData,PhuongPhapData,DanhGiaData,QuyDinhData,GiangVienData} = req.body;
-    console.log(GiaotrinhData)
-    console.log(TaiLieuThamKhaoData)
-    console.log(HocLieuData)
-    var maHPValue = Name;
-     // TÊN TÀI LIỆU THAY ĐỔI 
-    //////////////////////////////////////////////////////////////
-    //                         HOCPHAN
-    //////////////////////////////////////////////////////////////
-  
-    HocPhanData.fileName = maHPValue;
-    //////////////////////////////////////////////////////////////
-    //                         TABLE 1
-    //////////////////////////////////////////////////////////////
-    DieuKienThamGiaData.MaHP = maHPValue;
+    
+
+    //save mấy kỷ năng trước sau đó tìm ra _id của nó sau đó 
+    //save tương ứng với da[ung]
+    // console.log(KyNangKTdataWithMaHP)
+    // let dapUngValues;
+    // if (KyNangKTdata.length > 0) {
+    //   dapUngValues = KyNangKTdata.map(item => {
+    //     const dapUngValue = item.DapUng_CDRMH.split(',').map(value => value.trim());
+    //     delete item.DapUng_CDRMH;
+    //     return dapUngValue;
+    //   });
+    // } else {
+    //   console.log('Mảng KyNangKTdata không có phần tử.');
+    // }
+    
+    //HocPhanData.fileName = maHPValue;
+
+
+
+    //DieuKienThamGiaData.MaHP = maHPValue;
     /////Cần update lại DieuKienThamGia
 
-    //////////////////////////////////////////////////////////////
-    //                         TABLE 2
-    //////////////////////////////////////////////////////////////
+    
+    // const MapKNKT =  KyNangKTdata.map(item => ({
+    //   ...item,
+    //   MaHP: maHPValue,
+    // }));
+    // const MapKNKN =  KyNangKNdata.map(item => ({
+    //   ...item,
+    //   MaHP: maHPValue,
+    // }));
+    // const MapKNTD =  KyNangTDdata.map(item => ({
+    //   ...item,
+    //   MaHP: maHPValue,
+    // }));
 
-    // Thêm trường MaHP vào mỗi mục trong mảng dữ liệu
-    const MapGT = GiaotrinhData.map(item => ({
-      ...item,
-      MaHP: maHPValue,
-    }));
 
-    const MapTL = TaiLieuThamKhaoData.map(item => ({
-      ...item,
-      MaHP: maHPValue,
-    }));
 
-    const MapHL =  HocLieuData.map(item => ({
-      ...item,
-      MaHP: maHPValue,
-    }));
-
-    //////////////////////////////////////////////////////////////
-    //                         TABLE 4
-    //////////////////////////////////////////////////////////////
-    const MapKNKT =  KyNangKTdata.map(item => ({
-      ...item,
-      MaHP: maHPValue,
-    }));
-    const MapKNKN =  KyNangKNdata.map(item => ({
-      ...item,
-      MaHP: maHPValue,
-    }));
-    const MapKNTD =  KyNangTDdata.map(item => ({
-      ...item,
-      MaHP: maHPValue,
-    }));
-
-    //////////////////////////////////////////////////////////////
-    //                         TABLE 5
-    //////////////////////////////////////////////////////////////
-
-    const MapChuong =  ChuongData.map(item => ({
-      ...item,
-      MaHP: maHPValue,
-    }));
+    // const MapChuong =  ChuongData.map(item => ({
+    //   ...item,
+    //   MaHP: maHPValue,
+    // }));
    
 
-    //////////////////////////////////////////////////////////////
-    //                         TABLE 6
-    //////////////////////////////////////////////////////////////
-    PhuongPhapData.MaHP = maHPValue;
 
-    //////////////////////////////////////////////////////////////
-    //                         TABLE 7
-    //////////////////////////////////////////////////////////////
-    const MapDanhGia =  DanhGiaData.map(item => ({
-      ...item,
-      MaHP: maHPValue,
-    }));
+    //PhuongPhapData.MaHP = maHPValue;
 
-    //////////////////////////////////////////////////////////////
-    //                         TABLE 8
-    //////////////////////////////////////////////////////////////
-    const MapQuyDinh =  QuyDinhData.map(item => ({
-      ...item,
-      MaHP: maHPValue,
-    }));
+
+    // const MapDanhGia =  DanhGiaData.map(item => ({
+    //   ...item,
+    //   MaHP: maHPValue,
+    // }));
+
+   
+    // const MapQuyDinh =  QuyDinhData.map(item => ({
+    //   ...item,
+    //   MaHP: maHPValue,
+    // }));
 
     //////////////////////////////////////////////////////////////
     //                         TABLE 9
     //////////////////////////////////////////////////////////////
-    const MapGiangVien =  GiangVienData.map(item => ({
-      ...item,
-      MaHP: maHPValue,
-    }));
+    // const MapGiangVien =  GiangVienData.map(item => ({
+    //   ...item,
+    //   MaHP: maHPValue,
+    // }));
+exports.project_Post_Save = async (req, res) => {
+    const {GiaotrinhData, Name,TaiLieuThamKhaoData,HocLieuData,HocPhanData,DieuKienThamGiaData,KyNangKTdata,KyNangKNdata,KyNangTDdata,ChuongData,DU_CDR_ChuongData,PhuongPhapData,DanhGiaData,QuyDinhData,GiangVienData} = req.body;
+   
+  
+    
+    var maHPValue = 1;
+
+    var extractedNoidung = [];
+
+    for (var i = 0; i < KyNangKTdata.length; i++) {
+      var DapUng = KyNangKTdata[i].DapUng_CDRMH;
+      extractedNoidung.push(DapUng);
+      delete KyNangKTdata[i].DapUng_CDRMH;
+    }
+    async function SaveOneDapUng(data, index) {
+      const hung = extractedNoidung[index];
+  
+      for (let i = 0; i < hung.length; i++) {
+          const DapUng_CDRData = new DapUngCDR({
+              Ten_CDR: hung[i],
+              MaCDR_MH: data,
+          });
+  
+          // Lưu dữ liệu vào cơ sở dữ liệu
+          await DapUng_CDRData.save();
+      }
+  }
+  
+  const savedCDRHocPhanData = await Promise.all(
+      KyNangKTdata.map(async (item, index) => {
+          const cdrHocPhanData = new CDR_HocPhanModel({
+              MaCDR_MH: item.MaCDR_MH, 
+              MaHP: item.MaHP,
+              loai_CDRMH: item.loai_CDRMH,
+              Noidung_CDRMH: item.Noidung_CDRMH,
+              TrinhDo: item.TrinhDo,
+              loaiTUA: item.loaiTUA,
+          });
+          const savedData = await cdrHocPhanData.save();
+  
+          // Gọi hàm SaveOneDapUng với savedData._id, index 
+          await SaveOneDapUng(savedData._id, index);
+  
+          return savedData;
+      })
+  );
 
   try {
     
-    const SaveHP = new HocPhanModel(HocPhanData);
-    const SaveHPSave =await SaveHP.save();
-
-    const SaveGT = await TLTKModel.insertMany(MapGT);
-    const SaveTL = await TLTKModel.insertMany(MapTL);
-    const SaveHL = await TLTKModel.insertMany(MapHL);
-
-    const SaveDKTG = new DieuKienThamGiaModel(DieuKienThamGiaData);
-    const SaveDKTGSave =await SaveDKTG.save();
-    
-    const SaveKNKT = await CDR_HocPhanModel.insertMany(MapKNKT);
-    const SaveKNKN = await CDR_HocPhanModel.insertMany(MapKNKN);
-    const SaveKNTD = await CDR_HocPhanModel.insertMany(MapKNTD);
-
-    const SaveChuong = await ChuongModel.insertMany(MapChuong);
-    
-    const SavePhuongPhap = new PP_Day_hocModel(PhuongPhapData);
-    const SavePhuongPhapSave = SavePhuongPhap.save();
+    // const SaveHP = new HocPhanModel(HocPhanData);
+    // const SaveHPSave =await SaveHP.save();
    
-    const SaveDanhGia = await DG_HocPhanModel.insertMany(MapDanhGia);
-    const SaveQuyDinh = await QuyDinhModel.insertMany(MapQuyDinh);
+    //const SaveGT = await TLTKModel.insertMany(TaiLieuThamKhaoData);
+   // const SaveTL = await TLTKModel.insertMany(HocLieuData);
+   // const SaveHL = await TLTKModel.insertMany(GiaotrinhData);
+
+    // const SaveDKTG = new DieuKienThamGiaModel(DieuKienThamGiaData);
+    // const SaveDKTGSave =await SaveDKTG.save();
     
-    const SaveGiangVien = await GiangVienModel.insertMany(MapGiangVien);
+    // const SaveKNKT = await CDR_HocPhanModel.insertMany(MapKNKT);
+    // const SaveKNKN = await CDR_HocPhanModel.insertMany(MapKNKN);
+    // const SaveKNTD = await CDR_HocPhanModel.insertMany(MapKNTD);
+
+    // const SaveChuong = await ChuongModel.insertMany(MapChuong);
+    
+    // const SavePhuongPhap = new PP_Day_hocModel(PhuongPhapData);
+    // const SavePhuongPhapSave = SavePhuongPhap.save();
+   
+    // const SaveDanhGia = await DG_HocPhanModel.insertMany(MapDanhGia);
+    // const SaveQuyDinh = await QuyDinhModel.insertMany(MapQuyDinh);
+    
+    // const SaveGiangVien = await GiangVienModel.insertMany(MapGiangVien);
     
     
   } catch (error) {
@@ -240,6 +268,8 @@ exports.project_Get_Update = async (req, res) => {
       res.status(400).send('không tồn tại dự án quay lại trang web trước đó!!');
       return;
     }
+    var FileName =  findName.toString()
+   
 
     //////////////////////////////////////////////////////////////
     //                         HOCPHAN
@@ -247,37 +277,34 @@ exports.project_Get_Update = async (req, res) => {
     const HocPhan = await HocPhanModel.findOne({fileName: findName.toString()})
     if (HocPhan) {
       var hocPhanObject = HocPhan.toObject();
+      var loadLoaiHocPhan = HocPhan.LoaiHocPhan;
     }
-    //////////////////////////////////////////////////////////////
-    //                         table 1
-    //////////////////////////////////////////////////////////////
-    const DieuKien = await DieuKienThamGiaModel.findOne({MaHP: findName.toString()})
-    if (DieuKien) {
-      var HocPhanTienQuyet = DieuKien.HocPhan_TQ;
-      var YeuCauKhac = DieuKien.YC_khac;
-      var HocPhanSH = DieuKien.HocPhan_SH;
-    }
-    //////////////////////////////////////////////////////////////
-    //                         table 2
-    //////////////////////////////////////////////////////////////
-    const TLTK_GT = await TLTKModel.find({ MaHP: findName.toString(), loaiHocLieu: 'Giáo trình' });
-    if (TLTK_GT) {
-      var TLTK_GT_Object = TLTK_GT.map(mongooseToObject)
-    }
+      const TLTK_GT = await TLTKModel.find({ MaHP: findName.toString(), loaiHocLieu: 'Giáo trình' });
+        if (TLTK_GT) {
+          var TLTK_GT_Object = TLTK_GT.map(mongooseToObject)
+        }
+      const TLTK_TK = await TLTKModel.find({ MaHP: findName.toString(), loaiHocLieu: 'Tài liệu tham khảo' });
+        if (TLTK_TK) {
+          var TLTK_TK_Object = TLTK_TK.map(mongooseToObject)
+        }
+      const TLTK_HL = await TLTKModel.find({ MaHP: findName.toString(), loaiHocLieu: 'Học Liệu' });
+        if (TLTK_HL) {
+          var TLTK_HL_Object = TLTK_HL.map(mongooseToObject)
+        }
+      const TaiLieuThamKhao = {
+        TaiLieu: TLTK_GT_Object,
+        GiaoTrinh:TLTK_TK_Object,
+        HocLieu: TLTK_HL_Object
+      }
+        
     
-    const TLTK_TK = await TLTKModel.find({ MaHP: findName.toString(), loaiHocLieu: 'Tài liệu tham khảo' });
-    if (TLTK_TK) {
-      var TLTK_TK_Object = TLTK_TK.map(mongooseToObject)
-    }
-    console.log("giao trinh"+TLTK_TK)
-    const TLTK_HL = await TLTKModel.find({ MaHP: findName.toString(), loaiHocLieu: 'Học liệu' });
-    if (TLTK_HL) {
-      var TLTK_HL_Object = TLTK_HL.map(mongooseToObject)
-    }
-    console.log("hoc lieu"+TLTK_HL)
+
+
+    
     //////////////////////////////////////////////////////////////
     //                         table 4
     //////////////////////////////////////////////////////////////
+   
     const CDR_KT = await CDR_HocPhanModel.find({ MaHP: findName.toString(), loai_CDRMH: 'Về kiến thức' });
 
     if (CDR_KT) {
@@ -294,8 +321,7 @@ exports.project_Get_Update = async (req, res) => {
     if (CDR_TD) {
       var CDR_TD_Object = CDR_TD.map(mongooseToObject)
     }
-    
-
+  
     //////////////////////////////////////////////////////////////
     //                         table 5
     //////////////////////////////////////////////////////////////
@@ -313,6 +339,7 @@ exports.project_Get_Update = async (req, res) => {
     //////////////////////////////////////////////////////////////
     //                         table 7 
     //////////////////////////////////////////////////////////////
+
     const DanhGia1 = await DG_HocPhanModel.find({ MaHP: findName.toString() ,LoaiDG: 'Đánh giá quá trình', HinhThucDG : 'Kiểm tra lý thuyết hoặc Kiểm tra thực hành'})
     if (DanhGia1) {
       var DanhGia1_TH_Object = DanhGia1.map(mongooseToObject)
@@ -329,52 +356,141 @@ exports.project_Get_Update = async (req, res) => {
     if (DanhGia4) {
       var DanhGia4_TH_Object = DanhGia4.map(mongooseToObject)
     }
-    //////////////////////////////////////////////////////////////
-    //                         table 8 
-    //////////////////////////////////////////////////////////////
-    const QuyDinhThamDu = await QuyDinhModel.find({MaHP: findName.toString() ,LoaiQD: 'Quy định về tham dự lớp học' })
-    if (QuyDinhThamDu) {
-      var QuyDinhThamDu_Object = QuyDinhThamDu.map(mongooseToObject)
-    }
 
-    const QuyDinhHanhVi = await QuyDinhModel.find({MaHP: findName.toString() ,LoaiQD: 'Quy định về hành vi trong lớp học' })
-    if (QuyDinhHanhVi) {
-      var QuyDinhHanhVi_Object = QuyDinhHanhVi.map(mongooseToObject)
-    }
+  
 
-    const QuyDinhHocVu = await QuyDinhModel.find({MaHP: findName.toString() ,LoaiQD: 'Quy định về học vụ' })
-    if (QuyDinhHocVu) {
-      var QuyDinhHocVu_Object = QuyDinhHocVu.map(mongooseToObject)
-    }
-    //////////////////////////////////////////////////////////////
-    //                         table 9 
-    //////////////////////////////////////////////////////////////
     const GiangVien = await GiangVienModel.find({MaHP: findName.toString()})
 
     if (GiangVien) {
       var GiangVien_Object = GiangVien.map(mongooseToObject)
     }
+    Handlebars.registerHelper('inc', function(value, options) {
+      return parseInt(value) + 1;
+    });
+    Handlebars.registerHelper('joinArray', function(array) {
+      return array.join(', ');
+    });
+    const plo = await PLO.find();
+    if (plo) {
+      var plo_Object = plo.map(mongooseToObject)  
+    }
+    let currentLoaiCDR_CT = null;
+    const processedPLOs = plo_Object.map((plo) => {
+    if (plo.LoaiCDR_CT !== currentLoaiCDR_CT) {
+        currentLoaiCDR_CT = plo.LoaiCDR_CT;
+        return { ...plo, newGroup: true }; // Đánh dấu đây là một nhóm mới
+    }
+    return plo;
+    });
+
+  
+
+  function compileMethod(templateString, data) {
+      // Biên dịch template
+      const compiledTemplate = Handlebars.compile(templateString);
+      return compiledTemplate(data);
+  }
+
+
+    var DataHeader = {
+        HocPhan :hocPhanObject
+    }   
+    var DataDieuKienThamGia = {
+      HocPhan :hocPhanObject,
+
+    } 
+   
+
+    const templates = await TempLate.find().sort({ order: 1 })
+    let compiledTemplates = [];
+    templates.forEach(template => {
+        let compiled;
+        switch (template.compileMethod) {
+            case "header":
+                compiled = compileMethod(template.htmlContent, DataHeader);
+                break;
+            case "detail1":
+                compiled = compileMethod(template.htmlContent, DataHeader);
+                break;    
+            case "detail2":
+                compiled = compileMethod(template.htmlContent, TaiLieuThamKhao);
+                break; 
+            case "detail3":
+                compiled = compileMethod(template.htmlContent, DataHeader);
+                break;    
+            case "detail8":  
+                compiled =  template.htmlContent
+                break; 
+        }
+        compiledTemplates.push(compiled);
+    });
+    let compiledString = compiledTemplates.join('');
+console.log(TLTK_HL_Object);
+
+
+// // Bước 2: Lưu CDR_HocPhanModel và thêm vào bảng mới
+// const savedNewTableData = await Promise.all(
+//   KyNangKTdataWithMaHP.map(async (item, index) => {
+//     const dapUngValuesForCurrentItem = dapUngValues ? dapUngValues[index] : [];
+    
+//     const cdrHocPhanData = new CDR_HocPhanModel({
+//       MaCDR_MH: item.MaCDR_MH,
+//       MaHP: item.MaHP,
+//       loai_CDRMH: item.loai_CDRMH,
+//       Noidung_CDRMH: item.Noidung_CDRMH,
+//       TrinhDo: item.TrinhDo,
+//       loaiTUA: item.loaiTUA,
+//       DapUng_CDRMH: dapUngValuesForCurrentItem, // Sử dụng dapUngValues từ bước 1
+//     });
+
+//     const savedData = await cdrHocPhanData.save();
+
+//     // Thêm vào bảng mới sử dụng _id của CDR_HocPhanModel và từng giá trị trong dapUngValues
+//     const newTableDataPromises = dapUngValuesForCurrentItem.map(async (dapUngValue) => {
+//       const newDataForNewTable = new NewTableModel({
+//         CDR_HocPhanModelId: savedData._id,
+//         DapUngValue: dapUngValue,
+//         // Các trường khác của bảng mới
+//       });
+
+//       return newDataForNewTable.save();
+//     });
+
+//     const savedNewTableDataForItem = await Promise.all(newTableDataPromises);
+
+//     // Trả về thông tin bạn muốn giữ lại hoặc sử dụng tiếp theo
+//     return {
+//       cdrHocPhanModelId: savedData._id,
+//       newTableDataIds: savedNewTableDataForItem.map(data => data._id),
+//     };
+//   })
+// );
+
+
+
+
+
     res.render('project/update',{
+       
       findName: findName,
-      HocPhan : hocPhanObject,
-      YeuCauKhac : YeuCauKhac, 
-      HocPhanTienQuyet : HocPhanTienQuyet,
-      HocPhanSH : HocPhanSH,
-      TLTK_GT : TLTK_GT_Object,
-      TLTK_TK : TLTK_TK_Object,
-      TLTK_HL : TLTK_HL_Object,
+      PLO: plo_Object,
+      templates: compiledString,
+      
+      
+
+      processedPLOs: processedPLOs,
+
       CDR_KT : CDR_KT_Object,
       CDR_KN : CDR_KN_Object,
       CDR_TD : CDR_TD_Object,
       Chuong : Chuong_Object,
+
+
       PhuongPhapDayHoc : PhuongPhapDayHoc_Object,
       DanhGia1 : DanhGia1_TH_Object,
       DanhGia2 : DanhGia2_TH_Object,
       DanhGia3 : DanhGia3_TH_Object,
       DanhGia4 : DanhGia4_TH_Object,
-      QuyDinhThamDu: QuyDinhThamDu_Object,
-      QuyDinhHanhVi: QuyDinhHanhVi_Object,
-      QuyDinhHocVu: QuyDinhHocVu_Object,
       GiangVien: GiangVien_Object
     });
 }

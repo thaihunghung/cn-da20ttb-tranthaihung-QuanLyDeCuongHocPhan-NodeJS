@@ -171,8 +171,20 @@
                         FocusToEnd(newSpan);
                         id.contentEditable = true;
                     }
-                }
-            } 
+                } 
+            } else if (e.keyCode === 13 && !foundSuggestion) { 
+                    e.preventDefault();
+                    var childrenDiv = document.querySelector('.Autocomplete');
+                    if (childrenDiv) {
+                        var range = document.createRange();
+                        range.selectNode(childrenDiv);
+                        removeAutocompleteContainer()
+                        var newSpan = document.createElement('br');
+                        
+                        range.insertNode(newSpan);
+                        FocusToEnd(newSpan);
+                    }    
+            }
         })
         function removeAutocompleteContainer() {
             var autocompleteContainer = document.querySelector('.Autocomplete');

@@ -11,7 +11,7 @@
       newRow.id = "KyNangKT" + stemp;
 
       var newRowHTML = `
-          <th class="content-4-learning-outcomes-1 section-content text-left stt" contenteditable="true">${stemp}</th>
+          <th class="content-4-learning-outcomes-1 KT section-content text-left stt" contenteditable="true">${stemp}</th>
           <td class="content-4-learning-outcomes-2">
               <div class="section-content KT" id="KT_ND_${stemp}" contenteditable="true" onkeydown="handleKeyPress('KT_ND_${stemp}',event)"> 
                   [nội dung chuẩn đầu ra]
@@ -21,16 +21,9 @@
               <div class="dropdown" id="dropdown-KT_DUPO_${stemp}">
                   <p class="section-content"> <span contenteditable="true" id="KT_DUPO_${stemp}" class="KT">PLO1</span></p>
                   <ul class="dropdown-content">
-                      <li onclick="updateValue('KT_DUPO_${stemp}', 'PLO1','DUPO')">PLO1</li>
-                      <li onclick="updateValue('KT_DUPO_${stemp}', 'PLO2','DUPO')">PLO2</li>
-                      <li onclick="updateValue('KT_DUPO_${stemp}', 'PLO3','DUPO')">PLO3</li>
-                      <li onclick="updateValue('KT_DUPO_${stemp}', 'PLO4','DUPO')">PLO4</li>
-                      <li onclick="updateValue('KT_DUPO_${stemp}', 'PLO5','DUPO')">PLO5</li>
-                      <li onclick="updateValue('KT_DUPO_${stemp}', 'PLO6','DUPO')">PLO6</li>
-                      <li onclick="updateValue('KT_DUPO_${stemp}', 'PLO7','DUPO')">PLO7</li>
-                      <li onclick="updateValue('KT_DUPO_${stemp}', 'PLO8','DUPO')">PLO8</li>
-                      <li onclick="updateValue('KT_DUPO_${stemp}', 'PLO9','DUPO')">PLO9</li>
-                      <li onclick="updateValue('KT_DUPO_${stemp}', 'PLO10','DUPO')">PLO10</li>
+                      {{#each PLO}}
+                            <li onclick="updateValue('KT_DUPO_${stemp}', '{{this.Ten_CDR}}','DUPO')">{{this.Ten_CDR}}</li>
+                      {{/each}}
                   </ul>
               </div>
           </td>
@@ -62,7 +55,7 @@
       newRow.className = "KyNang KyNangKN";
 
       var newRowHTML = `
-            <th class="content-4-learning-outcomes-1 section-content text-left" contenteditable="true">${stemp}</th>
+            <th class="content-4-learning-outcomes-1 KN section-content text-left" contenteditable="true">${stemp}</th>
             <td class="content-4-learning-outcomes-2">
                 <div class="section-content KN" id="KN_ND_${stemp}" contenteditable="true" onkeydown="handleKeyPress('KN_ND_${stemp}',event)"> 
                     [nội dung chuẩn đầu ra]
@@ -71,18 +64,12 @@
             <td class="content-4-learning-outcomes-3">
                 <div class="dropdown" id="dropdown-KN_DUPO_${stemp}">
                     <p class="section-content"> <span contenteditable="true" id="KN_DUPO_${stemp}" class="KN">PLO1</span></p>
-                    <ul class="dropdown-content">
-                        <li onclick="updateValue('KN_DUPO_${stemp}', 'PLO1','DUPO')">PLO1</li>
-                        <li onclick="updateValue('KN_DUPO_${stemp}', 'PLO2','DUPO')">PLO2</li>
-                        <li onclick="updateValue('KN_DUPO_${stemp}', 'PLO3','DUPO')">PLO3</li>
-                        <li onclick="updateValue('KN_DUPO_${stemp}', 'PLO4','DUPO')">PLO4</li>
-                        <li onclick="updateValue('KN_DUPO_${stemp}', 'PLO5','DUPO')">PLO5</li>
-                        <li onclick="updateValue('KN_DUPO_${stemp}', 'PLO6','DUPO')">PLO6</li>
-                        <li onclick="updateValue('KN_DUPO_${stemp}', 'PLO7','DUPO')">PLO7</li>
-                        <li onclick="updateValue('KN_DUPO_${stemp}', 'PLO8','DUPO')">PLO8</li>
-                        <li onclick="updateValue('KN_DUPO_${stemp}', 'PLO9','DUPO')">PLO9</li>
-                        <li onclick="updateValue('KN_DUPO_${stemp}', 'PLO10','DUPO')">PLO10</li>
+                    <ul class="dropdown-content"> 
+                        {{#each PLO}}
+                            <li onclick="updateValue('KN_DUPO_${stemp}', '{{this.Ten_CDR}}','DUPO')">{{this.Ten_CDR}}</li>
+                        {{/each}}
                     </ul>
+                    
                 </div>
             </td>
             <td class="content-4-learning-outcomes-4">
@@ -114,7 +101,7 @@
       newRow.id = "KyNangTD" + stemp;
 
       var newRowHTML = `
-          <th class="content-4-learning-outcomes-1 section-content text-left" contenteditable="true">${stemp}</th>
+          <th class="content-4-learning-outcomes-1 TD section-content text-left" contenteditable="true">${stemp}</th>
           <td class="content-4-learning-outcomes-2"> 
               <div class="section-content TD" id="TD_ND_${stemp}" contenteditable="true" onkeydown="handleKeyPress('TD_ND_${stemp}',event)"> 
                   [nội dung chuẩn đầu ra]
@@ -124,16 +111,9 @@
               <div class="dropdown" id="dropdown-TD_DUPO_${stemp}">
                   <p class="section-content"> <span contenteditable="true" id="TD_DUPO_${stemp}" class="TD">PLO1</span></p>
                   <ul class="dropdown-content">
-                      <li onclick="updateValue('TD_DUPO_${stemp}', 'PLO1','DUPO')">PLO1</li>
-                      <li onclick="updateValue('TD_DUPO_${stemp}', 'PLO2','DUPO')">PLO2</li>
-                      <li onclick="updateValue('TD_DUPO_${stemp}', 'PLO3','DUPO')">PLO3</li>
-                      <li onclick="updateValue('TD_DUPO_${stemp}', 'PLO4','DUPO')">PLO4</li>
-                      <li onclick="updateValue('TD_DUPO_${stemp}', 'PLO5','DUPO')">PLO5</li>
-                      <li onclick="updateValue('TD_DUPO_${stemp}', 'PLO6','DUPO')">PLO6</li>
-                      <li onclick="updateValue('TD_DUPO_${stemp}', 'PLO7','DUPO')">PLO7</li>
-                      <li onclick="updateValue('TD_DUPO_${stemp}', 'PLO8','DUPO')">PLO8</li>
-                      <li onclick="updateValue('TD_DUPO_${stemp}', 'PLO9','DUPO')">PLO9</li>
-                      <li onclick="updateValue('TD_DUPO_${stemp}', 'PLO10','DUPO')">PLO10</li>
+                      {{#each PLO}}
+                            <li onclick="updateValue('TD_DUPO_${stemp}', '{{this.Ten_CDR}}','DUPO')">{{this.Ten_CDR}}</li>
+                      {{/each}}
                   </ul>
               </div>
           </td>

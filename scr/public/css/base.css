@@ -6,6 +6,28 @@
     --font-family: 'Times New Roman', Times, serif;
     --color-white: #ffffff;
 }
+html{
+    scroll-behavior: smooth;
+}
+
+::-webkit-scrollbar{
+width: 8px;
+height: 8px;
+}
+
+::-webkit-scrollbar-thumb{
+background-color: rgb(202, 202, 202);
+border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover{
+background-color: rgb(168, 168, 168);
+}
+
+::-webkit-scrollbar-track{
+background-color: transparent;
+}
+
 /* viết như word */
 [contenteditable] {
     outline: 0px solid transparent;
@@ -37,6 +59,9 @@ span {
 .text-right {
     text-align: right;
 }
+.text-left {
+    text-align: left;
+}
 /* căng giữa */
 .text-center {
     text-align: center;
@@ -54,6 +79,43 @@ span {
     flex-direction: row;
    
 }
+.PLO {
+    border: 1px solid #d4d4d4;
+    background-color: burlywood;
+    color: black; 
+    width: 450px;
+    text-align: justify;
+    height: 100vh; 
+    max-height: 700px; 
+    position: sticky;
+    top: 0; 
+    padding: 20px; 
+    margin-right: 20px; 
+    border-radius: 8px; 
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); 
+    overflow-y: auto; 
+    font-family: 'Arial', sans-serif;
+    align-items: flex-start; 
+    
+}
+@media (max-width: 1100px) {
+    .PLO {
+        opacity: 0;
+        visibility: hidden;
+        transition: visibility 0s 0.2s, opacity 0.2s ease-in-out;
+    }
+}
+.PLO th {
+    text-align: left; 
+    padding-bottom: 10px; 
+    border-bottom: 1px solid #FFF; 
+}
+
+.PLO tr {
+    margin-bottom: 10px; 
+    border-bottom: 1px solid #FFF;
+}
+
 .hungtext {
   display: flex;
   height: 100%;
@@ -100,8 +162,17 @@ span {
     border-bottom: 1px dashed  #FA9E57;
     padding: 0 5,4pt;
 }
-.width16_cm {
+.width16_cm,
+.FormQuyDinh,
+.NameContent_width16_cm,
+.FormGeneral_information,
+.formLearningResources,
+.CourseLearningOutcomes,
+#FormQuyDinh {
     width: 16cm;
+}
+#FormQuyDinh {
+    text-align: justify;
 }
 .strong {
     font-weight: bold;
@@ -113,16 +184,52 @@ span {
   display: flex;
   flex-direction: column;
   border-radius: 5px;
-  width: 400px;
-  min-width: 400px;
-  height: 400px;
+  width: 350px;
+  min-width:  300px;
+  
   border: 1px solid black;
   margin-left: 10px;
-  padding: 5pt;
+  padding: 7pt;
   background-color: burlywood;
-
+  .modyfi__flex {
+    display: flex;
+    justify-content: space-around;
+    text-align: center;
+    align-items:flex-start;
+    i {
+        margin-left: 15px;
+        height: 20px;
+        width: 20px;
+        background-color: #6C757D;
+        color: white;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 5px;
+    }
+  }
+  button {
+    width: 100%;
+    margin: 3px 0;
+  }
 }
 
+.Stick__4 {
+    margin-top: 15px;
+        border-radius: 5px;
+        margin-left: 15px;
+        height: 20px;
+        width: 20px;
+        font-size: x-large;
+        color: #6C757D;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+}
+.instructionForm-table5 {
+    max-width: 300px;
+}
 span[contenteditable="true"] {
     width: 100%;
     min-height: 13pt;

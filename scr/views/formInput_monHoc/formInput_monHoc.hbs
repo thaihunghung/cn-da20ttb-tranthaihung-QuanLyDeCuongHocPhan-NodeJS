@@ -2,10 +2,11 @@
     <div class="formInput_monHoc" id="formInput_monHoc">
 
         <div class="formInput_baseA4" id="formInput_baseA4">
-            <div class="formInput_print" spellcheck ="false">
-                
-<button class="btn" onclick="CleanUp_AllTaiLieuThamKhao()">CleanUp_AllTaiLieuThamKhao</button>
+            <div class="formInput_print" spellcheck="false">
+                {{{templates}}}
+                <button class="btn" onclick="CleanUp_AllTaiLieuThamKhao()">CleanUp_AllTaiLieuThamKhao</button>
                 <button class="btn" onclick="CleanUp_1()">CleanUp_1</button>
+
                 <button class="btn" onclick="CleanUp_AllTB4()">CleanUp_AllTB4</button>
                 <button class="btn" onclick="CleanUp_AllTB5()">CleanUp_AllTB5</button>
                 <button class="btn" onclick="CleanUp_6()">CleanUp_6</button>
@@ -15,549 +16,377 @@
                 <button class="btn" onclick="CleanUp_HocPhan()">HocPhan</button>
                 <button class="btn" onclick="Save_Project()">Save_Project</button>
                 <button class="btn" onclick="hungtest()">hungtest()</button>
-                <div class="width16_cm">
+                {{{tample}}}
+                {{!-- <div class="NameContent_width16_cm">
                     <p class="section-content text-right"><strong>PHỤ LỤC&nbsp;<span contenteditable="true"
                                 id="PhuLuc">F</span></strong></p>
                     <p class="section-content text-center"><strong><span>ĐỀ CƯƠNG CHI TIẾT HỌC PHẦN</span></strong></p>
-                    <p class="section-content text-center"><strong class="autocomplete with400px"><strong>[&nbsp;</strong><span contenteditable="true"
-                                id="TenMon">THỐNG KÊ VÀ
-                                PHÂN
-                                TÍCH DỮ
-                                LIỆU</span><strong>&nbsp;]</strong></strong></p>
-
+                    <p class="section-content text-center"><strong
+                            class="autocomplete with400px"><strong>&nbsp;</strong><span contenteditable="true"
+                                id="TenMon">THỐNG KÊ VÀ PHÂN TÍCH DỮ LIỆU</span><strong>&nbsp;</strong></strong></p>
                     <p class="section-content text-center"><strong>MSHP:&nbsp;<span contenteditable="true"
-                                id="MaMon">320045</span>
-                    </strong></p>
+                                id="MaMon">320045</span></strong></p>
                     <p class="section-content">&nbsp;</p>
-                </div>
-                <p class="section-content"><strong><span contenteditable="false">1. Thông tin chung (General
-                            information):</span></strong></p>
-                <p class="section-content">&nbsp;</p>
-                {{!-- table general-information --}}
-                {{!-- 1. Thông tin c"class="body-course-content" (General information): --}}
-                {{!-- table-1-general-information --}}
-                <table class="table-1-general-information-1 section-content">
-                    <tbody>
-                        {{!-- header-general-information-1 --}}
-                        <tr>
-                            <td class="header-1-general-information-1">
-                                <p><strong><em>Loại học phần</em></strong></p>
-                            </td>
-                            <td class="header-1-general-information-1">
-                                <p><strong><em>Số tín chỉ</em></strong></p>
-                            </td>
-                            <td class="header-1-general-information-1">
-                                <p><strong><em>Số giờ dự giảng</em></strong></p>
-                            </td>
-                            <td class="header-1-general-information-1">
-                                <p><strong><em>Giờ tự học và giờ học khác</em></strong></p>
-                            </td>
-                        </tr>
-                        {{!-- body-general-information-1 --}}
-                        <tr>
-                            <td class="body-1-general-information-1">
-                                <p class="flex-row">
-                                    <span>
-                                        <label for="LoaiHocPhan1">Đại cương</label>
-                                    </span>
+                </div> --}}
 
-                                    <span class="test">
-
-                                        <input class="test" type="checkbox" value="Đại cương" id="LoaiHocPhan1"
-                                            onclick="checkboxChanged('LoaiHocPhan1')">
-
-                                    </span>
-                                </p>
-                                <p class="flex-row">
-                                    <span>
-                                        <label for="LoaiHocPhan2">Cơ sở</label>
-                                    </span>
-
-                                    <span class="test">
-                                        <input type="checkbox" value="Cơ sở" id="LoaiHocPhan2"
-                                            onclick="checkboxChanged('LoaiHocPhan2')">
-
-                                    </span>
-                                </p>
-                                <p class="flex-row">
-                                    <span>
-                                        <label for="LoaiHocPhan3">Chuyên ngành</label>
-                                    </span>
-
-                                    <span class="test">
-
-                                        <input type="checkbox" value="Chuyên ngành" id="LoaiHocPhan3"
-                                            onclick="checkboxChanged('LoaiHocPhan3')">
-                                    </span>
-                                </p>
-                            </td>
-                            <td class="body-1-general-information-1">            
-                                <div class="dropdown" id="dropdown-SoTC_LT">
-                                    Lý thuyết:&nbsp;
-                                    <span contenteditable="true" id="SoTC_LT">2</span>
-                                    <ul class="dropdown-content">
-                                        <li onclick="updateValue('SoTC_LT', '1','TUA')">1</li>
-                                        <li onclick="updateValue('SoTC_LT', '2','TUA')">2</li>
-                                        <li onclick="updateValue('SoTC_LT', '3','TUA')">3</li>
-                                        <li onclick="updateValue('SoTC_LT', '4','TUA')">4</li>
-                                        <li onclick="updateValue('SoTC_LT', '5','TUA')">5</li>
-                                    </ul>
-                                </div>
-                                <div class="dropdown" id="dropdown-SoTC_TH">
-                                    Thực hành:&nbsp;
-                                    <span contenteditable="true" id="SoTC_TH">1</span>
-                                    <ul class="dropdown-content">
-                                        <li onclick="updateValue('SoTC_TH', '1','TUA')">1</li>
-                                        <li onclick="updateValue('SoTC_TH', '2','TUA')">2</li>
-                                        <li onclick="updateValue('SoTC_TH', '3','TUA')">3</li>
-                                        <li onclick="updateValue('SoTC_TH', '4','TUA')">4</li>
-                                        <li onclick="updateValue('SoTC_TH', '5','TUA')">5</li>
-                                    </ul>
-                                </div>
-                            </td>
-                            <td class="body-1-general-information-1">
-                                <div class="dropdown" id="dropdown-LT">
-                                    Lý thuyết:&nbsp;
-                                    <span contenteditable="true" id="LT">1</span>
-                                    <ul class="dropdown-content">
-                                        <li onclick="updateValue('LT', '1','TUA')">1</li>
-                                        <li onclick="updateValue('LT', '2','TUA')">2</li>
-                                        <li onclick="updateValue('LT', '3','TUA')">3</li>
-                                        <li onclick="updateValue('LT', '4','TUA')">4</li>
-                                        <li onclick="updateValue('LT', '5','TUA')">5</li>
-                                    </ul>
-                                </div>
-                                <div class="dropdown" id="dropdown-TH">
-                                    Thực hành:&nbsp;
-                                    <span contenteditable="true" id="TH">1</span>
-                                    <ul class="dropdown-content">
-                                        <li onclick="updateValue('TH', '1','TUA')">1</li>
-                                        <li onclick="updateValue('TH', '2','TUA')">2</li>
-                                        <li onclick="updateValue('TH', '3','TUA')">3</li>
-                                        <li onclick="updateValue('TH', '4','TUA')">4</li>
-                                        <li onclick="updateValue('TH', '5','TUA')">5</li>
-                                    </ul>
-                                </div>
-                               
-                            </td>
-                            <td class="body-1-general-information-1">
-                                
-
-                                <div class="dropdown" id="dropdown-SoGioTuHoc">
-                                    
-                                    <span contenteditable="true" id="SoGioTuHoc">1</span>
-                                    <ul class="dropdown-content">
-                                        <li onclick="updateValue('SoGioTuHoc', '1','TUA')">1</li>
-                                        <li onclick="updateValue('SoGioTuHoc', '2','TUA')">2</li>
-                                        <li onclick="updateValue('SoGioTuHoc', '3','TUA')">3</li>
-                                        <li onclick="updateValue('SoGioTuHoc', '4','TUA')">4</li>
-                                        <li onclick="updateValue('SoGioTuHoc', '5','TUA')">5</li>
-                                    </ul>
-                                </div>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-
-                <p><strong><em><span>Đối tượng học</span></em><span>: &nbsp; &nbsp; &nbsp;&nbsp;</span></strong></p>
-                <p>Trình độ đào tạo:&nbsp;<span contenteditable="true" id="TrinhDo_DT">Đại học</span></p>
-                <p>Ngành:&nbsp;<span contenteditable="true" id="Nganh">Công nghệ Thông tin</span></p>
-                <div><span>Chuyên ngành:&nbsp;<span contenteditable="true" id="ChuyenNganh">
-                            &hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;.
-                        </span>(nếu có)</span></div>
-                <p class="display-flex">
- 
-                <div class="dropdown" id="dropdown-HocKy">
-                    Học kỳ:&nbsp;
-                    <span contenteditable="true" id="HocKy">III</span>
-                    <ul class="dropdown-content">
-                        <li onclick="updateValue('HocKy', 'I','TUA')">I</li>
-                        <li onclick="updateValue('HocKy', 'II','TUA')">II</li>
-                        <li onclick="updateValue('HocKy', 'III','TUA')">III</li>
-                        <li onclick="updateValue('HocKy', 'IV','TUA')">IV</li>
-                        <li onclick="updateValue('HocKy', 'V','TUA')">V</li>
-                        <li onclick="updateValue('HocKy', 'VI','TUA')">VI</li>
-                        <li onclick="updateValue('HocKy', 'VII','TUA')">VII</li>
-                        <li onclick="updateValue('HocKy', 'VII','TUA')">VII</li>
-                        <li onclick="updateValue('HocKy', 'VIII','TUA')">VIII</li>
-                    </ul>
-                </div>
-                
-                
-                &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-                &nbsp; &nbsp;
-                &nbsp;
-                <div class="dropdown" id="dropdown-NamHoc">
-                    Năm thứ:&nbsp;
-                    <span contenteditable="true" id="NamHoc">3</span>
-                    <ul class="dropdown-content">
-                        <li onclick="updateValue('NamHoc', '1','TUA')">1</li>
-                        <li onclick="updateValue('NamHoc', '2','TUA')">2</li>
-                        <li onclick="updateValue('NamHoc', '3','TUA')">3</li>
-                        <li onclick="updateValue('NamHoc', '4','TUA')">4</li>
-                        <li onclick="updateValue('NamHoc', '5','TUA')">5</li>
-                    </ul>
-                </div>
-                </p>
-            
-                <p><strong><em><span>Điều kiện tham gia học phần:</span></em></strong></p>
-                
-                <table class="table-1-general-information-2" >
-                    <tbody>
-                        <tr>
-                            <td class="header-1-general-information-2">Học phần tiên quyết</td>
-                            <td colspan="2" class="body-1-general-colspan-2" id="TienQuyet"> 
-                                <div class="ModifyTB2">                                                                
-                                    <div class="autocomplete">Tên:&nbsp; 
-                                        <span contenteditable="true" id="TenTQ1">
-                                            Vi tích phân A1
-                                        </span>                                    
-                                    </div>
-                                   
-                                    <div class="autocomplete">MSHP:&nbsp; 
-                                        <span contenteditable="true" id="MaTQ1">
-                                           110042
-                                        </span>                                    
-                                    </div>
-                                </div>  
-                            </div>
-                            </td>
-                        </tr>
-
-                        <tr>
-                            <td class="body-1-general-left-2">Học phần song hành</td>
-                            <td colspan="2" class="body-1-general-right-2" id="HocPhan_SH">
-                                <span contenteditable="true"
-                                    >Không</span>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td rowspan="3" class="body-1-general-left-2">Các yêu cầu khác</td>
-                            <td class="header-1-general-information-2">Về kiến thức:</td>
-                            <td class="body-1-general-colspan-2">
-                                <div contenteditable="true" id="KienThuc" onkeydown="handleKeyPress('KienThuc',event)">
-                                   Kiến thức toán học phổ
-                                    thông
-                                </div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td class="header-1-general-information-2">Về kỹ năng:</td>
-
-                            <td class="body-1-general-colspan-2 section-content text-left" contenteditable="true" id="KyNang" onkeydown="handleKeyPress('KyNang',event)">
-                               
-                                <div>&nbsp;&nbsp;-&nbsp;&nbsp;Kỹ năng phân tích, giải quyết vấn đề</div>
-                               <div>&nbsp;&nbsp;-&nbsp;&nbsp;Kỹ năng tập trung, ghi nhớ, tính toán, biến đổi</div>
-                               
-                            </td>
-                            {{!-- <p><span contenteditable="true">
-
-                                    - Kỹ năng tập trung, ghi nhớ, tính toán, biến đổi
-
-                                </span></p> --}}
-                        </tr>
-                        <tr>
-                            <td class="header-1-general-information-2">Về thái độ:</td>
-                            <td class="body-1-general-colspan-2 text-left"  contenteditable="true" id="ThaiDo" onkeydown="handleKeyPress('ThaiDo',event)">
-                                Chủ động trong học tập
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-                <p class="section-content">&nbsp;</p>
-                <p class="section-content">&nbsp;</p>
-                <p class="section-content break"><strong><span>2. Nguồn học liệu (Learning resources):</span></strong>
-                </p>
-                <p class="section-content">&nbsp;</p>
-                {{!----}}
-                {{!-- 2. Nguồn học liệu (Learning resources): --}}
-                {{!----}}
-                <p class="section-content">[STT] 'Tên tác giả 1,Tên tác giả 2'('Năm'). 'Tên tài liệu'. ['Nguồn']</p>
-                <p class="section-content">&nbsp;</p>
-                <div class="table-2-display-row">
-                    <table class="table-2-learning-resources">
+                <div class="FormGeneral_information">
+                    <p class="section-content"><strong><span contenteditable="false">1. Thông tin chung (General
+                                information):</span></strong></p>
+                    <p class="section-content">&nbsp;</p>
+                    {{!-- table general-information --}}
+                    {{!-- 1. Thông tin c"class="body-course-content" (General information): --}}
+                    {{!-- table-1-general-information --}}
+                    <table class="table-1-general-information-1 section-content">
                         <tbody>
+                            {{!-- header-general-information-1 --}}
                             <tr>
-                                <td class="table-2-learning-header">
-                                    <p><span id="loaiHocLieu">Giáo trình/Tài liệu học tập chính</span></p>
+                                <td class="header-1-general-information-1">
+                                    <p><strong><em>Loại học phần</em></strong></p>
                                 </td>
-                                <td class="table-2-learning-body">
-                                    <div id="giaotrinh">
-                                        {{!-- //TacGia NamXB TenTL Nguon --}}
-                                        <p id="GT1" class="allowDeletion2 giaotrinh">
-                                            [<span id="STT_GT_1" class="STT_TB2" onclick="hiddenAndShow(1,GT)"
-                                                contenteditable="true">1</span>]
-                                            <span id="TG_GT_1" onclick="hiddenAndShow(1,'GT')" contenteditable="true"
-                                                class="TacGia">Nguyễn
-                                                Văn
-                                                Tuấn</span>
-                                            (<span id="NXB_GT_1" onclick="hiddenAndShow(1,'GT')" contenteditable="true"
-                                                class="NamXB">2014</span>).&nbsp;
-                                            <span id="Ten_GT_1" onclick="hiddenAndShow(1,'GT')" contenteditable="true"
-                                                class="TenTL text-nghien">Phân tích dữ liệu với
-                                                R</span>
-                                            [<span id="NGUON_GT_1" onclick="hiddenAndShow(1,'GT')"
-                                                contenteditable="true" class="Nguon">NXB Tổng hợp TP
-                                                Hồ Chí Minh</span>]
-                                            <span contenteditable="true"
-                                                id="No">.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
-                                        </p>
-                                        <div id="GT1div" class="hidden_GT1 hidden">
-                                            <p><strong>STT:</strong>&nbsp;[<span id="STT_GT_DSpan_1"></span>]</p>
-                                            <p><strong>Tên tác giả:</strong>&nbsp;<span id="TG_GT_DSpan_1"
-                                                    contenteditable="true"></span>
-                                            </p>
-                                            <p><strong>Năm Xuất bảng:</strong>&nbsp;<span id="NXB_GT_DSpan_1"
-                                                    contenteditable="true"></span>
-                                            </p>
-                                            <p><strong>Tên tài liệu tham khảo:</strong>&nbsp;<span id="TEN_GT_DSpan_1"
-                                                    contenteditable="true" class="text-nghien"></span></p>
-                                            <p><strong>Nguồn:</strong>&nbsp;<span id="NGUON_GT_DSpan_1"
-                                                    contenteditable="true"></span></p>
-                                        </div>
-
-                                        <p id="GT2" class="allowDeletion2 giaotrinh">
-                                            [<span id="STT_GT_2" class="STT_TB2" onclick="hiddenAndShow(2,'GT')"
-                                                contenteditable="true">2</span>]
-                                            <span id="TG_GT_2" onclick="hiddenAndShow(2,'GT')" contenteditable="true"
-                                                class="TacGia">Danielle Navarro, Ethan Weed</span>
-                                            (<span id="NXB_GT_2" onclick="hiddenAndShow(2,'GT')" contenteditable="true"
-                                                class="NamXB">2021</span>).&nbsp;
-                                            <span id="Ten_GT_2" onclick="hiddenAndShow(2,'GT')" contenteditable="true"
-                                                class="TenTL text-nghien">Learning Statistics with
-                                                Python</span>
-                                            [<span id="NGUON_GT_2" onclick="hiddenAndShow(2,'GT')"
-                                                contenteditable="true"
-                                                class="Nguon">https://ethanweed.github.io/pythonbook/landingpage.html</span>]
-                                            .<span contenteditable="true"
-                                                id="No">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
-                                        </p>
-
-                                        <div id="GT2div" class="hidden_GT2 hidden">
-                                            <p><strong>STT:</strong>&nbsp;[<span id="STT_GT_DSpan_2"></span>]</p>
-                                            <p><strong>Tên tác giả:</strong>&nbsp;<span id="TG_GT_DSpan_2"
-                                                    contenteditable="true"></span>
-                                            </p>
-                                            <p><strong>Năm Xuất bảng:</strong>&nbsp;<span id="NXB_GT_DSpan_2"
-                                                    contenteditable="true"></span>
-                                            </p>
-                                            <p><strong>Tên tài liệu tham khảo:</strong>&nbsp;<span id="TEN_GT_DSpan_2"
-                                                    contenteditable="true" class="text-nghien"></span></p>
-                                            <p><strong>Nguồn:</strong>&nbsp;<span id="NGUON_GT_DSpan_2"
-                                                    contenteditable="true"></span></p>
-                                        </div>
-
-                                        <p id="GT3" class="allowDeletion2 giaotrinh">
-                                            [<span id="STT_GT_3" class="STT_TB2" onclick="hiddenAndShow(3,GT)"
-                                                contenteditable="true">3</span>]
-                                            <span id="TG_GT_3" onclick="hiddenAndShow(3,'GT')" contenteditable="true"
-                                                class="TacGia">Peter
-                                                Bruce, Andrew Bruce,
-                                                Peter</span>
-                                            (<span id="NXB_GT_3" onclick="hiddenAndShow(3,'GT')" contenteditable="true"
-                                                class="NamXB">2020</span>).&nbsp;
-                                            <span id="Ten_GT_3" onclick="hiddenAndShow(3,'GT')" contenteditable="true"
-                                                class="TenTL text-nghien">Phân tích dữ liệu với
-                                                R</span>
-                                            [<span id="NGUON_GT_3" onclick="hiddenAndShow(3,'GT')"
-                                                contenteditable="true" class="Nguon">
-                                                O'Reilly Media</span>]
-                                            <span contenteditable="true"
-                                                id="No">.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
-                                        </p>
-
-                                        <div id="GT3div" class="hidden_GT3 hidden">
-                                            <p><strong>STT:</strong>&nbsp;[<span id="STT_GT_DSpan_3"></span>]</p>
-                                            <p><strong>Tên tác giả:</strong>&nbsp;<span id="TG_GT_DSpan_3"
-                                                    contenteditable="true"></span>
-                                            </p>
-                                            <p><strong>Năm Xuất bảng:</strong>&nbsp;<span id="NXB_GT_DSpan_3"
-                                                    contenteditable="true"></span>
-                                            </p>
-                                            <p><strong>Tên tài liệu tham khảo:</strong>&nbsp;<span id="TEN_GT_DSpan_3"
-                                                    contenteditable="true" class="text-nghien"></span></p>
-                                            <p><strong>Nguồn:</strong>&nbsp;<span id="NGUON_GT_DSpan_3"
-                                                    contenteditable="true"></span></p>
-                                        </div>
-                                    </div>
+                                <td class="header-1-general-information-1">
+                                    <p><strong><em>Số tín chỉ</em></strong></p>
                                 </td>
-                                <td class="empty"></td>
+                                <td class="header-1-general-information-1">
+                                    <p><strong><em>Số giờ dự giảng</em></strong></p>
+                                </td>
+                                <td class="header-1-general-information-1">
+                                    <p><strong><em>Giờ tự học và giờ học khác</em></strong></p>
+                                </td>
                             </tr>
+                            {{!-- body-general-information-1 --}}
                             <tr>
-                                <td class="table-2-learning-header">
-                                    <p><span id="loaiHocLieu">Tài liệu tham khảo thêm</span></p>
+                                <td class="body-1-general-information-1">
+                                    <p class="flex-row">
+                                        <span class="flex-row-text">
+                                            <label for="LoaiHocPhan1">Đại cương</label>
+                                        </span>
+
+                                        <span class="test">
+
+                                            <input class="test" type="checkbox" value="Đại cương" id="LoaiHocPhan1"
+                                                onclick="checkboxChanged('LoaiHocPhan1')">
+
+                                        </span>
+                                    </p>
+                                    <p class="flex-row">
+                                        <span class="flex-row-text">
+                                            <label for="LoaiHocPhan2">Cơ sở</label>
+                                        </span>
+
+                                        <span class="test">
+                                            <input type="checkbox" value="Cơ sở" id="LoaiHocPhan2"
+                                                onclick="checkboxChanged('LoaiHocPhan2')">
+
+                                        </span>
+                                    </p>
+                                    <p class="flex-row">
+                                        <span class="flex-row-text">
+                                            <label for="LoaiHocPhan3">Chuyên ngành</label>
+                                        </span>
+
+                                        <span class="test">
+
+                                            <input type="checkbox" value="Chuyên ngành" id="LoaiHocPhan3"
+                                                onclick="checkboxChanged('LoaiHocPhan3')">
+                                        </span>
+                                    </p>
                                 </td>
-                                <td class="table-2-learning-body">
-                                    <div id="TaiLieuThamKhao">
-                                        <p id="TL1" class="allowDeletion2 TaiLieuThamKhao">
-                                            [<span id="STT_TL_1" class="STT_TB2" onclick="hiddenAndShow(1,TL)"
-                                                contenteditable="true">4</span>]
-                                            <span id="TG_TL_1" onclick="hiddenAndShow(1,'TL')" contenteditable="true"
-                                                class="TacGia">Jake VanderPlas</span>
-                                            (<span id="NXB_TL_1" onclick="hiddenAndShow(1,'TL')" contenteditable="true"
-                                                class="NamXB">2017</span>).&nbsp;
-                                            <span id="Ten_TL_1" onclick="hiddenAndShow(1,'TL')" contenteditable="true"
-                                                class="TenTL text-nghien">Python Data
-                                                Science
-                                                Handbook: Essential Tools for
-                                                Working with Data</span>
-                                            [<span id="NGUON_TL_1" onclick="hiddenAndShow(1,'TL')"
-                                                contenteditable="true" class="Nguon">O'Reilly Media</span>]
-                                            <span contenteditable="true"
-                                                id="No">.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
-                                        </p>
-
-                                        <div id="TLdiv" class="hidden_TL1 hidden">
-                                            <p><strong>STT:</strong>&nbsp;[<span id="STT_TL_DSpan_1"></span>]</p>
-                                            <p><strong>Tên tác giả:</strong>&nbsp;<span id="TG_TL_DSpan_1"
-                                                    contenteditable="true"></span></p>
-                                            <p><strong>Năm Xuất bảng:</strong>&nbsp;<span id="NXB_TL_DSpan_1"
-                                                    contenteditable="true"></span></p>
-                                            <p><strong>Tên tài liệu tham khảo:</strong>&nbsp;<span id="TEN_TL_DSpan_1"
-                                                    contenteditable="true" class="text-nghien"></span></p>
-                                            <p><strong>Nguồn:</strong>&nbsp;<span id="NGUON_TL_DSpan_1"
-                                                    contenteditable="true"></span></p>
-                                        </div>
-
-
+                                <td class="body-1-general-information-1">
+                                    <div class="dropdown" id="dropdown-SoTC_LT">
+                                        Lý thuyết:&nbsp;
+                                        <span contenteditable="true" id="SoTC_LT">2</span>
+                                        <ul class="dropdown-content">
+                                            <li onclick="updateValue('SoTC_LT', '1','TUA')">1</li>
+                                            <li onclick="updateValue('SoTC_LT', '2','TUA')">2</li>
+                                            <li onclick="updateValue('SoTC_LT', '3','TUA')">3</li>
+                                            <li onclick="updateValue('SoTC_LT', '4','TUA')">4</li>
+                                            <li onclick="updateValue('SoTC_LT', '5','TUA')">5</li>
+                                        </ul>
+                                    </div>
+                                    <br>
+                                    <br>
+                                    <div class="dropdown" id="dropdown-SoTC_TH">
+                                        Thực hành:&nbsp;
+                                        <span contenteditable="true" id="SoTC_TH">1</span>
+                                        <ul class="dropdown-content">
+                                            <li onclick="updateValue('SoTC_TH', '1','TUA')">1</li>
+                                            <li onclick="updateValue('SoTC_TH', '2','TUA')">2</li>
+                                            <li onclick="updateValue('SoTC_TH', '3','TUA')">3</li>
+                                            <li onclick="updateValue('SoTC_TH', '4','TUA')">4</li>
+                                            <li onclick="updateValue('SoTC_TH', '5','TUA')">5</li>
+                                        </ul>
                                     </div>
                                 </td>
-                                <td class="empty"></td>
-                            </tr>
-                            <tr>
-                                <td class="table-2-learning-header">
-                                    <p><span id="loaiHocLieu">Các loại học liệu khác</span></p>
+                                <td class="body-1-general-information-1">
+                                    <div class="dropdown" id="dropdown-LT">
+                                        Lý thuyết:&nbsp;
+                                        <span contenteditable="true" id="LT">1</span>
+                                        <ul class="dropdown-content">
+                                            <li onclick="updateValue('LT', '1','TUA')">1</li>
+                                            <li onclick="updateValue('LT', '2','TUA')">2</li>
+                                            <li onclick="updateValue('LT', '3','TUA')">3</li>
+                                            <li onclick="updateValue('LT', '4','TUA')">4</li>
+                                            <li onclick="updateValue('LT', '5','TUA')">5</li>
+                                        </ul>
+                                    </div>
+                                    <br>
+                                    <br>
+                                    <div class="dropdown" id="dropdown-TH">
+                                        Thực hành:&nbsp;
+                                        <span contenteditable="true" id="TH">1</span>
+                                        <ul class="dropdown-content">
+                                            <li onclick="updateValue('TH', '1','TUA')">1</li>
+                                            <li onclick="updateValue('TH', '2','TUA')">2</li>
+                                            <li onclick="updateValue('TH', '3','TUA')">3</li>
+                                            <li onclick="updateValue('TH', '4','TUA')">4</li>
+                                            <li onclick="updateValue('TH', '5','TUA')">5</li>
+                                        </ul>
+                                    </div>
+
                                 </td>
-                                {{!--
-                                //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-                                --}}
-                                <td class="table-2-learning-body">
-                                    <div id="HocLieu">
-                                        <p id="HL1" class="allowDeletion2 HocLieu">
-                                            [<span id="STT_HL_1" class="STT_TB2" onclick="hiddenAndShow(1,HL)"
-                                                contenteditable="true">5</span>]
-                                            <span id="TG_HL_1" onclick="hiddenAndShow(1,'HL')" contenteditable="true"
-                                                class="TacGia">Mirko Stojiljković</span>
-                                            (<span id="NXB_HL_1" onclick="hiddenAndShow(1,'HL')" contenteditable="true"
-                                                class="NamXB">2022</span>).&nbsp;
-                                            <span id="Ten_HL_1" onclick="hiddenAndShow(1,'HL')" contenteditable="true"
-                                                class="TenTL text-nghien">Python Data
-                                                Science
-                                                Handbook: Essential Tools for
-                                                Working with Data</span>
-                                            [<span id="NGUON_HL_1" onclick="hiddenAndShow(1,'HL')"
-                                                contenteditable="true" class="Nguon">O'Reilly Media</span>]
-                                            <span contenteditable="true"
-                                                id="No">.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
-                                        </p>
+                                <td class="body-1-general-information-1">
 
 
+                                    <div class="dropdown" id="dropdown-SoGioTuHoc">
 
-
-                                        <div id="HL1div" class="hidden_HL1 hidden">
-                                            <p><strong>STT:</strong>&nbsp;[<span id="STT_HL_DSpan_1"></span>]</p>
-                                            <p><strong>Tên tác giả:</strong>&nbsp;<span id="TG_HL_DSpan_1"
-                                                    contenteditable="true"></span></p>
-                                            <p><strong>Năm Xuất bảng:</strong>&nbsp;<span id="NXB_HL_DSpan_1"
-                                                    contenteditable="true"></span></p>
-                                            <p><strong>Tên tài liệu tham khảo:</strong>&nbsp;<span id="TEN_HL_DSpan_1"
-                                                    contenteditable="true" class="text-nghien"></span></p>
-                                            <p><strong>Nguồn:</strong>&nbsp;<span id="NGUON_HL_DSpan_1"
-                                                    contenteditable="true"></span></p>
-                                        </div>
-
-                                        <p id="HL2" class="allowDeletion2 HocLieu">
-                                            [<span id="STT_HL_2" class="STT_TB2" onclick="hiddenAndShow(2,HL)"
-                                                contenteditable="true">6</span>]
-                                            <span id="TG_HL_2" onclick="hiddenAndShow(2,'HL')" contenteditable="true"
-                                                class="TacGia">Mirko Stojiljković</span>
-                                            (<span id="NXB_HL_2" onclick="hiddenAndShow(2,'HL')" contenteditable="true"
-                                                class="NamXB">2022</span>).&nbsp;
-                                            <span id="Ten_HL_2" onclick="hiddenAndShow(2,'HL')" contenteditable="true"
-                                                class="TenTL text-nghien">ython
-                                                Statistics Fundamentals: How to Describe
-                                                Your Data</span>
-                                            [<span id="NGUON_HL_2" onclick="hiddenAndShow(2,'HL')"
-                                                contenteditable="true" class="Nguon">O'Reilly Media</span>]
-                                            <span contenteditable="true"
-                                                id="No">.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
-                                        </p>
-                                        <div id="HL2div" class="hidden_HL2 hidden">
-                                            <p><strong>STT:</strong>&nbsp;[<span id="STT_HL_DSpan_2"></span>]</p>
-                                            <p><strong>Tên tác giả:</strong>&nbsp;<span id="TG_HL_DSpan_2"
-                                                    contenteditable="true"></span></p>
-                                            <p><strong>Năm Xuất bảng:</strong>&nbsp;<span id="NXB_HL_DSpan_2"
-                                                    contenteditable="true"></span></p>
-                                            <p><strong>Tên tài liệu tham khảo:</strong>&nbsp;<span id="TEN_HL_DSpan_2"
-                                                    contenteditable="true" class="text-nghien"></span></p>
-                                            <p><strong>Nguồn:</strong>&nbsp;<span id="NGUON_HL_DSpan_2"
-                                                    contenteditable="true"></span></p>
-                                        </div>
-
-                                        <p id="HL3" class="allowDeletion2 HocLieu">{{!-- //TacGia NamXB TenTL Nguon --}}
-                                            [<span id="STT_HL_3" class="STT_TB2" onclick="hiddenAndShow(3,HL)"
-                                                contenteditable="true">7</span>]
-                                            <span id="TG_HL_3" onclick="hiddenAndShow(3,'HL')" contenteditable="true"
-                                                class="TacGia">FreeCodeCamp</span>
-                                            (<span id="NXB_HL_3" onclick="hiddenAndShow(3,'HL')" contenteditable="true"
-                                                class="NamXB"></span>).&nbsp;
-                                            <span id="Ten_HL_3" onclick="hiddenAndShow(3,'HL')" contenteditable="true"
-                                                class="TenTL text-nghien">Courses: Data Analysis
-                                                with
-                                                Python</span>
-                                            [<span id="NGUON_HL_3" onclick="hiddenAndShow(3,'HL')"
-                                                contenteditable="true"
-                                                class="Nguon">https://www.freecodecamp.org/learn/data-analysis-with-python</span>]
-                                            <span contenteditable="true"
-                                                id="No">.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
-                                        </p>
-                                        <div id="HL3div" class="hidden_HL3 hidden">
-                                            <p><strong>STT:</strong>&nbsp;[<span id="STT_HL_DSpan_3"></span>]</p>
-                                            <p><strong>Tên tác giả:</strong>&nbsp;<span id="TG_HL_DSpan_3"
-                                                    contenteditable="true"></span></p>
-                                            <p><strong>Năm Xuất bảng:</strong>&nbsp;<span id="NXB_HL_DSpan_3"
-                                                    contenteditable="true"></span></p>
-                                            <p><strong>Tên tài liệu tham khảo:</strong>&nbsp;<span id="TEN_HL_DSpan_3"
-                                                    contenteditable="true" class="text-nghien"></span></p>
-                                            <p><strong>Nguồn:</strong>&nbsp;<span id="NGUON_HL_DSpan_3"
-                                                    contenteditable="true"></span></p>
-                                        </div>
+                                        <span contenteditable="true" id="SoGioTuHoc">1</span>
+                                        <ul class="dropdown-content">
+                                            <li onclick="updateValue('SoGioTuHoc', '1','TUA')">1</li>
+                                            <li onclick="updateValue('SoGioTuHoc', '2','TUA')">2</li>
+                                            <li onclick="updateValue('SoGioTuHoc', '3','TUA')">3</li>
+                                            <li onclick="updateValue('SoGioTuHoc', '4','TUA')">4</li>
+                                            <li onclick="updateValue('SoGioTuHoc', '5','TUA')">5</li>
+                                        </ul>
                                     </div>
                                 </td>
-                                <td class="empty"></td>
                             </tr>
                         </tbody>
                     </table>
 
-                    <div class="instructionForm-table2" id="instructionForm-table2">
-                        <h3>Bảng Chương phần 2</h3>
+                    <p><strong><em><span>Đối tượng học</span></em><span>: &nbsp; &nbsp; &nbsp;&nbsp;</span></strong></p>
+                    <p>Trình độ đào tạo:&nbsp;<span contenteditable="true" id="TrinhDo_DT">Đại học</span></p>
+                    <p>Ngành:&nbsp;<span contenteditable="true" id="Nganh">Công nghệ Thông tin</span></p>
+                    <div><span>Chuyên ngành:&nbsp;<span contenteditable="true" id="ChuyenNganh">
+                                &hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;.
+                            </span>(nếu có)</span></div>
+                    <p class="display-flex">
 
-                        <button id="addButton" onclick="CreateCDR('GT','giaotrinh')" class="btn btn-secondary ctc1">
-                            + thêm 1 giaotrinh
-                        </button>
-
-                        <button id="addButton" onclick="CreateCDR('TL','TaiLieuThamKhao')"
-                            class="btn btn-secondary ctc1">
-                            + thêm 1 TaiLieuThamKhao
-                        </button>
-                        <button id="addButton" onclick="CreateCDR('GT', 'HocLieu')" class="btn btn-secondary ctc1">
-                            + thêm 1 HocLieu
-                        </button>
-
-                        <button id="button_delete_tb2" class="btn btn-secondary ctc1">
-                            + xóa
-                        </button>
+                    <div class="dropdown" id="dropdown-HocKy">
+                        Học kỳ:&nbsp;
+                        <span contenteditable="true" id="HocKy">III</span>
+                        <ul class="dropdown-content">
+                            <li onclick="updateValue('HocKy', 'I','TUA')">I</li>
+                            <li onclick="updateValue('HocKy', 'II','TUA')">II</li>
+                            <li onclick="updateValue('HocKy', 'III','TUA')">III</li>
+                            <li onclick="updateValue('HocKy', 'IV','TUA')">IV</li>
+                            <li onclick="updateValue('HocKy', 'V','TUA')">V</li>
+                            <li onclick="updateValue('HocKy', 'VI','TUA')">VI</li>
+                            <li onclick="updateValue('HocKy', 'VII','TUA')">VII</li>
+                            <li onclick="updateValue('HocKy', 'VII','TUA')">VII</li>
+                            <li onclick="updateValue('HocKy', 'VIII','TUA')">VIII</li>
+                        </ul>
                     </div>
 
+
+                    &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+                    &nbsp; &nbsp;
+                    &nbsp;
+                    <div class="dropdown" id="dropdown-NamHoc">
+                        Năm thứ:&nbsp;
+                        <span contenteditable="true" id="NamHoc">3</span>
+                        <ul class="dropdown-content">
+                            <li onclick="updateValue('NamHoc', '1','TUA')">1</li>
+                            <li onclick="updateValue('NamHoc', '2','TUA')">2</li>
+                            <li onclick="updateValue('NamHoc', '3','TUA')">3</li>
+                            <li onclick="updateValue('NamHoc', '4','TUA')">4</li>
+                            <li onclick="updateValue('NamHoc', '5','TUA')">5</li>
+                        </ul>
+                    </div>
+                    </p>
+
+                    <p><strong><em><span>Điều kiện tham gia học phần:</span></em></strong></p>
+
+                    <table class="table-1-general-information-2">
+                        <tbody>
+                            <tr>
+                                <td class="header-1-general-information-2">Học phần tiên quyết</td>
+                                <td colspan="2" class="body-1-general-colspan-2" id="TienQuyet">
+                                    <div class="ModifyTB2">
+                                        <div class="autocomplete">Tên:&nbsp;
+                                            <span contenteditable="true" id="TenTQ1">
+                                                Vi tích phân A1
+                                            </span>
+                                        </div>
+
+                                        <div class="autocomplete">MSHP:&nbsp;
+                                            <span contenteditable="true" id="MaTQ1">
+                                                110042
+                                            </span>
+                                        </div>
+                                    </div>
+
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td class="body-1-general-left-2">Học phần song hành</td>
+                                <td colspan="2" class="body-1-general-right-2" id="HocPhan_SH">
+                                    <span contenteditable="true">Không</span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td rowspan="3" class="body-1-general-left-2">Các yêu cầu khác</td>
+                                <td class="header-1-general-information-2">Về kiến thức:</td>
+                                <td class="body-1-general-colspan-2">
+                                    <div contenteditable="true" id="KienThuc"
+                                        onkeydown="handleKeyPress('KienThuc',event)">
+                                        Kiến thức toán học phổ
+                                        thông
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="header-1-general-information-2">Về kỹ năng:</td>
+
+                                <td class="body-1-general-colspan-2 section-content text-left" contenteditable="true"
+                                    id="KyNang" onkeydown="handleKeyPress('KyNang',event)">
+
+                                    <div>&nbsp;&nbsp;-&nbsp;&nbsp;Kỹ năng phân tích, giải quyết vấn đề</div>
+                                    <div>&nbsp;&nbsp;-&nbsp;&nbsp;Kỹ năng tập trung, ghi nhớ, tính toán, biến đổi</div>
+
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="header-1-general-information-2">Về thái độ:</td>
+                                <td class="body-1-general-colspan-2 text-left" contenteditable="true" id="ThaiDo"
+                                    onkeydown="handleKeyPress('ThaiDo',event)">
+                                    Chủ động trong học tập
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <p class="section-content">&nbsp;</p>
                 </div>
+                    {{!----}}
+                    {{!-- 2. Nguồn học liệu (Learning resources): --}}
+                    {{!----}}
+                <div class="formLearningResources">
+                    <p class="section-content">&nbsp;</p>
+                    <p class="section-content break"><strong><span>2. Nguồn học liệu (Learning
+                                resources):</span></strong>
+                    </p>
+                    <p class="section-content">&nbsp;</p>
+                    <div class="table-2-display-row">
+                        <table class="table-2-learning-resources">
+                            <tbody>
+                                <tr>
+                                    <td class="table-2-learning-header">
+                                        <p><span id="loaiHocLieu">Giáo trình/Tài liệu học tập chính</span></p>
+                                    </td>
+                                    <td class="table-2-learning-body">
+                                        <div id="giaotrinh">
+                                            <div style="display:flex;" class="giaotrinh TaiLieu section-content"
+                                                id="giaotrinh1">
+                                                <div class="stt" contenteditable="false">
+                                                    [1]&nbsp;&nbsp;
+                                                </div>
+                                                <div>
+                                                    <span contenteditable="true">[tên tác giả](năm xuất
+                                                        bản)</span>.&nbsp;
+                                                    <span contenteditable="true" style="font-style: italic;">
+                                                        [tên tài liệu]</span>.&nbsp;<br><span contenteditable="true">
+                                                        [nguồn] </span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="table-2-learning-header">
+                                        <p><span id="loaiHocLieu">Tài liệu tham khảo thêm</span></p>
+                                    </td>
+                                    <td class="table-2-learning-body">
+                                        <div id="TaiLieuThamKhao">
+                                            <div style="display: flex;"
+                                                class="TaiLieuThamKhao TaiLieu section-content text-left"
+                                                id="TaiLieuThamKhao1">
+                                                <div class="stt" contenteditable="false">
+                                                    [2]&nbsp;&nbsp;
+                                                </div>
+                                                <div>
+                                                    <span contenteditable="true">[tên tác giả](năm xuất
+                                                        bản)</span>.&nbsp;
+                                                    <span contenteditable="true" style="font-style: italic;">
+                                                        [tên tài liệu]</span>.&nbsp;<br><span contenteditable="true">
+                                                        [nguồn] </span>
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    </td>
+
+                                </tr>
+                                <tr>
+                                    <td class="table-2-learning-header">
+                                        <p><span id="loaiHocLieu">Các loại học liệu khác</span></p>
+                                    </td>
+                                    <td class="table-2-learning-body">
+                                        <div id="HocLieu">
+                                            <div style="display: flex;" class="HocLieu TaiLieu section-content"
+                                                id="HocLieu1">
+                                                <div class="stt" contenteditable="false">
+                                                    [3]&nbsp;&nbsp;
+                                                </div>
+                                                <div>
+                                                    <span contenteditable="true">[tên tác giả](năm xuất
+                                                        bản)</span>.&nbsp;
+                                                    <span contenteditable="true" style="font-style: italic;">
+                                                        [tên tài liệu]</span>.&nbsp;<br><span contenteditable="true">
+                                                        [nguồn] </span>
+                                                </div>
+                                            </div>
+
+
+                                        </div>
+                                    </td>
+
+                                </tr>
+                            </tbody>
+                        </table>
+                        <div class="instructionForm-table2" id="instructionForm-table2">
+                            <h3>Bảng Chương phần 2</h3>
+
+                            <button id="addButton" onclick="CreateCDR('giaotrinh')" class="btn btn-secondary ctc1">
+                                + thêm 1 giaotrinh
+                            </button>
+                            <button id="addButton" onclick="CreateCDR('TaiLieuThamKhao')"
+                                class="btn btn-secondary ctc1">
+                                + thêm 1 TaiLieuThamKhao
+                            </button>
+                            <button id="addButton" onclick="CreateCDR('HocLieu')" class="btn btn-secondary ctc1">
+                                + thêm 1 HocLieu
+                            </button>
+
+                            <button id="button_delete_tb2" class="btn btn-secondary ctc1">
+                                + xóa
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+
+
+                
                 {{!----}}
                 {{!-- 3. Mô tả học phần (Course description): --}}
                 {{!----}}
-
-                <p class="section-content">&nbsp;</p>
-                <div class="width16_cm">
-                    <p class="section-content"><strong><span>3. Mô tả học phần (Course description):</span></strong></p>
-                    <div class="section-content" contenteditable="true" id="MoTa" onkeydown="handleKeyPress('MoTa',event)">
+                <div class="CourseDescription">
+                    <p class="section-content">&nbsp;</p>
+                    <div class="width16_cm">
+                        <p class="section-content"><strong><span>3. Mô tả học phần (Course description):</span></strong>
+                        </p>
+                        <div class="section-content" contenteditable="true" id="MoTa"
+                            onkeydown="handleKeyPress('MoTa',event)">
                             Học phần giúp trang bị cho sinh viên các kiến thức cơ bản về xác suất và thống kê để phân
                             tích
                             dữ liệu trong nghiên cứu. Sinh viên sẽ được học cách biên tập dữ liệu, cách mô tả dữ liệu
@@ -575,412 +404,245 @@
                             của
                             thống kê và khoa học dữ liệu trong bối cảnh hiện đại.
                         </div>
-
-
-
-                            
-                    <p class="section-content">&nbsp;</p>
-                </div>
-                <p class="section-content"><strong><span>4. Chuẩn đầu ra của học phần (Course learning
-                            outcomes):</span></strong></p>
-                <p class="section-content">&nbsp;</p>
-                <p class="section-content">Sau khi hoàn thành học phần, sinh viên có thể:</p>
-
-                {{!-- Course learning outcomes --}}
-                {{!-- 4. Chuẩn đầu ra của học phần (Course learning outcomes): --}}
-                {{!-- Course learning outcomes --}}
-
-                <div class="table-4-display-row">
-                    <table class="table-4-learning-outcomes">
-                        <thead>
-                            {{!-- header-learning-outcomes --}}
-                            <tr>
-                                <td class="header-4-learning-outcomes-1">
-                                    <p><span>&nbsp;</span></p>
-                                </td>
-                                <td class="header-4-learning-outcomes-2">
-                                    <p><strong>Chuẩn đầu ra của học phần</strong></p>
-                                </td>
-                                <td class="header-4-learning-outcomes-3">
-                                    <p><strong>Đáp ứng CĐR của CTĐT</strong></p>
-                                </td>
-                                <td class="header-4-learning-outcomes-4">
-                                    <p><strong>Trình độ năng lực</strong></p>
-                                </td>
-                                <td class="header-4-learning-outcomes-5">
-                                    <p><strong>TUA</strong></p>
-                                </td>
-                            </tr>
-                        </thead>
-                        <tbody id="table-4-learning-outcomes">
-                            {{!-- <tr> tieu de 1 --}}
-                            <tr id="KyNangKT" class="LoaiKN">
-                                <td colspan="5" class="body-4-learning-outcomes">
-                                    <div class="body-4-learning-outcomes-tital">
-                                        <p class="decimal-list"><strong><em><span class="strong-text">❖ <span>Về kiến
-                                                            thức</span>:</span></em></strong>
-                                        </p>
-                                    </div>
-                                </td>
-
-                            </tr>
-                            {{!-- <tr> tieu de 1 --}}
-
-                            <tr class="allowDeletion_4 KyNang KyNangKT" id="KyNangKT1">
-                                <th class="content-4-learning-outcomes-1 section-content text-left stt"
-                                    contenteditable="true">
-                                    1
-                                </th>
-                                <td class="content-4-learning-outcomes-2">
-                                     <div class="section-content KT" id="KT_ND_1" contenteditable="true" onkeydown="handleKeyPress('KT_ND_1',event)"> 
-                                            Trình bày các khái niệm cơ bản về xác suất
-                                    </div>  
-                                </td>
-
-                                <td class="content-4-learning-outcomes-3">
-                                <div class="dropdown" id="dropdown-KT_DUPO_1">
-                                    <p class="section-content"> <span contenteditable="true" id="KT_DUPO_1" class="KT">PLO1</span></p>
-                                    <ul class="dropdown-content">
-                                        <li onclick="updateValue('KT_DUPO_1', 'PLO1','DUPO')">PLO1</li>
-                                        <li onclick="updateValue('KT_DUPO_1', 'PLO2','DUPO')">PLO2</li>
-                                        <li onclick="updateValue('KT_DUPO_1', 'PLO3','DUPO')">PLO3</li>
-                                        <li onclick="updateValue('KT_DUPO_1', 'PLO4','DUPO')">PLO4</li>
-                                        <li onclick="updateValue('KT_DUPO_1', 'PLO5','DUPO')">PLO5</li>
-                                        <li onclick="updateValue('KT_DUPO_1', 'PLO6','DUPO')">PLO6</li>
-                                        <li onclick="updateValue('KT_DUPO_1', 'PLO7','DUPO')">PLO7</li>
-                                        <li onclick="updateValue('KT_DUPO_1', 'PLO8','DUPO')">PLO8</li>
-                                        <li onclick="updateValue('KT_DUPO_1', 'PLO9','DUPO')">PLO9</li>
-                                        <li onclick="updateValue('KT_DUPO_1', 'PLO10','DUPO')">PLO10</li>
-                                        <!-- Add more options as needed -->
-                                    </ul>
-                                </div>
-                                </td>
-                                
-                                <td class="content-4-learning-outcomes-4">
-                                    <p class="section-content text-center"><span contenteditable="true" id="KT_TD_1"
-                                            class="KT">2</span></p>
-                                </td>
-                                <td class="content-4-learning-outcomes-5">
-                                    <div class="dropdown" id="dropdown-KT_DUPO_1">
-                                        <p class="section-content"><span contenteditable="true" id="KT_TUA_1"
-                                                class="KT">TUA</span>
-                                        </p>
-                                        <ul class="dropdown-content">
-                                        <li onclick="updateValue('KT_TUA_1', 'TUA','TUA')">TUA</li>
-                                        <li onclick="updateValue('KT_TUA_1', 'UA','TUA')">UA</li>
-                                        <li onclick="updateValue('KT_TUA_1', 'TA','TUA')">TA</li>
-                                    </ul>
-                                    </div>
-                                </td>
-                            </tr>
-
-
-
-
-                            {{!-- <tr> tieu de 1 --}}
-                            <tr id="KyNangKN" class="LoaiKN">
-                                <td colspan="5" class="body-4-learning-outcomes">
-                                    <div class="body-4-learning-outcomes-tital">
-                                        <p class="decimal-list"><strong><em><span class="strong-text">❖ Về kỹ năng (bao
-                                                        gồm
-                                                        kỹ năng chuyên môn và kỹ năng mềm)</span></em></strong></p>
-                                    </div>
-                                </td>
-
-                            </tr>
-
-                            {{!-- <tr> tieu de 1 --}}
-                            <tr class="KyNang KyNangKN" id="KyNangKN1">
-                                <th class="content-4-learning-outcomes-1 section-content text-left"
-                                    contenteditable="true">
-                                    2
-                                </th>
-                                <td class="content-4-learning-outcomes-2">
-                                    <div class="section-content KN" id="KN_ND_1" contenteditable="true" onkeydown="handleKeyPress('KN_ND_1',event)"> 
-                                            Trình bày các khái niệm cơ bản về xác suất
-                                    </div>                        
-                                </td>
-                                <td class="content-4-learning-outcomes-3">
-                                    <div class="dropdown" id="dropdown-KN_DUPO_1">
-                                    <p class="section-content"> <span contenteditable="true" id="KN_DUPO_1" class="KN">PLO1</span></p>
-                                    <ul class="dropdown-content">
-                                        <li onclick="updateValue('KN_DUPO_1', 'PLO1','DUPO')">PLO1</li>
-                                        <li onclick="updateValue('KN_DUPO_1', 'PLO2','DUPO')">PLO2</li>
-                                        <li onclick="updateValue('KN_DUPO_1', 'PLO3','DUPO')">PLO3</li>
-                                        <li onclick="updateValue('KN_DUPO_1', 'PLO4','DUPO')">PLO4</li>
-                                        <li onclick="updateValue('KN_DUPO_1', 'PLO5','DUPO')">PLO5</li>
-                                        <li onclick="updateValue('KN_DUPO_1', 'PLO6','DUPO')">PLO6</li>
-                                        <li onclick="updateValue('KN_DUPO_1', 'PLO7','DUPO')">PLO7</li>
-                                        <li onclick="updateValue('KN_DUPO_1', 'PLO8','DUPO')">PLO8</li>
-                                        <li onclick="updateValue('KN_DUPO_1', 'PLO9','DUPO')">PLO9</li>
-                                        <li onclick="updateValue('KN_DUPO_1', 'PLO10','DUPO')">PLO10</li>
-                                    
-                                    </ul>
-                                </div>
-                                </td>
-                            
-                                <td class="content-4-learning-outcomes-4">
-                                    <p class="section-content text-center"><span contenteditable="true" id="KN_TD_1"
-                                            class="KN">2</span></p>
-                                </td>
-                                <td class="content-4-learning-outcomes-5">
-                                    <div class="dropdown" id="dropdown-KN_DUPO_1">
-                                        <p class="section-content"><span contenteditable="true" id="KN_TUA_1"
-                                                class="KN">TUA</span>
-                                        </p>
-                                        <ul class="dropdown-content">
-                                        <li onclick="updateValue('KN_TUA_1', 'TUA','TUA')">TUA</li>
-                                        <li onclick="updateValue('KN_TUA_1', 'UA','TUA')">UA</li>
-                                        <li onclick="updateValue('KN_TUA_1', 'TA','TUA')">TA</li>
-
-                                    </ul>
-                                    </div>
-                                </td>
-                            </tr>
-
-
-                            {{!-- <tr> tieu de 1 --}}
-                            <tr id="KyNangTD" class="LoaiKN">
-                                <td colspan="5" class="body-4-learning-outcomes">
-                                    <div class="body-4-learning-outcomes-tital">
-                                        <p class="decimal-list"><strong><em>
-                                                    <span class="strong-text">❖ Về thái độ:
-                                                    </span></em></strong></p>
-                                    </div>
-                                </td>
-
-                            </tr>
-                            {{!-- <tr> tieu de 1 --}}
-                            <tr class="KyNang KyNangTD" id="KyNangTD1">
-                                <th class="content-4-learning-outcomes-1 section-content text-left"
-                                    contenteditable="true">
-                                    3
-                                </th>
-                                <td class="content-4-learning-outcomes-2"> 
-                                    <div class="section-content" id="TD_ND_1" class="TD" contenteditable="true" onkeydown="handleKeyPress('TD_ND_1',event)"> 
-                                        
-                                        Trình bày các khái niệm cơ bản về xác suất
-
-                                    </div>
-                                </td>
-
-                                <td class="content-4-learning-outcomes-3">
-                                    <div class="dropdown" id="dropdown-TD_DUPO_1">
-                                    <p class="section-content"> <span contenteditable="true" id="TD_DUPO_1" class="TD">PLO1</span></p>
-                                    <ul class="dropdown-content">
-                                        <li onclick="updateValue('TD_DUPO_1', 'PLO1','DUPO')">PLO1</li>
-                                        <li onclick="updateValue('TD_DUPO_1', 'PLO2','DUPO')">PLO2</li>
-                                        <li onclick="updateValue('TD_DUPO_1', 'PLO3','DUPO')">PLO3</li>
-                                        <li onclick="updateValue('TD_DUPO_1', 'PLO4','DUPO')">PLO4</li>
-                                        <li onclick="updateValue('TD_DUPO_1', 'PLO5','DUPO')">PLO5</li>
-                                        <li onclick="updateValue('TD_DUPO_1', 'PLO6','DUPO')">PLO6</li>
-                                        <li onclick="updateValue('TD_DUPO_1', 'PLO7','DUPO')">PLO7</li>
-                                        <li onclick="updateValue('TD_DUPO_1', 'PLO8','DUPO')">PLO8</li>
-                                        <li onclick="updateValue('TD_DUPO_1', 'PLO9','DUPO')">PLO9</li>
-                                        <li onclick="updateValue('TD_DUPO_1', 'PLO10','DUPO')">PLO10</li>
-                                    </ul>
-                                </div>
-                                </td>
-                                <td class="content-4-learning-outcomes-4">
-                                    <p class="section-content text-center"><span contenteditable="true" {{!-- tự do
-                                            trình độ --}} id="TD_TD_1" class="TD">2</span></p>
-                                </td>
-                                <td class="content-4-learning-outcomes-5">
-                                    <div class="dropdown" id="dropdown-TD_DUPO_1">
-                                        <p class="section-content"><span contenteditable="true" id="TD_TUA_1"
-                                                class="TD">TUA</span>
-                                        </p>
-                                        <ul class="dropdown-content">
-                                        <li onclick="updateValue('TD_TUA_1', 'TUA','TUA')">TUA</li>
-                                        <li onclick="updateValue('TD_TUA_1', 'UA','TUA')">UA</li>
-                                        <li onclick="updateValue('TD_TUA_1', 'TA','TUA')">TA</li>
-                                        </ul>
-                                    </div>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-
-
-                    <div class="instructionForm-table4" id="instructionForm-table4">
-                        <h3>Bảng Chương phần 4</h3>
-                        <div>
-
-                        </div>
-                        <button onclick="ThemCDRLoaiKT(1)" class="btn btn-secondary ctc1">
-
-                            + Thêm CDR KT
-                        </button>
-                        <button onclick="ThemCDRLoaiKT(2)" class="btn btn-secondary ctc1">
-
-                            + Thêm CDR KN
-                        </button>
-                        <button onclick="ThemCDRLoaiKT(3)" class="btn btn-secondary ctc1">
-
-                            + Thêm CDR TD
-                        </button>
-                        <h3>Quy tắc xóa</h3>
-                        <p>Click vào CDR cần xóa</p>
-                        <button id="button_delete_tb4" class="btn btn-secondary">Xóa 1 CDR</button>
+                        <p class="section-content">&nbsp;</p>
                     </div>
-
-                    {{>table-4}}
-
                 </div>
 
+                <div class="CourseLearningOutcomes">
+                    <p class="section-content"><strong><span>4. Chuẩn đầu ra của học phần (Course learning
+                                outcomes):</span></strong></p>
+                    <p class="section-content">&nbsp;</p>
+                    <p class="section-content">Sau khi hoàn thành học phần, sinh viên có thể:</p>
+                    {{!-- Course learning outcomes --}}
+                    {{!-- 4. Chuẩn đầu ra của học phần (Course learning outcomes): --}}
+                    {{!-- Course learning outcomes --}}
+                    <div class="table-4-display-row">
+                        <table class="table-4-learning-outcomes">
+                            <thead>
+                                {{!-- header-learning-outcomes --}}
+                                <tr>
+                                    <td class="header-4-learning-outcomes-1">
+                                        <p><span>&nbsp;</span></p>
+                                    </td>
+                                    <td class="header-4-learning-outcomes-2">
+                                        <p><strong>Chuẩn đầu ra của học phần</strong></p>
+                                    </td>
+                                    <td class="header-4-learning-outcomes-3">
+                                        <p><strong>Đáp ứng CĐR của CTĐT</strong></p>
+                                    </td>
+                                    <td class="header-4-learning-outcomes-4">
+                                        <p><strong>Trình độ năng lực</strong></p>
+                                    </td>
+                                    <td class="header-4-learning-outcomes-5">
+                                        <p><strong>TUA</strong></p>
+                                    </td>
+                                </tr>
+                            </thead>
+                            <tbody id="table-4-learning-outcomes">
+                                {{!-- <tr> tieu de 1 --}}
+                                <tr id="KyNangKT" class="LoaiKN">
+                                    <td colspan="5" class="body-4-learning-outcomes">
+                                        <div class="body-4-learning-outcomes-tital">
+                                            <p class="decimal-list"><strong><em><span class="strong-text">❖ <span>Về
+                                                                kiến
+                                                                thức</span>:</span></em></strong>
+                                            </p>
+                                        </div>
+                                    </td>
+                                </tr>
+                                {{!-- <tr> tieu de 1 --}}
+                                <tr class="allowDeletion_4 KyNang KyNangKT" id="KyNangKT1">
+                                    <th class="content-4-learning-outcomes-1 KN section-content text-left stt"
+                                        contenteditable="true">
+                                        1
+                                    </th>
+                                    <td class="content-4-learning-outcomes-2">
+                                        <div class="section-content KT" id="KT_ND_1" contenteditable="true"
+                                            onkeydown="handleKeyPress('KT_ND_1',event)">
+                                            Trình bày các khái niệm cơ bản về xác suất
+                                        </div>
+                                    </td>
+                                    <td class="content-4-learning-outcomes-3">
+                                        <div class="dropdown" id="dropdown-KT_DUPO_1">
+                                            <p class="section-content"> <span contenteditable="true" id="KT_DUPO_1"
+                                                    class="KT">PLO1</span></p>
+                                            <ul class="dropdown-content">
+                                                <li onclick="updateValue('KT_DUPO_1', 'PLO1','DUPO')">PLO1</li>
+                                                <li onclick="updateValue('KT_DUPO_1', 'PLO2','DUPO')">PLO2</li>
+                                                <li onclick="updateValue('KT_DUPO_1', 'PLO3','DUPO')">PLO3</li>
+                                                <li onclick="updateValue('KT_DUPO_1', 'PLO4','DUPO')">PLO4</li>
+                                                <li onclick="updateValue('KT_DUPO_1', 'PLO5','DUPO')">PLO5</li>
+                                                <li onclick="updateValue('KT_DUPO_1', 'PLO6','DUPO')">PLO6</li>
+                                                <li onclick="updateValue('KT_DUPO_1', 'PLO7','DUPO')">PLO7</li>
+                                                <li onclick="updateValue('KT_DUPO_1', 'PLO8','DUPO')">PLO8</li>
+                                                <li onclick="updateValue('KT_DUPO_1', 'PLO9','DUPO')">PLO9</li>
+                                                <li onclick="updateValue('KT_DUPO_1', 'PLO10','DUPO')">PLO10</li>
+                                                <!-- Add more options as needed -->
+                                            </ul>
+                                        </div>
+                                    </td>
+                                    <td class="content-4-learning-outcomes-4">
+                                        <p class="section-content text-center"><span contenteditable="true" id="KT_TD_1"
+                                                class="KT">2</span></p>
+                                    </td>
+                                    <td class="content-4-learning-outcomes-5">
+                                        <div class="dropdown" id="dropdown-KT_DUPO_1">
+                                            <p class="section-content"><span contenteditable="true" id="KT_TUA_1"
+                                                    class="KT">TUA</span>
+                                            </p>
+                                            <ul class="dropdown-content">
+                                                <li onclick="updateValue('KT_TUA_1', 'TUA','TUA')">TUA</li>
+                                                <li onclick="updateValue('KT_TUA_1', 'UA','TUA')">UA</li>
+                                                <li onclick="updateValue('KT_TUA_1', 'TA','TUA')">TA</li>
+                                            </ul>
+                                        </div>
+                                    </td>
+                                </tr>
+                                {{!-- <tr> tieu de 1 --}}
+                                <tr id="KyNangKN" class="LoaiKN">
+                                    <td colspan="5" class="body-4-learning-outcomes">
+                                        <div class="body-4-learning-outcomes-tital">
+                                            <p class="decimal-list"><strong><em><span class="strong-text">❖ Về kỹ năng
+                                                            (bao
+                                                            gồm
+                                                            kỹ năng chuyên môn và kỹ năng mềm)</span></em></strong></p>
+                                        </div>
+                                    </td>
 
-                {{!-- <div>
-                    </tr>
-                    <tr>
-                        <td class="content-4-learning-outcomes-1">
-                            <p class="text-left"><span contenteditable="true">2.</span></p>
-                        </td>
-                        <td class="content-4-learning-outcomes-2">
-                            <p class="section-content">
-                                <span contenteditable="true">
-                                    Trình bày vai trò của thống kê trong nghiên cứu khoa học
-                                </span>
-                            </p>
-                        </td>
-                        <td class="content-4-learning-outcomes-3">
-                            <p class="paragraph"> <span contenteditable="true">PLO1</span></p>
-                        </td>
-                        <td class="content-4-learning-outcomes-4">
-                            <p class="text-center"><span contenteditable="true">3</span></p>
-                        </td>
-                        <td class="content-4-learning-outcomes-5">
-                            <p class="paragraph"><span contenteditable="true">TUA</span></p>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="content-4-learning-outcomes-1">
-                            <p class="text-left"><span contenteditable="true">3.</span></p>
-                        </td>
-                        <td class="content-4-learning-outcomes-2">
-                            <p class="section-content">
-                                <span contenteditable="true">
-                                    Phân tích dữ liệu biểu đồ bằng ngôn ngữ Python/R
-                                </span>
-                            </p>
-                        </td>
-                        <td class="content-4-learning-outcomes-3">
-                            <p class="paragraph"> <span contenteditable="true">PLO3</span></p>
-                        </td>
-                        <td class="content-4-learning-outcomes-4">
-                            <p class="text-center"><span contenteditable="true">4</span></p>
-                        </td>
-                        <td class="content-4-learning-outcomes-5">
-                            <p class="paragraph"><span contenteditable="true">TUA</span></p>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="content-4-learning-outcomes-1">
-                            <p class="text-left"><span contenteditable="true">4.</span></p>
-                        </td>
-                        <td class="content-4-learning-outcomes-2">
-                            <p class="section-content">
-                                <span contenteditable="true">
-                                    Thực hiện các bài toán kiểm định giả thuyết thống kê
-                                </span>
-                            </p>
-                        </td>
-                        <td class="content-4-learning-outcomes-3">
-                            <p class="paragraph"> <span contenteditable="true">PLO4</span></p>
-                        </td>
-                        <td class="content-4-learning-outcomes-4">
-                            <p class="text-center"><span contenteditable="true">3</span></p>
-                        </td>
-                        <td class="content-4-learning-outcomes-5">
-                            <p class="paragraph"><span contenteditable="true">TUA</span></p>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="content-4-learning-outcomes-1">
-                            <p class="text-left"><span contenteditable="true">5.</span></p>
-                        </td>
-                        <td class="content-4-learning-outcomes-2">
-                            <p class="section-content">
-                                <span contenteditable="true">
-                                    Thực hiện phân tích phương sai, tương quan, hồi quy, dữ liệu chuỗi thời gian
-                                </span>
-                            </p>
-                        </td>
-                        <td class="content-4-learning-outcomes-3">
-                            <p class="paragraph"> <span contenteditable="true">PLO4</span></p>
-                        </td>
-                        <td class="content-4-learning-outcomes-4">
-                            <p class="text-center"><span contenteditable="true">3</span></p>
-                        </td>
-                        <td class="content-4-learning-outcomes-5">
-                            <p class="paragraph"><span contenteditable="true">TUA</span></p>
-                        </td>
-                    </tr> --}}
-                    {{!-- <tr> noi dung --}}
-                        {{!--
-                    <tr>
-                        <td class="content-4-learning-outcomes-1">
-                            <p class="text-left"><span contenteditable="true">6.</span></p>
-                        </td>
-                        <td class="content-4-learning-outcomes-2">
-                            <p class="section-content">
-                                <span contenteditable="true">
-                                    Vận dụng các kiến thức chuyên ngành trong thiết kế nghiên cứu
-                                </span>
-                            </p>
-                        </td>
-                        <td class="content-4-learning-outcomes-3">
-                            <p class="paragraph"> <span contenteditable="true">PLO2</span></p>
-                        </td>
-                        <td class="content-4-learning-outcomes-4">
-                            <p class="text-center"><span contenteditable="true">3</span></p>
-                        </td>
-                        <td class="content-4-learning-outcomes-5">
-                            <p class="paragraph"><span contenteditable="true">UA</span></p>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="content-4-learning-outcomes-1">
-                            <p class="text-left"><span contenteditable="true">7.</span></p>
-                        </td>
-                        <td class="content-4-learning-outcomes-2">
-                            <p class="section-content">
-                                <span contenteditable="true">
-                                    Ước lượng và phân tích định tính vấn đề
-                                </span>
-                            </p>
-                        </td>
-                        <td class="content-4-learning-outcomes-3">
-                            <p class="paragraph"> <span contenteditable="true">PLO1</span></p>
-                        </td>
-                        <td class="content-4-learning-outcomes-4">
-                            <p class="text-center"><span contenteditable="true">3</span></p>
-                        </td>
-                        <td class="content-4-learning-outcomes-5">
-                            <p class="paragraph"><span contenteditable="true">TUA</span></p>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="content-4-learning-outcomes-1">
-                            <p class="text-left"><span contenteditable="true">8.</span></p>
-                        </td>
-                        <td class="content-4-learning-outcomes-2">
-                            <p class="section-content">
-                                <span contenteditable="true">
-                                    Kiểm tra và bảo vệ giả thuyết
-                                </span>
-                            </p>
-                        </td>
-                        <td class="content-4-learning-outcomes-3">
-                            <p class="paragraph"> <span contenteditable="true">PLO4</span></p>
-                        </td>
-                        <td class="content-4-learning-outcomes-4">
-                            <p class="text-center"><span contenteditable="true">4</span></p>
-                        </td>
-                        <td class="content-4-learning-outcomes-5">
-                            <p class="paragraph"><span contenteditable="true">TUA</span></p>
-                        </td>
-                    </tr>
-                </div>--}}
+                                </tr>
+                                {{!-- <tr> tieu de 1 --}}
+                                <tr class="KyNang KyNangKN" id="KyNangKN1">
+                                    <th class="content-4-learning-outcomes-1 KN section-content text-left"
+                                        contenteditable="true">
+                                        2
+                                    </th>
+                                    <td class="content-4-learning-outcomes-2">
+                                        <div class="section-content KN" id="KN_ND_1" contenteditable="true"
+                                            onkeydown="handleKeyPress('KN_ND_1',event)">
+                                            Trình bày các khái niệm cơ bản về xác suất
+                                        </div>
+                                    </td>
+                                    <td class="content-4-learning-outcomes-3">
+                                        <div class="dropdown" id="dropdown-KN_DUPO_1">
+                                            <p class="section-content"> <span contenteditable="true" id="KN_DUPO_1"
+                                                    class="KN">PLO1</span></p>
+                                            <ul class="dropdown-content">
+                                                <li onclick="updateValue('KN_DUPO_1', 'PLO1','DUPO')">PLO1</li>
+                                                <li onclick="updateValue('KN_DUPO_1', 'PLO2','DUPO')">PLO2</li>
+                                                <li onclick="updateValue('KN_DUPO_1', 'PLO3','DUPO')">PLO3</li>
+                                                <li onclick="updateValue('KN_DUPO_1', 'PLO4','DUPO')">PLO4</li>
+                                                <li onclick="updateValue('KN_DUPO_1', 'PLO5','DUPO')">PLO5</li>
+                                                <li onclick="updateValue('KN_DUPO_1', 'PLO6','DUPO')">PLO6</li>
+                                                <li onclick="updateValue('KN_DUPO_1', 'PLO7','DUPO')">PLO7</li>
+                                                <li onclick="updateValue('KN_DUPO_1', 'PLO8','DUPO')">PLO8</li>
+                                                <li onclick="updateValue('KN_DUPO_1', 'PLO9','DUPO')">PLO9</li>
+                                                <li onclick="updateValue('KN_DUPO_1', 'PLO10','DUPO')">PLO10</li>
+                                            </ul>
+                                        </div>
+                                    </td>
+
+                                    <td class="content-4-learning-outcomes-4">
+                                        <p class="section-content text-center"><span contenteditable="true" id="KN_TD_1"
+                                                class="KN">2</span></p>
+                                    </td>
+                                    <td class="content-4-learning-outcomes-5">
+                                        <div class="dropdown" id="dropdown-KN_DUPO_1">
+                                            <p class="section-content"><span contenteditable="true" id="KN_TUA_1"
+                                                    class="KN">TUA</span>
+                                            </p>
+                                            <ul class="dropdown-content">
+                                                <li onclick="updateValue('KN_TUA_1', 'TUA','TUA')">TUA</li>
+                                                <li onclick="updateValue('KN_TUA_1', 'UA','TUA')">UA</li>
+                                                <li onclick="updateValue('KN_TUA_1', 'TA','TUA')">TA</li>
+
+                                            </ul>
+                                        </div>
+                                    </td>
+                                </tr>
+                                {{!-- <tr> tieu de 1 --}}
+                                <tr id="KyNangTD" class="LoaiKN">
+                                    <td colspan="5" class="body-4-learning-outcomes">
+                                        <div class="body-4-learning-outcomes-tital">
+                                            <p class="decimal-list"><strong><em>
+                                                        <span class="strong-text">❖ Về thái độ:
+                                                        </span></em></strong></p>
+                                        </div>
+                                    </td>
+
+                                </tr>
+                                {{!-- <tr> tieu de 1 --}}
+                                <tr class="KyNang KyNangTD" id="KyNangTD1">
+                                    <th class="content-4-learning-outcomes-1 TD section-content text-left"
+                                        contenteditable="true">
+                                        3
+                                    </th>
+                                    <td class="content-4-learning-outcomes-2">
+                                        <div class="section-content TD" id="TD_ND_1" contenteditable="true"
+                                            onkeydown="handleKeyPress('TD_ND_1',event)">
+                                            Trình bày các khái niệm cơ bản về xác suất
+                                        </div>
+                                    </td>
+                                    <td class="content-4-learning-outcomes-3">
+                                        <div class="dropdown" id="dropdown-TD_DUPO_1">
+                                            <p class="section-content"> <span contenteditable="true" id="TD_DUPO_1"
+                                                    class="TD">PLO1</span></p>
+                                            <ul class="dropdown-content">
+                                                <li onclick="updateValue('TD_DUPO_1', 'PLO1','DUPO')">PLO1</li>
+                                                <li onclick="updateValue('TD_DUPO_1', 'PLO2','DUPO')">PLO2</li>
+                                                <li onclick="updateValue('TD_DUPO_1', 'PLO3','DUPO')">PLO3</li>
+                                                <li onclick="updateValue('TD_DUPO_1', 'PLO4','DUPO')">PLO4</li>
+                                                <li onclick="updateValue('TD_DUPO_1', 'PLO5','DUPO')">PLO5</li>
+                                                <li onclick="updateValue('TD_DUPO_1', 'PLO6','DUPO')">PLO6</li>
+                                                <li onclick="updateValue('TD_DUPO_1', 'PLO7','DUPO')">PLO7</li>
+                                                <li onclick="updateValue('TD_DUPO_1', 'PLO8','DUPO')">PLO8</li>
+                                                <li onclick="updateValue('TD_DUPO_1', 'PLO9','DUPO')">PLO9</li>
+                                                <li onclick="updateValue('TD_DUPO_1', 'PLO10','DUPO')">PLO10</li>
+                                            </ul>
+                                        </div>
+                                    </td>
+                                    <td class="content-4-learning-outcomes-4">
+                                        <p class="section-content text-center"><span contenteditable="true" 
+                                         id="TD_TD_1" class="TD">2</span></p>
+                                    </td>
+                                    <td class="content-4-learning-outcomes-5">
+                                        <div class="dropdown" id="dropdown-TD_DUPO_1">
+                                            <p class="section-content"><span contenteditable="true" id="TD_TUA_1"
+                                                    class="TD">TUA</span>
+                                            </p>
+                                            <ul class="dropdown-content">
+                                                <li onclick="updateValue('TD_TUA_1', 'TUA','TUA')">TUA</li>
+                                                <li onclick="updateValue('TD_TUA_1', 'UA','TUA')">UA</li>
+                                                <li onclick="updateValue('TD_TUA_1', 'TA','TUA')">TA</li>
+                                            </ul>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                        <div class="instructionForm-table4" id="instructionForm-table4">
+                            <h3>Bảng Chương phần 4</h3>
+
+                            <button onclick="ThemCDRLoaiKT(3)" class="btn btn-secondary ctc1">
+                                Xem đáp ứng
+                            </button>
+                            <button onclick="ThemCDRLoaiKT(1)" class="btn btn-secondary ctc1">
+                                + Thêm CDR KT
+                            </button>
+                            <button onclick="ThemCDRLoaiKT(2)" class="btn btn-secondary ctc1">
+                                + Thêm CDR KN
+                            </button>
+                            <button onclick="ThemCDRLoaiKT(3)" class="btn btn-secondary ctc1">
+                                + Thêm CDR TD
+                            </button>
+                            <h3>Quy tắc xóa</h3>
+                            <p>Click vào CDR cần xóa</p>
+                            <button id="button_delete_tb4" class="btn btn-secondary">Xóa 1 CDR</button>
+                        </div>
+                    </div>
+                </div>
+                {{>table-4}}
+
                 <p class="section-content">&nbsp;</p>
 
                 {{!----}}
@@ -1024,15 +686,20 @@
                             {{!-- body - tital --}}
                             <tr id="Chuong1" class="Chuong">
                                 <td id="Chuong1.1" class="body-5-course-content-255_55pt">
-                                    <div contenteditable="true" class="table-5-course-content-p text-left TenChuong STT_CHUONG" id="hungdeptrai1" onkeydown="handleKeyPress('hungdeptrai',event)">
+                                    <strong>
+                                        <div contenteditable="true"
+                                            class="table-5-course-content-p text-left TenChuong STT_CHUONG"
+                                            id="autoChuong1" onkeydown="handleKeyPress('autoChuong1',event)">
                                             Các khái niệm cơ bản về xác suất
-                                    </div>
+                                        </div>
+                                    </strong>
                                 </td>
                                 <td id="Chuong1.2" class="body-5-course-content-71_8pt">
                                     <div class="dropdown" id="dropdown-CDR_HocPhan1">
                                         <p class="header-5-course-content-p text-center">
-                                        <strong><span contenteditable="true" class="CDR_HocPhan" id="CDR_HocPhan1">
-                                            1, 2, 3</span></strong></p>
+                                            <strong><span contenteditable="true" class="CDR_HocPhan" id="CDR_HocPhan1">
+                                                    1, 2, 3</span></strong>
+                                        </p>
                                         <ul class="dropdown-content-5">
                                             <li onclick="updateValue('CDR_HocPhan1', '1','CDR')">1</li>
                                             <li onclick="updateValue('CDR_HocPhan1', '2','CDR')">2</li>
@@ -1055,9 +722,9 @@
                             </tr>
                             <tr class="ChiTietChuong1" id="allowDeletion">
                                 <td class="body-5-content-course-content-255_55pt">
-                                    <div class="table-5-course-content-p text-justify"
-                                            id="CTC1.1" class="STT_CTC1" contenteditable="true" onkeydown="handleKeyPress('CTC1.1',event)">
-                                            1.1.&nbsp;Bổ túc về giải tích tổ hợp
+                                    <div class="table-5-course-content-p text-justify" id="CTC1.1" class="STT_CTC1"
+                                        contenteditable="true" onkeydown="handleKeyPress('CTC1.1',event)">
+                                        1.1.&nbsp;Bổ túc về giải tích tổ hợp
                                     </div>
                                 </td>
                                 <td class="body-5-content-course-content-71_8pt">
@@ -1076,8 +743,9 @@
                             </tr>
                             <tr class="ChiTietChuong1" id="allowDeletion">
                                 <td class="body-5-content-course-content-255_55pt">
-                                    <div id="CTC1.2" class="STT_CTC1" contenteditable="true" onkeydown="handleKeyPress('CTC1.2',event)">
-                                            1.2.&nbsp;Biến cố và quan hệ giữa các biến cố
+                                    <div id="CTC1.2" class="STT_CTC1" contenteditable="true"
+                                        onkeydown="handleKeyPress('CTC1.2',event)">
+                                        1.2.&nbsp;Biến cố và quan hệ giữa các biến cố
                                     </div>
                                 </td>
                                 <td class="body-5-content-course-content-71_8pt">
@@ -1098,10 +766,12 @@
                             <tr class="ChiTietChuong1" id="allowDeletion">
                                 <td class="body-5-content-course-content-255_55pt">
                                     <div class="table-5-course-content-p text-justify" contenteditable="true"
-                                            id="CTC1.3" class="STT_CTC1" onkeydown="handleKeyPress('CTC1.3',event)">1.3.&nbsp;Xác suất và một số công thức tính xác
-                                            suất
+                                        id="CTC1.3" class="STT_CTC1" onkeydown="handleKeyPress('CTC1.3',event)">
+                                        1.3.&nbsp;Xác suất và
+                                        một số công thức tính xác
+                                        suất
                                     </div>
-                                </td> 
+                                </td>
                                 <td class="body-5-content-course-content-71_8pt">
                                     <p class="table-5-course-content-p text-justify"><span>&nbsp;</span></p>
                                 </td>
@@ -1117,51 +787,9 @@
                             </tr>
                             <tr class="ChiTietChuong1" id="allowDeletion">
                                 <td class="body-5-content-course-content-255_55pt">
-                                    <div class="table-5-course-content-p text-justify" contenteditable="true" onkeydown="handleKeyPress('CTC1.4',event)"
-                                            id="CTC1.4" class="STT_CTC1">1.4.&nbsp;Dãy phép thử Bernoulli</span></div>
-                                </td>
-                                
-                                <td class="body-5-content-course-content-71_8pt">
-                                    <p class="table-5-course-content-p text-justify"><span>&nbsp;</span></p>
-                                </td>
-                                <td class="body-5-content-course-content-44_85pt">
-                                    <p class="table-5-course-content-p text-justify"><span>&nbsp;</span></p>
-                                </td>
-                                <td class="body-content--course-content-40_4pt">
-                                    <p class="table-5-course-content-p text-justify"><span>&nbsp;</span></p>
-                                </td>
-                                <td class="body-5-course-content-55_85pt">
-                                    <p class="table-5-course-content-p text-justify"><span>&nbsp;</span></p>
-                                </td>
-                            </tr>
-                            <tr class="ChiTietChuong1" id="allowDeletion">
-                                <td class="body-5-content-course-content-255_55pt">
-                                    <p class="table-5-course-content-p text-justify" contenteditable="true" onkeydown="handleKeyPress('CTC1.5',event)"
-                                            id="CTC1.5" class="STT_CTC1">1.5.&nbsp;Biến ngẫu nhiên và hàm phân
-                                            phối</span>
-                                    </p>
-                                </td>
-                                <td class="body-5-content-course-content-71_8pt">
-                                    <p class="table-5-course-content-p text-justify"><span>&nbsp;</span></p>
-                                </td>
-                                <td class="body-5-content-course-content-44_85pt">
-                                    <p class="table-5-course-content-p text-justify"><span>&nbsp;</span></p>
-                                </td>
-                                <td class="body-content--course-content-40_4pt">
-                                    <p class="table-5-course-content-p text-justify"><span>&nbsp;</span></p>
-                                </td>
-                                <td class="body-5-course-content-55_85pt">
-                                    <p class="table-5-course-content-p text-justify"><span>&nbsp;</span></p>
-                                </td>
-                            </tr>
-                            <tr class="ChiTietChuong1" id="allowDeletion">  
-                                <td class="body-5-content-course-content-255_55pt">
-                                    <div class="table-5-course-content-p text-justify" onkeydown="handleKeyPress('CTC1.6',event)" contenteditable="true"
-                                            id="CTC1.6" class="STT_CTC1">1.6.&nbsp;Một số phân phối thông dụng (phân
-                                            phối
-                                            nhị thức, phân phối Poisson, phân phối chuẩn, phân phối Student, phân phối F
-                                            và
-                                            phân phối χ2)</span></div>
+                                    <div class="table-5-course-content-p text-justify" contenteditable="true"
+                                        onkeydown="handleKeyPress('CTC1.4',event)" id="CTC1.4" class="STT_CTC1">
+                                        1.4.&nbsp;Dãy phép thử Bernoulli</span></div>
                                 </td>
 
                                 <td class="body-5-content-course-content-71_8pt">
@@ -1179,10 +807,56 @@
                             </tr>
                             <tr class="ChiTietChuong1" id="allowDeletion">
                                 <td class="body-5-content-course-content-255_55pt">
-                                    <div class="table-5-course-content-p text-justify" onkeydown="handleKeyPress('CTC1.7',event)" contenteditable="true"
-                                            id="CTC1.7" class="STT_CTC1">1.7.&nbsp;Giới thiệu ngôn ngữ Python/R và lập
-                                            trình
-                                            trong Python/R</span></div>
+                                    <p class="table-5-course-content-p text-justify" contenteditable="true"
+                                        onkeydown="handleKeyPress('CTC1.5',event)" id="CTC1.5" class="STT_CTC1">
+                                        1.5.&nbsp;Biến ngẫu nhiên và hàm phân
+                                        phối</span>
+                                    </p>
+                                </td>
+                                <td class="body-5-content-course-content-71_8pt">
+                                    <p class="table-5-course-content-p text-justify"><span>&nbsp;</span></p>
+                                </td>
+                                <td class="body-5-content-course-content-44_85pt">
+                                    <p class="table-5-course-content-p text-justify"><span>&nbsp;</span></p>
+                                </td>
+                                <td class="body-content--course-content-40_4pt">
+                                    <p class="table-5-course-content-p text-justify"><span>&nbsp;</span></p>
+                                </td>
+                                <td class="body-5-course-content-55_85pt">
+                                    <p class="table-5-course-content-p text-justify"><span>&nbsp;</span></p>
+                                </td>
+                            </tr>
+                            <tr class="ChiTietChuong1" id="allowDeletion">
+                                <td class="body-5-content-course-content-255_55pt">
+                                    <div class="table-5-course-content-p text-justify"
+                                        onkeydown="handleKeyPress('CTC1.6',event)" contenteditable="true" id="CTC1.6"
+                                        class="STT_CTC1">1.6.&nbsp;Một số phân phối thông dụng (phân
+                                        phối
+                                        nhị thức, phân phối Poisson, phân phối chuẩn, phân phối Student, phân phối F
+                                        và
+                                        phân phối χ2)</span></div>
+                                </td>
+
+                                <td class="body-5-content-course-content-71_8pt">
+                                    <p class="table-5-course-content-p text-justify"><span>&nbsp;</span></p>
+                                </td>
+                                <td class="body-5-content-course-content-44_85pt">
+                                    <p class="table-5-course-content-p text-justify"><span>&nbsp;</span></p>
+                                </td>
+                                <td class="body-content--course-content-40_4pt">
+                                    <p class="table-5-course-content-p text-justify"><span>&nbsp;</span></p>
+                                </td>
+                                <td class="body-5-course-content-55_85pt">
+                                    <p class="table-5-course-content-p text-justify"><span>&nbsp;</span></p>
+                                </td>
+                            </tr>
+                            <tr class="ChiTietChuong1" id="allowDeletion">
+                                <td class="body-5-content-course-content-255_55pt">
+                                    <div class="table-5-course-content-p text-justify"
+                                        onkeydown="handleKeyPress('CTC1.7',event)" contenteditable="true" id="CTC1.7"
+                                        class="STT_CTC1">1.7.&nbsp;Giới thiệu ngôn ngữ Python/R và lập
+                                        trình
+                                        trong Python/R</span></div>
                                 </td>
                                 <td class="body-5-content-course-content-71_8pt">
                                     <p class="table-5-course-content-p text-justify"><span>&nbsp;</span></p>
@@ -1204,7 +878,7 @@
                                 </td>
                                 <td colspan="4" class="footer-5-course-content-212_9pt">
                                     <div class="table-5-course-content-p text-justify" contenteditable="true"
-                                            class="KyNangMem">9</span></div>
+                                        class="KyNangMem">9</span></div>
                                 </td>
                             </tr>
 
@@ -1237,13 +911,15 @@
                     <p class="section-content">&nbsp;</p>
                     <p class="section-content"><strong><span>6. Phương pháp dạy và học (Teaching and learning
                                 methods):</span></strong></p>
-                    <div id="TenPP" class="section-content" contenteditable="true" onkeydown="handleKeyPress('TenPP',event)">
+                    <div id="TenPP" class="section-content" contenteditable="true"
+                        onkeydown="handleKeyPress('TenPP',event)">
+
                         &nbsp;&nbsp;-&nbsp;&nbsp;Diễn giảng <br>
                         &nbsp;&nbsp;-&nbsp;&nbsp;Vấn đáp (Questions – Answers)<br>
                         &nbsp;&nbsp;-&nbsp;&nbsp;Hoạt động nhóm (Group-based Learning)<br>
                         &nbsp;&nbsp;-&nbsp;&nbsp;Học dựa trên dự án (Project-based Learning)<br>
                         &nbsp;&nbsp;-&nbsp;&nbsp;Thao tác mẫu (Demo)
-                        
+
                     </div>
                     <p class="section-content">&nbsp;</p>
                 </div>
@@ -1285,73 +961,73 @@
 
                                 <td class="body-7-course-assessment-95_25pt">
                                     <div contenteditable="true" class="HinhThucDG DG">Kiểm tra lý thuyết hoặc Kiểm
-                                            tra thực hành
+                                        tra thực hành
                                     </div>
                                 </td>
                                 <td class="body-7-course-assessment-99_0pt">
                                     <div class="NoiDung_DG DG">
-                                    
-                                    Từ
-                                    <div class="dropdown" id="dropdown-DG1">
-                                        <p class="section-content" contenteditable="true" id="DG1">Chương 1</p>
-                                        <ul class="dropdown-content-chuong">
-                                        <li onclick="updateValue('DG1', 'Chương 1','TUA')">Chương 1</li>
-                                        </ul>
-                                    </div>
 
-                                    đến
-                                    <div class="dropdown" id="dropdown-DG2">
-                                        <p class="section-content" contenteditable="true" id="DG2">Chương 1</p>
-                                        <ul class="dropdown-content-chuong">
-                                            <li onclick="updateValue('DG2', 'Chương 1','TUA')">Chương 1</li>
-                                        </ul>
-                                    </div>
-                                    
-                                    </div>
-                                    </td>
-                                    
-                                    <td class="body-7-course-assessment-72_0pt">
-
-                                        <div class="CĐR_KetThuc DG">
-                                    
-                                            Từ
-                                            <div class="dropdown" id="dropdown-KT1">
-                                               <span contenteditable="true" id="KT1">1</span>
-                                                <ul class="dropdown-content-KT7">
-                                                    <li onclick="updateValue('KT1', '1','TUA')">1</li>
-                                                    <li onclick="updateValue('KT1', '2','TUA')">2</li>
-                                                    <li onclick="updateValue('KT1', '3','TUA')">3</li>
-                                                </ul>
-                                            </div>
-                                    
-                                            đến
-                                            <div class="dropdown" id="dropdown-KT2">
-                                                <span contenteditable="true" id="KT2">1</span>
-                                                <ul class="dropdown-content-KT7">
-                                                    <li onclick="updateValue('KT2', '1','TUA')">1</li>
-                                                    <li onclick="updateValue('KT2', '2','TUA')">2</li>
-                                                    <li onclick="updateValue('KT2', '3','TUA')">3</li>
-                                                </ul>
-                                            </div>
-                                    
+                                        Từ
+                                        <div class="dropdown" id="dropdown-DG1">
+                                            <p class="section-content" contenteditable="true" id="DG1">Chương 1</p>
+                                            <ul class="dropdown-content-chuong">
+                                                <li onclick="updateValue('DG1', 'Chương 1','TUA')">Chương 1</li>
+                                            </ul>
                                         </div>
-                                    </td>
+
+                                        đến
+                                        <div class="dropdown" id="dropdown-DG2">
+                                            <p class="section-content" contenteditable="true" id="DG2">Chương 1</p>
+                                            <ul class="dropdown-content-chuong">
+                                                <li onclick="updateValue('DG2', 'Chương 1','TUA')">Chương 1</li>
+                                            </ul>
+                                        </div>
+
+                                    </div>
+                                </td>
+
+                                <td class="body-7-course-assessment-72_0pt">
+
+                                    <div class="CĐR_KetThuc DG">
+
+                                        Từ
+                                        <div class="dropdown" id="dropdown-KT1">
+                                            <span contenteditable="true" id="KT1">1</span>
+                                            <ul class="dropdown-content-KT7">
+                                                <li onclick="updateValue('KT1', '1','TUA')">1</li>
+                                                <li onclick="updateValue('KT1', '2','TUA')">2</li>
+                                                <li onclick="updateValue('KT1', '3','TUA')">3</li>
+                                            </ul>
+                                        </div>
+
+                                        đến
+                                        <div class="dropdown" id="dropdown-KT2">
+                                            <span contenteditable="true" id="KT2">1</span>
+                                            <ul class="dropdown-content-KT7">
+                                                <li onclick="updateValue('KT2', '1','TUA')">1</li>
+                                                <li onclick="updateValue('KT2', '2','TUA')">2</li>
+                                                <li onclick="updateValue('KT2', '3','TUA')">3</li>
+                                            </ul>
+                                        </div>
+
+                                    </div>
+                                </td>
 
 
                                 <td class="body-7-course-assessment-79_5pt">
-                                      <div class="flex_tb5">
+                                    <div class="flex_tb5">
                                         <span contenteditable="true" class="TieuChiDG DG">Theo đáp án</span>
                                     </div>
                                 </td>
                                 <td class="body-7-course-assessment-46_5pt">
                                     <div class="Tyle DG">
                                         <div class="dropdown" id="dropdown-Tyle1">
-                                                <span contenteditable="true" id="Tyle1">25</span>%
-                                                <ul class="dropdown-content">
-                                                    <li onclick="updateValue('Tyle1', '25','TUA')">25</li>
-                                                    <li onclick="updateValue('Tyle1', '50','TUA')">50</li>
-                                                    <li onclick="updateValue('Tyle1', '75','TUA')">75</li>
-                                                </ul>
+                                            <span contenteditable="true" id="Tyle1">25</span>%
+                                            <ul class="dropdown-content">
+                                                <li onclick="updateValue('Tyle1', '25','TUA')">25</li>
+                                                <li onclick="updateValue('Tyle1', '50','TUA')">50</li>
+                                                <li onclick="updateValue('Tyle1', '75','TUA')">75</li>
+                                            </ul>
                                         </div>
                                     </div>
                                 </td>
@@ -1363,51 +1039,51 @@
                                 </td>
                                 <td class="body-7-course-assessment-99_0pt">
 
-                                    <div class="NoiDung_DG DG">  
-                                    Từ
-                                    <div class="dropdown" id="dropdown-DG3">
-                                        <p class="section-content"  contenteditable="true" id="DG3">Chương 1</p>
-                                        <ul class="dropdown-content-chuong">
-                                        <li onclick="updateValue('DG3', 'Chương 1','TUA')">Chương 1</li>
-                                        </ul>
-                                    </div>
+                                    <div class="NoiDung_DG DG">
+                                        Từ
+                                        <div class="dropdown" id="dropdown-DG3">
+                                            <p class="section-content" contenteditable="true" id="DG3">Chương 1</p>
+                                            <ul class="dropdown-content-chuong">
+                                                <li onclick="updateValue('DG3', 'Chương 1','TUA')">Chương 1</li>
+                                            </ul>
+                                        </div>
 
-                                    đến
-                                    <div class="dropdown" id="dropdown-DG4">
-                                        <p class="section-content" contenteditable="true" id="DG4">Chương 1</p>
-                                        <ul class="dropdown-content-chuong">
-                                            <li onclick="updateValue('DG4', 'Chương 1','TUA')">Chương 1</li>
-                                        </ul>
-                                    </div>
-                                    
+                                        đến
+                                        <div class="dropdown" id="dropdown-DG4">
+                                            <p class="section-content" contenteditable="true" id="DG4">Chương 1</p>
+                                            <ul class="dropdown-content-chuong">
+                                                <li onclick="updateValue('DG4', 'Chương 1','TUA')">Chương 1</li>
+                                            </ul>
+                                        </div>
+
                                     </div>
                                 </td>
                                 <td class="body-7-course-assessment-72_0pt">
                                     <div class="CĐR_KetThuc DG">
-                                            Từ
-                                            <div class="dropdown" id="dropdown-KT3">
-                                               <span contenteditable="true" id="KT3">1</span>
-                                                <ul class="dropdown-content-KT7">
-                                                    <li onclick="updateValue('KT3', '1','TUA')">1</li>
-                                                    <li onclick="updateValue('KT3', '2','TUA')">2</li>
-                                                    <li onclick="updateValue('KT3', '3','TUA')">3</li>
-                                                </ul>
-                                            </div>
-                                    
-                                            đến
-                                            <div class="dropdown" id="dropdown-KT4">
-                                                <span contenteditable="true" id="KT4">1</span>
-                                                <ul class="dropdown-content-KT7">
-                                                    <li onclick="updateValue('KT4', '1','TUA')">1</li>
-                                                    <li onclick="updateValue('KT4', '2','TUA')">2</li>
-                                                    <li onclick="updateValue('KT4', '3','TUA')">3</li>
-                                                </ul>
-                                            </div>
-                                    
+                                        Từ
+                                        <div class="dropdown" id="dropdown-KT3">
+                                            <span contenteditable="true" id="KT3">1</span>
+                                            <ul class="dropdown-content-KT7">
+                                                <li onclick="updateValue('KT3', '1','TUA')">1</li>
+                                                <li onclick="updateValue('KT3', '2','TUA')">2</li>
+                                                <li onclick="updateValue('KT3', '3','TUA')">3</li>
+                                            </ul>
                                         </div>
+
+                                        đến
+                                        <div class="dropdown" id="dropdown-KT4">
+                                            <span contenteditable="true" id="KT4">1</span>
+                                            <ul class="dropdown-content-KT7">
+                                                <li onclick="updateValue('KT4', '1','TUA')">1</li>
+                                                <li onclick="updateValue('KT4', '2','TUA')">2</li>
+                                                <li onclick="updateValue('KT4', '3','TUA')">3</li>
+                                            </ul>
+                                        </div>
+
+                                    </div>
                                 </td>
                                 <td class="body-7-course-assessment-79_5pt">
-                                      <div class="flex_tb5" contenteditable="true" class="TieuChiDG DG">
+                                    <div class="flex_tb5" contenteditable="true" class="TieuChiDG DG">
                                         Theo đáp án
                                     </div>
                                 </td>
@@ -1415,68 +1091,69 @@
 
                                     <div class="Tyle DG">
                                         <div class="dropdown" id="dropdown-Tyle2">
-                                                <span contenteditable="true" id="Tyle2">25</span>%
-                                                <ul class="dropdown-content">
-                                                    <li onclick="updateValue('Tyle2', '25','TUA')">25</li>
-                                                    <li onclick="updateValue('Tyle2', '50','TUA')">50</li>
-                                                    <li onclick="updateValue('Tyle2', '75','TUA')">75</li>
-                                                </ul>
+                                            <span contenteditable="true" id="Tyle2">25</span>%
+                                            <ul class="dropdown-content">
+                                                <li onclick="updateValue('Tyle2', '25','TUA')">25</li>
+                                                <li onclick="updateValue('Tyle2', '50','TUA')">50</li>
+                                                <li onclick="updateValue('Tyle2', '75','TUA')">75</li>
+                                            </ul>
                                         </div>
                                     </div>
                                 </td>
                             </tr>
                             <tr class="Danhgia HT_DG_KT" id="HT_DG_KT_1">
-                                <td rowspan="2" class="body-7-course-assessment-60_75pt height-10_0pt" contenteditable="true">
-                                    <div><strong>Đánh giá kết thúc học phần</strong></div> 
+                                <td rowspan="2" class="body-7-course-assessment-60_75pt height-10_0pt"
+                                    contenteditable="true">
+                                    <div><strong>Đánh giá kết thúc học phần</strong></div>
                                     <em>(Chọn 1 trong 2)</em>
                                 </td>
                                 <td class="body-7-course-assessment-95_25pt height-10_0pt">
                                     <p><span contenteditable="true" class="HinhThucDG DG">Đồ án (nhóm)</span></p>
                                 </td>
                                 <td class="body-7-course-assessment-99_0pt height-10_0pt">
-                                    <div class="NoiDung_DG DG">        
-                                    Từ
-                                    <div class="dropdown" id="dropdown-DG5">
-                                        <p class="section-content" contenteditable="true" id="DG5">Chương 1</p>
-                                        <ul class="dropdown-content-chuong">
-                                        <li onclick="updateValue('DG5', 'Chương 1','TUA')">Chương 1</li>
-                                        </ul>
-                                    </div>
+                                    <div class="NoiDung_DG DG">
+                                        Từ
+                                        <div class="dropdown" id="dropdown-DG5">
+                                            <p class="section-content" contenteditable="true" id="DG5">Chương 1</p>
+                                            <ul class="dropdown-content-chuong">
+                                                <li onclick="updateValue('DG5', 'Chương 1','TUA')">Chương 1</li>
+                                            </ul>
+                                        </div>
 
-                                    đến
-                                    <div class="dropdown" id="dropdown-DG6">
-                                        <p class="section-content" contenteditable="true" id="DG6">Chương 1</p>
-                                        <ul class="dropdown-content-chuong">
-                                            <li onclick="updateValue('DG6', 'Chương 1','TUA')">Chương 1</li>
-                                        </ul>
+                                        đến
+                                        <div class="dropdown" id="dropdown-DG6">
+                                            <p class="section-content" contenteditable="true" id="DG6">Chương 1</p>
+                                            <ul class="dropdown-content-chuong">
+                                                <li onclick="updateValue('DG6', 'Chương 1','TUA')">Chương 1</li>
+                                            </ul>
+                                        </div>
+
                                     </div>
-                                    
-                                    </div>        
                                 </td>
                                 <td class="body-7-course-assessment-72_0pt height-10_0pt">
                                     <div class="CĐR_KetThuc DG">
-                                    
-                                            Từ
-                                            <div class="dropdown" id="dropdown-KT5">
-                                               <span contenteditable="true" id="KT5">1</span>
-                                                <ul class="dropdown-content-KT7">
-                                                    <li onclick="updateValue('KT5', '1','TUA')">1</li>
-                                                    <li onclick="updateValue('KT5', '2','TUA')">2</li>
-                                                    <li onclick="updateValue('KT5', '3','TUA')">3</li>
-                                                </ul>
-                                            </div>
-                                    
-                                            đến
-                                            <div class="dropdown" id="dropdown-KT6">
-                                                <span contenteditable="true" id="KT6">1</span>
-                                                <ul class="dropdown-content-KT7">
-                                                    <li onclick="updateValue('KT6', '1','TUA')">1</li>
-                                                    <li onclick="updateValue('KT6', '2','TUA')">2</li>
-                                                    <li onclick="updateValue('KT6', '3','TUA')">3</li>
-                                                </ul>
-                                            </div>
-                                    
+
+                                        Từ
+                                        <div class="dropdown" id="dropdown-KT5">
+                                            <span contenteditable="true" id="KT5">1</span>
+                                            <ul class="dropdown-content-KT7">
+                                                <li onclick="updateValue('KT5', '1','TUA')">1</li>
+                                                <li onclick="updateValue('KT5', '2','TUA')">2</li>
+                                                <li onclick="updateValue('KT5', '3','TUA')">3</li>
+                                            </ul>
                                         </div>
+
+                                        đến
+                                        <div class="dropdown" id="dropdown-KT6">
+                                            <span contenteditable="true" id="KT6">1</span>
+                                            <ul class="dropdown-content-KT7">
+                                                <li onclick="updateValue('KT6', '1','TUA')">1</li>
+                                                <li onclick="updateValue('KT6', '2','TUA')">2</li>
+                                                <li onclick="updateValue('KT6', '3','TUA')">3</li>
+                                            </ul>
+                                        </div>
+
+                                    </div>
                                 </td>
                                 <td class="body-7-course-assessment-79_5pt height-10_0pt">
                                     <div contenteditable="true" class="TieuChiDG DG">
@@ -1484,16 +1161,16 @@
                                     </div>
                                 </td>
                                 <td class="body-7-course-assessment-46_5pt height-10_0pt">
-                                    
+
                                     <div class="Tyle DG">
                                         <div class="dropdown" id="dropdown-Tyle3">
-                                                <span contenteditable="true" id="Tyle3">50</span>%
-                                                <ul class="dropdown-content">
-                                                    <li onclick="updateValue('Tyle3', '25','TUA')">25</li>
-                                                    <li onclick="updateValue('Tyle3', '50','TUA')">50</li>
-                                                    <li onclick="updateValue('Tyle3', '75','TUA')">75</li>
-                                                </ul>
-                                            </div>
+                                            <span contenteditable="true" id="Tyle3">50</span>%
+                                            <ul class="dropdown-content">
+                                                <li onclick="updateValue('Tyle3', '25','TUA')">25</li>
+                                                <li onclick="updateValue('Tyle3', '50','TUA')">50</li>
+                                                <li onclick="updateValue('Tyle3', '75','TUA')">75</li>
+                                            </ul>
+                                        </div>
                                     </div>
                                 </td>
                             </tr>
@@ -1502,70 +1179,68 @@
                                     <div contenteditable="true" class="HinhThucDG DG">Thi thực hành</div>
                                 </td>
                                 <td class="body-7-course-assessment-99_0pt height-10_0pt">
-                                    
-                                    <div class="NoiDung_DG DG">
-                 
-                                    Từ
-                                    <div class="dropdown" id="dropdown-DG7">
-                                        <p class="section-content"  contenteditable="true" id="DG7">Chương 1</p>
-                                        <ul class="dropdown-content-chuong">
-                                        <li onclick="updateValue('DG7', 'Chương 1','TUA')">Chương 1</li>
-                                        </ul>
-                                    </div>
 
-                                    đến
-                                    <div class="dropdown" id="dropdown-DG8">
-                                        <p class="section-content" contenteditable="true" id="DG8">Chương 1</p>
-                                        <ul class="dropdown-content-chuong">
-                                            <li onclick="updateValue('DG8', 'Chương 1','TUA')">Chương 1</li>
-                                        </ul>
+                                    <div class="NoiDung_DG DG">
+
+                                        Từ
+                                        <div class="dropdown" id="dropdown-DG7">
+                                            <p class="section-content" contenteditable="true" id="DG7">Chương 1</p>
+                                            <ul class="dropdown-content-chuong">
+                                                <li onclick="updateValue('DG7', 'Chương 1','TUA')">Chương 1</li>
+                                            </ul>
+                                        </div>
+
+                                        đến
+                                        <div class="dropdown" id="dropdown-DG8">
+                                            <p class="section-content" contenteditable="true" id="DG8">Chương 1</p>
+                                            <ul class="dropdown-content-chuong">
+                                                <li onclick="updateValue('DG8', 'Chương 1','TUA')">Chương 1</li>
+                                            </ul>
+                                        </div>
+
                                     </div>
-                                    
-                                    </div>         
                                 </td>
                                 <td class="body-7-course-assessment-72_0pt height-10_0pt">
                                     <div class="CĐR_KetThuc DG">
-                                            Từ
-                                            <div class="dropdown" id="dropdown-KT7">
-                                               <span contenteditable="true" id="KT7">1</span>
-                                                <ul class="dropdown-content-KT7">
-                                                    <li onclick="updateValue('KT7', '1','TUA')">1</li>
-                                                    <li onclick="updateValue('KT7', '2','TUA')">2</li>
-                                                    <li onclick="updateValue('KT7', '3','TUA')">3</li>
-                                                </ul>
-                                            </div>
-                                    
-                                            đến
-                                            <div class="dropdown" id="dropdown-KT8">
-                                                <span contenteditable="true" id="KT8">1</span>
-                                                <ul class="dropdown-content-KT7">
-                                                    <li onclick="updateValue('KT8', '1','TUA')">1</li>
-                                                    <li onclick="updateValue('KT8', '2','TUA')">2</li>
-                                                    <li onclick="updateValue('KT8', '3','TUA')">3</li>
-                                                </ul>
-                                            </div>
-                                    
+                                        Từ
+                                        <div class="dropdown" id="dropdown-KT7">
+                                            <span contenteditable="true" id="KT7">1</span>
+                                            <ul class="dropdown-content-KT7">
+                                                <li onclick="updateValue('KT7', '1','TUA')">1</li>
+                                                <li onclick="updateValue('KT7', '2','TUA')">2</li>
+                                                <li onclick="updateValue('KT7', '3','TUA')">3</li>
+                                            </ul>
                                         </div>
+
+                                        đến
+                                        <div class="dropdown" id="dropdown-KT8">
+                                            <span contenteditable="true" id="KT8">1</span>
+                                            <ul class="dropdown-content-KT7">
+                                                <li onclick="updateValue('KT8', '1','TUA')">1</li>
+                                                <li onclick="updateValue('KT8', '2','TUA')">2</li>
+                                                <li onclick="updateValue('KT8', '3','TUA')">3</li>
+                                            </ul>
+                                        </div>
+
+                                    </div>
                                 </td>
                                 <td class="body-7-course-assessment-79_5pt height-10_0pt">
-                                   
+
 
                                     <div class="flex_tb5">
                                         <span contenteditable="true" class="TieuChiDG DG">Theo đáp án</span>
                                     </div>
-                           
-
                                 </td>
                                 <td class="body-7-course-assessment-46_5pt height-10_0pt">
                                     <div class="Tyle DG">
                                         <div class="dropdown" id="dropdown-Tyle4">
-                                                <span contenteditable="true" id="Tyle4">25</span>%
-                                                <ul class="dropdown-content">
-                                                    <li onclick="updateValue('Tyle4', '25','TUA')">25</li>
-                                                    <li onclick="updateValue('Tyle4', '50','TUA')">50</li>
-                                                    <li onclick="updateValue('Tyle4', '75','TUA')">75</li>
-                                                </ul>
-                                            </div>
+                                            <span contenteditable="true" id="Tyle4">25</span>%
+                                            <ul class="dropdown-content">
+                                                <li onclick="updateValue('Tyle4', '25','TUA')">25</li>
+                                                <li onclick="updateValue('Tyle4', '50','TUA')">50</li>
+                                                <li onclick="updateValue('Tyle4', '75','TUA')">75</li>
+                                            </ul>
+                                        </div>
                                     </div>
                                 </td>
                             </tr>
@@ -1575,50 +1250,7 @@
                 {{!----}}
                 {{!-- 8. Các quy định (Course requirements and expectation): --}}
                 {{!----}}
-                <div class="width16_cm">
-                    <p class="section-content">&nbsp;</p>
-                    <p class="section-content"><strong><span>8. Các quy định (Course requirements and
-                                expectation):</span></strong></p>
-                                
-                    <p class="section-content"><strong><span id="QD_TG">8.1. Quy định về tham dự lớp học</span></strong>
-                    </p>
-                    
-                    <div id="QD_TD" contenteditable="true" onkeydown="handleKeyPress('QD_TD',event)">
-                      
-                        &nbsp;&nbsp;●&nbsp;&nbsp;Sinh viên có trách nhiệm tham dự đầy đủ các buổi học.Trong trường hợp phải
-                        nghỉ học vì lý do bất khả kháng thì phải có giấy tờ chứng minh đầy đủ và hợp lý.
-<br>
-                        &nbsp;&nbsp;●&nbsp;&nbsp;Sinh viên vắng quá 20% số giờ dự giảng của học phần bị xem như không hoàn
-                        thành học phần và phải đăng ký học lại vào học kỳ sau. Những trường hợp khác phải do Ban
-                        Giám hiệu hoặc Trưởng khoa quyết định
 
-                    </div>
-<p class="section-content">&nbsp;</p>
-                    <p class="section-content"><strong><span>8.2. Quy định về hành vi trong lớp học</span></strong></p>
-                    <div id="QD_HV" contenteditable="true" onkeydown="handleKeyPress('QD_HV',event)">
-                    
-                                &nbsp;&nbsp;●&nbsp;&nbsp;Sinh viên có trách nhiệm tham dự đầy đủ các buổi học. Trong trường hợp phải
-                                nghỉ học vì lý do bất khả kháng thì phải có giấy tờ chứng minh đầy đủ và hợp lý.</span>
-                    
-               <br>
-                                &nbsp;&nbsp;●&nbsp;&nbsp;Sinh viên vắng quá 20% số giờ dự giảng của học phần bị xem như không hoàn
-                                thành học phần và phải đăng ký học lại vào học kỳ sau. Những trường hợp khác phải do Ban
-                                Giám hiệu hoặc Trưởng khoa quyết định
-                    </div>
-<p class="section-content">&nbsp;</p>
-                    <p class="section-content"><strong><span>8.3. Quy định về học vụ</span></strong></p>
-                    <div id="QD_HVu" contenteditable="true" onkeydown="handleKeyPress('QD_HVu',event)">
-                        
-                                &nbsp;&nbsp;●&nbsp;&nbsp;Sinh viên có trách nhiệm tham dự đầy đủ các buổi học. Trong trường hợp phải
-                                nghỉ học vì lý do bất khả kháng thì phải có giấy tờ chứng minh đầy đủ và hợp lý.
-                        
-            <br>
-                                &nbsp;&nbsp;●&nbsp;&nbsp;Sinh viên vắng quá 20% số giờ dự giảng của học phần bị xem như không hoàn
-                                thành học phần và phải đăng ký học lại vào học kỳ sau. Những trường hợp khác phải do Ban
-                                Giám hiệu hoặc Trưởng khoa quyết định
-                    </div>
-                </div>
-               
 
                 <div class="width16_cm">
                     <p class="section-content">&nbsp;</p>
@@ -1631,35 +1263,35 @@
                     {{!----}}
                     <div class="GiangVien">
                         <div class="autocomplete">
-                                <div class="dropdown" id="dropdown-ChucDanh1">
-                                    <span contenteditable="true" id="ChucDanh1">TS</span>:&nbsp; 
-                                    <ul class="dropdown-content">
-                                        <li onclick="updateValue('ChucDanh1', 'Ths','TUA')">Ths</li>
-                                        <li onclick="updateValue('ChucDanh1', 'TS','TUA')">TS</li>
-                                        <li onclick="updateValue('ChucDanh1', 'PGS','TUA')">PGS</li>
-                                    </ul>
-                                </div>
+                            <div class="dropdown" id="dropdown-ChucDanh1">
+                                <span contenteditable="true" id="ChucDanh1">TS</span>:&nbsp;
+                                <ul class="dropdown-content">
+                                    <li onclick="updateValue('ChucDanh1', 'Ths','TUA')">Ths</li>
+                                    <li onclick="updateValue('ChucDanh1', 'TS','TUA')">TS</li>
+                                    <li onclick="updateValue('ChucDanh1', 'PGS','TUA')">PGS</li>
+                                </ul>
+                            </div>
                             <span contenteditable="true" id="HoTen1">
                                 Nguyễn Bảo Ân
                             </span>
-                        </div> 
-                        <br>                                                                          
+                        </div>
+                        <br>
                         <div class="autocomplete">
                             <div class="dropdown" id="dropdown-ChucDanh2">
-                    
-                                    <span contenteditable="true" id="ChucDanh2">Ths</span>:&nbsp; 
-                                    <ul class="dropdown-content">
-                                        <li onclick="updateValue('ChucDanh2', 'Ths','TUA')">Ths</li>
-                                        <li onclick="updateValue('ChucDanh2', 'TS','TUA')">TS</li>
-                                        <li onclick="updateValue('ChucDanh2', 'PGS','TUA')">PGS</li>
-                                    </ul>
-                                </div>
+
+                                <span contenteditable="true" id="ChucDanh2">Ths</span>:&nbsp;
+                                <ul class="dropdown-content">
+                                    <li onclick="updateValue('ChucDanh2', 'Ths','TUA')">Ths</li>
+                                    <li onclick="updateValue('ChucDanh2', 'TS','TUA')">TS</li>
+                                    <li onclick="updateValue('ChucDanh2', 'PGS','TUA')">PGS</li>
+                                </ul>
+                            </div>
                             <span contenteditable="true" id="HoTen2">
                                 Phạm Thị Trúc Mai
                             </span>
-                        </div>                                       
+                        </div>
                     </div>
-  
+
                     <p class="section-content">&nbsp;</p>
                     <p class="section-content"><span>Ngày phê duyệt: ....../......./ .......<em>&nbsp;
                                 &nbsp;</em></span></p>
@@ -1686,11 +1318,14 @@
                                     <p class="margin-top-bottom-3pt text-center"><strong><span>GIẢNG VIÊN
                                             </span></strong>
                                     </p>
-                                    <p class="margin-top-bottom-3pt text-center"><strong><span>BIÊN SOẠN</span></strong>
+                                    <p class="margin-top-bottom-3pt text-center"><strong><span>BIÊN
+                                                SOẠN</span></strong>
                                     </p>
-                                    <p class="margin-top-bottom-3pt text-center"><strong><span>&nbsp;</span></strong>
+                                    <p class="margin-top-bottom-3pt text-center">
+                                        <strong><span>&nbsp;</span></strong>
                                     </p>
-                                    <p class="margin-top-bottom-3pt text-center"><strong><span>&nbsp;</span></strong>
+                                    <p class="margin-top-bottom-3pt text-center">
+                                        <strong><span>&nbsp;</span></strong>
                                     </p>
                                     <p class="margin-top-bottom-3pt text-center" contenteditable="true">
                                         <strong><span>Nguyễn
@@ -1730,20 +1365,25 @@
                                     <p class="margin-top-bottom-3pt text-center"><strong><span>GIẢNG VIÊN
                                             </span></strong>
                                     </p>
-                                    <p class="margin-top-bottom-3pt text-center"><strong><span>PHẢN BIỆN</span></strong>
+                                    <p class="margin-top-bottom-3pt text-center"><strong><span>PHẢN
+                                                BIỆN</span></strong>
                                     </p>
-                                    <p class="margin-top-bottom-3pt text-center"><strong><span>&nbsp;</span></strong>
+                                    <p class="margin-top-bottom-3pt text-center">
+                                        <strong><span>&nbsp;</span></strong>
                                     </p>
-                                    <p class="margin-top-bottom-3pt text-center"><strong><span>&nbsp;</span></strong>
+                                    <p class="margin-top-bottom-3pt text-center">
+                                        <strong><span>&nbsp;</span></strong>
                                     </p>
-                                    <p class="margin-top-bottom-3pt text-center"><strong><span>&nbsp;</span></strong>
+                                    <p class="margin-top-bottom-3pt text-center">
+                                        <strong><span>&nbsp;</span></strong>
                                     </p>
                                     <p class="margin-top-bottom-3pt text-center" contenteditable="true">
                                         <strong><span>Phạm
                                                 Thị Trúc
                                                 Mai</span></strong>
                                     </p>
-                                    <p class="margin-top-bottom-3pt text-center"><strong><span>&nbsp;</span></strong>
+                                    <p class="margin-top-bottom-3pt text-center">
+                                        <strong><span>&nbsp;</span></strong>
                                     </p>
                                 </td>
                             </tr>
@@ -1763,7 +1403,7 @@
 {{>CheckBox}}
 <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 <script>
-    
+
     function sendA4Content() {
         var a4Content = document.getElementById('formInput_monHoc').innerHTML;
         axios.post('/pdf', { a4Content })

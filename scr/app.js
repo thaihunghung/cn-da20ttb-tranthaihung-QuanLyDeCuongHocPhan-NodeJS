@@ -4,6 +4,7 @@ const cookieParser = require('cookie-parser');
 const fs = require('fs');
 const express = require('express');
 const exphbs = require('express-handlebars');
+const Handlebars = require('handlebars');
 const app = express();
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
@@ -12,6 +13,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 const jwt = require('jsonwebtoken');
 app.use(cookieParser());
 const dotenv = require('dotenv');
+const TempLate = require('./models/Template/Template');
 // // // // // // 
 // Routes     
 // // // // // //
@@ -22,11 +24,12 @@ const chuongtrinhRoutes = require('./routes/chuongTrinhRoute.js');
 const hocphanRoutes = require('./routes/HocPhanRoute.js');
 const projectRoutes = require('./routes/projectRoute.js');
 const userRoutes = require('./routes/userRoutes.js');
+const template = require('./routes/templateRoute.js');
 const db = require('./database/config.js');
 // // // // // // 
 // Routes     
 // // // // // //
-const f= require('./models/HocPhan/DanhGia_HocPhan.model.js');
+
 
 
 const morgan = require('morgan');
@@ -58,6 +61,7 @@ app.use('/chuongtrinh', chuongtrinhRoutes);
 app.use('/hung',hocphanRoutes);
 app.use('/user', userRoutes);
 app.use('/project', projectRoutes);
+app.use('/template',template)
 // const HocPhan = require('./models/fulldatabase');
 // app.post('/saveHocPhan',  (req, res) => {
 //   console.log('Request Body:', req.body);
@@ -78,11 +82,40 @@ app.use('/project', projectRoutes);
 //       });
 //   // await hocPhanInstance.findOne({ MaMon:, TenMon: });        
 // });
-app.get('/', (req, res) => {
-  //res.render('formInput_monHoc/formInput_monHoc')
+app.get('/',async (req, res) => {
+  function compileMethod(templateString, data) {
+    // Biên dịch template
+    const compiledTemplate = Handlebars.compile(templateString);
+    return compiledTemplate(data);
+}
+
+const DataHeader = {
+    HocPhan: {
+      PhuLuc: 'F',
+      TenMon:'[Tên học phần]',
+      MaMon:'[Mã học phần]'
+    }
+}
+  const tample = await TempLate.find({compileMethod:'header'});
+    let compiledTemplates = [];
+    tample.forEach(template => {
+        let compiled;
+        switch (template.compileMethod) {
+            case "header":
+                compiled = compileMethod(template.htmlContent, DataHeader);
+                break;
+        }
+        compiledTemplates.push(compiled);
+    });
+    
+    
+    let compiledString = compiledTemplates.join('');
+    console.log(compiledString);
+ res.render('formInput_monHoc/formInput_monHoc',{tample:compiledString})
   //res.render('test/test');
   //project/project
-  res.render('project/project');
+  //res.render('project/project');
+  //res.render('admin/HomePageAdmin');
 })
 // app.post('/test', async (req, res) => {
 //   // Handle the incoming JSON data

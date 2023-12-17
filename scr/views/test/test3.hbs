@@ -1,137 +1,110 @@
-<style>
-  .autocomplete {
-    position: relative;
-    display: inline-block;
-    width: 300px;
-  }
+<div class="formInput_print">
+<div class="formLearningResources">
+  <p class="section-content">&nbsp;</p>
+  <p class="section-content break"><strong><span>2. Nguồn học liệu (Learning
+        resources):</span></strong>
+  </p>
+  {{!----}}
+  {{!-- 2. Nguồn học liệu (Learning resources): --}}
+  {{!----}}
+  <p class="section-content">&nbsp;</p>
+  <div class="table-2-display-row">
+    <table class="table-2-learning-resources">
+      <tbody>
+        <tr>
+          <td class="table-2-learning-header">
+            <p><span id="loaiHocLieu">Giáo trình/Tài liệu học tập chính</span></p>
+          </td>
+          <td class="table-2-learning-body">
+            <div id="giaotrinh">
+              <div style="display:flex;" class="giaotrinh TaiLieu section-content" id="giaotrinh1">
+                <div class="stt" contenteditable="false">
+                  [1]&nbsp;&nbsp;
+                </div>
+                <div>
+                    <span contenteditable="true">[tên tác giả](năm xuất bản)</span>.&nbsp;
+                    <span contenteditable="true" style="font-style: italic;">
+                    [tên tài liệu]</span>.&nbsp;<br><span contenteditable="true"> 
+                    [nguồn] </span>
+                </div>
+              </div>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td class="table-2-learning-header">
+            <p><span id="loaiHocLieu">Tài liệu tham khảo thêm</span></p>
+          </td>
+          <td class="table-2-learning-body">
+            <div id="TaiLieuThamKhao">
+              <div style="display: flex;" class="TaiLieuThamKhao TaiLieu section-content text-left" id="TaiLieuThamKhao1">
+                <div class="stt" contenteditable="false">
+                  [2]&nbsp;&nbsp;
+                </div>
+                <div>
+                    <span contenteditable="true">[tên tác giả](năm xuất bản)</span>.&nbsp;
+                    <span contenteditable="true" style="font-style: italic;">
+                    [tên tài liệu]</span>.&nbsp;<br><span contenteditable="true"> 
+                    [nguồn] </span>
+                </div>
 
-  .autocomplete span {
-    border: 1px solid transparent;
-    background-color: #f1f1f1;
-    padding: 10px;
-    font-size: 16px;
-    display: inline-block;
-  }
+              </div>
+            </div>
+          </td>
 
-  .autocomplete-items {
-    position: absolute;
-    border: 1px solid #d4d4d4;
-    border-bottom: none;
-    border-top: none;
-    z-index: 99;
-    top: 100%;
-    left: 0;
-    right: 0;
-  }
+        </tr>
+        <tr>
+          <td class="table-2-learning-header">
+            <p><span id="loaiHocLieu">Các loại học liệu khác</span></p>
+          </td>
+          <td class="table-2-learning-body">
+            <div id="HocLieu">
+              <div style="display: flex;" class="HocLieu TaiLieu section-content" id="HocLieu1">
+                <div class="stt" contenteditable="false">
+                  [3]&nbsp;&nbsp;
+                </div>
+                <div>
+                    <span contenteditable="true">[tên tác giả](năm xuất bản)</span>.&nbsp;
+                    <span contenteditable="true" style="font-style: italic;">
+                    [tên tài liệu]</span>.&nbsp;<br><span contenteditable="true"> 
+                    [nguồn] </span>
+                </div>
+              </div>
+              
 
-  .autocomplete-items div {
-    padding: 10px;
-    cursor: pointer;
-    background-color: #fff;
-    border-bottom: 1px solid #d4d4d4;
-  }
+            </div>
+          </td>
 
-  .autocomplete-items div:hover {
-    background-color: #e9e9e9;
-  }
+        </tr>
+      </tbody>
+    </table>
 
-  .autocomplete-active {
-    background-color: DodgerBlue !important;
-    color: #ffffff;
-  }
-</style>
+    <div class="instructionForm-table2" id="instructionForm-table2">
+      <h3>Bảng Chương phần 2</h3>
 
-<p class="autocomplete">
-  <span id="myInput1" contenteditable="true" placeholder="Country"></span>
-</p>
+      <button id="addButton" onclick="CreateCDR('giaotrinh')" class="btn btn-secondary ctc1">
+        + thêm 1 giaotrinh
+      </button>
 
-<p class="autocomplete">
-  <span id="myInput2" contenteditable="true" placeholder="Country"></span>
-</p>
+      <button id="addButton" onclick="CreateCDR('TaiLieuThamKhao')" class="btn btn-secondary ctc1">
+        + thêm 1 TaiLieuThamKhao
+      </button>
+      <button id="addButton" onclick="CreateCDR('HocLieu')" class="btn btn-secondary ctc1">
+        + thêm 1 HocLieu
+      </button>
 
-<script>
-  var countries = ["Afghanistan", "Albania"];
+      <button id="button_delete_tb2" class="btn btn-secondary ctc1">
+        + xóa
+      </button>
+    </div>
 
-  autocomplete(document.getElementById("myInput1"), countries);
-  autocomplete(document.getElementById("myInput2"), countries);
-
-  function autocomplete(inp, arr) {
-    var currentFocus;
-
-    inp.addEventListener("input", function(e) {
-      var a, b, i, val = this.textContent;
-
-      closeAllLists();
-      if (!val) {
-        return false;
-      }
-
-      currentFocus = -1;
-      a = document.createElement("DIV");
-      a.setAttribute("class", "autocomplete-items");
-      this.parentNode.appendChild(a);
-
-      for (i = 0; i < arr.length; i++) {
-        if (arr[i].substr(0, val.length).toUpperCase() == val.toUpperCase()) {
-          b = document.createElement("DIV");
-          b.innerHTML = "<strong>" + arr[i].substr(0, val.length) + "</strong>";
-          b.innerHTML += arr[i].substr(val.length);
-          b.innerHTML += "<input type='hidden' value='" + arr[i] + "'>";
-          b.addEventListener("click", function(e) {
-            inp.innerHTML = this.getElementsByTagName("input")[0].value;
-            closeAllLists();
-          });
-          a.appendChild(b);
-        }
-      }
-    });
-
-    inp.addEventListener("keydown", function(e) {
-      var x = document.getElementsByClassName("autocomplete-items");
-if (x.length > 0) {
-  x = x[0].getElementsByTagName("div");
-
-  if (e.keyCode == 40) {
-    currentFocus++;
-    addActive(x);
-  } else if (e.keyCode == 38) {
-    currentFocus--;
-    addActive(x);
-  } else if (e.keyCode == 13) {
-    e.preventDefault();
-    if (currentFocus > -1) {
-      if (x) x[currentFocus].click();
-    }
-  }
-}
-
-    });
-
-    function addActive(x) {
-      if (!x) return false;
-      removeActive(x);
-      if (currentFocus >= x.length) currentFocus = 0;
-      if (currentFocus < 0) currentFocus = (x.length - 1);
-      x[currentFocus].classList.add("autocomplete-active");
-    }
-
-    function removeActive(x) {
-      for (var i = 0; i < x.length; i++) {
-        x[i].classList.remove("autocomplete-active");
-      }
-    }
-
-    function closeAllLists(elmnt) {
-      var x = document.getElementsByClassName("autocomplete-items");
-      for (var i = 0; i < x.length; i++) {
-        if (elmnt != x[i] && elmnt != inp) {
-          x[i].parentNode.removeChild(x[i]);
-        }
-      }
-    }
-
-    document.addEventListener("click", function(e) {
-      closeAllLists(e.target);
-    });
-  }
-</script>
+  </div>
+</div>
+</div>
+{{>createFocus}}
+{{>table-2}}
+{{>all_Autocomplete}}
+{{>Autocomplete}}
+{{>ChangeDropdownText}}
+{{>CleanUpDataPost}}
+{{>PostUpdate}}

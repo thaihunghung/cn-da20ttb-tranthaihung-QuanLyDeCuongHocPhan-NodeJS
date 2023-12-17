@@ -1,0 +1,27 @@
+
+<div class="formInput">
+    <div class="formInput_monHoc" id="formInput_monHoc">
+
+        <div class="formInput_baseA4" id="formInput_baseA4">
+
+            <div class="formInput_print" spellcheck ="false" >
+                {{#each tieuDe}}
+                    <div>{{{this.tieuDe}}}</div>
+                {{#if (eq this.tieuDe 'thongTinChung')}}
+                {{> thongTinChung }}
+                {{else if (eq this.tieuDe 'doclap')}}
+                {{> doclap }}
+                {{/if}}
+                {{/each}}
+               
+            </div>
+        </div>
+    </div>
+</div>
+
+{{>all_Autocomplete}}
+{{>Autocomplete}}
+{{>ChangeDropdownText}}
+{{>CleanUpDataPost}}
+{{>PostUpdate}}
+

@@ -21,7 +21,37 @@
 </div>
 
 
-{{>all_Autocomplete}}
+<script>
+function checkPLOConditions(data) {
+    let results = [];
+
+   
+
+        data.forEach((part, index) => {
+            if (part.match(/^PLO\d+$/)) { // Kiểm tra xem phần tử có bắt đầu bằng "PLO" và theo sau là số
+                let isValid = true; // Giả định ban đầu là hợp lệ
+
+                // Kiểm tra phần tử tiếp theo (nếu có)
+                if (index < ploParts.length - 1 && ploParts[index + 1].match(/^PLO\d+$/)) {
+                    isValid = false; // Đánh dấu là không hợp lệ nếu phần tử tiếp theo bắt đầu bằng "PLO" và theo sau là số
+                }
+
+                results.push({ part, isValid });
+            }
+        });
+    
+    return results;
+}
+
+// Mẫu dữ liệu
+
+
+let hung = ['PLO1','PLO2','PLO3','PLOh']
+   
+
+console.log(checkPLOConditions(hung));
+
+</script>
 
  
 

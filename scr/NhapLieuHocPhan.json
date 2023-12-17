@@ -1,17 +1,10 @@
 {
-    "PhuLuc": "A",
-    "MaMon": "ABC123",
-    "TenMon": "Example Course",
-    "SoGioTuHoc": 20,
-    "TH": 2,
-    "LT": 3,
-    "MoTa": "Description of the course",
-    "LoaiHocPhan": "Elective",
-    "SoTC_LT": 3,
-    "SoTC_TH": 2,
-    "TrinhDo_DT": "Intermediate",
-    "ChuyenNganh": "Computer Science",
-    "HocKy": 2,
-    "NamHoc": 2023,
-    "fileName": "hung:QuanLyHocPhan"  
+  "MaHP": "1",
+  "HocPhan_TQ": "<div class=\"ModifyTB2\"> <div class=\"autocomplete\">Tên:&nbsp; <span contenteditable=\"true\" id=\"TenTQ1\"> Vi tích phân A1 </span> </div> <div class=\"autocomplete\">MSHP:&nbsp; <span contenteditable=\"true\" id=\"MaTQ1\"> 110042 </span> </div> </div>",
+  "HocPhan_SH": "<span contenteditable=\"true\">Không</span>",
+  "YC_khac": {
+    "KienThuc": "Kiến thức toán học phổ thông",
+    "KyNang": "<div>&nbsp;&nbsp;-&nbsp;&nbsp;Kỹ năng phân tích, giải quyết vấn đề</div> <div>&nbsp;&nbsp;-&nbsp;&nbsp;Kỹ năng tập trung, ghi nhớ, tính toán, biến đổi</div>",
+    "ThaiDo": "Chủ động trong học tập"
   }
+}
