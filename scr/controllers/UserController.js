@@ -6,7 +6,6 @@ exports.index = (req, res) =>{
 }
 exports.listProject = async (req, res) => {
     const token = req.cookies.token; 
-    
     if (token) {
         try {
             var decoded = jwt.verify(token, process.env.TOKEN_SECRET_KEY);

@@ -2,20 +2,24 @@
     <div class="formInput_monHoc" id="formInput_monHoc">
 
         <div class="formInput_baseA4" id="formInput_baseA4">
+            <div class="PLO">        
+            <table>
+                {{#each processedPLOs}}
+                    {{#if newGroup}}
+                        <!-- Chỉ hiển thị tiêu đề này khi bắt đầu một nhóm PLO mới -->
+                        <tr><th colspan="2">{{LoaiCDR_CT}}</th></tr>
+                    {{/if}}
+                    <tr>
+                        <td class="ValuePLO">{{Ten_CDR}}</td>
+                        <td style="text-align: justify;">{{NoiDung}}</td>
+                    </tr>
+                {{/each}}
+                </table>
+        </div>
             <div class="formInput_print" spellcheck="false">
                 {{{templates}}}
-                <button class="btn" onclick="CleanUp_AllTaiLieuThamKhao()">CleanUp_AllTaiLieuThamKhao</button>
-                <button class="btn" onclick="CleanUp_1()">CleanUp_1</button>
 
-                <button class="btn" onclick="CleanUp_AllTB4()">CleanUp_AllTB4</button>
-                <button class="btn" onclick="CleanUp_AllTB5()">CleanUp_AllTB5</button>
-                <button class="btn" onclick="CleanUp_6()">CleanUp_6</button>
-                <button class="btn" onclick="CleanUp_7()">CleanUp_7</button>
-                <button class="btn" onclick="CleanUp_8()">CleaUp_8</button>
-                <button class="btn" onclick="CleanUp_9()">CleaUp_9</button>
-                <button class="btn" onclick="CleanUp_HocPhan()">HocPhan</button>
-                <button class="btn" onclick="Save_Project()">Save_Project</button>
-                <button class="btn" onclick="hungtest()">hungtest()</button>
+                
                 {{{tample}}}
                 {{!-- <div class="NameContent_width16_cm">
                     <p class="section-content text-right"><strong>PHỤ LỤC&nbsp;<span contenteditable="true"
@@ -169,7 +173,8 @@
                     <div><span>Chuyên ngành:&nbsp;<span contenteditable="true" id="ChuyenNganh">
                                 &hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;.
                             </span>(nếu có)</span></div>
-                    <p class="display-flex">
+                    <p class="section-content">&nbsp;</p>        
+                    <div class="section-content display-flex">
 
                     <div class="dropdown" id="dropdown-HocKy">
                         Học kỳ:&nbsp;
@@ -202,7 +207,7 @@
                             <li onclick="updateValue('NamHoc', '5','TUA')">5</li>
                         </ul>
                     </div>
-                    </p>
+                    </div>
 
                     <p><strong><em><span>Điều kiện tham gia học phần:</span></em></strong></p>
 
@@ -252,6 +257,7 @@
                                     id="KyNang" onkeydown="handleKeyPress('KyNang',event)">
 
                                     <div>&nbsp;&nbsp;-&nbsp;&nbsp;Kỹ năng phân tích, giải quyết vấn đề</div>
+                                    
                                     <div>&nbsp;&nbsp;-&nbsp;&nbsp;Kỹ năng tập trung, ghi nhớ, tính toán, biến đổi</div>
 
                                 </td>
@@ -270,7 +276,7 @@
                     {{!----}}
                     {{!-- 2. Nguồn học liệu (Learning resources): --}}
                     {{!----}}
-                <div class="formLearningResources">
+                <div class="page__break formLearningResources">
                     <p class="section-content">&nbsp;</p>
                     <p class="section-content break"><strong><span>2. Nguồn học liệu (Learning
                                 resources):</span></strong>
@@ -374,13 +380,11 @@
                     </div>
                 </div>
 
-
-
-                
+   
                 {{!----}}
                 {{!-- 3. Mô tả học phần (Course description): --}}
                 {{!----}}
-                <div class="CourseDescription">
+                <div class="page__break CourseDescription">
                     <p class="section-content">&nbsp;</p>
                     <div class="width16_cm">
                         <p class="section-content"><strong><span>3. Mô tả học phần (Course description):</span></strong>
@@ -467,17 +471,9 @@
                                             <p class="section-content"> <span contenteditable="true" id="KT_DUPO_1"
                                                     class="KT">PLO1</span></p>
                                             <ul class="dropdown-content">
-                                                <li onclick="updateValue('KT_DUPO_1', 'PLO1','DUPO')">PLO1</li>
-                                                <li onclick="updateValue('KT_DUPO_1', 'PLO2','DUPO')">PLO2</li>
-                                                <li onclick="updateValue('KT_DUPO_1', 'PLO3','DUPO')">PLO3</li>
-                                                <li onclick="updateValue('KT_DUPO_1', 'PLO4','DUPO')">PLO4</li>
-                                                <li onclick="updateValue('KT_DUPO_1', 'PLO5','DUPO')">PLO5</li>
-                                                <li onclick="updateValue('KT_DUPO_1', 'PLO6','DUPO')">PLO6</li>
-                                                <li onclick="updateValue('KT_DUPO_1', 'PLO7','DUPO')">PLO7</li>
-                                                <li onclick="updateValue('KT_DUPO_1', 'PLO8','DUPO')">PLO8</li>
-                                                <li onclick="updateValue('KT_DUPO_1', 'PLO9','DUPO')">PLO9</li>
-                                                <li onclick="updateValue('KT_DUPO_1', 'PLO10','DUPO')">PLO10</li>
-                                                <!-- Add more options as needed -->
+                                                {{#each PLO}}
+                                                    <li onclick="updateValue('KT_DUPO_1', '{{this.Ten_CDR}}','DUPO')">{{this.Ten_CDR}}</li>
+                                                {{/each}}
                                             </ul>
                                         </div>
                                     </td>
@@ -527,16 +523,9 @@
                                             <p class="section-content"> <span contenteditable="true" id="KN_DUPO_1"
                                                     class="KN">PLO1</span></p>
                                             <ul class="dropdown-content">
-                                                <li onclick="updateValue('KN_DUPO_1', 'PLO1','DUPO')">PLO1</li>
-                                                <li onclick="updateValue('KN_DUPO_1', 'PLO2','DUPO')">PLO2</li>
-                                                <li onclick="updateValue('KN_DUPO_1', 'PLO3','DUPO')">PLO3</li>
-                                                <li onclick="updateValue('KN_DUPO_1', 'PLO4','DUPO')">PLO4</li>
-                                                <li onclick="updateValue('KN_DUPO_1', 'PLO5','DUPO')">PLO5</li>
-                                                <li onclick="updateValue('KN_DUPO_1', 'PLO6','DUPO')">PLO6</li>
-                                                <li onclick="updateValue('KN_DUPO_1', 'PLO7','DUPO')">PLO7</li>
-                                                <li onclick="updateValue('KN_DUPO_1', 'PLO8','DUPO')">PLO8</li>
-                                                <li onclick="updateValue('KN_DUPO_1', 'PLO9','DUPO')">PLO9</li>
-                                                <li onclick="updateValue('KN_DUPO_1', 'PLO10','DUPO')">PLO10</li>
+                                                {{#each PLO}}
+                                                    <li onclick="updateValue('KN_DUPO_1', '{{this.Ten_CDR}}','DUPO')">{{this.Ten_CDR}}</li>
+                                                {{/each}}
                                             </ul>
                                         </div>
                                     </td>
@@ -587,16 +576,9 @@
                                             <p class="section-content"> <span contenteditable="true" id="TD_DUPO_1"
                                                     class="TD">PLO1</span></p>
                                             <ul class="dropdown-content">
-                                                <li onclick="updateValue('TD_DUPO_1', 'PLO1','DUPO')">PLO1</li>
-                                                <li onclick="updateValue('TD_DUPO_1', 'PLO2','DUPO')">PLO2</li>
-                                                <li onclick="updateValue('TD_DUPO_1', 'PLO3','DUPO')">PLO3</li>
-                                                <li onclick="updateValue('TD_DUPO_1', 'PLO4','DUPO')">PLO4</li>
-                                                <li onclick="updateValue('TD_DUPO_1', 'PLO5','DUPO')">PLO5</li>
-                                                <li onclick="updateValue('TD_DUPO_1', 'PLO6','DUPO')">PLO6</li>
-                                                <li onclick="updateValue('TD_DUPO_1', 'PLO7','DUPO')">PLO7</li>
-                                                <li onclick="updateValue('TD_DUPO_1', 'PLO8','DUPO')">PLO8</li>
-                                                <li onclick="updateValue('TD_DUPO_1', 'PLO9','DUPO')">PLO9</li>
-                                                <li onclick="updateValue('TD_DUPO_1', 'PLO10','DUPO')">PLO10</li>
+                                                {{#each PLO}}
+                                                    <li onclick="updateValue('TD_DUPO_1', '{{this.Ten_CDR}}','DUPO')">{{this.Ten_CDR}}</li>
+                                                {{/each}}
                                             </ul>
                                         </div>
                                     </td>
@@ -623,9 +605,6 @@
                         <div class="instructionForm-table4" id="instructionForm-table4">
                             <h3>Bảng Chương phần 4</h3>
 
-                            <button onclick="ThemCDRLoaiKT(3)" class="btn btn-secondary ctc1">
-                                Xem đáp ứng
-                            </button>
                             <button onclick="ThemCDRLoaiKT(1)" class="btn btn-secondary ctc1">
                                 + Thêm CDR KT
                             </button>
@@ -641,16 +620,15 @@
                         </div>
                     </div>
                 </div>
-                {{>table-4}}
+                
 
-                <p class="section-content">&nbsp;</p>
+                
 
                 {{!----}}
                 {{!-- 5. Nội dung học phần (Course content) --}}
                 {{!----}}
-                <p class="section-content break"><strong><span>5. Nội dung học phần (Course content)</span></strong></p>
-
-                {{> table-5}}
+                <p class="section-content">&nbsp;</p>
+                <p class="page__break section-content break"><strong><span>5. Nội dung học phần (Course content)</span></strong></p>
                 <div class="table-5-display-row">
                     <table class="table-5-course-content">
                         <thead>
@@ -695,7 +673,7 @@
                                     </strong>
                                 </td>
                                 <td id="Chuong1.2" class="body-5-course-content-71_8pt">
-                                    <div class="dropdown" id="dropdown-CDR_HocPhan1">
+                                    <div class="dropdown">
                                         <p class="header-5-course-content-p text-center">
                                             <strong><span contenteditable="true" class="CDR_HocPhan" id="CDR_HocPhan1">
                                                     1, 2, 3</span></strong>
@@ -886,20 +864,19 @@
                     </table>
 
                     <div class="instructionForm-table5" id="instructionForm-table5">
-                        <h2 align="center"> <strong>Bảng Chương phần 5</strong></h2>
+                        <h2 align="center">Bảng Chương phần 5</h2>
                         <div style="display: flex;">
                             <button onclick="themChuong()" class="btn btn-dark">
                                 + Thêm chương
                             </button>
-                            <button id="test1" onclick="getAllCTCIdsAndValues()">get</button>
+                            
                         </div>
                         <div id="instructionForm-table5-CTC" class="ctc">
+                            <p>Click vào CDR cần xóa</p>
+                            <button id="hung" class="btn btn-secondary">Xóa 1 CDR</button>
                             <button type="button" class="btn btn-secondary Chitiet" id="ctc1"
                                 onclick="themChiTietChuong(1)">+&nbsp;Thêm chi tiết chương 1</button>
                             </button>
-
-                            <p>Click vào CDR cần xóa</p>
-                            <button id="hung" class="btn btn-secondary">Xóa 1 CDR</button>
                         </div>
                     </div>
                 </div>
@@ -1392,15 +1369,14 @@
                     <p class="section-content"><span>&nbsp;</span></p>
                     <p class="section-content">&nbsp;</p>
                 </div>
-                {{>createFocus}}
+                
             </div>
         </div>
 
 
     </div>
 </div>
-{{>table-2}}
-{{>CheckBox}}
+
 <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 <script>
 
@@ -1414,38 +1390,12 @@
                 console.error('Error:', error);
             });
     }
-    function hungtest() {
-        const giaotrinhContainer = document.querySelectorAll('.HocLieu');
-
-        const giaotrinhData = []; //TacGia NamXB TenTL Nguon
-
-        for (const parentItem of giaotrinhContainer) {
-            const TG_Element = parentItem.querySelector('.TacGia');
-            const TG = TG_Element ? cleanUpString(TG_Element.textContent) : '';
-
-            const NXB_Element = parentItem.querySelector('.NamXB');
-            const NXB = NXB_Element ? cleanUpString(NXB_Element.textContent) : '';
-
-            const Ten_Element = parentItem.querySelector('.TenTL');
-            const Ten = Ten_Element ? cleanUpString(Ten_Element.textContent) : '';
-
-            const NGUON_Element = parentItem.querySelector('.Nguon');
-            const NGUON = NGUON_Element ? cleanUpString(NGUON_Element.textContent) : '';
-
-            const tacGiaArray = TG.split(',').map(author => author.trim());
-
-            giaotrinhData.push({
-                tenTLTK: Ten,
-                tacGia: tacGiaArray,
-                namXuatBan: NXB,
-                loaiHocLieu: 'Giáo trình',
-                nguon: NGUON
-            });
-        }
-
-        console.log(giaotrinhData);
-    }
 </script>
+{{>table-4}}
+{{> table-5}}
+{{>createFocus}}
+{{>table-2}}
+{{>CheckBox}}
 {{>all_Autocomplete}}
 {{>Autocomplete}}
 {{>ChangeDropdownText}}

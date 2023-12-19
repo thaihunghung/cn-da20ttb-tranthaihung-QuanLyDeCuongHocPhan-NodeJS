@@ -43,11 +43,10 @@
                     
                     var Tachchu = StringNumberAndletter(parentTr.id, 'letters');
                     
-
                     parentTr.remove();
                     UpdateSTT_TB2();
 
-                    UpdateALLId_TB2(Tachchu)
+                    //UpdateALLId_TB2(Tachchu)
                 } else {
                     console.log("Người dùng đã từ chối xóa.");
                 }
@@ -69,14 +68,14 @@
         });
     }
 
-    function UpdateALLId_TB2(NameId) {
-        var elements = document.querySelectorAll(`[id^="${NameId}"]`);
-        elements.forEach(function (element, index) {
-        var newId = `${NameId}${index}`;
-        element.removeAttribute('id');
-        element.setAttribute('id', newId);
-        })
-    }
+    //function UpdateALLId_TB2(NameId) {
+     //   var elements = document.querySelectorAll(`[id^="${NameId}"]`);
+     //   elements.forEach(function (element, index) {
+     //   var newId = `${NameId}${index}`;
+     //   element.removeAttribute('id');
+     //   element.setAttribute('id', newId);
+      //  })
+    //}
     
     function StringNumberAndletter(inputString, type) {
         // Sử dụng biểu thức tách chữ và số

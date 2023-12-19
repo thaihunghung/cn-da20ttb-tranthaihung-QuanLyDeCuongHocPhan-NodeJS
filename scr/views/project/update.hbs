@@ -2,705 +2,31 @@
     <div class="formInput_monHoc" id="formInput_monHoc">
 
         <div class="formInput_baseA4" id="formInput_baseA4">
-            <div class="PLO">        
-        <table>
-                {{#each processedPLOs}}
+            <div class="PLO">
+                <table>
+                    {{#each processedPLOs}}
                     {{#if newGroup}}
-                        <!-- Chỉ hiển thị tiêu đề này khi bắt đầu một nhóm PLO mới -->
-                        <tr><th colspan="2">{{LoaiCDR_CT}}</th></tr>
+                    <!-- Chỉ hiển thị tiêu đề này khi bắt đầu một nhóm PLO mới -->
+                    <tr>
+                        <th colspan="2">{{LoaiCDR_CT}}</th>
+                    </tr>
                     {{/if}}
                     <tr>
-                        <td>{{Ten_CDR}}</td>
+                        <td class="ValuePLO">{{Ten_CDR}}</td>
                         <td style="text-align: justify;">{{NoiDung}}</td>
                     </tr>
-                {{/each}}
+                    {{/each}}
                 </table>
             </div>
-        
+
             <div class="formInput_print" spellcheck="false">
-                
-    {{{templates}}}
-                {{!-- <div class="width16_cm">
-                    <p class="section-content text-right"><strong>PHỤ LỤC&nbsp;<span contenteditable="true"
-                                id="PhuLuc">{{HocPhan.PhuLuc}}</span></strong></p>
-                    <p class="section-content text-center"><strong><span>ĐỀ CƯƠNG CHI TIẾT HỌC PHẦN</span></strong></p>
-                    <p class="section-content text-center"><strong><span contenteditable="true"
-                                id="TenMon">{{HocPhan.TenMon}}</span></strong></p>
-                    <p class="section-content text-center"><strong>MSHP:<span contenteditable="true"
-                                id="MaMon">{{HocPhan.MaMon}}</span></strong></p>
-                    <p class="section-content">&nbsp;</p>
-                </div> --}}
-                
-                
-                {{!-- name id ẩn --}}
                 <div class="hidden" id="findName">{{findName}}</div>
-                {{!-- --}}
-                {{!-- table general-information --}}
-                {{!-- 1. Thông tin c"class="body-course-content" (General information): --}}
-                {{!-- table-1-general-information --}}
-                {{!-- header-general-information-1 --}}
-                {{!-- body-general-information-1 --}}
-                {{!-- <div class="FormGeneral_information">
-                    <p class="section-content"><strong><span contenteditable="false">1. Thông tin chung (General
-                                information):</span></strong></p>
+                {{{templates}}}
+
+                <div class="Course-content">
                     <p class="section-content">&nbsp;</p>
-
-                    <table class="table-1-general-information-1 section-content">
-                        <tbody>
-                            <tr>
-                                <td class="header-1-general-information-1">
-                                    <p><strong><em>Loại học phần</em></strong></p>
-                                </td>
-                                <td class="header-1-general-information-1">
-                                    <p><strong><em>Số tín chỉ</em></strong></p>
-                                </td>
-                                <td class="header-1-general-information-1">
-                                    <p><strong><em>Số giờ dự giảng</em></strong></p>
-                                </td>
-                                <td class="header-1-general-information-1">
-                                    <p><strong><em>Giờ tự học và giờ học khác</em></strong></p>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="body-1-general-information-1">
-                                    <p class="flex-row">
-                                        <span class="flex-row-text">
-                                            <label for="LoaiHocPhan1">Đại cương</label>
-                                        </span>
-                                        <span class="test">
-                                            <input class="test" type="checkbox" value="Đại cương" id="LoaiHocPhan1"
-                                                onclick="checkboxChanged('LoaiHocPhan1')">
-                                        </span>
-                                    </p>
-                                    <p class="flex-row">
-                                        <span class="flex-row-text">
-                                            <label for="LoaiHocPhan2">Cơ sở</label>
-                                        </span>
-                                        <span class="test">
-                                            <input type="checkbox" value="Cơ sở" id="LoaiHocPhan2"
-                                                onclick="checkboxChanged('LoaiHocPhan2')">
-                                        </span>
-                                    </p>
-                                    <p class="flex-row">
-                                        <span class="flex-row-text">
-                                            <label for="LoaiHocPhan3">Chuyên ngành</label>
-                                        </span>
-                                        <span class="test">
-                                            <input type="checkbox" value="Chuyên ngành" id="LoaiHocPhan3"
-                                                onclick="checkboxChanged('LoaiHocPhan3')">
-                                        </span>
-                                    </p>
-                                </td>
-                                <td class="body-1-general-information-1">
-                                    <div class="dropdown" id="dropdown-SoTC_LT">
-                                        Lý thuyết:&nbsp;
-                                        <span contenteditable="true" id="SoTC_LT">{{HocPhan.SoTC_LT}}</span>
-                                        <ul class="dropdown-content">
-                                            <li onclick="updateValue('SoTC_LT', '1','TUA')">1</li>
-                                            <li onclick="updateValue('SoTC_LT', '2','TUA')">2</li>
-                                            <li onclick="updateValue('SoTC_LT', '3','TUA')">3</li>
-                                            <li onclick="updateValue('SoTC_LT', '4','TUA')">4</li>
-                                            <li onclick="updateValue('SoTC_LT', '5','TUA')">5</li>
-                                        </ul>
-                                    </div>
-                                    <br>
-                                    <br>
-                                    <div class="dropdown" id="dropdown-SoTC_TH">
-                                        Thực hành:&nbsp;
-                                        <span contenteditable="true" id="SoTC_TH">{{HocPhan.SoTC_TH}}</span>
-                                        <ul class="dropdown-content">
-                                            <li onclick="updateValue('SoTC_TH', '1','TUA')">1</li>
-                                            <li onclick="updateValue('SoTC_TH', '2','TUA')">2</li>
-                                            <li onclick="updateValue('SoTC_TH', '3','TUA')">3</li>
-                                            <li onclick="updateValue('SoTC_TH', '4','TUA')">4</li>
-                                            <li onclick="updateValue('SoTC_TH', '5','TUA')">5</li>
-                                        </ul>
-                                    </div>
-                                </td>
-                                <td class="body-1-general-information-1">
-                                    <div class="dropdown" id="dropdown-LT">
-                                        Lý thuyết:&nbsp;
-                                        <span contenteditable="true" id="LT">{{HocPhan.LT}}</span>
-                                        <ul class="dropdown-content">
-                                            <li onclick="updateValue('LT', '1','TUA')">1</li>
-                                            <li onclick="updateValue('LT', '2','TUA')">2</li>
-                                            <li onclick="updateValue('LT', '3','TUA')">3</li>
-                                            <li onclick="updateValue('LT', '4','TUA')">4</li>
-                                            <li onclick="updateValue('LT', '5','TUA')">5</li>
-                                        </ul>
-                                    </div>
-                                    <br>
-                                    <br>
-                                    <div class="dropdown" id="dropdown-TH">
-                                        Thực hành:&nbsp;
-                                        <span contenteditable="true" id="TH">{{HocPhan.TH}}</span>
-                                        <ul class="dropdown-content">
-                                            <li onclick="updateValue('TH', '1','TUA')">1</li>
-                                            <li onclick="updateValue('TH', '2','TUA')">2</li>
-                                            <li onclick="updateValue('TH', '3','TUA')">3</li>
-                                            <li onclick="updateValue('TH', '4','TUA')">4</li>
-                                            <li onclick="updateValue('TH', '5','TUA')">5</li>
-                                        </ul>
-                                    </div>
-
-                                </td>
-                                <td class="body-1-general-information-1">
-                                    <div class="dropdown" id="dropdown-SoGioTuHoc">
-
-                                        <span contenteditable="true" id="SoGioTuHoc">{{HocPhan.SoGioTuHoc}}</span>
-                                        <ul class="dropdown-content">
-                                            <li onclick="updateValue('SoGioTuHoc', '1','TUA')">1</li>
-                                            <li onclick="updateValue('SoGioTuHoc', '2','TUA')">2</li>
-                                            <li onclick="updateValue('SoGioTuHoc', '3','TUA')">3</li>
-                                            <li onclick="updateValue('SoGioTuHoc', '4','TUA')">4</li>
-                                            <li onclick="updateValue('SoGioTuHoc', '5','TUA')">5</li>
-                                        </ul>
-                                    </div>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-
-                    <p><strong><em><span>Đối tượng học</span></em><span>: &nbsp; &nbsp; &nbsp;&nbsp;</span></strong></p>
-                    <p>Trình độ đào tạo:&nbsp;<span contenteditable="true" id="TrinhDo_DT">{{HocPhan.TrinhDo_DT}}</span>
-                    </p>
-                    <p>Ngành:&nbsp;<span contenteditable="true" id="Nganh">Công nghệ Thông tin</span></p>
-                    <div><span>Chuyên ngành:&nbsp;<span contenteditable="true" id="ChuyenNganh">
-                                &hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;.
-                            </span>(nếu có)</span></div>
-                    <p class="display-flex">
-                    <div class="dropdown" id="dropdown-HocKy">
-                        Học kỳ:&nbsp;
-                        <span contenteditable="true" id="HocKy">{{HocPhan.HocKy}}</span>
-                        <ul class="dropdown-content">
-                            <li onclick="updateValue('HocKy', 'I','TUA')">I</li>
-                            <li onclick="updateValue('HocKy', 'II','TUA')">II</li>
-                            <li onclick="updateValue('HocKy', 'III','TUA')">III</li>
-                            <li onclick="updateValue('HocKy', 'IV','TUA')">IV</li>
-                            <li onclick="updateValue('HocKy', 'V','TUA')">V</li>
-                            <li onclick="updateValue('HocKy', 'VI','TUA')">VI</li>
-                            <li onclick="updateValue('HocKy', 'VII','TUA')">VII</li>
-                            <li onclick="updateValue('HocKy', 'VII','TUA')">VII</li>
-                            <li onclick="updateValue('HocKy', 'VIII','TUA')">VIII</li>
-                        </ul>
-                    </div>
-                    &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-                    &nbsp; &nbsp;
-                    &nbsp;
-                    <div class="dropdown" id="dropdown-NamHoc">
-                        Năm thứ:&nbsp;
-                        <span contenteditable="true" id="NamHoc">{{HocPhan.NamHoc}}</span>
-                        <ul class="dropdown-content">
-                            <li onclick="updateValue('NamHoc', '1','TUA')">1</li>
-                            <li onclick="updateValue('NamHoc', '2','TUA')">2</li>
-                            <li onclick="updateValue('NamHoc', '3','TUA')">3</li>
-                            <li onclick="updateValue('NamHoc', '4','TUA')">4</li>
-                            <li onclick="updateValue('NamHoc', '5','TUA')">5</li>
-                        </ul>
-                    </div>
-
-                    </p>
-
-                    <p><strong><em><span>Điều kiện tham gia học phần:</span></em></strong></p>
-
-                    <table class="table-1-general-information-2">
-                        <tbody>
-                            <tr>
-                                <td class="header-1-general-information-2">Học phần tiên quyết</td>
-                                <td colspan="2" class="body-1-general-colspan-2" id="TienQuyet">
-                                    <div class="ModifyTB2">
-                                        <div class="autocomplete">Tên:&nbsp;
-                                            <span contenteditable="true" id="TenTQ1">
-                                                Vi tích phân A1
-                                            </span>
-                                        </div>
-
-                                        <div class="autocomplete">MSHP:&nbsp;
-                                            <span contenteditable="true" id="MaTQ1">
-                                                110042
-                                            </span>
-                                        </div>
-                                    </div>
-
-                                </td>
-                            </tr>
-
-                            <tr>
-                                <td class="body-1-general-left-2">Học phần song hành</td>
-                                <td colspan="2" class="body-1-general-right-2" id="HocPhan_SH">
-                                    <span contenteditable="true">Không</span>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td rowspan="3" class="body-1-general-left-2">Các yêu cầu khác</td>
-                                <td class="header-1-general-information-2">Về kiến thức:</td>
-                                <td class="body-1-general-colspan-2">
-                                    <div contenteditable="true" id="KienThuc"
-                                        onkeydown="handleKeyPress('KienThuc',event)">
-                                        Kiến thức toán học phổ
-                                        thông
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="header-1-general-information-2">Về kỹ năng:</td>
-
-                                <td class="body-1-general-colspan-2 section-content text-left" contenteditable="true"
-                                    id="KyNang" onkeydown="handleKeyPress('KyNang',event)">
-
-                                    <div>&nbsp;&nbsp;-&nbsp;&nbsp;Kỹ năng phân tích, giải quyết vấn đề</div>
-                                    <div>&nbsp;&nbsp;-&nbsp;&nbsp;Kỹ năng tập trung, ghi nhớ, tính toán, biến đổi</div>
-
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="header-1-general-information-2">Về thái độ:</td>
-                                <td class="body-1-general-colspan-2 text-left" contenteditable="true" id="ThaiDo"
-                                    onkeydown="handleKeyPress('ThaiDo',event)">
-                                    Chủ động trong học tập
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                    <p class="section-content">&nbsp;</p>
-                </div> --}}
-
-         
-                {{!----}}
-                {{!-- 2. Nguồn học liệu (Learning resources): --}}
-                {{!----}}
-                {{!-- <div class="formLearningResources">
-                    <p class="section-content break"><strong><span>2. Nguồn học liệu (Learning
-                                resources):</span></strong>
-                    </p>
-                    <p class="section-content">&nbsp;</p>
-                    <div class="table-2-display-row">
-                        <table class="table-2-learning-resources">
-                            <tbody>
-                                <tr>
-                                    <td class="table-2-learning-header">
-                                        <p><span id="loaiHocLieu">Giáo trình/Tài liệu học tập chính</span></p>
-                                    </td>
-                                    <td class="table-2-learning-body" contenteditable="true">
-
-                                        <div id="giaotrinh">
-                                            {{#each TLTK_GT}}
-                                            <p id="GT{{inc @index}}" class="allowDeletion2 giaotrinh">
-                                                [<span id="STT_GT_{{inc @index}}" class="STT_TB2"
-                                                    onclick="hiddenAndShow({{inc @index}}, 'GT')"
-                                                    contenteditable="true">{{inc @index}}</span>]
-                                                <span id="TG_GT_{{inc @index}}"
-                                                    onclick="hiddenAndShow({{inc @index}}, 'GT')" contenteditable="true"
-                                                    class="TacGia">{{joinArray this.tacGia}}</span>
-                                                (<span id="NXB_GT_{{inc @index}}"
-                                                    onclick="hiddenAndShow({{inc @index}}, 'GT')" contenteditable="true"
-                                                    class="NamXB">{{this.namXuatBan}}</span>).&nbsp;
-                                                <span id="Ten_GT_{{inc @index}}"
-                                                    onclick="hiddenAndShow({{inc @index}}, 'GT')" contenteditable="true"
-                                                    class="TenTL text-nghien">{{this.tenTLTK}}</span>
-                                                [<span id="NGUON_GT_{{inc @index}}"
-                                                    onclick="hiddenAndShow({{inc @index}}, 'GT')" contenteditable="true"
-                                                    class="Nguon">{{this.nguon}}</span>]
-                                                <span contenteditable="true"
-                                                    id="No">.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
-                                            </p>
-                                            <div id="GT{{inc @index}}div" class="hidden_GT{{inc @index}} hidden">
-                                                <!-- Additional details for each document can be displayed here -->
-                                                <p><strong>STT:</strong>&nbsp;[<span
-                                                        id="STT_GT_DSpan_{{inc @index}}"></span>]
-                                                </p>
-                                                <p><strong>Tên tác giả:</strong>&nbsp;<span
-                                                        id="TG_GT_DSpan_{{inc @index}}" contenteditable="true"></span>
-                                                </p>
-                                                <p><strong>Năm Xuất bảng:</strong>&nbsp;<span
-                                                        id="NXB_GT_DSpan_{{inc @index}}" contenteditable="true"></span>
-                                                </p>
-                                                <p><strong>Tên tài liệu tham khảo:</strong>&nbsp;<span
-                                                        id="TEN_GT_DSpan_{{inc @index}}" contenteditable="true"
-                                                        class="text-nghien"></span></p>
-                                                <p><strong>Nguồn:</strong>&nbsp;<span id="NGUON_GT_DSpan_{{inc @index}}"
-                                                        contenteditable="true"></span></p>
-                                            </div>
-                                            {{/each}}
-                                        </div>
-                                    </td>
-                                    <td class="empty"></td>
-                                </tr>
-                                <tr>
-                                    <td class="table-2-learning-header">
-                                        <p><span id="loaiHocLieu">Tài liệu tham khảo thêm</span></p>
-                                    </td>
-                                    <td class="table-2-learning-body">
-
-                                        <div id="TaiLieuThamKhao">
-                                            {{#each TLTK_TK}}
-                                            <p id="TL{{inc @index}}" class="allowDeletion2 TaiLieuThamKhao">
-                                                [<span id="STT_TL_{{inc @index}}" class="STT_TB2"
-                                                    onclick="hiddenAndShow({{inc @index}}, 'TL')"
-                                                    contenteditable="true">{{inc @index}}</span>]
-                                                <span id="TG_TL_{{inc @index}}"
-                                                    onclick="hiddenAndShow({{inc @index}}, 'TL')" contenteditable="true"
-                                                    class="TacGia">{{joinArray this.tacGia}}</span>
-                                                (<span id="NXB_TL_{{inc @index}}"
-                                                    onclick="hiddenAndShow({{inc @index}}, 'TL')" contenteditable="true"
-                                                    class="NamXB">{{this.namXuatBan}}</span>).&nbsp;
-                                                <span id="Ten_TL_{{inc @index}}"
-                                                    onclick="hiddenAndShow({{inc @index}}, 'TL')" contenteditable="true"
-                                                    class="TenTL text-nghien">{{this.tenTLTK}}</span>
-                                                [<span id="NGUON_TL_{{inc @index}}"
-                                                    onclick="hiddenAndShow({{inc @index}}, 'TL')" contenteditable="true"
-                                                    class="Nguon">{{this.nguon}}</span>]
-                                                <span contenteditable="true"
-                                                    id="No">.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
-                                            </p>
-                                            <div id="TL{{inc @index}}div" class="hidden_TL{{inc @index}} hidden">
-                                                <!-- Additional details for each document can be displayed here -->
-                                                <p><strong>STT:</strong>&nbsp;[<span
-                                                        id="STT_TL_DSpan_{{inc @index}}"></span>]
-                                                </p>
-                                                <p><strong>Tên tác giả:</strong>&nbsp;<span
-                                                        id="TG_TL_DSpan_{{inc @index}}" contenteditable="true"></span>
-                                                </p>
-                                                <p><strong>Năm Xuất bảng:</strong>&nbsp;<span
-                                                        id="NXB_TL_DSpan_{{inc @index}}" contenteditable="true"></span>
-                                                </p>
-                                                <p><strong>Tên tài liệu tham khảo:</strong>&nbsp;<span
-                                                        id="TEN_TL_DSpan_{{inc @index}}" contenteditable="true"
-                                                        class="text-nghien"></span></p>
-                                                <p><strong>Nguồn:</strong>&nbsp;<span id="NGUON_TL_DSpan_{{inc @index}}"
-                                                        contenteditable="true"></span></p>
-                                            </div>
-                                            {{/each}}
-                                        </div>
-                                    </td>
-                                    <td class="empty"></td>
-                                </tr>
-                                <tr>
-                                    <td class="table-2-learning-header">
-                                        <p><span id="loaiHocLieu">Các loại học liệu khác</span></p>
-                                    </td>
-                                    <td class="table-2-learning-body">
-
-                                        <div id="HocLieu">
-                                            {{#each TLTK_HL}}
-                                            <p id="HL{{inc @index}}" class="allowDeletion2 HocLieu">
-                                                [<span id="STT_HL_{{inc @index}}" class="STT_TB2"
-                                                    onclick="hiddenAndShow({{inc @index}}, 'HL')"
-                                                    contenteditable="true">{{inc @index}}</span>]
-                                                <span id="TG_HL_{{inc @index}}"
-                                                    onclick="hiddenAndShow({{inc @index}}, 'HL')" contenteditable="true"
-                                                    class="TacGia">{{joinArray this.tacGia}}</span>
-                                                (<span id="NXB_HL_{{inc @index}}"
-                                                    onclick="hiddenAndShow({{inc @index}}, 'HL')" contenteditable="true"
-                                                    class="NamXB">{{this.namXuatBan}}</span>).&nbsp;
-                                                <span id="Ten_HL_{{inc @index}}"
-                                                    onclick="hiddenAndShow({{inc @index}}, 'HL')" contenteditable="true"
-                                                    class="TenTL text-nghien">{{this.tenTLTK}}</span>
-                                                [<span id="NGUON_HL_{{inc @index}}"
-                                                    onclick="hiddenAndShow({{inc @index}}, 'HL')" contenteditable="true"
-                                                    class="Nguon">{{this.nguon}}</span>]
-                                                <span contenteditable="true"
-                                                    id="No">.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
-                                            </p>
-                                            <div id="HL{{inc @index}}div" class="hidden_HL{{inc @index}} hidden">
-                                                <!-- Additional details for each document can be displayed here -->
-                                                <p><strong>STT:</strong>&nbsp;[<span
-                                                        id="STT_HL_DSpan_{{inc @index}}"></span>]
-                                                </p>
-                                                <p><strong>Tên tác giả:</strong>&nbsp;<span
-                                                        id="TG_HL_DSpan_{{inc @index}}" contenteditable="true"></span>
-                                                </p>
-                                                <p><strong>Năm Xuất bảng:</strong>&nbsp;<span
-                                                        id="NXB_HL_DSpan_{{inc @index}}" contenteditable="true"></span>
-                                                </p>
-                                                <p><strong>Tên tài liệu tham khảo:</strong>&nbsp;<span
-                                                        id="TEN_HL_DSpan_{{inc @index}}" contenteditable="true"
-                                                        class="text-nghien"></span></p>
-                                                <p><strong>Nguồn:</strong>&nbsp;<span id="NGUON_HL_DSpan_{{inc @index}}"
-                                                        contenteditable="true"></span></p>
-                                            </div>
-                                            {{/each}}
-                                        </div>
-                                    </td>
-                                    <td class="empty"></td>
-                                </tr>
-                            </tbody>
-                        </table>
-
-                        <div class="instructionForm-table2" id="instructionForm-table2">
-                            <h3>Bảng Chương phần 2</h3>
-
-                            <button id="addButton" onclick="CreateCDR('GT','giaotrinh')" class="btn btn-secondary ctc1">
-                                + thêm 1 giaotrinh
-                            </button>
-
-                            <button id="addButton" onclick="CreateCDR('TL','TaiLieuThamKhao')"
-                                class="btn btn-secondary ctc1">
-                                + thêm 1 TaiLieuThamKhao
-                            </button>
-                            <button id="addButton" onclick="CreateCDR('GT', 'HocLieu')" class="btn btn-secondary ctc1">
-                                + thêm 1 HocLieu
-                            </button>
-
-                            <button id="button_delete_tb2" class="btn btn-secondary ctc1">
-                                + xóa
-                            </button>
-                        </div>
-
-                    </div>
-                    <p class="section-content">&nbsp;</p>
-                </div> --}}
-
-                
-
-                {{!----}}
-                {{!-- 3. Mô tả học phần (Course description): --}}
-                {{!----}}
-              
-                {{!-- <div class="CourseDescription">
-                    <p class="section-content">&nbsp;</p>
-                    <div class="width16_cm">
-                        <p class="section-content"><strong><span>3. Mô tả học phần (Course description):</span></strong>
-                        </p>
-                        <div class="section-content" contenteditable="true" id="MoTa"
-                            onkeydown="handleKeyPress('MoTa',event)">
-                            {{HocPhan.MoTa}}
-                        </div>
-                        <p class="section-content">&nbsp;</p>
-                    </div>
-                </div> --}}
-               
-
-                {{!-- Course learning outcomes --}}
-                {{!-- 4. Chuẩn đầu ra của học phần (Course learning outcomes): --}}
-                {{!-- Course learning outcomes --}}
-
-
-                <div class="CourseLearningOutcomes">
-                    <p class="section-content"><strong><span>4. Chuẩn đầu ra của học phần (Course learning
-                                outcomes):</span></strong></p>
-                    <p class="section-content">&nbsp;</p>
-                    <p class="section-content">Sau khi hoàn thành học phần, sinh viên có thể:</p>
-                    {{!-- Course learning outcomes --}}
-                    {{!-- 4. Chuẩn đầu ra của học phần (Course learning outcomes): --}}
-                    {{!-- Course learning outcomes --}}
-                    <div class="table-4-display-row">
-                        <table class="table-4-learning-outcomes">
-                            <thead>
-                                {{!-- header-learning-outcomes --}}
-                                <tr>
-                                    <td class="header-4-learning-outcomes-1">
-                                        <p><span>&nbsp;</span></p>
-                                    </td>
-                                    <td class="header-4-learning-outcomes-2">
-                                        <p><strong>Chuẩn đầu ra của học phần</strong></p>
-                                    </td>
-                                    <td class="header-4-learning-outcomes-3">
-                                        <p><strong>Đáp ứng CĐR của CTĐT</strong></p>
-                                    </td>
-                                    <td class="header-4-learning-outcomes-4">
-                                        <p><strong>Trình độ năng lực</strong></p>
-                                    </td>
-                                    <td class="header-4-learning-outcomes-5">
-                                        <p><strong>TUA</strong></p>
-                                    </td>
-                                </tr>
-                            </thead>
-                            <tbody id="table-4-learning-outcomes">
-                                {{!-- <tr> tieu de 1 --}}
-                                <tr id="KyNangKT" class="LoaiKN">
-                                    <td colspan="5" class="body-4-learning-outcomes">
-                                        <div class="body-4-learning-outcomes-tital">
-                                            <p class="decimal-list"><strong><em><span class="strong-text">❖ <span>Về
-                                                                kiến
-                                                                thức</span>:</span></em></strong>
-                                            </p>
-                                        </div>
-                                    </td>
-                                </tr>
-                                {{!-- <tr> tieu de 1 --}}
-                                <tr class="allowDeletion_4 KyNang KyNangKT" id="KyNangKT1">
-                                    <th class="content-4-learning-outcomes-1 section-content text-left stt"
-                                        contenteditable="true">
-                                        1
-                                    </th>
-                                    <td class="content-4-learning-outcomes-2">
-                                        <div class="section-content KT" id="KT_ND_1" contenteditable="true"
-                                            onkeydown="handleKeyPress('KT_ND_1',event)">
-                                            Trình bày các khái niệm cơ bản về xác suất
-                                        </div>
-                                    </td>
-                                    <td class="content-4-learning-outcomes-3">
-                                        <div class="dropdown" id="dropdown-KT_DUPO_1">
-                                            <p class="section-content"> <span contenteditable="true" id="KT_DUPO_1"
-                                                    class="KT">PLO1</span></p>
-                                            <ul class="dropdown-content">
-                                                {{#each PLO}}
-                                                    <li onclick="updateValue('KT_DUPO_1', '{{this.Ten_CDR}}','DUPO')">{{this.Ten_CDR}}</li>
-                                                {{/each}}
-                                            </ul>
-                                        </div>
-                                    </td>
-                                    <td class="content-4-learning-outcomes-4">
-                                        <p class="section-content text-center"><span contenteditable="true" id="KT_TD_1"
-                                                class="KT">2</span></p>
-                                    </td>
-                                    <td class="content-4-learning-outcomes-5">
-                                        <div class="dropdown" id="dropdown-KT_DUPO_1">
-                                            <p class="section-content"><span contenteditable="true" id="KT_TUA_1"
-                                                    class="KT">TUA</span>
-                                            </p>
-                                            <ul class="dropdown-content">
-                                                <li onclick="updateValue('KT_TUA_1', 'TUA','TUA')">TUA</li>
-                                                <li onclick="updateValue('KT_TUA_1', 'UA','TUA')">UA</li>
-                                                <li onclick="updateValue('KT_TUA_1', 'TA','TUA')">TA</li>
-                                            </ul>
-                                        </div>
-                                    </td>
-                                </tr>
-                                {{!-- <tr> tieu de 1 --}}
-                                <tr id="KyNangKN" class="LoaiKN">
-                                    <td colspan="5" class="body-4-learning-outcomes">
-                                        <div class="body-4-learning-outcomes-tital">
-                                            <p class="decimal-list"><strong><em><span class="strong-text">❖ Về kỹ năng
-                                                            (bao
-                                                            gồm
-                                                            kỹ năng chuyên môn và kỹ năng mềm)</span></em></strong></p>
-                                        </div>
-                                    </td>
-
-                                </tr>
-                                {{!-- <tr> tieu de 1 --}}
-                                <tr class="KyNang KyNangKN" id="KyNangKN1">
-                                    <th class="content-4-learning-outcomes-1 section-content text-left"
-                                        contenteditable="true">
-                                        2
-                                    </th>
-                                    <td class="content-4-learning-outcomes-2">
-                                        <div class="section-content KN" id="KN_ND_1" contenteditable="true"
-                                            onkeydown="handleKeyPress('KN_ND_1',event)">
-                                            Trình bày các khái niệm cơ bản về xác suất
-                                        </div>
-                                    </td>
-                                    <td class="content-4-learning-outcomes-3">
-                                        <div class="dropdown" id="dropdown-KN_DUPO_1">
-                                            <p class="section-content"> <span contenteditable="true" id="KN_DUPO_1"
-                                                    class="KN">PLO1</span></p>
-                                            <ul class="dropdown-content">
-                                               {{#each PLO}}
-                                                    <li onclick="updateValue('KN_DUPO_1', '{{this.Ten_CDR}}','DUPO')">{{this.Ten_CDR}}</li>
-                                                {{/each}}
-                                            </ul>
-                                        </div>
-                                    </td>
-
-                                    <td class="content-4-learning-outcomes-4">
-                                        <p class="section-content text-center"><span contenteditable="true" id="KN_TD_1"
-                                                class="KN">2</span></p>
-                                    </td>
-                                    <td class="content-4-learning-outcomes-5">
-                                        <div class="dropdown" id="dropdown-KN_DUPO_1">
-                                            <p class="section-content"><span contenteditable="true" id="KN_TUA_1"
-                                                    class="KN">TUA</span>
-                                            </p>
-                                            <ul class="dropdown-content">
-                                                <li onclick="updateValue('KN_TUA_1', 'TUA','TUA')">TUA</li>
-                                                <li onclick="updateValue('KN_TUA_1', 'UA','TUA')">UA</li>
-                                                <li onclick="updateValue('KN_TUA_1', 'TA','TUA')">TA</li>
-
-                                            </ul>
-                                        </div>
-                                    </td>
-                                </tr>
-                                {{!-- <tr> tieu de 1 --}}
-                                <tr id="KyNangTD" class="LoaiKN">
-                                    <td colspan="5" class="body-4-learning-outcomes">
-                                        <div class="body-4-learning-outcomes-tital">
-                                            <p class="decimal-list"><strong><em>
-                                                        <span class="strong-text">❖ Về thái độ:
-                                                        </span></em></strong></p>
-                                        </div>
-                                    </td>
-
-                                </tr>
-                                {{!-- <tr> tieu de 1 --}}
-                                <tr class="KyNang KyNangTD" id="KyNangTD1">
-                                    <th class="content-4-learning-outcomes-1 section-content text-left"
-                                        contenteditable="true">
-                                        3
-                                    </th>
-                                    <td class="content-4-learning-outcomes-2">
-                                        <div class="section-content" id="TD_ND_1" class="TD" contenteditable="true"
-                                            onkeydown="handleKeyPress('TD_ND_1',event)">
-                                            Trình bày các khái niệm cơ bản về xác suất
-                                        </div>
-                                    </td>
-                                    <td class="content-4-learning-outcomes-3">
-                                        <div class="dropdown" id="dropdown-TD_DUPO_1">
-                                            <p class="section-content"> <span contenteditable="true" id="TD_DUPO_1"
-                                                    class="TD">PLO1</span></p>
-                                            <ul class="dropdown-content">
-                                               {{#each PLO}}
-                                                    <li onclick="updateValue('TD_DUPO_1', '{{this.Ten_CDR}}','DUPO')">{{this.Ten_CDR}}</li>
-                                                {{/each}}
-                                            </ul>
-                                        </div>
-                                    </td>
-                                    <td class="content-4-learning-outcomes-4">
-                                        <p class="section-content text-center"><span contenteditable="true" {{!-- tự do
-                                                trình độ --}} id="TD_TD_1" class="TD">2</span></p>
-                                    </td>
-                                    <td class="content-4-learning-outcomes-5">
-                                        <div class="dropdown" id="dropdown-TD_DUPO_1">
-                                            <p class="section-content"><span contenteditable="true" id="TD_TUA_1"
-                                                    class="TD">TUA</span>
-                                            </p>
-                                            <ul class="dropdown-content">
-                                                <li onclick="updateValue('TD_TUA_1', 'TUA','TUA')">TUA</li>
-                                                <li onclick="updateValue('TD_TUA_1', 'UA','TUA')">UA</li>
-                                                <li onclick="updateValue('TD_TUA_1', 'TA','TUA')">TA</li>
-                                            </ul>
-                                        </div>
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
-                            <button class="Stick__4" id="toggleButton">
-                                <i class="fa-solid fa-plus"></i>
-                            </button>
-                        <div class="instructionForm-table4" id="instructionForm-table4" style="display:none;">
-                            <div class="modyfi__flex"><h3>Bảng Chương phần 4</h3>
-                            <button class="Stick__4" id ="table4__show">
-                                 <i class="fa-solid fa-minus"></i>
-                            </button>
-                        </div>
-                            <div> 
-                            </div>  
-                            <button onclick="ThemCDRLoaiKT(1)" class="btn btn-secondary ctc1">
-                                + Thêm CDR KT
-                            </button>
-                            <button onclick="ThemCDRLoaiKT(2)" class="btn btn-secondary ctc1">
-                                + Thêm CDR KN
-                            </button>
-                            <button onclick="ThemCDRLoaiKT(3)" class="btn btn-secondary ctc1">
-                                + Thêm CDR TD
-                            </button>
-                            <h3>Quy tắc xóa</h3>
-                            <p>Click vào CDR cần xóa</p>
-                            <button id="button_delete_tb4" class="btn btn-secondary">Xóa 1 CDR</button>  
-                        </div>
-                    </div>
-                </div>
-                {{>table-4}}
-                <p class="section-content">&nbsp;</p>
-
-                {{!----}}
-                {{!-- 5. Nội dung học phần (Course content) --}}
-                {{!----}}
-                <p class="section-content break"><strong><span>5. Nội dung học phần (Course content)</span></strong></p>
-
-                {{> table-5}}
-                <div class="table-5-display-row">
+                    <p class="section-content break"><strong><span>5. Nội dung học phần (Course content)</span></strong></p>
+                    <div class="table-5-display-row">
                     <table class="table-5-course-content">
                         <thead>
                             {{!-- header --}}
@@ -735,28 +61,29 @@
                             {{!-- body - tital --}}
                             {{#each Chuong as |chuong chuongIndex|}}
                             <tr id="Chuong{{inc @index}}" class="Chuong">
-                                <td id="Chuong1.1" class="body-5-course-content-255_55pt">
-                                    <strong><div contenteditable="true"
-                                    class="table-5-course-content-p text-left TenChuong STT_CHUONG" id="autoChuong{{inc @index}}"
-                                    onkeydown="handleKeyPress('autoChuong{{inc @index}}',event)">
-                                    {{this.TenChuong}}
-                                </div></strong>
+                                <td id="Chuong{{inc @index}}.1" class="body-5-course-content-255_55pt">
+                                    <strong>
+                                        <div contenteditable="true"
+                                            class="table-5-course-content-p text-left TenChuong STT_CHUONG"
+                                            id="autoChuong{{inc @index}}"
+                                            onkeydown="handleKeyPress('autoChuong{{inc @index}}',event)">
+                                            {{this.TenChuong}}
+                                        </div>
+                                    </strong>
                                 </td>
                                 <td id="Chuong{{inc chuongIndex}}.2" class="body-5-course-content-71_8pt">
-                                    <p class="header-5-course-content-p"><strong><span
-                                                contenteditable="true">1</span></strong></p>
-
-                                <div class="dropdown" id="dropdown-CDR_HocPhan1">
-                                    <p class="header-5-course-content-p text-center">
-                                        <strong><span contenteditable="true" class="CDR_HocPhan" id="CDR_HocPhan1">
-                                                1, 2, 3</span></strong>
-                                    </p>
-                                    <ul class="dropdown-content-5">
-                                        <li onclick="updateValue('CDR_HocPhan1', '1','CDR')">1</li>
-                                        <li onclick="updateValue('CDR_HocPhan1', '2','CDR')">2</li>
-                                        <li onclick="updateValue('CDR_HocPhan1', '3','CDR')">3</li>
-                                    </ul>
-                                </div>            
+                                    
+                                    <div class="dropdown">
+                                        <p class="header-5-course-content-p text-center">
+                                            <strong><span contenteditable="true" class="CDR_HocPhan" id="CDR_HocPhan{{inc @index}}">
+                                                    {{this.MaCDR_MH}}</span></strong>
+                                        </p>
+                                        <ul class="dropdown-content-5">
+                                            <li onclick="updateValue('CDR_HocPhan{{inc @index}}', '1','CDR')">1</li>
+                                            <li onclick="updateValue('CDR_HocPhan{{inc @index}}', '2','CDR')">2</li>
+                                            <li onclick="updateValue('CDR_HocPhan{{inc @index}}', '3','CDR')">3</li>
+                                        </ul>
+                                    </div>
                                 </td>
                                 <td id="Chuong{{inc chuongIndex}}.3" class="body-5-course-content-44_85pt">
                                     <p class="header-5-course-content-p"><strong><span contenteditable="true"
@@ -807,38 +134,27 @@
                             {{/each}}
                         </tbody>
                     </table>
-
                     <div class="instructionForm-table5" id="instructionForm-table5">
                         <h3 align="center"> <strong>Bảng Chương phần 5</strong></h3>
                         <div style="display: flex;">
-                            
-                            <button type="button" class="btn btn-secondary Chitiet"
-                                    
-                                    onclick="themChuong()">+ Thêm chương
-                                </button>
+
+                            <button type="button" class="btn btn-secondary Chitiet" onclick="themChuong()">+ Thêm chương
+                            </button>
                         </div>
                         <div id="instructionForm-table5-CTC" class="ctc">
-                            
+
                             <button id="hung" class="btn btn-secondary">Xóa 1 CDR</button>
                             <p>Click vào CDR cần xóa</p>
                             {{#each Chuong}}
-                                <button type="button" class="btn btn-secondary Chitiet"
-                                    id="ctc{{inc @index}}"
-                                    onclick="themChiTietChuong({{inc @index}})">+ Thêm chi tiết chương {{inc @index}}
-                                </button>
+                            <button type="button" class="btn btn-secondary Chitiet" id="ctc{{inc @index}}"
+                                onclick="themChiTietChuong({{inc @index}})">+ Thêm chi tiết chương {{inc @index}}
+                            </button>
                             {{/each}}
-                            
                         </div>
                     </div>
+                    </div>
                 </div>
-                <button class="btn" onclick="CleanUp_AllTaiLieuThamKhao()">CleanUp_AllTaiLieuThamKhao</button>
-                <button class="btn" onclick="CleanUp_1()">CleanUp_1</button>
-                <button class="btn" onclick="CleanUp_AllTB4()">CleanUp_AllTB4</button>
-                <button class="btn" onclick="CleanUp_AllTB5()">CleanUp_AllTB5</button>
-                <button class="btn" onclick="CleanUp_6()">CleanUp_6</button>
-                <button class="btn" onclick="CleanUp_7()">CleanUp_7</button>
-                <button class="btn" onclick="CleanUp_8()">CleaUp_8</button>
-                <button class="btn" onclick="CleanUp_9()">CleaUp_9</button>
+
                 <button class="btn" onclick="CleanUp_HocPhan()">HocPhan</button>
                 <button class="btn" onclick="Put_Save_Delete()">TestSave_HocPhan</button>
                 {{!----}}
@@ -852,7 +168,7 @@
                         {{#each PhuongPhapDayHoc}}
                         {{#each TenPP}}
                         <p class="section-content DontRemove">
-                            <span contenteditable="true" id="TenPP-{{@index}}">{{this}}</span>
+                            <span contenteditable="true" id="TenPP-{{inc @index}}">{{this}}</span>
                         </p>
                         {{/each}}
                         {{/each}}
@@ -987,7 +303,7 @@
                 {{!----}}
                 {{!-- 8. Các quy định (Course requirements and expectation): --}}
                 {{!----}}
-                
+
 
                 <div class="width16_cm">
                     <p class="section-content">&nbsp;</p>
@@ -1098,12 +414,12 @@
                     <p class="section-content"><span>&nbsp;</span></p>
                     <p class="section-content">&nbsp;</p>
                 </div>
-                {{>createFocus}}
+
             </div>
         </div>
     </div>
 </div>
-{{>CheckBox}}
+
 <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 <script>
     function sendA4Content() {
@@ -1118,7 +434,7 @@
     }
 </script>
 <script>
-    
+
     const urlParams = new URLSearchParams(window.location.search);
     const filename = urlParams.get('filename');
     var MaHP = filename.toString();
@@ -1134,61 +450,54 @@
                 //} else {
                 //    console.log('Xóa không thành công. Mã lỗi:', response.status);
                 //}
-               Save_Project();
+                Save_Project();
                 //window.location.href = '../../user/listProject';
             } catch (error) {
                 console.error('Error deleting project:', error);
             }
         } else {
             console.log('Người dùng không đồng ý lưu dữ liệu.');
-       }
+        }
     }
 </script>
 
 <script>
-   
 
 
-    document.getElementById('toggleButton').addEventListener('click', function() {
-            document.getElementById('instructionForm-table4').style.display = 'block';
-            this.style.display = 'none';
-        });
-
-    document.getElementById('table4__show').addEventListener('click', function() {
-            document.getElementById('instructionForm-table4').style.display = 'none';
-            document.getElementById('toggleButton').style.display = 'block';
-        });
 
 
 
 
     document.addEventListener("DOMContentLoaded", function () {
-   setTimeout(function () {
-        const temp = "{{{loadLoaiHocPhan}}}";
+        setTimeout(function () {
+            const temp = "{{{loadLoaiHocPhan}}}";
 
-        // Kiểm tra giá trị temp và set thuộc tính checked cho phần tử tương ứng
-        switch (temp) {
-            case "Đại cương":
-                document.getElementById("LoaiHocPhan1").checked = true;
-                break;
-            case "Cơ sở":
-                document.getElementById("LoaiHocPhan2").checked = true;
-                break;
-            case "Chuyên ngành":
-                document.getElementById("LoaiHocPhan3").checked = true;
-                break;
-            default:
-                // Nếu giá trị không khớp với bất kỳ giá trị nào trên, không thay đổi thuộc tính checked
-                break;
-        }
+            // Kiểm tra giá trị temp và set thuộc tính checked cho phần tử tương ứng
+            switch (temp) {
+                case "Đại cương":
+                    document.getElementById("LoaiHocPhan1").checked = true;
+                    break;
+                case "Cơ sở":
+                    document.getElementById("LoaiHocPhan2").checked = true;
+                    break;
+                case "Chuyên ngành":
+                    document.getElementById("LoaiHocPhan3").checked = true;
+                    break;
+                default:
+                    // Nếu giá trị không khớp với bất kỳ giá trị nào trên, không thay đổi thuộc tính checked
+                    break;
+            }
 
-        // Gọi các hàm cần thiết
-        UpdateSTT_TB2();
-        UpdateSTTskill_TB4();
-    }, 2000);
-});
+            // Gọi các hàm cần thiết
+            UpdateSTT_TB2();
+            UpdateSTTskill_TB4();
+        }, 2000);
+    });
 </script>
-
+{{>table-4}}
+{{> table-5}}
+{{>createFocus}}
+{{>CheckBox}}
 {{>table-2}}
 {{>CheckBox}}
 {{>PostUpdate}}
@@ -1197,3 +506,427 @@
 {{>ChangeDropdownText}}
 {{>CleanUpDataPost}}
 {{>PostUpdate}}
+{{!-- <div class="width16_cm">
+    <p class="section-content text-right"><strong>PHỤ LỤC&nbsp;<span contenteditable="true"
+                id="PhuLuc">{{HocPhan.PhuLuc}}</span></strong></p>
+    <p class="section-content text-center"><strong><span>ĐỀ CƯƠNG CHI TIẾT HỌC PHẦN</span></strong></p>
+    <p class="section-content text-center"><strong><span contenteditable="true"
+                id="TenMon">{{HocPhan.TenMon}}</span></strong></p>
+    <p class="section-content text-center"><strong>MSHP:<span contenteditable="true"
+                id="MaMon">{{HocPhan.MaMon}}</span></strong></p>
+    <p class="section-content">&nbsp;</p>
+</div> --}}
+
+
+{{!-- name id ẩn --}}
+
+{{!-- --}}
+{{!-- table general-information --}}
+{{!-- 1. Thông tin c"class="body-course-content" (General information): --}}
+{{!-- table-1-general-information --}}
+{{!-- header-general-information-1 --}}
+{{!-- body-general-information-1 --}}
+{{!-- <div class="FormGeneral_information">
+    <p class="section-content"><strong><span contenteditable="false">1. Thông tin chung (General
+                information):</span></strong></p>
+    <p class="section-content">&nbsp;</p>
+
+    <table class="table-1-general-information-1 section-content">
+        <tbody>
+            <tr>
+                <td class="header-1-general-information-1">
+                    <p><strong><em>Loại học phần</em></strong></p>
+                </td>
+                <td class="header-1-general-information-1">
+                    <p><strong><em>Số tín chỉ</em></strong></p>
+                </td>
+                <td class="header-1-general-information-1">
+                    <p><strong><em>Số giờ dự giảng</em></strong></p>
+                </td>
+                <td class="header-1-general-information-1">
+                    <p><strong><em>Giờ tự học và giờ học khác</em></strong></p>
+                </td>
+            </tr>
+            <tr>
+                <td class="body-1-general-information-1">
+                    <p class="flex-row">
+                        <span class="flex-row-text">
+                            <label for="LoaiHocPhan1">Đại cương</label>
+                        </span>
+                        <span class="test">
+                            <input class="test" type="checkbox" value="Đại cương" id="LoaiHocPhan1"
+                                onclick="checkboxChanged('LoaiHocPhan1')">
+                        </span>
+                    </p>
+                    <p class="flex-row">
+                        <span class="flex-row-text">
+                            <label for="LoaiHocPhan2">Cơ sở</label>
+                        </span>
+                        <span class="test">
+                            <input type="checkbox" value="Cơ sở" id="LoaiHocPhan2"
+                                onclick="checkboxChanged('LoaiHocPhan2')">
+                        </span>
+                    </p>
+                    <p class="flex-row">
+                        <span class="flex-row-text">
+                            <label for="LoaiHocPhan3">Chuyên ngành</label>
+                        </span>
+                        <span class="test">
+                            <input type="checkbox" value="Chuyên ngành" id="LoaiHocPhan3"
+                                onclick="checkboxChanged('LoaiHocPhan3')">
+                        </span>
+                    </p>
+                </td>
+                <td class="body-1-general-information-1">
+                    <div class="dropdown" id="dropdown-SoTC_LT">
+                        Lý thuyết:&nbsp;
+                        <span contenteditable="true" id="SoTC_LT">{{HocPhan.SoTC_LT}}</span>
+                        <ul class="dropdown-content">
+                            <li onclick="updateValue('SoTC_LT', '1','TUA')">1</li>
+                            <li onclick="updateValue('SoTC_LT', '2','TUA')">2</li>
+                            <li onclick="updateValue('SoTC_LT', '3','TUA')">3</li>
+                            <li onclick="updateValue('SoTC_LT', '4','TUA')">4</li>
+                            <li onclick="updateValue('SoTC_LT', '5','TUA')">5</li>
+                        </ul>
+                    </div>
+                    <br>
+                    <br>
+                    <div class="dropdown" id="dropdown-SoTC_TH">
+                        Thực hành:&nbsp;
+                        <span contenteditable="true" id="SoTC_TH">{{HocPhan.SoTC_TH}}</span>
+                        <ul class="dropdown-content">
+                            <li onclick="updateValue('SoTC_TH', '1','TUA')">1</li>
+                            <li onclick="updateValue('SoTC_TH', '2','TUA')">2</li>
+                            <li onclick="updateValue('SoTC_TH', '3','TUA')">3</li>
+                            <li onclick="updateValue('SoTC_TH', '4','TUA')">4</li>
+                            <li onclick="updateValue('SoTC_TH', '5','TUA')">5</li>
+                        </ul>
+                    </div>
+                </td>
+                <td class="body-1-general-information-1">
+                    <div class="dropdown" id="dropdown-LT">
+                        Lý thuyết:&nbsp;
+                        <span contenteditable="true" id="LT">{{HocPhan.LT}}</span>
+                        <ul class="dropdown-content">
+                            <li onclick="updateValue('LT', '1','TUA')">1</li>
+                            <li onclick="updateValue('LT', '2','TUA')">2</li>
+                            <li onclick="updateValue('LT', '3','TUA')">3</li>
+                            <li onclick="updateValue('LT', '4','TUA')">4</li>
+                            <li onclick="updateValue('LT', '5','TUA')">5</li>
+                        </ul>
+                    </div>
+                    <br>
+                    <br>
+                    <div class="dropdown" id="dropdown-TH">
+                        Thực hành:&nbsp;
+                        <span contenteditable="true" id="TH">{{HocPhan.TH}}</span>
+                        <ul class="dropdown-content">
+                            <li onclick="updateValue('TH', '1','TUA')">1</li>
+                            <li onclick="updateValue('TH', '2','TUA')">2</li>
+                            <li onclick="updateValue('TH', '3','TUA')">3</li>
+                            <li onclick="updateValue('TH', '4','TUA')">4</li>
+                            <li onclick="updateValue('TH', '5','TUA')">5</li>
+                        </ul>
+                    </div>
+
+                </td>
+                <td class="body-1-general-information-1">
+                    <div class="dropdown" id="dropdown-SoGioTuHoc">
+
+                        <span contenteditable="true" id="SoGioTuHoc">{{HocPhan.SoGioTuHoc}}</span>
+                        <ul class="dropdown-content">
+                            <li onclick="updateValue('SoGioTuHoc', '1','TUA')">1</li>
+                            <li onclick="updateValue('SoGioTuHoc', '2','TUA')">2</li>
+                            <li onclick="updateValue('SoGioTuHoc', '3','TUA')">3</li>
+                            <li onclick="updateValue('SoGioTuHoc', '4','TUA')">4</li>
+                            <li onclick="updateValue('SoGioTuHoc', '5','TUA')">5</li>
+                        </ul>
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <p><strong><em><span>Đối tượng học</span></em><span>: &nbsp; &nbsp; &nbsp;&nbsp;</span></strong></p>
+    <p>Trình độ đào tạo:&nbsp;<span contenteditable="true" id="TrinhDo_DT">{{HocPhan.TrinhDo_DT}}</span>
+    </p>
+    <p>Ngành:&nbsp;<span contenteditable="true" id="Nganh">Công nghệ Thông tin</span></p>
+    <div><span>Chuyên ngành:&nbsp;<span contenteditable="true" id="ChuyenNganh">
+                &hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;.
+            </span>(nếu có)</span></div>
+    <p class="display-flex">
+    <div class="dropdown" id="dropdown-HocKy">
+        Học kỳ:&nbsp;
+        <span contenteditable="true" id="HocKy">{{HocPhan.HocKy}}</span>
+        <ul class="dropdown-content">
+            <li onclick="updateValue('HocKy', 'I','TUA')">I</li>
+            <li onclick="updateValue('HocKy', 'II','TUA')">II</li>
+            <li onclick="updateValue('HocKy', 'III','TUA')">III</li>
+            <li onclick="updateValue('HocKy', 'IV','TUA')">IV</li>
+            <li onclick="updateValue('HocKy', 'V','TUA')">V</li>
+            <li onclick="updateValue('HocKy', 'VI','TUA')">VI</li>
+            <li onclick="updateValue('HocKy', 'VII','TUA')">VII</li>
+            <li onclick="updateValue('HocKy', 'VII','TUA')">VII</li>
+            <li onclick="updateValue('HocKy', 'VIII','TUA')">VIII</li>
+        </ul>
+    </div>
+    &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+    &nbsp; &nbsp;
+    &nbsp;
+    <div class="dropdown" id="dropdown-NamHoc">
+        Năm thứ:&nbsp;
+        <span contenteditable="true" id="NamHoc">{{HocPhan.NamHoc}}</span>
+        <ul class="dropdown-content">
+            <li onclick="updateValue('NamHoc', '1','TUA')">1</li>
+            <li onclick="updateValue('NamHoc', '2','TUA')">2</li>
+            <li onclick="updateValue('NamHoc', '3','TUA')">3</li>
+            <li onclick="updateValue('NamHoc', '4','TUA')">4</li>
+            <li onclick="updateValue('NamHoc', '5','TUA')">5</li>
+        </ul>
+    </div>
+
+    </p>
+
+    <p><strong><em><span>Điều kiện tham gia học phần:</span></em></strong></p>
+
+    <table class="table-1-general-information-2">
+        <tbody>
+            <tr>
+                <td class="header-1-general-information-2">Học phần tiên quyết</td>
+                <td colspan="2" class="body-1-general-colspan-2" id="TienQuyet">
+                    <div class="ModifyTB2">
+                        <div class="autocomplete">Tên:&nbsp;
+                            <span contenteditable="true" id="TenTQ1">
+                                Vi tích phân A1
+                            </span>
+                        </div>
+
+                        <div class="autocomplete">MSHP:&nbsp;
+                            <span contenteditable="true" id="MaTQ1">
+                                110042
+                            </span>
+                        </div>
+                    </div>
+
+                </td>
+            </tr>
+
+            <tr>
+                <td class="body-1-general-left-2">Học phần song hành</td>
+                <td colspan="2" class="body-1-general-right-2" id="HocPhan_SH">
+                    <span contenteditable="true">Không</span>
+                </td>
+            </tr>
+            <tr>
+                <td rowspan="3" class="body-1-general-left-2">Các yêu cầu khác</td>
+                <td class="header-1-general-information-2">Về kiến thức:</td>
+                <td class="body-1-general-colspan-2">
+                    <div contenteditable="true" id="KienThuc" onkeydown="handleKeyPress('KienThuc',event)">
+                        Kiến thức toán học phổ
+                        thông
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td class="header-1-general-information-2">Về kỹ năng:</td>
+
+                <td class="body-1-general-colspan-2 section-content text-left" contenteditable="true" id="KyNang"
+                    onkeydown="handleKeyPress('KyNang',event)">
+
+                    <div>&nbsp;&nbsp;-&nbsp;&nbsp;Kỹ năng phân tích, giải quyết vấn đề</div>
+                    <div>&nbsp;&nbsp;-&nbsp;&nbsp;Kỹ năng tập trung, ghi nhớ, tính toán, biến đổi</div>
+
+                </td>
+            </tr>
+            <tr>
+                <td class="header-1-general-information-2">Về thái độ:</td>
+                <td class="body-1-general-colspan-2 text-left" contenteditable="true" id="ThaiDo"
+                    onkeydown="handleKeyPress('ThaiDo',event)">
+                    Chủ động trong học tập
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <p class="section-content">&nbsp;</p>
+</div> --}}
+
+{{!-- <div class="formLearningResources">
+    <p class="section-content break"><strong><span>2. Nguồn học liệu (Learning
+                resources):</span></strong>
+    </p>
+    <p class="section-content">&nbsp;</p>
+    <div class="table-2-display-row">
+        <table class="table-2-learning-resources">
+            <tbody>
+                <tr>
+                    <td class="table-2-learning-header">
+                        <p><span id="loaiHocLieu">Giáo trình/Tài liệu học tập chính</span></p>
+                    </td>
+                    <td class="table-2-learning-body" contenteditable="true">
+
+                        <div id="giaotrinh">
+                            {{#each TLTK_GT}}
+                            <p id="GT{{inc @index}}" class="allowDeletion2 giaotrinh">
+                                [<span id="STT_GT_{{inc @index}}" class="STT_TB2"
+                                    onclick="hiddenAndShow({{inc @index}}, 'GT')" contenteditable="true">{{inc
+                                    @index}}</span>]
+                                <span id="TG_GT_{{inc @index}}" onclick="hiddenAndShow({{inc @index}}, 'GT')"
+                                    contenteditable="true" class="TacGia">{{joinArray this.tacGia}}</span>
+                                (<span id="NXB_GT_{{inc @index}}" onclick="hiddenAndShow({{inc @index}}, 'GT')"
+                                    contenteditable="true" class="NamXB">{{this.namXuatBan}}</span>).&nbsp;
+                                <span id="Ten_GT_{{inc @index}}" onclick="hiddenAndShow({{inc @index}}, 'GT')"
+                                    contenteditable="true" class="TenTL text-nghien">{{this.tenTLTK}}</span>
+                                [<span id="NGUON_GT_{{inc @index}}" onclick="hiddenAndShow({{inc @index}}, 'GT')"
+                                    contenteditable="true" class="Nguon">{{this.nguon}}</span>]
+                                <span contenteditable="true"
+                                    id="No">.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                            </p>
+                            <div id="GT{{inc @index}}div" class="hidden_GT{{inc @index}} hidden">
+                                <!-- Additional details for each document can be displayed here -->
+                                <p><strong>STT:</strong>&nbsp;[<span id="STT_GT_DSpan_{{inc @index}}"></span>]
+                                </p>
+                                <p><strong>Tên tác giả:</strong>&nbsp;<span id="TG_GT_DSpan_{{inc @index}}"
+                                        contenteditable="true"></span>
+                                </p>
+                                <p><strong>Năm Xuất bảng:</strong>&nbsp;<span id="NXB_GT_DSpan_{{inc @index}}"
+                                        contenteditable="true"></span>
+                                </p>
+                                <p><strong>Tên tài liệu tham khảo:</strong>&nbsp;<span id="TEN_GT_DSpan_{{inc @index}}"
+                                        contenteditable="true" class="text-nghien"></span></p>
+                                <p><strong>Nguồn:</strong>&nbsp;<span id="NGUON_GT_DSpan_{{inc @index}}"
+                                        contenteditable="true"></span></p>
+                            </div>
+                            {{/each}}
+                        </div>
+                    </td>
+                    <td class="empty"></td>
+                </tr>
+                <tr>
+                    <td class="table-2-learning-header">
+                        <p><span id="loaiHocLieu">Tài liệu tham khảo thêm</span></p>
+                    </td>
+                    <td class="table-2-learning-body">
+
+                        <div id="TaiLieuThamKhao">
+                            {{#each TLTK_TK}}
+                            <p id="TL{{inc @index}}" class="allowDeletion2 TaiLieuThamKhao">
+                                [<span id="STT_TL_{{inc @index}}" class="STT_TB2"
+                                    onclick="hiddenAndShow({{inc @index}}, 'TL')" contenteditable="true">{{inc
+                                    @index}}</span>]
+                                <span id="TG_TL_{{inc @index}}" onclick="hiddenAndShow({{inc @index}}, 'TL')"
+                                    contenteditable="true" class="TacGia">{{joinArray this.tacGia}}</span>
+                                (<span id="NXB_TL_{{inc @index}}" onclick="hiddenAndShow({{inc @index}}, 'TL')"
+                                    contenteditable="true" class="NamXB">{{this.namXuatBan}}</span>).&nbsp;
+                                <span id="Ten_TL_{{inc @index}}" onclick="hiddenAndShow({{inc @index}}, 'TL')"
+                                    contenteditable="true" class="TenTL text-nghien">{{this.tenTLTK}}</span>
+                                [<span id="NGUON_TL_{{inc @index}}" onclick="hiddenAndShow({{inc @index}}, 'TL')"
+                                    contenteditable="true" class="Nguon">{{this.nguon}}</span>]
+                                <span contenteditable="true"
+                                    id="No">.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                            </p>
+                            <div id="TL{{inc @index}}div" class="hidden_TL{{inc @index}} hidden">
+                                <!-- Additional details for each document can be displayed here -->
+                                <p><strong>STT:</strong>&nbsp;[<span id="STT_TL_DSpan_{{inc @index}}"></span>]
+                                </p>
+                                <p><strong>Tên tác giả:</strong>&nbsp;<span id="TG_TL_DSpan_{{inc @index}}"
+                                        contenteditable="true"></span>
+                                </p>
+                                <p><strong>Năm Xuất bảng:</strong>&nbsp;<span id="NXB_TL_DSpan_{{inc @index}}"
+                                        contenteditable="true"></span>
+                                </p>
+                                <p><strong>Tên tài liệu tham khảo:</strong>&nbsp;<span id="TEN_TL_DSpan_{{inc @index}}"
+                                        contenteditable="true" class="text-nghien"></span></p>
+                                <p><strong>Nguồn:</strong>&nbsp;<span id="NGUON_TL_DSpan_{{inc @index}}"
+                                        contenteditable="true"></span></p>
+                            </div>
+                            {{/each}}
+                        </div>
+                    </td>
+                    <td class="empty"></td>
+                </tr>
+                <tr>
+                    <td class="table-2-learning-header">
+                        <p><span id="loaiHocLieu">Các loại học liệu khác</span></p>
+                    </td>
+                    <td class="table-2-learning-body">
+
+                        <div id="HocLieu">
+                            {{#each TLTK_HL}}
+                            <p id="HL{{inc @index}}" class="allowDeletion2 HocLieu">
+                                [<span id="STT_HL_{{inc @index}}" class="STT_TB2"
+                                    onclick="hiddenAndShow({{inc @index}}, 'HL')" contenteditable="true">{{inc
+                                    @index}}</span>]
+                                <span id="TG_HL_{{inc @index}}" onclick="hiddenAndShow({{inc @index}}, 'HL')"
+                                    contenteditable="true" class="TacGia">{{joinArray this.tacGia}}</span>
+                                (<span id="NXB_HL_{{inc @index}}" onclick="hiddenAndShow({{inc @index}}, 'HL')"
+                                    contenteditable="true" class="NamXB">{{this.namXuatBan}}</span>).&nbsp;
+                                <span id="Ten_HL_{{inc @index}}" onclick="hiddenAndShow({{inc @index}}, 'HL')"
+                                    contenteditable="true" class="TenTL text-nghien">{{this.tenTLTK}}</span>
+                                [<span id="NGUON_HL_{{inc @index}}" onclick="hiddenAndShow({{inc @index}}, 'HL')"
+                                    contenteditable="true" class="Nguon">{{this.nguon}}</span>]
+                                <span contenteditable="true"
+                                    id="No">.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                            </p>
+                            <div id="HL{{inc @index}}div" class="hidden_HL{{inc @index}} hidden">
+                                <!-- Additional details for each document can be displayed here -->
+                                <p><strong>STT:</strong>&nbsp;[<span id="STT_HL_DSpan_{{inc @index}}"></span>]
+                                </p>
+                                <p><strong>Tên tác giả:</strong>&nbsp;<span id="TG_HL_DSpan_{{inc @index}}"
+                                        contenteditable="true"></span>
+                                </p>
+                                <p><strong>Năm Xuất bảng:</strong>&nbsp;<span id="NXB_HL_DSpan_{{inc @index}}"
+                                        contenteditable="true"></span>
+                                </p>
+                                <p><strong>Tên tài liệu tham khảo:</strong>&nbsp;<span id="TEN_HL_DSpan_{{inc @index}}"
+                                        contenteditable="true" class="text-nghien"></span></p>
+                                <p><strong>Nguồn:</strong>&nbsp;<span id="NGUON_HL_DSpan_{{inc @index}}"
+                                        contenteditable="true"></span></p>
+                            </div>
+                            {{/each}}
+                        </div>
+                    </td>
+                    <td class="empty"></td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div class="instructionForm-table2" id="instructionForm-table2">
+            <h3>Bảng Chương phần 2</h3>
+
+            <button id="addButton" onclick="CreateCDR('GT','giaotrinh')" class="btn btn-secondary ctc1">
+                + thêm 1 giaotrinh
+            </button>
+
+            <button id="addButton" onclick="CreateCDR('TL','TaiLieuThamKhao')" class="btn btn-secondary ctc1">
+                + thêm 1 TaiLieuThamKhao
+            </button>
+            <button id="addButton" onclick="CreateCDR('GT', 'HocLieu')" class="btn btn-secondary ctc1">
+                + thêm 1 HocLieu
+            </button>
+
+            <button id="button_delete_tb2" class="btn btn-secondary ctc1">
+                + xóa
+            </button>
+        </div>
+
+    </div>
+    <p class="section-content">&nbsp;</p>
+</div> --}}
+
+
+
+{{!----}}
+{{!-- 3. Mô tả học phần (Course description): --}}
+{{!----}}
+
+{{!-- <div class="CourseDescription">
+    <p class="section-content">&nbsp;</p>
+    <div class="width16_cm">
+        <p class="section-content"><strong><span>3. Mô tả học phần (Course description):</span></strong>
+        </p>
+        <div class="section-content" contenteditable="true" id="MoTa" onkeydown="handleKeyPress('MoTa',event)">
+            {{HocPhan.MoTa}}
+        </div>
+        <p class="section-content">&nbsp;</p>
+    </div>
+</div> --}}

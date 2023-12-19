@@ -11,6 +11,7 @@
     height: 70.6pt;
     vertical-align: top;
 }
+ 
 .header-5-course-content-71_8pt,
 .header-5-course-content-85_25pt,
 .header-5-course-content-55_85pt,
@@ -129,9 +130,15 @@
     margin-bottom:7.2pt;
     margin-left:0cm;
     line-height:115%;
+    strong {
+        width: 100%;
+        span {
+            width: 100%;
+        }
+    }
 }
 .header-5-course-content-p {
-    text-align:center;
+    text-align:left;
 }
 .custom-button {
     width: 100px;

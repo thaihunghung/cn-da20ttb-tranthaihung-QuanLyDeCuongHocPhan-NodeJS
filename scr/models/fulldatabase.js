@@ -61,7 +61,8 @@ module.exports = mongoose.model('QuyDinh', QuyDinhSchema);
 module.exports = mongoose.model('GiangVien', GiangVienSchema);
 module.exports = mongoose.model('Chuong', ChuongSchema);
 module.exports = mongoose.model('NoiDungChiTietChuong', NoiDungChiTietChuongSchema);
-module.exports = mongoose.model('DapUng_MH', DapUng_MHSchema);
+
+
 module.exports = mongoose.model('CDR_MonHoc', CDR_MonHocSchema);
 module.exports = mongoose.model('DapUng_CDR', DapUng_CDRSchema);
 module.exports = mongoose.model('CDR_CT', CDR_CTSchema);

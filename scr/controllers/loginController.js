@@ -33,10 +33,8 @@ exports.login_post = (req, res) => {
     })
     .catch((err) => {
         res.status(500).json('khong tim thay');
-    })
-    
+    })   
 }
-
 exports.home_get = (req, res) => {
     res.render('home', { user: req.user }); 
 };

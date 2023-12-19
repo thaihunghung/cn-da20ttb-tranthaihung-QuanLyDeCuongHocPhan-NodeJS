@@ -16,9 +16,48 @@ const CDR_HocPhanModel = require('../models/HocPhan/Cdr_HocPhan.model')
 const DapUngCDR = require('../models/HocPhan/DapUngCDR.model');
 const CreateModel = require('../models/NguoiDung/Create.model');
 const PLO = require('../models/Chuongtrinh/PLO.model');
+const DapUngChuongModel = require('../models/HocPhan/DapUngMonHoc.model');
 const {verifyToken} = require('../middleware/auth.middleware');
 const {mongooseToObject,MutipleMongooseToObject} = require('../util/mongoose');
 const { config } = require('dotenv');
+
+async function fetchTenCDR(maCDR_MH) {
+  try {
+      const dapUngRecords = await DapUngCDR.find({ MaCDR_MH: maCDR_MH });
+      return dapUngRecords.map(record => record.Ten_CDR);
+  } catch (error) {
+      console.error('Error fetching Ten_CDR:', error);
+      return [];
+  }
+}
+async function addTenCDRToCDRObjects(cdrObjects) {
+  return Promise.all(cdrObjects.map(async (cdrObject) => {
+      const tenCDRList = await fetchTenCDR(cdrObject._id);
+      return { ...cdrObject, Ten_CDR: tenCDRList };
+  }));
+}
+async function findMaCDRMHFromCDRHocPhan(dapUngArrays) {
+  let maCDR_MHs = [];
+
+  for (let array of dapUngArrays) {
+    let maCDRs = [];
+
+    for (let id of array) {
+      let cdrHocPhan = await CDR_HocPhanModel.findById(id);
+      if (cdrHocPhan) {
+        maCDRs.push(cdrHocPhan.MaCDR_MH);
+      } else {
+        console.error(`CDR_HocPhan không tìm thấy với _id: ${id}`);
+      }
+    }
+
+    maCDR_MHs.push(maCDRs);
+  }
+
+  return maCDR_MHs;
+}
+
+
 
 exports.index = async (req, res) =>{
     const filename = req.query.filename;
@@ -154,52 +193,143 @@ exports.Check_File_Name = async (req, res) =>{
     // }));
 exports.project_Post_Save = async (req, res) => {
     const {GiaotrinhData, Name,TaiLieuThamKhaoData,HocLieuData,HocPhanData,DieuKienThamGiaData,KyNangKTdata,KyNangKNdata,KyNangTDdata,ChuongData,DU_CDR_ChuongData,PhuongPhapData,DanhGiaData,QuyDinhData,GiangVienData} = req.body;
-   
-  
     
+    
+  
     var maHPValue = 1;
+    var kyNangKTNoiDung = [];
+    var kyNangTDNoiDung = [];
+    var kyNangKNNoiDung = [];
+    let value1;
+var maHP = 'hung:1';
 
-    var extractedNoidung = [];
 
-    for (var i = 0; i < KyNangKTdata.length; i++) {
-      var DapUng = KyNangKTdata[i].DapUng_CDRMH;
-      extractedNoidung.push(DapUng);
-      delete KyNangKTdata[i].DapUng_CDRMH;
-    }
-    async function SaveOneDapUng(data, index) {
-      const hung = extractedNoidung[index];
-  
-      for (let i = 0; i < hung.length; i++) {
-          const DapUng_CDRData = new DapUngCDR({
-              Ten_CDR: hung[i],
-              MaCDR_MH: data,
-          });
-  
-          // Lưu dữ liệu vào cơ sở dữ liệu
-          await DapUng_CDRData.save();
-      }
+
+
+
+
+
+
+  for (var i = 0; i < KyNangKTdata.length; i++) {
+    var DapUng = KyNangKTdata[i].DapUng_CDRMH;
+    kyNangKTNoiDung.push(DapUng);
+    delete KyNangKTdata[i].DapUng_CDRMH;
   }
-  
-  const savedCDRHocPhanData = await Promise.all(
-      KyNangKTdata.map(async (item, index) => {
-          const cdrHocPhanData = new CDR_HocPhanModel({
-              MaCDR_MH: item.MaCDR_MH, 
-              MaHP: item.MaHP,
-              loai_CDRMH: item.loai_CDRMH,
-              Noidung_CDRMH: item.Noidung_CDRMH,
-              TrinhDo: item.TrinhDo,
-              loaiTUA: item.loaiTUA,
-          });
-          const savedData = await cdrHocPhanData.save();
-  
-          // Gọi hàm SaveOneDapUng với savedData._id, index 
-          await SaveOneDapUng(savedData._id, index);
-  
-          return savedData;
-      })
-  );
+    // Xử lý dữ liệu cho KyNangKNdata
+  for (var i = 0; i < KyNangKNdata.length; i++) {
+    var DapUngKN = KyNangKNdata[i].DapUng_CDRMH;
+    kyNangKNNoiDung.push(DapUngKN);
+    delete KyNangKNdata[i].DapUng_CDRMH;
+  }
 
-  try {
+ // Xử lý dữ liệu cho KyNangTDdata
+  for (var i = 0; i < KyNangTDdata.length; i++) {
+    var DapUngTD = KyNangTDdata[i].DapUng_CDRMH;
+    kyNangTDNoiDung.push(DapUngTD);
+    delete KyNangTDdata[i].DapUng_CDRMH;
+  }
+  async function SaveOneDapUng(data, index,noiDungArray) {
+    const hung = noiDungArray[index];
+  
+    for (let i = 0; i < hung.length; i++) {
+        const DapUng_CDRData = new DapUngCDR({
+            Ten_CDR: hung[i],
+            MaCDR_MH: data,
+        });
+        await DapUng_CDRData.save();
+    }
+  } 
+  async function saveCDRHocPhanAndDapUng(data,noiDungArray) {
+    const savedCDRHocPhanData = await Promise.all(
+      data.map(async (item, index) => {
+        const cdrHocPhanData = new CDR_HocPhanModel({
+          MaCDR_MH: item.MaCDR_MH, 
+          MaHP: item.MaHP,
+          loai_CDRMH: item.loai_CDRMH,
+          Noidung_CDRMH: item.Noidung_CDRMH,
+          TrinhDo: item.TrinhDo,
+          loaiTUA: item.loaiTUA,
+        });
+        const savedData = await cdrHocPhanData.save();
+        await SaveOneDapUng(savedData._id, index, noiDungArray);
+        return savedData;
+      })
+    );
+  
+    return savedCDRHocPhanData;
+  }
+
+  saveCDRHocPhanAndDapUng(KyNangKTdata, kyNangKTNoiDung)
+  .then(savedData => {
+    console.log("Dữ liệu đã được lưu thành công:", savedData);
+  })
+  .catch(error => {
+    console.error("Lỗi khi lưu dữ liệu:", error);
+  });
+  saveCDRHocPhanAndDapUng(KyNangTDdata, kyNangTDNoiDung) 
+  .then(savedData => {
+    console.log("Dữ liệu đã được lưu thành công:", savedData);
+  })
+  .catch(error => {
+    console.error("Lỗi khi lưu dữ liệu:", error);
+  });
+  saveCDRHocPhanAndDapUng(KyNangKNdata, kyNangKNNoiDung) 
+  .then(savedData => {
+    console.log("Dữ liệu đã được lưu thành công:", savedData);
+  })
+  .catch(error => {
+    console.error("Lỗi khi lưu dữ liệu:", error);
+  });
+
+
+
+
+
+var CDR_With_CHUONG = [];
+  for (var i = 0; i < ChuongData.length; i++) {
+      var DapUngChuong = ChuongData[i].DapUng_MH;
+      CDR_With_CHUONG.push(DapUngChuong);
+      delete ChuongData[i].DapUng_CDRMH;
+  }
+  async function SaveOneDapUngChuong(MaChuong, MaHP, CDR_HocPhanArrays) {
+    for (let i = 0; i < CDR_HocPhanArrays.length; i++) {
+        let CDR_HocPhanArray = CDR_HocPhanArrays[i];
+        for (let j = 0; j < CDR_HocPhanArray.length; j++) {
+            const CDR_With_MaHP = await CDR_HocPhanModel.findOne({
+                MaCDR_MH: CDR_HocPhanArray[j]
+            });
+
+            if (CDR_With_MaHP) {
+                const DapUngChuong = new DapUngChuongModel({
+                    MaCDR_MH: CDR_With_MaHP._id,
+                    MaChuong: MaChuong
+                });
+                await DapUngChuong.save();
+            } else {
+                console.error(`Không tìm thấy CDR với MaHP: ${MaHP} và MaCDR_MH: ${CDR_HocPhanArray[j]}`);
+            }
+        }
+    }
+}
+  
+  const hung = ChuongData.map(async (item) => {
+    const Chuong = new ChuongModel({
+      MaHP: item.MaHP,
+      TenChuong: item.TenChuong,
+      GioLyThuyet: item.GioLyThuyet,
+      GiothucHanh: item.GiothucHanh,
+      SoGioTuHoc: item.SoGioTuHoc,
+      KyNangMem: item.KyNangMem,
+      ChiTietChuong: item.ChiTietChuong
+    });
+    const savedData = await Chuong.save();
+    await SaveOneDapUngChuong(savedData.MaChuong, savedData.MaHP, CDR_With_CHUONG);
+    return savedData;
+  });
+  
+
+
+
     
     // const SaveHP = new HocPhanModel(HocPhanData);
     // const SaveHPSave =await SaveHP.save();
@@ -214,9 +344,9 @@ exports.project_Post_Save = async (req, res) => {
     // const SaveKNKT = await CDR_HocPhanModel.insertMany(MapKNKT);
     // const SaveKNKN = await CDR_HocPhanModel.insertMany(MapKNKN);
     // const SaveKNTD = await CDR_HocPhanModel.insertMany(MapKNTD);
-
-    // const SaveChuong = await ChuongModel.insertMany(MapChuong);
-    
+    // if(ChuongData){
+    //   const SaveChuong = await ChuongModel.insertMany(ChuongData);
+    // }
     // const SavePhuongPhap = new PP_Day_hocModel(PhuongPhapData);
     // const SavePhuongPhapSave = SavePhuongPhap.save();
    
@@ -224,14 +354,39 @@ exports.project_Post_Save = async (req, res) => {
     // const SaveQuyDinh = await QuyDinhModel.insertMany(MapQuyDinh);
     
     // const SaveGiangVien = await GiangVienModel.insertMany(MapGiangVien);
+    async function findDapUngByMaHP(MaHP) {
+      try {
+        const chuongList = await ChuongModel.find({ MaHP: MaHP });
+        let dapUngArrays = [];
     
+        for (const chuong of chuongList) {
+          const dapUngChuongs = await DapUngChuongModel.find({ MaChuong: chuong.MaChuong });
+          let maCDR_MHs = [];
     
-  } catch (error) {
-    console.error('Error saving document:', error);
-    res.status(500).json({ error: 'Internal Server Error', message: error.message });
-  }
+          for (const dapUngChuong of dapUngChuongs) {
+            let cdrHocPhan = await CDR_HocPhanModel.findById(dapUngChuong.MaCDR_MH);
+            if (cdrHocPhan) {
+              maCDR_MHs.push(cdrHocPhan.MaCDR_MH);
+            } else {
+              console.error(`Không tìm thấy CDR_HocPhan với _id: ${dapUngChuong.MaCDR_MH}`);
+            }
+          }
+    
+          dapUngArrays.push(maCDR_MHs);
+        }
+    
+        return dapUngArrays;
+      } catch (error) {
+        console.error("Lỗi khi tìm DapUng theo MaHP:", error);
+        return [];
+      }
+    }
+    
+    findDapUngByMaHP('hung:1').then(dapUngArrays => {
+      console.log("Mảng các MaCDR_MH tương ứng với mỗi Chuong:", dapUngArrays);
+    });
 };
-
+ 
 exports.project_Delete_PUT = async (req, res) => {
     const MaHP = req.params.MaHP;
     try {
@@ -253,25 +408,22 @@ exports.project_Delete_PUT = async (req, res) => {
 }
 
 exports.project_Get_Update = async (req, res) => {
-    //render và load project cần sửa
-    const { filename } = req.query;
-    
-    if (!filename) {
-      res.status(400).send('Bad Request');
-      return;
-    }
-    const [username, projectName] = decodeURIComponent(filename).split(':');
- 
-    const findName = username+":"+projectName
-    const Create = await CreateModel.findOne({fileName:findName.toString()});
-    if (!Create) {
-      res.status(400).send('không tồn tại dự án quay lại trang web trước đó!!');
-      return;
-    }
-    var FileName =  findName.toString()
-   
+  function compileMethod(templateString, data) {
+    // Biên dịch template
+    const compiledTemplate = Handlebars.compile(templateString);
+    return compiledTemplate(data);
+}
 
-    //////////////////////////////////////////////////////////////
+  Handlebars.registerHelper('inc', function(value, options) {
+    return parseInt(value) + 1;
+  });
+  Handlebars.registerHelper('joinArray', function(array) {
+    return array.join(', ');
+  });
+  var findName='hung:1';
+
+
+  //////////////////////////////////////////////////////////////
     //                         HOCPHAN
     //////////////////////////////////////////////////////////////
     const HocPhan = await HocPhanModel.findOne({fileName: findName.toString()})
@@ -288,50 +440,27 @@ exports.project_Get_Update = async (req, res) => {
           var TLTK_TK_Object = TLTK_TK.map(mongooseToObject)
         }
       const TLTK_HL = await TLTKModel.find({ MaHP: findName.toString(), loaiHocLieu: 'Học Liệu' });
-        if (TLTK_HL) {
+      if (TLTK_HL) {
           var TLTK_HL_Object = TLTK_HL.map(mongooseToObject)
-        }
+      }
+        
       const TaiLieuThamKhao = {
         TaiLieu: TLTK_GT_Object,
         GiaoTrinh:TLTK_TK_Object,
         HocLieu: TLTK_HL_Object
       }
-        
-    
-
-
-    
-    //////////////////////////////////////////////////////////////
-    //                         table 4
-    //////////////////////////////////////////////////////////////
-   
-    const CDR_KT = await CDR_HocPhanModel.find({ MaHP: findName.toString(), loai_CDRMH: 'Về kiến thức' });
-
-    if (CDR_KT) {
-      var CDR_KT_Object = CDR_KT.map(mongooseToObject)
-    }
-
-    const CDR_KN = await CDR_HocPhanModel.find({ MaHP: findName.toString(), loai_CDRMH: 'Về kỹ năng' });
-    if (CDR_KN) {
-      var CDR_KN_Object = CDR_KN.map(mongooseToObject)
-    }
-    
-    const CDR_TD = await CDR_HocPhanModel.find({ MaHP: findName.toString(), loai_CDRMH: 'Về thái độ' });
-
-    if (CDR_TD) {
-      var CDR_TD_Object = CDR_TD.map(mongooseToObject)
-    }
-  
-    //////////////////////////////////////////////////////////////
+  //////////////////////////////////////////////////////////////
     //                         table 5
     //////////////////////////////////////////////////////////////
     const Chuong = await ChuongModel.find({ MaHP: findName.toString()});
     if (Chuong) {
       var Chuong_Object = Chuong.map(mongooseToObject)
     }
-    //////////////////////////////////////////////////////////////
-    //                         table 6 
-    //////////////////////////////////////////////////////////////
+
+  
+    // //////////////////////////////////////////////////////////////
+    // //                         table 6 
+    // //////////////////////////////////////////////////////////////
     const PhuongPhapDayHoc = await PP_Day_hocModel.find({ MaHP: findName.toString()});
     if (PhuongPhapDayHoc) {
       var PhuongPhapDayHoc_Object = PhuongPhapDayHoc.map(mongooseToObject)
@@ -364,12 +493,54 @@ exports.project_Get_Update = async (req, res) => {
     if (GiangVien) {
       var GiangVien_Object = GiangVien.map(mongooseToObject)
     }
-    Handlebars.registerHelper('inc', function(value, options) {
-      return parseInt(value) + 1;
-    });
-    Handlebars.registerHelper('joinArray', function(array) {
-      return array.join(', ');
-    });
+
+
+
+    //render và load project cần sửa
+    const { filename } = req.query;
+    
+    if (!filename) {
+      res.status(400).send('Bad Request');
+      return;
+    }
+    const [username, projectName] = decodeURIComponent(filename).split(':');
+ 
+    //const findName = username+":"+projectName
+    
+    const Create = await CreateModel.findOne({fileName:findName.toString()});
+    if (!Create) {
+      res.status(400).send('không tồn tại dự án quay lại trang web trước đó!!');
+      return;
+    }
+    //var FileName =  findName.toString()
+    //console.log(FileName)
+  
+
+   
+    const CDR_KT = await CDR_HocPhanModel.find({ MaHP: findName.toString(), loai_CDRMH: 'Về kiến thức' });
+
+    if (CDR_KT) {
+      var CDR_KT_Object = CDR_KT.map(mongooseToObject)
+    }
+
+    const CDR_KN = await CDR_HocPhanModel.find({ MaHP: findName.toString(), loai_CDRMH: 'Về kỹ năng' });
+    if (CDR_KN) {
+      var CDR_KN_Object = CDR_KN.map(mongooseToObject)
+    }
+    
+    const CDR_TD = await CDR_HocPhanModel.find({ MaHP: findName.toString(), loai_CDRMH: 'Về thái độ' });
+
+    if (CDR_TD) {
+      var CDR_TD_Object = CDR_TD.map(mongooseToObject)
+    }
+
+
+
+      const cdrKTWithTenCDR = await addTenCDRToCDRObjects(CDR_KT_Object);
+      const cdrKNWithTenCDR = await addTenCDRToCDRObjects(CDR_KN_Object);
+      const cdrTDWithTenCDR = await addTenCDRToCDRObjects(CDR_TD_Object);
+
+
     const plo = await PLO.find();
     if (plo) {
       var plo_Object = plo.map(mongooseToObject)  
@@ -382,25 +553,12 @@ exports.project_Get_Update = async (req, res) => {
     }
     return plo;
     });
-
-  
-
-  function compileMethod(templateString, data) {
-      // Biên dịch template
-      const compiledTemplate = Handlebars.compile(templateString);
-      return compiledTemplate(data);
-  }
-
-
-    var DataHeader = {
-        HocPhan :hocPhanObject
-    }   
-    var DataDieuKienThamGia = {
-      HocPhan :hocPhanObject,
-
-    } 
-   
-
+    var DataCourseLearningOutcomes = {
+      CDR_KT : cdrKTWithTenCDR,
+      CDR_KN : cdrKNWithTenCDR,
+      CDR_TD : cdrTDWithTenCDR,
+      PLO :  plo_Object
+    }
     const templates = await TempLate.find().sort({ order: 1 })
     let compiledTemplates = [];
     templates.forEach(template => {
@@ -421,76 +579,49 @@ exports.project_Get_Update = async (req, res) => {
             case "detail8":  
                 compiled =  template.htmlContent
                 break; 
+            case "CourseLearningOutcomes":  
+                compiled =  compileMethod(template.htmlContent, DataCourseLearningOutcomes);
+                break;    
         }
         compiledTemplates.push(compiled);
     });
+
+
+    var DataHeader = {
+      HocPhan :hocPhanObject
+  }   
+  var DataDieuKienThamGia = {
+      HocPhan :hocPhanObject,
+  } 
+
+ console.log(Chuong_Object);
     let compiledString = compiledTemplates.join('');
-console.log(TLTK_HL_Object);
-
-
-// // Bước 2: Lưu CDR_HocPhanModel và thêm vào bảng mới
-// const savedNewTableData = await Promise.all(
-//   KyNangKTdataWithMaHP.map(async (item, index) => {
-//     const dapUngValuesForCurrentItem = dapUngValues ? dapUngValues[index] : [];
     
-//     const cdrHocPhanData = new CDR_HocPhanModel({
-//       MaCDR_MH: item.MaCDR_MH,
-//       MaHP: item.MaHP,
-//       loai_CDRMH: item.loai_CDRMH,
-//       Noidung_CDRMH: item.Noidung_CDRMH,
-//       TrinhDo: item.TrinhDo,
-//       loaiTUA: item.loaiTUA,
-//       DapUng_CDRMH: dapUngValuesForCurrentItem, // Sử dụng dapUngValues từ bước 1
-//     });
-
-//     const savedData = await cdrHocPhanData.save();
-
-//     // Thêm vào bảng mới sử dụng _id của CDR_HocPhanModel và từng giá trị trong dapUngValues
-//     const newTableDataPromises = dapUngValuesForCurrentItem.map(async (dapUngValue) => {
-//       const newDataForNewTable = new NewTableModel({
-//         CDR_HocPhanModelId: savedData._id,
-//         DapUngValue: dapUngValue,
-//         // Các trường khác của bảng mới
-//       });
-
-//       return newDataForNewTable.save();
-//     });
-
-//     const savedNewTableDataForItem = await Promise.all(newTableDataPromises);
-
-//     // Trả về thông tin bạn muốn giữ lại hoặc sử dụng tiếp theo
-//     return {
-//       cdrHocPhanModelId: savedData._id,
-//       newTableDataIds: savedNewTableDataForItem.map(data => data._id),
-//     };
-//   })
-// );
-
-
-
-
-
     res.render('project/update',{
-       
-      findName: findName,
-      PLO: plo_Object,
+     
       templates: compiledString,
-      
-      
-
+      PLO: plo_Object,
       processedPLOs: processedPLOs,
-
-      CDR_KT : CDR_KT_Object,
-      CDR_KN : CDR_KN_Object,
-      CDR_TD : CDR_TD_Object,
       Chuong : Chuong_Object,
-
-
-      PhuongPhapDayHoc : PhuongPhapDayHoc_Object,
-      DanhGia1 : DanhGia1_TH_Object,
-      DanhGia2 : DanhGia2_TH_Object,
-      DanhGia3 : DanhGia3_TH_Object,
-      DanhGia4 : DanhGia4_TH_Object,
-      GiangVien: GiangVien_Object
     });
+
+  
+
+
+   
+
+    
+    //findName: findName,
+      //PLO: plo_Object,
+      
+      //processedPLOs: processedPLOs,
+
+
+
+      // PhuongPhapDayHoc : PhuongPhapDayHoc_Object,
+      // DanhGia1 : DanhGia1_TH_Object,
+      // DanhGia2 : DanhGia2_TH_Object,
+      // DanhGia3 : DanhGia3_TH_Object,
+      // DanhGia4 : DanhGia4_TH_Object,
+      // GiangVien: GiangVien_Object
 }

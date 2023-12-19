@@ -14,6 +14,8 @@ const jwt = require('jsonwebtoken');
 app.use(cookieParser());
 const dotenv = require('dotenv');
 const TempLate = require('./models/Template/Template');
+const PLO = require('./models/Chuongtrinh/PLO.model');
+const {mongooseToObject,MutipleMongooseToObject} = require('./util/mongoose');
 // // // // // // 
 // Routes     
 // // // // // //
@@ -40,7 +42,7 @@ db.connect();
 dotenv.config();
 //khoi tao public folder
 app.use(express.static(path.join(__dirname, 'public')))
-
+app.use('/pdfs', express.static('pdfs'))
 //su dung templates hbs
 const hbs = exphbs.create({
   defaultLayout: 'main',
@@ -88,7 +90,6 @@ app.get('/',async (req, res) => {
     const compiledTemplate = Handlebars.compile(templateString);
     return compiledTemplate(data);
 }
-
 const DataHeader = {
     HocPhan: {
       PhuLuc: 'F',
@@ -107,12 +108,28 @@ const DataHeader = {
         }
         compiledTemplates.push(compiled);
     });
-    
-    
+ 
     let compiledString = compiledTemplates.join('');
-    console.log(compiledString);
- res.render('formInput_monHoc/formInput_monHoc',{tample:compiledString})
-  //res.render('test/test');
+    
+    const plo = await PLO.find();
+    if (plo) {
+      var plo_Object = plo.map(mongooseToObject)  
+    }
+    let currentLoaiCDR_CT = null;
+
+    const processedPLOs = plo_Object.map((plo) => {
+    if (plo.LoaiCDR_CT !== currentLoaiCDR_CT) {
+        currentLoaiCDR_CT = plo.LoaiCDR_CT;
+        return { ...plo, newGroup: true }; // Đánh dấu đây là một nhóm mới
+    }
+    return plo;
+    });
+ res.render('formInput_monHoc/formInput_monHoc',{
+            tample:compiledString,
+            PLO: plo_Object,
+            processedPLOs: processedPLOs
+          })
+  //res.render('test/test2');
   //project/project
   //res.render('project/project');
   //res.render('admin/HomePageAdmin');
@@ -144,7 +161,7 @@ const DataHeader = {
 
 app.post('/pdf', (req, res) => {
   const a4Content = req.body.a4Content;
-  console.log(a4Content)
+  
   // Đọc nội dung CSS từ file
   const cssContent = fs.readFileSync('./public/css/print/print.css', 'utf-8');
   (async () => {

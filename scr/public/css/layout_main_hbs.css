@@ -14,9 +14,10 @@
     width: 100%;
     background-color: var(--color-white);
     z-index: 2;
-    /* position: fixed; */
+    
 }
 .body { 
+    
     width: 100%;
     align-items: center;
     justify-content: center;

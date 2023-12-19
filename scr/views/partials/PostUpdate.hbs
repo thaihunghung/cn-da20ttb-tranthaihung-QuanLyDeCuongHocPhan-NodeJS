@@ -106,7 +106,12 @@
 
     }
     function KyNangdata(filename) {
-        
+        var ArrPLO = []
+        const PLO = document.querySelectorAll('.ValuePLO')
+        PLO.forEach(element => {
+            const textContent = element.textContent;
+            ArrPLO.push(textContent)
+        });
         function checkPLOConditions(ploArray) {
             const validPLOs = ploArray
                 .map((plo) => {
@@ -117,7 +122,6 @@
                     if (regex.test(plo)) {
                         isPLOValid = true;
                     }
-
                     return { plo, isValid: isPLOValid };
                 })
                 .filter((result) => result.isValid)
@@ -195,7 +199,9 @@
 
             const TD_DUPO_Element = container.querySelector('.content-4-learning-outcomes-3 .TD');
             const TD_DUPO = TD_DUPO_Element ? cleanUpString(TD_DUPO_Element.textContent) : '';
+
             const TD_DUPO_Array = TD_DUPO.split(',').map(item => item.trim());
+
             const TD_TD_Element = container.querySelector('.content-4-learning-outcomes-4 .TD');
             const TD_TD = TD_TD_Element ? cleanUpString(TD_TD_Element.textContent) : '';
 
@@ -215,37 +221,19 @@
         });
 
         return {
-
             KyNangKTdata: KyNangKTdata,
             KyNangKNdata: KyNangKNdata,
             KyNangTDdata: KyNangTDdata
         }
     }
-    async function Save_Project() {
-
-
-
-
-
-
-
-
-
-
-
-        // const urlParams = new URLSearchParams(window.location.search);
-        // const filename = urlParams.get('filename');
-        //var Datafilename = filename.toString();
-
-
-
-        /////////////////////////////////////////////////////////////////////////////////////////////////
+    function ChuongData(filename) {
         const chuongRows = document.querySelectorAll('.Chuong');
         const chuongData = [];
-
+        var name = filename;
         chuongRows.forEach((chuongRow, chuongIndex) => {
             const tenChuongElement = chuongRow.querySelector('.TenChuong.STT_CHUONG');
             const CDR_HocPhanElement = chuongRow.querySelector('.CDR_HocPhan');
+            console.log(CDR_HocPhanElement)
             const gioLyThuyetElement = chuongRow.querySelector('.GioLyThuyet');
             const gioThucHanhElement = chuongRow.querySelector('.GiothucHanh');
             const soGioTuHocElement = chuongRow.querySelector('.SoGioTuHoc');
@@ -269,21 +257,30 @@
                 GiothucHanh: convertToNumber(gioThucHanh),
                 SoGioTuHoc: convertToNumber(soGioTuHoc),
                 KyNangMem: convertToNumber(KyNangMem),
-                ChiTietChuong: []
+                ChiTietChuong: [],
+                MaHP: name
             };
 
 
             // Lấy các hàng ChiTietChuong của chương hiện tại
-            const chiTietChuongRows = document.querySelectorAll(`.ChiTietChuong${chuongIndex + 1} .STT_CTC${chuongIndex + 1}`);
+            const chiTietChuongRows = document.querySelectorAll(`.ChiTietChuong${chuongIndex + 1}`);
             chiTietChuongRows.forEach(chiTietRow => {
                 const sttCTC = chiTietRow ? cleanUpString(chiTietRow.textContent) : '';
                 chuong.ChiTietChuong.push(sttCTC);
             });
 
             chuongData.push(chuong);
-
-
         });
+        return chuongData
+    }
+    async function Save_Project() {
+        
+        // const urlParams = new URLSearchParams(window.location.search);
+        // const filename = urlParams.get('filename');
+        //var Datafilename = filename.toString();
+
+        
+        
 
         /////////////////////////////////////////////////////////////////////////////////////////////////
         const PP_DayHoc = document.getElementById('TenPP');
@@ -396,8 +393,8 @@
 
         var Datafilename = "hung:1"
         const TaiLieu = GiaoTrinh(Datafilename);
-
-        // "ChuongData": chuongData,
+        var Chuong = ChuongData(Datafilename);
+        console.log(Chuong);
 
         // "TaiLieuThamKhaoData": TaiLieu.TaiLieuData,
         //"HocLieuData": TaiLieu.HocLieuData,
@@ -406,7 +403,6 @@
 
             "PhuongPhapData": phuongPhapGiangData,
             "DanhGiaData": DanhGiaArray,
-
             "GiangVienData": GiangVienArray,
         }
 
@@ -415,8 +411,9 @@
             KyNangKTdata: KyNangdata(Datafilename).KyNangKTdata,
             KyNangKNdata: KyNangdata(Datafilename).KyNangKNdata,
             KyNangTDdata: KyNangdata(Datafilename).KyNangTDdata,
+            ChuongData: Chuong
         } 
-        console.log(data)
+       
         await axios.post('/project', data)
             .then(response => {
                 console.log('Dữ liệu đã được gửi thành công:', response.data);  // Use response.data
@@ -424,18 +421,6 @@
             .catch(error => {
                 console.error('Lỗi khi gửi dữ liệu:', error.message);
             });
-    }
-
-    function getKeyTaiLieuByKey(code) {
-        if (code === 'giaotrinh') {
-            return 'GT';
-        } else if (code === 'TaiLieuThamKhao') {
-            return 'TL';
-        } else if (code === 'HocLieu') {
-            return 'HL';
-        } else {
-            return null;
-        }
     }
 </script>
 {{>convertToNumber}}

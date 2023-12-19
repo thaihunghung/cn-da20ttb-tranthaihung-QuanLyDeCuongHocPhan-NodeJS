@@ -79,6 +79,7 @@ span {
     flex-direction: row;
    
 }
+
 .PLO {
     border: 1px solid #d4d4d4;
     background-color: burlywood;
@@ -237,7 +238,7 @@ span[contenteditable="true"] {
 }
 p {
     line-height: 13pt; /* Set the line height to the same value as the minimum height */
-    min-height: 13pt;
+    
     
     width: 100%;
     padding: 2px;
@@ -262,7 +263,12 @@ p {
 .dropdown-list div:last-child {
   border-bottom: none;
 }
-
+.HocLieu,
+.TaiLieuThamKhao,
+.giaotrinh {
+    font-size: 13pt;
+    line-height: 1.15;
+}
 
 .dropdown-list div:hover {
   background-color: #e9e9e9;
