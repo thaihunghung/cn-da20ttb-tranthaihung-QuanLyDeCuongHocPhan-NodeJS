@@ -370,8 +370,11 @@
     if (document.getElementById("HoTen2")) {
         autocomplete(document.getElementById("HoTen2"), Teacher, "Teacher");
     }
-    if (document.getElementById("HoTen2")) {
-        autocomplete(document.getElementById("HoTen2"), Teacher, "Teacher");
+    if (document.getElementById("BienSoan")) {
+        autocomplete(document.getElementById("BienSoan"), Teacher, "BienSoan");
+    }
+    if (document.getElementById("BienSoan")) {
+        autocomplete(document.getElementById("PhanBien"), Teacher, "BienSoan");
     }
     
     function autocomplete(inp, arr, NameTerm) {
@@ -614,7 +617,7 @@
                                     TQparent.innerHTML += htmlToAdd;
                                 }
                             }
-                        } else if (NameTerm === "Teacher") {
+                        } else if (NameTerm === "DsGiangVien") {
                             var Teachers = inp.innerHTML;
                             var Id = inp.id
                             var numbers = Id.match(/\d+/g);
@@ -625,6 +628,8 @@
                                     }
                                 }
                             
+                        } else if (NameTerm === "BienSoan") {
+
                         }
                         closeAllLists();
                     });

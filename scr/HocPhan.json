@@ -1,16 +1,11 @@
 [ {
-    "order": 9,
-    "compileMethod": "CourseContent",
+    "order": 11,
+    "compileMethod": "ListTeacher",
     "htmlContent": ""
   },
   {
     "order": 10,
-    "compileMethod": "detail1",
-    "htmlContent": ""
-  },
-  {
-    "order": 11,
-    "compileMethod": "detail2",
+    "compileMethod": "TEST",
     "htmlContent": ""
   }
 ]

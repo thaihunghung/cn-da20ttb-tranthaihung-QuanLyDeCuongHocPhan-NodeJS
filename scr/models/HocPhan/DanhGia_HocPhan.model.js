@@ -1,7 +1,7 @@
 const mongoose = require('mongoose')
 const uuid = require('uuid');
 const DanhGia_HocPhanSchema = new mongoose.Schema({
-    MaDG_HP: { type: String,default: uuid.v4, required: true, unique: true },
+    MaDG_HP: String,
     MaHP: { type: String, ref: 'HocPhan.fileName'},
     LoaiDG: String,
     HinhThucDG: String,

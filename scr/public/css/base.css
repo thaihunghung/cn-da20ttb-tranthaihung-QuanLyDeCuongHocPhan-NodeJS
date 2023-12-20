@@ -169,7 +169,9 @@ span {
 .FormGeneral_information,
 .formLearningResources,
 .CourseLearningOutcomes,
-#FormQuyDinh {
+#FormQuyDinh,
+.TeachingAndLearningMethods
+{
     width: 16cm;
 }
 #FormQuyDinh {
@@ -231,16 +233,10 @@ span {
 .instructionForm-table5 {
     max-width: 300px;
 }
-span[contenteditable="true"] {
-    width: 100%;
-    min-height: 13pt;
-    
-}
+
 p {
     line-height: 13pt; /* Set the line height to the same value as the minimum height */
-    
-    
-    width: 100%;
+
     padding: 2px;
 }
 
@@ -291,7 +287,6 @@ p {
     position: absolute;
     background-color: #f1f1f1;
     box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
-
     z-index: 1;
     list-style: none;
     padding: 0;
@@ -333,6 +328,9 @@ p {
   position: relative;
   display: inline-block;
   
+}
+.Autocomplete {
+   
 }
 .with400px {
     width: 400px;

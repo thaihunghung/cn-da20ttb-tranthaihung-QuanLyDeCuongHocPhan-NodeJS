@@ -50,10 +50,10 @@ module.exports = {
     dynamicPartial: function (partialName) {
       return partialName;
     },
-    eq: function (v1, v2) {
-      return v1 === v2;
-    },
-    isChecked: function (value, target) {
-      return value === target;
-    }
+    eq: function(arg1, arg2) {
+      return arg1.trim() === arg2.trim();
+  },
+    isChecked: function(arg1, arg2) {
+      return arg1.trim() === arg2.trim();
+  }
 }
