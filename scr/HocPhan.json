@@ -1,31 +1,16 @@
 [ {
-    "order": 1,
-    "compileMethod": "header",
+    "order": 9,
+    "compileMethod": "CourseContent",
     "htmlContent": ""
   },
   {
-    "order": 2,
+    "order": 10,
     "compileMethod": "detail1",
     "htmlContent": ""
   },
   {
-    "order": 3,
+    "order": 11,
     "compileMethod": "detail2",
-    "htmlContent": ""
-  },
-  {
-    "order": 4,
-    "compileMethod": "detail3",
-    "htmlContent": ""
-  },
-  {
-    "order": 5,
-    "compileMethod": "detail4",
-    "htmlContent": ""
-  },
-  {
-    "order": 6,
-    "compileMethod": "footer",
     "htmlContent": ""
   }
 ]

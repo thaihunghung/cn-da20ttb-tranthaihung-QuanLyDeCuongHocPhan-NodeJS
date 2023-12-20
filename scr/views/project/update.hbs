@@ -22,139 +22,7 @@
             <div class="formInput_print" spellcheck="false">
                 <div class="hidden" id="findName">{{findName}}</div>
                 {{{templates}}}
-
-                <div class="Course-content">
-                    <p class="section-content">&nbsp;</p>
-                    <p class="section-content break"><strong><span>5. Nội dung học phần (Course content)</span></strong></p>
-                    <div class="table-5-display-row">
-                    <table class="table-5-course-content">
-                        <thead>
-                            {{!-- header --}}
-                            <tr>
-                                <td rowspan="2" class="header-5-course-content-255_55pt">
-                                    <p class="header-5-course-content-p"><strong><span>Nội dung</span></strong></p>
-                                </td>
-                                <td rowspan="2" class="header-5-course-content-71_8pt">
-                                    <p class="header-5-course-content-p"><strong><span>CĐR học phần</span></strong></p>
-                                </td>
-                                <td colspan="2" class="header-5-course-content-85_25pt">
-                                    <p class="header-5-course-content-p"><strong><span>Số giờ</span></strong></p>
-                                </td>
-                                <td class="header-5-course-content-55_85pt">
-                                    <p class="header-5-course-content-p"><strong><span>Giờ tự học và giờ học khác
-                                            </span></strong></p>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="header-5-course-content-44_85pt">
-                                    <p class="header-5-course-content-p"><strong><span>LT</span></strong></p>
-                                </td>
-                                <td class="header-5-course-content-55_85pt-2">
-                                    <p class="header-5-course-content-p"><strong><span>TH</span></strong></p>
-                                </td>
-                                <td class="header-5-course-content-55_85pt-2">
-                                    <p class="table-5-course-content-p text-justify"><span>&nbsp;</span></p>
-                                </td>
-                            </tr>
-                        </thead>
-                        <tbody id="table-5-course-content">
-                            {{!-- body - tital --}}
-                            {{#each Chuong as |chuong chuongIndex|}}
-                            <tr id="Chuong{{inc @index}}" class="Chuong">
-                                <td id="Chuong{{inc @index}}.1" class="body-5-course-content-255_55pt">
-                                    <strong>
-                                        <div contenteditable="true"
-                                            class="table-5-course-content-p text-left TenChuong STT_CHUONG"
-                                            id="autoChuong{{inc @index}}"
-                                            onkeydown="handleKeyPress('autoChuong{{inc @index}}',event)">
-                                            {{this.TenChuong}}
-                                        </div>
-                                    </strong>
-                                </td>
-                                <td id="Chuong{{inc chuongIndex}}.2" class="body-5-course-content-71_8pt">
-                                    
-                                    <div class="dropdown">
-                                        <p class="header-5-course-content-p text-center">
-                                            <strong><span contenteditable="true" class="CDR_HocPhan" id="CDR_HocPhan{{inc @index}}">
-                                                    {{this.MaCDR_MH}}</span></strong>
-                                        </p>
-                                        <ul class="dropdown-content-5">
-                                            <li onclick="updateValue('CDR_HocPhan{{inc @index}}', '1','CDR')">1</li>
-                                            <li onclick="updateValue('CDR_HocPhan{{inc @index}}', '2','CDR')">2</li>
-                                            <li onclick="updateValue('CDR_HocPhan{{inc @index}}', '3','CDR')">3</li>
-                                        </ul>
-                                    </div>
-                                </td>
-                                <td id="Chuong{{inc chuongIndex}}.3" class="body-5-course-content-44_85pt">
-                                    <p class="header-5-course-content-p"><strong><span contenteditable="true"
-                                                class="GioLyThuyet">{{this.GioLyThuyet}}</span></strong></p>
-                                </td>
-                                <td id="Chuong{{inc chuongIndex}}.4" class="body-5-course-content-40_4pt">
-                                    <p class="header-5-course-content-p"><strong><span contenteditable="true"
-                                                class="GiothucHanh">{{this.GiothucHanh}}</span></strong></p>
-                                </td>
-                                <td id="Chuong{{inc chuongIndex}}.5" class="body-5-course-content-55_85pt">
-                                    <p class="header-5-course-content-p"><strong><span contenteditable="true"
-                                                class="SoGioTuHoc">{{this.SoGioTuHoc}}</span></strong></p>
-                                </td>
-                            </tr>
-                            {{#each chuong.ChiTietChuong as |chiTietChuong chiTietIndex|}}
-                            <tr class="ChiTietChuong{{inc chuongIndex}}" id="allowDeletion">
-                                <td class="body-5-content-course-content-255_55pt">
-                                    <p class="table-5-course-content-p text-justify">
-                                        <span contenteditable="true" id="CTC{{inc chuongIndex}}.{{inc chiTietIndex}}"
-                                            class="STT_CTC{{inc chuongIndex}}">
-                                            {{chiTietChuong}}
-                                        </span>
-                                    </p>
-                                </td>
-                                <td class="body-5-content-course-content-71_8pt">
-                                    <p class="table-5-course-content-p text-justify"><span>&nbsp;</span></p>
-                                </td>
-                                <td class="body-5-content-course-content-44_85pt">
-                                    <p class="table-5-course-content-p text-justify"><span>&nbsp;</span></p>
-                                </td>
-                                <td class="body-content--course-content-40_4pt">
-                                    <p class="table-5-course-content-p text-justify"><span>&nbsp;</span></p>
-                                </td>
-                                <td class="body-5-course-content-55_85pt">
-                                    <p class="table-5-course-content-p text-justify"><span>&nbsp;</span></p>
-                                </td>
-                            </tr>
-                            {{/each}}
-                            <tr id="CuoiChuong{{inc @index}}">
-                                <td class="footer-5-course-content-255_55pt">
-                                    <p class="text-justify"><em><span>Kỹ năng mềm và thái độ</span></em></p>
-                                </td>
-                                <td colspan="4" class="footer-5-course-content-212_9pt">
-                                    <p class="table-5-course-content-p text-justify"><span contenteditable="true"
-                                            class="KyNangMem">{{this.KyNangMem}}</span></p>
-                                </td>
-                            </tr>
-                            {{/each}}
-                        </tbody>
-                    </table>
-                    <div class="instructionForm-table5" id="instructionForm-table5">
-                        <h3 align="center"> <strong>Bảng Chương phần 5</strong></h3>
-                        <div style="display: flex;">
-
-                            <button type="button" class="btn btn-secondary Chitiet" onclick="themChuong()">+ Thêm chương
-                            </button>
-                        </div>
-                        <div id="instructionForm-table5-CTC" class="ctc">
-
-                            <button id="hung" class="btn btn-secondary">Xóa 1 CDR</button>
-                            <p>Click vào CDR cần xóa</p>
-                            {{#each Chuong}}
-                            <button type="button" class="btn btn-secondary Chitiet" id="ctc{{inc @index}}"
-                                onclick="themChiTietChuong({{inc @index}})">+ Thêm chi tiết chương {{inc @index}}
-                            </button>
-                            {{/each}}
-                        </div>
-                    </div>
-                    </div>
-                </div>
-
+                
                 <button class="btn" onclick="CleanUp_HocPhan()">HocPhan</button>
                 <button class="btn" onclick="Put_Save_Delete()">TestSave_HocPhan</button>
                 {{!----}}
@@ -434,7 +302,7 @@
     }
 </script>
 <script>
-
+    var hung = `{{{loadLoaiHocPhan}}}`;
     const urlParams = new URLSearchParams(window.location.search);
     const filename = urlParams.get('filename');
     var MaHP = filename.toString();
@@ -459,19 +327,11 @@
             console.log('Người dùng không đồng ý lưu dữ liệu.');
         }
     }
-</script>
-
-<script>
-
-
-
-
-
-
     document.addEventListener("DOMContentLoaded", function () {
+        
         setTimeout(function () {
-            const temp = "{{{loadLoaiHocPhan}}}";
-
+            var temp = hung
+            alert(hung)
             // Kiểm tra giá trị temp và set thuộc tính checked cho phần tử tương ứng
             switch (temp) {
                 case "Đại cương":

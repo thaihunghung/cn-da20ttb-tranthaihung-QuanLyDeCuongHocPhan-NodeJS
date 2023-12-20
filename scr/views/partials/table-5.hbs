@@ -201,13 +201,17 @@
     function UpdateSTTskill_CTC(i) {
         var rows = document.querySelectorAll('.ChiTietChuong' + i);
         rows.forEach((row, index) => {
-            var sttElements = row.querySelectorAll('[id*="CTC' + i + "." + '"]');
+            var sttElements = row.querySelectorAll('[id^="CTC' + i + '."]');
             sttElements.forEach((sttElement, sttIndex) => {
-                //lấy chuỗi từ 5 tương đương với 1.1." "
-                sttElement.textContent = i + "." + (index * sttElements.length + sttIndex + 1) + '. ' + sttElement.textContent.substring(5);
+                var oldText = sttElement.textContent;
+                var oldNumber = oldText.match(/\d+\.\d+/); // Tìm số có dạng x.y
+                if (oldNumber) {
+                    sttElement.textContent = oldText.replace(oldNumber[0], i + "." + (index + 1));
+                }
             });
         });
     }
+
     async function UpdateAll_TB5_WhenDelete_Chuong(TimTatCaViTriCanCapNhap) {
         var chuong = await document.getElementsByClassName("Chuong").length;
         var tatcacuong = document.querySelector('[class*="Chuong"]');
