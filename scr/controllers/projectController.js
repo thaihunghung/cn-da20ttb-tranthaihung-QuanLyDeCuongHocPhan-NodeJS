@@ -21,14 +21,192 @@ const {verifyToken} = require('../middleware/auth.middleware');
 const {mongooseToObject,MutipleMongooseToObject} = require('../util/mongoose');
 const { config } = require('dotenv');
 
-
-
 exports.index = async (req, res) =>{
     const filename = req.query.filename;
     try {
       const project = await CreateModel.findOne({ fileName: filename });
       if (project) {
-          res.render('project/project', {filename:filename});
+          const plo = await PLO.find();
+          if (plo) {
+            var plo_Object = plo.map(mongooseToObject)  
+          }
+          var DataHeader = {
+            HocPhan: {
+              PhuLuc: '',
+              MaMon: '[Mã học phần]',
+              TenMon: '[Tên học phần]',
+              SoGioTuHoc: '1',
+              TH: '1',
+              LT: '1',
+              MoTa: '[Mô tả học phần]',
+              SoTC_LT: '1',
+              SoTC_TH: '1',
+              TrinhDo_DT: 'Đại học',
+              ChuyenNganh: '…………………………………….',
+              HocKy: 'I',
+              NamHoc: '1',
+              Nganh: 'Công nghệ Thông tin',
+            }
+          };
+          var DataDieuKienThamGia = {
+            HocPhan: {
+              PhuLuc: '',
+              MaMon: '[Mã học phần]',
+              TenMon: '[Tên học phần]',
+              SoGioTuHoc: '1',
+              TH: '1',
+              LT: '1',
+              MoTa: '[Mô tả học phần]',
+              SoTC_LT: '1',
+              SoTC_TH: '1',
+              TrinhDo_DT: 'Đại học',
+              ChuyenNganh: '…………………………………….',
+              HocKy: 'I',
+              NamHoc: '1',
+              Nganh: 'Công nghệ Thông tin',
+            },
+            DieuKien: {
+              YC_khac: {
+                KienThuc: '[Kiến thức]',
+                KyNang: '<div>&nbsp;&nbsp;-&nbsp;&nbsp;[Kỹ năng 1]</div> <div>&nbsp;&nbsp;-&nbsp;&nbsp;[Kỹ năng 2]</div>',
+                ThaiDo: '[Thái độ]'
+              },
+              HocPhan_TQ: '<div class="ModifyTB2"><div class="autocomplete"><span contenteditable="true"></span><span contenteditable="true" id="TenTQ1">Không</span></div><div class="autocomplete"><span contenteditable="true"></span>&nbsp;<span contenteditable="true" id="MaTQ1"></span></div></div>',
+              HocPhan_SH: '<span contenteditable="true">Không</span>',
+            }
+          } 
+          var TaiLieuThamKhao = {};
+          var DataCourseLearningOutcomes = {
+            CDR_KT: [
+              {
+                MaCDR_MH: 1,
+                Noidung_CDRMH: 'Trình bày các khái niệm cơ bản về xác suất',
+                TrinhDo: '2',
+                loaiTUA: 'TUA',
+                Ten_CDR: ['PLO1']
+              }
+            ],
+            CDR_KN: [
+              {
+                MaCDR_MH: 2,
+                Noidung_CDRMH: 'Trình bày các khái niệm cơ bản về xác suất',
+                TrinhDo: '2',
+                loaiTUA: 'TUA',
+                Ten_CDR: ['PLO1']
+              }
+            ],
+            CDR_TD: [
+              {
+                MaCDR_MH: 3,
+                Noidung_CDRMH: 'Trình bày các khái niệm cơ bản về xác suất',
+                TrinhDo: '2',
+                loaiTUA: 'TUA',
+                Ten_CDR: ['PLO1']
+              }
+            ],
+            PLO: plo_Object
+          };
+          var DataCourseContent = {
+            Chuong: [
+              {
+                TenChuong: '[Tên chương]',
+                GioLyThuyet: '5',
+                GiothucHanh: '5',
+                SoGioTuHoc: '5',
+                KyNangMem: '1',
+                ChiTietChuong: ['1.1. [Chi tiết chương]', '1.2. [Chi tiết chương]'],
+                dapUngArray: [1,2,3]
+              }
+            ]
+          };
+          var DataTeachingAndLearning = {};
+          var DataCourseAssessment = {
+            DanhGia1: {
+              HinhThucDG: '<div contenteditable="true" class="HinhThucDG DG" id="ht1" onkeydown="handleKeyPress(\'ht1\',event)">Kiểm tra lý thuyết hoặc Kiểm tra thực hành </div>',
+              TieuChiDG: '<div class="flex_tb5"> <span contenteditable="true" class="TieuChiDG DG">Theo đáp án</span> </div>',
+              NoiDungDG: `<div class="NoiDung_DG DG"> Từ <div class="dropdown" id="dropdown-DG1"> <p class="section-content" contenteditable="true" id="DG1">Chương 1</p> <ul class="dropdown-content-chuong"> <li onclick="updateValue('DG1','Chương 1', 'TUA')"> Chương 1 </li> </ul> </div> đến <div class="dropdown" id="dropdown-DG2"> <p class="section-content" contenteditable="true" id="DG2">Chương 1</p> <ul class="dropdown-content-chuong"> <li onclick="updateValue('DG2','Chương 1', 'TUA')"> Chương 1 </li> </ul> </div> </div>`,
+              CDRKetThuc: `<div class="CĐR_KetThuc DG"> Từ <div class="dropdown" id="dropdown-KT1"> <span contenteditable="true" id="KT1">1</span> <ul class="dropdown-content-KT7"> <li onclick="updateValue('KT1', '1','TUA')">1</li> <li onclick="updateValue('KT1', '2','TUA')">2</li> <li onclick="updateValue('KT1', '3','TUA')">3</li> </ul> </div> đến <div class="dropdown" id="dropdown-KT2"> <span contenteditable="true" id="KT2">1</span> <ul class="dropdown-content-KT7"> <li onclick="updateValue('KT2', '1','TUA')">1</li> <li onclick="updateValue('KT2', '2','TUA')">2</li> <li onclick="updateValue('KT2', '3','TUA')">3</li> </ul> </div> </div>`,
+              Tyle: `<div class="Tyle DG"> <div class="dropdown" id="dropdown-Tyle1"> <span contenteditable="true" id="Tyle1">25</span>% <ul class="dropdown-content"> <li onclick="updateValue('Tyle1', '25','TUA')">25</li> <li onclick="updateValue('Tyle1', '50','TUA')">50</li> <li onclick="updateValue('Tyle1', '75','TUA')">75</li> </ul> </div> </div>`,
+            },
+            DanhGia2: {
+              HinhThucDG: '<div contenteditable="true" class="HinhThucDG DG" id="ht2" onkeydown="handleKeyPress(\'ht2\',event)">Bài tập lớn</div>',
+              TieuChiDG: '<div class="flex_tb5" contenteditable="true"> <span contenteditable="true" class="TieuChiDG DG">Theo đáp án</span> </div>',
+              NoiDungDG: `<div class="NoiDung_DG DG"> Từ <div class="dropdown" id="dropdown-DG3"> <p class="section-content" contenteditable="true" id="DG3">Chương 1</p> <ul class="dropdown-content-chuong"> <li onclick="updateValue('DG3','Chương 1', 'TUA')"> Chương 1 </li> </ul> </div> đến <div class="dropdown" id="dropdown-DG4"> <p class="section-content" contenteditable="true" id="DG4">Chương 1</p> <ul class="dropdown-content-chuong"> <li onclick="updateValue('DG4','Chương 1', 'TUA')"> Chương 1 </li> </ul> </div> </div>`,
+              CDRKetThuc: `<div class="CĐR_KetThuc DG"> Từ <div class="dropdown" id="dropdown-KT3"> <span contenteditable="true" id="KT3">1</span> <ul class="dropdown-content-KT7"> <li onclick="updateValue('KT3', '1','TUA')">1</li> <li onclick="updateValue('KT3', '2','TUA')">2</li> <li onclick="updateValue('KT3', '3','TUA')">3</li> </ul> </div> đến <div class="dropdown" id="dropdown-KT4"> <span contenteditable="true" id="KT4">1</span> <ul class="dropdown-content-KT7"> <li onclick="updateValue('KT4', '1','TUA')">1</li> <li onclick="updateValue('KT4', '2','TUA')">2</li> <li onclick="updateValue('KT4', '3','TUA')">3</li> </ul> </div> </div>`,
+              Tyle: `<div class="Tyle DG"> <div class="dropdown" id="dropdown-Tyle2"> <span contenteditable="true" id="Tyle2">25</span>% <ul class="dropdown-content"> <li onclick="updateValue('Tyle2', '25','TUA')">25</li> <li onclick="updateValue('Tyle2', '50','TUA')">50</li> <li onclick="updateValue('Tyle2', '75','TUA')">75</li> </ul> </div> </div>`,
+            },
+            DanhGia3: {
+              HinhThucDG: '<p><span contenteditable="true" class="HinhThucDG DG" id="ht3" onkeydown="handleKeyPress(\'ht3\',event)">Đồ án (nhóm)</span></p>',
+              TieuChiDG: '<div contenteditable="true" class="TieuChiDG DG"> Theo đáp án </div>',
+              NoiDungDG: `<div class="NoiDung_DG DG"> Từ <div class="dropdown" id="dropdown-DG5"> <p class="section-content" contenteditable="true" id="DG5">Chương 1</p> <ul class="dropdown-content-chuong"> <li onclick="updateValue('DG5','Chương 1', 'TUA')"> Chương 1 </li> </ul> </div> đến <div class="dropdown" id="dropdown-DG6"> <p class="section-content" contenteditable="true" id="DG6">Chương 1</p> <ul class="dropdown-content-chuong"> <li onclick="updateValue('DG6','Chương 1', 'TUA')"> Chương 1 </li> </ul> </div> </div>`,
+              CDRKetThuc: `<div class="CĐR_KetThuc DG"> Từ <div class="dropdown" id="dropdown-KT5"> <span contenteditable="true" id="KT5">1</span> <ul class="dropdown-content-KT7"> <li onclick="updateValue('KT5', '1','TUA')">1</li> <li onclick="updateValue('KT5', '2','TUA')">2</li> <li onclick="updateValue('KT5', '3','TUA')">3</li> </ul> </div> đến <div class="dropdown" id="dropdown-KT6"> <span contenteditable="true" id="KT6">1</span> <ul class="dropdown-content-KT7"> <li onclick="updateValue('KT6', '1','TUA')">1</li> <li onclick="updateValue('KT6', '2','TUA')">2</li> <li onclick="updateValue('KT6', '3','TUA')">3</li> </ul> </div> </div>`,
+              Tyle: `<div class="Tyle DG"> <div class="dropdown" id="dropdown-Tyle3"> <span contenteditable="true" id="Tyle3">50</span>% <ul class="dropdown-content"> <li onclick="updateValue('Tyle3', '25','TUA')">25</li> <li onclick="updateValue('Tyle3', '50','TUA')">50</li> <li onclick="updateValue('Tyle3', '75','TUA')">75</li> </ul> </div> </div>`,
+            },
+            DanhGia4: {
+              HinhThucDG: '<div contenteditable="true" class="HinhThucDG DG" id="ht4" onkeydown="handleKeyPress(\'ht4\',event)">Thi thực hành</div>',
+              TieuChiDG: '<div class="flex_tb5"> <span contenteditable="true" class="TieuChiDG DG">Theo đáp án</span> </div>',
+              NoiDungDG: `<div class="NoiDung_DG DG"> Từ <div class="dropdown" id="dropdown-DG7"> <p class="section-content" contenteditable="true" id="DG7">Chương 1</p> <ul class="dropdown-content-chuong"> <li onclick="updateValue('DG7','Chương 1', 'TUA')"> Chương 1 </li> </ul> </div> đến <div class="dropdown" id="dropdown-DG8"> <p class="section-content" contenteditable="true" id="DG8">Chương 1</p> <ul class="dropdown-content-chuong"> <li onclick="updateValue('DG8','Chương 1', 'TUA')"> Chương 1 </li> </ul> </div> </div>`,
+              CDRKetThuc: `<div class="CĐR_KetThuc DG"> Từ <div class="dropdown" id="dropdown-KT7"> <span contenteditable="true" id="KT7">1</span> <ul class="dropdown-content-KT7"> <li onclick="updateValue('KT7', '1','TUA')">1</li> <li onclick="updateValue('KT7', '2','TUA')">2</li> <li onclick="updateValue('KT7', '3','TUA')">3</li> </ul> </div> đến <div class="dropdown" id="dropdown-KT8"> <span contenteditable="true" id="KT8">1</span> <ul class="dropdown-content-KT7"> <li onclick="updateValue('KT8', '1','TUA')">1</li> <li onclick="updateValue('KT8', '2','TUA')">2</li> <li onclick="updateValue('KT8', '3','TUA')">3</li> </ul> </div> </div>`,
+              Tyle: `<div class="Tyle DG"> <div class="dropdown" id="dropdown-Tyle4"> <span contenteditable="true" id="Tyle4">25</span>% <ul class="dropdown-content"> <li onclick="updateValue('Tyle4', '25','TUA')">25</li> <li onclick="updateValue('Tyle4', '50','TUA')">50</li> <li onclick="updateValue('Tyle4', '75','TUA')">75</li> </ul> </div> </div>`,
+            }
+          }
+          var DataCourseFooter = {};
+          var templates = await TempLate.find().sort({ order: 1 })
+          let compiledTemplates = [];
+
+          templates.forEach(template => {
+              let compiled;
+              switch (template.compileMethod) {
+                  case "header":
+                      compiled = compileMethod(template.htmlContent, DataHeader);
+                      break;
+                  case "FormGeneral_information":
+                      compiled = compileMethod(template.htmlContent, DataDieuKienThamGia);
+                      break;    
+                  case "formLearningResources":
+                      compiled = compileMethod(template.htmlContent, TaiLieuThamKhao);
+                      break; 
+                  case "CourseDescription":
+                      compiled = compileMethod(template.htmlContent, DataHeader);
+                      break;    
+                  case "FormQuyDinh":  
+                      compiled = template.htmlContent
+                      break; 
+                  case "CourseLearningOutcomes":  
+                      compiled = compileMethod(template.htmlContent, DataCourseLearningOutcomes);
+                      break;
+                  case "CourseContent":  
+                      compiled = compileMethod(template.htmlContent, DataCourseContent);
+                      break; 
+                  case "TeachingAndLearningMethods":  
+                      compiled = compileMethod(template.htmlContent, DataTeachingAndLearning);
+                      break;     
+                  case "CourseAssessment":  
+                      compiled = compileMethod(template.htmlContent, DataCourseAssessment);
+                      break; 
+                  case "Footer":  
+                      compiled = compileMethod(template.htmlContent, DataCourseFooter);
+                      break;              
+              }
+              compiledTemplates.push(compiled);
+          });
+//<div class="ModifyTB2"> <div class="autocomplete">Tên:&nbsp; <span contenteditable="true" id="TenTQ1">Lập trình hướng đối tượng</span> </div> <div class="autocomplete">MSHP:&nbsp; <span contenteditable="true" id="MaTQ1">220096</span> </div> </div> <div class="ModifyTB2"> <div class="autocomplete">Tên:&nbsp; <span contenteditable="true" id="TenTQ2">Cơ sở dữ liệu</span> </div> <div class="autocomplete">MSHP:&nbsp; <span contenteditable="true" id="MaTQ2">220099</span> </div> </div>
+          let compiledString = compiledTemplates.join(''); 
+          
+          let currentLoaiCDR_CT = null;
+          const processedPLOs = plo_Object.map((plo) => {
+          if (plo.LoaiCDR_CT !== currentLoaiCDR_CT) {
+              currentLoaiCDR_CT = plo.LoaiCDR_CT;
+              return { ...plo, newGroup: true }; 
+          }
+          return plo;
+          }); 
+          res.render('project/project', {
+            filename:filename,
+            templates: compiledString,
+            PLO: plo_Object,
+            processedPLOs: processedPLOs
+          });
       } else {
           res.redirect('/project/Create');
       }
@@ -87,39 +265,15 @@ exports.Check_File_Name = async (req, res) =>{
     }
 };
 
-async function saveDanhGiaData(danhGiaData) {
-  try {
-    // Kiểm tra xem danhGiaData có phải là mảng không
-    if (!Array.isArray(danhGiaData)) {
-      console.error('danhGiaData không phải là một mảng');
-      return;
-    }
-
-    // Tiếp tục với việc lưu dữ liệu
-    for (const item of danhGiaData) {
-      const newDanhGia = new DanhGia_HocPhanModel({
-        MaHP: item.MaHP,
-        LoaiDG: item.LoaiDG,
-        HinhThucDG: item.HinhThucDG,
-        TieuChiDG: item.TieuChiDG,
-        NoiDungDG: item.NoiDungDG,
-        CDRKetThuc: item.CDRKetThuc,
-        Tyle: item.Tyle
-      });
-
-      // Lưu đối tượng vào cơ sở dữ liệu
-      await newDanhGia.save();
-    }
-
-    console.log('Dữ liệu đã được lưu thành công');
-  } catch (error) {
-    console.error('Lỗi khi lưu dữ liệu:', error);
-  }
-}
 exports.project_Post_Save = async (req, res) => {
-    const {GiaotrinhData, Name,TaiLieuThamKhaoData,HocLieuData,HocPhanData,DieuKienThamGiaData,KyNangKTdata,KyNangKNdata,KyNangTDdata,ChuongData,DU_CDR_ChuongData,PhuongPhapData,DanhGiaData,QuyDinhData,GiangVienData} = req.body;
+    const {
+      TaiLieuThamKhaoData,HocLieuData,
+      HocPhanData,GiaotrinhData,DieuKienThamGiaData,
+      KyNangKTdata,KyNangKNdata,KyNangTDdata,
+      ChuongData,PhuongPhapData,
+      DanhGiaData,GiangVienData
+    } = req.body;
     
-    var maHPValue = 1;
     var kyNangKTNoiDung = [];
     var kyNangTDNoiDung = [];
     var kyNangKNNoiDung = [];
@@ -145,111 +299,99 @@ exports.project_Post_Save = async (req, res) => {
     }
     
 
-  // saveCDRHocPhanAndDapUng(KyNangKTdata, kyNangKTNoiDung)
-  // .then(savedData => {
-  //   console.log("Dữ liệu đã được lưu thành công:", savedData);
-  // })
-  // .catch(error => {
-  //   console.error("Lỗi khi lưu dữ liệu:", error);
-  // });
-  // saveCDRHocPhanAndDapUng(KyNangTDdata, kyNangTDNoiDung) 
-  // .then(savedData => {
-  //   console.log("Dữ liệu đã được lưu thành công:", savedData);
-  // })
-  // .catch(error => {
-  //   console.error("Lỗi khi lưu dữ liệu:", error);
-  // });
-  // saveCDRHocPhanAndDapUng(KyNangKNdata, kyNangKNNoiDung) 
-  // .then(savedData => {
-  //   console.log("Dữ liệu đã được lưu thành công:", savedData);
-  // })
-  // .catch(error => {
-  //   console.error("Lỗi khi lưu dữ liệu:", error);
-  // });
+   saveCDRHocPhanAndDapUng(KyNangKTdata, kyNangKTNoiDung)
+   .then(savedData => {
+     console.log("Dữ liệu đã được lưu thành công:", savedData);
+   })
+   .catch(error => {
+     console.error("Lỗi khi lưu dữ liệu:", error);
+   });
+   saveCDRHocPhanAndDapUng(KyNangTDdata, kyNangTDNoiDung) 
+   .then(savedData => {
+     console.log("Dữ liệu đã được lưu thành công:", savedData);
+   })
+   .catch(error => {
+     console.error("Lỗi khi lưu dữ liệu:", error);
+   });
+   saveCDRHocPhanAndDapUng(KyNangKNdata, kyNangKNNoiDung) 
+   .then(savedData => {
+    console.log("Dữ liệu đã được lưu thành công:", savedData);
+   })
+ .catch(error => {
+  console.error("Lỗi khi lưu dữ liệu:", error);
+});
 
-// var CDR_With_CHUONG = [];
-//   for (var i = 0; i < ChuongData.length; i++) {
-//       var DapUngChuong = ChuongData[i].DapUng_MH;
-//       CDR_With_CHUONG.push(DapUngChuong);
-//       delete ChuongData[i].DapUng_CDRMH;
-//   }
+ var CDR_With_CHUONG = [];
+   for (var i = 0; i < ChuongData.length; i++) {
+      var DapUngChuong = ChuongData[i].DapUng_MH;
+      CDR_With_CHUONG.push(DapUngChuong);
+     delete ChuongData[i].DapUng_CDRMH;
+   }
  
-//   async function SaveOneDapUngChuong(MaChuong, MaHP, CDR_HocPhanArrays,index) {
+   async function SaveOneDapUngChuong(MaChuong, MaHP, CDR_HocPhanArrays,index) {
    
-//     let hung = CDR_HocPhanArrays[index];
+    let hung = CDR_HocPhanArrays[index];
 
-//       for (let j = 0; j < hung.length; j++) {
-//             const CDR_With_MaHP = await CDR_HocPhanModel.findOne({
-//                 MaCDR_MH: hung[j],
-//                 MaHP: MaHP
-//             });
+      for (let j = 0; j < hung.length; j++) {
+             const CDR_With_MaHP = await CDR_HocPhanModel.findOne({
+                MaCDR_MH: hung[j],
+                 MaHP: MaHP
+            });
           
-//             if (CDR_With_MaHP) {
-//                 const DapUngChuong = new DapUngChuongModel({
-//                     MaCDR_MH: CDR_With_MaHP._id,
-//                     MaChuong: MaChuong
-//                 });
-//                 await DapUngChuong.save();
-//                 console.log(DapUngChuong);
-//             } else {
-//                 console.error(`Không tìm thấy CDR với MaHP: ${MaHP} và MaCDR_MH: ${CDR_HocPhanArray[j]}`);
-//             }
-//       }
-//   }  
-//   var hung = ChuongData.map(async (item,index) => {
-//     const Chuong = new ChuongModel({
-//       MaHP: item.MaHP,
-//       TenChuong: item.TenChuong,
-//       GioLyThuyet: item.GioLyThuyet,
-//       GiothucHanh: item.GiothucHanh,
-//       SoGioTuHoc: item.SoGioTuHoc,
-//       KyNangMem: item.KyNangMem,
-//       ChiTietChuong: item.ChiTietChuong
-//     });
-//     const savedData = await Chuong.save();
-//     await SaveOneDapUngChuong(savedData.MaChuong, savedData.MaHP, CDR_With_CHUONG, index);
-//     return savedData;
-//   });
- 
-
-
+             if (CDR_With_MaHP) {
+                 const DapUngChuong = new DapUngChuongModel({
+                     MaCDR_MH: CDR_With_MaHP._id,
+                     MaChuong: MaChuong
+                 });
+                await DapUngChuong.save();
+                 console.log(DapUngChuong);
+            } else {
+                console.error(`Không tìm thấy CDR với MaHP: ${MaHP} và MaCDR_MH: ${CDR_HocPhanArray[j]}`);
+             }
+       }
+   }  
+   var hung = ChuongData.map(async (item,index) => {
+     const Chuong = new ChuongModel({
+       MaHP: item.MaHP,
+       TenChuong: item.TenChuong,
+       GioLyThuyet: item.GioLyThuyet,
+       GiothucHanh: item.GiothucHanh,
+       SoGioTuHoc: item.SoGioTuHoc,
+       KyNangMem: item.KyNangMem,
+      ChiTietChuong: item.ChiTietChuong
+     });
+    const savedData = await Chuong.save();
+    await SaveOneDapUngChuong(savedData.MaChuong, savedData.MaHP, CDR_With_CHUONG, index);
+     return savedData;
+   });
 
 try {
-    // const SaveHP = new HocPhanModel(HocPhanData);
-    // const SaveHPSave =await SaveHP.save();
+    const SaveHP = new HocPhanModel(HocPhanData);
+    const SaveHPSave =await SaveHP.save();
    
-    //const SaveGT = await TLTKModel.insertMany(TaiLieuThamKhaoData);
-   // const SaveTL = await TLTKModel.insertMany(HocLieuData);
-   // const SaveHL = await TLTKModel.insertMany(GiaotrinhData);
+    const SaveGT = await TLTKModel.insertMany(TaiLieuThamKhaoData);
+    const SaveTL = await TLTKModel.insertMany(HocLieuData);
+    const SaveHL = await TLTKModel.insertMany(GiaotrinhData);
 
-    // const SaveDKTG = new DieuKienThamGiaModel(DieuKienThamGiaData);
-    // const SaveDKTGSave =await SaveDKTG.save();
+    const SaveDKTG = new DieuKienThamGiaModel(DieuKienThamGiaData);
+    const SaveDKTGSave =await SaveDKTG.save();
     
-    // const SavePhuongPhap = new PP_Day_hocModel({
-    //   TenPP: PhuongPhapData.PhuongPhapData.TenPP,
-    //   MaHP: PhuongPhapData.PhuongPhapData.MaHP
-    // });
-    // const SavePhuongPhapSave = await SavePhuongPhap.save();
+    const SavePhuongPhap = new PP_Day_hocModel({
+      TenPP: PhuongPhapData.PhuongPhapData.TenPP,
+      MaHP: PhuongPhapData.PhuongPhapData.MaHP
+    });
+    const SavePhuongPhapSave = await SavePhuongPhap.save();
     
-    // if(DanhGiaData){
-    //   var SaveDanhGia = await DG_HocPhanModel.insertMany(DanhGiaData);
-    //   console.log(SaveDanhGia);
-    // }
+    if(DanhGiaData){
+       var SaveDanhGia = await DG_HocPhanModel.insertMany(DanhGiaData);
+       console.log(SaveDanhGia);
+     }
     if(GiangVienData){
       const Save = new GiangVienModel(GiangVienData);
       const SaveSave =await Save.save();
       console.log(SaveSave);
     }  
       
-    
-    
-      //const savedDanhGiaHocPhan = await danhGiaHocPhanData.save();
-     // console.log("Lưu đánh giá thành công:", savedDanhGiaHocPhan);
-   
-    // const SaveQuyDinh = await QuyDinhModel.insertMany(MapQuyDinh);
-    
-    // const SaveGiangVien = await GiangVienModel.insertMany(MapGiangVien);
-
   } catch (error) {
     console.error("Lỗi khi lưu:", error.message);
   }
@@ -276,31 +418,7 @@ exports.project_Delete_PUT = async (req, res) => {
     }
 }
 exports.project_Get_Update = async (req, res) => {
-  function compileMethod(templateString, data) {
-    // Biên dịch template
-    const compiledTemplate = Handlebars.compile(templateString);
-    return compiledTemplate(data);
-}
-
-  Handlebars.registerHelper('inc', function(value, options) {
-    return parseInt(value) + 1;
-  });
-  Handlebars.registerHelper('joinArray', function(array) {
-    return array.join(', ');
-  });
-
-  Handlebars.registerHelper('isChecked', function(arg1, arg2) {
-    return arg1.trim() === arg2.trim();
-  });
-  Handlebars.registerHelper('eq', function(arg1, arg2) {
-    if (arg1 && arg2) 
-    {
-    return arg1.trim() === arg2.trim();
-  }
-
-  });
-
-  var findName='hung:1';
+  
    //render và load project cần sửa
    const { filename } = req.query;
     
@@ -310,15 +428,15 @@ exports.project_Get_Update = async (req, res) => {
    }
    const [username, projectName] = decodeURIComponent(filename).split(':');
 
-   //const findName = username+":"+projectName
-   
+   const findName = username+":"+projectName
+   var FileName =  findName.toString()
+   console.log(FileName)
    const Create = await CreateModel.findOne({fileName:findName.toString()});
    if (!Create) {
      res.status(400).send('không tồn tại dự án quay lại trang web trước đó!!');
      return;
    }
-   //var FileName =  findName.toString()
-   //console.log(FileName)
+   
 
 
 
@@ -369,31 +487,36 @@ exports.project_Get_Update = async (req, res) => {
     // //                         table 6 
     // //////////////////////////////////////////////////////////////
     const PhuongPhapDayHoc = await PP_Day_hocModel.find({ MaHP: findName.toString()});
-    if (PhuongPhapDayHoc) {
+
+    if (PhuongPhapDayHoc[0]) {
       var PhuongPhapDayHoc_Object = PhuongPhapDayHoc[0].toObject();
     }
-    console.log(PhuongPhapDayHoc_Object);
+    const DieuKien = await DieuKienThamGiaModel.find({ MaHP: findName.toString()});
+    if (DieuKien[0]) {
+      var DieuKienThamGia = DieuKien[0].toObject();
+      console.log(DieuKienThamGia)
+    }
 
     const DanhGia1 = await DG_HocPhanModel.find({ MaHP: findName.toString() ,MaDG_HP: 'MaDG1',LoaiDG: 'Đánh giá quá trình'})
-    if (DanhGia1) {
+    if (DanhGia1[0]) {
       var DanhGia1_TH_Object = DanhGia1[0].toObject()
     }
     const DanhGia2 = await DG_HocPhanModel.find({ MaHP: findName.toString() ,MaDG_HP: 'MaDG2',LoaiDG: 'Đánh giá quá trình'})
-    if (DanhGia2) {
+    if (DanhGia2[0]) {
       var DanhGia2_TH_Object = DanhGia2[0].toObject()
     }
     const DanhGia3 = await DG_HocPhanModel.find({ MaHP: findName.toString() ,MaDG_HP: 'MaDG3',LoaiDG: 'Đánh giá kết thúc học phần'})
-    if (DanhGia3) {
+    if (DanhGia3[0]) {
       var DanhGia3_TH_Object = DanhGia3[0].toObject()
     }
     const DanhGia4 = await DG_HocPhanModel.find({ MaHP: findName.toString() ,MaDG_HP: 'MaDG4',LoaiDG: 'Đánh giá kết thúc học phần'})
-    if (DanhGia4) {
+    if (DanhGia4[0]) {
       var DanhGia4_TH_Object = DanhGia4[0].toObject()
     }
  
     const GiangVien = await GiangVienModel.find({MaHP: findName.toString()})
 
-    if (GiangVien) {
+    if (GiangVien[0]) {
       var GiangVien_Object = GiangVien[0].toObject();
     }
 
@@ -433,15 +556,20 @@ exports.project_Get_Update = async (req, res) => {
       CDR_TD : cdrTDWithTenCDR,
       PLO :  plo_Object
     }
+    
     var DataCourseContent = {
       Chuong: ChuongOB
     }
+  
     var DataHeader = {
       HocPhan :hocPhanObject
-    }   
+    }
+
     var DataDieuKienThamGia = {
-      HocPhan :hocPhanObject
+      HocPhan :hocPhanObject,
+      DieuKien :DieuKienThamGia
     } 
+    console.log(DataDieuKienThamGia);
 
     var DataTeachingAndLearning = {
       PhuongPhapDayHoc : PhuongPhapDayHoc_Object
@@ -452,9 +580,11 @@ exports.project_Get_Update = async (req, res) => {
       DanhGia3 : DanhGia3_TH_Object,
       DanhGia4 : DanhGia4_TH_Object
     }
+
     var DataCourseFooter = {
       GiangVien: GiangVien_Object
     }
+
     const templates = await TempLate.find().sort({ order: 1 })
     let compiledTemplates = [];
     templates.forEach(template => {
@@ -463,16 +593,16 @@ exports.project_Get_Update = async (req, res) => {
             case "header":
                 compiled = compileMethod(template.htmlContent, DataHeader);
                 break;
-            case "detail1":
-                compiled = compileMethod(template.htmlContent, DataHeader);
+            case "FormGeneral_information":
+                compiled = compileMethod(template.htmlContent, DataDieuKienThamGia);
                 break;    
-            case "detail2":
+            case "formLearningResources":
                 compiled = compileMethod(template.htmlContent, TaiLieuThamKhao);
                 break; 
-            case "detail3":
+            case "CourseDescription":
                 compiled = compileMethod(template.htmlContent, DataHeader);
                 break;    
-            case "detail8":  
+            case "FormQuyDinh":  
                 compiled = template.htmlContent
                 break; 
             case "CourseLearningOutcomes":  
@@ -496,25 +626,33 @@ exports.project_Get_Update = async (req, res) => {
 
     let compiledString = compiledTemplates.join('');    
     res.render('project/update',{
-      HocPhan: hocPhanObject,
       templates: compiledString,
       PLO: plo_Object,
       processedPLOs: processedPLOs,
+      findName: findName,
     });
-
-  
-
-
-   
-
-    
-    //findName: findName,
-      //PLO: plo_Object,
-      
-      //processedPLOs: processedPLOs,
-
 }
 
+
+function compileMethod(templateString, data) {
+  const compiledTemplate = Handlebars.compile(templateString);
+  return compiledTemplate(data);
+}
+Handlebars.registerHelper('inc', function(value, options) {
+    return parseInt(value) + 1;
+  });
+Handlebars.registerHelper('joinArray', function(array) {
+    return array.join(', ');
+});
+
+Handlebars.registerHelper('isChecked', function(arg1, arg2) {
+    if (arg1 && arg2) {
+      return arg1.trim() === arg2.trim();
+    }
+});
+Handlebars.registerHelper('eq', function(arg1, arg2) {
+    if (arg1 && arg2) { return arg1.trim() === arg2.trim();}
+});
 
 
 async function fetchTenCDR(maCDR_MH) {

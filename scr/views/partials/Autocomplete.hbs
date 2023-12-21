@@ -378,8 +378,6 @@
     }
     
     function autocomplete(inp, arr, NameTerm) {
-
-
         inp.addEventListener("input", function (e) {
             var a, b, i, val = this.textContent;
 
@@ -447,11 +445,11 @@
                                     // Tạo cấu trúc HTML cần thêm
                                     var htmlToAdd = `
                                             <div class="ModifyTB2">
-                                                <div class="autocomplete">Tên:&nbsp;
+                                                <div class="autocomplete"><span contenteditable="true">Tên:</span>&nbsp;
                                                     <span contenteditable="true" id="TenTQ${i + 1}">${mangChuoi[i]}</span>
                                                 </div>
 
-                                                <div class="autocomplete">MSHP:&nbsp;
+                                                <div class="autocomplete"><span contenteditable="true">MSHP:</span>&nbsp;
                                                     <span contenteditable="true" id="MaTQ${i + 1}">${maTQ[i]}</span>
                                                 </div>
                                             </div>
@@ -494,11 +492,11 @@
                                 if (chuoiA[0] === 'Không') {
                                     var htmlToAdd = `
                                             <div class="ModifyTB2">
-                                                <div class="autocomplete">Tên:&nbsp;
+                                                <div class="autocomplete"><span contenteditable="true">Tên:</span>&nbsp;
                                                     <span contenteditable="true" id="TenTQ1">Không</span>
                                                 </div>
 
-                                                <div class="autocomplete">MSHP:&nbsp;
+                                                <div class="autocomplete"><span contenteditable="true"></span>&nbsp;
                                                     <span contenteditable="true" id="MaTQ1"></span>
                                                 </div>
                                             </div>
@@ -512,7 +510,7 @@
 
                                     var htmlToAdd = `
                                             <div class="ModifyTB2">
-                                                <div class="autocomplete">Tên:&nbsp;
+                                                <div class="autocomplete"><span contenteditable="true">Tên:</span>&nbsp;
                                                     <span contenteditable="true" id="TenTQ1">Các học phần chuyên ngành</span>
                                                 </div>
 
@@ -529,7 +527,7 @@
                                 } else if (chuoiA[0] === 'Các học phần cơ sở ngành') {
                                     var htmlToAdd = `
                                             <div class="ModifyTB2">
-                                                <div class="autocomplete">Tên:&nbsp;
+                                                <div class="autocomplete"><span contenteditable="true">Tên:</span>&nbsp;
                                                     <span contenteditable="true" id="TenTQ1">Các học phần cơ sở ngành</span>
                                                 </div>
 
@@ -547,11 +545,11 @@
                                 else {
                                     var htmlToAdd = `
                                             <div class="ModifyTB2">
-                                                <div class="autocomplete">Tên:&nbsp;
+                                                <div class="autocomplete"><span contenteditable="true">Tên:</span>&nbsp;
                                                     <span contenteditable="true" id="TenTQ1">${chuoiA[0]}</span>
                                                 </div>
 
-                                                <div class="autocomplete">MSHP:&nbsp;
+                                                <div class="autocomplete"><span contenteditable="true">MSHP:</span>&nbsp;
                                                     <span contenteditable="true" id="MaTQ1">${maTQ[0]}</span>
                                                 </div>
                                             </div>
@@ -609,8 +607,8 @@
                                             var MaTQ = MSHP_HocPhan_TQ[i];
                                         }
                                     }
-                                    var htmlToAdd = `
-                                    MSHP:&nbsp;
+                                    var htmlToAdd = `         
+                                                <span contenteditable="true">MSHP:&nbsp;</span>
                                                 <span contenteditable="true" id="${IdMaTQ}">${MaTQ}</span>
                                   
                                         `;

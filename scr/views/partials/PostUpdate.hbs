@@ -43,7 +43,7 @@
             TrinhDo_DT: trinhDoDTValue,
             SoGioTuHoc: convertToNumber(soGioTuHocValue),
             ChuyenNganh: chuyenNganhValue,
-            HocKy: convertToNumber(hocKyValue),
+            HocKy: hocKyValue,
             NamHoc: convertToNumber(namHocValue),
             MoTa: moTaValue,
             LoaiHocPhan: LoaiHocPhanValue,
@@ -233,14 +233,14 @@
 
             const CDR_HocPhan = CDR_HocPhanElement ? cleanUpString(CDR_HocPhanElement.textContent) : '';
             const tenChuong = tenChuongElement ? cleanUp2String(tenChuongElement.textContent) : '';
-            const gioLyThuyet = gioLyThuyetElement ? cleanUpString(gioLyThuyetElement.textContent) : 0;
-            const gioThucHanh = gioThucHanhElement ? cleanUpString(gioThucHanhElement.textContent) : 0;
-            const soGioTuHoc = soGioTuHocElement ? cleanUpString(soGioTuHocElement.textContent) : 0;
+            const gioLyThuyet = gioLyThuyetElement ? cleanUpString(gioLyThuyetElement.textContent) : 1;
+            const gioThucHanh = gioThucHanhElement ? cleanUpString(gioThucHanhElement.textContent) : 1;
+            const soGioTuHoc = soGioTuHocElement ? cleanUpString(soGioTuHocElement.textContent) : 1;
             // Lấy thông tin KyNangMem từ hàng CuoiChuong
             const kyNangMemRow = document.querySelector(`#CuoiChuong${chuongIndex + 1}`);
             const kyNangMemElement = kyNangMemRow.querySelector('.KyNangMem');
             
-            const KyNangMem = kyNangMemElement ? cleanUpString(kyNangMemElement.textContent) : 0;
+            const KyNangMem = kyNangMemElement ? cleanUpString(kyNangMemElement.textContent) : 1;
 
             const CDR_HocPhanArray = CDR_HocPhan.split(',').map(item => {
                 const parsedValue = parseInt(item.trim(), 10);
@@ -251,14 +251,13 @@
             const chuong = {
                 TenChuong: cleanedTenChuong,
                 DapUng_MH: CDR_HocPhanArray,
-                GioLyThuyet: convertToNumber(gioLyThuyet),
-                GiothucHanh: convertToNumber(gioThucHanh),
-                SoGioTuHoc: convertToNumber(soGioTuHoc),
-                KyNangMem: convertToNumber(KyNangMem),
+                GioLyThuyet: gioLyThuyet,
+                GiothucHanh: gioThucHanh,
+                SoGioTuHoc: soGioTuHoc,
+                KyNangMem: KyNangMem,
                 ChiTietChuong: [],
                 MaHP: name
             };
-
 
             // Lấy các hàng ChiTietChuong của chương hiện tại
             const chiTietChuongRows = document.querySelectorAll(`.ChiTietChuong${chuongIndex + 1}`);
@@ -266,7 +265,6 @@
                 const sttCTC = chiTietRow ? cleanUpString(chiTietRow.textContent) : '';
                 chuong.ChiTietChuong.push(sttCTC);
             });
-
             chuongData.push(chuong);
         });
         return chuongData
@@ -274,7 +272,7 @@
     function PhuongPhapData(filename) {
         var name = filename;
         const TenPP = document.getElementById('TenPP').innerHTML;
-        const check = TenPP ? cleanUpString(TenPP) : '';
+        const check = TenPP ? cleanUpString(TenPP) : '[Phương pháp]';
         const Data = {
             TenPP: check,
             MaHP: name
@@ -363,51 +361,35 @@
         return GiangVienData  
     }
     async function Save_Project() {
+        const urlParams = new URLSearchParams(window.location.search);
+        const filename = urlParams.get('filename');
+        var Datafilename = filename.toString();
 
-        // const urlParams = new URLSearchParams(window.location.search);
-        // const filename = urlParams.get('filename');
-        //var Datafilename = filename.toString();
-
-
-
-        ////////////////////////////////////////////////////////////////////////////
-        
-
-        // const urlParams = new URLSearchParams(window.location.search);
-        // const filename = urlParams.get('filename');
-        //var Datafilename = filename.toString();
-        //console.log(filename);
-        //"DU_CDR_ChuongData": CDR_HocPhanArray,"QuyDinhData": quyDinhDataArray, "Name": Datafilename,
-        //"GiaotrinhData": giaotrinhData,
-        //    "TaiLieuThamKhaoData": TaiLieuThamKhaoData,
-        //     "HocLieuData": HocLieuData,
-        //"HocPhanData": HocPhanData(Datafilename),
-
-        //    "DieuKienThamGiaData": Dieukienthamgia(Datafilename),
-
-        var Datafilename = "hung:1"
-        const TaiLieu = GiaoTrinh(Datafilename);
+        var HocPhan =  HocPhanData(Datafilename);
+        var DieuKien =  Dieukienthamgia(Datafilename);
+        var TaiLieu = GiaoTrinh(Datafilename);
         var Chuong = ChuongData(Datafilename);
         var PhuongPhap = PhuongPhapData(Datafilename);
         var DanhGia = DanhGiaData(Datafilename);
         var GiangVien = GiangVienData(Datafilename);
-        
-        // "TaiLieuThamKhaoData": TaiLieu.TaiLieuData,
-        //"HocLieuData": TaiLieu.HocLieuData,
-        // "GiaotrinhData": TaiLieu.giaotrinhData,
-        //const temp = {
-        //    "GiangVienData"
-        //}
+
         const data = {
+            HocPhanData: HocPhan,
+            DieuKienThamGiaData: DieuKien,
+            TaiLieuThamKhaoData: TaiLieu.TaiLieuData,
+            HocLieuData: TaiLieu.HocLieuData,
+            GiaotrinhData: TaiLieu.giaotrinhData,
+
             KyNangKTdata: KyNangdata(Datafilename).KyNangKTdata,
             KyNangKNdata: KyNangdata(Datafilename).KyNangKNdata,
             KyNangTDdata: KyNangdata(Datafilename).KyNangTDdata,
+
             ChuongData: Chuong,
             PhuongPhapData: PhuongPhap,
             DanhGiaData: DanhGia,
             GiangVienData:GiangVien
         }
- 
+
         await axios.post('/project', data)
            .then(response => {
                 console.log('Dữ liệu đã được gửi thành công:', response.data);  // Use response.data

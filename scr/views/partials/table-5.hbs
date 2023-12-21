@@ -126,11 +126,12 @@
             </td>
             <td colspan="4" class="footer-5-course-content-212_9pt">
                 <div class="table-5-course-content-p text-justify" contenteditable="true"
-                    class="KyNangMem">9</span></div>
+                    class="KyNangMem">1</span></div>
             </td>
         `;
         FooterRow.innerHTML = innerHTML_FooterRow
         UpdateSTTskill()
+        UpdateDropdown()
     }
 
     async function themChiTietChuong(index) {
@@ -168,6 +169,7 @@
         newDetailRow.innerHTML = innerHTML_DetailRow;
         // Thêm tr vào tbody trước tr có id là "CuoiChuong1"
         tbody.insertBefore(newDetailRow, document.getElementById("CuoiChuong" + index));
+        UpdateDropdown()
     }
 
     function UpdateSTTskill() {
@@ -197,7 +199,25 @@
         });
 
     }
-
+    function UpdateDropdown() {
+        var AllCDR = document.getElementsByClassName('content-4-learning-outcomes-1').length;
+        var chuong = document.getElementsByClassName('Chuong').length;
+        var ul_5 = document.querySelectorAll('.dropdown-content-5');
+        
+        ul_5.forEach(function (ulElement,index) {
+        ulElement.innerHTML = '';
+        var hung = [];
+        for (var i = 1; i <= AllCDR; i++) {
+            hung.push(cleanUpString(`
+            <li onclick="updateValue('CDR_HocPhan${(index + 1)}', '${i}', 'CDR')">
+            ${i}
+            </li>
+        `));
+        }
+        
+        ulElement.innerHTML = hung.join('');
+        });
+    }
     function UpdateSTTskill_CTC(i) {
         var rows = document.querySelectorAll('.ChiTietChuong' + i);
         rows.forEach((row, index) => {
@@ -372,6 +392,7 @@
 
         if (CuoiChuongElement) {
             CuoiChuongElement.remove();
+            UpdateDropdown()
             //console.log('CuoiChuong' + index + ' removed successfully');
         } else {
             // console.log('CuoiChuong' + index + ' element not found');

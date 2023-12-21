@@ -273,6 +273,11 @@ p {
 .dropdown {
     position: relative;
     display: inline-block;
+    text-align: center;
+    span {
+        width: 100%;
+        text-align: center;
+    }
 }
 
 .dropdown-content,

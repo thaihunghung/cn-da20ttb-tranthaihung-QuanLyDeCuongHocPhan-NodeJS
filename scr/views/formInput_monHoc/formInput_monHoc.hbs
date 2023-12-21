@@ -234,7 +234,6 @@
 
                                 </td>
                             </tr>
-
                             <tr>
                                 <td class="body-1-general-left-2">Học phần song hành</td>
                                 <td colspan="2" class="body-1-general-right-2" id="HocPhan_SH">
@@ -432,59 +431,70 @@
                                     </td>
                                     <td class="header-4-learning-outcomes-2">
                                         <p><strong>Chuẩn đầu ra của học phần</strong></p>
+                                        </td>
+                                        <td class="header-4-learning-outcomes-3">
+                                            <p><strong>Đáp ứng CĐR của CTĐT</strong></p>
+                                        </td>
+                                        <td class="header-4-learning-outcomes-4">
+                                            <p><strong>Trình độ năng lực</strong></p>
+                                        </td>
+                                        <td class="header-4-learning-outcomes-5">
+                                            <p><strong>TUA</strong></p>
+                                        </td>
+                                        </tr>
+                                        </thead>
+                                        <tbody id="table-4-learning-outcomes">
+                                            {{!-- <tr> tieu de 1 --}}
+                                            <tr id="KyNangKT" class="LoaiKN">
+                                                <td colspan="5" class="body-4-learning-outcomes">
+                                                    <div class="body-4-learning-outcomes-tital">
+                                                        <p class="decimal-list"><strong><em><span class="strong-text">❖ <span>Về
+                                                                            kiến
+                                                                            thức</span>:</span></em></strong>
+                                                        </p>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            {{!-- <tr> tieu de 1 --}}
+                                            <tr class="allowDeletion_4 KyNang KyNangKT" id="KyNangKT1 ">
+                                                <th class="content-4-learning-outcomes-1 KN section-content text-left stt" contenteditable="true">
+                                                    1
+                                                </th>
+                                                <td class="content-4-learning-outcomes-2">
+                                                    <div class="section-content KT" id="KT_ND_1" contenteditable="true"
+                                                        onkeydown="handleKeyPress('KT_ND_1',event)">
+                                                        Trình bày các khái niệm cơ bản về xác suất
+                                                    </div>
+                                                </td>
+                                                <td class="content-4-learning-outcomes-3  text-center">
+                                                    <div class="dropdown" id="dropdown-KT_DUPO_1">
+                                                        <p class="section-content"> <span contenteditable="true" id="KT_DUPO_1" class="KT">PLO1</span></p>
+                                                        <ul class="dropdown-content">
+                                                            {{#each PLO}}
+                                                            <li onclick="updateValue('KT_DUPO_1', '{{this.Ten_CDR}}','DUPO')">
+                                                                {{this.Ten_CDR}}</li>
+                                                            {{/each}}
+                                                        </ul>
+                                                    </div>
+                                                </td>
+                                                <td class="content-4-learning-outcomes-4 text-center">
+                                                    <div class="section-contentdropdown">
+                                                        <span contenteditable="true" id="KT_TD_1" class="KT">2</span>
+                                                        <ul class="dropdown-content">
+                                                            <li onclick="updateValue('KT_TD_1', '1','TUA')">1</li>
+                                                            <li onclick="updateValue('KT_TD_1', '2','TUA')">2</li>
+                                                            <li onclick="updateValue('KT_TD_1', '3','TUA')">3</li>
+                                                            <li onclick="updateValue('KT_TD_1', '4','TUA')">4</li>
+                                                            <li onclick="updateValue('KT_TD_1', '5','TUA')">5</li>
+                                                        </ul>
+                                                    </div>
+                                                
+                                                
+                                                
+                                                
+                          
                                     </td>
-                                    <td class="header-4-learning-outcomes-3">
-                                        <p><strong>Đáp ứng CĐR của CTĐT</strong></p>
-                                    </td>
-                                    <td class="header-4-learning-outcomes-4">
-                                        <p><strong>Trình độ năng lực</strong></p>
-                                    </td>
-                                    <td class="header-4-learning-outcomes-5">
-                                        <p><strong>TUA</strong></p>
-                                    </td>
-                                </tr>
-                            </thead>
-                            <tbody id="table-4-learning-outcomes">
-                                {{!-- <tr> tieu de 1 --}}
-                                <tr id="KyNangKT" class="LoaiKN">
-                                    <td colspan="5" class="body-4-learning-outcomes">
-                                        <div class="body-4-learning-outcomes-tital">
-                                            <p class="decimal-list"><strong><em><span class="strong-text">❖ <span>Về
-                                                                kiến
-                                                                thức</span>:</span></em></strong>
-                                            </p>
-                                        </div>
-                                    </td>
-                                </tr>
-                                {{!-- <tr> tieu de 1 --}}
-                                <tr class="allowDeletion_4 KyNang KyNangKT" id="KyNangKT1">
-                                    <th class="content-4-learning-outcomes-1 KN section-content text-left stt"
-                                        contenteditable="true">
-                                        1
-                                    </th>
-                                    <td class="content-4-learning-outcomes-2">
-                                        <div class="section-content KT" id="KT_ND_1" contenteditable="true"
-                                            onkeydown="handleKeyPress('KT_ND_1',event)">
-                                            Trình bày các khái niệm cơ bản về xác suất
-                                        </div>
-                                    </td>
-                                    <td class="content-4-learning-outcomes-3">
-                                        <div class="dropdown" id="dropdown-KT_DUPO_1">
-                                            <p class="section-content"> <span contenteditable="true" id="KT_DUPO_1"
-                                                    class="KT">PLO1</span></p>
-                                            <ul class="dropdown-content">
-                                                {{#each PLO}}
-                                                <li onclick="updateValue('KT_DUPO_1', '{{this.Ten_CDR}}','DUPO')">
-                                                    {{this.Ten_CDR}}</li>
-                                                {{/each}}
-                                            </ul>
-                                        </div>
-                                    </td>
-                                    <td class="content-4-learning-outcomes-4">
-                                        <p class="section-content text-center"><span contenteditable="true" id="KT_TD_1"
-                                                class="KT">2</span></p>
-                                    </td>
-                                    <td class="content-4-learning-outcomes-5">
+                                    <td class="content-4-learning-outcomes-5  text-center">
                                         <div class="dropdown" id="dropdown-KT_DUPO_1">
                                             <p class="section-content"><span contenteditable="true" id="KT_TUA_1"
                                                     class="KT">TUA</span>
@@ -521,7 +531,7 @@
                                             Trình bày các khái niệm cơ bản về xác suất
                                         </div>
                                     </td>
-                                    <td class="content-4-learning-outcomes-3">
+                                    <td class="content-4-learning-outcomes-3  text-center">
                                         <div class="dropdown" id="dropdown-KN_DUPO_1">
                                             <p class="section-content"> <span contenteditable="true" id="KN_DUPO_1"
                                                     class="KN">PLO1</span></p>
@@ -534,11 +544,22 @@
                                         </div>
                                     </td>
 
-                                    <td class="content-4-learning-outcomes-4">
-                                        <p class="section-content text-center"><span contenteditable="true" id="KN_TD_1"
-                                                class="KN">2</span></p>
+                                    <td class="content-4-learning-outcomes-4  text-center">
+                                       
+
+
+                                        <div class="section-content text-center dropdown">
+                                                        <span contenteditable="true" id="KN_TD_1" class="KT text-center">2</span>
+                                                        <ul class="dropdown-content">
+                                                            <li onclick="updateValue('KN_TD_1', '1','TUA')">1</li>
+                                                            <li onclick="updateValue('KN_TD_1', '2','TUA')">2</li>
+                                                            <li onclick="updateValue('KN_TD_1', '3','TUA')">3</li>
+                                                            <li onclick="updateValue('KN_TD_1', '4','TUA')">4</li>
+                                                            <li onclick="updateValue('KN_TD_1', '5','TUA')">5</li>
+                                                        </ul>
+                                                    </div>        
                                     </td>
-                                    <td class="content-4-learning-outcomes-5">
+                                    <td class="content-4-learning-outcomes-5  text-center">
                                         <div class="dropdown" id="dropdown-KN_DUPO_1">
                                             <p class="section-content"><span contenteditable="true" id="KN_TUA_1"
                                                     class="KN">TUA</span>
@@ -575,7 +596,7 @@
                                             Trình bày các khái niệm cơ bản về xác suất
                                         </div>
                                     </td>
-                                    <td class="content-4-learning-outcomes-3">
+                                    <td class="content-4-learning-outcomes-3  text-center">
                                         <div class="dropdown" id="dropdown-TD_DUPO_1">
                                             <p class="section-content"> <span contenteditable="true" id="TD_DUPO_1"
                                                     class="TD">PLO1</span></p>
@@ -587,11 +608,21 @@
                                             </ul>
                                         </div>
                                     </td>
-                                    <td class="content-4-learning-outcomes-4">
-                                        <p class="section-content text-center"><span contenteditable="true" id="TD_TD_1"
-                                                class="TD">2</span></p>
+                                    <td class="content-4-learning-outcomes-4  text-center">
+                                 
+
+                                                <div class="section-content text-center dropdown">
+                                                        <span contenteditable="true" id="TD_TD_1" class="KT text-center">2</span>
+                                                        <ul class="dropdown-content">
+                                                            <li onclick="updateValue('TD_TD_1', '1','TUA')">1</li>
+                                                            <li onclick="updateValue('TD_TD_1', '2','TUA')">2</li>
+                                                            <li onclick="updateValue('TD_TD_1', '3','TUA')">3</li>
+                                                            <li onclick="updateValue('TD_TD_1', '4','TUA')">4</li>
+                                                            <li onclick="updateValue('TD_TD_1', '5','TUA')">5</li>
+                                                        </ul>
+                                                    </div>  
                                     </td>
-                                    <td class="content-4-learning-outcomes-5">
+                                    <td class="content-4-learning-outcomes-5  text-center">
                                         <div class="dropdown" id="dropdown-TD_DUPO_1">
                                             <p class="section-content"><span contenteditable="true" id="TD_TUA_1"
                                                     class="TD">TUA</span>
@@ -693,15 +724,22 @@
                                 </td>
                                 <td id="Chuong1.3" class="body-5-course-content-44_85pt">
                                     <p class="header-5-course-content-p text-center"><strong><span
-                                                contenteditable="true" class="GioLyThuyet">5</span></strong></p>
+                                                contenteditable="true" class="GioLyThuyet">5
+                                                
+                                                </span></strong></p>
                                 </td>
                                 <td id="Chuong1.4" class="body-5-course-content-40_4pt">
                                     <p class="header-5-course-content-p text-center"><strong><span
-                                                contenteditable="true" class="GiothucHanh">5</span></strong></p>
+                                                contenteditable="true" class="GiothucHanh">5
+                                                
+                                                </span></strong></p>
                                 </td>
                                 <td id="Chuong1.5" class="body-5-course-content-55_85pt">
                                     <p class="header-5-course-content-p text-center"><strong><span
-                                                contenteditable="true" class="SoGioTuHoc">5</span></strong></p>
+                                                contenteditable="true" class="SoGioTuHoc">5
+                                                
+                                                
+                                                </span></strong></p>
                                 </td>
                             </tr>
                             <tr class="ChiTietChuong1" id="allowDeletion">
@@ -1227,10 +1265,6 @@
                 {{!----}}
                 {{!-- 8. Các quy định (Course requirements and expectation): --}}
                 {{!----}}
-
-
-
-
             </div>
         </div>
 
