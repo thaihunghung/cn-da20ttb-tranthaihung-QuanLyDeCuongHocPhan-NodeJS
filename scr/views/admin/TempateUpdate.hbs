@@ -1,27 +1,54 @@
-
-<div class="formInput">
-    <div class="formInput_monHoc" id="formInput_monHoc">
-
-        <div class="formInput_baseA4" id="formInput_baseA4">
-
-            <div class="formInput_print" spellcheck ="false" >
-                {{#each tieuDe}}
-                    <div>{{{this.tieuDe}}}</div>
-                {{#if (eq this.tieuDe 'thongTinChung')}}
-                {{> thongTinChung }}
-                {{else if (eq this.tieuDe 'doclap')}}
-                {{> doclap }}
-                {{/if}}
-                {{/each}}
-               
-            </div>
-        </div>
+{{#each templates}}
+<div class="container" spellcheck="false">
+    <div class="card">
+      <div class="card-header">
+        Template {{order}}
+      </div>
+      <div class="card-body">
+        <form id="updateForm_{{_id}}">
+          <div class="form-group">
+            <label for="order_{{_id}}">Order</label>
+            <input type="number" class="form-control" name="order" id="order_{{_id}}" value="{{this.order}}" required>
+          </div>
+          <div class="form-group">
+            <label for="compileMethod_{{_id}}">Compile Method</label>
+            <input type="text" class="form-control" name="compileMethod" id="compileMethod_{{_id}}" value="{{this.compileMethod}}">
+          </div>
+          <div class="form-group">
+            <label for="htmlContent_{{_id}}">HTML Content</label>
+            <textarea class="form-control" name="htmlContent" id="htmlContent_{{_id}}" rows="4">{{this.htmlContent}}</textarea>
+          </div>
+          <button type="button" class="btn btn-primary" onclick="updateTemplate('{{_id}}')">Update</button>
+        </form>
+      </div>
     </div>
 </div>
+{{/each}}
 
-{{>all_Autocomplete}}
-{{>Autocomplete}}
-{{>ChangeDropdownText}}
-{{>CleanUpDataPost}}
-{{>PostUpdate}}
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+<script>
+function updateTemplate(templateId) {
+  const form = document.getElementById('updateForm_' + templateId);
+  const formData = new FormData(form);
+  let formObject = {};
+  formData.forEach(function(value, key){
+      formObject[key] = value;
+  });
+  axios.put('/template/update/' + templateId, formObject)
+    .then(function (response) {
+      console.log('Updated successfully:', response.data);
+    })
+    .catch(function (error) {
+      console.error('Update failed:', error);
+    });
+}
+</script>
+<script>
+  document.getElementById('modify__admin_hidden').style.display = 'block';
+  document.getElementById('modify__user_hidden').style.display = 'none'; 
+  document.getElementById('modify__project_hidden').style.display = 'none';
+  document.getElementById('modify__SaveP_hidden').style.display = 'none';
+  document.getElementById('modify__PDF_hidden').style.display = 'none';
+</script>
+
 

@@ -28,6 +28,6 @@ exports.listProject = async (req, res) => {
         }
     } else {
         console.log('Không có token');
-        res.status(401).json({ message: 'Token không tồn tại' });
+        return res.redirect('/login');
     }
 };

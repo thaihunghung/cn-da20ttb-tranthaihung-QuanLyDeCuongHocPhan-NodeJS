@@ -1,7 +1,9 @@
 const express = require('express');
 const router = express.Router();
-const template = require('../controllers/TemplateController');
+const adminController = require('../controllers/AdminController');
+
+
 const { verifyToken, hasRole } = require('../middleware/auth.middleware');
-router.get('/',template.Template_Get)
-router.put('/update/:id',template.Template_Update)
+router.get('/',verifyToken,hasRole(1), adminController.Admin_index)
+
 module.exports = router;

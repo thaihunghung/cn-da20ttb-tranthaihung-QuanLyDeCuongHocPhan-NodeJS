@@ -180,6 +180,9 @@ span {
 .strong {
     font-weight: bold;
 }
+#modify__admin_hidden { 
+    font-size: 20px;
+}
 .instructionForm-table5,
 .instructionForm-table4,
 .instructionForm-table2

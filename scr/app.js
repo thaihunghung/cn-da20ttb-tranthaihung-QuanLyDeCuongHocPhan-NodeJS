@@ -27,6 +27,7 @@ const hocphanRoutes = require('./routes/HocPhanRoute.js');
 const projectRoutes = require('./routes/projectRoute.js');
 const userRoutes = require('./routes/userRoutes.js');
 const template = require('./routes/templateRoute.js');
+const admin = require('./routes/adminRoute.js');
 const db = require('./database/config.js');
 // // // // // // 
 // Routes     
@@ -64,6 +65,7 @@ app.use('/hung',hocphanRoutes);
 app.use('/user', userRoutes);
 app.use('/project', projectRoutes);
 app.use('/template',template)
+app.use('/admin',admin)
 // const HocPhan = require('./models/fulldatabase');
 // app.post('/saveHocPhan',  (req, res) => {
 //   console.log('Request Body:', req.body);
@@ -174,8 +176,6 @@ try {
   // Generate the PDF with specified margins
   await page.pdf(pdfOptions);
   await browser.close();
-
-  // Trả về đường dẫn tới file PDF trong phản hồi
   res.json({ pdfPath: '/pdf/output.pdf' });
 } catch (error) {
   console.error('Error:', error);
@@ -183,7 +183,7 @@ try {
 }
 });
 
-// Error handling middleware (if needed)
+
 app.use((err, req, res, next) => {
   console.error(err.stack);
   res.status(500).send('Something went wrong!');

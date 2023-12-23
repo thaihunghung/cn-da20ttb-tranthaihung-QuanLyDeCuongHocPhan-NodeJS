@@ -1,2 +1,58 @@
-<a href="/chuongtrinh">chuongtrinh</a><br>
-<a href="/template/update">Template_Editing</a>
+<style>
+.layout_Admin {
+    display: flex;
+    min-height: 100vh; /* Full height of the viewport */
+}
+
+.Admin_Nav {
+    width: 200px; /* Fixed width for the sidebar */
+    background-color: #333; /* Dark background for the sidebar */
+    color: white; /* Light text for contrast */
+    padding: 20px; /* Some padding inside the sidebar */
+    min-height: 100vh; /* Full height */
+}
+
+.Admin_Nav a {
+    color: white; /* Light color for links */
+    text-decoration: none; /* No underline for links */
+    display: block; /* Make links block elements to occupy the full width of the sidebar */
+    margin-bottom: 10px; /* Space between links */
+}
+
+.Admin_Nav a:hover {
+    background-color: #555; /* Slightly lighter background on hover */
+    padding-left: 5px; /* Indent text a bit on hover */
+}
+
+.Admin_product {
+    flex-grow: 1; /* Take up the remaining width */
+    padding: 20px; /* Padding around content */
+    background-color: #f4f4f4; /* Light background for the content area */
+}
+</style>
+<div class="layout_Admin">
+<div class="Admin_Nav">
+    
+    <a href="/chuongtrinh">Chương trình </a><br>
+    <a href="/template">Quản lý khung</a>
+</div>
+<div class="Admin_product">
+
+
+
+
+</div>
+</div>
+
+
+
+
+
+
+<script>
+  document.getElementById('modify__admin_hidden').style.display = 'block';
+  document.getElementById('modify__user_hidden').style.display = 'none';
+  document.getElementById('modify__project_hidden').style.display = 'none';
+  document.getElementById('modify__SaveP_hidden').style.display = 'none';
+  document.getElementById('modify__PDF_hidden').style.display = 'none';
+</script>

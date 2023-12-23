@@ -1,1 +1,53 @@
-<h1>hi</h1>
+<style>
+    .tital__Messager {
+        display: flex;
+        width: 16cm;
+        text-align: center;
+        background-color:burlywood;
+        justify-content: center;
+        align-items: center;
+        margin-bottom: 50px;
+
+        strong {
+            color: black;
+        }
+    }
+</style>
+<div class="formInput">
+    <div class="formInput_monHoc" id="formInput_monHoc">
+        <div class="formInput_baseA4" id="formInput_baseA4">
+            <div class="PLO">
+                <table>
+                    {{#each processedPLOs}}
+                    {{#if newGroup}}
+                    <!-- Chỉ hiển thị tiêu đề này khi bắt đầu một nhóm PLO mới -->
+                    <tr>
+                        <th colspan="2">{{LoaiCDR_CT}}</th>
+                    </tr>
+                    {{/if}}
+                    <tr>
+                        <td class="ValuePLO">{{Ten_CDR}}</td>
+                        <td style="text-align: justify;">{{NoiDung}}</td>
+                    </tr>
+                    {{/each}}
+                </table>
+            </div>
+            <div class="formInput_print" spellcheck="false">
+                <div class="tital__Messager">
+                    <H1><strong>Mẫu hiện tại trên hệ thống</strong></H1>
+                </div>
+
+                {{{templates}}}
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+<script>
+    const tb2 = document.getElementById('instructionForm-table2');
+    tb2.style.display = 'none';
+    const tb4 = document.getElementById('instructionForm-table4');
+    tb4.style.display = 'none';
+    const tb5 = document.getElementById('instructionForm-table5');
+    tb5.style.display = 'none';
+</script>

@@ -1,13 +1,10 @@
-
 <style>
     body {
-
     background-color: #f4f4f4;
     margin: 0;
     padding: 0;
     height: 100vh;
 }
-
 .container {
     background: #fff;
     padding: 20px;
@@ -89,12 +86,15 @@
             }
         }).then(data => {
             setCookie('token', data.token, 1);
-            window.location.href = 'home';
+            if (data.redirectUrl) {
+                console.log(data.redirectUrl);
+                window.location.href = data.redirectUrl; 
+            } else {
+                alert("đăng nhập thất bại")
+            }
         }).catch(err => {
             console.log(err);
-        });
-      
+        }); 
     }
 </script>
-
 {{>Get_Set_Cookie}}

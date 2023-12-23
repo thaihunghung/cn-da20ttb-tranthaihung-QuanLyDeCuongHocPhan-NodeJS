@@ -49,7 +49,10 @@
 
       {{#each this}}
         <tr>
-          <td class="table-body-program-58_55pt text-center"><p><strong>{{this.Ten_CDR}}</strong></p></td>
+          <td class="table-body-program-58_55pt text-center">
+            <p><strong>{{this.Ten_CDR}}</strong></p>
+            <div class="btn">Chỉnh sửa</div>
+          </td>
           <td class="table-body-program-229_6pt"><p>&nbsp;{{this.NoiDung}}&nbsp;</p></td>
           {{#each ../../PO}}
             <td class="table-body-program-36pt text-center">
@@ -69,7 +72,11 @@
     </tbody>
   </table>
 </div>
-
+<script>
+  document.getElementById('modify__admin_hidden').style.display = 'block';
+  document.getElementById('modify__user_hidden').style.display = 'none';
+  document.getElementById('modify__project_hidden').style.display = 'none';
+</script>
 
 
 {{!-- <h1>Ma Trận Ánh Xạ PO-PLO</h1>

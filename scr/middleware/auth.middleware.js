@@ -6,13 +6,13 @@ function verifyToken(req, res, next)  {
   const token = req.cookies.token;
   if (!token) {
       
-      return res.redirect('/login?message=Bạn cần đăng nhập');
+      return res.redirect('/login');
   }
 
   // Giải mã token
   jwt.verify(token, process.env.TOKEN_SECRET_KEY, (err, decoded) => {
       if (err) {
-          return res.status(401).json({ message: 'Token không hợp lệ' });
+          return res.redirect('/login');
       }
       req.decoded = decoded;
       next();

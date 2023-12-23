@@ -11,5 +11,5 @@ router.get('/update',projectController.project_Get_Update);
 router.delete('/delete/:MaHP',projectController.project_Delete_PUT);
 router.get('/',verifyToken,projectController.index);
 router.post('/',projectController.project_Post_Save);
-router.delete('/:fileName',projectController.delete_File_Name);
+router.delete('delete_file_Name/:fileName',projectController.delete_File_Name);
 module.exports = router;

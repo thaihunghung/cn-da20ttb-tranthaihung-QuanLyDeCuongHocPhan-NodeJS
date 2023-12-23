@@ -9,9 +9,9 @@
         <div class="LP-product-item">
             {{#each ListCreate}}
             <p id="username" class="hidden">{{this.username}}</p>
-            <p id="filenam{{@index}}"> {{this.nameProject}}</p>
-            <button class="btn" onclick="Update({{@index}})">Chỉnh sửa</button>
-            <button class="btn" onclick="delete({{@index}})">Xóa</button>
+            <p id="filenam{{inc @index}}"> {{this.nameProject}}</p>
+            <button class="btn" onclick="Update({{inc @index}})">Chỉnh sửa</button>
+            <button class="btn" onclick="delete({{inc @index}})">Xóa</button>
 
             {{/each}}
         </div>
@@ -35,26 +35,6 @@
             window.location.href = `../project/update/?filename=${filename}`;
         }
     }
-    function delete(index) {
-        const tenduanElement = document.getElementById('filenam' + index);
-        const usernameElement = document.getElementById('username');
-        if (tenduanElement && usernameElement) {
-            const tenduan = tenduanElement.textContent.trim();
-            const username = usernameElement.textContent.trim();
-            const filename = encodeURIComponent(username + ':' + tenduan);
-            const isConfirmed = window.confirm("Bạn có chắc chắn muốn xóa?");
-                if (isConfirmed) {
-                axios.delete(`../user/delete/${filename}`)
-                .then(response => {
-                    // Xử lý phản hồi nếu cần thiết
-                    console.log(response.data);
-                })
-                .catch(error => {
-                    // Xử lý lỗi nếu có
-                    console.error(error);
-                });
-            }
-        }
-    
-    }
+
+    delete_file_Name
 </script>

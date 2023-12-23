@@ -217,7 +217,6 @@ exports.index = async (req, res) =>{
               }
               compiledTemplates.push(compiled);
           });
-//<div class="ModifyTB2"> <div class="autocomplete">Tên:&nbsp; <span contenteditable="true" id="TenTQ1">Lập trình hướng đối tượng</span> </div> <div class="autocomplete">MSHP:&nbsp; <span contenteditable="true" id="MaTQ1">220096</span> </div> </div> <div class="ModifyTB2"> <div class="autocomplete">Tên:&nbsp; <span contenteditable="true" id="TenTQ2">Cơ sở dữ liệu</span> </div> <div class="autocomplete">MSHP:&nbsp; <span contenteditable="true" id="MaTQ2">220099</span> </div> </div>
           let compiledString = compiledTemplates.join(''); 
           
           let currentLoaiCDR_CT = null;
@@ -625,7 +624,7 @@ exports.project_Get_Update = async (req, res) => {
     var DataTeachingAndLearning = {
       PhuongPhapDayHoc : PhuongPhapDayHoc_Object
     }
-    console.log(DataTeachingAndLearning);
+ 
 
     var DataCourseAssessment = {
       DanhGia1 : DanhGia1_TH_Object,
