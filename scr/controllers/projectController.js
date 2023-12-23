@@ -1,8 +1,6 @@
 const mongoose = require('mongoose');
 const Handlebars = require('handlebars');
-
 const jwt = require('jsonwebtoken');
-
 const HocPhanModel = require('../models/HocPhan/hocPhan.model');
 const GiangVienModel = require('../models/HocPhan/GiangVien.model');
 const TLTKModel = require('../models/HocPhan/TaiLieuThamKhao.model');
@@ -75,7 +73,26 @@ exports.index = async (req, res) =>{
               HocPhan_SH: '<span contenteditable="true">Không</span>',
             }
           } 
-          var TaiLieuThamKhao = {};
+          var TaiLieuThamKhao = {     
+              TaiLieu: [
+                {
+                  NoiDung: '<div class="giaotrinh TaiLieu section-content text-left" id="giaotrinh1" style="display: flex;"><div class="stt" contenteditable="false">[1]&nbsp;&nbsp;</div> <div><span contenteditable="true">[tên tác giả](năm xuất bản)</span>.&nbsp;<span contenteditable="true" style="font-style: italic;">[tên tài liệu]</span>.&nbsp;<br><span contenteditable="true">[nguồn]</span></div></div>',
+
+                }
+              ],
+              GiaoTrinh: [
+                {
+                  NoiDung: '<div class="TaiLieuThamKhao TaiLieu section-content text-left" id="TaiLieuThamKhao1" style="display: flex;"><div class="stt" contenteditable="false">[2]&nbsp;&nbsp;</div> <div><span contenteditable="true">[tên tác giả](năm xuất bản)</span>.&nbsp;<span contenteditable="true" style="font-style: italic;">[tên tài liệu]</span>.&nbsp;<br><span contenteditable="true">[nguồn]</span></div></div>',
+                  loaiHocLieu: 'Tài liệu tham khảo',
+                }
+              ],
+              HocLieu: [
+                {
+                  NoiDung: '<div class="HocLieu TaiLieu section-content text-left" id="HocLieu1" style="display: flex;"><div class="stt" contenteditable="false">[3]&nbsp;&nbsp;</div> <div><span contenteditable="true">[tên tác giả](năm xuất bản)</span>.&nbsp;<span contenteditable="true" style="font-style: italic;">[tên tài liệu]</span>.&nbsp;<br><span contenteditable="true">[nguồn]</span></div></div>',
+                  loaiHocLieu: 'Học Liệu',
+                }
+              ]
+          };
           var DataCourseLearningOutcomes = {
             CDR_KT: [
               {
@@ -119,7 +136,11 @@ exports.index = async (req, res) =>{
               }
             ]
           };
-          var DataTeachingAndLearning = {};
+          var DataTeachingAndLearning = {
+            PhuongPhapDayHoc: {
+              TenPP: '&nbsp;&nbsp;-&nbsp;&nbsp;Diễn giảng <br> &nbsp;&nbsp;-&nbsp;&nbsp;Vấn đáp (Questions – Answers)<br> &nbsp;&nbsp;-&nbsp;&nbsp;Hoạt động nhóm (Group-based Learning)<br> &nbsp;&nbsp;-&nbsp;&nbsp;Học dựa trên dự án (Project-based Learning)<br> &nbsp;&nbsp;-&nbsp;&nbsp;Thao tác mẫu (Demo)',
+            }
+          };
           var DataCourseAssessment = {
             DanhGia1: {
               HinhThucDG: '<div contenteditable="true" class="HinhThucDG DG" id="ht1" onkeydown="handleKeyPress(\'ht1\',event)">Kiểm tra lý thuyết hoặc Kiểm tra thực hành </div>',
@@ -150,7 +171,13 @@ exports.index = async (req, res) =>{
               Tyle: `<div class="Tyle DG"> <div class="dropdown" id="dropdown-Tyle4"> <span contenteditable="true" id="Tyle4">25</span>% <ul class="dropdown-content"> <li onclick="updateValue('Tyle4', '25','TUA')">25</li> <li onclick="updateValue('Tyle4', '50','TUA')">50</li> <li onclick="updateValue('Tyle4', '75','TUA')">75</li> </ul> </div> </div>`,
             }
           }
-          var DataCourseFooter = {};
+          var DataCourseFooter = {
+            GiangVien: {
+              DsGiangVien: `<div class="autocomplete"> <div class="dropdown" id="dropdown-ChucDanh1"> <span contenteditable="true" id="ChucDanh1">TS</span>:&nbsp; <ul class="dropdown-content"> <li onclick="updateValue('ChucDanh1', 'Ths','TUA')">Ths</li> <li onclick="updateValue('ChucDanh1', 'TS','TUA')">TS</li> <li onclick="updateValue('ChucDanh1', 'PGS','TUA')">PGS</li> </ul> </div> <span contenteditable="true" id="HoTen1" class="">Nguyễn Nhứt Lam</span> </div> <br> <div class="autocomplete"> <div class="dropdown" id="dropdown-ChucDanh2"> <span contenteditable="true" id="ChucDanh2">Ths</span>:&nbsp; <ul class="dropdown-content"> <li onclick="updateValue('ChucDanh2', 'Ths','TUA')">Ths</li> <li onclick="updateValue('ChucDanh2', 'TS','TUA')">TS</li> <li onclick="updateValue('ChucDanh2', 'PGS','TUA')">PGS</li> </ul> </div> <span contenteditable="true" id="HoTen2"> Phạm Thị Trúc Mai </span> </div>`,
+              BienSoan: 'Huỳnh Văn Thanh',
+              PhanBien: 'Phạm Thị Trúc Mai',
+            }
+          };
           var templates = await TempLate.find().sort({ order: 1 })
           let compiledTemplates = [];
 
@@ -397,19 +424,27 @@ try {
   }
     
 };
- 
+
 exports.project_Delete_PUT = async (req, res) => {
     const MaHP = req.params.MaHP;
     try {
-        await HocPhanModel.findOneAndDelete({ fileName: MaHP });
-        await GiangVienModel.deleteMany({ MaHP: MaHP });
-        await TLTKModel.deleteMany({ MaHP: MaHP });
-        await PP_Day_hocModel.deleteMany({ MaHP: MaHP });
-        await QuyDinhModel.deleteMany({ MaHP: MaHP });
-        await DieuKienThamGiaModel.deleteMany({ MaHP: MaHP });
-        await DG_HocPhanModel.deleteMany({ MaHP: MaHP });
-        await ChuongModel.deleteMany({ MaHP: MaHP });
-        await CDR_HocPhanModel.deleteMany({ MaHP: MaHP });
+          await HocPhanModel.findOneAndDelete({ fileName: MaHP });
+          await GiangVienModel.deleteMany({ MaHP: MaHP });
+          await TLTKModel.deleteMany({ MaHP: MaHP });
+          await PP_Day_hocModel.deleteMany({ MaHP: MaHP });
+          await QuyDinhModel.deleteMany({ MaHP: MaHP });
+          await DieuKienThamGiaModel.deleteMany({ MaHP: MaHP });
+          await DG_HocPhanModel.deleteMany({ MaHP: MaHP });
+
+          const chuongsToDelete = await ChuongModel.find({ MaHP: MaHP });
+          chuongsToDelete.forEach(async (chuong) => {
+            await DapUngChuongModel.deleteMany({ MaChuong: chuong.MaChuong });
+          });
+          await ChuongModel.deleteMany({ MaHP: MaHP });
+          const cdrHocPhanIds = await CDR_HocPhanModel.find({ MaHP: MaHP }).distinct('_id');
+          await DapUngCDR.deleteMany({ MaCDR_MH: { $in: cdrHocPhanIds } });
+          await CDR_HocPhanModel.deleteMany({ MaHP: MaHP });
+
         // Xử lý thành công
         res.status(200).json({ message: 'Xóa thành công tất cả các documents.' });
     } catch (error) {
@@ -494,7 +529,6 @@ exports.project_Get_Update = async (req, res) => {
     const DieuKien = await DieuKienThamGiaModel.find({ MaHP: findName.toString()});
     if (DieuKien[0]) {
       var DieuKienThamGia = DieuKien[0].toObject();
-      console.log(DieuKienThamGia)
     }
 
     const DanhGia1 = await DG_HocPhanModel.find({ MaHP: findName.toString() ,MaDG_HP: 'MaDG1',LoaiDG: 'Đánh giá quá trình'})
@@ -519,7 +553,7 @@ exports.project_Get_Update = async (req, res) => {
     if (GiangVien[0]) {
       var GiangVien_Object = GiangVien[0].toObject();
     }
-
+    
   
     const CDR_KT = await CDR_HocPhanModel.find({ MaHP: findName.toString(), loai_CDRMH: 'Về kiến thức' });
     if (CDR_KT) {
@@ -569,11 +603,12 @@ exports.project_Get_Update = async (req, res) => {
       HocPhan :hocPhanObject,
       DieuKien :DieuKienThamGia
     } 
-    console.log(DataDieuKienThamGia);
 
     var DataTeachingAndLearning = {
       PhuongPhapDayHoc : PhuongPhapDayHoc_Object
     }
+    console.log(DataTeachingAndLearning);
+
     var DataCourseAssessment = {
       DanhGia1 : DanhGia1_TH_Object,
       DanhGia2 : DanhGia2_TH_Object,
@@ -584,6 +619,7 @@ exports.project_Get_Update = async (req, res) => {
     var DataCourseFooter = {
       GiangVien: GiangVien_Object
     }
+    
 
     const templates = await TempLate.find().sort({ order: 1 })
     let compiledTemplates = [];
@@ -633,7 +669,6 @@ exports.project_Get_Update = async (req, res) => {
     });
 }
 
-
 function compileMethod(templateString, data) {
   const compiledTemplate = Handlebars.compile(templateString);
   return compiledTemplate(data);
@@ -653,8 +688,6 @@ Handlebars.registerHelper('isChecked', function(arg1, arg2) {
 Handlebars.registerHelper('eq', function(arg1, arg2) {
     if (arg1 && arg2) { return arg1.trim() === arg2.trim();}
 });
-
-
 async function fetchTenCDR(maCDR_MH) {
   try {
       const dapUngRecords = await DapUngCDR.find({ MaCDR_MH: maCDR_MH });

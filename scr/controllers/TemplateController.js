@@ -6,7 +6,7 @@ exports.Template_Editing = async (req, res) => {
         const tieuDe = await templates.find({tieuDe: "thongTinChung"});
         const TemplateOB = tieuDe.map(mongooseToObject);
         //Template: TemplateOB
-        console.log(tieuDe)
+
         res.render('admin/TempateUpdate', {
             tieuDe: TemplateOB, 
              });

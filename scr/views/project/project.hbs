@@ -19,8 +19,8 @@
                 </table>
             </div>
             <div class="formInput_print" spellcheck="false">
+                <button class="btn" id="buttonSave">Save</button>
                 {{{templates}}}
-
             </div>
         </div>
     </div>
@@ -29,37 +29,41 @@
 
 <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 <script>
+    document.addEventListener("DOMContentLoaded", function () {
+        UpdateSTT_TB2();
+        UpdateSTTskill_TB4()
+    });
+</script>
+<script>
+    
     function sendA4Content() {
         var a4Content = document.getElementById('formInput_monHoc').innerHTML;
         axios.post('/pdf', { a4Content })
             .then(function (response) {
-                console.log(response.data);
+                window.location.href = response.data.pdfPath;
             })
             .catch(function (error) {
                 console.error('Error:', error);
             });
     }
-
-</script>
-<script>
     const buttonSave = document.getElementById('buttonSave');
-
     buttonSave.addEventListener('click', function () {
         const userConfirmation = window.confirm('Bạn có chắc chắn muốn lưu dữ liệu không?');
         if (userConfirmation) {
-            Save_Project();
-            window.location.href = '../user/listProject'
+            //Save_Project();
+            const urlParams = new URLSearchParams(window.location.search);
+            const filename = urlParams.get('filename');
+            var Datafilename = filename.toString();
+            console.log(Datafilename);
+            alert("Đã save")
+            //window.location.href = `../project/update/?filename=${filename}`;
+
+            //window.location.href = '../user/listProject'
         } else {
             console.log('Người dùng không đồng ý lưu dữ liệu.');
         }
     });
 
-</script>
-<script>
-    document.addEventListener("DOMContentLoaded", function () {
-        UpdateSTT_TB2();
-        UpdateSTTskill_TB4()
-    });
 </script>
 {{>table-4}}
 {{> table-5}}

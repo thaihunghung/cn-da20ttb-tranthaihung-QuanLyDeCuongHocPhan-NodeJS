@@ -17,7 +17,7 @@
                   [nội dung chuẩn đầu ra]
               </div>  
           </td>
-          <td class="content-4-learning-outcomes-3 text-center">
+          <td class="content-4-learning-outcomes-3">
               <div class="dropdown" id="dropdown-KT_DUPO_${stemp}">
                   <p class="section-content"> <span contenteditable="true" id="KT_DUPO_${stemp}" class="KT">PLO1</span></p>
                   <ul class="dropdown-content">
@@ -28,7 +28,16 @@
               </div>
           </td>
           <td class="content-4-learning-outcomes-4 text-center">
-              <p class="section-content text-center"><span contenteditable="true" id="KT_TD_${stemp}" class="KT">2</span></p>
+              <div class="section-content dropdown">
+                  <span contenteditable="true" id="KT_TD_${stemp}" class="KT">2</span>
+                  <ul class="dropdown-content">
+                      <li onclick="updateValue('KT_TD_${stemp}', '1','TUA')">1</li>
+                      <li onclick="updateValue('KT_TD_${stemp}', '2','TUA')">2</li>
+                      <li onclick="updateValue('KT_TD_${stemp}', '3','TUA')">3</li>
+                      <li onclick="updateValue('KT_TD_${stemp}', '4','TUA')">4</li>
+                      <li onclick="updateValue('KT_TD_${stemp}', '5','TUA')">5</li>
+                  </ul>
+              </div>           
           </td>
           <td class="content-4-learning-outcomes-5 text-center">
               <div class="dropdown" id="dropdown-KT_DUPO_${stemp}">
@@ -61,7 +70,7 @@
                     [nội dung chuẩn đầu ra]
                 </div>                        
             </td>
-            <td class="content-4-learning-outcomes-3 text-center">
+            <td class="content-4-learning-outcomes-3">
                 <div class="dropdown" id="dropdown-KN_DUPO_${stemp}">
                     <p class="section-content"> <span contenteditable="true" id="KN_DUPO_${stemp}" class="KN">PLO1</span></p>
                     <ul class="dropdown-content"> 
@@ -73,7 +82,16 @@
                 </div>
             </td>
             <td class="content-4-learning-outcomes-4 text-center">
-                <p class="section-content text-center"><span contenteditable="true" id="KN_TD_${stemp}" class="KN">2</span></p>
+              <div class="section-content dropdown">
+                  <span contenteditable="true" id="KN_TD_${stemp}" class="KN">2</span>
+                  <ul class="dropdown-content">
+                      <li onclick="updateValue('KN_TD_${stemp}', '1','TUA')">1</li>
+                      <li onclick="updateValue('KN_TD_${stemp}', '2','TUA')">2</li>
+                      <li onclick="updateValue('KN_TD_${stemp}', '3','TUA')">3</li>
+                      <li onclick="updateValue('KN_TD_${stemp}', '4','TUA')">4</li>
+                      <li onclick="updateValue('KN_TD_${stemp}', '5','TUA')">5</li>
+                  </ul>
+              </div>            
             </td>
             <td class="content-4-learning-outcomes-5 text-center">
                 <div class="dropdown" id="dropdown-KN_DUPO_${stemp}">
@@ -107,7 +125,7 @@
                   [nội dung chuẩn đầu ra]
               </div>
           </td>
-          <td class="content-4-learning-outcomes-3 text-center">
+          <td class="content-4-learning-outcomes-3">
               <div class="dropdown" id="dropdown-TD_DUPO_${stemp}">
                   <p class="section-content"> <span contenteditable="true" id="TD_DUPO_${stemp}" class="TD">PLO1</span></p>
                   <ul class="dropdown-content">
@@ -118,7 +136,16 @@
               </div>
           </td>
           <td class="content-4-learning-outcomes-4 text-center">
-              <p class="section-content text-center"><span contenteditable="true" id="TD_TD_${stemp}" class="TD">2</span></p>
+              <div class="section-content dropdown">
+                  <span contenteditable="true" id="TD_TD_${stemp}" class="TD">2</span>
+                  <ul class="dropdown-content">
+                      <li onclick="updateValue('TD_TD_${stemp}', '1','TUA')">1</li>
+                      <li onclick="updateValue('TD_TD_${stemp}', '2','TUA')">2</li>
+                      <li onclick="updateValue('TD_TD_${stemp}', '3','TUA')">3</li>
+                      <li onclick="updateValue('TD_TD_${stemp}', '4','TUA')">4</li>
+                      <li onclick="updateValue('TD_TD_${stemp}', '5','TUA')">5</li>
+                  </ul>
+              </div>
           </td>
           <td class="content-4-learning-outcomes-5 text-center">
               <div class="dropdown" id="dropdown-TD_DUPO_${stemp}">
@@ -228,7 +255,9 @@
     var AllCDR = document.getElementsByClassName('content-4-learning-outcomes-1').length;
     var chuong = document.getElementsByClassName('Chuong').length;
     var ul_5 = document.querySelectorAll('.dropdown-content-5');
+    var ul_5_last = document.querySelectorAll('.dropdown-content-5-last');
     
+    //<li onclick="updateValue('KyNangMem1', '1','CDR')">1</li>
     ul_5.forEach(function (ulElement,index) {
       ulElement.innerHTML = '';
       var hung = [];
@@ -242,7 +271,18 @@
       
       ulElement.innerHTML = hung.join('');
     });
-
+    ul_5_last.forEach(function (ulElement,index) {
+      ulElement.innerHTML = '';
+      var hung = [];
+      for (var i = 1; i <= AllCDR; i++) {
+        hung.push(cleanUpString(`
+        <li onclick="updateValue('KyNangMem${(index + 1)}', '${i}', 'CDR')">
+          ${i}
+        </li>
+      `));
+      }
+      ulElement.innerHTML = hung.join('');
+    });
     //update value dropdown CDR tb7_KT7
     var ul_KT7 = document.querySelectorAll('.dropdown-content-KT7');
 

@@ -55,7 +55,7 @@
                 <div class="dropdown" id="dropdown-CDR_HocPhan${chuongRows.length}">
                     <p class="header-5-course-content-p text-center">
                         <strong><span contenteditable="true" class="CDR_HocPhan" id="CDR_HocPhan${chuongRows.length}">
-                            1, 2, 3</span></strong>
+                            1</span></strong>
                     </p>
                     <ul class="dropdown-content-5">
                         <li onclick="updateValue('CDR_HocPhan${chuongRows.length}', '1','CDR')">1</li>
@@ -64,17 +64,41 @@
                     </ul>
                 </div>
             </td>
-            <td id="Chuong${chuongRows.length}.3" class="body-5-course-content-44_85pt">
-                <p class="header-5-course-content-p text-center"><strong><span
-                    contenteditable="true" class="GioLyThuyet">5</span></strong></p>
+            <td id="Chuong${chuongRows.length}.3" class="body-5-course-content-44_85pt text-center">
+                <div class="dropdown header-5-course-content-p">
+                <strong><span contenteditable="true" class="GioLyThuyet" id="GioLyThuyet${chuongRows.length}">1</span></strong>
+                    <ul class="dropdown-content">
+                        <li onclick="updateValue('GioLyThuyet${chuongRows.length}', '1','TUA')">1</li>
+                        <li onclick="updateValue('GioLyThuyet${chuongRows.length}', '2','TUA')">2</li>
+                        <li onclick="updateValue('GioLyThuyet${chuongRows.length}', '3','TUA')">3</li>
+                        <li onclick="updateValue('GioLyThuyet${chuongRows.length}', '4','TUA')">4</li>
+                        <li onclick="updateValue('GioLyThuyet${chuongRows.length}', '5','TUA')">5</li>
+                    </ul>
+                </div>     
             </td>
-            <td id="Chuong${chuongRows.length}.4" class="body-5-course-content-40_4pt">
-                <p class="header-5-course-content-p text-center"><strong><span
-                    contenteditable="true" class="GiothucHanh">5</span></strong></p>
+            <td id="Chuong${chuongRows.length}.4" class="body-5-course-content-40_4pt text-center">
+                <div class="dropdown header-5-course-content-p">
+                <strong><span contenteditable="true" class="GiothucHanh" id="GiothucHanh${chuongRows.length}">1</span></strong>
+                    <ul class="dropdown-content">
+                        <li onclick="updateValue('GiothucHanh${chuongRows.length}', '1','TUA')">1</li>
+                        <li onclick="updateValue('GiothucHanh${chuongRows.length}', '2','TUA')">2</li>
+                        <li onclick="updateValue('GiothucHanh${chuongRows.length}', '3','TUA')">3</li>
+                        <li onclick="updateValue('GiothucHanh${chuongRows.length}', '4','TUA')">4</li>
+                        <li onclick="updateValue('GiothucHanh${chuongRows.length}', '5','TUA')">5</li>
+                    </ul>
+                </div>     
             </td>
-            <td id="Chuong${chuongRows.length}.5" class="body-5-course-content-55_85pt">
-                <p class="header-5-course-content-p text-center"><strong><span
-                    contenteditable="true" class="SoGioTuHoc">5</span></strong></p>
+            <td id="Chuong${chuongRows.length}.5" class="body-5-course-content-55_85pt text-center">
+                <div class="dropdown header-5-course-content-p">
+                    <strong><span contenteditable="true" class="SoGioTuHoc" id="SoGioTuHoc${chuongRows.length}">1</span></strong>
+                    <ul class="dropdown-content">
+                        <li onclick="updateValue('SoGioTuHoc${chuongRows.length}', '1','TUA')">1</li>
+                        <li onclick="updateValue('SoGioTuHoc${chuongRows.length}', '2','TUA')">2</li>
+                        <li onclick="updateValue('SoGioTuHoc${chuongRows.length}', '3','TUA')">3</li>
+                        <li onclick="updateValue('SoGioTuHoc${chuongRows.length}', '4','TUA')">4</li>
+                        <li onclick="updateValue('SoGioTuHoc${chuongRows.length}', '5','TUA')">5</li>
+                    </ul>
+                </div>    
             </td>
         `;
         newHeaderRow.innerHTML = rowHTML
@@ -125,8 +149,12 @@
                 <p class="text-justify"><em><span>Kỹ năng mềm và thái độ</span></em></p>
             </td>
             <td colspan="4" class="footer-5-course-content-212_9pt">
-                <div class="table-5-course-content-p text-justify" contenteditable="true"
-                    class="KyNangMem">1</span></div>
+                <div class="table-5-course-content-p section-content text-justify dropdown">                             
+                    <span contenteditable="true" id="KyNangMem${chuongRows.length}">1</span>
+                    <ul class="dropdown-content-5-last">
+                        <li onclick="updateValue('KyNangMem${chuongRows.length}', '1','CDR')">1</li>
+                    </ul>
+                </div>    
             </td>
         `;
         FooterRow.innerHTML = innerHTML_FooterRow
@@ -180,8 +208,15 @@
             sttElements.forEach((sttElement, sttIndex) => {
                 sttElement.innerHTML = "Chương&nbsp;" + (index * sttElements.length + sttIndex + 1) + ".&nbsp;" + sttElement.textContent.substring(10);
             });
+            updateDropdownAndIds(row, index + 1);
+
+             const kyNangMemElements = document.querySelectorAll('[id^="KyNangMem"]');
+
+            kyNangMemElements.forEach((element, index) => {
+                const newId = `KyNangMem${index + 1}`;
+                element.id = newId;
+            });
         }); 
-        
         var ul_DG7 = document.querySelectorAll('.dropdown-content-chuong');
         var chuongContent =document.getElementsByClassName('Chuong').length;
 
@@ -197,16 +232,44 @@
             }
             ulElement.innerHTML = hung.join('');
         });
-
     }
+    function updateDropdownAndIds(chuongRow, chuongIndex) {
+    // Cập nhật ID cho GioLyThuyet, GiothucHanh, SoGioTuHoc
+    var gioLyThuyetElement = chuongRow.querySelector(`.GioLyThuyet`);
+    var gioThucHanhElement = chuongRow.querySelector(`.GiothucHanh`);
+    var soGioTuHocElement = chuongRow.querySelector(`.SoGioTuHoc`);
+    var kyNangMemElement = chuongRow.querySelector(`.KyNangMem`);
+    
+    updateDropdown1('GioLyThuyet', gioLyThuyetElement, chuongIndex);
+    updateDropdown1('GiothucHanh', gioThucHanhElement, chuongIndex);
+    updateDropdown1('SoGioTuHoc', soGioTuHocElement, chuongIndex);
+    updateDropdown1('KyNangMem', kyNangMemElement, chuongIndex);
+}
+
+function updateDropdown1(baseId, element, newIndex) {
+    if (element) {
+        // Cập nhật ID của element
+        element.id = `${baseId}${newIndex}`;
+        // Cập nhật onclick event trong dropdown
+        var parentDropdown = element.closest('.dropdown');
+        if (parentDropdown) {
+            var dropdownItems = parentDropdown.querySelectorAll('.dropdown-content li');
+            dropdownItems.forEach((item) => {
+                // Giả sử hàm updateValue định nghĩa ở đâu đó và cần ba tham số: id, value, type
+                var value = item.textContent.trim();
+                item.setAttribute('onclick', `updateValue('${baseId}${newIndex}', '${value}', 'TUA')`);
+            });
+        }
+    }
+}
     function UpdateDropdown() {
         var AllCDR = document.getElementsByClassName('content-4-learning-outcomes-1').length;
         var chuong = document.getElementsByClassName('Chuong').length;
         var ul_5 = document.querySelectorAll('.dropdown-content-5');
-        
+        var ul_5_last = document.querySelectorAll('.dropdown-content-5-last');
         ul_5.forEach(function (ulElement,index) {
         ulElement.innerHTML = '';
-        var hung = [];
+        const hung = [];
         for (var i = 1; i <= AllCDR; i++) {
             hung.push(cleanUpString(`
             <li onclick="updateValue('CDR_HocPhan${(index + 1)}', '${i}', 'CDR')">
@@ -217,6 +280,18 @@
         
         ulElement.innerHTML = hung.join('');
         });
+        ul_5_last.forEach(function (ulElement,index) {
+      ulElement.innerHTML = '';
+      var hung = [];
+      for (var i = 1; i <= AllCDR; i++) {
+        hung.push(cleanUpString(`
+        <li onclick="updateValue('KyNangMem${(index + 1)}', '${i}', 'CDR')">
+          ${i}
+        </li>
+      `));
+      }
+      ulElement.innerHTML = hung.join('');
+    });
     }
     function UpdateSTTskill_CTC(i) {
         var rows = document.querySelectorAll('.ChiTietChuong' + i);

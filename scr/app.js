@@ -6,7 +6,7 @@ const express = require('express');
 const exphbs = require('express-handlebars');
 const Handlebars = require('handlebars');
 const app = express();
-app.use(express.json());
+app.use(express.json({ limit: '10mb' }));
 app.use(express.urlencoded({ extended: true }));
 const bodyParser = require('body-parser');
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -159,31 +159,44 @@ const DataHeader = {
 // app.get('/test', (req, res) => {
 // });
 
-app.post('/pdf', (req, res) => {
+app.post('/pdf',async (req, res) => {
   const a4Content = req.body.a4Content;
   
   // Đọc nội dung CSS từ file
-  const cssContent = fs.readFileSync('./public/css/print/print.css', 'utf-8');
-  (async () => {
-    const browser = await puppeteer.launch();
-    const page = await browser.newPage();
-    htmlContent = `<html><head><style>${cssContent}</style></head><body>${a4Content}<script>const valueRecord = 'Chuyên ngành';function updateCheckbox(checkboxId) {var checkbox = document.getElementById(checkboxId);if (checkbox.value === valueRecord) {checkbox.checked = true;} else {checkbox.checked = false;}}updateCheckbox('LoaiHocPhan1');updateCheckbox('LoaiHocPhan2');updateCheckbox('LoaiHocPhan3');</script></body></html>`;
-    await page.setContent(htmlContent);
-    const pdfOptions = {
-      path: 'output.pdf',
-      format: 'A4',
-      margin: {
-        top: '2cm',
-        right: '2cm',
-        bottom: '2cm',
-        left: '3cm',
-      },
-    };
-  
-    // Generate the PDF with specified margins
-    await page.pdf(pdfOptions);
-    await browser.close();
-  })();
+const cssPath = path.join(__dirname, 'public/pdf/print.css');
+
+var cssContent = fs.readFileSync(cssPath, 'utf-8');
+
+try {
+  const browser = await puppeteer.launch();
+  const page = await browser.newPage();
+  const htmlContent = `<html><head><style>${cssContent}</style></head><body>${a4Content}</body></html>`;
+  await page.setContent(htmlContent);
+
+  // Đường dẫn đầy đủ đến thư mục 'public/pdf'
+  const outputPath = path.join(__dirname, 'public/pdf/output.pdf');
+
+  const pdfOptions = {
+    path: outputPath,
+    format: 'A4',
+    margin: {
+      top: '2cm',
+      right: '2cm',
+      bottom: '2cm',
+      left: '3cm',
+    },
+  };
+
+  // Generate the PDF with specified margins
+  await page.pdf(pdfOptions);
+  await browser.close();
+
+  // Trả về đường dẫn tới file PDF trong phản hồi
+  res.json({ pdfPath: '/pdf/output.pdf' });
+} catch (error) {
+  console.error('Error:', error);
+  res.status(500).send('Internal Server Error');
+}
 });
 
 // Error handling middleware (if needed)

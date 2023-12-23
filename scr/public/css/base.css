@@ -282,6 +282,7 @@ p {
 
 .dropdown-content,
 .dropdown-content-5,
+.dropdown-content-5-last,
 .dropdown-content-KT7,
 .dropdown-content-chuong {
     overflow-y: auto;
@@ -298,11 +299,11 @@ p {
     right: 0;
     min-width: 40pt;
     text-align: center;
-    
 }
 
 .dropdown-content li,
 .dropdown-content-5 li,
+.dropdown-content-5-last li,
 .dropdown-content-KT7 li,
 .dropdown-content-chuong li{
     padding: 12px 16px;
@@ -311,6 +312,7 @@ p {
 
 .dropdown-content li:hover ,
 .dropdown-content-5 li:hover,
+.dropdown-content-5-last li:hover,
 .dropdown-content-KT7 li:hover,
 .dropdown-content-chuong li:hover{
     background-color: #ddd;
@@ -318,6 +320,7 @@ p {
 
 .dropdown:hover .dropdown-content,
 .dropdown:hover .dropdown-content-5,
+.dropdown:hover .dropdown-content-5-last,
 .dropdown:hover .dropdown-content-KT7,
 .dropdown:hover .dropdown-content-chuong{
     display: block;
