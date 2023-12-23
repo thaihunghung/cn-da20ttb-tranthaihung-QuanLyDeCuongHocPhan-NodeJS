@@ -51,7 +51,6 @@
                 const response = await axios.delete(`../delete/${MaHP}`);
                 if (response.status === 204) {
                     console.log('Xóa thành công');
-
                 } else {
                     console.log('Xóa không thành công. Mã lỗi:', response.status);
                 }

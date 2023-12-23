@@ -1,58 +1,79 @@
-
-<div class="textflex">
-  <div id="huntran" contenteditable="true" onkeydown="handleKeyPress('huntran',event)">
-    []
-  </div>
-</div>
-<div class="textflex">
-  <div id="huntran1" contenteditable="true" onkeydown="handleKeyPress('huntran1',event)">
-    []
-  </div>
-</div>
-<div class="textflex">
-  <div id="huntran2" contenteditable="true" onkeydown="handleKeyPress('huntran2',event)">
-    h
-  </div>
-</div>
-<div class="textflex">
-  <div id="huntran3" contenteditable="true" onkeydown="handleKeyPress('huntran3',event)">
-    h
-  </div>
-</div>
-
-
-<script>
-function checkPLOConditions(data) {
-    let results = [];
-
-   
-
-        data.forEach((part, index) => {
-            if (part.match(/^PLO\d+$/)) { // Kiểm tra xem phần tử có bắt đầu bằng "PLO" và theo sau là số
-                let isValid = true; // Giả định ban đầu là hợp lệ
-
-                // Kiểm tra phần tử tiếp theo (nếu có)
-                if (index < ploParts.length - 1 && ploParts[index + 1].match(/^PLO\d+$/)) {
-                    isValid = false; // Đánh dấu là không hợp lệ nếu phần tử tiếp theo bắt đầu bằng "PLO" và theo sau là số
-                }
-
-                results.push({ part, isValid });
-            }
-        });
-    
-    return results;
+<style>
+  .header {
+    display: none;
+  }
+  .container {
+  max-width: 900px; /* or your preferred width */
+  width: 900px;
+  margin: 10px auto;
 }
 
-// Mẫu dữ liệu
+.card {
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  transition: 0.3s;
+  width: 900px;
+  max-width: 900px
+}
 
+.card:hover {
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+}
 
-let hung = ['PLO1','PLO2','PLO3','PLOh']
-   
+.card-body {
+  padding: 2rem;
+}
 
-console.log(checkPLOConditions(hung));
+.form-group {
+  margin-bottom: 1rem;
+}
 
+#_id {
+  background-color: #e9ecef;
+  color: #495057;
+}
+
+.btn-primary {
+  background-color: #007bff;
+  border-color: #007bff;
+}
+
+.btn-primary:hover {
+  background-color: #0056b3;
+  border-color: #0056b3;
+}
+</style>
+{{#each templates}}
+<div class="container" spellcheck="false">
+    <div class="card">
+      <div class="card-header">
+        Template {{order}}
+      </div>
+      <div class="card-body">
+        <form action="/update-template/{{_id}}" method="POST">
+          <div class="form-group">
+            <label for="order_{{_id}}">Order</label>
+            <input type="number" class="form-control" name="order" id="order_{{_id}}" value="{{this.order}}" required>
+          </div>
+          <div class="form-group">
+            <label for="compileMethod_{{_id}}">Compile Method</label>
+            <input type="text" class="form-control" name="compileMethod" id="compileMethod_{{_id}}" value="{{this.compileMethod}}">
+          </div>
+          <div class="form-group">
+            <label for="htmlContent_{{_id}}">HTML Content</label>
+            <textarea class="form-control" name="htmlContent" id="htmlContent_{{_id}}" rows="4">{{this.htmlContent}}</textarea>
+          </div>
+          <button type="submit" class="btn btn-primary">Update</button>
+        </form>
+      </div>
+    </div>
+</div>
+{{/each}}
+
+<script>
+
+  document.querySelector('form').addEventListener('submit', function(e) {
+  e.preventDefault();
+  // Your code to handle the form data and send it to your server
+  console.log('Form submitted');
+});
 </script>
-
- 
-
-

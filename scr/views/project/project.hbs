@@ -47,16 +47,16 @@
             });
     }
     const buttonSave = document.getElementById('buttonSave');
-    buttonSave.addEventListener('click', function () {
+    buttonSave.addEventListener('click', async function () {
         const userConfirmation = window.confirm('Bạn có chắc chắn muốn lưu dữ liệu không?');
         if (userConfirmation) {
-            //Save_Project();
+            Save_Project();
             const urlParams = new URLSearchParams(window.location.search);
             const filename = urlParams.get('filename');
             var Datafilename = filename.toString();
-            console.log(Datafilename);
+           
             alert("Đã save")
-            //window.location.href = `../project/update/?filename=${filename}`;
+            window.location.href = `../project/update/?filename=${Datafilename}`;
 
             //window.location.href = '../user/listProject'
         } else {

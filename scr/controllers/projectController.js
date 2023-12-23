@@ -247,13 +247,32 @@ exports.User_Create_fileName = (req, res) =>{
 }
 exports.delete_File_Name =async (req, res) =>{
     const fileName = req.params.fileName;
+    var stemp = fileName.trim();
     try {
-    await CreateModel.findOneAndDelete({ fileName: fileName });
+    if(stemp) {
+        await HocPhanModel.findOneAndDelete({ fileName: MaHP });
+        await GiangVienModel.deleteMany({ MaHP: MaHP });
+        await TLTKModel.deleteMany({ MaHP: MaHP });
+        await PP_Day_hocModel.deleteMany({ MaHP: MaHP });
+        await QuyDinhModel.deleteMany({ MaHP: MaHP });
+        await DieuKienThamGiaModel.deleteMany({ MaHP: MaHP });
+        await DG_HocPhanModel.deleteMany({ MaHP: MaHP });
+        const chuongsToDelete = await ChuongModel.find({ MaHP: MaHP });
+        chuongsToDelete.forEach(async (chuong) => {
+          await DapUngChuongModel.deleteMany({ MaChuong: chuong.MaChuong });
+        });
+        await ChuongModel.deleteMany({ MaHP: MaHP });
+        const cdrHocPhanIds = await CDR_HocPhanModel.find({ MaHP: MaHP }).distinct('_id');
+        await DapUngCDR.deleteMany({ MaCDR_MH: { $in: cdrHocPhanIds } });
+        await CDR_HocPhanModel.deleteMany({ MaHP: MaHP });
+        await CreateModel.findOneAndDelete({ fileName: fileName });
+
+        res.status(200).json({ message: 'Xóa thành công tất cả các documents.' });
+      }
     } catch (error) {
     // Xử lý lỗi
-    
     res.status(500).json({ error: 'Lỗi xóa documents', message: error.message });
-}
+    }
 }
 exports.Check_File_Name = async (req, res) =>{
     const { filename } = req.body;
@@ -305,7 +324,6 @@ exports.project_Post_Save = async (req, res) => {
     var kyNangTDNoiDung = [];
     var kyNangKNNoiDung = [];
   
-
     for (var i = 0; i < KyNangKTdata.length; i++) {
       var DapUng = KyNangKTdata[i].DapUng_CDRMH;
       kyNangKTNoiDung.push(DapUng);
@@ -328,21 +346,21 @@ exports.project_Post_Save = async (req, res) => {
 
    saveCDRHocPhanAndDapUng(KyNangKTdata, kyNangKTNoiDung)
    .then(savedData => {
-     console.log("Dữ liệu đã được lưu thành công:", savedData);
+     //console.log("Dữ liệu đã được lưu thành công:", savedData);
    })
    .catch(error => {
      console.error("Lỗi khi lưu dữ liệu:", error);
    });
    saveCDRHocPhanAndDapUng(KyNangTDdata, kyNangTDNoiDung) 
    .then(savedData => {
-     console.log("Dữ liệu đã được lưu thành công:", savedData);
+     //console.log("Dữ liệu đã được lưu thành công:", savedData);
    })
    .catch(error => {
      console.error("Lỗi khi lưu dữ liệu:", error);
    });
    saveCDRHocPhanAndDapUng(KyNangKNdata, kyNangKNNoiDung) 
    .then(savedData => {
-    console.log("Dữ liệu đã được lưu thành công:", savedData);
+   //console.log("Dữ liệu đã được lưu thành công:", savedData);
    })
  .catch(error => {
   console.error("Lỗi khi lưu dữ liệu:", error);

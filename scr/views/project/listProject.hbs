@@ -30,12 +30,31 @@
         if (tenduanElement && usernameElement) {
             const tenduan = tenduanElement.textContent.trim();
             const username = usernameElement.textContent.trim();
-
             const filename = encodeURIComponent(username + ':' + tenduan);
-
             // Sử dụng axios để thực hiện yêu cầu GET với tham số trên URL
-
             window.location.href = `../project/update/?filename=${filename}`;
         }
+    }
+    function delete(index) {
+        const tenduanElement = document.getElementById('filenam' + index);
+        const usernameElement = document.getElementById('username');
+        if (tenduanElement && usernameElement) {
+            const tenduan = tenduanElement.textContent.trim();
+            const username = usernameElement.textContent.trim();
+            const filename = encodeURIComponent(username + ':' + tenduan);
+            const isConfirmed = window.confirm("Bạn có chắc chắn muốn xóa?");
+                if (isConfirmed) {
+                axios.delete(`../user/delete/${filename}`)
+                .then(response => {
+                    // Xử lý phản hồi nếu cần thiết
+                    console.log(response.data);
+                })
+                .catch(error => {
+                    // Xử lý lỗi nếu có
+                    console.error(error);
+                });
+            }
+        }
+    
     }
 </script>

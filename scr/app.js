@@ -42,7 +42,7 @@ db.connect();
 dotenv.config();
 //khoi tao public folder
 app.use(express.static(path.join(__dirname, 'public')))
-app.use('/pdfs', express.static('pdfs'))
+
 //su dung templates hbs
 const hbs = exphbs.create({
   defaultLayout: 'main',
@@ -97,19 +97,8 @@ const DataHeader = {
       MaMon:'[Mã học phần]'
     }
 }
-  const tample = await TempLate.find({compileMethod:'header'});
-    let compiledTemplates = [];
-    tample.forEach(template => {
-        let compiled;
-        switch (template.compileMethod) {
-            case "header":
-                compiled = compileMethod(template.htmlContent, DataHeader);
-                break;
-        }
-        compiledTemplates.push(compiled);
-    });
- 
-    let compiledString = compiledTemplates.join('');
+  const template = await TempLate.find().sort({ order: 1 })
+  const templates = template.map(mongooseToObject);
     
     const plo = await PLO.find();
     if (plo) {
@@ -124,12 +113,8 @@ const DataHeader = {
     }
     return plo;
     });
- res.render('formInput_monHoc/formInput_monHoc',{
-            tample:compiledString,
-            PLO: plo_Object,
-            processedPLOs: processedPLOs
-          })
-  //res.render('test/test2');
+ //res.render('formInput_monHoc/formInput_monHoc',{tample:compiledString,PLO: plo_Object,processedPLOs: processedPLOs})
+  res.render('test/test', { templates });
   //project/project
   //res.render('project/project');
   //res.render('admin/HomePageAdmin');
@@ -186,7 +171,6 @@ try {
       left: '3cm',
     },
   };
-
   // Generate the PDF with specified margins
   await page.pdf(pdfOptions);
   await browser.close();
