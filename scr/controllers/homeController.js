@@ -169,10 +169,10 @@ exports.index =async (req, res) => {
           }
           return plo;
           }); 
+          
     res.render('home', {
         templates: compiledString,
-        PLO: plo_Object,
-        processedPLOs: processedPLOs
+       
     });
 }
 function compileMethod(templateString, data) {

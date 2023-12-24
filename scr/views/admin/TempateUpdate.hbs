@@ -1,54 +1,72 @@
-{{#each templates}}
-<div class="container" spellcheck="false">
-    <div class="card">
-      <div class="card-header">
-        Template {{order}}
-      </div>
-      <div class="card-body">
-        <form id="updateForm_{{_id}}">
-          <div class="form-group">
-            <label for="order_{{_id}}">Order</label>
-            <input type="number" class="form-control" name="order" id="order_{{_id}}" value="{{this.order}}" required>
+<div class="layout_Admin">
+  <div class="Admin_Nav">
+    <a href="/chuongtrinh">Chương trình </a><br>
+    <a href="/template">Quản lý khung</a>
+  </div>
+
+  <div class="Admin_product">
+    <div class="Admin_product_list">
+      <div class="container-card" spellcheck="false">
+      {{#each templates}}
+      
+        <div class="card">
+          <div class="card-header">
+            Template {{order}}
           </div>
-          <div class="form-group">
-            <label for="compileMethod_{{_id}}">Compile Method</label>
-            <input type="text" class="form-control" name="compileMethod" id="compileMethod_{{_id}}" value="{{this.compileMethod}}">
+          <div class="card-body">
+            <form id="updateForm_{{_id}}">
+              <div class="form-group">
+                <label for="order_{{_id}}">Order</label>
+                <input type="number" class="form-control" name="order" id="order_{{_id}}" value="{{this.order}}"
+                  required>
+              </div>
+              <div class="form-group">
+                <label for="compileMethod_{{_id}}">Compile Method</label>
+                <input type="text" class="form-control" name="compileMethod" id="compileMethod_{{_id}}"
+                  value="{{this.compileMethod}}">
+              </div>
+              <div class="form-group">
+                <label for="htmlContent_{{_id}}">HTML Content</label>
+                <textarea class="form-control" name="htmlContent" id="htmlContent_{{_id}}"
+                  rows="4">{{this.htmlContent}}</textarea>
+              </div>
+              <button type="button" class="btn btn-primary" onclick="updateTemplate('{{_id}}')">Update</button>
+            </form>
           </div>
-          <div class="form-group">
-            <label for="htmlContent_{{_id}}">HTML Content</label>
-            <textarea class="form-control" name="htmlContent" id="htmlContent_{{_id}}" rows="4">{{this.htmlContent}}</textarea>
-          </div>
-          <button type="button" class="btn btn-primary" onclick="updateTemplate('{{_id}}')">Update</button>
-        </form>
+        </div>
+      {{/each}}
       </div>
     </div>
+  </div>
 </div>
-{{/each}}
-
-<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-<script>
-function updateTemplate(templateId) {
-  const form = document.getElementById('updateForm_' + templateId);
-  const formData = new FormData(form);
-  let formObject = {};
-  formData.forEach(function(value, key){
-      formObject[key] = value;
-  });
-  axios.put('/template/update/' + templateId, formObject)
-    .then(function (response) {
-      console.log('Updated successfully:', response.data);
-    })
-    .catch(function (error) {
-      console.error('Update failed:', error);
-    });
-}
-</script>
 <script>
   document.getElementById('modify__admin_hidden').style.display = 'block';
-  document.getElementById('modify__user_hidden').style.display = 'none'; 
+  document.getElementById('modify__user_hidden').style.display = 'none';
   document.getElementById('modify__project_hidden').style.display = 'none';
   document.getElementById('modify__SaveP_hidden').style.display = 'none';
   document.getElementById('modify__PDF_hidden').style.display = 'none';
+  document.getElementById('modify__listProject_hidden').style.display = 'none';
 </script>
-
-
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+<script>
+  function updateTemplate(templateId) {
+    const form = document.getElementById('updateForm_' + templateId);
+    const formData = new FormData(form);
+    let formObject = {};
+    formData.forEach(function (value, key) {
+      formObject[key] = value;
+    });
+    const isConfirmed = confirm("bạn có muốn chỉnh sửa?");
+    if (!isConfirmed) {
+        return;
+    }
+    axios.put('/template/update/' + templateId, formObject)
+      .then(function (response) {
+        console.log('Updated successfully:', response.data);
+        alert("Chỉnh sửa thành công")
+      })
+      .catch(function (error) {
+        console.error('Update failed:', error);
+      });
+  }
+</script>

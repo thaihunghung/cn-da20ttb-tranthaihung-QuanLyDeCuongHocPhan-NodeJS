@@ -1,3 +1,4 @@
+<style></style>
 <div class="formInput">
     <div class="formInput_monHoc" id="formInput_monHoc">
 
@@ -19,7 +20,10 @@
                 </table>
             </div>
             <div class="formInput_print" spellcheck="false">
-                <button class="btn" id="buttonSave">Save</button>
+                <div class="modify__button_save send-content">
+                    <button onclick="Save_Project()" id="buttonSave">Lưu</button>
+                    <button onclick="sendA4Content()" >Xuất file PDF</button>
+                </div>
                 {{{templates}}}
             </div>
         </div>
@@ -30,6 +34,7 @@
 <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 <script>
     document.addEventListener("DOMContentLoaded", function () {
+        document.getElementById('modify__user_hidden').style.display='block';
         UpdateSTT_TB2();
         UpdateSTTskill_TB4()
     });

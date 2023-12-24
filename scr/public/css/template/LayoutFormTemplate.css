@@ -1,19 +1,22 @@
 
-  .container {
-  max-width: 900px; /* or your preferred width */
-  width: 900px;
-  margin: 10px auto;
+.container-card {
+  width: 100%;
+  min-height: 100vh;
+  display: grid;
+    grid-template-columns: repeat( auto-fit, minmax(800px, 1fr) );
+    gap: 30px;
 }
 
 .card {
-  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
-  transition: 0.3s;
+  margin: auto;
+
+
   width: 900px;
-  max-width: 900px
+  max-width: 900px;
 }
 
 .card:hover {
-  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+
 }
 
 .card-body {

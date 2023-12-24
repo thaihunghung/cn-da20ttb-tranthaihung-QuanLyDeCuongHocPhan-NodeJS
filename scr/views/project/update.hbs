@@ -20,7 +20,10 @@
             </div>
             <div class="formInput_print" spellcheck="false">
                 <div class="hidden" id="findName">{{findName}}</div>
-                <button class="btn" onclick="Put_Save_Delete()">TestSave_HocPhan</button>
+                <div class="modify__button_save send-content">
+                    <button onclick="Put_Save_Delete()">Lưu</button>
+                    <button onclick="sendA4Content()" >Xuất file PDF</button>
+                </div>
                 {{{templates}}}
             </div>
         </div>
@@ -29,6 +32,7 @@
 
 <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 <script>
+    document.getElementById('modify__user_hidden').style.display='block';
     function sendA4Content() {
         var a4Content = document.getElementById('formInput_monHoc').innerHTML;
         axios.post('/pdf', { a4Content })
@@ -65,6 +69,7 @@
 
 </script>
 <script>
+    
     document.addEventListener("DOMContentLoaded", function () {
         setTimeout(function () {
             UpdateSTT_TB2();

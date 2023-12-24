@@ -16,7 +16,7 @@
 <div class="formInput">
     <div class="formInput_monHoc" id="formInput_monHoc">
         <div class="formInput_baseA4" id="formInput_baseA4">
-            <div class="PLO">
+            <div class="PLO" id="PLO">
                 <table>
                     {{#each processedPLOs}}
                     {{#if newGroup}}
@@ -49,5 +49,8 @@
     const tb4 = document.getElementById('instructionForm-table4');
     tb4.style.display = 'none';
     const tb5 = document.getElementById('instructionForm-table5');
-    tb5.style.display = 'none';
+    tb5.style.display = 'none';                   
+    document.getElementById('modify__user_hidden').style.display = 'block';
+    document.getElementById('modify__SaveP_hidden').style.display = 'none';
+    document.getElementById('modify__PDF_hidden').style.display = 'none';
 </script>

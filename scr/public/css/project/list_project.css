@@ -1,22 +1,21 @@
 .list_project {
-    background-color: white; /* Light grey background */
+    background-color: #e2e6e9;
     width: 100%;
-    padding: 20px;
     border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1); /* Slight shadow for depth */
-    max-width: 800px; /* Set a max-width for the container */
-    margin: 20px auto; /* Center the container */
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1); 
     font-family: Arial, sans-serif; 
+    height: 100vh;
+    min-height: 100vh;
 }
 
 .LP-stital h1 {
     text-align: center;
-    color: #333; /* Dark grey text */
+    color: #333;
     margin-bottom: 20px;
 }
 
 .LP-product-item {
-    background-color: #ffffff; /* White background for items */
+    background-color: #ffffff; 
     padding: 15px;
     border-radius: 4px;
     margin-bottom: 10px;
@@ -24,8 +23,8 @@
 }
 
 .LP-product-item p {
-    margin: 0 0 10px; /* Space out the paragraphs */
-    color: #666; /* Slightly darker text for readability */
+    margin: 0 0 10px; 
+    color: #666;
 }
 
 .LP-product-item button {

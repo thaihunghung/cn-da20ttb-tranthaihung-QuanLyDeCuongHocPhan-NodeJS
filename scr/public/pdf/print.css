@@ -208,7 +208,7 @@ p {
     display: flex;
 }
 .page__break {
-    page-break-before: always;
+    page-break-before: always !important;
 }
 
 /* 4. Chuẩn đầu ra của học phần (Course learning outcomes): */

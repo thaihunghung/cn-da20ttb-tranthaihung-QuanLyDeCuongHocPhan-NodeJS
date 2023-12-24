@@ -245,11 +245,10 @@ exports.User_Create_fileName = (req, res) =>{
     res.render('project/create_fileName')
 }
 exports.delete_File_Name =async (req, res) =>{
+  try {
     const fileName = req.params.fileName;
-    var stemp = fileName.trim();
-    try {
-    if(stemp) {
-        await HocPhanModel.findOneAndDelete({ fileName: MaHP });
+        var MaHP = fileName? fileName.trim() : undefined;
+        await HocPhanModel.findOneAndDelete({ fileName: MaHP.toString() });
         await GiangVienModel.deleteMany({ MaHP: MaHP });
         await TLTKModel.deleteMany({ MaHP: MaHP });
         await PP_Day_hocModel.deleteMany({ MaHP: MaHP });
@@ -266,12 +265,11 @@ exports.delete_File_Name =async (req, res) =>{
         await CDR_HocPhanModel.deleteMany({ MaHP: MaHP });
         await CreateModel.findOneAndDelete({ fileName: fileName });
 
-        res.status(200).json({ message: 'Xóa thành công tất cả các documents.' });
-      }
-    } catch (error) {
+ res.status(200).json({ message: 'Xóa thành công tất cả các documents.' });
+} catch (error) {
     // Xử lý lỗi
     res.status(500).json({ error: 'Lỗi xóa documents', message: error.message });
-    }
+}
 }
 exports.Check_File_Name = async (req, res) =>{
     const { filename } = req.body;

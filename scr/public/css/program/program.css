@@ -3,6 +3,9 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    padding-top: 50px;
+    padding-bottom: 100px;
+    background-color: white;
 }
 .table-program {
     border-collapse:collapse;border:none; width: 4.7e+2pt;

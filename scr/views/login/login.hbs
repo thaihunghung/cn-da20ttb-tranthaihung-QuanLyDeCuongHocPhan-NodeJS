@@ -1,11 +1,12 @@
 <style>
-    body {
-    background-color: #f4f4f4;
-    margin: 0;
-    padding: 0;
+.container_login_main {
     height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items:flex-start;
 }
-.container {
+.container_login {
+    margin: auto ;
     background: #fff;
     padding: 20px;
     border-radius: 5px;
@@ -13,26 +14,30 @@
     max-width: 400px;
     width: 100%;
     margin:  20px, 20px;
+    min-height: 60vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
-.container h1 {
+.container_login h1 {
     text-align: center;
     color: #333;
 }
 
-.container p {
+.container_login p {
     color: #ff0000;
     text-align: center;
 }
 
-.container label {
+.container_login label {
     display: block;
     margin-top: 20px;
     color: #666;
 }
 
-.container input[type="text"],
-.container input[type="password"] {
+.container_login input[type="text"],
+.container_login input[type="password"] {
     width: 100%;
     padding: 10px;
     margin-top: 5px;
@@ -40,7 +45,7 @@
     border-radius: 4px;
 }
 
-.container button {
+.container_login button {
     width: 100%;
     padding: 10px 0;
     margin-top: 30px;
@@ -52,30 +57,30 @@
     font-size: 16px;
 }
 
-.container button:hover {
+.container_login button:hover {
     background-color: #3f51b5;
 }
 </style>
-<div class="container">
-    <p>{{message}}</p>
-    <h1>Login</h1>
-    
+<div class="container_login_main">
+    <div class="container_login">
     <form method="post" id="loginForm" action="">
-        <label for="username">Username:</label>
-        <input type="text" id="username" name="username" required>
+            <h1>Login</h1>
+            <label for="username">Username:</label>
+            <input type="text" id="username" name="username" required>
 
-        <label for="password">Password:</label>
-        <input type="password" id="password" name="password" required>
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" required>
 
-        <!-- Call the login function when the button is clicked -->
-        <button type="button" onclick="login()">Login</button>
-
-    </form>
+            <!-- Call the login function when the button is clicked -->
+            <button type="button" onclick="login()">Login</button>
+        </form>
+    </div>
 </div>
-
 <!-- Include the Axios library -->
 <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 <script>
+    
+    document.getElementById('modify__user_hidden').style.display = 'block';
    async function login() {
        await $.ajax({
             url: '/login',

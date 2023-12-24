@@ -89,7 +89,7 @@ span {
     height: 100vh; 
     max-height: 700px; 
     position: sticky;
-    top: 0; 
+    top: 5px; 
     padding: 20px; 
     margin-right: 20px; 
     border-radius: 8px; 
@@ -97,7 +97,6 @@ span {
     overflow-y: auto; 
     font-family: 'Arial', sans-serif;
     align-items: flex-start; 
-    
 }
 @media (max-width: 1100px) {
     .PLO {
@@ -379,4 +378,14 @@ input {
   /*when navigating through the items using the arrow keys:*/
   background-color: DodgerBlue !important;
   color: #ffffff;
+}
+.modify__button_save{
+    width: 100%;
+    display: flex;
+    justify-content:flex-end;
+    position: fixed;
+    z-index: 5;
+    right: 60px;
+    top: 150px;
+    gap: 10px;
 }

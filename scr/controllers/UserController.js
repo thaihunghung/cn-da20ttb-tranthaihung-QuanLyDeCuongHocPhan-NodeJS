@@ -18,7 +18,8 @@ exports.listProject = async (req, res) => {
                 const actualFileName = fileNameParts.length > 1 ? fileNameParts[1] : item.fileName;
                 return {
                     username: item.username,
-                    nameProject: actualFileName
+                    nameProject: actualFileName,
+                    fullnameFile: item.fileName
                 };
             });
             res.render('project/listProject', { ListCreate: ListCreateObject});

@@ -1,6 +1,12 @@
-<div class="program" style="height: 4000px;">
+<div class="layout_Admin">
+  <div class="Admin_Nav">
+    <a href="/chuongtrinh">Chương trình </a><br>
+    <a href="/template">Quản lý khung</a>
+  </div>
 
-
+  <div class="Admin_product">
+    <div class="Admin_product_list">
+      <div class="program" style="min-height: 100vh;">
   {{#each chuongTrinh}}
   <div class="Chuongtrinh">
     <h1>
@@ -8,7 +14,7 @@
     </h1>
     <br>
     <p>
-      loại hình: {{LoaiHinh}}
+      Loại hình: {{LoaiHinh}}
     </p>
     <br>
     <p>
@@ -16,15 +22,14 @@
     </p>
     <br>
     <p>
-      thời gian đào tạo: {{Tg_DaoTao}} năm
+      Thời gian đào tạo: {{Tg_DaoTao}} năm
     </p>
     <br>
     <p>
-      bậc: {{Bac}}
+      Bậc: {{Bac}}
     </p>
   </div>
   {{/each}}
-
 
   <table class="table-program section-content">
     <tbody>
@@ -51,7 +56,6 @@
         <tr>
           <td class="table-body-program-58_55pt text-center">
             <p><strong>{{this.Ten_CDR}}</strong></p>
-            <div class="btn">Chỉnh sửa</div>
           </td>
           <td class="table-body-program-229_6pt"><p>&nbsp;{{this.NoiDung}}&nbsp;</p></td>
           {{#each ../../PO}}
@@ -71,85 +75,15 @@
     {{/each}}  
     </tbody>
   </table>
+</div>  
+    </div>
+  </div>
 </div>
 <script>
   document.getElementById('modify__admin_hidden').style.display = 'block';
   document.getElementById('modify__user_hidden').style.display = 'none';
   document.getElementById('modify__project_hidden').style.display = 'none';
+  document.getElementById('modify__SaveP_hidden').style.display = 'none';
+  document.getElementById('modify__PDF_hidden').style.display = 'none';
+  document.getElementById('modify__listProject_hidden').style.display = 'none';
 </script>
-
-
-{{!-- <h1>Ma Trận Ánh Xạ PO-PLO</h1>
-
-  <table>
-    <thead>
-      
-      <tr>
-        <th>PLO</th>
-        <th>Nội dung</th>
-        {{#each PO}}
-        <th>{{this.MaMT_CTDT}}</th>
-        {{/each}}
-      </tr>
-    </thead>
-
-    <tbody>
-      {{#each PLO}}
-        <td>{{this.Ten_CDR}}</td>
-        <td>{{this.NoiDung}}</td>
-        {{#each ../PO}}
-        <td>
-          {{#ifMatch ../this.id_CDR this.MaMT_CTDT ../../DapungCT}}
-          X
-          {{else}}
-
-          {{/ifMatch}}
-        </td>
-        <td>
-
-        </td>
-        {{/each}}
-      </tr>
-      {{/each}}
-    </tbody>
-  </table> --}}
-
-{{!-- <h1>phan loai</h1> 
-{{#each GroupLoai}}
-  <table class="table-program">
-    <tbody>
-      <tr>
-        <td class="table-header-program-58_55pt">
-                <p class="section-content text-center"><strong>PLO</span></strong></p>
-        </td>
-        <td class="table-header-program-229_6pt">
-                <p class="section-content text-center"><strong>Nội&nbsp;dung</span></strong></p>
-            </td>
-        {{#each ../PO}}
-          <th class="table-header-program-36pt"> 
-            <p class="section-content text-center"><strong>{{this.MaMT_CTDT}}</strong></p>
-          </th>  
-        {{/each}}
-      </tr>
-      <tr>
-        <td colspan="7" class="table-tital-program-468_2pt"><p>{{this.[0].LoaiCDR_CT}}</p></td>
-      </tr>
-
-    
-      {{#each this}}
-        <tr>
-          <td style="width: 58.55pt;border-right: 1pt solid black;border-bottom: 1pt solid black;border-left: 1pt solid black;border-image: initial;border-top: none;padding: 0cm;height: 44.85pt;vertical-align: top;">{{this.Ten_CDR}}</td>
-          <td style="width: 229.6pt;border-top: none;border-left: none;border-bottom: 1pt solid black;border-right: 1pt solid black;padding: 0cm;height: 44.85pt;vertical-align: top;">{{this.NoiDung}}</td>
-          {{#each ../../PO}}
-            <td style="width: 36pt;border-top: none;border-left: none;border-bottom: 1pt solid black;border-right: 1pt solid black;padding: 0cm;height: 44.7pt;vertical-align: top;">
-              {{#ifMatch ../this.id_CDR this.MaMT_CTDT ../../../DapungCT}}
-                X
-              {{else}}
-              {{/ifMatch}}
-            </td>
-          {{/each}}
-        </tr>
-      {{/each}}
-    {{/each}}  
-    </tbody>
-  </table> --}}
