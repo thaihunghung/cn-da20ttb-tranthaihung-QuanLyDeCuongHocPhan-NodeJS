@@ -11,7 +11,7 @@
             <p id="filenam{{inc @index}}"> {{this.nameProject}}</p>
             <button class="btn btn-primary" onclick="Update({{inc @index}})">Chỉnh sửa</button>
             <button class="btn btn-primary" onclick="Delete(`{{this.fullnameFile}}`)">Xóa</button>
-            <button class="btn btn-primary" onclick="PDF(`{{this.fullnameFile}}`)">Xóa</button>
+            <button class="btn btn-primary" onclick="PDF(`{{this.fullnameFile}}`)">PDF</button>
             {{/each}}
         </div>
         {{else}}
@@ -50,18 +50,15 @@
             });
     }
     function PDF(index) {
-        const encodedIndex = encodeURIComponent(index);
-        const isConfirmed = confirm("bạn có muốn xóa?");
-        if (!isConfirmed) {
-            return;
-        }
-        axios.delete(`../project/delete_file/${encodedIndex}`)
-            .then(response => {
-                console.log('xóa thành công')
+        const NameValue =index.trim()
+        axios.post('../project/pdf', { NameValue})
+            .then(function (response) {
+                window.location.href = response.data.pdfPath;
             })
-            .catch(error => {
-                console.error('Lỗi khi gửi dữ liệu:', error.message);
+            .catch(function (error) {
+                console.error('Error:', error);
             });
+    
     }
 
 

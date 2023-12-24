@@ -148,7 +148,7 @@ const DataHeader = {
 
 app.post('/pdf',async (req, res) => {
   const a4Content = req.body.a4Content;
-  
+
   // Đọc nội dung CSS từ file
 const cssPath = path.join(__dirname, 'public/pdf/print.css');
 

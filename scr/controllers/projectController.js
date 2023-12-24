@@ -1,6 +1,9 @@
 const mongoose = require('mongoose');
 const Handlebars = require('handlebars');
 const jwt = require('jsonwebtoken');
+const fs = require('fs');
+const path = require('path');
+const puppeteer = require('puppeteer');
 const HocPhanModel = require('../models/HocPhan/hocPhan.model');
 const GiangVienModel = require('../models/HocPhan/GiangVien.model');
 const TLTKModel = require('../models/HocPhan/TaiLieuThamKhao.model');
@@ -683,7 +686,240 @@ exports.project_Get_Update = async (req, res) => {
       findName: findName,
     });
 }
+exports.project_export_pdf = async (req, res) => {
+  const a4Content = req.body.NameValue;
+  var findName = a4Content;
+//////////////////////////////////////////////////////////////
+    //                         HOCPHAN
+    //////////////////////////////////////////////////////////////
+    const HocPhan = await HocPhanModel.findOne({fileName: findName.toString()})
+    if (HocPhan) {
+      var hocPhanObject = HocPhan.toObject();
+      var loadLoaiHocPhan = hocPhanObject.LoaiHocPhan;
+    }
+    
+ 
+      const TLTK_GT = await TLTKModel.find({ MaHP: findName.toString(), loaiHocLieu: 'Giáo trình' });
+        if (TLTK_GT) {
+          var TLTK_GT_Object = TLTK_GT.map(mongooseToObject)
+        }
+      const TLTK_TK = await TLTKModel.find({ MaHP: findName.toString(), loaiHocLieu: 'Tài liệu tham khảo' });
+        if (TLTK_TK) {
+          var TLTK_TK_Object = TLTK_TK.map(mongooseToObject)
+        }
+      const TLTK_HL = await TLTKModel.find({ MaHP: findName.toString(), loaiHocLieu: 'Học Liệu' });
+      if (TLTK_HL) {
+          var TLTK_HL_Object = TLTK_HL.map(mongooseToObject)
+      }
+        
+      const TaiLieuThamKhao = {
+        TaiLieu: TLTK_GT_Object,
+        GiaoTrinh:TLTK_TK_Object,
+        HocLieu: TLTK_HL_Object
+      }
+  //////////////////////////////////////////////////////////////
+    //                         table 5
+    //////////////////////////////////////////////////////////////
+    const Chuong = await ChuongModel.find({ MaHP: findName.toString()});
+    if (Chuong) {
+      var Chuong_Object = Chuong.map(mongooseToObject)
+      var DapUng_MH = await findCDRByMaHP(findName.toString())   
+      if (DapUng_MH && DapUng_MH.dapUngArray && DapUng_MH.dapUngArray.length === Chuong_Object.length) {
+        var ChuongOB = Chuong_Object.map((ch, index) => {
+          return { ...ch, dapUngArray: DapUng_MH.dapUngArray[index] };
+        });
+      } else {
+        console.log("Không đủ dữ liệu từ DapUng_MH để gắn vào Chuong_Object");
+      }
+    }
 
+    // //////////////////////////////////////////////////////////////
+    // //                         table 6 
+    // //////////////////////////////////////////////////////////////
+    const PhuongPhapDayHoc = await PP_Day_hocModel.find({ MaHP: findName.toString()});
+
+    if (PhuongPhapDayHoc[0]) {
+      var PhuongPhapDayHoc_Object = PhuongPhapDayHoc[0].toObject();
+    }
+    const DieuKien = await DieuKienThamGiaModel.find({ MaHP: findName.toString()});
+    if (DieuKien[0]) {
+      var DieuKienThamGia = DieuKien[0].toObject();
+    }
+
+    const DanhGia1 = await DG_HocPhanModel.find({ MaHP: findName.toString() ,MaDG_HP: 'MaDG1',LoaiDG: 'Đánh giá quá trình'})
+    if (DanhGia1[0]) {
+      var DanhGia1_TH_Object = DanhGia1[0].toObject()
+    }
+    const DanhGia2 = await DG_HocPhanModel.find({ MaHP: findName.toString() ,MaDG_HP: 'MaDG2',LoaiDG: 'Đánh giá quá trình'})
+    if (DanhGia2[0]) {
+      var DanhGia2_TH_Object = DanhGia2[0].toObject()
+    }
+    const DanhGia3 = await DG_HocPhanModel.find({ MaHP: findName.toString() ,MaDG_HP: 'MaDG3',LoaiDG: 'Đánh giá kết thúc học phần'})
+    if (DanhGia3[0]) {
+      var DanhGia3_TH_Object = DanhGia3[0].toObject()
+    }
+    const DanhGia4 = await DG_HocPhanModel.find({ MaHP: findName.toString() ,MaDG_HP: 'MaDG4',LoaiDG: 'Đánh giá kết thúc học phần'})
+    if (DanhGia4[0]) {
+      var DanhGia4_TH_Object = DanhGia4[0].toObject()
+    }
+ 
+    const GiangVien = await GiangVienModel.find({MaHP: findName.toString()})
+
+    if (GiangVien[0]) {
+      var GiangVien_Object = GiangVien[0].toObject();
+    }
+    
+  
+    const CDR_KT = await CDR_HocPhanModel.find({ MaHP: findName.toString(), loai_CDRMH: 'Về kiến thức' });
+    if (CDR_KT) {
+      var CDR_KT_Object = CDR_KT.map(mongooseToObject)
+    }
+    const CDR_KN = await CDR_HocPhanModel.find({ MaHP: findName.toString(), loai_CDRMH: 'Về kỹ năng' });
+    if (CDR_KN) {
+      var CDR_KN_Object = CDR_KN.map(mongooseToObject)
+    }
+    const CDR_TD = await CDR_HocPhanModel.find({ MaHP: findName.toString(), loai_CDRMH: 'Về thái độ' });
+    if (CDR_TD) {
+      var CDR_TD_Object = CDR_TD.map(mongooseToObject)
+    }
+
+    const cdrKTWithTenCDR = await addTenCDRToCDRObjects(CDR_KT_Object);
+    const cdrKNWithTenCDR = await addTenCDRToCDRObjects(CDR_KN_Object);
+    const cdrTDWithTenCDR = await addTenCDRToCDRObjects(CDR_TD_Object);
+
+    const plo = await PLO.find();
+    if (plo) {
+      var plo_Object = plo.map(mongooseToObject)  
+    }
+    let currentLoaiCDR_CT = null;
+    const processedPLOs = plo_Object.map((plo) => {
+    if (plo.LoaiCDR_CT !== currentLoaiCDR_CT) {
+        currentLoaiCDR_CT = plo.LoaiCDR_CT;
+        return { ...plo, newGroup: true }; // Đánh dấu đây là một nhóm mới
+    }
+    return plo;
+    });
+    var DataCourseLearningOutcomes = {
+      CDR_KT : cdrKTWithTenCDR,
+      CDR_KN : cdrKNWithTenCDR,
+      CDR_TD : cdrTDWithTenCDR,
+      PLO :  plo_Object
+    }
+    
+    var DataCourseContent = {
+      Chuong: ChuongOB
+    }
+  
+    var DataHeader = {
+      HocPhan :hocPhanObject
+    }
+
+    var DataDieuKienThamGia = {
+      HocPhan :hocPhanObject,
+      DieuKien :DieuKienThamGia
+    } 
+
+    var DataTeachingAndLearning = {
+      PhuongPhapDayHoc : PhuongPhapDayHoc_Object
+    }
+ 
+
+    var DataCourseAssessment = {
+      DanhGia1 : DanhGia1_TH_Object,
+      DanhGia2 : DanhGia2_TH_Object,
+      DanhGia3 : DanhGia3_TH_Object,
+      DanhGia4 : DanhGia4_TH_Object
+    }
+
+    var DataCourseFooter = {
+      GiangVien: GiangVien_Object
+    }
+    
+
+    const templates = await TempLate.find().sort({ order: 1 })
+    let compiledTemplates = [];
+    templates.forEach(template => {
+        let compiled;
+        switch (template.compileMethod) {
+            case "header":
+                compiled = compileMethod(template.htmlContent, DataHeader);
+                break;
+            case "FormGeneral_information":
+                compiled = compileMethod(template.htmlContent, DataDieuKienThamGia);
+                break;    
+            case "formLearningResources":
+                compiled = compileMethod(template.htmlContent, TaiLieuThamKhao);
+                break; 
+            case "CourseDescription":
+                compiled = compileMethod(template.htmlContent, DataHeader);
+                break;    
+            case "FormQuyDinh":  
+                compiled = template.htmlContent
+                break; 
+            case "CourseLearningOutcomes":  
+                compiled = compileMethod(template.htmlContent, DataCourseLearningOutcomes);
+                break;
+            case "CourseContent":  
+                compiled = compileMethod(template.htmlContent, DataCourseContent);
+                break; 
+            case "TeachingAndLearningMethods":  
+                compiled = compileMethod(template.htmlContent, DataTeachingAndLearning);
+                break;     
+            case "CourseAssessment":  
+                compiled = compileMethod(template.htmlContent, DataCourseAssessment);
+                break; 
+            case "Footer":  
+                compiled = compileMethod(template.htmlContent, DataCourseFooter);
+                break;              
+        }
+        compiledTemplates.push(compiled);
+    });
+
+    let compiledString = compiledTemplates.join('');
+
+  const cssPath = path.join(__dirname, '../public/pdf/print.css');
+
+var cssContent = fs.readFileSync(cssPath, 'utf-8');
+console.log("loaij css"+loadLoaiHocPhan);
+try {
+  const browser = await puppeteer.launch();
+  const page = await browser.newPage();
+  const htmlContent = `<html><head><script>var loadLoaiHocPhan = ${JSON.stringify(loadLoaiHocPhan)};</script><style>${cssContent}</style></head><body>${compiledString}</body></html>`;
+
+  await page.setContent(htmlContent);
+
+  // Đường dẫn đầy đủ đến thư mục 'public/pdf'
+  const outputPath = path.join(__dirname, '../public/pdf/output.pdf');
+
+  const pdfOptions = {
+    path: outputPath,
+    format: 'A4',
+    margin: {
+      top: '2cm',
+      right: '2cm',
+      bottom: '2cm',
+      left: '3cm',
+    },
+  };
+  // Generate the PDF with specified margins
+  await page.pdf(pdfOptions);
+  await browser.close();
+  res.json({ pdfPath: '/pdf/output.pdf' });
+} catch (error) {
+  console.error('Error:', error);
+  res.status(500).send('Internal Server Error');
+}
+
+
+
+
+
+
+
+
+
+
+}
 function compileMethod(templateString, data) {
   const compiledTemplate = Handlebars.compile(templateString);
   return compiledTemplate(data);
