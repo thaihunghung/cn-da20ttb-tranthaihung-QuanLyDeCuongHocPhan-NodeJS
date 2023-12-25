@@ -123,10 +123,12 @@
         
         var innerHTML_DetailRow = `
             <td class="body-5-content-course-content-255_55pt">
-                <p class="table-5-course-content-p text-justify" contenteditable="true" onkeydown="handleKeyPress('CTC${chuongRows.length}.1',event)"
-                    id="CTC${chuongRows.length}.1" class="STT_CTC${chuongRows.length}">${chuongRows.length}.1.&nbsp;[Chi tiết chương]</span>
-                </p>
+                <span contenteditable="true"id=" CTC${chuongRows.length}.1" 
+                onkeydown="handleKeyPress('CTC${chuongRows.length}.1',event)" 
+                class="STT_CTC${chuongRows.length}"> ${chuongRows.length}.1.&nbsp;[Chi tiết chương]</span>
+                </span>
             </td>
+            
             <td class="body-5-content-course-content-71_8pt">
                 <p class="table-5-course-content-p text-justify"><span>&nbsp;</span></p>
             </td>
@@ -176,9 +178,10 @@
         // Tạo các ô mới dựa trên số lượng ô trong dòng cuối cùng của "Chuong1"
         var innerHTML_DetailRow = `
             <td class="body-5-content-course-content-255_55pt">
-                <p class="table-5-course-content-p text-justify" contenteditable="true" onkeydown="handleKeyPress('CTC${index}.${stemp2}',event)"
+                <span contenteditable="true" onkeydown="handleKeyPress('CTC${index}.${stemp2}',event)"
                     id="CTC${index}.${stemp2}" class="STT_CTC${index}">${index}.${stemp2}.&nbsp;[Chi tiết chương]</span>
-                </p>
+                </span>
+            </td>    
             </td>
             <td class="body-5-content-course-content-71_8pt">
                 <p class="table-5-course-content-p text-justify"><span>&nbsp;</span></p>
@@ -206,7 +209,9 @@
             var sttElements = row.querySelectorAll('.STT_CHUONG');
             //lấy chuỗi từ 9 tương đương với Chuong1." "
             sttElements.forEach((sttElement, sttIndex) => {
-                sttElement.innerHTML = "Chương&nbsp;" + (index * sttElements.length + sttIndex + 1) + ".&nbsp;" + sttElement.textContent.substring(10);
+                      const chapterText = sttElement.textContent.replace(/Chương\s*\d+\.\s*/, '');
+      // Update the innerHTML with the new chapter number and the extracted title
+                        sttElement.innerHTML = "Chương&nbsp;" + (index + 1) + ".&nbsp;" + chapterText;
             });
             updateDropdownAndIds(row, index + 1);
 
@@ -337,10 +342,18 @@ function updateDropdown1(baseId, element, newIndex) {
             }
 
             for (var CTC = 0; CTC < ChildCTC_Chuong.length; CTC++) {
+                console.log(document.querySelectorAll('.ChiTietChuong' + idNumber));
+console.log(document.querySelector('[class*="STT_CTC' + idNumber + '"]'));
+
                 ChildCTC_Chuong[CTC].className = "ChiTietChuong" + (idNumber - 1);
                 //{{!-- const parent = ChildCTC_Chuong[CTC]; --}}
                 const CTC_Id = document.querySelector('[id*="CTC' + idNumber + '."]');
                 const STT_CTC = document.querySelector('[class*="STT_CTC' + idNumber + '"]');
+if (STT_CTC) {
+    STT_CTC.className = "STT_CTC" + (idNumber - 1);
+} else {
+    console.log('Không tìm thấy phần tử có class STT_CTC' + idNumber);
+}
                 STT_CTC.className = "STT_CTC" + (idNumber - 1);
                 CTC_Id.id = "CTC" + (idNumber - 1) + "." + (CTC + 1);
 
@@ -426,7 +439,7 @@ function updateDropdown1(baseId, element, newIndex) {
                         console.log("Hủy xóa.");
                     }
                 } else if (Chuongfocus) {
-                    const confirmation = window.confirm('Bạn có chắc muốn xóa chương này là tất cả trong chương này');
+                    const confirmation = window.confirm('Bạn có chắc muốn xóa chương này?');
                     if (confirmation) {
                         const idValue = Chuongfocus.id;
                         var matchid = idValue.match(/\d+/);

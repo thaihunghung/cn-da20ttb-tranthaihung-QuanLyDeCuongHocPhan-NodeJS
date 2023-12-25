@@ -15,6 +15,9 @@ app.use(cookieParser());
 const dotenv = require('dotenv');
 const TempLate = require('./models/Template/Template');
 const PLO = require('./models/Chuongtrinh/PLO.model');
+const DapUng_CDRData = require('./models/HocPhan/DapUngCDR.model');
+const CDR_HOCPHAN = require('./models/HocPhan/Cdr_HocPhan.model');
+
 const {mongooseToObject,MutipleMongooseToObject} = require('./util/mongoose');
 // // // // // // 
 // Routes     
@@ -86,37 +89,92 @@ app.use('/admin',admin)
 //       });
 //   // await hocPhanInstance.findOne({ MaMon:, TenMon: });        
 // });
-app.get('/',async (req, res) => {
-  function compileMethod(templateString, data) {
-    // Biên dịch template
-    const compiledTemplate = Handlebars.compile(templateString);
-    return compiledTemplate(data);
-}
-const DataHeader = {
-    HocPhan: {
-      PhuLuc: 'F',
-      TenMon:'[Tên học phần]',
-      MaMon:'[Mã học phần]'
-    }
-}
-  const template = await TempLate.find().sort({ order: 1 })
-  const templates = template.map(mongooseToObject);
+//   function compileMethod(templateString, data) {
+//     // Biên dịch template
+//     const compiledTemplate = Handlebars.compile(templateString);
+//     return compiledTemplate(data);
+// }
+// const DataHeader = {
+//     HocPhan: {
+//       PhuLuc: 'F',
+//       TenMon:'[Tên học phần]',
+//       MaMon:'[Mã học phần]'
+//     }
+// }
+//   const template = await TempLate.find().sort({ order: 1 })
+//   const templates = template.map(mongooseToObject);
     
-    const plo = await PLO.find();
-    if (plo) {
-      var plo_Object = plo.map(mongooseToObject)  
-    }
-    let currentLoaiCDR_CT = null;
+//     const plo = await PLO.find();
+//     if (plo) {
+//       var plo_Object = plo.map(mongooseToObject)  
+//     }
+//     let currentLoaiCDR_CT = null;
 
-    const processedPLOs = plo_Object.map((plo) => {
-    if (plo.LoaiCDR_CT !== currentLoaiCDR_CT) {
-        currentLoaiCDR_CT = plo.LoaiCDR_CT;
-        return { ...plo, newGroup: true }; // Đánh dấu đây là một nhóm mới
+//     const processedPLOs = plo_Object.map((plo) => {
+//     if (plo.LoaiCDR_CT !== currentLoaiCDR_CT) {
+//         currentLoaiCDR_CT = plo.LoaiCDR_CT;
+//         return { ...plo, newGroup: true }; // Đánh dấu đây là một nhóm mới
+//     }
+//     return plo;
+//     });
+async function fetchDataForCDRHocPhanData(cdrHocPhanData) {
+  try {
+    const result = [];
+
+    for (let i = 0; i < cdrHocPhanData.length; i++) {
+      const _id = cdrHocPhanData[i]._id;
+      const dapUngRecords = await DapUng_CDRData.find({ MaCDR_MH: _id });
+      result.push(...dapUngRecords); // Sử dụng spread operator ở đây
     }
-    return plo;
-    });
+
+    return result;
+  } catch (error) {
+    console.error('Error fetching data:', error);
+    throw error;
+  }
+}
+
+
+app.get('/',async (req, res) => {
+
+      const CDR_HP = await CDR_HOCPHAN.find({MaHP:'hung2:1'})
+      const DapUng_Data =await  fetchDataForCDRHocPhanData(CDR_HP);
+      const plo = await PLO.find({});
+
+      const CDR_HP_OB = CDR_HP.map(mongooseToObject);
+      const DapUng = DapUng_Data.map(mongooseToObject);
+      const plo_OB = plo.map(mongooseToObject);
+
+              // Tao group PLO theo loai
+      const groupedCDR = CDR_HP_OB.reduce((grouped, item) => {
+                const key = item.loai_CDRMH;
+                if (!grouped[key]) {
+                  grouped[key] = [];
+                }
+                grouped[key].push(item);
+                return grouped;
+    }, {});
+
+      res.render('test/test4', {PLO: CDR_HP_OB, PO:plo_OB, DapungCT:DapUng, GroupLoai:groupedCDR});
+
+
+
+    // const cdrHocPhanData = await CDR_HocPhanModel.find({}).populate('MaHP');
+    // const cdrCTData = await PLO.find({});
+    // const dapungCDRData = await Dapung_CDRModel.find({}).populate('Ten_CDR MaCDR_MH');
+
+    
+    
+    // // Chuyển đổi sang object
+    // const posObjects = PO.map(mongooseToObject);
+    // const ploObjects = PLO.map(mongooseToObject);
+    // const mappingObjects = DapungCT.map(mongooseToObject);
+    // const chuongTrinhAsObject = chuongTrinh.map(mongooseToObject);
+
+
+
  //res.render('formInput_monHoc/formInput_monHoc',{tample:compiledString,PLO: plo_Object,processedPLOs: processedPLOs})
-  res.render('test/test', { templates });
+  
   //project/project
   //res.render('project/project');
   //res.render('admin/HomePageAdmin');

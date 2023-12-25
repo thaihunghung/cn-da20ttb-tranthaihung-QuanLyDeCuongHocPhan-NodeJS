@@ -19,6 +19,7 @@ module.exports = {
       return outerIndex + '.' + innerIndex;
     },
     ifMatch: function(idCDR, maMT_CTDT, dapungCT) {
+
         if (!Array.isArray(dapungCT)) {
           console.error("dapungCT must be an array");
           return '';
@@ -39,6 +40,24 @@ module.exports = {
           return '';
         }
     },
+    ifMatchHP: function(idCDR, tenCDR, dapungCT) {
+      // console.log("=================idCDR=============");
+      // console.log(idCDR)
+      // console.log("=================maMT_CTDT=============");
+      // console.log(maMT_CTDT)
+      // console.log("=================dapungCT=============");
+      // console.log(dapungCT)
+      if (!Array.isArray(dapungCT)) {
+        console.error("dapungCT must be an array");
+        return '';
+      }
+      const mapping = dapungCT.find(item => {
+        return item.Ten_CDR.trim() === tenCDR.trim() && 
+               item.MaCDR_MH.toString() === idCDR.toString();
+      });
+      
+      return mapping ? 'X' : '';
+  },
     ifDifferent: function(value1, value2, options) {
       if (value1 !== value2) {
           return options.fn(this);
@@ -52,7 +71,9 @@ module.exports = {
     },
     eq: function(arg1, arg2) {
       return arg1.trim() === arg2.trim();
-  },
+    },
+    and: function(a, b){a && b},
+
     isChecked: function(arg1, arg2) {
       return arg1.trim() === arg2.trim();
   }

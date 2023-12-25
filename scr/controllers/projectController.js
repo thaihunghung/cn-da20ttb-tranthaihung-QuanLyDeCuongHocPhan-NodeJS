@@ -770,15 +770,15 @@ exports.project_export_pdf = async (req, res) => {
     }
     
   
-    const CDR_KT = await CDR_HocPhanModel.find({ MaHP: findName.toString(), loai_CDRMH: 'Về kiến thức' });
+    const CDR_KT = await CDR_HocPhanModel.find({ MaHP: findName.toString(), loai_CDRMH: 'Về kiến thức' }).sort({ MaCDR_MH: 1 });
     if (CDR_KT) {
       var CDR_KT_Object = CDR_KT.map(mongooseToObject)
     }
-    const CDR_KN = await CDR_HocPhanModel.find({ MaHP: findName.toString(), loai_CDRMH: 'Về kỹ năng' });
+    const CDR_KN = await CDR_HocPhanModel.find({ MaHP: findName.toString(), loai_CDRMH: 'Về kỹ năng' }).sort({ MaCDR_MH: 1 });
     if (CDR_KN) {
       var CDR_KN_Object = CDR_KN.map(mongooseToObject)
     }
-    const CDR_TD = await CDR_HocPhanModel.find({ MaHP: findName.toString(), loai_CDRMH: 'Về thái độ' });
+    const CDR_TD = await CDR_HocPhanModel.find({ MaHP: findName.toString(), loai_CDRMH: 'Về thái độ' }).sort({ MaCDR_MH: 1 });
     if (CDR_TD) {
       var CDR_TD_Object = CDR_TD.map(mongooseToObject)
     }
@@ -786,7 +786,21 @@ exports.project_export_pdf = async (req, res) => {
     const cdrKTWithTenCDR = await addTenCDRToCDRObjects(CDR_KT_Object);
     const cdrKNWithTenCDR = await addTenCDRToCDRObjects(CDR_KN_Object);
     const cdrTDWithTenCDR = await addTenCDRToCDRObjects(CDR_TD_Object);
-
+    // async function fetchTenCDR(maCDR_MH) {
+    //   try {
+    //       const dapUngRecords = await DapUngCDR.find({ MaCDR_MH: maCDR_MH });
+    //       return dapUngRecords.map(record => record.Ten_CDR);
+    //   } catch (error) {
+    //       console.error('Error fetching Ten_CDR:', error);
+    //       return [];
+    //   }
+    // }
+    // async function addTenCDRToCDRObjects(cdrObjects) {
+    //   return Promise.all(cdrObjects.map(async (cdrObject) => {
+    //       const tenCDRList = await fetchTenCDR(cdrObject._id);
+    //       return { ...cdrObject, Ten_CDR: tenCDRList };
+    //   }));
+    // }
     const plo = await PLO.find();
     if (plo) {
       var plo_Object = plo.map(mongooseToObject)  
@@ -880,11 +894,42 @@ exports.project_export_pdf = async (req, res) => {
   const cssPath = path.join(__dirname, '../public/pdf/print.css');
 
 var cssContent = fs.readFileSync(cssPath, 'utf-8');
-console.log("loaij css"+loadLoaiHocPhan);
+
 try {
   const browser = await puppeteer.launch();
   const page = await browser.newPage();
-  const htmlContent = `<html><head><script>var loadLoaiHocPhan = ${JSON.stringify(loadLoaiHocPhan)};</script><style>${cssContent}</style></head><body>${compiledString}</body></html>`;
+  const htmlContent = `<html><head><script>var loadLoaiHocPhan = ${JSON.stringify(loadLoaiHocPhan)};</script><style>${cssContent}</style></head><body>${compiledString}<script>
+  function UpdateSTT_TB2() {
+      var rows = document.querySelectorAll('.TaiLieu');
+      rows.forEach((row, index) => {
+          var sttElements = row.querySelectorAll('.stt');
+          sttElements.forEach((sttElement, sttIndex) => {
+              sttElement.innerHTML = "[" + (index * sttElements.length + sttIndex + 1) + "]&nbsp;&nbsp;";
+          });
+      });
+  }
+  UpdateSTT_TB2();
+</script>
+<script>
+function UpdateSTTskill_TB4() {
+  var rows = document.querySelectorAll('.KyNang');
+  rows.forEach((row, index) => {
+    var sttElements = row.querySelectorAll('th');
+    sttElements.forEach((sttElement, sttIndex) => {
+      // Cập nhật số thứ tự cho tất cả các phần tử có class 'stt'
+      sttElement.textContent = index * sttElements.length + sttIndex + 1;
+    });
+  });
+  
+UpdateSTTskill_TB4();
+</script>
+
+
+
+
+</body></html>`;
+
+
 
   await page.setContent(htmlContent);
 
@@ -909,15 +954,6 @@ try {
   console.error('Error:', error);
   res.status(500).send('Internal Server Error');
 }
-
-
-
-
-
-
-
-
-
 
 }
 function compileMethod(templateString, data) {

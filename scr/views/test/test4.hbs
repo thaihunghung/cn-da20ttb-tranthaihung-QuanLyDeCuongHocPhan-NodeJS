@@ -1,100 +1,40 @@
+<div class="Print__">
+  <table class="table-program section-content">
+    <tbody>
+      <tr>
+        <td class="table-header-program-58_55pt">
+                <p class="section-content text-center"><strong>Chuẩn đầu ra</span></strong></p>
+        </td>
+        {{#each PO}}
+          <th class="table-header-program-36pt"> 
+            <p class="section-content text-center"><strong>{{this.Ten_CDR}}</strong></p>
+          </th>  
+        {{/each}}
+      </tr>
+      {{#each GroupLoai}}
+      <tr>
+        <td colspan="{{calculateColspan ../PO 2}}" class="table-tital-program-468_2pt"><p><strong>{{this.[0].loai_CDRMH}}</p></strong></td>
+      </tr>
 
+      {{#each this}}
+        <tr>
+          <td class="table-body-program-58_55pt text-center">
+            <p><strong>{{this.MaCDR_MH}}</strong></p>
+          </td>
 
+          {{#each ../../PO}}
+            <td class="table-body-program-36pt text-center">
+              <div class="modify-flex"></div>
+              {{#ifMatchHP ../this._id this.Ten_CDR ../../../DapungCT}} 
+                <strong>X</strong> 
+              {{/ifMatchHP}}
+             </div> 
+            </td>
+          {{/each}}
+        </tr>
+      {{/each}}
+    {{/each}}  
+    </tbody>
+  </table>
+</div>
 
-<table>
-  <tbody id="myTable">
-    <tr id="1">
-      <th colspan="4">Thành phần cha 1</th>
-    </tr>
-    <tr id="1.1">
-      <th>1</th>
-      <th>2</th>
-      <th>3</th>
-      <th>4</th>
-    </tr>
-
-    <tr id="2">
-      <th colspan="4">Thành phần cha 2</th>
-    </tr>
-    <tr id="2.1">
-      <th>1</th>
-      <th>2</th>
-      <th>3</th>
-      <th>4</th>
-    </tr>
-  </tbody>
-</table>
-
-<!-- Nút Thêm Thành Phần Cha và Con -->
-<button id="nutThem">Thêm Thành Phần</button>
-
-<!-- Nút Thêm Thành Phần Con -->
-<button id="nutThemCon">Thêm Thành Phần Con</button>
-
-<script>
-function themTrChaVaCon() {
-  // Tìm tbody trong bảng
-  var tbody = document.getElementById('myTable');
-
-  // Tạo một hàng mới cho thành phần cha
-  var trMoiCha = document.createElement('tr');
-
-  // Thêm một ô tiêu đề vào hàng mới cho thành phần cha
-  var oTieuDeCha = document.createElement('th');
-  oTieuDeCha.colSpan = "4";
-  oTieuDeCha.textContent = 'Thành phần cha mới';
-
-  // Thêm ô tiêu đề vào hàng mới cho thành phần cha
-  trMoiCha.appendChild(oTieuDeCha);
-
-  // Thêm hàng mới cho thành phần cha vào tbody
-  tbody.appendChild(trMoiCha);
-
-  // Tạo một hàng mới cho thành phần con
-  var trMoiCon = document.createElement('tr');
-
-  // Thêm các ô tiêu đề vào hàng mới cho thành phần con
-  for (var i = 1; i <= 4; i++) {
-    var oTieuDeCon = document.createElement('th');
-    oTieuDeCon.textContent = i;
-    trMoiCon.appendChild(oTieuDeCon);
-  }
-
-  // Thêm Thành phần con vào tbody sau Thành phần cha
-  tbody.appendChild(trMoiCon);
-}
-
-function themTrCon(trChaId) {
-  // Tìm Thành phần cha trong tbody
-  var trCha = document.getElementById(trChaId);
-
-  // Nếu không tìm thấy Thành phần cha
-  if (!trCha) {
-    console.error('Không tìm thấy Thành phần cha.');
-    return;
-  }
-
-  // Tạo Thành phần con mới
-  var trCon = document.createElement('tr');
-
-  // Thêm các ô tiêu đề vào hàng mới cho Thành phần con
-  for (var i = 1; i <= 4; i++) {
-    var oTieuDeCon = document.createElement('th');
-    oTieuDeCon.textContent = i;
-    trCon.appendChild(oTieuDeCon);
-  }
-
-  // Thêm Thành phần con vào cuối danh sách các Thành phần con của Thành phần cha
-  trCha.parentNode.appendChild(trCon);
-}
-// Gán sự kiện click cho nút "Thêm Thành Phần Cha và Con"
-document.getElementById('nutThem').addEventListener('click', function() {
-  themTrChaVaCon();
-});
-
-// Gán sự kiện click cho nút "Thêm Thành Phần Con"
-document.getElementById('nutThemCon').addEventListener('click', function() {
-  // Trong ví dụ này, thêm Thành phần con vào Thành phần cha có ID là "1" (có thể sửa thành ID khác)
-  themTrCon('1');
-});
-</script>
