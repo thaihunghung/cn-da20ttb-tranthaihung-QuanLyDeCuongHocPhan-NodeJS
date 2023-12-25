@@ -153,7 +153,7 @@ app.get('/',async (req, res) => {
                 }
                 grouped[key].push(item);
                 return grouped;
-    }, {});
+      }, {});
 
       res.render('test/test4', {PLO: CDR_HP_OB, PO:plo_OB, DapungCT:DapUng, GroupLoai:groupedCDR});
 

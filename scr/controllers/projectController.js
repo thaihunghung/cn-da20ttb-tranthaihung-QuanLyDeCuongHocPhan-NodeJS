@@ -689,6 +689,9 @@ exports.project_Get_Update = async (req, res) => {
 exports.project_export_pdf = async (req, res) => {
   const a4Content = req.body.NameValue;
   var findName = a4Content;
+  if (!findName) {
+    return;
+  }
 //////////////////////////////////////////////////////////////
     //                         HOCPHAN
     //////////////////////////////////////////////////////////////
@@ -823,7 +826,7 @@ exports.project_export_pdf = async (req, res) => {
     var DataCourseContent = {
       Chuong: ChuongOB
     }
-  
+    
     var DataHeader = {
       HocPhan :hocPhanObject
     }
@@ -891,7 +894,7 @@ exports.project_export_pdf = async (req, res) => {
 
     let compiledString = compiledTemplates.join('');
 
-  const cssPath = path.join(__dirname, '../public/pdf/print.css');
+const cssPath = path.join(__dirname, '../public/pdf/print.css');
 
 var cssContent = fs.readFileSync(cssPath, 'utf-8');
 
@@ -909,27 +912,21 @@ try {
       });
   }
   UpdateSTT_TB2();
-</script>
-<script>
-function UpdateSTTskill_TB4() {
-  var rows = document.querySelectorAll('.KyNang');
-  rows.forEach((row, index) => {
-    var sttElements = row.querySelectorAll('th');
-    sttElements.forEach((sttElement, sttIndex) => {
-      // Cập nhật số thứ tự cho tất cả các phần tử có class 'stt'
-      sttElement.textContent = index * sttElements.length + sttIndex + 1;
-    });
-  });
-  
-UpdateSTTskill_TB4();
-</script>
-
-
-
-
-</body></html>`;
-
-
+    </script>
+    <script>
+    function UpdateSTTskill_TB4() {
+      var rows = document.querySelectorAll('.KyNang');
+      rows.forEach((row, index) => {
+        var sttElements = row.querySelectorAll('th');
+        sttElements.forEach((sttElement, sttIndex) => {
+          // Cập nhật số thứ tự cho tất cả các phần tử có class 'stt'
+          sttElement.textContent = index * sttElements.length + sttIndex + 1;
+        });
+      });
+      
+    UpdateSTTskill_TB4();
+  </script>
+  </body></html>`;
 
   await page.setContent(htmlContent);
 
@@ -956,17 +953,112 @@ UpdateSTTskill_TB4();
 }
 
 }
-function compileMethod(templateString, data) {
-  const compiledTemplate = Handlebars.compile(templateString);
-  return compiledTemplate(data);
+exports.project_export_pdf_CDR =async (req, res) => { 
+  const a4Content = req.body.NameValue;
+  var findName = a4Content;
+  if (!findName) {
+    return;
+  }
+  const CDR_HP = await CDR_HocPhanModel.find({MaHP: findName.toString()}).sort({ MaCDR_MH: 1 })
+  const DapUng_Data =await  fetchDataForCDRHocPhanData(CDR_HP);
+  const plo = await PLO.find({});
+  if (CDR_HP){
+  var CDR_HP_OB = CDR_HP.map(mongooseToObject);
+  }
+  if (DapUng_Data){
+  var DapUng = DapUng_Data.map(mongooseToObject);
+  }
+  if (plo){
+  var plo_OB = plo.map(mongooseToObject);
+  var groupedCDR = CDR_HP_OB.reduce((grouped, item) => {
+                const key = item.loai_CDRMH;
+                if (!grouped[key]) {
+                  grouped[key] = [];
+                }
+                grouped[key].push(item);
+                return grouped;
+      }, {});
+  }
+  const HocPhan = await HocPhanModel.findOne({fileName: findName.toString()})
+    if (HocPhan) {
+      var hocPhanObject = HocPhan.toObject();
+      var loadLoaiHocPhan = hocPhanObject.LoaiHocPhan;
+    }
+  const DataPrintPDF = {
+    PLO: CDR_HP_OB, 
+    PO:plo_OB, 
+    DapungCT:DapUng, 
+    GroupLoai:groupedCDR,
+    HocPhan :hocPhanObject
+  }
+ 
+  const templates = await TempLate.find({compileMethod: 'PrintPDF'})
+  let compiledTemplates = [];
+    templates.forEach(template => {
+        let compiled;
+        switch (template.compileMethod) {
+            case "PrintPDF":
+                compiled = compileMethod(template.htmlContent, DataPrintPDF);
+                break;         
+        }
+        compiledTemplates.push(compiled);
+    });
+
+    let compiledString = compiledTemplates.join('');
+
+    const cssPath = path.join(__dirname, '../public/pdf/print.css');
+
+    var cssContent = fs.readFileSync(cssPath, 'utf-8');
+    try {
+      const browser = await puppeteer.launch();
+      const page = await browser.newPage();
+      const htmlContent = `<html><head><style>${cssContent}</style></head><body>${compiledString}<script></body></html>`;
+      await page.setContent(htmlContent);
+      // Đường dẫn đầy đủ đến thư mục 'public/pdf'
+      const outputPath = path.join(__dirname, '../public/pdf/output_CDR.pdf');  
+      const pdfOptions = {
+        path: outputPath,
+        format: 'A4',
+        margin: {
+          top: '2cm',
+          right: '2cm',
+          bottom: '2cm',
+          left: '3cm',
+        },
+      };
+      // Generate the PDF with specified margins
+      await page.pdf(pdfOptions);
+      await browser.close();
+      res.json({ pdfPath: '/pdf/output_CDR.pdf' });
+    } catch (error) {
+      console.error('Error:', error);
+      res.status(500).send('Internal Server Error');
+    }
 }
+Handlebars.registerHelper('ifMatchHP', function(idCDR, tenCDR, dapungCT) {
+  if (!Array.isArray(dapungCT)) {
+    console.error("dapungCT must be an array");
+    return '';
+  }
+  const mapping = dapungCT.find(item => {
+    return item.Ten_CDR.trim() === tenCDR.trim() && 
+           item.MaCDR_MH.toString() === idCDR.toString();
+  });
+  
+  return mapping ? 'X' : '';
+});
 Handlebars.registerHelper('inc', function(value, options) {
     return parseInt(value) + 1;
   });
 Handlebars.registerHelper('joinArray', function(array) {
     return array.join(', ');
 });
-
+Handlebars.registerHelper('calculateColspan', function(array, addValue) { 
+    if (!array || !Array.isArray(array)) {
+      return addValue; 
+  }
+  return array.length + addValue;
+});
 Handlebars.registerHelper('isChecked', function(arg1, arg2) {
     if (arg1 && arg2) {
       return arg1.trim() === arg2.trim();
@@ -975,6 +1067,10 @@ Handlebars.registerHelper('isChecked', function(arg1, arg2) {
 Handlebars.registerHelper('eq', function(arg1, arg2) {
     if (arg1 && arg2) { return arg1.trim() === arg2.trim();}
 });
+function compileMethod(templateString, data) {
+  const compiledTemplate = Handlebars.compile(templateString);
+  return compiledTemplate(data);
+}
 async function fetchTenCDR(maCDR_MH) {
   try {
       const dapUngRecords = await DapUngCDR.find({ MaCDR_MH: maCDR_MH });
@@ -1071,4 +1167,20 @@ async function saveCDRHocPhanAndDapUng(data,noiDungArray) {
   );
 
   return savedCDRHocPhanData;
+}
+async function fetchDataForCDRHocPhanData(cdrHocPhanData) {
+  try {
+    const result = [];
+
+    for (let i = 0; i < cdrHocPhanData.length; i++) {
+      const _id = cdrHocPhanData[i]._id;
+      const dapUngRecords = await DapUngCDR.find({ MaCDR_MH: _id });
+      result.push(...dapUngRecords); // Sử dụng spread operator ở đây
+    }
+
+    return result;
+  } catch (error) {
+    console.error('Error fetching data:', error);
+    throw error;
+  }
 }

@@ -41,12 +41,6 @@ module.exports = {
         }
     },
     ifMatchHP: function(idCDR, tenCDR, dapungCT) {
-      // console.log("=================idCDR=============");
-      // console.log(idCDR)
-      // console.log("=================maMT_CTDT=============");
-      // console.log(maMT_CTDT)
-      // console.log("=================dapungCT=============");
-      // console.log(dapungCT)
       if (!Array.isArray(dapungCT)) {
         console.error("dapungCT must be an array");
         return '';
@@ -57,7 +51,7 @@ module.exports = {
       });
       
       return mapping ? 'X' : '';
-  },
+    },
     ifDifferent: function(value1, value2, options) {
       if (value1 !== value2) {
           return options.fn(this);

@@ -1,9 +1,9 @@
-<div class="Print__">
+<div class="Print__pdf-CDR">
   <table class="table-program section-content">
     <tbody>
       <tr>
         <td class="table-header-program-58_55pt">
-                <p class="section-content text-center"><strong>Chuẩn đầu ra</span></strong></p>
+          <p class="section-content text-center"><strong>Chuẩn đầu ra</span></strong></p>
         </td>
         {{#each PO}}
           <th class="table-header-program-36pt"> 
@@ -15,13 +15,11 @@
       <tr>
         <td colspan="{{calculateColspan ../PO 2}}" class="table-tital-program-468_2pt"><p><strong>{{this.[0].loai_CDRMH}}</p></strong></td>
       </tr>
-
       {{#each this}}
         <tr>
           <td class="table-body-program-58_55pt text-center">
             <p><strong>{{this.MaCDR_MH}}</strong></p>
           </td>
-
           {{#each ../../PO}}
             <td class="table-body-program-36pt text-center">
               <div class="modify-flex"></div>

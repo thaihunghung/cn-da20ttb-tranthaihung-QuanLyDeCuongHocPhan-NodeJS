@@ -12,6 +12,7 @@
             <button class="btn btn-primary" onclick="Update({{inc @index}})">Chỉnh sửa</button>
             <button class="btn btn-primary" onclick="Delete(`{{this.fullnameFile}}`)">Xóa</button>
             <button class="btn btn-primary" onclick="PDF(`{{this.fullnameFile}}`)">PDF</button>
+            <button class="btn btn-primary" onclick="PDF_CDR(`{{this.fullnameFile}}`)">PDF_CDR</button>
             {{/each}}
         </div>
         {{else}}
@@ -58,9 +59,17 @@
             .catch(function (error) {
                 console.error('Error:', error);
             });
-    
     }
-
+    function PDF_CDR(index) {
+        const NameValue =index.trim()
+        axios.post('../project/pdf-CDR', { NameValue})
+            .then(function (response) {
+                window.location.href = response.data.pdfPath;
+            })
+            .catch(function (error) {
+                console.error('Error:', error);
+            });
+    }
 
     document.getElementById('modify__user_hidden').style.display = 'block';
 </script>
