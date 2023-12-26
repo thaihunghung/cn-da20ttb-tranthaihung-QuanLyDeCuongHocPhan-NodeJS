@@ -223,13 +223,20 @@ exports.index = async (req, res) =>{
           let compiledString = compiledTemplates.join(''); 
           
           let currentLoaiCDR_CT = null;
-          const processedPLOs = plo_Object.map((plo) => {
+          plo_Object.sort((a, b) => {
+            if (a.LoaiCDR_CT < b.LoaiCDR_CT) return -1;
+            if (a.LoaiCDR_CT > b.LoaiCDR_CT) return 1;
+            return 0;
+        });
+
+        const processedPLOs = plo_Object.map((plo) => {
           if (plo.LoaiCDR_CT !== currentLoaiCDR_CT) {
               currentLoaiCDR_CT = plo.LoaiCDR_CT;
-              return { ...plo, newGroup: true }; 
+              return { ...plo, newGroup: true };
+          } else {
+              return plo;
           }
-          return plo;
-          }); 
+      });
           res.render('project/project', {
             filename:filename,
             templates: compiledString,
@@ -596,14 +603,26 @@ exports.project_Get_Update = async (req, res) => {
     if (plo) {
       var plo_Object = plo.map(mongooseToObject)  
     }
+
+
     let currentLoaiCDR_CT = null;
-    const processedPLOs = plo_Object.map((plo) => {
-    if (plo.LoaiCDR_CT !== currentLoaiCDR_CT) {
-        currentLoaiCDR_CT = plo.LoaiCDR_CT;
-        return { ...plo, newGroup: true }; // Đánh dấu đây là một nhóm mới
-    }
-    return plo;
-    });
+          plo_Object.sort((a, b) => {
+            if (a.LoaiCDR_CT < b.LoaiCDR_CT) return -1;
+            if (a.LoaiCDR_CT > b.LoaiCDR_CT) return 1;
+            return 0;
+        });
+
+        const processedPLOs = plo_Object.map((plo) => {
+          if (plo.LoaiCDR_CT !== currentLoaiCDR_CT) {
+              currentLoaiCDR_CT = plo.LoaiCDR_CT;
+              return { ...plo, newGroup: true };
+          } else {
+              return plo;
+          }
+      });
+
+
+
     var DataCourseLearningOutcomes = {
       CDR_KT : cdrKTWithTenCDR,
       CDR_KN : cdrKNWithTenCDR,
@@ -688,6 +707,7 @@ exports.project_Get_Update = async (req, res) => {
       findName: findName,
     });
 }
+
 exports.project_export_pdf = async (req, res) => {
   const a4Content = req.body.NameValue;
   var findName = a4Content;
@@ -1037,6 +1057,7 @@ exports.project_export_pdf_CDR =async (req, res) => {
       res.status(500).send('Internal Server Error');
     }
 }
+
 Handlebars.registerHelper('ifMatchHP', function(idCDR, tenCDR, dapungCT) {
   if (!Array.isArray(dapungCT)) {
     console.error("dapungCT must be an array");

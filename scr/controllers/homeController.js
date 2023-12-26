@@ -161,17 +161,26 @@ exports.index =async (req, res) => {
               compiledTemplates.push(compiled);
           });
           let compiledString = compiledTemplates.join(''); 
-          let currentLoaiCDR_CT = null;
-          const processedPLOs = plo_Object.map((plo) => {
+        let currentLoaiCDR_CT = null;
+          plo_Object.sort((a, b) => {
+            if (a.LoaiCDR_CT < b.LoaiCDR_CT) return -1;
+            if (a.LoaiCDR_CT > b.LoaiCDR_CT) return 1;
+            return 0;
+        });
+
+        const processedPLOs = plo_Object.map((plo) => {
           if (plo.LoaiCDR_CT !== currentLoaiCDR_CT) {
               currentLoaiCDR_CT = plo.LoaiCDR_CT;
-              return { ...plo, newGroup: true }; 
+              return { ...plo, newGroup: true };
+          } else {
+              return plo;
           }
-          return plo;
-          }); 
-          
+      });
+       
     res.render('home', {
         templates: compiledString,
+        PLO: plo_Object,
+      processedPLOs: processedPLOs
        
     });
 }

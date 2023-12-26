@@ -28,6 +28,14 @@
             </div>
         </div>
     </div>
+    {{!-- var a4Content = document.getElementById('formInput_monHoc').innerHTML;
+        axios.post('/pdf', { a4Content })
+            .then(function (response) {
+                window.location.href = response.data.pdfPath;
+            })
+            .catch(function (error) {
+                console.error('Error:', error);
+            }); --}}
 </div>
 </div>
 
@@ -41,16 +49,7 @@
 </script>
 <script>
     
-    function sendA4Content() {
-        var a4Content = document.getElementById('formInput_monHoc').innerHTML;
-        axios.post('/pdf', { a4Content })
-            .then(function (response) {
-                window.location.href = response.data.pdfPath;
-            })
-            .catch(function (error) {
-                console.error('Error:', error);
-            });
-    }
+
     const buttonSave = document.getElementById('buttonSave');
     buttonSave.addEventListener('click', async function () {
         const userConfirmation = window.confirm('Bạn có chắc chắn muốn lưu dữ liệu không?');
@@ -76,7 +75,43 @@
             console.log('Người dùng không đồng ý lưu dữ liệu.');
         }
     });
+   async function sendA4Content() {
+    const urlParams = new URLSearchParams(window.location.search);
+    const filename = urlParams.get('filename');
+    var MaHP = filename.toString();
+        const userConfirmation = window.confirm('Bạn có chắc chắn muốn xuất PDF?');
+        
+        if (userConfirmation) {
+   
 
+            const response1 = await axios.delete(`../project/delete/${MaHP}`);
+                if (response1.status === 200) {
+                    console.log('Xóa thành công');
+                } else {
+                    console.log('Xóa không thành công. Mã lỗi:', response1.status);
+                }
+           Save_Project()
+                .then((result) => {
+            console.log(result);
+            })
+            .catch((error) => {
+                console.log(error); 
+            });
+
+            const NameValue = MaHP.trim()
+            setTimeout(() => {
+                axios.post('/project/pdf', { NameValue })
+                    .then(function (response) {
+                        window.location.href = response.data.pdfPath;
+                    })
+                    .catch(function (error) {
+                        console.error('Error:', error);
+                    });
+            }, 3000);
+        } else {
+            console.log('Người dùng không đồng ý lưu dữ liệu.');
+        }    
+    }
 </script>
 {{>table-4}}
 {{> table-5}}

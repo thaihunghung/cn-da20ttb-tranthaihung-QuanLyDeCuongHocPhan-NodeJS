@@ -29,11 +29,7 @@
         </div>
     </div>
 </div>
-
-<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-<script>
-    document.getElementById('modify__user_hidden').style.display='block';
-    function sendA4Content() {
+{{!-- function sendA4Content() {
         var a4Content = document.getElementById('formInput_monHoc').innerHTML;
         axios.post('/pdf', { a4Content })
             .then(function (response) {
@@ -42,8 +38,8 @@
             .catch(function (error) {
                 console.error('Error:', error);
             });
-    }
-</script>
+    } --}}
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 <script>
     const urlParams = new URLSearchParams(window.location.search);
     const filename = urlParams.get('filename');
@@ -66,7 +62,43 @@
             console.log('Người dùng không đồng ý lưu dữ liệu.');
         }
     }
+    document.getElementById('modify__user_hidden').style.display='block';
+   
+</script>
+<script>
+     async function sendA4Content() {
+     const urlParams = new URLSearchParams(window.location.search);
+    const filename = urlParams.get('filename');
+    var MaHP = filename.toString();
+        const userConfirmation = window.confirm('Bạn có chắc chắn muốn xuất PDF?');
+        if (userConfirmation) {
+            try {
+                const responser = await axios.delete(`../delete/${MaHP}`);
+                if (responser.status === 200) {
+                    console.log('Xóa thành công');
+                } else {
+                    console.log('Xóa không thành công. Mã lỗi:', responser.status);
+                }
+            Save_Project();
 
+            const NameValue = MaHP.trim()
+            setTimeout(() => {
+                axios.post('/project/pdf', { NameValue })
+                    .then(function (response) {
+                        window.location.href = response.data.pdfPath;
+                    })
+                    .catch(function (error) {
+                        console.error('Error:', error);
+                    });
+            }, 3000);
+
+            } catch (error) {
+                console.error('Error deleting project:', error);
+            }
+        } else {
+            console.log('Người dùng không đồng ý lưu dữ liệu.');
+        }
+    }
 </script>
 <script>
     

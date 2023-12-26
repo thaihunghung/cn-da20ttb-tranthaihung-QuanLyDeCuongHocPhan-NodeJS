@@ -7,8 +7,6 @@ const DapUngCDR = require('../models/HocPhan/DapUngCDR.model');
 const Handlebars = require('handlebars');
 const {mongooseToObject,MutipleMongooseToObject} = require('../util/mongoose');
 
-
-
 exports.Admin_index = (req, res) => {
     res.render('admin/HomePageAdmin')
 }
@@ -278,9 +276,9 @@ exports.Admin_DELETE_LIST_USER = async (req, res) => {
 function compileMethod(templateString, data) {
     const compiledTemplate = Handlebars.compile(templateString);
     return compiledTemplate(data);
-  }
+}
   
-  Handlebars.registerHelper('ifMatch', function(idCDR, maMT_CTDT, dapungCT) {
+Handlebars.registerHelper('ifMatch', function(idCDR, maMT_CTDT, dapungCT) {
     if (!Array.isArray(dapungCT)) {
       console.error("dapungCT must be an array");
       return '';
@@ -300,7 +298,7 @@ function compileMethod(templateString, data) {
     } else {
       return '';
     }
-  });
+});
 
 
 
