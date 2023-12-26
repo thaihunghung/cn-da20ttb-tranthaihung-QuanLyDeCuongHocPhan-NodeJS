@@ -612,6 +612,9 @@ span {
 .table-header-program-58_55pt {
     width: 58.55pt
 }
+button {
+    display: none !important;
+}
 .table-header-program-36pt,
 .table-header-program-58_55pt {
    min-height:  40pt;

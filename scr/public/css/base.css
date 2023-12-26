@@ -168,13 +168,13 @@ span {
 .FormGeneral_information,
 .formLearningResources,
 .CourseLearningOutcomes,
-#FormQuyDinh,
+.FormQuyDinh,
 .TeachingAndLearningMethods,
 .Print__pdf-CDR
 {
     width: 16cm;
 }
-#FormQuyDinh {
+.FormQuyDinh {
     text-align: justify;
 }
 .strong {
@@ -388,5 +388,15 @@ input {
     z-index: 5;
     right: 60px;
     top: 150px;
+    gap: 10px;
+}
+.modify__button_program{
+    width: 100%;
+    display: flex;
+    justify-content:flex-end;
+    position: fixed;
+    z-index: 5;
+    right: 60px;
+    top: 120px;
     gap: 10px;
 }

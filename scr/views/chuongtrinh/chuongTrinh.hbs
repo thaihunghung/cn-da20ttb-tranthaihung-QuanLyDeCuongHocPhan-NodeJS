@@ -1,85 +1,19 @@
 <div class="layout_Admin">
   <div class="Admin_Nav">
-    <a href="/chuongtrinh">Chương trình </a><br>
-    <a href="/template">Quản lý khung</a>
+    
   </div>
 
   <div class="Admin_product">
     <div class="Admin_product_list">
-      <div class="program" style="min-height: 100vh;">
-  {{#each chuongTrinh}}
-  <div class="Chuongtrinh">
-    <h1>
-      {{TenChuongTrinh}}
-    </h1>
-    <br>
-    <p>
-      Loại hình: {{LoaiHinh}}
-    </p>
-    <br>
-    <p>
-      Số tính chỉ yêu cầu: {{STC_YeuCau}}
-    </p>
-    <br>
-    <p>
-      Thời gian đào tạo: {{Tg_DaoTao}} năm
-    </p>
-    <br>
-    <p>
-      Bậc: {{Bac}}
-    </p>
-  </div>
-  {{/each}}
-
-  <table class="table-program section-content">
-    <tbody>
-      
-      <tr>
-        <td class="table-header-program-58_55pt">
-                <p class="section-content text-center"><strong>PLO</span></strong></p>
-        </td>
-        <td class="table-header-program-229_6pt">
-                <p class="section-content text-center"><strong>Nội&nbsp;dung</span></strong></p>
-            </td>
-        {{#each PO}}
-          <th class="table-header-program-36pt"> 
-            <p class="section-content text-center"><strong>{{this.TenMT_CTDT}}</strong></p>
-          </th>  
-        {{/each}}
-      </tr>
-      {{#each GroupLoai}}
-      <tr>
-        <td colspan="{{calculateColspan ../PO 2}}" class="table-tital-program-468_2pt"><p><strong>{{this.[0].LoaiCDR_CT}}</p></strong></td>
-      </tr>
-
-      {{#each this}}
-        <tr>
-          <td class="table-body-program-58_55pt text-center">
-            <p><strong>{{this.Ten_CDR}}</strong></p>
-          </td>
-          <td class="table-body-program-229_6pt"><p>&nbsp;{{this.NoiDung}}&nbsp;</p></td>
-          {{#each ../../PO}}
-            <td class="table-body-program-36pt text-center">
-              <div class="modify-flex"></div>
-              {{#ifMatch ../this.id_CDR this.MaMT_CTDT ../../../DapungCT}} 
-                <strong>X</strong> 
-              {{/ifMatch}}
-             </div> 
-            </td>
-          {{/each}}
-        </tr>
-      {{/each}}
-    {{/each}}  
-    </tbody>
-  </table>
-</div>  
+        {{{templates}}}
     </div>
   </div>
 </div>
+</div>
 <script>
-  document.getElementById('modify__admin_hidden').style.display = 'block';
+  {{!-- document.getElementById('modify__admin_hidden').style.display = 'block';
   document.getElementById('modify__user_hidden').style.display = 'none';
-  document.getElementById('modify__project_hidden').style.display = 'none';
+  document.getElementById('modify__project_hidden').style.display = 'none'; --}}
   document.getElementById('modify__SaveP_hidden').style.display = 'none';
   document.getElementById('modify__PDF_hidden').style.display = 'none';
   document.getElementById('modify__listProject_hidden').style.display = 'none';

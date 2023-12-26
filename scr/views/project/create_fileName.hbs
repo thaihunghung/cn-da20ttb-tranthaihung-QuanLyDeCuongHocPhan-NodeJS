@@ -1,33 +1,96 @@
-<div class="">
-    <h3>
-        Vui lòng nhập tên dự án của bạn
-    </h3>
-    <h3>
-        <input type="text" name="filename" id="filename">
-    </h3>
-    <button onclick="checkName()">
-        nhập tên
-    </button>
+<style>
+.card__create__main{
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    margin-top: 20px;
+    width: 100%;
+    min-height: 80vh;
+}    
+.card__create {
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    max-width: 400px;
+    margin: 20px auto;
+    text-align: center;
+}
+
+.card__create h3 {
+    margin-bottom: 20px;
+    color: #333;
+    font-size: 1.2em;
+}
+
+.card__create input[type="text"] {
+    width: 80%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 1em;
+}
+
+.card__create button {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 1em;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+}
+
+.card__create button:hover {
+    background-color: #0056b3;
+}
+
+</style>
+<div class="card__create__main">
+    <div class="card__create">
+        <h3>
+            Vui lòng nhập tên dự án của bạn
+        </h3>
+        <h3>
+            <input type="text" name="filename" id="filename">
+        </h3>
+        <button onclick="checkName()">
+            nhập tên
+        </button>
+    </div>
 </div>
+
+
 <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 <script>
-     async function checkName() {
-        const filename = document.getElementById('filename').value;
-        console.log(filename);
-        try {
-            const response = await axios.post('/project/checkname', { filename });
-            if (response.data.exists) {
-                alert('Dự án đã tồn tại. Vui lòng nhập lại tên dự án khác.');
-                return;
-            } else {
-                const responseData = response.data;
-                alert(`Dự án tạo thành công. Filename: ${responseData.data}`);
-                
-                window.location.href='/project?filename=' + encodeURIComponent(responseData.data);;
-                return;
-            }
-        } catch (error) {
-            console.error('Lỗi kiểm tra tên dự án:', error.message);
+async function checkName() {
+    const filename = document.getElementById('filename').value;
+    try {
+        const response = await axios.post('/project/checkname', { filename });
+        if (response.data.exists) {
+            alert('Dự án đã tồn tại. Vui lòng nhập lại tên dự án khác.');
+            return;
+        } else {
+            const responseData = response.data;
+            alert(`Dự án tạo thành công. Filename: ${responseData.data}`);
+            window.location.href='/project?filename=' + encodeURIComponent(responseData.data);
+            return;
+        }
+    } catch (error) {
+        console.error('Lỗi kiểm tra tên dự án:', error);
+
+        // Xử lý thông báo lỗi từ phản hồi của server
+        if (error.response && error.response.data) {
+            alert(error.response.data.message);
+        } else {
+            alert('Đã xảy ra lỗi không xác định.');
         }
     }
+}
+
 </script>

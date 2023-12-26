@@ -15,12 +15,12 @@ exports.Template_Get = async (req, res) => {
 };
 exports.Template_Update = async (req, res) => {
     const templateId = req.params.id;
-    const updatedData = req.body;
+    const formObject = req.body;
   
-    console.log('Received data:', { templateId, updatedData });
+    console.log('Received data:', { templateId, formObject });
     try {
       // Update the template document in the database
-      const updatedTemplate = await Template.findByIdAndUpdate(templateId, updatedData, { new: true });
+      const updatedTemplate = await Template.findByIdAndUpdate(templateId, formObject, { new: true });
   
       if (!updatedTemplate) {
         return res.status(404).json({ message: 'Template not found' });

@@ -1,11 +1,21 @@
 [ {
     "order": 11,
-    "compileMethod": "ListTeacher",
+    "compileMethod": "cau1",
     "htmlContent": ""
   },
   {
     "order": 10,
-    "compileMethod": "TEST",
+    "compileMethod": "cau2",
+    "htmlContent": ""
+  },
+  {
+    "order": 11,
+    "compileMethod": "cau1",
+    "htmlContent": ""
+  },
+  {
+    "order": 10,
+    "compileMethod": "cau2",
     "htmlContent": ""
   }
 ]

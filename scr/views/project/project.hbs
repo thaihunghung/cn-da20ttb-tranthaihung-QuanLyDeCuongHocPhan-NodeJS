@@ -55,12 +55,20 @@
     buttonSave.addEventListener('click', async function () {
         const userConfirmation = window.confirm('Bạn có chắc chắn muốn lưu dữ liệu không?');
         if (userConfirmation) {
-            Save_Project();
+           
             const urlParams = new URLSearchParams(window.location.search);
             const filename = urlParams.get('filename');
             var Datafilename = filename.toString();
-           
+
+            const response = await axios.delete(`../project/delete/${Datafilename}`);
+                if (response.status === 204) {
+                    console.log('Xóa thành công');
+                } else {
+                    console.log('Xóa không thành công. Mã lỗi:', response.status);
+                }
+            Save_Project();
             alert("Đã save")
+            
             window.location.href = `../project/update/?filename=${Datafilename}`;
 
             //window.location.href = '../user/listProject'

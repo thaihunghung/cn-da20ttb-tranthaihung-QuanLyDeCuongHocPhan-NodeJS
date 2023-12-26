@@ -1,9 +1,9 @@
 <div class="layout_Admin">
   <div class="Admin_Nav">
-  <a href="/admin"><h5>Trang Admin</h5></a>
-                </ul>
-    <a href="/admin/program">Chương trình </a><br>
-    <a href="/template">Quản lý khung</a>
+    <a href="/admin"><h5>Trang Admin</h5></a>
+    <a href="/admin/program">Quản lý chương trình </a><br>
+    <a href="/template">Quản lý khung</a><br>
+    <a href="/admin/list-user">Quản lý user</a><br>
 </div>
 
   <div class="Admin_product">
@@ -43,34 +43,4 @@
   </div>
 </div>
 
-<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-<script>
-  function updateTemplate(templateId) {
-    const form = document.getElementById('updateForm_' + templateId);
-    const formData = new FormData(form);
-    let formObject = {};
-    formData.forEach(function (value, key) {
-      formObject[key] = value;
-    });
-    const isConfirmed = confirm("bạn có muốn chỉnh sửa?");
-    if (!isConfirmed) {
-        return;
-    }
-    axios.put('/template/update/' + templateId, formObject)
-      .then(function (response) {
-        console.log('Updated successfully:', response.data);
-        alert("Chỉnh sửa thành công")
-      })
-      .catch(function (error) {
-        console.error('Update failed:', error);
-      });
-  }
-</script>
-<script>
-  document.getElementById('modify__admin_hidden').style.display = 'block';
-  document.getElementById('modify__user_hidden').style.display = 'none';
-  document.getElementById('modify__project_hidden').style.display = 'none';
-  document.getElementById('modify__SaveP_hidden').style.display = 'none';
-  document.getElementById('modify__PDF_hidden').style.display = 'none';
-  document.getElementById('modify__listProject_hidden').style.display = 'none';
-</script>
+

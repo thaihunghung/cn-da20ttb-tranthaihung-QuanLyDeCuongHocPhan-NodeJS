@@ -278,13 +278,13 @@ exports.Check_File_Name = async (req, res) =>{
     const { filename } = req.body;
     const token = req.cookies.token;
     const {username, role}= jwt.verify(token, process.env.TOKEN_SECRET_KEY);
-    if (username){
-      console.log('thanh cong '+username);
-      var fileNameInCreate = username + ":"+ filename;
-    }
-    else{
-      console.log('loi');
-    }
+    if (!username || !filename || filename.trim() === '') {
+      // Trả về lỗi nếu filename không hợp lệ
+      res.status(400).json({ success: false, message: 'Tên dự án không được để trống' });
+      return;
+  }
+
+  const fileNameInCreate = username + ":" + filename;
     try {
         // Kiểm tra xem tên dự án đã tồn tại trong database chưa
         const project = await CreateModel.findOne({ fileName: fileNameInCreate });
@@ -444,8 +444,9 @@ try {
 };
 
 exports.project_Delete_PUT = async (req, res) => {
-    const MaHP = req.params.MaHP;
+    var MaHP = req.params.MaHP;
     try {
+        if(MaHP) {
           await HocPhanModel.findOneAndDelete({ fileName: MaHP });
           await GiangVienModel.deleteMany({ MaHP: MaHP });
           await TLTKModel.deleteMany({ MaHP: MaHP });
@@ -465,6 +466,7 @@ exports.project_Delete_PUT = async (req, res) => {
 
         // Xử lý thành công
         res.status(200).json({ message: 'Xóa thành công tất cả các documents.' });
+      }
     } catch (error) {
         // Xử lý lỗi
         res.status(500).json({ error: 'Lỗi xóa documents', message: error.message });

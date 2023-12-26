@@ -5,6 +5,17 @@ module.exports = {
     joinArray: function(array) {
     return array.join(', ');
     },
+    ifCond: function(v1, operator, v2, options) {
+      switch (operator) {
+        case '===':
+          return (v1 === v2) ? options.fn(this) : options.inverse(this);
+        case '!==':
+          return (v1 !== v2) ? options.fn(this) : options.inverse(this);
+        // You can add more cases here for different operators if needed
+        default:
+          return options.inverse(this);
+      }
+    },
     calculateColspan: function(array, addValue) {
       
       if (!array || !Array.isArray(array)) {

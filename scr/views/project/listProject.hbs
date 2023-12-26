@@ -1,39 +1,48 @@
 <div class="list_project">
+
     <div class="LP-stital">
         <h1>Danh sách dự án đã làm của bạn</h1>
     </div>
-    <div class="LP-product">
 
+    <div class="LP-product">
         {{#if ListCreate.length}}
-        <div class="LP-product-item">
-            {{#each ListCreate}}
-            <p id="username" class="hidden">{{this.username}}</p>
-            <p id="filenam{{inc @index}}"> {{this.nameProject}}</p>
-            <button class="btn btn-primary" onclick="Update({{inc @index}})">Chỉnh sửa</button>
-            <button class="btn btn-primary" onclick="Delete(`{{this.fullnameFile}}`)">Xóa</button>
-            <button class="btn btn-primary" onclick="PDF(`{{this.fullnameFile}}`)">PDF</button>
-            <button class="btn btn-primary" onclick="PDF_CDR(`{{this.fullnameFile}}`)">PDF_CDR</button>
-            {{/each}}
-        </div>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Tên dự án</th>
+                    <th>Thao tác</th>
+                </tr>
+            </thead>
+            <tbody>
+                {{#each ListCreate}}
+                <tr>
+                    <td id="filenam{{inc @index}}"> 
+                        <p id="username" class="hidden">{{this.username}}</p>
+                        <p id="filenam{{inc @index}}"> {{this.nameProject}}</p>
+                    </td>
+                    <td>
+                        <button class="btn btn-primary" onclick="Update(`{{this.fullnameFile}}`)">Chỉnh sửa</button>
+                        <button class="btn btn-primary" onclick="Delete(`{{this.fullnameFile}}`)">Xóa</button>
+                        <button class="btn btn-primary" onclick="PDF(`{{this.fullnameFile}}`)">PDF</button>
+                        <button class="btn btn-primary" onclick="PDF_CDR(`{{this.fullnameFile}}`)">PDF_CDR</button>
+                    </td>
+                </tr>
+                {{/each}}
+            </tbody>
+        </table>
         {{else}}
         <p>Không có dự án nào được tìm thấy.</p>
         {{/if}}
     </div>
 </div>
 
+
 <script>
     const username = document.getElementById('username').textContent.trim();
     function Update(index) {
-        const tenduanElement = document.getElementById('filenam' + index);
-        const usernameElement = document.getElementById('username');
-
-        if (tenduanElement && usernameElement) {
-            const tenduan = tenduanElement.textContent.trim();
-            const username = usernameElement.textContent.trim();
-            const filename = encodeURIComponent(username + ':' + tenduan);
-            // Sử dụng axios để thực hiện yêu cầu GET với tham số trên URL
-            window.location.href = `../project/update/?filename=${filename}`;
-        }
+ 
+            window.location.href = `../project/update/?filename=${index}`;
+        
     }
 
     function Delete(index) {
@@ -45,14 +54,15 @@
         axios.delete(`../project/delete_file/${encodedIndex}`)
             .then(response => {
                 console.log('xóa thành công')
+                window.location.href = '../user/listProject'
             })
             .catch(error => {
                 console.error('Lỗi khi gửi dữ liệu:', error.message);
             });
     }
     function PDF(index) {
-        const NameValue =index.trim()
-        axios.post('../project/pdf', { NameValue})
+        const NameValue = index.trim()
+        axios.post('../project/pdf', { NameValue })
             .then(function (response) {
                 window.location.href = response.data.pdfPath;
             })
@@ -61,8 +71,8 @@
             });
     }
     function PDF_CDR(index) {
-        const NameValue =index.trim()
-        axios.post('../project/pdf-CDR', { NameValue})
+        const NameValue = index.trim()
+        axios.post('../project/pdf-CDR', { NameValue })
             .then(function (response) {
                 window.location.href = response.data.pdfPath;
             })

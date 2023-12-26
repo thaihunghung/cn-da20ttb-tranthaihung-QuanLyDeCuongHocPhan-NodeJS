@@ -210,7 +210,12 @@ p {
 .page__break {
     page-break-before: always;
 }
-
+.modify__button_save {
+    display: none;
+}
+button {
+    display: none !important;
+}
 /* 4. Chuẩn đầu ra của học phần (Course learning outcomes): */
 .table-4-learning-outcomes { width: 4.7e+2pt;border-collapse: collapse;border: none;}
 /* header-4-learning-outcomes */

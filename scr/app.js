@@ -63,7 +63,7 @@ app.set('views', path.join(__dirname, 'views'));
 app.use('/update', UpdateRouter);
 app.use('/login', loginRoutes);
 app.use('/home', homeRoutes);
-app.use('/chuongtrinh', chuongtrinhRoutes);
+app.use('/program', chuongtrinhRoutes);
 app.use('/hung',hocphanRoutes);
 app.use('/user', userRoutes);
 app.use('/project', projectRoutes);
@@ -155,7 +155,7 @@ app.get('/',async (req, res) => {
                 return grouped;
       }, {});
 
-      res.render('test/test4', {PLO: CDR_HP_OB, PO:plo_OB, DapungCT:DapUng, GroupLoai:groupedCDR});
+      res.render('home');
 
 
 

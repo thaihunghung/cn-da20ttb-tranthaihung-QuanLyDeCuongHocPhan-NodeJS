@@ -1,0 +1,147 @@
+<style>
+
+</style>
+<div class="layout_Admin">
+    <div class="Admin_Nav">
+        <a href="/admin">
+            <h5>Trang Admin</h5>
+        </a>
+        </ul>
+        <a href="/admin/program">Chương trình </a><br>
+        <a href="/template">Quản lý khung</a>
+    </div>
+
+    <div class="Admin_product">
+        <div class="Admin_product_list">
+            <div class="modify__button_program send-content layout_Admin__display_column">
+                <div>
+                    <button onclick="navigateTo('/admin/program')">Program</button>
+                </div>
+                <div>
+                    <button onclick="navigateTo('/admin/program/edit')">Edit Program</button>
+                </div>
+                <div>
+                    <button onclick="navigateTo('/admin/program/plo')">Edit PLO</button>
+                </div>
+                <div>
+                    <button onclick="navigateTo('/admin/program/po')">Edit PO</button>
+                </div>
+            </div>
+            <div class="program" style="min-height: 100vh;">
+                {{#each chuongTrinh}}
+                <div class="Chuongtrinh">
+                    <h1>
+                        {{TenChuongTrinh}}
+                    </h1>
+                    <br>
+                    <p>
+                        Loại hình: {{LoaiHinh}}
+                    </p>
+                    <br>
+                    <p>
+                        Số tính chỉ yêu cầu: {{STC_YeuCau}}
+                    </p>
+                    <br>
+                    <p>
+                        Thời gian đào tạo: {{Tg_DaoTao}} năm
+                    </p>
+                    <br>
+                    <p>
+                        Bậc: {{Bac}}
+                    </p>
+                </div>
+                {{/each}}
+                <div class="display-flex">
+
+                    <table class="table-program section-content">
+                        <tbody>
+                            <tr>
+                                <td class="table-header-program-58_55pt">
+                                    <p class="section-content text-center"><strong>PLO</span></strong></p>
+                                </td>
+                                <td class="table-header-program-229_6pt">
+                                    <p class="section-content text-center"><strong>Nội&nbsp;dung</span></strong></p>
+                                </td>
+                                {{#each PO}}
+                                <th class="table-header-program-36pt">
+                                    <p class="section-content text-center"><strong>{{this.TenMT_CTDT}}</strong></p>
+                                </th>
+                                {{/each}}
+                            </tr>
+                            {{#each GroupLoai}}
+                            <tr>
+                                <td colspan="{{calculateColspan ../PO 2}}" class="table-tital-program-468_2pt">
+                                    <p><strong>{{this.[0].LoaiCDR_CT}}</p></strong>
+                                </td>
+                            </tr>
+
+                            {{#each this}}
+                            <tr>
+                                <td class="table-body-program-58_55pt text-center">
+                                    <p><strong>{{this.Ten_CDR}}</strong></p>
+                                </td>
+                                <td class="table-body-program-229_6pt">
+                                    <p>&nbsp;{{this.NoiDung}}&nbsp;</p>
+                                </td>
+                                {{#each ../../PO}}
+                                <td class="table-body-program-36pt text-center">
+                                    <div class="modify-flex"></div>
+                                    {{#ifMatch ../this.id_CDR this.MaMT_CTDT ../../../DapungCT}}
+                                    <strong>X</strong>
+                                    {{/ifMatch}}
+                </div>
+                </td>
+                {{/each}}
+                </tr>
+                {{/each}}
+                {{/each}}
+                </tbody>
+                </table>
+
+
+
+
+            </div>
+
+
+            <br>
+            <br>
+            <table class="table-program">
+                <tbody>
+                    <tr>
+                        <td class="table-header-program-58_55pt">
+                            <p class="section-content text-center"><strong></span></strong></p>
+
+                        </td>
+                        <td class="table-2-learning-body">
+                            <p class="section-content text-center"><strong>Nội dung</span></strong></p>
+
+                        </td>
+                    </tr>
+                    {{#each PO}}
+                    <tr>
+                        <td class="table-header-program-58_55pt">
+                            <p class="section-content text-center"><strong>{{this.TenMT_CTDT}}</span></strong></p>
+
+                        </td>
+                        <td class="table-2-learning-body">
+                            <p class="section-content text-justify">{{this.NoiDung}}</span></p>
+
+                        </td>
+                    </tr>
+                    {{/each}}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+</div>
+<script>
+    function navigateTo(path) {
+        // Thực hiện chuyển hướng đến đường dẫn cụ thể
+        window.location.href = path;
+    }
+    {{!-- document.getElementById('modify__SaveP_hidden').style.display = 'none';
+    document.getElementById('modify__PDF_hidden').style.display = 'none';
+    document.getElementById('modify__listProject_hidden').style.display = 'none'; --}}
+</script>
