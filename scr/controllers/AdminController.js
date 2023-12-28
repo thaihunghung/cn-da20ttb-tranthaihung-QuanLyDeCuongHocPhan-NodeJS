@@ -6,6 +6,9 @@ const TempLate = require('../models/Template/Template');
 const DapUngCDR = require('../models/HocPhan/DapUngCDR.model');
 const Handlebars = require('handlebars');
 const {mongooseToObject,MutipleMongooseToObject} = require('../util/mongoose');
+const User = require('../models/NguoiDung/NguoiDung.model');
+const Create = require('../models/NguoiDung/Create.model');
+const fs = require('fs');
 
 exports.Admin_index = (req, res) => {
     res.render('admin/HomePageAdmin')
@@ -207,21 +210,31 @@ exports.Admin_DELETE_PLO = async (req, res) => {
 
 
 exports.Admin_GET_LIST_USER = async (req, res) => {
-  const PLO = await PLOModel.find({});
-  const ploObjects = PLO.map(mongooseToObject);
-  res.render('admin/PLO',{PLO: ploObjects})
-}
+  try { 
+      const users = await User.find({ role: 0 });
+      const usersWithCreates = await Promise.all(users.map(async (user) => {
+          const creates = await Create.find({ username: user.username });
+          return {
+              ...user.toObject(),
+              creates: creates.map(create => create.toObject())
+          };
+      }));
+      res.render('admin/ListUser', { users: usersWithCreates });
+  } catch (error) {
+      console.error('Error fetching users and creates:', error);
+      res.status(500).send('Internal Server Error');
+  }
+};
 exports.Admin_POST_LIST_USER = async (req, res) => {
   try {
-    const { id_CDR, LoaiCDR_CT, Ten_CDR, NoiDung, id_CT } = req.body;
+    const { username, password, role} = req.body;
 
-    const newPLO = new PLOModel({
-        id_CDR,
-        LoaiCDR_CT,
-        Ten_CDR,
-        NoiDung,
-        id_CT
+    const newPLO = new User({
+      username,
+      password,
+      role
     });
+
     await newPLO.save();
     res.status(201).json({ message: 'New PLO item added successfully', newPLO });
 } catch (error) {
@@ -229,49 +242,91 @@ exports.Admin_POST_LIST_USER = async (req, res) => {
     res.status(500).json({ message: 'Error adding new PLO item', error: error.message });
 }
 }
-exports.Admin_PUT_LIST_USER = async (req, res) => {
-  const templateId = req.params.id;
-  const updatedData = req.body;
 
-  try {
-    const FindOnePlo = await PLOModel.findById(templateId);
-    if (!FindOnePlo) {
-      return res.status(404).json({ message: 'PLO item not found' });
-    }
-    const oldTenCDR = FindOnePlo.Ten_CDR;
-    const updated = await PLOModel.findByIdAndUpdate(templateId, updatedData, { new: true });
-    if (!updated) {
-      return res.status(404).json({ error: 'data not found' });
-    }
-    await DapUngCDR.updateMany(
-      { Ten_CDR: oldTenCDR },
-      { $set: { Ten_CDR: updatedData.Ten_CDR } }
-    );
 
-    res.json({ message: 'PLO and related DapUng_CDR items updated successfully', updatedPLO: updated });
-  } catch (error) {
-    console.error('Error updating PLO:', error);
-    res.status(500).json({ error: 'Internal Server Error' });
-  }
-};
 exports.Admin_DELETE_LIST_USER = async (req, res) => {
   try {
     const itemId = req.params.id;
-    const FindOne = await PLOModel.findById(itemId); // Use findById for correct querying
-    if (!FindOne) {
-      return res.status(404).json({ message: 'Item not found' });
+    const userToDelete = await User.findById(itemId);
+    if (!userToDelete) {
+      return res.status(404).json({ message: 'User not found' });
     }
-    var maMT = FindOne.id_CDR;
-    var Ten_CDR = FindOne.Ten_CDR;
-    await dapUng_CTModel.deleteMany({ id_CDR: maMT });
-    await DapUngCDR.deleteMany({Ten_CDR: Ten_CDR})
     
-    await PLOModel.findByIdAndDelete(itemId);
-    res.json({ message: 'Item deleted successfully' });
+    // Xóa tất cả các "creates" liên quan đến người dùng này
+    await Create.deleteMany({ username: userToDelete.username });
+
+    // Xóa người dùng
+    await User.findByIdAndDelete(itemId);
+
+    res.json({ message: 'User and related creates deleted successfully' });
   } catch (error) {
-      res.status(500).send('Error deleting item');
+    console.error('Error deleting user:', error);
+    res.status(500).json({ error: 'Internal Server Error', message: error.message });
   }
 };
+exports.Admin_DELETE_CREATE_BY_USER = async (req,res) => {
+  try {
+    const itemId = req.params.id;
+    await Create.findByIdAndDelete(itemId);
+
+    res.json({ message: 'User and related creates deleted successfully' });
+  } catch (error) {
+    console.error('Error deleting user:', error);
+    res.status(500).json({ error: 'Internal Server Error', message: error.message });
+  }
+
+};
+exports.Admin_GET_Matrix = async (req, res) => {
+    const PO = await POModel.find({});
+        const PLO = await PLOModel.find({});
+        const DapungCT = await dapUng_CTModel.find({});
+        const chuongTrinh = await ChuongTrinh.find();
+        
+        // Chuyển đổi sang object
+        const posObjects = PO.map(mongooseToObject);
+        const ploObjects = PLO.map(mongooseToObject);
+        const mappingObjects = DapungCT.map(mongooseToObject);
+        const chuongTrinhAsObject = chuongTrinh.map(mongooseToObject);
+   
+        // Tao group PLO theo loai
+        const groupedPLO = ploObjects.reduce((grouped, item) => {
+            const key = item.LoaiCDR_CT;
+            if (!grouped[key]) {
+              grouped[key] = [];
+            }
+            grouped[key].push(item);
+            return grouped;
+          }, {});
+   res.render('admin/MatrixPO-PLO',{
+        chuongTrinh:chuongTrinhAsObject, 
+        PO: posObjects,PLO:ploObjects, 
+        DapungCT:mappingObjects, 
+        GroupLoai: groupedPLO
+      });
+}
+
+exports.Admin_POST_UPDATE_Matrix = async (req, res) => {
+  try {
+    // Xóa dữ liệu hiện tại
+
+    const date = await dapUng_CTModel.find();
+    console.log(req.body)
+    console.log(date)
+    await dapUng_CTModel.deleteMany({});
+   await dapUng_CTModel.insertMany(req.body);
+
+    res.json({ success: true, message: "Dữ liệu đã được cập nhật" });
+} catch (err) {
+    console.error(err);
+    res.status(500).json({ success: false, message: "Có lỗi xảy ra" });
+}
+ 
+}
+
+  //id_CDR: 'cdr001',
+  //MaMT_CTD: 'mt001'
+
+
 
 function compileMethod(templateString, data) {
     const compiledTemplate = Handlebars.compile(templateString);
@@ -284,13 +339,13 @@ Handlebars.registerHelper('ifMatch', function(idCDR, maMT_CTDT, dapungCT) {
       return '';
     }
     const mapping = dapungCT.find(item => {
-      if (!item || !item.id_CDR || !item.MaMT_CTD) {
+      if (!item || !item.id_CDR || !item.MaMT_CTDT) {
         console.error("Invalid item:", item);
         return false;
       }
       
       return item.id_CDR.trim() === idCDR.trim() && 
-            item.MaMT_CTD.trim() === maMT_CTDT.trim();
+            item.MaMT_CTDT.trim() === maMT_CTDT.trim();
     });
     
     if (mapping) {

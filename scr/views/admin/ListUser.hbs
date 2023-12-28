@@ -1,43 +1,128 @@
 <div class="layout_Admin">
   <div class="Admin_Nav">
-    <a href="/admin"><h5>Trang Admin</h5></a>
+    <a href="/admin">
+      <h5>Trang Admin</h5>
+    </a>
     <a href="/admin/program">Quản lý chương trình </a><br>
     <a href="/template">Quản lý khung</a><br>
     <a href="/admin/list-user">Quản lý user</a><br>
-</div>
+    <a href="/admin/program/Matrix">Program Matrix</a><br>
+  </div>
   <div class="Admin_product">
     <div class="Admin_product_list">
-      <div class="container-card" spellcheck="false">
-      {{#each templates}}
-        <div class="card">
-          <div class="card-header">
-            Template {{order}}
-          </div>
+    <div class="program" style="min-height: 100vh;">
+      <div class="card">
+        <div class="card-header">
+          <button class="btn btn-primary" onclick="addItem()">Thêm mới</button>
+        </div>
+      </div>
+      <div id="addItemModal" class="modal">
+        <div class="modal-content">
+          <span class="close" onclick="closeAddModal()">&times;</span>
           <div class="card-body">
-            <form id="updateForm_{{_id}}">
+            <form id="addForm" class="template-form">
               <div class="form-group">
-                <label for="order_{{_id}}">Order</label>
-                <input type="number" class="form-control" name="order" id="order_{{_id}}" value="{{this.order}}"
-                  required>
+                <label for="newusername">Tên đăng nhập</label>
+                <input type="text" class="form-control" name="usrname" id="newusername" required>
+              </div>
+
+              <div class="form-group">
+                <label for="newpassword">Mật khẩu</label>
+                <input type="text" class="form-control" name="password" id="newpassword" required>
               </div>
               <div class="form-group">
-                <label for="compileMethod_{{_id}}">Compile Method</label>
-                <input type="text" class="form-control" name="compileMethod" id="compileMethod_{{_id}}"
-                  value="{{this.compileMethod}}">
+                <label for="newrole">Quyền</label>
+                <input type="number" class="form-control" name="role" id="newrole" required>
               </div>
-              <div class="form-group">
-                <label for="htmlContent_{{_id}}">HTML Content</label>
-                <textarea class="form-control" name="htmlContent" id="htmlContent_{{_id}}"
-                  rows="4">{{this.htmlContent}}</textarea>
-              </div>
-              <button type="button" class="btn btn-primary" onclick="updateTemplate('{{_id}}')">Update</button>
+              <button type="submit" class="btn btn-primary">Tạo</button>
             </form>
           </div>
         </div>
-      {{/each}}
       </div>
+      <div class="container-card" spellcheck="false">
+        {{#each users}}
+        <div class="card" id="card_user_{{this._id}}">
+          <div class="card-header">
+            <strong>User: {{this.username}}</strong>
+          </div>
+          <div class="card-body">
+            <p>Username: {{this.username}}</p>
+            <button type="button" class="btn btn-danger" onclick="deleteUser('{{this._id}}')">Delete User</button>
+            <hr>
+            <h4>List of Creates</h4>
+            {{#if this.creates.length}}
+            <ul>
+              {{#each this.creates}}
+              <li>
+                <div class="create-info">
+                  Create: {{this.fileName}}
+                  <!-- Thêm các thông tin khác của 'create' ở đây nếu cần -->
+                </div>
+                <div class="create-actions">
+                  <button type="button" class="btn btn-secondary" onclick="editCreate('{{this._id}}')">Edit</button>
+                  <button type="button" class="btn btn-danger" onclick="deleteCreate('{{this._id}}')">Delete</button>
+                </div>
+              </li>
+              {{/each}}
+            </ul>
+            {{else}}
+            <p>No creates found for this user.</p>
+            {{/if}}
+          </div>
+        </div>
+        {{/each}}
+      </div>
+      
     </div>
+
+    </div>
+
   </div>
 </div>
+<script>
+    function addItem() {
+        document.getElementById('addItemModal').style.display = 'block';
+    }
 
+    function closeAddModal() {
+        document.getElementById('addItemModal').style.display = 'none';
+    }
+    function navigateTo(path) {
+        window.location.href = path;
+    } 
+    function deleteCreate(createId) {
+    if (window.confirm('Bạn có chắc chắn muốn xóa create này không?')) {
+        axios.delete(`/admin/list-user/user/delete/${createId}`)
+            .then(response => {
+                console.log('Create deleted successfully');
+                window.location.reload();
+            })
+            .catch(error => {
+                console.error('Error deleting create:', error);
+        });
+      }
+    }
+    function deleteUser(itemId) {
+    axios.delete(`/admin/list-user/delete/${itemId}`)
+        .then(response => {
+            window.location.href = '/admin/list-user';
+        })
+        .catch(error => console.error('Error deleting item:', error));
+    }
 
+    document.getElementById('addForm').addEventListener('submit', function(event) {
+    event.preventDefault();
+        const newItemData = {
+            username: document.getElementById('newusername').value,
+            password: document.getElementById('newpassword').value,
+            role: document.getElementById('newrole').value
+        };
+
+        axios.post('/admin/list-user/', newItemData)
+            .then(response => {
+                closeAddModal();
+                window.location.href = '/admin/list-user';
+            })
+            .catch(error => console.error('Error adding item:', error));
+    });
+</script>

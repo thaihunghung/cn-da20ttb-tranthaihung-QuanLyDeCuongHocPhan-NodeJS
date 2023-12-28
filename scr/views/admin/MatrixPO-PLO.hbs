@@ -1,0 +1,162 @@
+<style>
+    .program {
+        min-width: 4.7e+2pt;
+        margin-top: 40px;
+        min-height: 100vh;
+        padding: 20px;
+        background-color: white;
+        font-family: 'Arial', sans-serif;
+    }
+
+    .display-flex {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .table-program {
+        border-collapse: collapse;
+        width: 100%;
+        margin-top: 20px;
+    }
+
+    .table-program th,
+    .table-program td {
+        padding: 10px;
+        text-align: justify;
+        border: 1px solid black;
+    }
+
+    .table-program th {
+        background-color: #f2f2f2;
+        font-weight: bold;
+    }
+
+    .table-tital-program-468_2pt {
+        text-align: left !important;
+
+        font-style: italic;
+    }
+
+    .table-body-program-58_55pt,
+    .table-body-program-229_6pt,
+    .table-body-program-36pt {
+        vertical-align: middle;
+    }
+
+    input[type="checkbox"] {
+        margin: 0;
+    }
+</style>
+<div class="layout_Admin">
+    <div class="Admin_Nav">
+        <a href="/admin">
+            <h5>Trang Admin</h5>
+        </a>
+        <a href="/admin/program">Quản lý chương trình </a><br>
+        <a href="/template">Quản lý khung</a><br>
+        <a href="/admin/list-user">Quản lý user</a><br>
+        <a href="/admin/program/Matrix">Program Matrix</a><br>
+    </div>
+
+    <div class="Admin_product">
+        <div class="Admin_product_list">
+            <div class="modify__button_program send-content layout_Admin__display_column">
+                <div>
+                    <button onclick="navigateTo('/admin/program')">Program</button>
+                </div>
+                <div>
+                    <button onclick="navigateTo('/admin/program/edit')">Edit Program</button>
+                </div>
+                <div>
+                    <button onclick="navigateTo('/admin/program/plo')">Edit PLO</button>
+                </div>
+                <div>
+                    <button onclick="navigateTo('/admin/program/po')">Edit PO</button>
+                </div>
+
+            </div>
+
+
+            {{#each DapungCT as |dapUng|}}
+
+            {{/each}}
+
+            <div class="program">
+                <div class="display-flex">
+                    <table class="table-program section-content">
+                        <tbody>
+                            <tr>
+                                <td class="table-header-program-58_55pt">
+                                    <p class="section-content text-center"><strong>PLO</strong></p>
+                                </td>
+                                <td class="table-header-program-229_6pt">
+                                    <p class="section-content text-center"><strong>Nội dung</strong></p>
+                                </td>
+                                {{#each PO}}
+                                <th class="table-header-program-36pt">
+                                    <p class="section-content text-center">{{this.TenMT_CTDT}}</p>
+                                </th>
+                                {{/each}}
+                            </tr>
+                            {{#each GroupLoai}}
+                            <tr>
+                                <td colspan="{{calculateColspan ../PO 2}}" class="table-tital-program-468_2pt">
+                                    <p><strong>{{this.[0].LoaiCDR_CT}}</strong></p>
+                                </td>
+                            </tr>
+
+                            {{#each this}}
+                            <tr>
+                                <td class=" text-center">
+                                    <p>{{this.Ten_CDR}}</p>
+                                </td>
+                                <td class="table-body-program-229_6pt">
+                                    <p>&nbsp;{{this.NoiDung}}&nbsp;</p>
+                                </td>
+                                {{#each ../../PO}}
+
+                                <td class="ValueMatrix text-center">
+                                    <input class="dapung-checkbox" value="{{../this.id_CDR}} {{this.MaMT_CTDT}}"
+                                        type="checkbox" {{Matrix ../this.id_CDR this.MaMT_CTDT ../../../DapungCT}} />
+                                </td>
+                                {{/each}}
+                            </tr>
+                            {{/each}}
+                            {{/each}}
+                        </tbody>
+                    </table>
+                    <button id="submit-button">Lấy Giá Trị Checkbox</button>
+
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+</div>
+
+<script>
+    function navigateTo(path) {
+        window.location.href = path;
+    }
+    document.getElementById('submit-button').addEventListener('click', function () {
+        let selectedValues = [];
+        document.querySelectorAll('.dapung-checkbox:checked').forEach(function (checkbox) {
+            selectedValues.push(checkbox.value);
+        });
+
+        let transformedValues = selectedValues.map(value => {
+            let parts = value.split(' ');
+            return { id_CDR: parts[0], MaMT_CTDT: parts[1] };
+        });
+        console.log(transformedValues);
+        axios.post('/admin/program/Matrix', transformedValues)
+            .then(response => {
+                console.log(response.data);
+            })
+            .catch(error => {
+                console.error('Error:', error);
+            });
+    });
+</script>

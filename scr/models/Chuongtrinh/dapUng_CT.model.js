@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 
 const Dapung_CTSchema = new mongoose.Schema({
-    MaMT_CTDT: { type: String, required: true },
+    MaMT_CTDT:  { type: mongoose.Schema.Types.String, ref: 'MucTieuCTDT', required: true },
     id_CDR: { type: mongoose.Schema.Types.String, ref: 'CDR_CT', required: true },
   });
 
