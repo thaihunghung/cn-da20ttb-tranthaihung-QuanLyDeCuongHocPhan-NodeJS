@@ -1,24 +1,25 @@
 <script>
     const div = document.querySelector('.formInput_print');
-    div.addEventListener('click', (event) => {
-        const clickedElement = event.target;
-        const canReceiveFocus = clickedElement instanceof HTMLInputElement ||
-            clickedElement instanceof HTMLTextAreaElement ||
-            clickedElement.isContentEditable;
+    if (div){
+        div.addEventListener('click', (event) => {
+            const clickedElement = event.target;
+            const canReceiveFocus = clickedElement instanceof HTMLInputElement ||
+                clickedElement instanceof HTMLTextAreaElement ||
+                clickedElement.isContentEditable;
 
-        if (canReceiveFocus) {
-            clickedElement.classList.add('focus');
-            // Lấy id của phần tử được click
-            const focusedEl = document.querySelector('.focus');
+            if (canReceiveFocus) {
+                clickedElement.classList.add('focus');
+                // Lấy id của phần tử được click
+                const focusedEl = document.querySelector('.focus');
 
-            div.querySelectorAll('.focus').forEach(el => {
-                if (el !== clickedElement) {
+                div.querySelectorAll('.focus').forEach(el => {
+                    if (el !== clickedElement) {
 
-                    el.classList.remove('focus');
-                    
-                }
-            });
-            //modify_ideal
-        }
-    });
+                        el.classList.remove('focus');
+                        
+                    }
+                });
+            }
+        });
+    }
 </script>

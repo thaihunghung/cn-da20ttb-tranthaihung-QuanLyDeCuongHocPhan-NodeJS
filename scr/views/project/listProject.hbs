@@ -38,11 +38,12 @@
 
 
 <script>
-    const username = document.getElementById('username').textContent.trim();
+    //const username = document.getElementById('username').textContent.trim();
+    const body = document.querySelector('.body');
+    body.style.marginTop = '55px';
+    
     function Update(index) {
- 
-            window.location.href = `../project/update/?filename=${index}`;
-        
+        window.location.href = `../project/update/?filename=${index}`;
     }
 
     function Delete(index) {

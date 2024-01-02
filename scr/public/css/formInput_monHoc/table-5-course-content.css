@@ -159,9 +159,7 @@
     border-color: red;
   }
 
-  .table-5-display-row {
-    display: flex;
-  }
+
   .ctc {
     display: flex;
     flex-direction: column;

@@ -6,6 +6,7 @@
     margin-top: 20px;
     width: 100%;
     min-height: 80vh;
+   
 }    
 .card__create {
     background-color: #fff;
@@ -68,6 +69,8 @@
 
 <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 <script>
+const layoutAdminElement = document.querySelector('.admin');
+layoutAdminElement.innerHTML = '';
 async function checkName() {
     const filename = document.getElementById('filename').value;
     try {

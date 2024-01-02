@@ -1,51 +1,41 @@
-<div class="layout_Admin">
-  <div class="Admin_Nav">
-   <a href="/admin"><h5>Trang Admin</h5></a>
-    <a href="/admin/program">Quản lý chương trình </a><br>
-    <a href="/template">Quản lý khung</a><br>
-    <a href="/admin/list-user">Quản lý user</a><br>
-    <a href="/admin/program/Matrix">Program Matrix</a><br>
-</div>
+<div class="container-card" spellcheck="false">
+  {{#each templates}}
 
-  <div class="Admin_product">
-    <div class="Admin_product_list">
-      <div class="container-card" spellcheck="false">
-      {{#each templates}}
-      
-        <div class="card">
-          <div class="card-header">
-            Template {{order}}
-          </div>
-          <div class="card-body">
-            <form id="updateForm_{{_id}}">
-              <div class="form-group">
-                <label for="order_{{_id}}">Order</label>
-                <input type="number" class="form-control" name="order" id="order_{{_id}}" value="{{this.order}}"
-                  required>
-              </div>
-              <div class="form-group">
-                <label for="compileMethod_{{_id}}">Compile Method</label>
-                <input type="text" class="form-control" name="compileMethod" id="compileMethod_{{_id}}"
-                  value="{{this.compileMethod}}">
-              </div>
-              <div class="form-group">
-                <label for="htmlContent_{{_id}}">HTML Content</label>
-                <textarea class="form-control" name="htmlContent" id="htmlContent_{{_id}}"
-                  rows="4">{{this.htmlContent}}</textarea>
-              </div>
-              <button type="button" class="btn btn-primary" onclick="updateTemplate('{{_id}}')">Update</button>
-            </form>
-          </div>
+  <div class="card">
+    <div class="card-header">
+      Template {{order}}
+    </div>
+    <div class="card-body">
+      <form id="updateForm_{{_id}}">
+        <div class="form-group">
+          <label for="order_{{_id}}">Order</label>
+          <input type="number" class="form-control" name="order" id="order_{{_id}}" value="{{this.order}}" required>
         </div>
-      {{/each}}
-      </div>
-
+        <div class="form-group">
+          <label for="compileMethod_{{_id}}">Compile Method</label>
+          <input type="text" class="form-control" name="compileMethod" id="compileMethod_{{_id}}"
+            value="{{this.compileMethod}}">
+        </div>
+        <div class="form-group">
+          <label for="htmlContent_{{_id}}">HTML Content</label>
+          <textarea class="form-control" name="htmlContent" id="htmlContent_{{_id}}"
+            rows="4">{{this.htmlContent}}</textarea>
+        </div>
+        <button type="button" class="btn btn-primary" onclick="updateTemplate('{{_id}}')">Update</button>
+      </form>
     </div>
   </div>
+  {{/each}}
 </div>
+
 
 <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 <script>
+ 
+
+document.getElementById('main').style.display = 'none';
+document.getElementById('admin').style.display = 'block';
+document.getElementById('main').innerHTML = '';
   function updateTemplate(templateId) {
     const form = document.getElementById('updateForm_' + templateId);
     const formData = new FormData(form);
@@ -55,9 +45,10 @@
     });
     const isConfirmed = confirm("bạn có muốn chỉnh sửa?");
     if (!isConfirmed) {
-        return;
+      return;
     }
-    axios.put('/template/update/' + templateId, formObject)
+    axios.put('/admin/template/update/' + templateId, formObject)
+    
       .then(function (response) {
         console.log('Updated successfully:', response.data);
         alert("Chỉnh sửa thành công")
@@ -66,12 +57,4 @@
         console.error('Update failed:', error);
       });
   }
-</script>
-<script>
-  document.getElementById('modify__admin_hidden').style.display = 'block';
-  document.getElementById('modify__user_hidden').style.display = 'none';
-  document.getElementById('modify__project_hidden').style.display = 'none';
-  document.getElementById('modify__SaveP_hidden').style.display = 'none';
-  document.getElementById('modify__PDF_hidden').style.display = 'none';
-  document.getElementById('modify__listProject_hidden').style.display = 'none';
 </script>

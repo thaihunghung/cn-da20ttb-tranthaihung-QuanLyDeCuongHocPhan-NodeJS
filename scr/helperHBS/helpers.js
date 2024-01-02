@@ -65,7 +65,7 @@ module.exports = {
     return mapping ? "X" : "";
   },
   Matrix: function (idCDR, maMT_CTDT, dapungCT) {
-    console.log(dapungCT);
+
     if (!Array.isArray(dapungCT)) {
       return "";
     }
@@ -82,7 +82,6 @@ module.exports = {
       );
     });
 
-    // Trả về "checked" nếu tìm thấy mapping, ngược lại trả về chuỗi rỗng
     return mapping ? "checked" : "";
   },
   getKey: Handlebars.helpers.getKey,
@@ -117,7 +116,6 @@ module.exports = {
       );
     });
 
-    // Trả về "checked" nếu tìm thấy mapping, ngược lại trả về chuỗi rỗng
     return mapping ? mapping._id : "";
   },
 };

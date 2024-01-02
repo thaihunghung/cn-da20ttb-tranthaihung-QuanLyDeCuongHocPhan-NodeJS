@@ -1,0 +1,40 @@
+<script>
+  function processAndValidateStrings(inputString) {
+  // Chia chuỗi input thành mảng các chuỗi
+  const stringArray = inputString.split(",");
+
+  // Mảng kết quả cuối cùng
+  const resultArray = [];
+
+  // Một Set để theo dõi các chuỗi đã xuất hiện
+  const seenSet = new Set();
+
+  // Lặp qua mảng chuỗi đầu vào
+  for (const str of stringArray) {
+    // Loại bỏ khoảng trắng ở đầu và cuối chuỗi
+    const trimmedStr = str.trim();
+
+    // Kiểm tra điều kiện hợp lệ, ví dụ: độ dài của chuỗi lớn hơn 2 và không chứa ký tự số
+    if (trimmedStr.length > 2 && !/\d/.test(trimmedStr)) {
+      // Kiểm tra xem chuỗi đã xuất hiện trước đó hay chưa
+      if (!seenSet.has(trimmedStr)) {
+        // Nếu chuỗi hợp lệ và chưa xuất hiện, thêm vào mảng kết quả và đánh dấu là đã xuất hiện
+        resultArray.push(trimmedStr);
+        seenSet.add(trimmedStr);
+      }
+    }
+  }
+
+  return resultArray;
+}
+
+// Chuỗi đầu vào
+const inputString = "hung, việt nam, 123, hung , hufđ, 123, đjdj,h.mgggssfmg, fsdfd";
+
+// Gọi hàm xử lý chuỗi
+const result = processAndValidateStrings(inputString);
+
+// In kết quả
+console.log(result);
+
+</script>

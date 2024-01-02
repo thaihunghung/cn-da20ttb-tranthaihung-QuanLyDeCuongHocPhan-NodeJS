@@ -1,77 +1,64 @@
-
-<div class="layout_Admin">
-    <div class="Admin_Nav">
-    <a href="/admin"><h5>Trang Admin</h5></a>
-    <a href="/admin/program">Quản lý chương trình </a><br>
-    <a href="/template">Quản lý khung</a><br>
-    <a href="/admin/list-user">Quản lý user</a><br>
-    <a href="/admin/program/Matrix">Program Matrix</a><br>
+<div class="modify__button_program send-content layout_Admin__display_column">
+    <div>
+        <button onclick="navigateTo('/admin/program')">Program</button>
     </div>
-
-    <div class="Admin_product">
-        <div class="Admin_product_list">
-            <div class="modify__button_program send-content layout_Admin__display_column">
-                <div>
-                    <button onclick="navigateTo('/admin/program')">Program</button>
-                </div>
-                <div>
-                    <button onclick="navigateTo('/admin/program/edit')">Edit Program</button>
-                </div>
-                <div>
-                    <button onclick="navigateTo('/admin/program/plo')">Edit PLO</button>
-                </div>
-                <div>
-                    <button onclick="navigateTo('/admin/program/po')">Edit PO</button>
-                </div>
+    <div>
+        <button onclick="navigateTo('/admin/program/edit')">Edit Program</button>
+    </div>
+    <div>
+        <button onclick="navigateTo('/admin/program/plo')">Edit PLO</button>
+    </div>
+    <div>
+        <button onclick="navigateTo('/admin/program/po')">Edit PO</button>
+    </div>
+</div>
+<div class="program" style="min-height: 100vh;">
+    <div class="container-card" spellcheck="false">
+        {{#each chuongTrinh}}
+        <div class="card" id="card_{{_id}}">
+            <div class="card-header">
+                Template
             </div>
-            <div class="program" style="min-height: 100vh;">
-                <div class="container-card" spellcheck="false">
-                    {{#each chuongTrinh}}
-                    <div class="card" id="card_{{_id}}">
-                        <div class="card-header">
-                            Template
-                        </div>
-                        <div class="card-body">
-                            <form id="updateForm_{{_id}}" class="template-form">
-                                <div class="form-group">
-                                    <label for="TenChuongTrinh">Tên Chương trình</label>
-                                    <input type="text" class="form-control" name="TenChuongTrinh"
-                                        id="TenChuongTrinh_{{_id}}" value="{{this.TenChuongTrinh}}" required>
-                                </div>
-                                <div class="form-group">
-                                    <label for="LoaiHinh">Loại Hình</label>
-                                    <input type="text" class="form-control" name="LoaiHinh" id="LoaiHinh_{{_id}}"
-                                        value="{{this.LoaiHinh}}">
-                                </div>
-                                <div class="form-group">
-                                    <label for="STC_YeuCau">Số Tín Chỉ Yêu Cầu</label>
-                                    <input type="number" class="form-control" name="STC_YeuCau" id="STC_YeuCau_{{_id}}"
-                                        value="{{this.STC_YeuCau}}">
-                                </div>
-                                <div class="form-group">
-                                    <label for="Tg_DaoTao">Thời Gian Đào Tạo</label>
-                                    <input type="number" class="form-control" name="Tg_DaoTao" id="Tg_DaoTao_{{_id}}"
-                                        value="{{this.Tg_DaoTao}}">
-                                </div>
-                                <div class="form-group">
-                                    <label for="Bac">Bậc</label>
-                                    <input type="text" class="form-control" name="Bac" id="Bac"
-                                        value="{{this.Bac}}">
-                                </div>
-                                <button type="submit" class="btn btn-primary"
-                                    onclick="UpdateProgram('{{_id}}')">Update</button>
-                            </form>
-                        </div>
+            <div class="card-body">
+                <form id="updateForm_{{_id}}" class="template-form">
+                    <div class="form-group">
+                        <label for="TenChuongTrinh">Tên Chương trình</label>
+                        <input type="text" class="form-control" name="TenChuongTrinh" id="TenChuongTrinh_{{_id}}"
+                            value="{{this.TenChuongTrinh}}" required>
                     </div>
-                    {{/each}}
-                </div>
+                    <div class="form-group">
+                        <label for="LoaiHinh">Loại Hình</label>
+                        <input type="text" class="form-control" name="LoaiHinh" id="LoaiHinh_{{_id}}"
+                            value="{{this.LoaiHinh}}">
+                    </div>
+                    <div class="form-group">
+                        <label for="STC_YeuCau">Số Tín Chỉ Yêu Cầu</label>
+                        <input type="number" class="form-control" name="STC_YeuCau" id="STC_YeuCau_{{_id}}"
+                            value="{{this.STC_YeuCau}}">
+                    </div>
+                    <div class="form-group">
+                        <label for="Tg_DaoTao">Thời Gian Đào Tạo</label>
+                        <input type="number" class="form-control" name="Tg_DaoTao" id="Tg_DaoTao_{{_id}}"
+                            value="{{this.Tg_DaoTao}}">
+                    </div>
+                    <div class="form-group">
+                        <label for="Bac">Bậc</label>
+                        <input type="text" class="form-control" name="Bac" id="Bac" value="{{this.Bac}}">
+                    </div>
+                    <button type="submit" class="btn btn-primary" onclick="UpdateProgram('{{_id}}')">Update</button>
+                </form>
             </div>
         </div>
+        {{/each}}
     </div>
 </div>
 
 
+
 <script>
+document.getElementById('main').style.display = 'none';
+document.getElementById('admin').style.display = 'block';
+document.getElementById('main').innerHTML = '';
     function navigateTo(path) {
         // Thực hiện chuyển hướng đến đường dẫn cụ thể
         window.location.href = path;
@@ -79,12 +66,12 @@
 </script>
 <script>
     async function UpdateProgram(id) {
-       const form = document.getElementById('updateForm_' + id);
+        const form = document.getElementById('updateForm_' + id);
         const formData = new FormData(form);
         const data = Object.fromEntries(formData);
         try {
             const response = await axios.put('/admin/program/edit/' + id, data);
-            if(response.status === 200 || response.status === 204) {
+            if (response.status === 200 || response.status === 204) {
                 alert('Update successful!');
                 window.location.href = '/admin/program';
             } else {

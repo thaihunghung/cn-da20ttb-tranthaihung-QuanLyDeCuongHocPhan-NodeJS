@@ -1,89 +1,6 @@
-<style>
-    .program {
-        min-width: 4.7e+2pt;
-        margin-top: 40px;
-        min-height: 100vh;
-        padding: 20px;
-        background-color: white;
-        font-family: 'Arial', sans-serif;
-    }
-
-    .display-flex {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-    }
-
-    .table-program {
-        border-collapse: collapse;
-        width: 100%;
-        margin-top: 20px;
-    }
-
-    .table-program th,
-    .table-program td {
-        padding: 10px;
-        text-align: justify;
-        border: 1px solid black;
-    }
-
-    .table-program th {
-        background-color: #f2f2f2;
-        font-weight: bold;
-    }
-
-    .table-tital-program-468_2pt {
-        text-align: left !important;
-
-        font-style: italic;
-    }
-
-    .table-body-program-58_55pt,
-    .table-body-program-229_6pt,
-    .table-body-program-36pt {
-        vertical-align: middle;
-    }
-
-    input[type="checkbox"] {
-        margin: 0;
-    }
-</style>
-<div class="layout_Admin">
-    <div class="Admin_Nav">
-        <a href="/admin">
-            <h5>Trang Admin</h5>
-        </a>
-        <a href="/admin/program">Quản lý chương trình </a><br>
-        <a href="/template">Quản lý khung</a><br>
-        <a href="/admin/list-user">Quản lý user</a><br>
-        <a href="/admin/program/Matrix">Program Matrix</a><br>
-    </div>
-
-    <div class="Admin_product">
-        <div class="Admin_product_list">
-            <div class="modify__button_program send-content layout_Admin__display_column">
-                <div>
-                    <button onclick="navigateTo('/admin/program')">Program</button>
-                </div>
-                <div>
-                    <button onclick="navigateTo('/admin/program/edit')">Edit Program</button>
-                </div>
-                <div>
-                    <button onclick="navigateTo('/admin/program/plo')">Edit PLO</button>
-                </div>
-                <div>
-                    <button onclick="navigateTo('/admin/program/po')">Edit PO</button>
-                </div>
-
-            </div>
-
-
-            {{#each DapungCT as |dapUng|}}
-
-            {{/each}}
 
             <div class="program">
-                <div class="display-flex">
+                <div class="display-flex Matrix">
                     <table class="table-program section-content">
                         <tbody>
                             <tr>
@@ -127,19 +44,19 @@
                         </tbody>
                     </table>
                     <button id="submit-button">Lấy Giá Trị Checkbox</button>
-
                 </div>
             </div>
-
-
-        </div>
-    </div>
-</div>
 
 <script>
     function navigateTo(path) {
         window.location.href = path;
     }
+
+
+   document.getElementById('main').style.display = 'none';
+document.getElementById('admin').style.display = 'block';
+document.getElementById('main').innerHTML = '';
+
     document.getElementById('submit-button').addEventListener('click', function () {
         let selectedValues = [];
         document.querySelectorAll('.dapung-checkbox:checked').forEach(function (checkbox) {

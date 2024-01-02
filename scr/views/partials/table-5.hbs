@@ -458,6 +458,27 @@ if (STT_CTC) {
                         console.log('dau vao' + number)
                         UpdateAll_TB5_WhenDelete_Chuong(number)
                         Chuongfocus.remove();
+                       
+                            var ctcContainer = document.getElementById("instructionForm-table5-CTC");
+                            // Remove all child elements
+                            ctcContainer.innerHTML = '';
+                            var chuongdocument = document.getElementsByClassName('Chuong');
+                        if(chuongdocument){
+var ctchg = document.getElementById("instructionForm-table5-CTC");
+                            for (var i = 1; i <= chuongdocument.length; i++) {
+        var newButton = document.createElement("button");
+        newButton.onclick = function (i) {
+            return function () {
+                themChiTietChuong(i);
+            };
+        }(i);
+        newButton.className = "btn btn-secondary Chitiet";
+        newButton.id = "ctc" + i;
+        newButton.innerHTML = "+ Thêm chi tiết chương " + i;
+
+        ctchg.appendChild(newButton);
+    }
+                        }
                         //updateChapters(number)
                         //UpdateAll_TB5_WhenDelete_Chuong();
                         //UpdateSTTskill();

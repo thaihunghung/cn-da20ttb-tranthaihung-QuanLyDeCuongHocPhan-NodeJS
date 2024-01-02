@@ -1,14 +1,4 @@
-<div class="layout_Admin">
-    <div class="Admin_Nav">
-    <a href="/admin"><h5>Trang Admin</h5></a>
-    <a href="/admin/program">Quản lý chương trình </a><br>
-    <a href="/template">Quản lý khung</a><br>
-    <a href="/admin/list-user">Quản lý user</a><br>
-    <a href="/admin/program/Matrix">Program Matrix</a><br>
-    </div>
-    <div class="Admin_product">
-        <div class="Admin_product_list">
-            <div class="modify__button_program send-content layout_Admin__display_column">
+<div class="modify__button_program send-content layout_Admin__display_column">
                 <div>
                     <button onclick="navigateTo('/admin/program')">Program</button>
                 </div>
@@ -79,12 +69,12 @@
                     </div>
                 </div>
             </div>
-        </div>
-    </div>
-</div>
 
 
 <script>
+  document.getElementById('main').style.display = 'none';
+document.getElementById('admin').style.display = 'block';
+document.getElementById('main').innerHTML = '';
     function addItem() {
         document.getElementById('addItemModal').style.display = 'block';
     }

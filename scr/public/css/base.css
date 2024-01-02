@@ -81,22 +81,27 @@ span {
 }
 
 .PLO {
+    display: flex;
+    flex-direction: column;
+
     border: 1px solid #d4d4d4;
-    background-color: burlywood;
+    background-color: white;
     color: black; 
-    width: 450px;
+    width: 550px;
     text-align: justify;
     height: 100vh; 
-    max-height: 700px; 
+    max-height: 750px; 
     position: sticky;
-    top: 5px; 
-    padding: 20px; 
-    margin-right: 20px; 
-    border-radius: 8px; 
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); 
+    top: 80px; 
+    padding: 10px; 
+    
+    border-radius: 2px; 
     overflow-y: auto; 
     font-family: 'Arial', sans-serif;
     align-items: flex-start; 
+}
+.tital__Messager{   
+    background-color: #CACACA !important;
 }
 @media (max-width: 1100px) {
     .PLO {
@@ -192,11 +197,11 @@ span {
   border-radius: 5px;
   width: 350px;
   min-width:  300px;
-  
+  font-family: 'Times New Roman', Times, serif;
   border: 1px solid black;
   margin-left: 10px;
   padding: 7pt;
-  background-color: burlywood;
+  background-color: #CACACA;
   .modyfi__flex {
     display: flex;
     justify-content: space-around;
@@ -219,7 +224,15 @@ span {
     margin: 3px 0;
   }
 }
+.table-5-display-row,.table-4-display-row,.table-2-display-row {
+    display: flex;
+    gap:0 1cm;
 
+  }
+#instructionForm-table5{
+    height: auto;
+    max-height: 600px;
+}
 .Stick__4 {
     margin-top: 15px;
         border-radius: 5px;
@@ -400,3 +413,49 @@ input {
     top: 120px;
     gap: 10px;
 }
+
+
+/* Style for the PLO__header */
+.PLO__group .PLO__header {
+    color: #333;
+    font-size: 1.2em;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+/* Style for the PLO__value */
+.PLO__item .PLO__value {
+    
+    margin-bottom: 5px;
+    display: flex;
+    height: 100%;
+    flex-direction: column;
+    justify-content: center;
+
+}
+
+/* Style for the PLO__textarea-container */
+.PLO__item .PLO__textarea-container {
+    margin-bottom: 15px;
+}
+
+/* Style for the PLO__textarea */
+.PLO__item .PLO__textarea {
+    width: 300px;
+    height: auto;
+    resize: vertical;
+    padding: 5px;
+    box-sizing: border-box;
+    margin-top: 5px;
+    border: 0.5px solid #CACACA;
+    height: 100px;
+ 
+}
+.PLO__item{
+    width: 100%;
+display: flex;
+gap: 10px;
+justify-content: center;
+
+}
+/* Additional styles as needed */

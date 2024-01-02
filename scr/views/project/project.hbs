@@ -3,101 +3,158 @@
     <div class="formInput_monHoc" id="formInput_monHoc">
 
         <div class="formInput_baseA4" id="formInput_baseA4">
-            <div class="PLO">
-                <table>
-                    {{#each processedPLOs}}
-                    {{#if newGroup}}
-                    <!-- Chỉ hiển thị tiêu đề này khi bắt đầu một nhóm PLO mới -->
-                    <tr>
-                        <th colspan="2">{{LoaiCDR_CT}}</th>
-                    </tr>
-                    {{/if}}
-                    <tr>
-                        <td class="ValuePLO">{{Ten_CDR}}</td>
-                        <td style="text-align: justify;">{{NoiDung}}</td>
-                    </tr>
-                    {{/each}}
-                </table>
+            <div class="PLO" spellcheck="false">
+                {{#each processedPLOs}}
+                {{#if newGroup}}
+                <!-- Chỉ hiển thị tiêu đề này khi bắt đầu một nhóm PLO mới -->
+                <div class="PLO__group">
+                    <h2 class="PLO__header">{{LoaiCDR_CT}}</h2>
+                </div>
+                {{/if}}
+                <div class="PLO__item">
+                    <div class="PLO__value">
+                        <p>{{Ten_CDR}}</p>
+                    </div>
+                    <div class="PLO__textarea-container" style="text-align: justify;">
+                        <textarea class="PLO__textarea">{{NoiDung}}</textarea>
+                    </div>
+                </div>
+                {{/each}}
+
             </div>
             <div class="formInput_print" spellcheck="false">
-                <div class="modify__button_save send-content">
-                    <button onclick="Save_Project()" id="buttonSave">Lưu</button>
-                    <button onclick="sendA4Content()" >Xuất file PDF</button>
+                <div class="modify__button_save send-content" style="width: 30%;">
+                    <button style="background-color: #6C757D;" onclick="buttonSave()()">Lưu</button>
+                    <button style="background-color: #6C757D;" onclick="sendA4Content()">Xuất file PDF</button>
                 </div>
                 {{{templates}}}
+                {{>all_Autocomplete}}    
             </div>
         </div>
     </div>
     {{!-- var a4Content = document.getElementById('formInput_monHoc').innerHTML;
-        axios.post('/pdf', { a4Content })
-            .then(function (response) {
-                window.location.href = response.data.pdfPath;
-            })
-            .catch(function (error) {
-                console.error('Error:', error);
-            }); --}}
+    axios.post('/pdf', { a4Content })
+    .then(function (response) {
+    window.location.href = response.data.pdfPath;
+    })
+    .catch(function (error) {
+    console.error('Error:', error);
+    }); --}}
 </div>
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 <script>
+   
     document.addEventListener("DOMContentLoaded", function () {
-        document.getElementById('modify__user_hidden').style.display='block';
+         const div = document.querySelector('.formInput_print');
+
+        div.addEventListener('click', (event) => {
+            const clickedElement = event.target;
+            const canReceiveFocus = clickedElement instanceof HTMLInputElement ||
+                clickedElement instanceof HTMLTextAreaElement ||
+                clickedElement.isContentEditable;
+
+            if (canReceiveFocus) {
+                clickedElement.classList.add('focus');
+                // Lấy id của phần tử được click
+                const focusedEl = document.querySelector('.focus');
+
+                div.querySelectorAll('.focus').forEach(el => {
+                    if (el !== clickedElement) {
+
+                        el.classList.remove('focus');
+                        
+                    }
+                });
+            }
+        });
+        document.getElementById('modify__user_hidden').style.display = 'block';
         UpdateSTT_TB2();
         UpdateSTTskill_TB4()
-    });
-</script>
-<script>
-    
+        const layoutAdminElement = document.querySelector('.admin');
+        // Xóa nội dung bên trong phần tử
+        layoutAdminElement.innerHTML = '';
+        
+     if (document.getElementById("TenMon")) {
+        autocomplete(document.getElementById("TenMon"), TenHocPhan, "TenHocPhan");
+    }
+    if (document.getElementById("TenTQ1")) {
+        autocomplete(document.getElementById("TenTQ1"), Ten_HocPhan_TQ, "TenTQ");
+    }
+    if (document.getElementById("MaTQ1")) {
+        autocomplete(document.getElementById("MaTQ1"), Ten_HocPhan_TQ, "hungtext");
+    }
+    if (document.getElementById("TenTQ2")) {
+        autocomplete(document.getElementById("TenTQ2"), Ten_HocPhan_TQ, "TenTQ");
+    }
+    if (document.getElementById("MaTQ2")) {
+        autocomplete(document.getElementById("MaTQ2"), Ten_HocPhan_TQ, "hungtext");
+    }
+    //autocomplete(document.getElementById("MaMon"), MaHocPhan);
+    //autocomplete(document.getElementById("myInput2"), countries);HoTen1
 
-    const buttonSave = document.getElementById('buttonSave');
-    buttonSave.addEventListener('click', async function () {
+    if (document.getElementById("HoTen1")) {
+        autocomplete(document.getElementById("HoTen1"), Teacher, "Teacher");
+    }
+    if (document.getElementById("HoTen2")) {
+        autocomplete(document.getElementById("HoTen2"), Teacher, "Teacher");
+    }
+    if (document.getElementById("BienSoan")) {
+        autocomplete(document.getElementById("BienSoan"), Teacher, "BienSoan");
+    }
+    if (document.getElementById("BienSoan")) {
+        autocomplete(document.getElementById("PhanBien"), Teacher, "BienSoan");
+    }
+    
+    });
+        
+    async function buttonSave() {
         const userConfirmation = window.confirm('Bạn có chắc chắn muốn lưu dữ liệu không?');
         if (userConfirmation) {
-           
+
             const urlParams = new URLSearchParams(window.location.search);
             const filename = urlParams.get('filename');
             var Datafilename = filename.toString();
 
             const response = await axios.delete(`../project/delete/${Datafilename}`);
-                if (response.status === 204) {
-                    console.log('Xóa thành công');
-                } else {
-                    console.log('Xóa không thành công. Mã lỗi:', response.status);
-                }
+            if (response.status === 204) {
+                console.log('Xóa thành công');
+            } else {
+                console.log('Xóa không thành công. Mã lỗi:', response.status);
+            }
             Save_Project();
             alert("Đã save")
-            
-            window.location.href = `../project/update/?filename=${Datafilename}`;
 
-            //window.location.href = '../user/listProject'
+            //window.location.href = `../project/update/?filename=${Datafilename}`;
+
+            window.location.href = '../user/listProject'
         } else {
             console.log('Người dùng không đồng ý lưu dữ liệu.');
         }
-    });
-   async function sendA4Content() {
-    const urlParams = new URLSearchParams(window.location.search);
-    const filename = urlParams.get('filename');
-    var MaHP = filename.toString();
+    };
+    async function sendA4Content() {
+        const urlParams = new URLSearchParams(window.location.search);
+        const filename = urlParams.get('filename');
+        var MaHP = filename.toString();
         const userConfirmation = window.confirm('Bạn có chắc chắn muốn xuất PDF?');
-        
+
         if (userConfirmation) {
-   
+
 
             const response1 = await axios.delete(`../project/delete/${MaHP}`);
-                if (response1.status === 200) {
-                    console.log('Xóa thành công');
-                } else {
-                    console.log('Xóa không thành công. Mã lỗi:', response1.status);
-                }
-           Save_Project()
+            if (response1.status === 200) {
+                console.log('Xóa thành công');
+            } else {
+                console.log('Xóa không thành công. Mã lỗi:', response1.status);
+            }
+            Save_Project()
                 .then((result) => {
-            console.log(result);
-            })
-            .catch((error) => {
-                console.log(error); 
-            });
-
+                    console.log(result);
+                })
+                .catch((error) => {
+                    console.log(error);
+                });
             const NameValue = MaHP.trim()
             setTimeout(() => {
                 axios.post('/project/pdf', { NameValue })
@@ -110,18 +167,16 @@
             }, 3000);
         } else {
             console.log('Người dùng không đồng ý lưu dữ liệu.');
-        }    
+        }
     }
 </script>
+{{>Autocomplete}}
 {{>table-4}}
 {{> table-5}}
-{{>createFocus}}
 {{>CheckBox}}
 {{>table-2}}
 {{>CheckBox}}
 {{>PostUpdate}}
-{{>all_Autocomplete}}
-{{>Autocomplete}}
 {{>ChangeDropdownText}}
 {{>CleanUpDataPost}}
 {{>PostUpdate}}

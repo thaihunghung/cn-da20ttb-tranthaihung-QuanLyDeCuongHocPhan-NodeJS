@@ -24,6 +24,7 @@ const { config } = require('dotenv');
 
 exports.index = async (req, res) =>{
     const filename = req.query.filename;
+    const token = req.cookies.token;
     try {
       const project = await CreateModel.findOne({ fileName: filename });
       if (project) {
@@ -241,7 +242,8 @@ exports.index = async (req, res) =>{
             filename:filename,
             templates: compiledString,
             PLO: plo_Object,
-            processedPLOs: processedPLOs
+            processedPLOs: processedPLOs,
+            token
           });
       } else {
           res.redirect('/project/Create');
@@ -252,7 +254,8 @@ exports.index = async (req, res) =>{
   }
 }
 exports.User_Create_fileName = (req, res) =>{
-    res.render('project/create_fileName')
+  const token = req.cookies.token;
+    res.render('project/create_fileName',{token});
 }
 exports.delete_File_Name =async (req, res) =>{
   try {
@@ -436,12 +439,10 @@ try {
     
     if(DanhGiaData){
        var SaveDanhGia = await DG_HocPhanModel.insertMany(DanhGiaData);
-       console.log(SaveDanhGia);
      }
     if(GiangVienData){
       const Save = new GiangVienModel(GiangVienData);
       const SaveSave =await Save.save();
-      console.log(SaveSave);
     }  
       
   } catch (error) {
@@ -480,7 +481,7 @@ exports.project_Delete_PUT = async (req, res) => {
     }
 }
 exports.project_Get_Update = async (req, res) => {
-  
+    const token = req.cookies.token;
    //render và load project cần sửa
    const { filename } = req.query;
     
@@ -705,6 +706,7 @@ exports.project_Get_Update = async (req, res) => {
       PLO: plo_Object,
       processedPLOs: processedPLOs,
       findName: findName,
+      token
     });
 }
 

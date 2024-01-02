@@ -1,102 +1,89 @@
-<div class="layout_Admin">
-    <div class="Admin_Nav">
-    <a href="/admin"><h5>Trang Admin</h5></a>
-    <a href="/admin/program">Quản lý chương trình </a><br>
-    <a href="/template">Quản lý khung</a><br>
-    <a href="/admin/list-user">Quản lý user</a><br>
-    <a href="/admin/program/Matrix">Program Matrix</a><br>
+<div class="modify__button_program send-content layout_Admin__display_column">
+    <div>
+        <button onclick="navigateTo('/admin/program')">Program</button>
     </div>
-    
-    <div class="Admin_product">
-        <div class="Admin_product_list">
-            <div class="modify__button_program send-content layout_Admin__display_column">
-                <div>
-                    <button onclick="navigateTo('/admin/program')">Program</button>
-                </div>
-                <div>
-                    <button onclick="navigateTo('/admin/program/edit')">Edit Program</button>
-                </div>
-                <div>
-                    <button onclick="navigateTo('/admin/program/plo')">Edit PLO</button>
-                </div>
-                <div>
-                    <button onclick="navigateTo('/admin/program/po')">Edit PO</button>
-                </div>
+    <div>
+        <button onclick="navigateTo('/admin/program/edit')">Edit Program</button>
+    </div>
+    <div>
+        <button onclick="navigateTo('/admin/program/plo')">Edit PLO</button>
+    </div>
+    <div>
+        <button onclick="navigateTo('/admin/program/po')">Edit PO</button>
+    </div>
+</div>
+<div class="program" style="min-height: 100vh;">
+    <br>
+    <br>
+    <div class="container-card" spellcheck="false">
+        {{#each PLO}}
+        <div class="card" id="card_{{_id}}">
+            <div class="card-header">
+                <strong>{{this.Ten_CDR}}</strong> <!-- Display the title in the card header -->
             </div>
-            <div class="program" style="min-height: 100vh;">
-                <br>
-                <br>
-                <div class="container-card" spellcheck="false">
-                    {{#each PLO}}
-                    <div class="card" id="card_{{_id}}">
-                        <div class="card-header">
-                            <strong>{{this.Ten_CDR}}</strong> <!-- Display the title in the card header -->
-                        </div>
-                        <div class="card-body">
-                            <form id="updateForm_{{_id}}" class="template-form">
-                                <input type="hidden" value="{{this.id_CDR}}">
-                                <div class="form-group">
-                                    <label for="Ten_CDR_{{_id}}"><em>Tên PLO</em></label>
-                                    <input type="text" class="form-control" name="Ten_CDR" id="Ten_CDR_{{_id}}"
-                                        value="{{this.Ten_CDR}}" required>
-                                </div>
-                                <div class="form-group">
-                                    <label for="LoaiCDR_CT_{{_id}}"><em>Loại PLO</em> </label>
-                                    <select class="form-control" name="LoaiCDR_CT" id="LoaiCDR_CT_{{_id}}" required>
-                                        <option value="Kiến thức" {{#ifCond this.LoaiCDR_CT '===' 'Kiến thức'}}selected{{/ifCond}}>Kiến thức</option>
-                                        <option value="Kỹ năng" {{#ifCond this.LoaiCDR_CT '===' 'Kỹ năng'}}selected{{/ifCond}}>Kỹ năng</option>
-                                        <option value="Mức độ tự chủ và trách nhiệm" {{#ifCond this.LoaiCDR_CT '===' 'Mức độ tự chủ và trách nhiệm'}}selected{{/ifCond}}>Mức độ tự chủ và trách nhiệm</option>
-                                    </select>
-                                </div>
-                                <div class="form-group">
-                                    <label for="NoiDung_{{_id}}"><em>Nội Dung</em></label>
-                                    <textarea class="form-control" name="NoiDung"
-                                        id="NoiDung_{{_id}}">{{this.NoiDung}}</textarea>
-                                </div>
-                                <!-- Add any other fields you want to include -->
-                                <button type="submit" class="btn btn-primary"
-                                    onclick="updateItem('{{_id}}')">Update</button>
-                                <button type="button" class="btn btn-danger"
-                                    onclick="deleteItem('{{_id}}')">Delete</button>
-                            </form>
-                        </div>
+            <div class="card-body">
+                <form id="updateForm_{{_id}}" class="template-form">
+                    <input type="hidden" value="{{this.id_CDR}}">
+                    <div class="form-group">
+                        <label for="Ten_CDR_{{_id}}"><em>Tên PLO</em></label>
+                        <input type="text" class="form-control" name="Ten_CDR" id="Ten_CDR_{{_id}}"
+                            value="{{this.Ten_CDR}}" required>
                     </div>
-
-                    {{/each}}
-                    <div class="card">
-                        <div class="card-header">
-                            <button class="btn btn-primary" onclick="addItem()">Add PLO</button>
-                        </div>
+                    <div class="form-group">
+                        <label for="LoaiCDR_CT_{{_id}}"><em>Loại PLO</em> </label>
+                        <select class="form-control" name="LoaiCDR_CT" id="LoaiCDR_CT_{{_id}}" required>
+                            <option value="Kiến thức" {{#ifCond this.LoaiCDR_CT '===' 'Kiến thức' }}selected{{/ifCond}}>
+                                Kiến thức</option>
+                            <option value="Kỹ năng" {{#ifCond this.LoaiCDR_CT '===' 'Kỹ năng' }}selected{{/ifCond}}>Kỹ
+                                năng</option>
+                            <option value="Mức độ tự chủ và trách nhiệm" {{#ifCond
+                                this.LoaiCDR_CT '===' 'Mức độ tự chủ và trách nhiệm' }}selected{{/ifCond}}>Mức độ tự chủ
+                                và trách nhiệm</option>
+                        </select>
                     </div>
-                    <div id="addItemModal" class="modal">
-                        <div class="modal-content">
-                            <span class="close" onclick="closeAddModal()">&times;</span>
-                            <div class="card-body">
-                                <form id="addForm" class="template-form">
-                                    <div class="form-group">
-                                        <label for="newTenMT_CTDT">Tên Mục Tiêu</label>
-                                        <input type="text" class="form-control" name="TenMT_CTDT" id="newTenMT_CTDT" required>
-                                    </div>
-
-                                    <div class="form-group">
-                                        <label for="newLoaiCDR_CT">Loại PLO</label>
-                                        <select class="form-control" name="LoaiCDR_CT" id="newLoaiCDR_CT" required>
-                                            <option value="Kiến thức">Kiến thức</option>
-                                            <option value="Kỹ năng">Kỹ năng</option>
-                                            <option value="Mức độ tự chủ và trách nhiệm">Mức độ tự chủ và trách nhiệm</option>
-                                        </select>
-                                    </div>
-
-                                    <div class="form-group">
-                                        <label for="newNoiDung">Nội Dung</label>
-                                        <textarea class="form-control" name="NoiDung" id="newNoiDung"></textarea>
-                                    </div>
-
-                                    <button type="submit" class="btn btn-primary">Thêm PLO</button>
-                                </form>
-                            </div>
-                        </div>
+                    <div class="form-group">
+                        <label for="NoiDung_{{_id}}"><em>Nội Dung</em></label>
+                        <textarea class="form-control" name="NoiDung" id="NoiDung_{{_id}}">{{this.NoiDung}}</textarea>
                     </div>
+                    <!-- Add any other fields you want to include -->
+                    <button type="submit" class="btn btn-primary" onclick="updateItem('{{_id}}')">Update</button>
+                    <button type="button" class="btn btn-danger" onclick="deleteItem('{{_id}}')">Delete</button>
+                </form>
+            </div>
+        </div>
+
+        {{/each}}
+        <div class="card">
+            <div class="card-header">
+                <button class="btn btn-primary" onclick="addItem()">Add PLO</button>
+            </div>
+        </div>
+        <div id="addItemModal" class="modal">
+            <div class="modal-content">
+                <span class="close" onclick="closeAddModal()">&times;</span>
+                <div class="card-body">
+                    <form id="addForm" class="template-form">
+                        <div class="form-group">
+                            <label for="newTenMT_CTDT">Tên Mục Tiêu</label>
+                            <input type="text" class="form-control" name="TenMT_CTDT" id="newTenMT_CTDT" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="newLoaiCDR_CT">Loại PLO</label>
+                            <select class="form-control" name="LoaiCDR_CT" id="newLoaiCDR_CT" required>
+                                <option value="Kiến thức">Kiến thức</option>
+                                <option value="Kỹ năng">Kỹ năng</option>
+                                <option value="Mức độ tự chủ và trách nhiệm">Mức độ tự chủ và trách nhiệm</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="newNoiDung">Nội Dung</label>
+                            <textarea class="form-control" name="NoiDung" id="newNoiDung"></textarea>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary">Thêm PLO</button>
+                    </form>
                 </div>
             </div>
         </div>
@@ -104,6 +91,9 @@
 </div>
 
 <script>
+document.getElementById('main').style.display = 'none';
+document.getElementById('admin').style.display = 'block';
+document.getElementById('main').innerHTML = '';
     function addItem() {
         document.getElementById('addItemModal').style.display = 'block';
     }
@@ -113,28 +103,28 @@
     }
     function navigateTo(path) {
         window.location.href = path;
-    } 
+    }
     function updateItem(id) {
-    const form = document.getElementById('updateForm_' + id);
+        const form = document.getElementById('updateForm_' + id);
         const formData = new FormData(form);
         const data = Object.fromEntries(formData);
 
-    axios.put('/admin/program/plo/update/' + id, data)
-        .then(response => {
-            window.location.href = '/admin/program/plo/';
-        })
-        .catch(error => console.error('Error updating item:', error));
+        axios.put('/admin/program/plo/update/' + id, data)
+            .then(response => {
+                window.location.href = '/admin/program/plo/';
+            })
+            .catch(error => console.error('Error updating item:', error));
     }
     function deleteItem(itemId) {
 
-    axios.delete(`/admin/program/plo/delete/${itemId}`)
-        .then(response => {
-            window.location.href = '/admin/program/plo/';
-        })
-        .catch(error => console.error('Error deleting item:', error));
+        axios.delete(`/admin/program/plo/delete/${itemId}`)
+            .then(response => {
+                window.location.href = '/admin/program/plo/';
+            })
+            .catch(error => console.error('Error deleting item:', error));
     }
-    document.getElementById('addForm').addEventListener('submit', function(event) {
-    event.preventDefault();
+    document.getElementById('addForm').addEventListener('submit', function (event) {
+        event.preventDefault();
         const hiddenInputs = document.querySelectorAll('input[type="hidden"]');
 
         if (hiddenInputs.length > 0) {
@@ -146,7 +136,7 @@
         const nextValue = getNextSequenceValue(lastValue);
         const newItemData = {
             id_CDR: nextValue,
-            LoaiCDR_CT:document.getElementById('newLoaiCDR_CT').value,
+            LoaiCDR_CT: document.getElementById('newLoaiCDR_CT').value,
             Ten_CDR: document.getElementById('newTenMT_CTDT').value,
             NoiDung: document.getElementById('newNoiDung').value,
             id_CT: 'ct001'
@@ -167,4 +157,3 @@
         return nextValue;
     }    
 </script>
-

@@ -2,27 +2,31 @@
     <div class="formInput_monHoc" id="formInput_monHoc">
 
         <div class="formInput_baseA4" id="formInput_baseA4">
-            <div class="PLO">
-                <table>
-                    {{#each processedPLOs}}
-                    {{#if newGroup}}
-                    <!-- Chỉ hiển thị tiêu đề này khi bắt đầu một nhóm PLO mới -->
-                    <tr>
-                        <th colspan="2">{{LoaiCDR_CT}}</th>
-                    </tr>
-                    {{/if}}
-                    <tr>
-                        <td class="ValuePLO">{{Ten_CDR}}</td>
-                        <td style="text-align: justify;">{{NoiDung}}</td>
-                    </tr>
-                    {{/each}}
-                </table>
+            <div class="PLO" spellcheck="false">
+                {{#each processedPLOs}}
+                {{#if newGroup}}
+                <!-- Chỉ hiển thị tiêu đề này khi bắt đầu một nhóm PLO mới -->
+                <div class="PLO__group">
+                    <h2 class="PLO__header">{{LoaiCDR_CT}}</h2>
+                </div>
+                {{/if}}
+                <div class="PLO__item">
+                    <div class="PLO__value">
+                        <p>{{Ten_CDR}}</p>
+                    </div>
+                    <div class="PLO__textarea-container" style="text-align: justify;">
+                        <textarea class="PLO__textarea">{{NoiDung}}</textarea>
+                    </div>
+                </div>
+                {{/each}}
+
             </div>
             <div class="formInput_print" spellcheck="false">
                 <div class="hidden" id="findName">{{findName}}</div>
                 <div class="modify__button_save send-content">
-                    <button onclick="Put_Save_Delete()">Lưu</button>
-                    <button onclick="sendA4Content()" >Xuất file PDF</button>
+                    <button style="background-color: #6C757D; color:white;" onclick="Put_Save_Delete()">Lưu</button>
+                    <button style="background-color: #6C757D; color:white;" onclick="sendA4Content()">Xuất file
+                        PDF</button>
                 </div>
                 {{{templates}}}
             </div>
@@ -30,31 +34,33 @@
     </div>
 </div>
 {{!-- function sendA4Content() {
-        var a4Content = document.getElementById('formInput_monHoc').innerHTML;
-        axios.post('/pdf', { a4Content })
-            .then(function (response) {
-                window.location.href = response.data.pdfPath;
-            })
-            .catch(function (error) {
-                console.error('Error:', error);
-            });
-    } --}}
+var a4Content = document.getElementById('formInput_monHoc').innerHTML;
+axios.post('/pdf', { a4Content })
+.then(function (response) {
+window.location.href = response.data.pdfPath;
+})
+.catch(function (error) {
+console.error('Error:', error);
+});
+} --}}
 <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 <script>
-    const urlParams = new URLSearchParams(window.location.search);
-    const filename = urlParams.get('filename');
-    var MaHP = filename.toString();
+
     async function Put_Save_Delete() {
+        const urlParams = new URLSearchParams(window.location.search);
+        const filename = urlParams.get('filename');
+        var MaHP = filename.toString();
         const userConfirmation = window.confirm('Bạn có chắc chắn muốn lưu dữ liệu không?');
         if (userConfirmation) {
             try {
-                const response = await axios.delete(`../delete/${MaHP}`);
-                if (response.status === 204) {
+                const responser = await axios.delete(`../delete/${MaHP}`);
+                if (responser.status === 200) {
                     console.log('Xóa thành công');
                 } else {
-                    console.log('Xóa không thành công. Mã lỗi:', response.status);
+                    console.log('Xóa không thành công. Mã lỗi:', responser.status);
                 }
                 Save_Project();
+
             } catch (error) {
                 console.error('Error deleting project:', error);
             }
@@ -62,14 +68,14 @@
             console.log('Người dùng không đồng ý lưu dữ liệu.');
         }
     }
-    document.getElementById('modify__user_hidden').style.display='block';
-   
+    document.getElementById('modify__user_hidden').style.display = 'block';
+
 </script>
 <script>
-     async function sendA4Content() {
-     const urlParams = new URLSearchParams(window.location.search);
-    const filename = urlParams.get('filename');
-    var MaHP = filename.toString();
+    async function sendA4Content() {
+        const urlParams = new URLSearchParams(window.location.search);
+        const filename = urlParams.get('filename');
+        var MaHP = filename.toString();
         const userConfirmation = window.confirm('Bạn có chắc chắn muốn xuất PDF?');
         if (userConfirmation) {
             try {
@@ -79,18 +85,18 @@
                 } else {
                     console.log('Xóa không thành công. Mã lỗi:', responser.status);
                 }
-            Save_Project();
+                Save_Project();
 
-            const NameValue = MaHP.trim()
-            setTimeout(() => {
-                axios.post('/project/pdf', { NameValue })
-                    .then(function (response) {
-                        window.location.href = response.data.pdfPath;
-                    })
-                    .catch(function (error) {
-                        console.error('Error:', error);
-                    });
-            }, 3000);
+                const NameValue = MaHP.trim()
+                setTimeout(() => {
+                    axios.post('/project/pdf', { NameValue })
+                        .then(function (response) {
+                            window.location.href = response.data.pdfPath;
+                        })
+                        .catch(function (error) {
+                            console.error('Error:', error);
+                        });
+                }, 3000);
 
             } catch (error) {
                 console.error('Error deleting project:', error);
@@ -100,27 +106,83 @@
         }
     }
 </script>
+{{>PostUpdate}}
+{{>table-4}}
+{{> table-5}}
+{{>CheckBox}}
+{{>table-2}}
+{{>CheckBox}}
+
+{{>all_Autocomplete}}
+{{>Autocomplete}}
+{{>ChangeDropdownText}}
+{{>CleanUpDataPost}}
 <script>
     
     document.addEventListener("DOMContentLoaded", function () {
+        const div = document.querySelector('.formInput_print');
+
+        div.addEventListener('click', (event) => {
+            const clickedElement = event.target;
+            const canReceiveFocus = clickedElement instanceof HTMLInputElement ||
+                clickedElement instanceof HTMLTextAreaElement ||
+                clickedElement.isContentEditable;
+
+            if (canReceiveFocus) {
+                clickedElement.classList.add('focus');
+                // Lấy id của phần tử được click
+                const focusedEl = document.querySelector('.focus');
+
+                div.querySelectorAll('.focus').forEach(el => {
+                    if (el !== clickedElement) {
+
+                        el.classList.remove('focus');
+                        
+                    }
+                });
+            }
+        });
+        const layoutAdminElement = document.querySelector('.admin');
+        layoutAdminElement.innerHTML = '';
+        if (document.getElementById("TenMon")) {
+            autocomplete(document.getElementById("TenMon"), TenHocPhan, "TenHocPhan");
+        }
+        if (document.getElementById("TenTQ1")) {
+            autocomplete(document.getElementById("TenTQ1"), Ten_HocPhan_TQ, "TenTQ");
+        }
+        if (document.getElementById("MaTQ1")) {
+            autocomplete(document.getElementById("MaTQ1"), Ten_HocPhan_TQ, "hungtext");
+        }
+        if (document.getElementById("TenTQ2")) {
+            autocomplete(document.getElementById("TenTQ2"), Ten_HocPhan_TQ, "TenTQ");
+        }
+        if (document.getElementById("MaTQ2")) {
+            autocomplete(document.getElementById("MaTQ2"), Ten_HocPhan_TQ, "hungtext");
+        }
+        //autocomplete(document.getElementById("MaMon"), MaHocPhan);
+        //autocomplete(document.getElementById("myInput2"), countries);HoTen1
+
+        if (document.getElementById("HoTen1")) {
+            autocomplete(document.getElementById("HoTen1"), Teacher, "Teacher");
+        }
+        if (document.getElementById("HoTen2")) {
+            autocomplete(document.getElementById("HoTen2"), Teacher, "Teacher");
+        }
+        if (document.getElementById("BienSoan")) {
+            autocomplete(document.getElementById("BienSoan"), Teacher, "BienSoan");
+        }
+        if (document.getElementById("BienSoan")) {
+            autocomplete(document.getElementById("PhanBien"), Teacher, "BienSoan");
+        }
+       
         setTimeout(function () {
             UpdateSTT_TB2();
             UpdateSTTskill_TB4();
         }, 1000);
     });
 </script>
-{{>table-4}}
-{{> table-5}}
-{{>createFocus}}
-{{>CheckBox}}
-{{>table-2}}
-{{>CheckBox}}
-{{>PostUpdate}}
-{{>all_Autocomplete}}
-{{>Autocomplete}}
-{{>ChangeDropdownText}}
-{{>CleanUpDataPost}}
-{{>PostUpdate}}
+
+
 {{!-- <div class="width16_cm">
     <p class="section-content text-right"><strong>PHỤ LỤC&nbsp;<span contenteditable="true"
                 id="PhuLuc">{{HocPhan.PhuLuc}}</span></strong></p>

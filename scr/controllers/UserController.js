@@ -22,7 +22,7 @@ exports.listProject = async (req, res) => {
                     fullnameFile: item.fileName
                 };
             });
-            res.render('project/listProject', { ListCreate: ListCreateObject});
+            res.render('project/listProject', { ListCreate: ListCreateObject,token});
         } catch (err) {
             console.error('Lỗi khi giải mã token:', err.message);
             res.status(401).json({ message: 'Token không hợp lệ' });

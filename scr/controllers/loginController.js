@@ -12,7 +12,8 @@ dotenv.config();
 const NguoiDung = require('../models/NguoiDung/NguoiDung.model');
 exports.login_get = (req, res, next) => {
     const message = req.query.message || '';
-    res.render('login/login',{ message });
+    const token = req.cookies.token;   
+    res.render('login/login',{ message ,token});
 }
 exports.login_post = (req, res) => {
     const username = req.body.username;
@@ -260,7 +261,10 @@ exports.home_get = async (req, res) => {
         PLO: plo_Object,
         processedPLOs: processedPLOs,  }); 
 };
-
+exports.process__logout = (req, res) => {
+  res.clearCookie('token');
+  res.redirect('/login');
+}
 
 
 

@@ -21,6 +21,12 @@ router.delete('/program/plo/delete/:id',verifyToken,hasRole(1), adminController.
 router.get('/program/Matrix',verifyToken,hasRole(1), adminController.Admin_GET_Matrix)
 router.post('/program/Matrix',verifyToken,hasRole(1), adminController.Admin_POST_UPDATE_Matrix)
 
+router.get('/template/',verifyToken,hasRole(1), adminController.Admin_GET_TEMPLATE)
+router.put('/template/update/:id',verifyToken,hasRole(1), adminController.Admin_PUT_TEMPLATE)
+
+router.get('/autocomplete/',verifyToken,hasRole(1), adminController.Admin_GET_AUTOCOMPLETE)
+router.put('/autocomplete/update/:id',verifyToken,hasRole(1), adminController.Admin_PUT_AUTOCOMPLETE)
+
 router.get('/list-user/',verifyToken,hasRole(1), adminController.Admin_GET_LIST_USER)
 router.post('/list-user/',verifyToken,hasRole(1), adminController.Admin_POST_LIST_USER)
 router.delete('/list-user/delete/:id',verifyToken,hasRole(1), adminController.Admin_DELETE_LIST_USER)

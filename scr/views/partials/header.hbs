@@ -1,79 +1,87 @@
 <style>
-body {
-    font-family: 'Arial', sans-serif;
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
+    .header {
+        background-color: #333;
+        color: white;
+        padding: 10px 0;
+        position: fixed;
+    }
 
-.header {
-    background-color: #333;
-    color: white;
-    padding: 10px 0;
-}
+    .container {
+        width: 80%;
+        margin: 0 auto;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
 
-.container {
-    width: 80%;
-    margin: 0 auto;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
+    .navigation ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        display: flex;
+    }
 
-.navigation ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    display: flex;
-}
+    .navigation ul li {
+        margin-left: 20px;
+    }
 
-.navigation ul li {
-    margin-left: 20px;
-}
+    .navigation ul li a {
+        color: white;
+        text-decoration: none;
+        transition: color 0.3s ease;
+    }
 
-.navigation ul li a {
-    color: white;
-    text-decoration: none;
-    transition: color 0.3s ease;
-}
+    .navigation ul li a:hover {
+        color: #ffcc00;
+    }
 
-.navigation ul li a:hover {
-    color: #ffcc00;
-}
+    .send-content button {
+        background-color: #ffcc00;
+        color: #333;
+        border: none;
+        padding: 10px 20px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+    }
 
-.send-content button {
-    background-color: #ffcc00;
-    color: #333;
-    border: none;
-    padding: 10px 20px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-}
-
-.send-content button:hover {
-    background-color: #f5f5f5;
-    color: #333;
-}
-
+    .send-content button:hover {
+        background-color: #f5f5f5;
+        color: #333;
+    }
 </style>
 
 <header class="header" id="header">
-        <div class="container">
-            <nav class="navigation">
-                <ul>
-                    <li><a href="/home" id="modify__user_hidden"><h5><i class="fa-solid fa-print"></i>Trang Chủ</h5></a></li>
-                    <li><a href="/project/Create" id="modify__project_hidden"><h5>Tạo Dự Án</h5></a></li>
-                    <li><a href="/user/listProject"  id="modify__listProject_hidden"><h5>Danh Sách Dự Án</h5></a></li>
-                    <li><a href="/admin" style="display: none;" id="modify__admin_hidden"><h5><i class="fa-solid fa-print"></i>Trang Admin</h5></a></li>
-                </ul>
-            </nav>
-            {{!-- <div class="send-content">
-                <button onclick="Save_Project()" id="modify__SaveP_hidden">Save</button>
-                <button onclick="sendA4Content()" id="modify__PDF_hidden">Gửi Nội Dung</button>
-            </div> --}}
-
-        </div>
+    <div class="container">
+        <nav class="navigation">
+            <ul>
+                <li><a href="/home" id="modify__user_hidden">
+                        <h5 style="display: flex; gap: 0 5px;"><i class="fa-solid fa-print"></i><div>Trang Chủ</div></h5>
+                    </a></li>
+                <li><a href="/project/Create" id="modify__project_hidden">
+                        <h5>Tạo Dự Án</h5>
+                    </a></li>
+                <li><a href="/user/listProject" id="modify__listProject_hidden">
+                        <h5>Danh Sách Dự Án</h5>
+                    </a></li>
+                <li><a href="/admin" style="display: none;" id="modify__admin_hidden">
+                        <h5><i class="fa-solid fa-print"></i>Trang Admin</h5>
+                    </a></li>
+            </ul>
+        </nav>
+        <nav class="navigation">
+            <ul>
+                <li>
+                {{#if token}}
+                    <a href="/logout">
+                        <h5>Đăng xuất</h5>
+                    </a>
+                    {{else}}
+                    <a href="/login">
+                        <h5>Đăng nhập</h5>
+                    </a>
+                {{/if}}
+                </li>
+            </ul>
+        </nav>
+    </div>
 </header>
-
-
-
