@@ -31,30 +31,29 @@
     {{#each users}}
     <div class="card" id="card_user_{{this._id}}">
       <div class="card-header">
-        <strong>User: {{this.username}}</strong>
+        <strong>Người dùng: {{this.username}}</strong>
       </div>
       <div class="card-body">
-        <p>Username: {{this.username}}</p>
-        <button type="button" class="btn btn-danger" onclick="deleteUser('{{this._id}}')">Delete User</button>
+        <p>Tên đăng nhập: {{this.username}}</p>
+        <button type="button" class="btn btn-danger" onclick="deleteUser('{{this._id}}')">Xóa người dùng</button>
         <hr>
-        <h4>List of Creates</h4>
+        <h4>Danh sách bài viết</h4>
         {{#if this.creates.length}}
         <ul>
           {{#each this.creates}}
           <li>
             <div class="create-info">
-              Create: {{this.fileName}}
-              <!-- Thêm các thông tin khác của 'create' ở đây nếu cần -->
+              Tên file: {{this.fileName}}
             </div>
             <div class="create-actions">
-              <button type="button" class="btn btn-secondary" onclick="editCreate('{{this._id}}')">Edit</button>
-              <button type="button" class="btn btn-danger" onclick="deleteCreate('{{this._id}}')">Delete</button>
+              <button type="button" class="btn btn-secondary" onclick="editCreate('{{this._id}}')">Chỉnh sửa</button>
+              <button type="button" class="btn btn-danger" onclick="deleteCreate('{{this._id}}')">Xóa</button>
             </div>
           </li>
           {{/each}}
         </ul>
         {{else}}
-        <p>No creates found for this user.</p>
+        <p>Không! có bài viết được tạo bởi người dùng</p>
         {{/if}}
       </div>
     </div>
@@ -77,27 +76,36 @@ document.getElementById('main').innerHTML = '';
     window.location.href = path;
   }
   function deleteCreate(createId) {
-    if (window.confirm('Bạn có chắc chắn muốn xóa create này không?')) {
-      axios.delete(`/admin/list-user/user/delete/${createId}`)
-        .then(response => {
-          console.log('Create deleted successfully');
-          window.location.reload();
-        })
-        .catch(error => {
-          console.error('Error deleting create:', error);
-        });
-    }
+  if (window.confirm('Bạn có chắc chắn muốn xóa create này không?')) {
+    axios.delete(`/admin/list-user/user/delete/${createId}`)
+      .then(response => {
+        console.log('Create deleted successfully');
+        window.location.reload();
+      })
+      .catch(error => {
+        console.error('Error deleting create:', error);
+      });
+  } else {
+    console.log('User canceled delete operation.');
   }
-  function deleteUser(itemId) {
+}
+
+function deleteUser(itemId) {
+  if (window.confirm('Bạn có chắc chắn muốn xóa user này không?')) {
     axios.delete(`/admin/list-user/delete/${itemId}`)
       .then(response => {
         window.location.href = '/admin/list-user';
       })
       .catch(error => console.error('Error deleting item:', error));
+  } else {
+    console.log('User canceled delete operation.');
   }
+}
 
-  document.getElementById('addForm').addEventListener('submit', function (event) {
-    event.preventDefault();
+document.getElementById('addForm').addEventListener('submit', function (event) {
+  event.preventDefault();
+
+  if (window.confirm('Bạn có chắc chắn muốn thêm user mới không?')) {
     const newItemData = {
       username: document.getElementById('newusername').value,
       password: document.getElementById('newpassword').value,
@@ -110,5 +118,8 @@ document.getElementById('main').innerHTML = '';
         window.location.href = '/admin/list-user';
       })
       .catch(error => console.error('Error adding item:', error));
-  });
+  } else {
+    console.log('User canceled add operation.');
+  }
+});
 </script>

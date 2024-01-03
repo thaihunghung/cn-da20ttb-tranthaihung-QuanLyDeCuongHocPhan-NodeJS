@@ -1,16 +1,8 @@
 <div class="modify__button_program send-content layout_Admin__display_column">
     <div>
-        <button onclick="navigateTo('/admin/program')">Program</button>
+        <button class="btn btn-primary" onclick="addItem()">Thêm PLO</button>
     </div>
-    <div>
-        <button onclick="navigateTo('/admin/program/edit')">Edit Program</button>
-    </div>
-    <div>
-        <button onclick="navigateTo('/admin/program/plo')">Edit PLO</button>
-    </div>
-    <div>
-        <button onclick="navigateTo('/admin/program/po')">Edit PO</button>
-    </div>
+
 </div>
 <div class="program" style="min-height: 100vh;">
     <br>
@@ -46,18 +38,14 @@
                         <textarea class="form-control" name="NoiDung" id="NoiDung_{{_id}}">{{this.NoiDung}}</textarea>
                     </div>
                     <!-- Add any other fields you want to include -->
-                    <button type="submit" class="btn btn-primary" onclick="updateItem('{{_id}}')">Update</button>
-                    <button type="button" class="btn btn-danger" onclick="deleteItem('{{_id}}')">Delete</button>
+                    <button type="submit" class="btn btn-primary" onclick="updateItem('{{_id}}')">Chỉnh sửa</button>
+                    <button type="button" class="btn btn-danger" onclick="deleteItem('{{_id}}')">Xóa</button>
                 </form>
             </div>
         </div>
 
         {{/each}}
-        <div class="card">
-            <div class="card-header">
-                <button class="btn btn-primary" onclick="addItem()">Add PLO</button>
-            </div>
-        </div>
+    
         <div id="addItemModal" class="modal">
             <div class="modal-content">
                 <span class="close" onclick="closeAddModal()">&times;</span>
@@ -105,34 +93,43 @@ document.getElementById('main').innerHTML = '';
         window.location.href = path;
     }
     function updateItem(id) {
-        const form = document.getElementById('updateForm_' + id);
-        const formData = new FormData(form);
-        const data = Object.fromEntries(formData);
+        if (window.confirm('Bạn có chắc chắn muốn cập nhật mục này không?')) {
+            const form = document.getElementById('updateForm_' + id);
+            const formData = new FormData(form);
+            const data = Object.fromEntries(formData);
 
-        axios.put('/admin/program/plo/update/' + id, data)
-            .then(response => {
-                window.location.href = '/admin/program/plo/';
-            })
-            .catch(error => console.error('Error updating item:', error));
+            axios.put('/admin/program/plo/update/' + id, data)
+                .then(response => {
+                    window.location.href = '/admin/program/plo/';
+                })
+                .catch(error => console.error('Error updating item:', error));
+        } else {
+            console.log('Người dùng đã hủy bỏ cập nhật mục.');
+        }
     }
-    function deleteItem(itemId) {
 
-        axios.delete(`/admin/program/plo/delete/${itemId}`)
-            .then(response => {
-                window.location.href = '/admin/program/plo/';
-            })
-            .catch(error => console.error('Error deleting item:', error));
+    function deleteItem(itemId) {
+        if (window.confirm('Bạn có chắc chắn muốn xóa mục này không?')) {
+            axios.delete(`/admin/program/plo/delete/${itemId}`)
+                .then(response => {
+                    window.location.href = '/admin/program/plo/';
+                })
+                .catch(error => console.error('Error deleting item:', error));
+        } else {
+            console.log('Người dùng đã hủy bỏ xóa mục.');
+        }
     }
     document.getElementById('addForm').addEventListener('submit', function (event) {
         event.preventDefault();
+         if (window.confirm('Bạn có chắc chắn muốn thêm mục mới không?')) {
         const hiddenInputs = document.querySelectorAll('input[type="hidden"]');
-
+    
         if (hiddenInputs.length > 0) {
             var lastValue = hiddenInputs[hiddenInputs.length - 1].value;
         } else {
             console.log("No hidden input elements found.");
         }
-
+    
         const nextValue = getNextSequenceValue(lastValue);
         const newItemData = {
             id_CDR: nextValue,
@@ -141,13 +138,16 @@ document.getElementById('main').innerHTML = '';
             NoiDung: document.getElementById('newNoiDung').value,
             id_CT: 'ct001'
         };
-
+    
         axios.post('/admin/program/plo', newItemData)
             .then(response => {
                 closeAddModal();
                 window.location.href = '/admin/program/plo/';
             })
             .catch(error => console.error('Error adding item:', error));
+    } else {
+        console.log('Người dùng đã hủy bỏ thêm mục mới.');
+    }
     });
     function getNextSequenceValue(lastValue) {
         const numberPart = parseInt(lastValue.replace(/^\D+/g, ''), 10);

@@ -8,9 +8,9 @@
 }
 
 .card {
-  margin: auto;
+  margin: 0 auto 0;
 
-
+  height: auto;
   width: 900px;
   max-width: 900px;
 }

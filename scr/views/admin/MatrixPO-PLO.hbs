@@ -1,4 +1,13 @@
 
+            
+            
+            <div class="modify__button_program send-content layout_Admin__display_column">
+                <div>
+                   <button id="submit-button">Chỉnh sửa PO-PLO</button>
+                </div>
+ 
+            </div>
+           
             <div class="program">
                 <div class="display-flex Matrix">
                     <table class="table-program section-content">
@@ -43,7 +52,6 @@
                             {{/each}}
                         </tbody>
                     </table>
-                    <button id="submit-button">Lấy Giá Trị Checkbox</button>
                 </div>
             </div>
 
@@ -58,6 +66,7 @@ document.getElementById('admin').style.display = 'block';
 document.getElementById('main').innerHTML = '';
 
     document.getElementById('submit-button').addEventListener('click', function () {
+    if (window.confirm('Bạn có muốn thực chỉnh sửa không?')) {
         let selectedValues = [];
         document.querySelectorAll('.dapung-checkbox:checked').forEach(function (checkbox) {
             selectedValues.push(checkbox.value);
@@ -68,12 +77,18 @@ document.getElementById('main').innerHTML = '';
             return { id_CDR: parts[0], MaMT_CTDT: parts[1] };
         });
         console.log(transformedValues);
+
         axios.post('/admin/program/Matrix', transformedValues)
             .then(response => {
                 console.log(response.data);
+                window.location.reload();
             })
             .catch(error => {
                 console.error('Error:', error);
             });
-    });
+    } else {
+        console.log('Người dùng đã hủy bỏ hành động.');
+    }
+});
+
 </script>

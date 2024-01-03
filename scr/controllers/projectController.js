@@ -17,6 +17,7 @@ const CDR_HocPhanModel = require('../models/HocPhan/Cdr_HocPhan.model')
 const DapUngCDR = require('../models/HocPhan/DapUngCDR.model');
 const CreateModel = require('../models/NguoiDung/Create.model');
 const PLO = require('../models/Chuongtrinh/PLO.model');
+const Auto = require('../models/AautoText/Auto.model');
 const DapUngChuongModel = require('../models/HocPhan/DapUngMonHoc.model');
 const {verifyToken} = require('../middleware/auth.middleware');
 const {mongooseToObject,MutipleMongooseToObject} = require('../util/mongoose');
@@ -184,7 +185,10 @@ exports.index = async (req, res) =>{
           };
           var templates = await TempLate.find().sort({ order: 1 })
           let compiledTemplates = [];
-
+          var auto = await  Auto.findOne({title: 'autocomplete'})
+          
+          var autocomplete =  auto.items;
+          
           templates.forEach(template => {
               let compiled;
               switch (template.compileMethod) {
@@ -243,7 +247,8 @@ exports.index = async (req, res) =>{
             templates: compiledString,
             PLO: plo_Object,
             processedPLOs: processedPLOs,
-            token
+            token,
+            autocomplete
           });
       } else {
           res.redirect('/project/Create');
@@ -700,13 +705,17 @@ exports.project_Get_Update = async (req, res) => {
         compiledTemplates.push(compiled);
     });
 
-    let compiledString = compiledTemplates.join('');    
+    let compiledString = compiledTemplates.join(''); 
+    var auto = await  Auto.findOne({title: 'autocomplete'})    
+    var autocomplete =  auto.items;
+      
     res.render('project/update',{
       templates: compiledString,
       PLO: plo_Object,
       processedPLOs: processedPLOs,
       findName: findName,
-      token
+      token,
+      autocomplete 
     });
 }
 

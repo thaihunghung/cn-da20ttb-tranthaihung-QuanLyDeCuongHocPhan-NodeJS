@@ -8,6 +8,7 @@ const Handlebars = require('handlebars');
 const { mongooseToObject, MutipleMongooseToObject } = require('../util/mongoose');
 const User = require('../models/NguoiDung/NguoiDung.model');
 const Create = require('../models/NguoiDung/Create.model');
+const Auto = require('../models/AautoText/Auto.model');
 const fs = require('fs');
 
 exports.Admin_index = (req, res) => {
@@ -136,13 +137,16 @@ exports.Admin_PUT_PO = async (req, res) => {
 exports.Admin_DELETE_PO = async (req, res) => {
   try {
     const itemId = req.params.id;
+    console.log(itemId);
     const FindOne = await POModel.findById(itemId); // Use findById for correct querying
     if (!FindOne) {
       return res.status(404).json({ message: 'Item not found' });
     }
-    var maMT = FindOne.MaMT_CTD;
-    await dapUng_CTModel.deleteMany({ MaMT_CTD: maMT });
-    await POModel.findByIdAndDelete(itemId);
+    var maMT = FindOne.MaMT_CTDT;
+
+   await dapUng_CTModel.deleteOne({ MaMT_CTD: maMT });
+
+   await POModel.findByIdAndDelete(itemId);
     res.json({ message: 'Item deleted successfully' });
   } catch (error) {
     res.status(500).send('Error deleting item');
@@ -368,13 +372,26 @@ exports.Admin_POST_UPDATE_Matrix = async (req, res) => {
 
 };
 
-
-
 exports.Admin_GET_AUTOCOMPLETE = async (req, res) => {
-    res.render('admin/Autocomplete');
+  const auto = await Auto.find();
+  const autoObjects = auto.map(mongooseToObject);
+  const token = req.cookies.token;
+  res.render('admin/Autocomplete',{token,auto:autoObjects});
 }
 exports.Admin_PUT_AUTOCOMPLETE = async (req, res) => {
-  
+  const templateId = req.params.id;
+  const formObject = req.body;
+  try {
+    const updatedAuto = await Auto.findByIdAndUpdate(templateId, formObject, { new: true });
+
+    if (!updatedAuto) {
+      return res.status(404).json({ message: 'Template not found' });
+    }
+    res.json({ message: 'Template updated successfully', Auto: updatedAuto });
+  } catch (error) {
+    console.error('Error updating template:', error);
+    res.status(500).json({ message: 'Internal server error' });
+  }
 }
 function compileMethod(templateString, data) {
   const compiledTemplate = Handlebars.compile(templateString);

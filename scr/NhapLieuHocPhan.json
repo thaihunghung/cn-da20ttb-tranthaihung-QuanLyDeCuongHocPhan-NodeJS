@@ -1,10 +1,10 @@
 {
-  "MaHP": "1",
-  "HocPhan_TQ": "<div class=\"ModifyTB2\"> <div class=\"autocomplete\">Tên:&nbsp; <span contenteditable=\"true\" id=\"TenTQ1\"> Vi tích phân A1 </span> </div> <div class=\"autocomplete\">MSHP:&nbsp; <span contenteditable=\"true\" id=\"MaTQ1\"> 110042 </span> </div> </div>",
-  "HocPhan_SH": "<span contenteditable=\"true\">Không</span>",
-  "YC_khac": {
-    "KienThuc": "Kiến thức toán học phổ thông",
-    "KyNang": "<div>&nbsp;&nbsp;-&nbsp;&nbsp;Kỹ năng phân tích, giải quyết vấn đề</div> <div>&nbsp;&nbsp;-&nbsp;&nbsp;Kỹ năng tập trung, ghi nhớ, tính toán, biến đổi</div>",
-    "ThaiDo": "Chủ động trong học tập"
-  }
+  "title": "autocomplete",
+  "items": [
+    "Công nghệ thông tin",
+    "Phần mềm",
+    "Mạng máy tính",
+    "Lập trình",
+    "Hệ thống thông tin"
+  ]
 }

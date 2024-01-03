@@ -1,8 +1,23 @@
 <script>
-    var all_autocomplete = [
-        'học phần', 'giúp', 'trang bị', 'cho', 'sinh viên', 'các', 'kiến thức', 'cơ bản', 'xác suất', 'và', 'thống kê',
-        'để', 'phân tích', 'dữ liệu', 'nghiên cứu', 'trong'
-    ]
+    var autocompleteString = '{{{autocomplete}}}'; // Chuỗi ban đầu, có thể là rỗng
+    var all_autocomplete;
+
+    if (autocompleteString.trim() === '') {
+        // Nếu chuỗi rỗng, gán mảng mặc định
+        all_autocomplete = [
+            'học phần', 'giúp', 'trang bị', 'cho', 'sinh viên', 'các', 'kiến thức', 'cơ bản',
+            'xác suất', 'và', 'thống kê', 'để', 'phân tích', 'dữ liệu', 'nghiên cứu', 'trong'
+        ];
+    } else {
+        // Ngược lại, chuyển đổi chuỗi thành mảng
+        all_autocomplete = autocompleteString.split(',');
+    }
+
+    if (Array.isArray(all_autocomplete)) {
+        console.log("all_autocomplete is an array.");
+    } else {
+        console.log("all_autocomplete is not an array.");
+    }
 
 
     function handleKeyPress(currentID, event) {
@@ -16,7 +31,7 @@
             // Lấy văn bản phía sau
             textAfterCursor = range.startContainer.textContent.slice(cursorPosition);
         }
-         
+
         if (document.activeElement === huntranDiv) {
             if (event.key === ' ') {
                 var huntran = document.getElementById(currentID);
@@ -51,15 +66,15 @@
                 newRange.setStart(range.startContainer, cursorPosition);
                 newRange.setEnd(range.startContainer, cursorPosition);
                 var newContent = document.createElement('span');
-              
-                
+
+
                 newContent.innerHTML = '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;';
                 newRange.insertNode(newContent);
-            
+
                 FocusToEnd(newContent);
             }
         }
-        
+
     }
     // In mảng ra console để kiểm tra
     function Autocomplete(inp, arr, id) {
@@ -171,19 +186,19 @@
                         FocusToEnd(newSpan);
                         id.contentEditable = true;
                     }
-                } 
-            } else if (e.keyCode === 13 && !foundSuggestion) { 
-                    e.preventDefault();
-                    var childrenDiv = document.querySelector('.Autocomplete');
-                    if (childrenDiv) {
-                        var range = document.createRange();
-                        range.selectNode(childrenDiv);
-                        removeAutocompleteContainer()
-                        var newSpan = document.createElement('br');
-                        
-                        range.insertNode(newSpan);
-                        FocusToEnd(newSpan);
-                    }    
+                }
+            } else if (e.keyCode === 13 && !foundSuggestion) {
+                e.preventDefault();
+                var childrenDiv = document.querySelector('.Autocomplete');
+                if (childrenDiv) {
+                    var range = document.createRange();
+                    range.selectNode(childrenDiv);
+                    removeAutocompleteContainer()
+                    var newSpan = document.createElement('br');
+
+                    range.insertNode(newSpan);
+                    FocusToEnd(newSpan);
+                }
             }
         })
         function removeAutocompleteContainer() {
@@ -236,7 +251,7 @@
                 }
             }
             closeAllLists(e.target);
-            
+
         });
         function FocusToEnd(element) {
             var range = document.createRange();

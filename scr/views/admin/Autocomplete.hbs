@@ -1,40 +1,66 @@
+<div class="program" style="min-height: 100vh;">
+<div class="container-card modyfy-container-card" spellcheck="false" style="height: auto;">
+  {{#each auto}}
+  <div class="card">
+    <div class="card-header">
+    </div>
+    <div class="card-body">
+      <form id="updateForm_{{_id}}">
+        <input type="hidden" id="_id" name="_id" value="{{_id}}">
+        <div class="form-group">
+          <label for="userInput" id="title">Tiêu đề: {{this.title}}</label>
+          <textarea class="form-control" name="htmlContent" id="userInput" rows="4" style="height: 300px;">{{joinArray this.items}}</textarea>
+        </div>
+        <button type="button" class="btn btn-primary" id="processButton">lưu gợi ý</button>
+      </form>
+    </div>
+  </div>
+  {{/each}}
+</div>
+</div>
+
 <script>
-  function processAndValidateStrings(inputString) {
-  // Chia chuỗi input thành mảng các chuỗi
-  const stringArray = inputString.split(",");
+  document.addEventListener('DOMContentLoaded', function () {
+    document.getElementById('main').style.display = 'none';
+    document.getElementById('admin').style.display = 'block';
+    document.getElementById('main').innerHTML = '';
+    const button = document.getElementById('processButton');
 
-  // Mảng kết quả cuối cùng
-  const resultArray = [];
+    button.addEventListener('click', function () {
+      processInput(this);
+    });
+  });
 
-  // Một Set để theo dõi các chuỗi đã xuất hiện
-  const seenSet = new Set();
+  async function processInput() {
 
-  // Lặp qua mảng chuỗi đầu vào
-  for (const str of stringArray) {
-    // Loại bỏ khoảng trắng ở đầu và cuối chuỗi
-    const trimmedStr = str.trim();
+    const userInput = document.getElementById('userInput').value;
 
-    // Kiểm tra điều kiện hợp lệ, ví dụ: độ dài của chuỗi lớn hơn 2 và không chứa ký tự số
-    if (trimmedStr.length > 2 && !/\d/.test(trimmedStr)) {
-      // Kiểm tra xem chuỗi đã xuất hiện trước đó hay chưa
-      if (!seenSet.has(trimmedStr)) {
-        // Nếu chuỗi hợp lệ và chưa xuất hiện, thêm vào mảng kết quả và đánh dấu là đã xuất hiện
-        resultArray.push(trimmedStr);
-        seenSet.add(trimmedStr);
-      }
-    }
+    const names = userInput.split(/,\s*/).map(name => name.trim());
+
+    const vietnameseNames = names.filter(name =>
+      /[àáảãạăắằẳẵặâấầẩẫậđéèẻẽẹêếềểễệíìỉĩịóòỏõọôốồổỗộơớờởỡợúùủũụưứừửữựýỳỷỹỵ]/i.test(name)
+    );
+
+    const uniqueVietnameseNames =await Array.from(new Set(vietnameseNames));
+    
+    //const formId = form.id.replace("updateForm_", "");
+
+    // Lấy title từ id của label
+    const titleLabel = document.getElementById("title");
+    const title = titleLabel.innerText;
+    const _id = document.getElementById("_id").value;
+    let formObject = {
+      _id:_id,
+      items: uniqueVietnameseNames 
+    };
+     axios.put('/admin/autocomplete/update/' + _id, formObject)
+      .then(function (response) {
+        console.log('Updated successfully:', response.data);
+        alert("Chỉnh sửa thành công");
+        window.location.reload();
+      })
+      .catch(function (error) {
+        console.error('Update failed:', error);
+      });
   }
-
-  return resultArray;
-}
-
-// Chuỗi đầu vào
-const inputString = "hung, việt nam, 123, hung , hufđ, 123, đjdj,h.mgggssfmg, fsdfd";
-
-// Gọi hàm xử lý chuỗi
-const result = processAndValidateStrings(inputString);
-
-// In kết quả
-console.log(result);
-
 </script>

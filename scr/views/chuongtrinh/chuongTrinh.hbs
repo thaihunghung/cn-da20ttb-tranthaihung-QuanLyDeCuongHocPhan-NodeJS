@@ -1,20 +1,33 @@
-<div class="layout_Admin">
-  <div class="Admin_Nav">
-    
-  </div>
 
-  <div class="Admin_product">
-    <div class="Admin_product_list">
-        {{{templates}}}
+        <div class="modify__button_program send-content layout_Admin__display_column">
+    <div>
+        <button class="btn btn-primary" onclick="navigateTo('/home')">Quay về trang chủ</button>
     </div>
-  </div>
+
 </div>
-</div>
+        
+        <div class="program" style="min-height: 100vh;">
+                <div class="display-flex Matrix">
+        
+        {{{templates}}}
+
+                </div>
+        </div>
+<Script>
+     document.addEventListener("DOMContentLoaded", function () {
+    document.getElementById("admin").style.display = "block";
+    const layoutAdminElement = document.querySelector('.main');
+        layoutAdminElement.innerHTML = '';
+        layoutAdminElement.style.display = "none";
+    const layoutAdmincontainer = document.querySelector('.container');    
+        layoutAdmincontainer.style.display = "none";
+   const layoutAdminAdmin_Nav = document.querySelector('.Admin_Nav');    
+        layoutAdminAdmin_Nav.style.display = "none";
+
+ });
+</Script>
 <script>
-  {{!-- document.getElementById('modify__admin_hidden').style.display = 'block';
-  document.getElementById('modify__user_hidden').style.display = 'none';
-  document.getElementById('modify__project_hidden').style.display = 'none'; --}}
-  document.getElementById('modify__SaveP_hidden').style.display = 'none';
-  document.getElementById('modify__PDF_hidden').style.display = 'none';
-  document.getElementById('modify__listProject_hidden').style.display = 'none';
+    function navigateTo(path) {
+        window.location.href = path;
+    }
 </script>

@@ -1,80 +1,65 @@
 <div class="modify__button_program send-content layout_Admin__display_column">
-                <div>
-                    <button onclick="navigateTo('/admin/program')">Program</button>
-                </div>
-                <div>
-                    <button onclick="navigateTo('/admin/program/edit')">Edit Program</button>
-                </div>
-                <div>
-                    <button onclick="navigateTo('/admin/program/plo')">Edit PLO</button>
-                </div>
-                <div>
-                    <button onclick="navigateTo('/admin/program/po')">Edit PO</button>
-                </div>
-            </div>
-            <div class="program" style="min-height: 100vh;">
-                <br>
-                <br>
-                <div class="container-card" spellcheck="false">
-                    {{#each PO}}
-                    <div class="card" id="card_{{_id}}">
-                        <div class="card-header">
-                            <b>{{this.TenMT_CTDT}}</b> <!-- Display the title in the card header -->
-                        </div>
-                        <div class="card-body">
-                            <form id="updateForm_{{_id}}" class="template-form">
-                                <input type="hidden" value="{{this.MaMT_CTDT}}">
-                                <div class="form-group">
-                                    <label for="TenMT_CTDT_{{_id}}"><em>Tên Mục Tiêu</em></label>
-                                    <input type="text" class="form-control" name="TenMT_CTDT" id="TenMT_CTDT_{{_id}}"
-                                        value="{{this.TenMT_CTDT}}" required>
-                                </div>
-                                <div class="form-group">
-                                    <label for="NoiDung_{{_id}}"><em>Nội Dung</em></label>
-                                    <textarea class="form-control" name="NoiDung"
-                                        id="NoiDung_{{_id}}">{{this.NoiDung}}</textarea>
-                                </div>
-                                <!-- Add any other fields you want to include -->
-                                <button type="submit" class="btn btn-primary"
-                                    onclick="updateItem('{{_id}}')">Update</button>
-                                <button type="button" class="btn btn-danger"
-                                    onclick="deleteItem('{{_id}}')">Delete</button>
-                            </form>
-                        </div>
-                    </div>
+    <div>
+        <button class="btn btn-primary" onclick="addItem()">Thêm PO</button>
+    </div>
 
-                    {{/each}}
-                    <div class="card">
-                        <div class="card-header">
-                            <button class="btn btn-primary" onclick="addItem()">Add PO</button>
-                        </div>
+</div>
+<div class="program" style="min-height: 100vh;">
+    <br>
+    <br>
+    <div class="container-card" spellcheck="false">
+        {{#each PO}}
+        <div class="card" id="card_{{_id}}">
+            <div class="card-header">
+                <b>{{this.TenMT_CTDT}}</b> <!-- Display the title in the card header -->
+            </div>
+            <div class="card-body">
+                <form id="updateForm_{{_id}}" class="template-form">
+                    <input type="hidden" value="{{this.MaMT_CTDT}}">
+                    <div class="form-group">
+                        <label for="TenMT_CTDT_{{_id}}"><em>Tên Mục Tiêu</em></label>
+                        <input type="text" class="form-control" name="TenMT_CTDT" id="TenMT_CTDT_{{_id}}"
+                            value="{{this.TenMT_CTDT}}" required>
                     </div>
-                    <div id="addItemModal" class="modal">
-                        <div class="modal-content">
-                            <span class="close" onclick="closeAddModal()">&times;</span>
-                            <div class="card-body">
-                                <form id="addForm" class="template-form">
-                                    <div class="form-group">
-                                        <label for="newTenMT_CTDT">Tên Mục Tiêu</label>
-                                        <input type="text" class="form-control" name="TenMT_CTDT" id="newTenMT_CTDT" required>
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="newNoiDung">Nội Dung</label>
-                                        <textarea class="form-control" name="NoiDung" id="newNoiDung"></textarea>
-                                    </div>
-                                    <button type="submit" class="btn btn-primary">Add New Item</button>
-                                </form>
-                            </div>
-                        </div>
+                    <div class="form-group">
+                        <label for="NoiDung_{{_id}}"><em>Nội Dung</em></label>
+                        <textarea class="form-control" name="NoiDung" id="NoiDung_{{_id}}">{{this.NoiDung}}</textarea>
                     </div>
+                    <!-- Add any other fields you want to include -->
+                    <button type="submit" class="btn btn-primary" onclick="updateItem('{{_id}}')">Chỉnh sửa PO</button>
+                    <button type="button" class="btn btn-danger" onclick="deleteItem('{{_id}}')">Xóa PO</button>
+                </form>
+            </div>
+        </div>
+
+        {{/each}}
+
+        <div id="addItemModal" class="modal">
+            <div class="modal-content">
+                <span class="close" onclick="closeAddModal()">&times;</span>
+                <div class="card-body">
+                    <form id="addForm" class="template-form">
+                        <div class="form-group">
+                            <label for="newTenMT_CTDT">Tên Mục Tiêu</label>
+                            <input type="text" class="form-control" name="TenMT_CTDT" id="newTenMT_CTDT" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="newNoiDung">Nội Dung</label>
+                            <textarea class="form-control" name="NoiDung" id="newNoiDung"></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Thêm mới PO</button>
+                    </form>
                 </div>
             </div>
+        </div>
+    </div>
+</div>
 
 
 <script>
-  document.getElementById('main').style.display = 'none';
-document.getElementById('admin').style.display = 'block';
-document.getElementById('main').innerHTML = '';
+    document.getElementById('main').style.display = 'none';
+    document.getElementById('admin').style.display = 'block';
+    document.getElementById('main').innerHTML = '';
     function addItem() {
         document.getElementById('addItemModal').style.display = 'block';
     }
@@ -84,51 +69,69 @@ document.getElementById('main').innerHTML = '';
     }
     function navigateTo(path) {
         window.location.href = path;
-    } 
-    function updateItem(id) {
-    const form = document.getElementById('updateForm_' + id);
-        const formData = new FormData(form);
-        const data = Object.fromEntries(formData);
-
-    axios.put('/admin/program/po/update/' + id, data)
-        .then(response => {
-            window.location.href = '/admin/program/po/';
-        })
-        .catch(error => console.error('Error updating item:', error));
     }
-    function deleteItem(itemId) {
-
-    axios.delete(`/admin/program/po/delete/${itemId}`)
-        .then(response => {
-            window.location.href = '/admin/program/po/';
-        })
-        .catch(error => console.error('Error deleting item:', error));
-}
-    document.getElementById('addForm').addEventListener('submit', function(event) {
-    event.preventDefault();
-        const hiddenInputs = document.querySelectorAll('input[type="hidden"]');
-
-        if (hiddenInputs.length > 0) {
-            var lastValue = hiddenInputs[hiddenInputs.length - 1].value;
+    function updateItem(id) {
+        if (window.confirm('Bạn có chắc chắn muốn cập nhật mục này không?')) {
+            const form = document.getElementById('updateForm_' + id);
+            const formData = new FormData(form);
+            const data = Object.fromEntries(formData);
+            
+            axios.put('/admin/program/po/update/' + id, data)
+                .then(response => {
+                    window.location.href = '/admin/program/po/';
+                })
+                .catch(error => console.error('Error updating item:', error));
         } else {
-            console.log("No hidden input elements found.");
+            console.log('Người dùng đã hủy bỏ cập nhật mục.');
         }
+    }
 
-        const nextValue = getNextSequenceValue(lastValue);
-        const newItemData = {
-            MaMT_CTDT: nextValue,
-            TenMT_CTDT: document.getElementById('newTenMT_CTDT').value,
-            NoiDung: document.getElementById('newNoiDung').value,
-            id_CT: 'ct001'
-        };
+    function deleteItem(itemId) {
+        console.log('Deleting item:', itemId);
+        if (window.confirm('Bạn có chắc chắn muốn xóa mục này không?')) {
+            axios.delete(`/admin/program/po/delete/${itemId}`)
+                .then(response => {
+                    window.location.href = '/admin/program/po/';
+                })
+                .catch(error => console.error('Error deleting item:', error));
+        } else {
+            console.log('Người dùng đã hủy bỏ xóa mục.');
+        }
+    }
 
-        axios.post('/admin/program/po', newItemData)
-            .then(response => {
-                closeAddModal();
-                window.location.href = '/admin/program/po/';
-            })
-            .catch(error => console.error('Error adding item:', error));
+
+    document.getElementById('addForm').addEventListener('submit', function (event) {
+        event.preventDefault();
+
+        // Xác nhận trước khi thêm mục mới
+        if (window.confirm('Bạn có chắc chắn muốn thêm mục mới không?')) {
+            const hiddenInputs = document.querySelectorAll('input[type="hidden"]');
+
+            if (hiddenInputs.length > 0) {
+                var lastValue = hiddenInputs[hiddenInputs.length - 1].value;
+            } else {
+                console.log("No hidden input elements found.");
+            }
+
+            const nextValue = getNextSequenceValue(lastValue);
+            const newItemData = {
+                MaMT_CTDT: nextValue,
+                TenMT_CTDT: document.getElementById('newTenMT_CTDT').value,
+                NoiDung: document.getElementById('newNoiDung').value,
+                id_CT: 'ct001'
+            };
+
+            axios.post('/admin/program/po', newItemData)
+                .then(response => {
+                    closeAddModal();
+                    window.location.href = '/admin/program/po/';
+                })
+                .catch(error => console.error('Error adding item:', error));
+        } else {
+            console.log('Người dùng đã hủy bỏ thêm mục mới.');
+        }
     });
+
     function getNextSequenceValue(lastValue) {
         const numberPart = parseInt(lastValue.replace(/^\D+/g, ''), 10);
         const incrementedNumber = numberPart + 1;
@@ -136,5 +139,5 @@ document.getElementById('main').innerHTML = '';
 
         return nextValue;
     }
-    
+
 </script>
