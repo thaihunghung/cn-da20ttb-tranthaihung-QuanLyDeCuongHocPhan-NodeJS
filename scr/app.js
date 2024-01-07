@@ -22,16 +22,13 @@ const {mongooseToObject,MutipleMongooseToObject} = require('./util/mongoose');
 // // // // // // 
 // Routes     
 // // // // // //
-const UpdateRouter = require('./routes/ChuongRoute.js');
-const loginRoutes = require('./routes/loginRoute.js');
-const logoutRoutes = require('./routes/logoutRoute.js');
-const homeRoutes = require('./routes/homeRoutes.js');
-const chuongtrinhRoutes = require('./routes/chuongTrinhRoute.js'); 
+const UpdateRouter = require('./routes/Chuong.Routes.js');
+
+
+
+
 const hocphanRoutes = require('./routes/HocPhanRoute.js');
-const projectRoutes = require('./routes/projectRoute.js');
-const userRoutes = require('./routes/userRoutes.js');
 const template = require('./routes/templateRoute.js');
-const admin = require('./routes/adminRoute.js');
 const test = require('./routes/testRoute.js');
 const db = require('./database/config.js');
 // // // // // // 
@@ -60,17 +57,27 @@ app.set('view engine', 'hbs');
 app.set('views', path.join(__dirname, 'views'));
 
 // app.use('/monhoc', monHocRoutes);
-app.use('/update', UpdateRouter);
+
+const loginRoutes = require('./routes/login.Routes.js');
+const logoutRoutes = require('./routes/logout.Routes.js');
+const homeRoutes = require('./routes/home.Routes.js');
+const chuongtrinhRoutes = require('./routes/chuongTrinh.Routes.js'); 
+const projectRoutes = require('./routes/project.Routes.js');
+const userRoutes = require('./routes/user.Routes.js');
+const adminRoutes = require('./routes/admin.Routes.js');
+
 app.use('/login', loginRoutes);
 app.use('/logout',logoutRoutes);
 app.use('/home', homeRoutes);
 app.use('/program', chuongtrinhRoutes);
-app.use('/hung',hocphanRoutes);
 app.use('/user', userRoutes);
 app.use('/project', projectRoutes);
+app.use('/admin',adminRoutes);
+
 app.use('/template',template);
-app.use('/admin',admin);
 app.use('/test',test);
+app.use('/hung',hocphanRoutes);
+app.use('/update', UpdateRouter);
 async function fetchDataForCDRHocPhanData(cdrHocPhanData) {
   try {
     const result = [];

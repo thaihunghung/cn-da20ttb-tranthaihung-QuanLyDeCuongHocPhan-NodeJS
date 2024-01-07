@@ -1,9 +1,20 @@
-<div class="Admin_Nav">
-    <a href="/admin">
-        <h5>Trang Admin</h5>
-    </a>
-    <a href="/admin/program">Quản lý chương trình </a><br>
-    <a href="/template">Quản lý khung</a><br>
-    <a href="/admin/list-user">Quản lý user</a><br>
-    <a href="/admin/program/Matrix">Program Matrix</a><br>
-</div>
+<a href="/admin/program">Quản lý Program</a><br>
+{{#if Program}}
+<div>
+    <a href="/admin/program/edit"> -&nbsp;&nbsp;Chỉnh sửa Program</a>
+</div><br>
+<div>
+    <a href="/admin/program/plo"> -&nbsp;&nbsp;Quản lý PLO</a>
+</div><br>
+<div>
+    <a href="/admin/program/po"> -&nbsp;&nbsp;Quản lý PO</a>
+</div><br>
+<div>
+    <a href="/admin/program/Matrix"> -&nbsp;&nbsp;Quản lý PLO-PO</a>
+</div><br>
+{{else}}
+
+{{/if}}
+<a href="/admin/template">Quản lý khung</a><br>
+<a href="/admin/list-user">Quản lý người dùng</a><br>
+<a href="/admin/Autocomplete">Quản lý từ gợi ý</a><br>

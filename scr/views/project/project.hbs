@@ -47,8 +47,57 @@
 <script>
    
     document.addEventListener("DOMContentLoaded", function () {
-         const div = document.querySelector('.formInput_print');
+        document.getElementById('button_delete_tb2').addEventListener('click', function () {
+        const focusedSpan = document.querySelector('.focus');
 
+        if (focusedSpan && focusedSpan.classList.contains('focus')) {
+            const parentTr = focusedSpan.closest('.TaiLieu');
+            if (parentTr) {
+                const confirmation = window.confirm('Bạn có chắc muốn xóa phần tử này?');
+                if (confirmation) {
+                    
+                    var Tachchu = StringNumberAndletter(parentTr.id, 'letters');
+                    
+                    parentTr.remove();
+                    UpdateSTT_TB2();
+
+                    //UpdateALLId_TB2(Tachchu)
+                } else {
+                    console.log("Người dùng đã từ chối xóa.");
+                }
+            } else {
+                console.log("Không có 'allowDeletion'.");
+            }
+        } else {
+            console.log("không trỏ vào .");
+        }
+    });
+         const div = document.querySelector('.formInput_print');
+        document.getElementById('button_delete_tb4').addEventListener('click', function () {
+    const focusedSpan = document.querySelector('.focus');
+    if (focusedSpan && focusedSpan.classList.contains('focus')) {
+      const parentTr = focusedSpan.closest('tr[class*="KyNang"]');
+      if (parentTr) {
+        var parentID = parentTr.id;
+        var SoTrongID = parseInt(parentID.match(/\d+/)[0], 10);
+        var ChuTrongID = parentID.match(/[a-zA-Z]+/)[0];
+
+        const confirmation = window.confirm('Bạn có chắc muốn xóa phần tử này?');
+        if (confirmation) {
+          parentTr.remove();
+          UpdateAllId_TB4(ChuTrongID, SoTrongID);
+          UpdateSTTskill_TB4()
+
+        } else {
+          console.log("Người dùng đã từ chối xóa.");
+        }
+      } else {
+        console.log("Không tìm thấy hoặc thẻ tr không có ID là 'allowDeletion_4'.");
+      }
+    } else {
+      console.log("Không tìm thấy hoặc thẻ span không có class 'focus'.");
+    }
+  });
         div.addEventListener('click', (event) => {
             const clickedElement = event.target;
             const canReceiveFocus = clickedElement instanceof HTMLInputElement ||

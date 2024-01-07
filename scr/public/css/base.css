@@ -233,6 +233,10 @@ span {
     height: auto;
     max-height: 600px;
 }
+.instructionForm-table4 {
+    height: auto;
+    max-height:  270px;
+}
 .Stick__4 {
     margin-top: 15px;
         border-radius: 5px;
