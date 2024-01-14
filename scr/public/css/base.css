@@ -309,7 +309,9 @@ p {
     height: auto;
     max-height: 150px;
     width: 150px;
-    display: none;
+    visibility: hidden;
+    opacity: 0;
+    transition: visibility 0s, opacity 0.3s ease;
     position: absolute;
     background-color: #f1f1f1;
     box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
@@ -320,7 +322,18 @@ p {
     min-width: 40pt;
     text-align: center;
 }
-
+.dropdown-content:after,
+.dropdown-content-5:after,
+.dropdown-content-5-last:after,
+.dropdown-content-KT7:after,
+.dropdown-content-chuong:after {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 10px; 
+    height: 10px;
+}
 .dropdown-content li,
 .dropdown-content-5 li,
 .dropdown-content-5-last li,
@@ -343,7 +356,8 @@ p {
 .dropdown:hover .dropdown-content-5-last,
 .dropdown:hover .dropdown-content-KT7,
 .dropdown:hover .dropdown-content-chuong{
-    display: block;
+    visibility: visible;
+    opacity: 1;
 }
 .ModifyTB2 {
     display: flex;

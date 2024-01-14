@@ -236,7 +236,45 @@ exports.Admin_GET_TEMPLATE = async (req, res) => {
     res.status(500).send('Internal Server Error');
   }
 }
+exports.Admin_GET_TEMPLATE_DEVELOPMENT =async (req, res) => {
+  const template = await TempLate.find({ compileMethod: "FormQuyDinh" });
+  const templates = template.map(mongooseToObject);
+  const token = req.cookies.token;
+  try {
+    res.render('admin/template-development', {
+      templates,
+      token
+    });
+  } catch (error) {
+    console.error(error);
+    res.status(500).send('Internal Server Error');
+  }
+}
+exports.Admin_PUT_TEMPLATE_DEVELOPMENT = async (req, res) => {
+  try {
+    const templateId = req.body.templateId;
+    const combinedString = req.body.combinedString;
 
+
+    const updatedTemplate = await TempLate.findByIdAndUpdate(
+        templateId,
+        { $set: { htmlContent: combinedString } },
+        { new: true } 
+    );
+
+    if (!updatedTemplate) {
+        return res.status(404).json({ error: 'Template not found' });
+    }
+
+    res.status(200).json({
+        message: 'Template updated successfully',
+        updatedTemplate: updatedTemplate
+    });
+} catch (error) {
+    console.error('Error updating template development:', error);
+    res.status(500).json({ error: 'Internal Server Error' });
+}
+}
 exports.Admin_PUT_TEMPLATE = async (req, res) => {
   const templateId = req.params.id;
   const formObject = req.body;

@@ -33,4 +33,7 @@ router.post('/list-user',verifyToken,hasRole(1), adminController.Admin_POST_LIST
 router.delete('/list-user/delete/:id',verifyToken,hasRole(1), adminController.Admin_DELETE_LIST_USER)
 router.delete('/list-user/user/delete/:id',verifyToken,hasRole(1), adminController.Admin_DELETE_CREATE_BY_USER)
 
+
+router.get('/template-development',verifyToken,hasRole(1), adminController.Admin_GET_TEMPLATE_DEVELOPMENT);
+router.put('/template-development/update/:id',verifyToken,hasRole(1), adminController.Admin_PUT_TEMPLATE_DEVELOPMENT);
 module.exports = router;

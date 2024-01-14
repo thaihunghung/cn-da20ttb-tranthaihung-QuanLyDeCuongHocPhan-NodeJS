@@ -1,0 +1,66 @@
+<div class="container-card" spellcheck="false">
+  {{#each templates}}
+
+  <div class="card" style="height: auto;">
+    <div class="card-header">
+      Khung {{order}}
+    </div>
+    <div class="card-body">
+      
+        <div class="form-group">
+          <label for="htmlContent_{{_id}}">HTML Content</label>
+    
+          <div class="form-control" contenteditable="true" spellcheck="false" id="htmlContent">
+            
+          </div>
+         
+        </div>
+        <button type="button" class="btn btn-primary" onclick="updateTemplate('{{_id}}')">Chỉnh sửa</button>
+
+    </div>
+  </div>
+  {{/each}}
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+    document.getElementById('main').style.display = 'none';
+
+    document.getElementById('admin').style.display = 'block';
+    document.getElementById('main').innerHTML = '';
+});
+</script>
+<script>
+
+  function updateTemplate(templateId) {
+    var header = '<div class="FormQuyDinh page__break"> <p class="section-content">&nbsp;</p>';
+    var htmlContent = document.getElementById('htmlContent').innerHTML; // Lấy nội dung HTML từ phần contenteditable
+    var footer = '</div>';
+    
+    var htmlContentva = document.getElementById('htmlContent');
+    if(htmlContentva.innerHTML.trim()=== ''){
+        alert("chưa có dữ liệu")
+        return ;
+    }
+    var combinedString = header + htmlContent + footer;
+
+    const requestData = {
+        templateId: templateId,
+        combinedString: combinedString
+    };
+
+    const isConfirmed = confirm("bạn có muốn chỉnh sửa?");
+    if (!isConfirmed) {
+      return;
+    }
+     axios.put(`/admin/template-development/update/${templateId}`, requestData)
+        .then(response => {
+             alert("Lưu thành công")
+        })
+        .catch(error => {
+            console.error('Error updating template:', error);
+        });
+  }
+
+</script>

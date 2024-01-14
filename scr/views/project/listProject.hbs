@@ -15,10 +15,11 @@
             </thead>
             <tbody>
                 {{#each ListCreate}}
+                <p id="username" class="hidden">{{this.username}}</p>
                 <tr>
-                    <td id="filenam{{inc @index}}"> 
-                        <p id="username" class="hidden">{{this.username}}</p>
-                        <p id="filenam{{inc @index}}"> {{this.nameProject}}</p>
+                    <td id="filenam{{inc @index}}">
+                        
+                        <div id="filenam{{inc @index}}" style="margin: auto; margin-top:10px;"> {{this.nameProject}}</div>
                     </td>
                     <td>
                         <button class="btn btn-primary" onclick="Update(`{{this.fullnameFile}}`)">Chỉnh sửa</button>
