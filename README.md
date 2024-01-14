@@ -35,6 +35,6 @@ Node.js version: 18.18.0
 ### Load Template in MongoDB
 To load the template into MongoDB, follow these steps:
 
-1. Access the [QuanLyDeCuong.templates.json](https://raw.githubusercontent.com/thaihunghung/cn-da20ttb-tranthaihung-QuanLyDeCuongHocPhan-NodeJS/main/src/QuanLyDeCuong.templates.json).
+1. Access the [QuanLyDeCuong.templates.json](https://github.com/thaihunghung/cn-da20ttb-tranthaihung-QuanLyDeCuongHocPhan-NodeJS/blob/main/scr/QuanLyDeCuong.templates.json).
 
 2. Copy the content of the file.
