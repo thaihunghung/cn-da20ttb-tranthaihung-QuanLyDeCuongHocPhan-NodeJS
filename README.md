@@ -1,7 +1,8 @@
+# Project cn-da20ttb-tranthaihung-QuanLyDeCuongHocPhan-NodeJS
+
 ## Author: Tran Thai Hung
 ## Email: tranthaibobo@gmail.com
 ## Phone: 0363215490
-## Project Readme
 
 ### Node Version
 
@@ -28,4 +29,12 @@ Node.js version: 18.18.0
 - **express-handlebars:** ^7.1.2 - Handlebars view engine for Express.js.
 - **morgan:** ^1.10.0 - HTTP request logger middleware for Node.js.
 
----
+### Environment Variables
+ - **.ENV** MONGODB_DB = mongodb://127.0.0.1:27017/QuanLyDeCuong
+
+### Load Template in MongoDB
+To load the template into MongoDB, follow these steps:
+
+1. Access the [QuanLyDeCuong.templates.json](https://raw.githubusercontent.com/thaihunghung/cn-da20ttb-tranthaihung-QuanLyDeCuongHocPhan-NodeJS/main/src/QuanLyDeCuong.templates.json).
+
+2. Copy the content of the file.
