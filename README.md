@@ -32,9 +32,15 @@ Node.js version: 18.18.0
 ### Environment Variables
  - **.ENV** MONGODB_DB = mongodb://127.0.0.1:27017/QuanLyDeCuong
 
-### Load Template in MongoDB
+### Load TemplateData in MongoDB
 To load the template into MongoDB, follow these steps:
 
 1. Access the [QuanLyDeCuong.templates.json](https://github.com/thaihunghung/cn-da20ttb-tranthaihung-QuanLyDeCuongHocPhan-NodeJS/blob/main/scr/QuanLyDeCuong.templates.json).
+
+2. Copy the content of the file.
+### Load ChuongTrinhData in MongoDB
+To load the ChuongTrinhData into MongoDB, follow these steps:
+
+1. Access the [QuanLyDeCuong.chuongtrinhs.json](https://github.com/thaihunghung/cn-da20ttb-tranthaihung-QuanLyDeCuongHocPhan-NodeJS/blob/main/scr/QuanLyDeCuong.chuongtrinhs.json).
 
 2. Copy the content of the file.
