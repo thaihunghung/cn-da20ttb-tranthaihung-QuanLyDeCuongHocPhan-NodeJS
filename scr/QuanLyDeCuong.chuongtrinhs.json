@@ -1,0 +1,11 @@
+[{
+  "_id": {
+    "$oid": "6551ee16adf833281919f00a"
+  },
+  "id_CT": "ct001",
+  "TenChuongTrinh": "Công nghệ thông tin (Information Technology)",
+  "LoaiHinh": "Chính quy",
+  "STC_YeuCau": 150,
+  "Tg_DaoTao": 4,
+  "Bac": "Kỹ sư"
+}]
