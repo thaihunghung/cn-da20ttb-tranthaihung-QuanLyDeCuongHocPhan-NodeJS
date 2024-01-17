@@ -38,7 +38,7 @@ To load the template into MongoDB, follow these steps:
 1. Access the [QuanLyDeCuong.templates.json](https://github.com/thaihunghung/cn-da20ttb-tranthaihung-QuanLyDeCuongHocPhan-NodeJS/blob/main/scr/QuanLyDeCuong.templates.json).
 
 2. Copy the content of the file.
-**Note: htmlContent to find is to delete "\n" and "\"**
+3. **Note: htmlContent to find is to delete "\n" and "\"**
 ### Load ChuongTrinhData in MongoDB
 To load the ChuongTrinhData into MongoDB, follow these steps:
 
