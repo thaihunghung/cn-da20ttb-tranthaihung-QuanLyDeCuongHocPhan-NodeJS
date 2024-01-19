@@ -18,18 +18,17 @@
 .Admin_Nav {
     position: sticky;
     width: 200px;
-    background-color: #cacaca;
+    background-color:burlywood;
    
     top: 0;
     padding: 60px 20px 20px 20px;
     min-height: 100vh;
 
-
 }
 
 .Admin_Nav a {
-    color: #001842 ;
-    font-weight: bold;
+    color: black ;
+    font-weight:500;
     text-decoration: none;
     display: block;
     

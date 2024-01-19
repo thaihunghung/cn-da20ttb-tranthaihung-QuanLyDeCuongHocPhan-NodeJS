@@ -90,7 +90,7 @@ span {
     width: 550px;
     text-align: justify;
     height: 100vh; 
-    max-height: 750px; 
+    max-height: 700px; 
     position: sticky;
     top: 80px; 
     padding: 10px; 
@@ -460,13 +460,12 @@ input {
 /* Style for the PLO__textarea */
 .PLO__item .PLO__textarea {
     width: 300px;
-    height: auto;
     resize: vertical;
-    padding: 5px;
+   
     box-sizing: border-box;
     margin-top: 5px;
     border: 0.5px solid #CACACA;
-    height: 100px;
+    height: 70px;
  
 }
 .PLO__item{
